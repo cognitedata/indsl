@@ -1,0 +1,167 @@
+[tool.poetry]
+name = "indsl"
+version = "8.2.0"
+description = "Industrial Data Science Library by Cognite"
+authors = ["Cognite"]
+license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/cognitedata/indsl"
+documentation = "https://indsl.docs.cognite.com"
+homepage = "https://indsl.docs.cognite.com"
+classifiers = ["Topic :: Scientific/Engineering"]
+
+[tool.poetry.dependencies]
+# Core dependencies
+python = ">=3.8,<3.12"
+scipy = "^1.7.3"
+pandas = "^2.0.0"
+typeguard = "^4.0.0"
+packaging = "^23.0"
+numpy = "^1.24.0"
+typing-extensions = "^4.6.3"
+
+# Optional extras dependencies
+fluids = { version = "^1.0.22", optional = true }
+matplotlib = { version = "^3.4.0", optional = true }
+numba = { version = "^0.57.0", optional = true }
+kneed = { version = "^0.8.0", optional = true }
+csaps = { version = "^1.1.0", optional = true }
+statsmodels = { version = "^0.14.0", optional = true }
+scikit-image = { version = "^0.21.0", optional = true }
+scikit-learn = { version = "^1.3.0", optional = true }
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = { version = "^3.0", python = "^3.6.1" }
+black = "^23.0.0"
+ipykernel = "^6.9.1"
+pytest-cov = "^4.0.0"
+commitizen = "^3.0.0"
+jupyter-contrib-nbextensions = "^0.7.0"
+jupyter_nbextensions_configurator = "^0.6.0"
+docstring-parser = "^0.15"
+toml = "^0.10.2"
+marshmallow = "^3.17.0"
+docstring-to-markdown = "^0.10"
+coverage = "^7.0.0"
+ruff = "^0.0.287"
+pytest = ">=6.2.2,<8.0.0"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+ipykernel = "^6.9.1"
+matplotlib = "^3.4.0"
+pytest-cov = "^4.0.0"
+commitizen = "^3.0.0"
+jupyter-contrib-nbextensions = "^0.7.0"
+jupyter_nbextensions_configurator = "^0.6.0"
+docstring-parser = "^0.15"
+toml = "^0.10.2"
+marshmallow = "^3.17.0"
+docstring-to-markdown = "^0.10"
+myst-parser = "^2.0.0"
+coverage = "^7.0.0"
+Sphinx = "<7.3"
+sphinx-rtd-theme = "^1.0.0"
+nbsphinx = "^0.9.0"
+sphinx-gallery = "^0.14.0"
+sphinx-prompt = "^1.4.0"
+
+[tool.poetry.extras]
+numba = ["numba"]
+plot = ["matplotlib"]
+modeling = ["csaps", "kneed"]
+stats = ["statsmodels"]
+scikit = ["scikit-image", "scikit-learn"]
+fluids = ["fluids"]
+all = ["fluids", "matplotlib", "numba", "csaps", "kneed", "statsmodels", "scikit-image", "scikit-learn"]
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | tests/.*/setup.py
+)/
+'''
+
+[tool.ruff]
+# Keep in sync with .pre-commit-config.yaml
+line-length = 120
+# E501: line too long
+# E731: do not assign a lambda expression, use a def
+# W605: invalid escape sequence
+# D100: Missing docstring in public module
+# D104: Missing docstring in public package
+# D105: Missing docstring in magic method
+# RUF002: Missing docstring in public function
+# UP006:  Use `list` instead of `List` for type annotations
+# UP007:  Use `X | Y` for type annotations
+ignore = ["E501", "E731", "W605","D100", "D104", "D105", "RUF002", "UP006", "UP007", "UP035"]
+target-version = "py38"
+select = ["D", "E", "W",  "F", "I", "T", "RUF", "TID", "UP"]
+exclude = ["tests", "examples", "docs-source", "docs", ".function-preview"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.isort]
+lines-after-imports = 2
+lines-between-types = 1
+split-on-trailing-comma = false
+known-third-party = ["pytest"]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "8.2.0"
+tag_format = "v$version"
+version_files = ["pyproject.toml:version"]
+
+[tool.pyright]
+# Added just so pylance in vscode doesn't complain too much
+pythonVersion = "3.8"
+typeCheckingMode = "basic"
+include = ["indsl"]
+ignore = ["tests"]
+reportImportCycles = false
+reportMissingTypeStubs = false
+reportMissingImports = false
+reportShadowedImports = "none"
+reportUnnecessaryTypeIgnoreComment = false
+reportUnusedImport = true
+reportUnusedVariable = true
+reportUnnecessaryIsInstance = true
+reportUnnecessaryComparison = true
+reportUnnecessaryCast = true
+reportPrivateUsage = true
+reportDuplicateImport = true
+reportConstantRedefinition = true
+reportOverlappingOverload = true
+reportInconsistentConstructor = true
+reportImplicitStringConcatenation = true
+
+[tool.pytest.ini_options]
+markers = [
+    "core: Unit tests for the core library functions",
+    "extras: Unit tests for the optional extras functions"
+]
+addopts = "--cov=indsl --cov-report=html --cov-branch"
+testpaths = "tests/"
+log_level = "INFO"
+log_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+log_date_format="%Y-%m-%d %H:%M:%S"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

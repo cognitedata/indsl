@@ -1,0 +1,43 @@
+repos:
+  - hooks:
+      - id: black
+    repo: https://github.com/psf/black
+    rev: 23.7.0
+  - hooks:
+      - id: ruff
+        args: ["--fix"]
+
+    repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.0.287
+  - hooks:
+      - id: debug-statements
+        exclude: ^docs(-source)?/
+      - id: trailing-whitespace
+        exclude: ^docs(-source)?/
+      - args:
+          - --allow-multiple-documents
+        id: check-yaml
+        exclude: ^docs(-source)?/
+      - id: check-builtin-literals
+        exclude: ^docs(-source)?/
+      - id: end-of-file-fixer
+        exclude: ^docs(-source)?/
+      - id: check-ast
+        exclude: ^docs(-source)?/
+      - id: check-docstring-first
+        exclude: ^docs(-source)?/
+      - id: requirements-txt-fixer
+        exclude: ^docs(-source)?/
+    repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+  - hooks:
+      - id: mypy
+        exclude: ^docs(-source)?/
+    repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.5.1
+  - hooks:
+      - id: commitizen
+        stages:
+          - commit-msg
+    repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.7.1

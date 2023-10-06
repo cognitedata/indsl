@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signals &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Smooth" href="smooth.html" />
+    <link rel="prev" title="Resample" href="resample.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Signals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-for-generating-industrial-grade-synthetic-signals">Module for Generating Industrial Grade Synthetic Signals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#line-time-series">Line time series</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.generator.line"><code class="docutils literal notranslate"><span class="pre">line()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#constant-value-time-series">Constant value time series</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.generator.const_value"><code class="docutils literal notranslate"><span class="pre">const_value()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sine-wave">Sine wave</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.generator.sine_wave"><code class="docutils literal notranslate"><span class="pre">sine_wave()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#perturb-the-index-of-a-time-series">Perturb the index of a time series</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.generator.perturb_timestamp"><code class="docutils literal notranslate"><span class="pre">perturb_timestamp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#create-data-gaps-in-a-time-series">Create data gaps in a time series</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.generator.insert_data_gaps"><code class="docutils literal notranslate"><span class="pre">insert_data_gaps()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#noise-generators">Noise Generators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#white-noise">White noise</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.noise.white_noise"><code class="docutils literal notranslate"><span class="pre">white_noise()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#brownian-noise">Brownian noise</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.generator.wave_with_brownian_noise"><code class="docutils literal notranslate"><span class="pre">wave_with_brownian_noise()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#polynomial-generators">Polynomial Generators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#univariate-polynomial">Univariate Polynomial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.polynomial.univariate_polynomial"><code class="docutils literal notranslate"><span class="pre">univariate_polynomial()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Signals</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/signals.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="signals">
+<h1>Signals<a class="headerlink" href="#signals" title="Permalink to this heading"></a></h1>
+<section id="module-for-generating-industrial-grade-synthetic-signals">
+<h2>Module for Generating Industrial Grade Synthetic Signals<a class="headerlink" href="#module-for-generating-industrial-grade-synthetic-signals" title="Permalink to this heading"></a></h2>
+<p>Industrial time series (i.e., sensor data from facilities) are commonly sampled at irregular intervals (non-uniform
+time stamps), contain data gaps, noise of different characteristics, and many other data quality flaws. The objective of
+this module is to offer multiple type of synthetic signals and methods to introduce data quality features similar to
+those observed in real industrial time series.</p>
+<section id="line-time-series">
+<h3>Line time series<a class="headerlink" href="#line-time-series" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.generator.line">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.generator.</span></span><span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timestamp</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timestamp</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:01:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intercept</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.generator.line" title="Permalink to this definition"></a></dt>
+<dd><p>Line.</p>
+<p>Generate a synthetic time series using the line equation. If no end and/or start dates are given, the default
+signal duration is set to 1 day. If no dates are provided, the end date is set to the current date and time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_date</strong> – Start date.
+The start date of the time series entered as a string, for example: “1975-05-09 20:09:10”, or
+“1975-05-09”.</p></li>
+<li><p><strong>end_date</strong> – End date.
+The end date of the time series entered as a string, for example: “1975-05-09 20:09:10”, or
+“1975-05-09”.</p></li>
+<li><p><strong>sample_freq</strong> – <p>Frequency.
+Sampling frequency as a time delta, value and time unit. Defaults to ‘1 minute’. Valid time units are:</p>
+<blockquote>
+<div><ul>
+<li><p>‘W’, ‘D’, ‘T’, ‘S’, ‘L’, ‘U’, or ‘N’</p></li>
+<li><p>‘days’ or ‘day’</p></li>
+<li><p>‘hours’, ‘hour’, ‘hr’, or ‘h’</p></li>
+<li><p>‘minutes’, ‘minute’, ‘min’, or ‘m’</p></li>
+<li><p>‘seconds’, ‘second’, or ‘sec’</p></li>
+<li><p>‘milliseconds’, ‘millisecond’, ‘millis’, or ‘milli’</p></li>
+<li><p>‘microseconds’, ‘microsecond’, ‘micros’, or ‘micro’</p></li>
+<li><p>‘nanoseconds’, ‘nanosecond’, ‘nanos’, ‘nano’, or ‘ns’.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>slope</strong> – Slope.
+Line slope. Defaults to 0 (horizontal line).</p></li>
+<li><p><strong>intercept</strong> – Intercept.
+Y-intercept. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Time series</dt><dd><p>Synthetic time series for a line</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="constant-value-time-series">
+<h3>Constant value time series<a class="headerlink" href="#constant-value-time-series" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.generator.const_value">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.generator.</span></span><span class="sig-name descname"><span class="pre">const_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timedelta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('7</span> <span class="pre">days</span> <span class="pre">00:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.generator.const_value" title="Permalink to this definition"></a></dt>
+<dd><p>Constant value.</p>
+<p>This function generates a horizontal line. The assumptions when generating the horizontal line
+are that the start date is set as “1970-01-01”, the end date is set as “now”, and the sampling is “1 week”.
+If the number of data points generated exceeds 100000, then the start date is moved forward, such that the
+number of data points generated is not greater than 100000 with “1 week” sampling resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Value.
+value. Defaults to 0.</p></li>
+<li><p><strong>timedelta</strong> – <p>Granularity.
+Sampling frequency as a time delta, value, and time unit. Defaults to one week (‘1 W’). Valid time units are:</p>
+<blockquote>
+<div><ul>
+<li><p>‘W’, ‘D’, ‘T’, ‘S’, ‘L’, ‘U’, or ‘N’</p></li>
+<li><p>‘days’ or ‘day’</p></li>
+<li><p>‘hours’, ‘hour’, ‘hr’, or ‘h’</p></li>
+<li><p>‘minutes’, ‘minute’, ‘min’, or ‘m’</p></li>
+<li><p>‘seconds’, ‘second’, or ‘sec’</p></li>
+<li><p>‘milliseconds’, ‘millisecond’, ‘millis’, or ‘milli’</p></li>
+<li><p>‘microseconds’, ‘microsecond’, ‘micros’, or ‘micro’</p></li>
+<li><p>‘nanoseconds’, ‘nanosecond’, ‘nanos’, ‘nano’, or ‘ns’.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Time series.</dt><dd><p>Synthetic time series for a line</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="sine-wave">
+<h3>Sine wave<a class="headerlink" href="#sine-wave" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.generator.sine_wave">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.generator.</span></span><span class="sig-name descname"><span class="pre">sine_wave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timestamp</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timestamp</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:00:01')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_amplitude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wave_phase</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.generator.sine_wave" title="Permalink to this definition"></a></dt>
+<dd><p>Sine wave.</p>
+<p>Generate a time series for a <a class="reference external" href="https://en.wikipedia.org/wiki/Sine_wave">sine wave</a> with a given wave period,
+amplitude, phase, and mean value. If no end and/or start dates are given, the default signal duration is set to
+1 day. If no dates are provided, the end date is set to the current date and time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_date</strong> – Start date
+Date-time string when the time series starts. The date must be a string, for example:
+“1975-05-09 20:09:10”.</p></li>
+<li><p><strong>end_date</strong> – End date
+Date-time string when the time series starts. The date must be a string, for example:
+“1975-05-09 20:09:10”.</p></li>
+<li><p><strong>sample_freq</strong> – <p>Frequency.
+Sampling frequency as a time delta, value, and time unit. Defaults to ‘1 minute’. Valid time units are:</p>
+<blockquote>
+<div><ul>
+<li><p>‘W’, ‘D’, ‘T’, ‘S’, ‘L’, ‘U’, or ‘N’</p></li>
+<li><p>‘days’ or ‘day’</p></li>
+<li><p>‘hours’, ‘hour’, ‘hr’, or ‘h’</p></li>
+<li><p>‘minutes’, ‘minute’, ‘min’, or ‘m’</p></li>
+<li><p>‘seconds’, ‘second’, or ‘sec’</p></li>
+<li><p>‘milliseconds’, ‘millisecond’, ‘millis’, or ‘milli’</p></li>
+<li><p>‘microseconds’, ‘microsecond’, ‘micros’, or ‘micro’</p></li>
+<li><p>‘nanoseconds’, ‘nanosecond’, ‘nanos’, ‘nano’, or ‘ns’.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>wave_period</strong> – <p>Wave period.
+The time it takes for two successive crests (one wavelength) to pass a specified point. For example, defining
+a wave period of <span class="math notranslate nohighlight">\(10 min\)</span> will generate one full wave every 10 minutes. The period can not be 0. If
+no value is provided, it is 1 minute. Valid time units are:</p>
+<blockquote>
+<div><ul>
+<li><p>‘W’, ‘D’, ‘T’, ‘S’, ‘L’, ‘U’, or ‘N’</p></li>
+<li><p>‘days’ or ‘day’</p></li>
+<li><p>‘hours’, ‘hour’, ‘hr’, or ‘h’</p></li>
+<li><p>‘minutes’, ‘minute’, ‘min’, or ‘m’</p></li>
+<li><p>‘seconds’, ‘second’, or ‘sec’</p></li>
+<li><p>‘milliseconds’, ‘millisecond’, ‘millis’, or ‘milli’</p></li>
+<li><p>‘microseconds’, ‘microsecond’, ‘micros’, or ‘micro’</p></li>
+<li><p>‘nanoseconds’, ‘nanosecond’, ‘nanos’, ‘nano’, or ‘ns’.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>wave_mean</strong> – Mean.
+The wave’s mean value. Defaults to 0.</p></li>
+<li><p><strong>wave_amplitude</strong> – Peak amplitude.
+Maximum absolute deviation from the mean. Defaults to 1.</p></li>
+<li><p><strong>wave_phase</strong> – Phase.
+Specifies (in radians) where in its cycle the oscillation is at time = 0. When the phase is non-zero, the
+wave is shifted in time. A negative value represents a delay, and a positive value represents an advance.
+Defualts to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sine wave</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/signals/plot_wavy_signals.html#sphx-glr-auto-examples-signals-plot-wavy-signals-py"><span class="std std-ref">Wavy signal generation</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="perturb-the-index-of-a-time-series">
+<h3>Perturb the index of a time series<a class="headerlink" href="#perturb-the-index-of-a-time-series" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.generator.perturb_timestamp">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.generator.</span></span><span class="sig-name descname"><span class="pre">perturb_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnitude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.generator.perturb_timestamp" title="Permalink to this definition"></a></dt>
+<dd><p>Perturb timestamp.</p>
+<p>Perturb the date-time index (timestamp) of the original time series using a normal (Gaussian) distribution
+with a mean of zero and a given standard deviation (magnitude) in seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series</p></li>
+<li><p><strong>magnitude</strong> – Magnitude.
+Time delta perturbation magnitude in seconds. Has to be large than 0. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Time series</dt><dd><p>Original signal with a non-uniform time stamp.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – Only time series with a DateTimeIndex are supported</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – If “magnitude” is not a float</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – If “magnitude” is not larger than 0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="create-data-gaps-in-a-time-series">
+<h3>Create data gaps in a time series<a class="headerlink" href="#create-data-gaps-in-a-time-series" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.generator.insert_data_gaps">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.generator.</span></span><span class="sig-name descname"><span class="pre">insert_data_gaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_gaps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Random'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Single'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Multiple'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Random'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.generator.insert_data_gaps" title="Permalink to this definition"></a></dt>
+<dd><p>Insert data gaps.</p>
+<p>Method to synthetically remove data, i.e., generate data gaps in a time series. The amount of data points removed
+is defined by the given ‘fraction’ relative to the original time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series</p></li>
+<li><p><strong>fraction</strong> – Remove fraction.
+Fraction of data points to remove relative to the original time series. Must be a number higher than 0 and
+lower than 1 (0 &lt; keep &lt; 1). Defaults to 0.25.</p></li>
+<li><p><strong>num_gaps</strong> – Number of gaps.
+Number of gaps to generate. Only needs to be provided when using the “Multiple” gaps method.</p></li>
+<li><p><strong>data_buffer</strong> – Buffer.
+Minimum of data points to keep between data gaps and at the start and end of the time series. If the buffer
+of data points is higher than 1% of the number of data points in the time series, the end and start buffer
+is set to 1% of the total available data points.</p></li>
+<li><p><strong>method</strong> – <p>Method
+This function offers multiple methods to generate data gaps:</p>
+<blockquote>
+<div><ul>
+<li><p>Random: Removes data points at random locations so that the output time series size is a given
+fraction  (‘Remove fraction’) of the original time series. The first and last data points are never
+deleted. No buffer is set between gaps, only for the start and end of the time series.
+If the buffer of data points is higher than 1% of the number of data points in the time
+series, the end and start buffer is set to 1% of the total available data points.</p></li>
+<li><p>Single: Remove consecutive data points at a single location. Buffer data points at the start
+and end of the time series is kept to prevent removing the start and end of the time series. The
+buffer is set to the maximum value between 5 data points or 1% of the data points in the signal.</p></li>
+<li><p>Multiple: Insert multiple non-overlapping data gaps at random dates and of random
+sizes such that the given fraction of data is removed. If the number of gaps is not defined or is
+less than 2, the function defaults to 2 gaps. To avoid gap overlapping, a minimum of 5 data points are imposed at the signal’s start and end and between gaps.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Output</dt><dd><p>Original time series with synthetically generated data gap(s).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – data is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – fraction is not a number</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – fraction is not a number</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/signals/plot_synthetic_gaps.html#sphx-glr-auto-examples-signals-plot-synthetic-gaps-py"><span class="std std-ref">Inserting gaps in a time series</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+<section id="noise-generators">
+<h2>Noise Generators<a class="headerlink" href="#noise-generators" title="Permalink to this heading"></a></h2>
+<section id="white-noise">
+<h3>White noise<a class="headerlink" href="#white-noise" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.noise.white_noise">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.noise.</span></span><span class="sig-name descname"><span class="pre">white_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snr_db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.noise.white_noise" title="Permalink to this definition"></a></dt>
+<dd><p>Add white noise.</p>
+<p>Adds white noise to the original data using a given signal-to-noise ratio (SNR).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series</p></li>
+<li><p><strong>snr_db</strong> – SNR.
+Signal-to-noise ratio (SNR) in decibels. SNR is a comparison of the level of a signal to the level of
+background noise. SNR is defined as the ratio of signal power to noise power. A ratio higher than 1
+indicates more signal than noise. Defaults to 30.</p></li>
+<li><p><strong>seed</strong> – Seed.
+A seed (integer number) to initialize the random number generator. If left empty, then a fresh,
+unpredictable value will be generated. If a value is entered, the exact random noise will be generated if
+the time series data and date range are not changed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Output</dt><dd><p>Original data plus white noise.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples with noise generators:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/signals/plot_wavy_signals.html#sphx-glr-auto-examples-signals-plot-wavy-signals-py"><span class="std std-ref">Wavy signal generation</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="brownian-noise">
+<h3>Brownian noise<a class="headerlink" href="#brownian-noise" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.generator.wave_with_brownian_noise">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.generator.</span></span><span class="sig-name descname"><span class="pre">wave_with_brownian_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">14400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.04</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[1,</span> <span class="pre">1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.signals.generator.wave_with_brownian_noise" title="Permalink to this definition"></a></dt>
+<dd><p>Wave with brownian noise.</p>
+<p>Sinusoidal signal with brownian noise. The signal has a
+given duration of 4 hours as a default, a resolution of 0.5,
+an amplitude of 10, a mean of 200 and a frequency of 0.04 Hz.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>duration</strong> – Duration.
+Duration of the time series in seconds. Defaults to 14400.</p></li>
+<li><p><strong>resolution</strong> – Resolution.
+Frequency resolution. Defaults to 0.5.</p></li>
+<li><p><strong>percentage</strong> – Percentage.
+Percentage of the time series to keep. Defaults to 100.</p></li>
+<li><p><strong>amplitude</strong> – Amplitude.
+Amplitude of the wave. Defaults to 10.</p></li>
+<li><p><strong>mean</strong> – Mean.
+Mean of the wave. Defaults to 200.</p></li>
+<li><p><strong>frequency</strong> – Frequency.
+Frequency of the wave. Defaults to 0.04 Hz.</p></li>
+<li><p><strong>noise</strong> – Noise.
+Noise of the wave. Defaults to [1, 1].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sine wave with brownian noise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples with noise generators:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/signals/plot_wavy_signals.html#sphx-glr-auto-examples-signals-plot-wavy-signals-py"><span class="std std-ref">Wavy signal generation</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+<section id="polynomial-generators">
+<h2>Polynomial Generators<a class="headerlink" href="#polynomial-generators" title="Permalink to this heading"></a></h2>
+<section id="univariate-polynomial">
+<h3>Univariate Polynomial<a class="headerlink" href="#univariate-polynomial" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.polynomial.univariate_polynomial">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.polynomial.</span></span><span class="sig-name descname"><span class="pre">univariate_polynomial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0.0,</span> <span class="pre">1.0]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.polynomial.univariate_polynomial" title="Permalink to this definition"></a></dt>
+<dd><p>Univariate polynomial.</p>
+<p>Creates a univariate polynomial <span class="math notranslate nohighlight">\(y\)</span>, of degree <span class="math notranslate nohighlight">\(n\)</span>, from the time series <span class="math notranslate nohighlight">\(x\)</span>, and a list of
+coefficients <span class="math notranslate nohighlight">\(a_{n}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[y = a_0 + a_1x + a_2x^2 + a_3x^3 + ... + a_nx^n\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal</strong> (<em>pandas.Series</em>) – Time series</p></li>
+<li><p><strong>coefficients</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – Coefficients
+List of coefficients separated by commas. The numbers must be entered separated by commas (e.g., 0, 1).
+The default is <span class="math notranslate nohighlight">\(0.0, 1.0\)</span>, which returns the original time series.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples with univariate polynomial generators:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/signals/plot_univariate_polynomial.html#sphx-glr-auto-examples-signals-plot-univariate-polynomial-py"><span class="std std-ref">Univariate Polynomial</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="resample.html" class="btn btn-neutral float-left" title="Resample" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="smooth.html" class="btn btn-neutral float-right" title="Smooth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

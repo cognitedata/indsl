@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detect out of range outliers in sensor data &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Detection Functions" href="../detect/index.html" />
+    <link rel="prev" title="Identifying gaps in time series" href="plot_gaps_identification.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            indsl
+              <img src="../../_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data quality</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_extreme_outlier.html">Extreme Outliers Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_value_decrease_check.html">Checking for decreasing values in a timeseries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_rolling_stddev_timedelta.html">Rolling standard deviation of data points time delta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_completeness.html">Completeness score of time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_datapoint_diff.html">Threshold breach check for difference between two data points over a period of time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_low_density_identification.html">Identifying low density periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_gaps_identification.html">Identifying gaps in time series</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Detect out of range outliers in sensor data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-linear-non-stationary-synthetic-signal">Non-linear, non-stationary synthetic signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#insert-extreme-outliers">Insert extreme outliers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initial-conditions-test-data-set">Initial conditions: test data set</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-iteration">Initial iteration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#trend-estimate">1. Trend estimate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#studentized-residuals-and-bonferroni-correction">2. Studentized residuals and Bonferroni correction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outliers-detected-with-the-initial-pass">3. Outliers detected with the initial pass</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#last-iteration">Last iteration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data quality</a></li>
+      <li class="breadcrumb-item active">Detect out of range outliers in sensor data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/auto_examples/data_quality/plot_out_of_range.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-out-of-range-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="detect-out-of-range-outliers-in-sensor-data">
+<span id="sphx-glr-auto-examples-data-quality-plot-out-of-range-py"></span><h1>Detect out of range outliers in sensor data<a class="headerlink" href="#detect-out-of-range-outliers-in-sensor-data" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">out_of_range()</span></code> function uses Savitzky-Golay smoothing (SG) - <code class="xref py py-func docutils literal notranslate"><span class="pre">sg()</span></code> to estimate the main trend of the data:</p>
+<p>The algorithm carries out two iterations to determine the trend and detect extreme outliers.</p>
+<p>The outlier detection is based on  the <a href="https://en.wikipedia.org/wiki/Studentized_residual#:~:text=In%20statistics%2C%20a%20studentized%20residual,in%20the%20detection%20of%20outliers." target="_blank">studentized residuals</a> and the <a href="https://mathworld.wolfram.com/BonferroniCorrection.html" target="_blank">Bonferroni Correction</a>. The residuals between
+the original data and the estimated trend are studentized and the Bonferroni Correction is used to identify potential
+outliers.</p>
+<p>Note that the <cite>Out of Range</cite> algorithm is designed to be used with <em>non-linear, non-stationary</em> sensor data. Therefore,
+lets start by generating a synthetic signal with those characteristics. We will use some of the signal generator
+functions in InDSL. We also need a few additional InDSL helper functions and algorithms to demonstrate how the outlier
+detection works step by step.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">t</span> <span class="k">as</span> <span class="n">student_dist</span>
+
+<span class="kn">from</span> <span class="nn">datasets.data.synthetic_industrial_data</span> <span class="kn">import</span> <span class="n">non_linear_non_stationary_signal</span>
+<span class="kn">from</span> <span class="nn">indsl.data_quality.outliers</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">_calculate_hat_diagonal</span><span class="p">,</span>
+    <span class="n">_calculate_residuals_and_normalize_them</span><span class="p">,</span>
+    <span class="n">_split_timeseries_into_time_and_value_arrays</span><span class="p">,</span>
+    <span class="n">out_of_range</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">indsl.resample</span> <span class="kn">import</span> <span class="n">reindex</span>
+<span class="kn">from</span> <span class="nn">indsl.smooth</span> <span class="kn">import</span> <span class="n">sg</span>
+</pre></div>
+</div>
+</section>
+<section id="non-linear-non-stationary-synthetic-signal">
+<h2>Non-linear, non-stationary synthetic signal<a class="headerlink" href="#non-linear-non-stationary-synthetic-signal" title="Permalink to this heading"></a></h2>
+<p>We’ll use a pre-defined test data set with a non-linear, non-stationary time series with “<cite>industrial</cite>”
+characteristics. This data set is a time series composed of 3 oscillatory components, 2 nonlinear trends, sensor
+linear drift (small decrease over time) and white noise. The signal has non-uniform
+time stamps, a fraction (35%) of the data is randomly removed to generate data gaps. The data gaps and white
+noise are inserted with a constant seed to have a reproducible behavior of the algorithm. The functions used
+to generate this signal are also part of InDSL: <code class="xref py py-func docutils literal notranslate"><span class="pre">insert_data_gaps()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">line()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">perturb_timestamp()</span></code>,
+<code class="xref py py-func docutils literal notranslate"><span class="pre">sine_wave()</span></code>, and <code class="xref py py-func docutils literal notranslate"><span class="pre">white_noise()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seed_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1975</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">89756</span><span class="p">]</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="n">seed_array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">non_linear_non_stationary_signal</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+
+<span class="c1"># A simple function to style and annotate the figures.</span>
+<span class="k">def</span> <span class="nf">style_and_annotate_figure</span><span class="p">(</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">text</span><span class="p">,</span>
+    <span class="n">x_pos</span><span class="o">=</span><span class="mf">0.50</span><span class="p">,</span>
+    <span class="n">y_pos</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">fsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="n">fsize_annotation</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+    <span class="n">title_fsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="n">ylimits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3005</span><span class="p">,</span> <span class="mi">8000</span><span class="p">],</span>
+    <span class="n">title_txt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="n">x_pos</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fsize_annotation</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;dimgrey&quot;</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">fsize</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fsize</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;minor&quot;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fsize</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title_txt</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">title_fsize</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylimits</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="insert-extreme-outliers">
+<h2>Insert extreme outliers<a class="headerlink" href="#insert-extreme-outliers" title="Permalink to this heading"></a></h2>
+<p>This algorithm was tested with outliers generated at different locations. Five percent (5%) of the data points at
+random locations were replaced by outliers. To do so we used <a href="#id1"><span class="problematic" id="id2">|Numpy's|</span></a> random generator with different seeds.
+Feel free to use one of the 5 seeds below. The algorithm will work with 100% precision for these conditions and
+parameters used in the example. Or use another seed to generate a different signal and further test the
+limits of the algorithm.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">outlier_fraction</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># Fraction of the signal that will be replaced by outliers</span>
+<span class="n">num_outliers</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="n">outlier_fraction</span><span class="p">)</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">num_outliers</span><span class="p">))</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">locations</span><span class="p">))</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">locations</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">locations</span><span class="p">))</span> <span class="o">*</span> <span class="n">direction</span>
+
+<span class="n">data_w_outliers</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data_w_outliers</span><span class="p">[</span><span class="n">locations</span><span class="p">]</span> <span class="o">=</span> <span class="n">outliers</span>
+</pre></div>
+</div>
+<section id="initial-conditions-test-data-set">
+<h3>Initial conditions: test data set<a class="headerlink" href="#initial-conditions-test-data-set" title="Permalink to this heading"></a></h3>
+<p>The figure below shows the original data set and the outliers inserted. We took care to give the outliers random
+values, both far and close to the main trend. But far enough for these to be categorized as an extreme deviation from
+the expected behavior of the data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original data set&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">outliers</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outliers inserted&quot;</span><span class="p">)</span>
+<span class="n">outliers_inserted</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span><span class="si">}</span><span class="s2"> outliers inserted (</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">% of the data points)&quot;</span>
+<span class="p">)</span>
+<span class="n">style_and_annotate_figure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">outliers_inserted</span><span class="p">,</span> <span class="n">title_txt</span><span class="o">=</span><span class="s2">&quot;Test Data Set&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_out_of_range_001.png" srcset="../../_images/sphx_glr_plot_out_of_range_001.png" alt="Test Data Set" class = "sphx-glr-single-img"/></section>
+</section>
+<section id="initial-iteration">
+<h2>Initial iteration<a class="headerlink" href="#initial-iteration" title="Permalink to this heading"></a></h2>
+<section id="trend-estimate">
+<h3>1. Trend estimate<a class="headerlink" href="#trend-estimate" title="Permalink to this heading"></a></h3>
+<p>As mentioned before, we will use a SG smoother to estimate the trend. To demonstrate how the initial pass works, we’ll run the SG independently. The SG smoother
+requires a point-wise window length and a polynomial order. The bigger the window, more data
+used to estimate the local trend. With the polynomial order we influence how much we want the fit to follow the
+non-linear characteristics of the data (1, linear, &gt;1 increasingly non-linear fit). In this case we will use a window
+of 20 data points and 3rd order polynomial fit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate the trend using Savitzky-Golay smoother</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.08</span>
+<span class="n">trend_pass01</span> <span class="o">=</span> <span class="n">sg</span><span class="p">(</span><span class="n">data_w_outliers</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">polyorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="studentized-residuals-and-bonferroni-correction">
+<h3>2. Studentized residuals and Bonferroni correction<a class="headerlink" href="#studentized-residuals-and-bonferroni-correction" title="Permalink to this heading"></a></h3>
+<p>Identifying potential outliers is done by comparing how much each data point deviates from the estimated
+main trend (i.e. the residuals). However, since in most cases little information about the data is readily
+available and extreme outliers are expected to be sparse and uncommon, the <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution" target="_blank">Student's-t distribution</a> is well
+suited for the current task, where the sample size is small and the standard deviation is
+unknown. To demonstrate how the residuals are studentized, we use a helper function from InDSL.
+But these steps are integrated into the <code class="xref py py-func docutils literal notranslate"><span class="pre">out_of_range()</span></code> function.
+Finally, since we aim to identify extreme outliers, a simple t-test does not suffice. Hence the Bonferroni Correction.
+Furthermore, we use a relaxation factor for the Bonferroni factor estimated from the data to adjust the sensitivity
+of the correction. Again, the Bonferroni Correction is explicitly calculated here but it is integrated into the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">out_of_range()</span></code> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Statistical parameters</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># Significance level or probability of rejecting the null hypothesis when true.</span>
+<span class="n">bc_relaxation</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">4</span>  <span class="c1"># Bonferroni relaxation coefficient.</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_split_timeseries_into_time_and_value_arrays</span><span class="p">(</span><span class="n">data_w_outliers</span><span class="p">)</span>
+<span class="n">y_pred_pass01</span> <span class="o">=</span> <span class="n">trend_pass01</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">hat_diagonal</span> <span class="o">=</span> <span class="n">_calculate_hat_diagonal</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Calculate degrees of freedom (n-p-1)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">dof</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">3</span>  <span class="c1"># Using p = 2 for a model based on a single time series</span>
+
+<span class="c1"># Calculate Bonferroni critical value and studentized residuals</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="n">student_dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">),</span> <span class="n">df</span><span class="o">=</span><span class="n">dof</span><span class="p">)</span> <span class="o">*</span> <span class="n">bc_relaxation</span>
+<span class="n">t_res</span> <span class="o">=</span> <span class="n">_calculate_residuals_and_normalize_them</span><span class="p">(</span><span class="n">dof</span><span class="p">,</span> <span class="n">hat_diagonal</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_pred_pass01</span><span class="p">)</span>
+
+<span class="c1"># Boolean mask where outliers are detected</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">t_res</span> <span class="o">&lt;</span> <span class="n">bc</span><span class="p">,</span> <span class="n">t_res</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">bc</span><span class="p">)</span>
+<span class="n">filtered_ts_pass01</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>  <span class="c1"># Remove detected outliers from time series</span>
+
+<span class="n">outliers_pass01</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="outliers-detected-with-the-initial-pass">
+<h3>3. Outliers detected with the initial pass<a class="headerlink" href="#outliers-detected-with-the-initial-pass" title="Permalink to this heading"></a></h3>
+<p>The figure below shows the results of the initial pass. The SG method does a good job at estimating the trend, except
+for a few periods in the data where a larger number of outliers are grouped together. This causes strong nonlinear
+behavior in the estimated trend, and as a consequence some data points are miss-identified as outliers. But overall,
+a good enough baseline.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_w_outliers</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data with outliers&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trend_pass01</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Savitzky-Golay trend&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">outliers_pass01</span><span class="p">,</span> <span class="s2">&quot;wo&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outliers detected&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">outliers</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outliers inserted&quot;</span><span class="p">)</span>
+
+<span class="n">text_outlier_res</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers_pass01</span><span class="p">)</span><span class="si">}</span><span class="s2"> out of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span><span class="si">}</span><span class="s2"> outliers detected &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">outliers_pass01</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">%)&quot;</span>
+<span class="p">)</span>
+<span class="n">style_and_annotate_figure</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text_outlier_res</span><span class="p">,</span> <span class="n">title_txt</span><span class="o">=</span><span class="s2">&quot;First Iteration: Savitzky-Golay trend&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_out_of_range_002.png" srcset="../../_images/sphx_glr_plot_out_of_range_002.png" alt="First Iteration: Savitzky-Golay trend" class = "sphx-glr-single-img"/></section>
+</section>
+<section id="last-iteration">
+<h2>Last iteration<a class="headerlink" href="#last-iteration" title="Permalink to this heading"></a></h2>
+<p>For the last iteration the outliers previously detected are removed and then use the SG method to estimate the main trend.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tolerance_pass02</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">trend_pass02</span> <span class="o">=</span> <span class="n">sg</span><span class="p">(</span><span class="n">filtered_ts_pass01</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">polyorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Filtering parameters</span>
+<span class="n">alpha_pass02</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">bc_relaxation_pass02</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">bc_pass02</span> <span class="o">=</span> <span class="n">student_dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha_pass02</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">),</span> <span class="n">df</span><span class="o">=</span><span class="n">dof</span><span class="p">)</span> <span class="o">*</span> <span class="n">bc_relaxation_pass02</span>
+
+<span class="n">y_pred_pass02</span> <span class="o">=</span> <span class="n">reindex</span><span class="p">(</span><span class="n">trend_pass02</span><span class="p">,</span> <span class="n">data_w_outliers</span><span class="p">)</span>
+<span class="n">y_pred_pass02</span> <span class="o">=</span> <span class="n">y_pred_pass02</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">t_res_pass02</span> <span class="o">=</span> <span class="n">_calculate_residuals_and_normalize_them</span><span class="p">(</span><span class="n">dof</span><span class="p">,</span> <span class="n">hat_diagonal</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_pred_pass02</span><span class="p">)</span>
+
+<span class="c1"># Boolean mask where outliers are detected</span>
+<span class="n">mask_pass02</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">t_res_pass02</span> <span class="o">&lt;</span> <span class="n">bc_pass02</span><span class="p">,</span> <span class="n">t_res_pass02</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">bc_pass02</span><span class="p">)</span>
+<span class="n">filtered_ts_pass02</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">mask_pass02</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">mask_pass02</span><span class="p">])</span>
+
+<span class="c1"># Remove detected outliers from time series</span>
+<span class="n">outliers_pass02</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">mask_pass02</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">~</span><span class="n">mask_pass02</span><span class="p">])</span>
+<span class="c1"># Run the InDSL function that carries out the entire analysis with the same parameters</span>
+<span class="n">indsl_outliers</span> <span class="o">=</span> <span class="n">out_of_range</span><span class="p">(</span><span class="n">data_w_outliers</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading"></a></h2>
+<p>The figure below shows the original data, the trend estimated using the SG method, the outliers artificially
+inserted, and the outliers detected by the full method (<code class="xref py py-func docutils literal notranslate"><span class="pre">out_of_range()</span></code>). A perfect performance is observed, all
+outliers are detected. This “perfect” performance will not always be the case but this function provides a very
+robust option for detecting and removing out of range or extreme outliers in <em>non-linear,
+non-stationary sensor data</em>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_number = 3</span>
+<span class="n">fig3</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
+
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_w_outliers</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data with outliers&quot;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trend_pass02</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Savitzky-Golay trend&quot;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">indsl_outliers</span><span class="p">,</span>
+    <span class="s2">&quot;wo&quot;</span><span class="p">,</span>
+    <span class="n">markersize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span>
+    <span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outliers detected&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">outliers</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outliers inserted&quot;</span><span class="p">)</span>
+
+<span class="n">text_outlier_res</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">indsl_outliers</span><span class="p">)</span><span class="si">}</span><span class="s2"> out of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span><span class="si">}</span><span class="s2"> outliers detected &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">indsl_outliers</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">%)&quot;</span>
+<span class="p">)</span>
+
+<span class="n">style_and_annotate_figure</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text_outlier_res</span><span class="p">,</span> <span class="n">title_txt</span><span class="o">=</span><span class="s2">&quot;Final Iteration: EMD-HHT trend&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_out_of_range_003.png" srcset="../../_images/sphx_glr_plot_out_of_range_003.png" alt="Final Iteration: EMD-HHT trend" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.293 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-out-of-range-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/4d3b75f623503dd6904d55d4ff200efa/plot_out_of_range.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_out_of_range.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/28ef7ee38b969d13a1850ed376c1b57a/plot_out_of_range.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_out_of_range.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plot_gaps_identification.html" class="btn btn-neutral float-left" title="Identifying gaps in time series" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../detect/index.html" class="btn btn-neutral float-right" title="Detection Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

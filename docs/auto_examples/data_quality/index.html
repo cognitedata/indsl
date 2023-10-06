@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data quality &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Extreme Outliers Removal" href="plot_extreme_outlier.html" />
+    <link rel="prev" title="Basic time series functions" href="../../ts_utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            indsl
+              <img src="../../_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data quality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plot_extreme_outlier.html">Extreme Outliers Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_value_decrease_check.html">Checking for decreasing values in a timeseries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_rolling_stddev_timedelta.html">Rolling standard deviation of data points time delta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_completeness.html">Completeness score of time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_datapoint_diff.html">Threshold breach check for difference between two data points over a period of time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_low_density_identification.html">Identifying low density periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_gaps_identification.html">Identifying gaps in time series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_out_of_range.html">Detect out of range outliers in sensor data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data quality</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/auto_examples/data_quality/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-quality">
+<span id="sphx-glr-auto-examples-data-quality"></span><h1>Data quality<a class="headerlink" href="#data-quality" title="Permalink to this heading"></a></h1>
+<p>Examples on how to explore the data quality of time series.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of point outlier removal with polynomial regression and Studentized residuals. We gener..."><img alt="" src="../../_images/sphx_glr_plot_extreme_outlier_thumb.png" />
+<p><a class="reference internal" href="plot_extreme_outlier.html#sphx-glr-auto-examples-data-quality-plot-extreme-outlier-py"><span class="std std-ref">Extreme Outliers Removal</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Extreme Outliers Removal</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of algorithm that indicates decreasing values in time series data. This algorithm is ap..."><img alt="" src="../../_images/sphx_glr_plot_value_decrease_check_thumb.png" />
+<p><a class="reference internal" href="plot_value_decrease_check.html#sphx-glr-auto-examples-data-quality-plot-value-decrease-check-py"><span class="std std-ref">Checking for decreasing values in a timeseries</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Checking for decreasing values in a timeseries</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing rolling standard deviation of time delta of time series data to identify..."><img alt="" src="../../_images/sphx_glr_plot_rolling_stddev_timedelta_thumb.png" />
+<p><a class="reference internal" href="plot_rolling_stddev_timedelta.html#sphx-glr-auto-examples-data-quality-plot-rolling-stddev-timedelta-py"><span class="std std-ref">Rolling standard deviation of data points time delta</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rolling standard deviation of data points time delta</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="It is important to know how complete a time series is. In this example, the function qualifies ..."><img alt="" src="../../_images/sphx_glr_plot_completeness_thumb.png" />
+<p><a class="reference internal" href="plot_completeness.html#sphx-glr-auto-examples-data-quality-plot-completeness-py"><span class="std std-ref">Completeness score of time series</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Completeness score of time series</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing breach of threshold in hour count in a time series representing running ..."><img alt="" src="../../_images/sphx_glr_plot_datapoint_diff_thumb.png" />
+<p><a class="reference internal" href="plot_datapoint_diff.html#sphx-glr-auto-examples-data-quality-plot-datapoint-diff-py"><span class="std std-ref">Threshold breach check for difference between two data points over a period of time</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Threshold breach check for difference between two data points over a period of time</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Detecting density of data points in a time series is important for finding out if the expected ..."><img alt="" src="../../_images/sphx_glr_plot_low_density_identification_thumb.png" />
+<p><a class="reference internal" href="plot_low_density_identification.html#sphx-glr-auto-examples-data-quality-plot-low-density-identification-py"><span class="std std-ref">Identifying low density periods</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Identifying low density periods</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Identifying gaps in data is critical when working with time series. Data gaps can be for instan..."><img alt="" src="../../_images/sphx_glr_plot_gaps_identification_thumb.png" />
+<p><a class="reference internal" href="plot_gaps_identification.html#sphx-glr-auto-examples-data-quality-plot-gaps-identification-py"><span class="std std-ref">Identifying gaps in time series</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Identifying gaps in time series</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Introduction ------------ The out_of_range function uses Savitzky-Golay smoothing (SG) - sg to ..."><img alt="" src="../../_images/sphx_glr_plot_out_of_range_thumb.png" />
+<p><a class="reference internal" href="plot_out_of_range.html#sphx-glr-auto-examples-data-quality-plot-out-of-range-py"><span class="std std-ref">Detect out of range outliers in sensor data</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Detect out of range outliers in sensor data</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../ts_utils.html" class="btn btn-neutral float-left" title="Basic time series functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot_extreme_outlier.html" class="btn btn-neutral float-right" title="Extreme Outliers Removal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

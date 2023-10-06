@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit Converter &mdash; indsl 3.1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Statistics" href="statistics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> indsl
+            <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unit Converter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dictionaries">Dictionaries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fundamental-units">Fundamental units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unit-conversion">Unit conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scalers">Scalers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unit-type-aliases">Unit type aliases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributing-to-the-unit-converter">Contributing to the unit converter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Charts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Unit Converter</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/units.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unit-converter">
+<h1>Unit Converter<a class="headerlink" href="#unit-converter" title="Permalink to this headline"></a></h1>
+<p>Before diving into how unit conversion is handled in InDSL, it is necessary define the terms and basic logic it all
+revolves around:</p>
+<p><strong>Unit type</strong>: the physical unit assigned to a time series. Typical unit types are <cite>pressure</cite>,
+<cite>temperature</cite>, <cite>length</cite>, <cite>volumetric flow-rate</cite> and so on.</p>
+<p><strong>Unit of measure (UoM)</strong>: the unit, from any particular system (e.g., International System or SI), assigned to the
+time series. For instance length can be measured in UoM meters (<cite>m</cite>) or feet (<cite>ft</cite>).</p>
+<p><strong>Base unit of measure</strong>: the reference unit of measure from the Internal System of Units (SI). All other units of
+measure are converted using conversion factors relative to the base unit of measure.</p>
+<p>Unit conversion is based on the following basic operation:</p>
+<div class="math notranslate nohighlight">
+\[y = A*x + B,\]</div>
+<p>where <cite>y</cite> is the target UoM and <cite>x</cite> is the base unit of measure. <cite>A</cite> and <cite>-B</cite> are the conversion factors, which are,
+for programmatic reasons, named <cite>multiplier</cite> and <cite>shift</cite>, respectively. Also note that the shift is defined as negative
+<cite>B</cite>. This is due to the algorithm being based on referencing all conversions to the base unit of
+measure. Therefore, when solving for it one obtains <span class="math notranslate nohighlight">\(x = (y-B)/A\)</span>.</p>
+<section id="dictionaries">
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline"></a></h2>
+<p>The conversion toolbox and algorithms are structured around four JSON dictionaries:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fundamental units: <cite>unit_type_fundamental.json</cite></p></li>
+<li><p>Unit types, UoM, conversion factors: <cite>unit_conversion.json</cite></p></li>
+<li><p>Scalers: <cite>scalers.json</cite></p></li>
+<li><p>Unit type aliases: <cite>unit_type_alias.json</cite></p></li>
+</ul>
+</div></blockquote>
+<section id="fundamental-units">
+<h3>Fundamental units<a class="headerlink" href="#fundamental-units" title="Permalink to this headline"></a></h3>
+<p>The <cite>unit_type_fundamental.json</cite> dictionary contains all the supported <strong>fundamental</strong> units types supported and
+expressed as a combination of other fundamental unit types. For example, <cite>mass</cite> is a fundamental unit type that can
+only be defined by itself, and <cite>pressure</cite> is a fundamental unit type that can be expressed as multiple combinations
+of other runit types. This is represented in the dictionary as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;mass&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;mass&quot;</span>
+        <span class="p">],</span>
+    <span class="s2">&quot;pressure&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;mass/(distance*time*time)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;force/(distance*distance)&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;force/area&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pressure&quot;</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>By defining fundamental unit types we can leverage them to curate a list of supported unit types
+and their associated conversion factors (more on this below) relative to a base unit; instead of a large matrix
+of unit types and conversion factors with a one-to-one relationship.</p>
+</section>
+<section id="unit-conversion">
+<h3>Unit conversion<a class="headerlink" href="#unit-conversion" title="Permalink to this headline"></a></h3>
+<p>The unit conversion dictionary contains all the supported <em>unit types</em> and their respective conversion factors to the
+base unit. The dictionary is nested, with the highest branch being the <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code>. The unit conversion dictionary
+currently supports the following <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">types</span></code> and corresponding [<code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">unit</span> <span class="pre">of</span> <span class="pre">measure</span></code>]:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Mass [<code class="docutils literal notranslate"><span class="pre">kg</span></code>]</p></li>
+<li><p>Distance [<code class="docutils literal notranslate"><span class="pre">m</span></code>]</p></li>
+<li><p>Time [<code class="docutils literal notranslate"><span class="pre">s</span></code>]</p></li>
+<li><p>Temperature [<code class="docutils literal notranslate"><span class="pre">degC</span></code>]</p></li>
+<li><p>Pressure [<code class="docutils literal notranslate"><span class="pre">kg/(m*s*s)</span></code>]</p></li>
+<li><p>Area [<code class="docutils literal notranslate"><span class="pre">m*m</span></code>]</p></li>
+<li><p>Volume [<code class="docutils literal notranslate"><span class="pre">m*m*m</span></code>]</p></li>
+<li><p>Velocity [<code class="docutils literal notranslate"><span class="pre">m/s</span></code>]</p></li>
+<li><p>Volumetric Flowrate [<code class="docutils literal notranslate"><span class="pre">m*m*m/s</span></code>]</p></li>
+<li><p>Gas Flowrate [<code class="docutils literal notranslate"><span class="pre">m*m*m/s</span></code>]</p></li>
+<li><p>Mass Flowrate [<code class="docutils literal notranslate"><span class="pre">kg/s</span></code>]</p></li>
+<li><p>Acceleration [<code class="docutils literal notranslate"><span class="pre">m/(s*s)</span></code>]</p></li>
+<li><p>Force  [<code class="docutils literal notranslate"><span class="pre">kg*m/(s*s)</span></code>]</p></li>
+<li><p>Density [<code class="docutils literal notranslate"><span class="pre">kg/(m*m*m)</span></code>]</p></li>
+</ul>
+</div></blockquote>
+<p>A <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code> in the dictionary must contain of the following fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fundamental</span></code>: “true” if it is a fundamental unit type</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">unit</span></code>: base unit of measure from the SI system</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">units</span></code>: dictionary will all the supported units of measure for each unit type</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplier</span></code>: conversion factor value (float) relative to the base unit of measure.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Human readable description of the unit of measure. If it is a base units it should be indicated with the label <code class="docutils literal notranslate"><span class="pre">[base</span> <span class="pre">unit]</span></code> at the end of the description.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shift</span></code> (Optional): conversion factor shift value (float) relative to the base unit of measure.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aliases</span></code> (Optional): unit of measure aliases</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Note that “shift” and “aliases” are optional. Not all conversions require “shift” parameter and aliases are used to
+accommodate other notations or names used to designate the same unit of measure.</p>
+<p>Below is an example of the dictionary containing the <code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">unit</span></code> [<code class="docutils literal notranslate"><span class="pre">kg</span></code>] and an additional unit of mass [<code class="docutils literal notranslate"><span class="pre">lbm</span></code>].</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;mass&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;fundamental&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_unit&quot;</span><span class="p">:</span> <span class="s2">&quot;kg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;kg&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;multiplier&quot;</span><span class="p">:</span> <span class="s2">&quot;1.000000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;kilogram [base unit]&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;lbm&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;multiplier&quot;</span><span class="p">:</span> <span class="s2">&quot;0.453592&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;pound mass&quot;</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the that the <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> is <code class="docutils literal notranslate"><span class="pre">0.453592</span></code> which means that 1 lbm = 0.453592 kg. The conversion has to be
+stated in this format (1 unit = <em>x</em> base unit) <em>not</em> the other way (1 base unit = <em>x</em> unit).</p>
+<p>An example using <code class="docutils literal notranslate"><span class="pre">shift</span></code> is temperature conversion from degrees Celsius (<cite>degC</cite>) to Fahrenheit (<cite>degF</cite>), where
+<cite>degF = degC * 1.8 + 32</cite>. In this case, <cite>degC = (degF - 32)/1.8</cite>, therefore, the <cite>multiplier</cite> is 1/1.8 = 0.555555555555556
+and the <cite>shift</cite> is -32.000000. The example below shows how this looks in the dictionary and also contains a few
+unit of measure aliases for degrees Celsius.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;fundamental&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;base_unit&quot;</span><span class="p">:</span> <span class="s2">&quot;degC&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;degC&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;multiplier&quot;</span><span class="p">:</span> <span class="s2">&quot;1.000000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;degrees celsius&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;aliases&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;deg_C&quot;</span><span class="p">,</span> <span class="s2">&quot;deg C&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;degF&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;multiplier&quot;</span><span class="p">:</span> <span class="s2">&quot;0.555555555555556&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;shift&quot;</span><span class="p">:</span> <span class="s2">&quot;-32.000000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;degrees fahrenheit&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;degR&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;multiplier&quot;</span><span class="p">:</span> <span class="s2">&quot;0.555555555555556&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;shift&quot;</span><span class="p">:</span> <span class="s2">&quot;-491.670000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;degrees rankine&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;degK&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;multiplier&quot;</span><span class="p">:</span> <span class="s2">&quot;1.000000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;shift&quot;</span><span class="p">:</span> <span class="s2">&quot;-273.150000&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;degrees kelvin&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="scalers">
+<h3>Scalers<a class="headerlink" href="#scalers" title="Permalink to this headline"></a></h3>
+<p>Dictionary containing the name, numerical value and aliases of the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Metric_prefix">metric prefixes</a>. It is used to support conversion to and
+from units containing prefixes in the unit of measure (e.g. kN)</p>
+</section>
+<section id="unit-type-aliases">
+<h3>Unit type aliases<a class="headerlink" href="#unit-type-aliases" title="Permalink to this headline"></a></h3>
+<p>This dictionary is used to support unit type names that require special treatment or special names used by
+certain industries or sectors of an industry. For example, <cite>gas volumetric flowrate</cite> is an alias for
+<cite>volumetric flowrate</cite> but given the quantities measured and conditions, the units of measure are sometimes very
+different from the traditional ones (e.g. standard liters per minute or slpm)</p>
+</section>
+<section id="contributing-to-the-unit-converter">
+<h3>Contributing to the unit converter<a class="headerlink" href="#contributing-to-the-unit-converter" title="Permalink to this headline"></a></h3>
+<p>Contributing to the unit converter means adding new units to the dictionary. To contribute, it is important
+to follow the beginning section of the <cite>Contributing</cite> guide under the <cite>Preliminaries and setup</cite> section.</p>
+<ol class="arabic simple">
+<li><p>If a desired <code class="docutils literal notranslate"><span class="pre">unit</span></code> is missing in the unit_conversion.json dictionary, add a new entry under the appropriate
+<code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code>. The key should be the <code class="docutils literal notranslate"><span class="pre">unit</span></code> and the value should be a dictionary consisting of the
+<code class="docutils literal notranslate"><span class="pre">multiplier</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>,  <code class="docutils literal notranslate"><span class="pre">shift</span></code>, and <code class="docutils literal notranslate"><span class="pre">aliases</span></code>. The items <code class="docutils literal notranslate"><span class="pre">multiplier</span></code> and <code class="docutils literal notranslate"><span class="pre">shift</span></code> must contain at
+least 6 be at least 6 significant digits or figures. This aims to minimize error propagation and to estimate it if
+necessary. For example, even if the conversion is only two decimal points <code class="docutils literal notranslate"><span class="pre">1.23</span></code>, additional four zeroes,
+<code class="docutils literal notranslate"><span class="pre">1.230000</span></code>, must be added for the entry to be correct.</p></li>
+<li><p>If a <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code> is missing, add the new unit type to the dictionary. The first entry of the <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code> has to be
+the base SI unit which is typically a combination of <code class="docutils literal notranslate"><span class="pre">kg</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">degC</span></code>. An additional entry has to be
+added for the <code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">unit</span></code> entry which is <code class="docutils literal notranslate"><span class="pre">&quot;base&quot;:</span> <span class="pre">&quot;true&quot;</span></code>.</p></li>
+<li><p>If a new <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code> is added then add that <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code> to the <cite>unit_type_fundamental.json</cite> dictionary with all
+the ways the <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code> can be broken down (see example at the start of this section). The key to this dictionary
+is the <code class="docutils literal notranslate"><span class="pre">unit</span> <span class="pre">type</span></code> and the value is the list with the brake down of fundamental combinations.</p></li>
+<li><p>Once all the required changes are made to the dictionaries, skip to the
+<a class="reference external" href="file:///Users/gustavo/Cog/indsl/docs-source/build/html/contribute.html#create-a-pull-request">Create a pull request</a> section of the
+<cite>Contributing</cite> guide and follow the steps.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="statistics.html" class="btn btn-neutral float-left" title="Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

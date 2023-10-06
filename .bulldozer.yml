@@ -1,0 +1,23 @@
+version: 1
+
+merge:
+  method: squash
+  options:
+    squash:
+      title: pull_request_title
+      body: summarize_commits
+  delete_after_merge: true
+  whitelist:
+    labels: ["auto-merge"]
+  blacklist:
+    labels: ["do-not-merge"]
+    comment_substrings:
+      - "do-not-merge"
+      - "no-auto-merge"
+      - "bulldont"
+
+update:
+  whitelist:
+    labels: ["auto-update"]
+  blacklist:
+    labels: ["do-not-update"]

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resample &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Signals" href="signals.html" />
+    <link rel="prev" title="Oil and Gas" href="oil_and_gas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Resample</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#interpolate-and-resample">Interpolate and Resample</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.resample.interpolate"><code class="docutils literal notranslate"><span class="pre">interpolate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#resampling-fourier-polynomial-linear-min-max-sum-count">Resampling: Fourier, Polynomial, Linear, min, max, sum, count</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.resample.resample"><code class="docutils literal notranslate"><span class="pre">resample()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#resampling-to-granularity-default">Resampling to granularity (default)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.resample.resample_to_granularity"><code class="docutils literal notranslate"><span class="pre">resample_to_granularity()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#group-by-region">Group by region</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.resample.group_by_region"><code class="docutils literal notranslate"><span class="pre">group_by_region()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reindex">Reindex</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.resample.reindex"><code class="docutils literal notranslate"><span class="pre">reindex()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Resample</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/resample.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="resample">
+<h1>Resample<a class="headerlink" href="#resample" title="Permalink to this heading"></a></h1>
+<section id="interpolate-and-resample">
+<h2>Interpolate and Resample<a class="headerlink" href="#interpolate-and-resample" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.resample.interpolate">
+<span class="sig-prename descclassname"><span class="pre">indsl.resample.</span></span><span class="sig-name descname"><span class="pre">interpolate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'linear'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ffill'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'stepwise'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'zero'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'slinear'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'quadratic'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cubic'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pointwise'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'average'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pointwise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:00:01')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounded</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.resample.interpolate" title="Permalink to this definition"></a></dt>
+<dd><p>Interpolation.</p>
+<p>This function interpolates and resamples data with a uniform sampling frequency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>method</strong> – <p>Method.
+Specifies the interpolation method. Defaults to “linear”. Possible inputs are :</p>
+<blockquote>
+<div><ul>
+<li><p>’linear’: linear interpolation.</p></li>
+<li><p>’ffill’: forward filling.</p></li>
+<li><p>’stepwise’: yields same result as ffill.</p></li>
+<li><p>’zero’, ‘slinear’, ‘quadratic’, ‘cubic’: spline interpolation of zeroth, first, second or third order.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>kind</strong> – <p>Kind.
+Specifies the kind of returned data points. Defaults to “pointwise”.  Possible inputs are:</p>
+<blockquote>
+<div><ul>
+<li><p>’pointwise’: returns the pointwise value of the interpolated function for each timestamp.</p></li>
+<li><p>’average’: returns the average of the interpolated function within each time period.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>granularity</strong> – Frequency.
+Sampling frequency or granularity of the output (e.g. ‘1s’ or ‘2h’). Defaults to “1s”.</p></li>
+<li><p><strong>bounded</strong> – <p>Bounded.
+Specifies behaviour for requested points outside of the data range. Defaults to True.</p>
+<blockquote>
+<div><ul>
+<li><p>True: Extrapolate for requested points outside of the data range.</p></li>
+<li><p>False: Ignore points outside of the data range.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Interpolated time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – data is not a time series</p></li>
+<li><p><strong>Warning</strong> – Empty data time series</p></li>
+<li><p><strong>Warning</strong> – All data in timeseries is nan</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="resampling-fourier-polynomial-linear-min-max-sum-count">
+<h2>Resampling: Fourier, Polynomial, Linear, min, max, sum, count<a class="headerlink" href="#resampling-fourier-polynomial-linear-min-max-sum-count" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.resample.resample">
+<span class="sig-prename descclassname"><span class="pre">indsl.resample.</span></span><span class="sig-name descname"><span class="pre">resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'fourier'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'polyphase'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'interpolate'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'min'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'max'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'sum'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'count'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'mean'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fourier'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity_current</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity_next</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:00:01')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">downsampling_factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolate_resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ffill_resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.resample.resample" title="Permalink to this definition"></a></dt>
+<dd><p>Resample.</p>
+<p>This method offers a robust filling of missing data points and data resampling a given sampling frequency. Multiple
+data resampling options are available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fourier</p></li>
+<li><p>Polynomial phase filtering</p></li>
+<li><p>Linear interpolation (for up-sampling)</p></li>
+<li><p>Min, max, sum, count, mean (for down-sampling)</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>method</strong> – <p>Method.
+Resampling method. Valid options are:</p>
+<blockquote>
+<div><ul>
+<li><p>”fourier” for Fourier method (default)</p></li>
+<li><p>”polyphase” for polyphase filtering</p></li>
+<li><p>”interpolate” for linear interpolation when upsampling</p></li>
+<li><p>”min”, “max”, “sum”, “count”, “mean” when downsampling</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>granularity_current</strong> – Current temporal resolution.
+Temporal resolution of uniform time series, before resampling. Defaults to None.
+If not specified, the frequency will be implied, which only works if no data is missing.
+Follows Pandas DateTime convention.</p></li>
+<li><p><strong>granularity_next</strong> – Final temporal resolution.
+Temporal resolution of uniform time series, after resampling. Defaults to “1s”.
+Either “Number of Samples” or “Final temporal resolution” must be provided.</p></li>
+<li><p><strong>num</strong> – Number of Samples.
+The number of samples in the resampled signal. If this is set, the time deltas will be inferred. Defaults
+to None. Either “Number of Samples” or “Final temporal resolution” must be provided.</p></li>
+<li><p><strong>downsampling_factor</strong> – Down-sampling factor.
+The down-sampling factor is required for the polyphase filtering. Defaults to None.</p></li>
+<li><p><strong>interpolate_resolution</strong> – Interpolation threshold.
+Gaps smaller than threshold will be interpolated, larger than this will be filled by noise.
+Defaults to None.</p></li>
+<li><p><strong>ffill_resolution</strong> – Forward fill threshold.
+Gaps smaller than this threshold will be forward filled. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Interpolated time series
+Uniform, resampled time series with specified number of data points.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – data is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – Either num or granularity_next has to be set</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – If specified, outside_fill must be either ‘None’ or ‘extrapolate’.</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – Method has to be in ‘fourier’, ‘polyphase’, ‘interpolate’, ‘min’, ‘max’, ‘sum’, ‘count’</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – Empty data time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – All values in the time series are NaN</p></li>
+<li><p><strong>Warning</strong> – Can’t infer time series resolution with missing data. Please provide resolution</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="resampling-to-granularity-default">
+<h2>Resampling to granularity (default)<a class="headerlink" href="#resampling-to-granularity-default" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.resample.resample_to_granularity">
+<span class="sig-prename descclassname"><span class="pre">indsl.resample.</span></span><span class="sig-name descname"><span class="pre">resample_to_granularity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'mean'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'interpolation'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'stepInterpolation'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'max'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'min'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'count'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'sum'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.resample.resample_to_granularity" title="Permalink to this definition"></a></dt>
+<dd><p>Resample to granularity.</p>
+<p>Resample time series to a given fixed granularity (time delta) and aggregation type
+(<a class="reference external" href="https://docs.cognite.com/dev/concepts/aggregation/">read more about aggregation</a>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series.</p></li>
+<li><p><strong>granularity</strong> – Granularity.
+Granularity defines the time range that each aggregate is calculated from. It consists of a time unit and a
+size. Valid time units are day or d, hour h, minute or m and second or s. For example, 2h means that each
+time range should be 2 hours wide, 3m means 3 minutes, and so on.</p></li>
+<li><p><strong>aggregate</strong> – <p>Aggregate.
+Type of aggregation to use when resampling. Valid options are:</p>
+<blockquote>
+<div><ul>
+<li><p>”interpolation” for linear interpolation when upsampling</p></li>
+<li><p>”stepInterpolation” for stepwise interpolation when upsampling</p></li>
+<li><p>”min”, “max”, “sum”, “count”, “mean” when downsampling</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Resampled time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="group-by-region">
+<h2>Group by region<a class="headerlink" href="#group-by-region" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.resample.group_by_region">
+<span class="sig-prename descclassname"><span class="pre">indsl.resample.</span></span><span class="sig-name descname"><span class="pre">group_by_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int_to_keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Mean'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Median'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Standard</span> <span class="pre">deviation'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Count'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Min'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Max'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Mean'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Region</span> <span class="pre">center'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Region</span> <span class="pre">start'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Region</span> <span class="pre">end'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Entire</span> <span class="pre">region'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Region</span> <span class="pre">center'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.resample.group_by_region" title="Permalink to this definition"></a></dt>
+<dd><p>Group by region.</p>
+<p>This function groups any given data series by a series with integers denoting different states. A typical example of
+such a series is a series of 0 and 1 where 1 would indicate the presence of steady process conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.Series</em>) – Time series.</p></li>
+<li><p><strong>filter_by</strong> (<em>pd.Series</em>) – Region flag time series.
+Time series values are expected to be integers. If not, values are cast to integer automatically.</p></li>
+<li><p><strong>int_to_keep</strong> (<em>int</em><em>, </em><em>optional</em>) – Value.
+Value that identifies the region of interest.</p></li>
+<li><p><strong>aggregate</strong> (<em>str</em><em>, </em><em>optional</em>) – Aggregate.
+Indicates the aggregation to be performed for each identified region.</p></li>
+<li><p><strong>timestamp</strong> (<em>str</em><em>, </em><em>optional</em>) – Timestamp.
+Indicates the location of the timestamps for the aggregated data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Grouped time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserRuntimeError" title="indsl.exceptions.UserRuntimeError"><strong>UserRuntimeError</strong></a> – Time series returns no data. This could be due to insufficient data in either <cite>data</cite>
+    or <cite>filter_by</cite>, or <cite>filter_by</cite> series contains no values of <cite>int_to_keep</cite>.</p></li>
+<li><p><strong>ValueError</strong> – The provided <cite>aggregate</cite> or <cite>timestamp</cite> inputs are not valid options.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/resample/plot_group_by_region.html#sphx-glr-auto-examples-resample-plot-group-by-region-py"><span class="std std-ref">Group by Region</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="reindex">
+<h2>Reindex<a class="headerlink" href="#reindex" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.resample.reindex">
+<span class="sig-prename descclassname"><span class="pre">indsl.resample.</span></span><span class="sig-name descname"><span class="pre">reindex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'zero'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'next'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'slinear'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'quadratic'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cubic'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'slinear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'pointwise'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'average'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pointwise'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounded</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.resample.reindex" title="Permalink to this definition"></a></dt>
+<dd><p>Reindex.</p>
+<p>This method offers data reindexing onto a common index and fills missing data points.
+If bounded is false, the common index is the union of the the input time-series indices.
+If bounded is true, the common index is restricted to the period where the time-series overlap.
+All not-a-number (NaN) values are removed in the output time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data1</strong> – First time series.</p></li>
+<li><p><strong>data2</strong> – Second time series.</p></li>
+<li><p><strong>method</strong> – <p>Method.
+Specifies the interpolation method. Defaults to “linear”. Possible inputs are :</p>
+<ul>
+<li><p>’zero’: zero order spline interpolation with forward filling mode, i.e., the previous known value of any point is used.</p></li>
+<li><p>’next’: zero order spline interpolation with backward filling mode, i.e., the next known value of any point is used.</p></li>
+<li><p>’slinear’: linear order spline interpolation.</p></li>
+<li><p>’quadratic’: quadratic order spline interpolation.</p></li>
+<li><p>’cubic’: cubic order spline interpolation.</p></li>
+</ul>
+</p></li>
+<li><p><strong>kind</strong> – <p>Kind.
+Specifies the kind of returned data points. Defaults to “pointwise”.  Possible inputs are:</p>
+<ul>
+<li><p>’pointwise’: returns the pointwise value of the interpolated function for each timestamp.</p></li>
+<li><p>’average’: returns the average of the interpolated function within each time period.</p></li>
+</ul>
+</p></li>
+<li><p><strong>bounded</strong> – <p>Bounded.
+Specifies if the output should be bounded to avoid extrapolation. Defaults to False. Possible inputs are:</p>
+<ul>
+<li><p>True: Return the intersection of the time periods of the input time series.</p></li>
+<li><p>False: Return the union of the time periods of the input time series. Extrapolate points outside of the data range.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>First reindexed time series</dt><dd><p>Reindexed time series with common indices.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – All time series must have at least two values</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/reindex/plot_pearson_correlation.html#sphx-glr-auto-examples-reindex-plot-pearson-correlation-py"><span class="std std-ref">Re-indexing and compute Pearson correlation coefficient</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="oil_and_gas.html" class="btn btn-neutral float-left" title="Oil and Gas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="signals.html" class="btn btn-neutral float-right" title="Signals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

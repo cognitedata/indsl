@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognite’s Industrial Data Science Library &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Quality" href="data_quality.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Cognite’s Industrial Data Science Library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cognite-s-industrial-data-science-library">
+<span id="gallery"></span><h1>Cognite’s Industrial Data Science Library<a class="headerlink" href="#cognite-s-industrial-data-science-library" title="Permalink to this heading"></a></h1>
+<p>This is Cognite’s collection of data science algorithms and models. Its objective is twofold. First, empower domain
+experts to conduct exploratory work, root cause analysis, and analyze data without the requirement to code by driving
+the industrial data science and analytics engine behind <a href="https://charts.cogniteapp.com/" target="_blank">Cognite Charts</a>. Second, curate a collection industrial relevant
+data science algorithms to be used by any data scientist. For more information, check <a href="https://docs.cognite.com/cdf/charts.html" target="_blank">Charts documentation page</a>.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
+<p>To install the core part of the library, where dependencies are <cite>numpy</cite>, <cite>scipy`</cite> and <cite>pandas</cite>, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>indsl
+</pre></div>
+</div>
+<p>InDSL also includes extra functionality that that requires additonal dependencies. The extra functionality includes:</p>
+<ul class="simple">
+<li><p>Numba, for pre-compiled functions and faster execution</p></li>
+<li><p>Plot, for plotting functionality that depends on <cite>matplotlib</cite></p></li>
+<li><p>Modeling, for functionality that depends on <cite>csaps</cite> and <cite>kneed</cite>.</p></li>
+<li><p>Stats, for statistical functionality that depends on <cite>statsmodels</cite></p></li>
+<li><p>Scikit, for machine learning functionality that depends on <cite>scikit-image</cite> and <cite>scikit-learn</cite></p></li>
+<li><p>Fluids, for fluid dynamics calculations and simulations.</p></li>
+</ul>
+<p>To install extra functionality, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>indsl<span class="o">[</span>numba,plot,modeling,stats,scikit,fluids<span class="o">]</span>
+</pre></div>
+</div>
+<p>To install all the extra functionality, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>indsl<span class="o">[</span>all<span class="o">]</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html#completeness">Completeness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_quality.html#validity">Validity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="detect.html#drift">Drift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detect.html#oscillations">Oscillations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detect.html#change-point-detector-ed-pelt">Change Point detector: ED-PELT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detect.html#change-point-detector-cusum">Change Point detector: CUSUM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detect.html#steady-state-detector-change-point">Steady State detector: change point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detect.html#steady-state-detector-variance-filter">Steady State detector: variance filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detect.html#steady-state-detector-variable-moving-average">Steady State detector: variable moving average</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detect.html#unchanged-signal-identification">Unchanged signal identification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="drilling.html#flag-detection">Flag Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="equipment.html#vessels">Vessels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="equipment.html#pumps">Pumps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="equipment.html#valves">Valves</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filter.html#status-filter">Status Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter.html#wavelet-filter">Wavelet Filter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fluid_dynamics.html#dimensionless-numbers">Dimensionless Numbers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forecast.html#autoregressive-moving-average-arma-predictor">Autoregressive Moving Average (ARMA) Predictor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forecast.html#triple-exponential-smoothing-holt-winters-predictor">Triple Exponential Smoothing - Holt-Winters Predictor</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="numerical_calculus.html#differentiation">Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numerical_calculus.html#trapezoidal-integration">Trapezoidal integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numerical_calculus.html#sliding-window-integration">Sliding window integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oil_and_gas.html#gas-density-calculator">Gas density calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oil_and_gas.html#productivity-index">Productivity index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oil_and_gas.html#shut-in-detector">Shut-in detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oil_and_gas.html#shut-in-variable-calculator">Shut-in variable calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oil_and_gas.html#well-production-status">Well production status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oil_and_gas.html#retrieve-fluid-properties">Retrieve fluid properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resample.html#interpolate-and-resample">Interpolate and Resample</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resample.html#resampling-fourier-polynomial-linear-min-max-sum-count">Resampling: Fourier, Polynomial, Linear, min, max, sum, count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resample.html#resampling-to-granularity-default">Resampling to granularity (default)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resample.html#group-by-region">Group by region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resample.html#reindex">Reindex</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#module-for-generating-industrial-grade-synthetic-signals">Module for Generating Industrial Grade Synthetic Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#noise-generators">Noise Generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signals.html#polynomial-generators">Polynomial Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smooth.html#moving-averages">Moving Averages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smooth.html#frequency-based-low-pass-filters">Frequency Based (low-pass filters)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#confidence-bands">Confidence bands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#outlier-detection">Outlier detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#outlier-removal">Outlier removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statistics.html#pearson-correlation">Pearson correlation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sustainability.html#co2-emissions-calculations">CO2 Emissions Calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.operators">Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.numerical_calculus">Numerical calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.logarithmic_functions">Logarithmic functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.trigonometric_functions">Trigonometric functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.utility_functions">Utility functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#contributing-a-new-charts-compliant-algorithm">Contributing a new CHARTS compliant algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#contributing-a-free-form-algorithm">Contributing a free form algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html#coding-style">Coding Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-indsl.versioning">Function versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-indsl.exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-indsl.validations">Validation functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-0">Type checking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v8-2-0">v8.2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v8-1-0">v8.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v8-0-1">v8.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v8-0-0">v8.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v7-0-1">v7.0.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v7-0-0">v7.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-6-0a1-pre-release">v6.6.0a1 Pre-release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-6-0a0-2023-07-04">v6.6.0a0 (2023-07-04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-5-0-2023-03-31">v6.5.0 (2023-03-31)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-4-4-2023-03-23">v6.4.4 (2023-03-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-4-3-2023-02-23">v6.4.3 (2023-02-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-4-2-2023-01-24">v6.4.2 (2023-01-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-4-1-2023-01-24">v6.4.1 (2023-01-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-4-0-2022-12-13">v6.4.0 (2022-12-13)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-3-1-2022-11-09">v6.3.1 (2022-11-09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-3-0-2022-11-08">v6.3.0 (2022-11-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-2-0-2022-09-29">v6.2.0 (2022-09-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-1-0-2022-08-25">v6.1.0 (2022-08-25)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-0-1-2022-08-17">v6.0.1 (2022-08-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v6-0-0-2022-08-17">v6.0.0 (2022-08-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-8-2-2022-08-09">v4.8.2 (2022-08-09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-8-1-2022-08-09">v4.8.1 (2022-08-09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-8-0-2022-07-26">v4.8.0 (2022-07-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-7-0-2022-07-07">v4.7.0 (2022-07-07)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-6-0-2022-06-16">v4.6.0 (2022-06-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-5-1-2022-06-09">v4.5.1 (2022-06-09)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-5-0-2022-05-25">v4.5.0 (2022-05-25)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-4-1-2022-05-18">v4.4.1 (2022-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-4-0-2022-05-11">v4.4.0 (2022-05-11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-3-1-2022-05-04">v4.3.1 (2022-05-04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-3-0-2022-04-27">v4.3.0 (2022-04-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-2-2-2022-04-21">v4.2.2 (2022-04-21)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-2-1-2022-04-21">v4.2.1 (2022-04-21)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-2-0-2022-04-20">v4.2.0 (2022-04-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-1-1-2022-03-30">v4.1.1 (2022-03-30)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-1-0-2022-03-22">v4.1.0 (2022-03-22)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-0-2-2022-03-01">v4.0.2 (2022-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-0-1-2022-02-28">v4.0.1 (2022-02-28)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v4-0-0-2022-02-24">v4.0.0 (2022-02-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v3-1-1-2022-02-02">v3.1.1 (2022-02-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v3-1-0-2022-01-21">v3.1.0 (2022-01-21)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v3-0-0-2022-01-14">v3.0.0 (2022-01-14)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v2-1-0-2022-01-05">v2.1.0 (2022-01-05)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v2-0-0-2021-12-20">v2.0.0 (2021-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v1-0-0-2021-12-06">v1.0.0 (2021-12-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-2-1-2021-11-11">v0.2.1 (2021-11-11)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-2-0-2021-11-04">v0.2.0 (2021-11-04)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-1-0-2021-10-29">v0.1.0 (2021-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-0-8-2021-10-18">v0.0.8 (2021-10-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-0-7-2021-10-18">v0.0.7 (2021-10-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-0-6-2021-10-18">v0.0.6 (2021-10-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id80">0.0.6 (2021-10-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id82">0.0.5 (2021-10-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-0-4-2021-10-13">v0.0.4 (2021-10-13)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id85">0.0.3 (2021-10-08)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_quality.html" class="btn btn-neutral float-right" title="Data Quality" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

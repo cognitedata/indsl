@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer utility functions &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="CHANGELOG.html" />
+    <link rel="prev" title="Code of Conduct" href="code_of_conduct.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer utility functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.versioning">Function versioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.get"><code class="docutils literal notranslate"><span class="pre">get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.get_changelog"><code class="docutils literal notranslate"><span class="pre">get_changelog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.get_name"><code class="docutils literal notranslate"><span class="pre">get_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.get_registered_functions"><code class="docutils literal notranslate"><span class="pre">get_registered_functions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.get_version"><code class="docutils literal notranslate"><span class="pre">get_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.get_versions"><code class="docutils literal notranslate"><span class="pre">get_versions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.is_deprecated"><code class="docutils literal notranslate"><span class="pre">is_deprecated()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.is_versioned"><code class="docutils literal notranslate"><span class="pre">is_versioned()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.versioning.run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.exceptions">Exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.exceptions.UserException"><code class="docutils literal notranslate"><span class="pre">UserException</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.exceptions.UserRuntimeError"><code class="docutils literal notranslate"><span class="pre">UserRuntimeError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.exceptions.UserTypeError"><code class="docutils literal notranslate"><span class="pre">UserTypeError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.exceptions.UserValueError"><code class="docutils literal notranslate"><span class="pre">UserValueError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.validations">Validation functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.validations.validate_series_has_minimum_length"><code class="docutils literal notranslate"><span class="pre">validate_series_has_minimum_length()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.validations.validate_series_has_time_index"><code class="docutils literal notranslate"><span class="pre">validate_series_has_time_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.validations.validate_series_is_not_empty"><code class="docutils literal notranslate"><span class="pre">validate_series_is_not_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.validations.validate_timedelta"><code class="docutils literal notranslate"><span class="pre">validate_timedelta()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.validations.validate_timedelta_unit"><code class="docutils literal notranslate"><span class="pre">validate_timedelta_unit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-0">Type checking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">validate_series_has_minimum_length()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">validate_series_has_time_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">validate_series_is_not_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">validate_timedelta()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">validate_timedelta_unit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developer utility functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-utility-functions">
+<h1>Developer utility functions<a class="headerlink" href="#developer-utility-functions" title="Permalink to this heading"></a></h1>
+<section id="module-indsl.versioning">
+<span id="function-versioning"></span><h2>Function versioning<a class="headerlink" href="#module-indsl.versioning" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.get">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#indsl.versioning.get" title="Permalink to this definition"></a></dt>
+<dd><p>Return one of the versions of a function.</p>
+<p>If version is None, the latest version is returned</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.get_changelog">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">get_changelog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.versioning.get_changelog" title="Permalink to this definition"></a></dt>
+<dd><p>Return changelog of this version.</p>
+<p>If the function is not registered, None is returned</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.get_name">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">get_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#indsl.versioning.get_name" title="Permalink to this definition"></a></dt>
+<dd><p>Return the name with which the function was registered.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.get_registered_functions">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">get_registered_functions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#indsl.versioning.get_registered_functions" title="Permalink to this definition"></a></dt>
+<dd><p>Return the list of registered function names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.get_version">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">get_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.versioning.get_version" title="Permalink to this definition"></a></dt>
+<dd><p>Return the version of a function.</p>
+<p>If the function is not registered, None is returned</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.get_versions">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">get_versions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#indsl.versioning.get_versions" title="Permalink to this definition"></a></dt>
+<dd><p>Return the list of available versions of a function name.</p>
+<p>Sorted from low to highest version</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.is_deprecated">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">is_deprecated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.versioning.is_deprecated" title="Permalink to this definition"></a></dt>
+<dd><p>Return true if the version is deprecated.</p>
+<p>If the function is not registered, None is returned</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.is_versioned">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">is_versioned</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#indsl.versioning.is_versioned" title="Permalink to this definition"></a></dt>
+<dd><p>Return true if the version is versioned.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.register">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deprecated</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">changelog</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#indsl.versioning.register" title="Permalink to this definition"></a></dt>
+<dd><p>Decorator to register a new versioned function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>version</strong> – <p>Version number of the function
+The version number follows the standard version scheme for Python packages
+as defined in <a class="reference external" href="https://packaging.pypa.io/en/latest/version.html">PEP 440</a>.</p>
+<p>The following are valid version numbers (shown in the order that
+would be obtained by sorting according to the supplied cmp function):</p>
+<blockquote>
+<div><p>0.4       0.4.0  (these two are equivalent)
+0.4.1
+0.5a1
+0.5b3
+0.5
+0.9.6
+1.0
+1.0.4a3
+1.0.4b1
+1.0.4</p>
+</div></blockquote>
+<p>The following are examples of invalid version numbers:</p>
+<blockquote>
+<div><p>1.3pl1
+a</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>name</strong> – Name of the function
+The name under which the function should be registered. If no name
+is specified, the name of the function is used.</p></li>
+<li><p><strong>deprecated</strong> – Flag if function is deprecated. Default: False</p></li>
+<li><p><strong>changelog</strong> – Description of what has changed since the previous version. Default: None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.versioning.run">
+<span class="sig-prename descclassname"><span class="pre">indsl.versioning.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#indsl.versioning.run" title="Permalink to this definition"></a></dt>
+<dd><p>Run a version of a function.</p>
+<p>If version is None, the latest version is executed</p>
+</dd></dl>
+
+</section>
+<section id="module-indsl.exceptions">
+<span id="exceptions"></span><h2>Exceptions<a class="headerlink" href="#module-indsl.exceptions" title="Permalink to this heading"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="indsl.exceptions.UserException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">indsl.exceptions.</span></span><span class="sig-name descname"><span class="pre">UserException</span></span><a class="headerlink" href="#indsl.exceptions.UserException" title="Permalink to this definition"></a></dt>
+<dd><p>Exception raised when the error is due to the user.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="indsl.exceptions.UserRuntimeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">indsl.exceptions.</span></span><span class="sig-name descname"><span class="pre">UserRuntimeError</span></span><a class="headerlink" href="#indsl.exceptions.UserRuntimeError" title="Permalink to this definition"></a></dt>
+<dd><p>Exception raised when the error in runtime is due to the user.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="indsl.exceptions.UserTypeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">indsl.exceptions.</span></span><span class="sig-name descname"><span class="pre">UserTypeError</span></span><a class="headerlink" href="#indsl.exceptions.UserTypeError" title="Permalink to this definition"></a></dt>
+<dd><p>Exception raised when the user provides a value with the wrong type.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="indsl.exceptions.UserValueError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">indsl.exceptions.</span></span><span class="sig-name descname"><span class="pre">UserValueError</span></span><a class="headerlink" href="#indsl.exceptions.UserValueError" title="Permalink to this definition"></a></dt>
+<dd><p>Exception raised when the user provides a wrong value.</p>
+</dd></dl>
+
+</section>
+<section id="module-indsl.validations">
+<span id="validation-functions"></span><h2>Validation functions<a class="headerlink" href="#module-indsl.validations" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.validations.validate_series_has_minimum_length">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_has_minimum_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.validations.validate_series_has_minimum_length" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if provided pandas.Series has the minimum length specified.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.validations.validate_series_has_time_index">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_has_time_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.validations.validate_series_has_time_index" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if provided pandas.Series is of type pandas.DatetimeIndex.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.validations.validate_series_is_not_empty">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_is_not_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.validations.validate_series_is_not_empty" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if provided pandas.Series has more than 0 values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.validations.validate_timedelta">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_timedelta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timedelta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.validations.validate_timedelta" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if the provided pd.Timedelta valid: not NaT and strictly larger than zero.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.validations.validate_timedelta_unit">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_timedelta_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timedelta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.validations.validate_timedelta_unit" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if the provided pd.Timedelta is larger or equal to 1 second.</p>
+</dd></dl>
+
+</section>
+<section id="module-0">
+<span id="type-checking"></span><h2>Type checking<a class="headerlink" href="#module-0" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_has_minimum_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id0" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if provided pandas.Series has the minimum length specified.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_has_time_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id1" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if provided pandas.Series is of type pandas.DatetimeIndex.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_is_not_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id2" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if provided pandas.Series has more than 0 values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_timedelta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timedelta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id3" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if the provided pd.Timedelta valid: not NaT and strictly larger than zero.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_timedelta_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timedelta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id4" title="Permalink to this definition"></a></dt>
+<dd><p>Helper method to validate if the provided pd.Timedelta is larger or equal to 1 second.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="code_of_conduct.html" class="btn btn-neutral float-left" title="Code of Conduct" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CHANGELOG.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

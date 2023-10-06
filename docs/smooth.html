@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smooth &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Statistics" href="statistics.html" />
+    <link rel="prev" title="Signals" href="signals.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Smooth</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#moving-averages">Moving Averages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#arnaud-legoux-moving-average">Arnaud Legoux Moving Average</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.alma"><code class="docutils literal notranslate"><span class="pre">alma()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autoregressive-moving-average">Autoregressive moving average</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.arma"><code class="docutils literal notranslate"><span class="pre">arma()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#exponential-weighted-moving-average">Exponential weighted moving average</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.ewma"><code class="docutils literal notranslate"><span class="pre">ewma()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-weighted-moving-average">Linear weighted moving average</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.sma"><code class="docutils literal notranslate"><span class="pre">sma()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-moving-average">Simple moving average</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.lwma"><code class="docutils literal notranslate"><span class="pre">lwma()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#frequency-based-low-pass-filters">Frequency Based (low-pass filters)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#butterworth">Butterworth</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.butterworth"><code class="docutils literal notranslate"><span class="pre">butterworth()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#chebyshev">Chebyshev</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.chebyshev"><code class="docutils literal notranslate"><span class="pre">chebyshev()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#savitzky-golay">Savitzky-Golay</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.sg"><code class="docutils literal notranslate"><span class="pre">sg()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Smooth</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/smooth.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="smooth">
+<h1>Smooth<a class="headerlink" href="#smooth" title="Permalink to this heading"></a></h1>
+<section id="moving-averages">
+<h2>Moving Averages<a class="headerlink" href="#moving-averages" title="Permalink to this heading"></a></h2>
+<section id="arnaud-legoux-moving-average">
+<h3>Arnaud Legoux Moving Average<a class="headerlink" href="#arnaud-legoux-moving-average" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.smooth.alma">
+<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">alma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset_factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.75</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.alma" title="Permalink to this definition"></a></dt>
+<dd><p>Arnaud Legoux moving average.</p>
+<p>Moving average typically used in the financial industry, which aims to strike a good balance between smoothness
+and responsiveness (i.e., capture a general smoothed trend without allowing for significant lag). It can be
+interpreted as a Gaussian weighted moving average with an offset, where the offset, spread, and window size are
+user-defined.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>window</strong> – Window size.
+Defaults to 10 data points or time steps for uniformly sample time series.</p></li>
+<li><p><strong>sigma</strong> – Sigma.
+Parameter that controls the width of the Gaussian filter. Defaults to 6.</p></li>
+<li><p><strong>offset_factor</strong> – Offset factor.
+Parameter that controls the magnitude of the weights for each past observation within the window.
+Defaults to 0.75.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – Time series is empty.</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – Data has to be a time series.</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – Not enough data to perform the calculation.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Smoothed data.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="autoregressive-moving-average">
+<h3>Autoregressive moving average<a class="headerlink" href="#autoregressive-moving-average" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.smooth.arma">
+<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">arma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ma_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.arma" title="Permalink to this definition"></a></dt>
+<dd><p>Autoregressive moving average.</p>
+<p>The autoregressive moving average (ARMA) is a popular model used in forecasting. It uses an autoregression (AR)
+analysis to characterize the effect of past values on current values and a moving average to quantify the effect of the
+previous day’s error (variation).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>ar_order</strong> – AR order.
+Number of past data points to include in the AR model. Defaults to 2.</p></li>
+<li><p><strong>ma_order</strong> – MA order.
+Number of terms in the MA model.  Defaults to 2.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Smoothed data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="exponential-weighted-moving-average">
+<h3>Exponential weighted moving average<a class="headerlink" href="#exponential-weighted-moving-average" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.smooth.ewma">
+<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">ewma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_pt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.ewma" title="Permalink to this definition"></a></dt>
+<dd><p>Exp. weighted moving average.</p>
+<p>The exponential moving average gives more weight to the more recent observations. The weights fall exponentially
+as the data point gets older. It reacts more than the simple moving average with regards to recent movements.
+The moving average value is calculated following the definition yt=(1−α)yt−1+αxt if adjust = False or
+yt=(xt+(1−α)*xt−1+(1−α)^2*xt−2+…+(1−α)^t*x0) / (1+(1−α)+(1−α)^2+…+(1−α)^t) if adjust = True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.
+Data with a pd.DatetimeIndex.</p></li>
+<li><p><strong>time_window</strong> – Time window.
+Defines how important the current observation is in the calculation of the EWMA. The longer the period, the slowly it adjusts to reflect current trends. Defaults to ‘60min’.
+Accepted string format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.
+The time window is converted to the number of points for each of the windows. Each time window may have different number of points if the timeseries is not regular.
+The number of points specify the decay of the exponential weights in terms of span α=2/(span+1), for span≥1.</p></li>
+<li><p><strong>min_periods</strong> – Minimum number of data points.
+Minimum number of data points inside a time window required to have a value (otherwise result is NA). Defaults to 1.
+If min_periods &gt; 1 and adjust is False, the SMA is computed for the first observation.</p></li>
+<li><p><strong>adjust</strong> – Adjust.
+If true, the exponential function is calculated using weights w_i=(1−α)^i.
+If false, the exponential function is calculated recursively using yt=(1−α)yt−1+αxt. Defaults to True.</p></li>
+<li><p><strong>max_pt</strong> – Maximum number of data points.
+Sets the maximum number of points to consider in a window if adjust = True. A high number of points will require more time to execute. Defaults to 200.</p></li>
+<li><p><strong>resample</strong> – Resample.
+If true, resamples the calculated exponential moving average series. Defaults to False.</p></li>
+<li><p><strong>resample_window</strong> – Resampling window
+Time window used to resample the calculated exponential moving average series. Defaults to ‘60min’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Smoothed time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="linear-weighted-moving-average">
+<h3>Linear weighted moving average<a class="headerlink" href="#linear-weighted-moving-average" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.smooth.sma">
+<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">sma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.sma" title="Permalink to this definition"></a></dt>
+<dd><p>Simple moving average (SMA).</p>
+<p>Plain simple average that computes the sum of the values of the observations in a time_window divided by the number of observations in the time_window.
+SMA time series are much less noisy than the original time series. However, SMA time series lag the original time series, which means that changes in the trend are only seen with a delay (lag) of time_window/2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>time_window</strong> – Window.
+Length of the time period to compute the average. Defaults to ‘60min’.
+Accepted string format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.</p></li>
+<li><p><strong>min_periods</strong> – Minimum samples.
+Minimum number of observations in window required to have a value (otherwise result is NA). Defaults  to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Smoothed time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="simple-moving-average">
+<h3>Simple moving average<a class="headerlink" href="#simple-moving-average" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.smooth.lwma">
+<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">lwma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.lwma" title="Permalink to this definition"></a></dt>
+<dd><p>Linear weighted moving average.</p>
+<p>The linear weighted moving average gives more weight to the more recent observations and gradually less to the older
+ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>time_window</strong> – Time window.
+Length of the time period to compute the rolling mean. Defaults to ‘60min’.
+If the user gives a number without unit (such as ‘60’), it will be considered as the number of minutes.
+Accepted string format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.</p></li>
+<li><p><strong>min_periods</strong> – Minimum samples.
+Minimum number of observations in the time window required to estimate a value (otherwise result is NA).
+Defaults to 1.</p></li>
+<li><p><strong>resample</strong> – Resample.
+Resamples the calculated linear weighted moving average series. Defaults to False</p></li>
+<li><p><strong>resample_window</strong> – Resampling window.
+Time window used to resample the calculated linear weighted moving average series. Defaults to ‘60min’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Smoothed time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/smooth/plot_ma.html#sphx-glr-auto-examples-smooth-plot-ma-py"><span class="std std-ref">Data smoothing with Moving Averages</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+<section id="frequency-based-low-pass-filters">
+<h2>Frequency Based (low-pass filters)<a class="headerlink" href="#frequency-based-low-pass-filters" title="Permalink to this heading"></a></h2>
+<section id="butterworth">
+<h3>Butterworth<a class="headerlink" href="#butterworth" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.smooth.butterworth">
+<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">butterworth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Wn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">btype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'lowpass'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'highpass'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'lowpass'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.butterworth" title="Permalink to this definition"></a></dt>
+<dd><p>Butterworth.</p>
+<p>This signal processing filter is designed to have a frequency response as flat as possible in the passband and
+roll-offs towards zero in the stopband. In other words, this filter is designed not to modify much the signal at the
+in the passband and attenuate as much as possible the signal at the stopband. At the moment, only low and high pass
+filtering are supported.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>N</strong> – Order.
+Defaults to 50.</p></li>
+<li><p><strong>Wn</strong> – Critical frequency.
+Number between 0 and 1, with 1 representing one-half of the sampling rate (Nyquist frequency).
+Defaults to 0.1.</p></li>
+<li><p><strong>btype</strong> – Filter type.
+The options are: “lowpass” and “highpass”
+Defaults to “lowpass”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered signal.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="chebyshev">
+<h3>Chebyshev<a class="headerlink" href="#chebyshev" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.smooth.chebyshev">
+<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">chebyshev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Wn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">btype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'lowpass'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.chebyshev" title="Permalink to this definition"></a></dt>
+<dd><p>Chebyshev (I, II).</p>
+<p>Chebyshev filters are analog or digital filters having a steeper roll-off than Butterworth filters, and have
+passband ripple (type I) or stopband ripple (type II). Chebyshev filters have the property that they minimize the
+error between the idealized and the actual filter characteristic over the range of the filter but with ripples in
+the passband (Wikipedia).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>filter_type</strong> – Filter type
+Options are 1 or 2. Defaults to 1.</p></li>
+<li><p><strong>N</strong> – Order
+Defaults to 10.</p></li>
+<li><p><strong>rp</strong> – Maximum ripple.
+Maximum ripple allowed below unity gain in the passband.
+Defaults to 0.1.</p></li>
+<li><p><strong>Wn</strong> – Critical frequency.
+Number between 0 and 1, with 1 representing one-half of the sampling rate (Nyquist frequency).
+Defaults to 0.1.</p></li>
+<li><p><strong>btype</strong> – Filter type.
+The options are: “lowpass” and “highpass”
+Defaults to “lowpass”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered signal</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="savitzky-golay">
+<h3>Savitzky-Golay<a class="headerlink" href="#savitzky-golay" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.smooth.sg">
+<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">sg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polyorder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.sg" title="Permalink to this definition"></a></dt>
+<dd><p>Saviztky-Golay.</p>
+<p>Use this filter for smoothing data without distorting the data tendency. The method is independent of
+the sampling frequency. Hence, it is simple and robust to apply to data with non-uniform sampling. If you work with
+high-frequency data (e.g., sampling frequency ~&gt; 1 Hz), we recommend that you provide the filter window length and
+polynomial order parameters to suit the requirements. Otherwise, if no parameters are provided, the function will
+estimate and set the parameters based on the characteristics of the input time series (e.g., sampling frequency).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>window_length</strong> – Window.
+Point-wise length of the filter window (i.e., number of data points). A large window results in a stronger
+smoothing effect and vice-versa. If the filter window_length is not defined by the user, a
+length of about 1/5 of the length of time series is set.</p></li>
+<li><p><strong>polyorder</strong> – Polynomial order.
+Order of the polynomial used to fit the samples. Must be less than filter window length. Defaults to 1.
+Hint: A small polyorder (e.g., polyorder = 1) results in a stronger data smoothing effect, representing the
+dominating trend and attenuating data fluctuations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Smoothed time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – The window length must be a positive odd integer</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – The window length must be less than or equal to the number of data points in your time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – The polynomial order must be less than the window length</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/smooth/plot_sg_smooth.html#sphx-glr-auto-examples-smooth-plot-sg-smooth-py"><span class="std std-ref">Data smoothing with the Savitzky-Golay filter</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="signals.html" class="btn btn-neutral float-left" title="Signals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="statistics.html" class="btn btn-neutral float-right" title="Statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

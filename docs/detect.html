@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detect &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Drilling" href="drilling.html" />
+    <link rel="prev" title="Data Quality" href="data_quality.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Detect</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#drift">Drift</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.detect.drift"><code class="docutils literal notranslate"><span class="pre">drift()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#oscillations">Oscillations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.detect.oscillation_detector.oscillation_detector"><code class="docutils literal notranslate"><span class="pre">oscillation_detector()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#change-point-detector-ed-pelt">Change Point detector: ED-PELT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.detect.cpd_ed_pelt"><code class="docutils literal notranslate"><span class="pre">cpd_ed_pelt()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#change-point-detector-cusum">Change Point detector: CUSUM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.detect.cusum"><code class="docutils literal notranslate"><span class="pre">cusum()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#steady-state-detector-change-point">Steady State detector: change point</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.detect.ssd_cpd"><code class="docutils literal notranslate"><span class="pre">ssd_cpd()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#steady-state-detector-variance-filter">Steady State detector: variance filter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.detect.ssid"><code class="docutils literal notranslate"><span class="pre">ssid()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#steady-state-detector-variable-moving-average">Steady State detector: variable moving average</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.detect.vma"><code class="docutils literal notranslate"><span class="pre">vma()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#unchanged-signal-identification">Unchanged signal identification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.detect.unchanged_signal_detector.unchanged_signal_detector"><code class="docutils literal notranslate"><span class="pre">unchanged_signal_detector()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Detect</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/detect.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="detect">
+<h1>Detect<a class="headerlink" href="#detect" title="Permalink to this heading"></a></h1>
+<section id="drift">
+<h2>Drift<a class="headerlink" href="#drift" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.detect.drift">
+<span class="sig-prename descclassname"><span class="pre">indsl.detect.</span></span><span class="sig-name descname"><span class="pre">drift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('3</span> <span class="pre">days</span> <span class="pre">00:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">04:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">std_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'decrease'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'increase'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'both'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'both'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.detect.drift" title="Permalink to this definition"></a></dt>
+<dd><p>Drift.</p>
+<p>This function detects data drift (deviation) by comparing two rolling averages, short and long interval, of the signal. The
+deviation between the short and long term average is considered significant if it is above a given threshold
+multiplied by the rolling standard deviation of the long term average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>long_interval</strong> – Long length.
+Length of long term time interval.</p></li>
+<li><p><strong>short_interval</strong> – Short length.
+Length of short term time interval.</p></li>
+<li><p><strong>std_threshold</strong> – Threshold.
+Parameter that determines if the signal has changed significantly enough to be considered drift. The threshold
+is multiplied by the long term rolling standard deviation to take into account the recent condition of the
+signal.</p></li>
+<li><p><strong>detect</strong> – Type.
+Parameter to determine if the model should detect significant decreases, increases or both. Options are:
+“decrease”, “increase”, or “both”. Defaults to “both”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Boolean time series.</dt><dd><p>Drift = 1, No drift = 0.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="oscillations">
+<h2>Oscillations<a class="headerlink" href="#oscillations" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.detect.oscillation_detector.oscillation_detector">
+<span class="sig-prename descclassname"><span class="pre">indsl.detect.oscillation_detector.</span></span><span class="sig-name descname"><span class="pre">oscillation_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.detect.oscillation_detector.oscillation_detector" title="Permalink to this definition"></a></dt>
+<dd><p>Oscillations.</p>
+<p>This function identifies if a signal contains one or more oscillatory components. It is based on the paper by Sharma et al. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
+The method uses Linear Predictive Coding (LPC) and is implemented as a 3 step process:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Estimate the LPC coefficients from the prediction polynomial. These are used to estimate a fit to the
+data.</p></li>
+<li><p>Estimate the roots of the LPC coefficients.</p></li>
+<li><p>Estimate the distance of each root to the unit circle in the complex plane.</p></li>
+</ol>
+</div></blockquote>
+<p>If the distance of any root is close to the unit circle (less than 0.2) the signal is considered to have an
+oscillatory component</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series</p></li>
+<li><p><strong>order</strong> – Polynomial order.
+Order of the prediction polynomial. Defaults to 4.</p></li>
+<li><p><strong>threshold</strong> – Threshold.
+Maximum distance of a root to the unit circle for which the signal is considered to have an oscillatory
+component. Defaults to 0.2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Oscillation region.</dt><dd><p>Regions where oscillations were detected. Ocillations detected =1, no detection =0.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Large variations in sampling time may affect the proficiency of the algorithm. The algorithm works best on time series with
+uniform sampling frequency. If non-uniformly sampled, you can use a resampling method to fill the missing
+data.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – Length of interpolated data does not match predicted data.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Sharma et al. “Automatic signal detection and quantification in process control loops using linear
+predictive coding.” Eng. Sc. &amp; Tech. an Intnl. Journal 2020.</p>
+</aside>
+</aside>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/detect/plot_oscillation_detection.html#sphx-glr-auto-examples-detect-plot-oscillation-detection-py"><span class="std std-ref">Oscillation detection using linear predictive coding</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="change-point-detector-ed-pelt">
+<h2>Change Point detector: ED-PELT<a class="headerlink" href="#change-point-detector-ed-pelt" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.detect.cpd_ed_pelt">
+<span class="sig-prename descclassname"><span class="pre">indsl.detect.</span></span><span class="sig-name descname"><span class="pre">cpd_ed_pelt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.detect.cpd_ed_pelt" title="Permalink to this definition"></a></dt>
+<dd><p>Change Point Detection.</p>
+<p>This function detects change points in a time series. The time series is split into “statistically homogeneous” segments using the
+ED Pelt change point detection algorithm while observing the minimum distance argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series</p></li>
+<li><p><strong>min_distance</strong> – Minimum distance.
+Specifies the minimum point wise distance for each segment that will be considered in the Change
+Point Detection algorithm.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.
+Binary time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/detect/plot_ssd_cpd.html#sphx-glr-auto-examples-detect-plot-ssd-cpd-py"><span class="std std-ref">Steady State Detection: Change Point</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="change-point-detector-cusum">
+<h2>Change Point detector: CUSUM<a class="headerlink" href="#change-point-detector-cusum" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.detect.cusum">
+<span class="sig-prename descclassname"><span class="pre">indsl.detect.</span></span><span class="sig-name descname"><span class="pre">cusum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drift</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'both'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'increase'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'decrease'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'both'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_ending</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_series_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'cusum_binary_result'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'mean_data'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'positive_cumulative_sum'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'negative_cumulative_sum'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'cusum_binary_result'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.detect.cusum" title="Permalink to this definition"></a></dt>
+<dd><p>Cumulative sum (CUSUM).</p>
+<p>This technique calculates the cumulative sum of positive and negative changes (g+t and g−t) in the data (x) and compares them to a threshold.
+When this threshold is exceeded, a change is detected (ttalarm), and the cumulative sum restarts from zero.
+To avoid the detection of a change in absence of an actual change or a slow drift, this algorithm also depends on a parameter <cite>drift</cite> for drift correction.
+Remove extreme standalone outliers before using this technique to get a better result.</p>
+<p>Typical uses of this function:</p>
+<ol class="arabic simple">
+<li><p>Set the type of series to return to “mean_data” to visualize the smoothed data. Leave the rest of the parameters to their default values.</p></li>
+<li><p>Adjust the alpha parameter to get the desired smoothing for the data.</p></li>
+<li><p>Set the type of series to return to “positive_cumulative_sum” or “negative_cumulative_sum” to visualize the cumulative sum of the positive or negative changes.</p></li>
+<li><p>Adjust the threshold and drift accordingly to get the desired number of change points.</p></li>
+<li><p>Set the type of series to return to “cusum_binary_result” to visualize the detected changes.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>threshold</strong> – Amplitude threshold.
+Cumulative changes are compared to this threshold. Defaults to None.
+When this is exceeded a change is detected and the cumulative sum restarts from 0.
+If the threshold is not provided, it is assigned to 5 * standard_deviation of the data.</p></li>
+<li><p><strong>drift</strong> – Drift term.
+Prevents any change in the absence of change. Defaults to None.
+If fewer false alarms are wanted, try to increase <cite>drift</cite>.
+If the threshold is not provided, it is assigned to (2 * data_standard_deviation - data_mean) / 2.</p></li>
+<li><p><strong>detect</strong> – Type of changes to detect.
+Options are:
+* “both” for detecting both increasing and decreasing changes in the data (default)
+* “increase” for detecting increasing changes in the data
+* “decrease” for detecting decreasing changes in the data</p></li>
+<li><p><strong>predict_ending</strong> – Predict end point.
+Prolongs the change until the predicted end point. Defaults to True.
+If false, single change points are detected.</p></li>
+<li><p><strong>alpha</strong> – Smoothing factor.
+Value between 0 &lt; alpha &lt;= 1. Defaults to 0.05.</p></li>
+<li><p><strong>return_series_type</strong> – <p>Type of series to return.
+Defaults to “cusum_binary_result”.
+This option allows the user to visualize the intermediate steps of the algorithm.
+Options are:</p>
+<ul>
+<li><p>”cusum_binary_result” returns the cusum results as a binary time series. Change detected = 1, No change detected = 0.</p></li>
+<li><p>”mean_data” returns the smoothed data.</p></li>
+<li><p>”positive_cumulative_sum” returns the positive cumulative sum.</p></li>
+<li><p>”negative_cumulative_sum” returns the negative cumulative sum.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Time series.</dt><dd><p>Specified in the return_series_type parameter.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – If a time series with the wrong index is provided.</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – If an empty time series is passed into the function.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p><a class="reference external" href="https://nbviewer.org/github/demotu/detecta/blob/master/docs/detect_cusum.ipynb">https://nbviewer.org/github/demotu/detecta/blob/master/docs/detect_cusum.ipynb</a></p>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/detect/plot_cusum.html#sphx-glr-auto-examples-detect-plot-cusum-py"><span class="std std-ref">Change Point Detection with Cusum</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="steady-state-detector-change-point">
+<h2>Steady State detector: change point<a class="headerlink" href="#steady-state-detector-change-point" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.detect.ssd_cpd">
+<span class="sig-prename descclassname"><span class="pre">indsl.detect.</span></span><span class="sig-name descname"><span class="pre">ssd_cpd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-3.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.detect.ssd_cpd" title="Permalink to this definition"></a></dt>
+<dd><p>Steady State Detection (CPD).</p>
+<p>Detect steady state periods in a time series based on a change point detection algorithm.  The time series is split
+into “statistically homogeneous” segments using the ED Pelt change point detection algorithm. Then each segment is tested with regard
+to a normalized standard deviation and the slope of the line of best fit to determine if the segment can be
+considered a steady or transient region.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>min_distance</strong> – Minimum distance.
+Specifies the minimum point-wise distance for each segment that will be considered in the Change
+Point Detection algorithm.</p></li>
+<li><p><strong>var_threshold</strong> – Variance threshold.
+Specifies the variance threshold. If the normalized variance calculated for a given segment is greater than
+the threshold, the segment will be labeled as transient (value = 0).</p></li>
+<li><p><strong>slope_threshold</strong> – Slope threshold.
+Specifies the slope threshold. If the slope of a line fitted to the data of a given segment is greater than
+10 to the power of the threshold value, the segment will be labeled as transient (value = 0).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Binary time series.
+Steady state = 1, Transient = 0.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/detect/plot_ssd_cpd.html#sphx-glr-auto-examples-detect-plot-ssd-cpd-py"><span class="std std-ref">Steady State Detection: Change Point</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="steady-state-detector-variance-filter">
+<h2>Steady State detector: variance filter<a class="headerlink" href="#steady-state-detector-variance-filter" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.detect.ssid">
+<span class="sig-prename descclassname"><span class="pre">indsl.detect.</span></span><span class="sig-name descname"><span class="pre">ssid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_lim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.detect.ssid" title="Permalink to this definition"></a></dt>
+<dd><p>Steady state (variance).</p>
+<p>The steady state detector is based on the ration of two variances estimated from the same signal <a class="footnote-reference brackets" href="#id4" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> . The algorithm first
+filters the data using the factor “Alpha 1” and calculates two variances (long and short term) based on the
+parameters “Alpa 2” and “Alpha 3”. The first variance is an exponentially weighted moving variance based on the
+difference between the data and the average. The second is also an exponentially weighted moving “variance” but
+based on sequential data differences. Larger Alpha values imply that fewer data are involved in the analysis,
+which has the benefit of reducing the time for the identifier to detect a process change (average run length, ARL)
+but has an undesired impact of increasing the variability on the results, broadening the distribution and
+confounding interpretation. Lower λ values undesirably increase the average run length to detection but increase
+precision (minimizing Type-I and Type-II statistical errors) by reducing the variability of the distributions
+and increasing the signal-to-noise ratio of a TS to SS situation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>ratio_lim</strong> – Threshold.
+Specifies the variance ratio threshold if it is in steady state or not. A variance ratio greater than the
+threshold labels the state as transient.</p></li>
+<li><p><strong>alpha1</strong> – Alpha 1.
+Filter factor for the mean. Value should be between 0 and 1. Recommended value is 0.2.
+Defaults to 0.2.</p></li>
+<li><p><strong>alpha2</strong> – Alpha 2.
+Filter factor for variance 1. Value should be between 0 and 1. Recommended value is 0.1.
+Defaults to 0.1.</p></li>
+<li><p><strong>alpha3</strong> – Alpha 3.
+Filter factor for variance 2. Value should be between 0 and 1. Recommended value is 0.1.
+Defaults to 0.1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Binary time series.
+Steady state = 0, transient = 1.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>Rhinehart, R. Russell. (2013). Automated steady and transient state identification in noisy processes.
+Proceedings of the American Control Conference. 4477-4493. 10.1109/ACC.2013.6580530</p>
+</aside>
+</aside>
+</dd></dl>
+
+</section>
+<section id="steady-state-detector-variable-moving-average">
+<h2>Steady State detector: variable moving average<a class="headerlink" href="#steady-state-detector-variable-moving-average" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.detect.vma">
+<span class="sig-prename descclassname"><span class="pre">indsl.detect.</span></span><span class="sig-name descname"><span class="pre">vma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.detect.vma" title="Permalink to this definition"></a></dt>
+<dd><p>Steady state (vma).</p>
+<p>This moving average is designed to become flat (constant value) when the data
+within the lookup window does not vary significantly. It can also be state detector. The calculation is based on
+the variability of the signal in a lookup window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series.</p></li>
+<li><p><strong>window_length</strong> – Lookup window.
+Window length in data points used to estimate the variability of the signal.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Moving average.
+If the result has the same value as the previous moving average result, the signal can be considered to
+be on steady state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="unchanged-signal-identification">
+<h2>Unchanged signal identification<a class="headerlink" href="#unchanged-signal-identification" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.detect.unchanged_signal_detector.unchanged_signal_detector">
+<span class="sig-prename descclassname"><span class="pre">indsl.detect.unchanged_signal_detector.</span></span><span class="sig-name descname"><span class="pre">unchanged_signal_detector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_nr_data_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.detect.unchanged_signal_detector.unchanged_signal_detector" title="Permalink to this definition"></a></dt>
+<dd><p>Unchanged signal detection.</p>
+<p>Detect periods of time when the data stays at a constant value for longer than a given time window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>duration</strong> – Time window.
+Length of the time period to check for unchanged time series values. Defaults to ‘minutes=60’.</p></li>
+<li><p><strong>min_nr_data_points</strong> – Data points.
+The least number of data points to avoid alerting on missing data. Defaults to 3.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Time series.</dt><dd><p>The returned time series is an indicator function that is 1 where the time series value has remained
+unchanged, 0 if it has changed.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – data is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – data is empty</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/detect/plot_unchanged_signal_detection.html#sphx-glr-auto-examples-detect-plot-unchanged-signal-detection-py"><span class="std std-ref">Unchanged signal identification of time series data</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_quality.html" class="btn btn-neutral float-left" title="Data Quality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drilling.html" class="btn btn-neutral float-right" title="Drilling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

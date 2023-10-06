@@ -1,0 +1,155 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "gzarruk",
+      "name": "Gustavo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24595022?v=4",
+      "profile": "https://github.com/gzarruk",
+      "contributions": [
+        "doc",
+        "review",
+        "talk",
+        "test",
+        "data",
+        "content",
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "funsim",
+      "name": "Simon Funke",
+      "avatar_url": "https://avatars.githubusercontent.com/u/763150?v=4",
+      "profile": "https://github.com/funsim",
+      "contributions": [
+        "code",
+        "test",
+        "bug"
+      ]
+    },
+    {
+      "login": "neringaalt",
+      "name": "Neringa Altanaite",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8692658?v=4",
+      "profile": "https://github.com/neringaalt",
+      "contributions": [
+        "code",
+        "review",
+        "test",
+        "doc"
+      ]
+    },
+    {
+      "login": "rhuanbarreto",
+      "name": "Rhuan Barreto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/283004?v=4",
+      "profile": "https://www.linkedin.com/in/rhuanbarreto/",
+      "contributions": [
+        "tool",
+        "security",
+        "review",
+        "ideas",
+        "infra"
+      ]
+    },
+    {
+      "login": "evertoncolling",
+      "name": "Everton Colling",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33816483?v=4",
+      "profile": "https://github.com/evertoncolling",
+      "contributions": [
+        "code",
+        "data",
+        "doc",
+        "test"
+      ]
+    },
+    {
+      "login": "redzarosliCognite",
+      "name": "redzarosliCognite",
+      "avatar_url": "https://avatars.githubusercontent.com/u/91888036?v=4",
+      "profile": "https://github.com/redzarosliCognite",
+      "contributions": [
+        "code",
+        "review",
+        "ideas",
+        "doc",
+        "example",
+        "question",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "MortGron",
+      "name": "Morten Grønbech",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42722577?v=4",
+      "profile": "https://github.com/MortGron",
+      "contributions": [
+        "code",
+        "example",
+        "doc",
+        "review",
+        "question",
+        "ideas"
+      ]
+    },
+    {
+      "login": "Anitsirc22",
+      "name": "Cristina Ferrer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38993790?v=4",
+      "profile": "https://github.com/Anitsirc22",
+      "contributions": [
+        "code",
+        "example",
+        "ideas",
+        "review"
+      ]
+    },
+    {
+      "login": "haakonvt",
+      "name": "Håkon V. Treider",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8521241?v=4",
+      "profile": "http://treiderphoto.com",
+      "contributions": [
+        "code",
+        "review",
+        "ideas",
+        "infra"
+      ]
+    },
+    {
+      "login": "KeepFloyding",
+      "name": "Andris Piebalgs",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29730122?v=4",
+      "profile": "https://github.com/KeepFloyding",
+      "contributions": [
+        "code",
+        "review",
+        "example"
+      ]
+    },
+    {
+      "login": "kbrattli",
+      "name": "kbrattli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45734104?v=4",
+      "profile": "https://github.com/kbrattli",
+      "contributions": [
+        "code",
+        "doc",
+        "maintenance",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "indsl",
+  "projectOwner": "cognitedata",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

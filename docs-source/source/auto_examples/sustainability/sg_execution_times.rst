@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr_auto_examples_sustainability_sg_execution_times:
+
+Computation times
+=================
+**00:00.511** total execution time for **auto_examples_sustainability** files:
+
++--------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_auto_examples_sustainability_plot_cumulative_co2.py` (``plot_cumulative_co2.py``) | 00:00.511 | 0.0 MB |
++--------------------------------------------------------------------------------------------------+-----------+--------+

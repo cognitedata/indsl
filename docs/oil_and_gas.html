@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oil and Gas &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Resample" href="resample.html" />
+    <link rel="prev" title="Numerical Calculus" href="numerical_calculus.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Oil and Gas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gas-density-calculator">Gas density calculator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.oil_and_gas.calculate_gas_density"><code class="docutils literal notranslate"><span class="pre">calculate_gas_density()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#productivity-index">Productivity index</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.oil_and_gas.productivity_index"><code class="docutils literal notranslate"><span class="pre">productivity_index()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#shut-in-detector">Shut-in detector</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.oil_and_gas.calculate_shutin_interval"><code class="docutils literal notranslate"><span class="pre">calculate_shutin_interval()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#shut-in-variable-calculator">Shut-in variable calculator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.oil_and_gas.calculate_shutin_variable"><code class="docutils literal notranslate"><span class="pre">calculate_shutin_variable()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#well-production-status">Well production status</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.oil_and_gas.calculate_well_prod_status"><code class="docutils literal notranslate"><span class="pre">calculate_well_prod_status()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieve-fluid-properties">Retrieve fluid properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.oil_and_gas.live_fluid_properties.retrieve_fluid_properties"><code class="docutils literal notranslate"><span class="pre">retrieve_fluid_properties()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Oil and Gas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/oil_and_gas.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="oil-and-gas">
+<h1>Oil and Gas<a class="headerlink" href="#oil-and-gas" title="Permalink to this heading"></a></h1>
+<section id="gas-density-calculator">
+<h2>Gas density calculator<a class="headerlink" href="#gas-density-calculator" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.oil_and_gas.calculate_gas_density">
+<span class="sig-prename descclassname"><span class="pre">indsl.oil_and_gas.</span></span><span class="sig-name descname"><span class="pre">calculate_gas_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.oil_and_gas.calculate_gas_density" title="Permalink to this definition"></a></dt>
+<dd><p>Gas density calculator.</p>
+<p>The gas density is calculated from real gas laws.The psuedo critical tempreature and pressure is
+calculated from specific gravity following <a class="reference external" href="https://doi.org/10.2118/14265-MS">Sutton (1985)</a>. The
+<a class="reference external" href="https://onepetro.org/JPT/article-abstract/25/05/607/165212/A-Study-of-Two-Phase-Flow-in-Inclined-Pipes">Beggs and Brill (1973)</a>
+method (explicit) is used to calculate the compressibility factor. All equations used here can be found in one place at
+<a class="reference external" href="https://link.springer.com/article/10.1007/s13202-015-0209-3">Kareem et. al.</a>. The gas equation <em>Pv = zRT</em>
+is used to calculate the gas density.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure</strong> – Pressure [psi].
+Pressure time series in psi units.</p></li>
+<li><p><strong>temperature</strong> – Temperature [degF].
+Temperature time series in degrees Fahrenheit units.</p></li>
+<li><p><strong>sg</strong> – Specific gravity [-].
+Specific gravity of the gas.</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Gas density [lbm/ft3]</dt><dd><p>Estimated gas density in pound-mass per cubic foot (pcf).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – When all values of the pressure and temperature are out of range for calculating compressibility.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/oil_and_gas/plot_gas_density_calcs.html#sphx-glr-auto-examples-oil-and-gas-plot-gas-density-calcs-py"><span class="std std-ref">Calculation of gas density</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="productivity-index">
+<h2>Productivity index<a class="headerlink" href="#productivity-index" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.oil_and_gas.productivity_index">
+<span class="sig-prename descclassname"><span class="pre">indsl.oil_and_gas.</span></span><span class="sig-name descname"><span class="pre">productivity_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_res</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_bh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q_gas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.oil_and_gas.productivity_index" title="Permalink to this definition"></a></dt>
+<dd><p>Productivity Index.</p>
+<p>The productivity index or PI is defined as the gas flow rate at the well divided by the difference in pressure
+between the reservoir and bottom hole. If no data is available for any of the inputs for a specific
+timestamp, then it will be ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_res</strong> – Reservoir pressure.</p></li>
+<li><p><strong>p_bh</strong> – Bottomhole pressure.</p></li>
+<li><p><strong>Q_gas</strong> – Gas flowrate.</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Productivity index.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If any input time series has no data, then PI can’t be computed for any timestamps.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="shut-in-detector">
+<h2>Shut-in detector<a class="headerlink" href="#shut-in-detector" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.oil_and_gas.calculate_shutin_interval">
+<span class="sig-prename descclassname"><span class="pre">indsl.oil_and_gas.</span></span><span class="sig-name descname"><span class="pre">calculate_shutin_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shut_valve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_shutin_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_time_btw_shutins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shutin_state_below_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shutin_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.oil_and_gas.calculate_shutin_interval" title="Permalink to this definition"></a></dt>
+<dd><p>Shut-in interval.</p>
+<p>The shut-in interval is defined as the period when the valve is in closed state. The close state is determined based
+on the calculated manually-given threshold. The threshold is calculated based on the analysis of the valve signal
+histogram.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shut_valve</strong> – Shut-in valve.
+Time series with the shut-in valve opening.</p></li>
+<li><p><strong>min_shutin_len</strong> – Minimum time.
+Minimum shut-in length in hours to be considered for detection.</p></li>
+<li><p><strong>min_time_btw_shutins</strong> – Time between.
+Minimum time between consecutive shut-ins in hours to validate change of state.</p></li>
+<li><p><strong>shutin_state_below_threshold</strong> – Below threshold.
+Indicator to tell the algorithm if the shut-in state is below the threshold.</p></li>
+<li><p><strong>shutin_threshold</strong> – Threshold.
+Threshold between the valve open and close states. Defaults to None, meaning that the threshold is calculated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Shut-in periods.
+Binary time series indicating open state or closed state: Open state= 1, Close state = 0.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If threshold cannot be determined in the evaluation window, the user is asked to increase the evaluation period. Recommended period is 30 days.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/oil_and_gas/plot_shut_in_detector.html#sphx-glr-auto-examples-oil-and-gas-plot-shut-in-detector-py"><span class="std std-ref">Detection of valve shut-in state</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="shut-in-variable-calculator">
+<h2>Shut-in variable calculator<a class="headerlink" href="#shut-in-variable-calculator" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.oil_and_gas.calculate_shutin_variable">
+<span class="sig-prename descclassname"><span class="pre">indsl.oil_and_gas.</span></span><span class="sig-name descname"><span class="pre">calculate_shutin_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable_signal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shutin_signal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hrs_after_shutin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.oil_and_gas.calculate_shutin_variable" title="Permalink to this definition"></a></dt>
+<dd><p>Shut-in variable calculator.</p>
+<p>The shut-in variable calculator is a function to compute the variable of interest at specific times after the shut-in
+onset. Typically, variables of interest are pressure and temperature. The function is the dependency of the shut-in
+detector. Based on the detected shut-in interval, the function uses specified number of hours indicating the time after
+the onset of each shut-in. It calculates the variable of interest at that time instance using interpolation (method - time).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable_signal</strong> – Signal of interest.
+Typically pressure or temperature signal.</p></li>
+<li><p><strong>shutin_signal</strong> – Shut-in signal.
+The signal comes from a shut-in detector function or a signal indicating shut-in condition
+(0 - well in shut-in state, 1 - well in flowing state). We suggest using the
+<a class="reference internal" href="#indsl.oil_and_gas.calculate_shutin_interval" title="indsl.oil_and_gas.calculate_shutin_interval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">indsl.oil_and_gas.calculate_shutin_interval()</span></code></a>.</p></li>
+<li><p><strong>hrs_after_shutin</strong> – Hours after.
+Hours after shut-in onset at which to calculate the signal of interest.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output.
+Signal of interest at specific time after shut-in onset.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/oil_and_gas/plot_shut_in_variables.html#sphx-glr-auto-examples-oil-and-gas-plot-shut-in-variables-py"><span class="std std-ref">Calculation of shut-in pressure</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="well-production-status">
+<h2>Well production status<a class="headerlink" href="#well-production-status" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.oil_and_gas.calculate_well_prod_status">
+<span class="sig-prename descclassname"><span class="pre">indsl.oil_and_gas.</span></span><span class="sig-name descname"><span class="pre">calculate_well_prod_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master_valve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wing_valve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">choke_valve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_master</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_wing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_choke</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.oil_and_gas.calculate_well_prod_status" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the well is producing.</p>
+<p>Determine if the well is producing. In order for this to be the case, the following has to happen:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>All Master, Wing and Choke data have to come from the same well.</p></li>
+<li><p>Check if the master, wing and choke valve openings are above their respective threshold values at a given time.</p></li>
+<li><p>If any of the valves are below the threshold opening, then the well is closed.</p></li>
+<li><p>If all of the valves are above the threshold opening, then the well is open.</p></li>
+<li><p>Threshold values should be between 0-100.</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>master_valve</strong> – Master Valve
+Time series of the master valve.</p></li>
+<li><p><strong>wing_valve</strong> – Wing Valve
+Time series of the wing valve.</p></li>
+<li><p><strong>choke_valve</strong> – Choke Valve
+Time series of the choke valve.</p></li>
+<li><p><strong>threshold_master</strong> – Master threshold
+Threshold percentage value from 0%-100%.</p></li>
+<li><p><strong>threshold_wing</strong> – Wing threshold
+Threshold percentage value from 0%-100%.</p></li>
+<li><p><strong>threshold_choke</strong> – Choke threshold
+Threshold percentage value from 0%-100%.</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Well Status</dt><dd><p>Well production status (1 means open, 0 means closed).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/oil_and_gas/plot_well_prod_status.html#sphx-glr-auto-examples-oil-and-gas-plot-well-prod-status-py"><span class="std std-ref">Check for the production status of a well</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="retrieve-fluid-properties">
+<h2>Retrieve fluid properties<a class="headerlink" href="#retrieve-fluid-properties" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.oil_and_gas.live_fluid_properties.retrieve_fluid_properties">
+<span class="sig-prename descclassname"><span class="pre">indsl.oil_and_gas.live_fluid_properties.</span></span><span class="sig-name descname"><span class="pre">retrieve_fluid_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pvt_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'linear'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'nearest'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cubic'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'linear'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.oil_and_gas.live_fluid_properties.retrieve_fluid_properties" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve fluid properties.</p>
+<p>This function obtains the value for the selected fluid property (<cite>param</cite>) corresponding to the pressure/temp pairs input as series. The input fluid file type is a .tab file that is an output
+of an equation of state simulator (i.e PVTSim, MultiFlash) and is an input file specifically for OLGA. The 31 fluid property parameters included in the .tab file are the options as an output for this function.
+Note that pressure and temperature sensors have to come from the same location.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure</strong> – Pressure time series.</p></li>
+<li><p><strong>temperature</strong> – Temperature time series.</p></li>
+<li><p><strong>pvt_data</strong> – PVT data.
+This is a PVT table that has been parsed out from a .tab file which is a standardized generated output of
+MultiFlash and PVTSim.</p></li>
+<li><p><strong>param</strong> – Fluid parameter of interest.
+Fluid property to be estimated.</p></li>
+<li><p><strong>interp_method</strong> – Method.
+The method used to interpolate the pvt table to obtain fluid properties of a given pressure and temperature.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Time series</dt><dd><p>Fluid property of selected fluid property (“param”) for corresponding pressure and temperature sensors.
+There are 31 fluid properties currently available to output from the fluid file.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AssertionError</strong> – If data in sequence is not from a .tab file.</p></li>
+<li><p><strong>AssertionError</strong> – If <cite>param</cite> input is not one of the 31 fluid properties available.</p></li>
+<li><p><strong>Exception</strong> – If the range of the pressure and temperature sensor is outside the pvt table window, the function</p></li>
+<li><p><strong>cannot interpolate for fluid property parameters.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/oil_and_gas/plot_live_fluid_properties.html#sphx-glr-auto-examples-oil-and-gas-plot-live-fluid-properties-py"><span class="std std-ref">Calculate fluid properties given pressure and temperature</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="numerical_calculus.html" class="btn btn-neutral float-left" title="Numerical Calculus" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="resample.html" class="btn btn-neutral float-right" title="Resample" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

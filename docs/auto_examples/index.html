@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery of Charts &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            indsl
+              <img src="../_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Gallery of Charts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/auto_examples/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gallery-of-charts">
+<h1>Gallery of Charts<a class="headerlink" href="#gallery-of-charts" title="Permalink to this heading"></a></h1>
+<p>Examples of how to use the algorithms included in Cognite Charts.</p>
+<div class="sphx-glr-thumbnails"></div><section id="data-quality">
+<h2>Data quality<a class="headerlink" href="#data-quality" title="Permalink to this heading"></a></h2>
+<p>Examples on how to explore the data quality of time series.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of point outlier removal with polynomial regression and Studentized residuals. We gener..."><img alt="" src="../_images/sphx_glr_plot_extreme_outlier_thumb.png" />
+<p><a class="reference internal" href="data_quality/plot_extreme_outlier.html#sphx-glr-auto-examples-data-quality-plot-extreme-outlier-py"><span class="std std-ref">Extreme Outliers Removal</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Extreme Outliers Removal</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of algorithm that indicates decreasing values in time series data. This algorithm is ap..."><img alt="" src="../_images/sphx_glr_plot_value_decrease_check_thumb.png" />
+<p><a class="reference internal" href="data_quality/plot_value_decrease_check.html#sphx-glr-auto-examples-data-quality-plot-value-decrease-check-py"><span class="std std-ref">Checking for decreasing values in a timeseries</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Checking for decreasing values in a timeseries</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing rolling standard deviation of time delta of time series data to identify..."><img alt="" src="../_images/sphx_glr_plot_rolling_stddev_timedelta_thumb.png" />
+<p><a class="reference internal" href="data_quality/plot_rolling_stddev_timedelta.html#sphx-glr-auto-examples-data-quality-plot-rolling-stddev-timedelta-py"><span class="std std-ref">Rolling standard deviation of data points time delta</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rolling standard deviation of data points time delta</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="It is important to know how complete a time series is. In this example, the function qualifies ..."><img alt="" src="../_images/sphx_glr_plot_completeness_thumb.png" />
+<p><a class="reference internal" href="data_quality/plot_completeness.html#sphx-glr-auto-examples-data-quality-plot-completeness-py"><span class="std std-ref">Completeness score of time series</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Completeness score of time series</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing breach of threshold in hour count in a time series representing running ..."><img alt="" src="../_images/sphx_glr_plot_datapoint_diff_thumb.png" />
+<p><a class="reference internal" href="data_quality/plot_datapoint_diff.html#sphx-glr-auto-examples-data-quality-plot-datapoint-diff-py"><span class="std std-ref">Threshold breach check for difference between two data points over a period of time</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Threshold breach check for difference between two data points over a period of time</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Detecting density of data points in a time series is important for finding out if the expected ..."><img alt="" src="../_images/sphx_glr_plot_low_density_identification_thumb.png" />
+<p><a class="reference internal" href="data_quality/plot_low_density_identification.html#sphx-glr-auto-examples-data-quality-plot-low-density-identification-py"><span class="std std-ref">Identifying low density periods</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Identifying low density periods</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Identifying gaps in data is critical when working with time series. Data gaps can be for instan..."><img alt="" src="../_images/sphx_glr_plot_gaps_identification_thumb.png" />
+<p><a class="reference internal" href="data_quality/plot_gaps_identification.html#sphx-glr-auto-examples-data-quality-plot-gaps-identification-py"><span class="std std-ref">Identifying gaps in time series</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Identifying gaps in time series</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Introduction ------------ The out_of_range function uses Savitzky-Golay smoothing (SG) - sg to ..."><img alt="" src="../_images/sphx_glr_plot_out_of_range_thumb.png" />
+<p><a class="reference internal" href="data_quality/plot_out_of_range.html#sphx-glr-auto-examples-data-quality-plot-out-of-range-py"><span class="std std-ref">Detect out of range outliers in sensor data</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Detect out of range outliers in sensor data</div>
+</div></div></section>
+<section id="detection-functions">
+<h2>Detection Functions<a class="headerlink" href="#detection-functions" title="Permalink to this heading"></a></h2>
+<p>Examples of how to use the detection functions included in Cognite Charts.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of change point detection based on the cusum algorithm. We use synthetic data generated..."><img alt="" src="../_images/sphx_glr_plot_cusum_thumb.png" />
+<p><a class="reference internal" href="detect/plot_cusum.html#sphx-glr-auto-examples-detect-plot-cusum-py"><span class="std std-ref">Change Point Detection with Cusum</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Change Point Detection with Cusum</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharm..."><img alt="" src="../_images/sphx_glr_plot_oscillation_detection_thumb.png" />
+<p><a class="reference internal" href="detect/plot_oscillation_detection.html#sphx-glr-auto-examples-detect-plot-oscillation-detection-py"><span class="std std-ref">Oscillation detection using linear predictive coding</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Oscillation detection using linear predictive coding</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of steady state detection (SSD) based on the ED-PELT change point detection (CPD) algor..."><img alt="" src="../_images/sphx_glr_plot_ssd_cpd_thumb.png" />
+<p><a class="reference internal" href="detect/plot_ssd_cpd.html#sphx-glr-auto-examples-detect-plot-ssd-cpd-py"><span class="std std-ref">Steady State Detection: Change Point</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Steady State Detection: Change Point</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing unchanged signal during a certain time period in a given time series."><img alt="" src="../_images/sphx_glr_plot_unchanged_signal_detection_thumb.png" />
+<p><a class="reference internal" href="detect/plot_unchanged_signal_detection.html#sphx-glr-auto-examples-detect-plot-unchanged-signal-detection-py"><span class="std std-ref">Unchanged signal identification of time series data</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Unchanged signal identification of time series data</div>
+</div></div></section>
+<section id="equipment-functions">
+<h2>Equipment Functions<a class="headerlink" href="#equipment-functions" title="Permalink to this heading"></a></h2>
+<p>Examples of how to use the equipment functions included in Cognite Charts.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip=" Pump suction pressure  Pump discharge pressure  Recycle valve outlet pressure  Recycle valve f..."><img alt="" src="../_images/sphx_glr_plot_recycle_valve_power_loss_thumb.png" />
+<p><a class="reference internal" href="equipment/plot_recycle_valve_power_loss.html#sphx-glr-auto-examples-equipment-plot-recycle-valve-power-loss-py"><span class="std std-ref">Pump recycle valve power loss</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pump recycle valve power loss</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Calculate pump parameters total head across the pump and difference from Best Efficiency Point ..."><img alt="" src="../_images/sphx_glr_plot_pump_parameters_thumb.png" />
+<p><a class="reference internal" href="equipment/plot_pump_parameters.html#sphx-glr-auto-examples-equipment-plot-pump-parameters-py"><span class="std std-ref">Calculate parameters of a centrifugal pump</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Calculate parameters of a centrifugal pump</div>
+</div></div></section>
+<section id="filter-functions">
+<h2>Filter Functions<a class="headerlink" href="#filter-functions" title="Permalink to this heading"></a></h2>
+<p>Examples of how to use the filter functions included in Cognite Charts.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of filtering to remove noise from time series data using the Wavelet filter. We use dat..."><img alt="" src="../_images/sphx_glr_plot_wavelet_filter_thumb.png" />
+<p><a class="reference internal" href="filter/plot_wavelet_filter.html#sphx-glr-auto-examples-filter-plot-wavelet-filter-py"><span class="std std-ref">Noise removal and trending with the Wavelet filter</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Noise removal and trending with the Wavelet filter</div>
+</div></div><div class="sphx-glr-thumbnails"></div></section>
+<section id="forecasting-functions">
+<h2>Forecasting Functions<a class="headerlink" href="#forecasting-functions" title="Permalink to this heading"></a></h2>
+<p>Examples of algorithms used to forecast data</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="For the Holt-Winters example we use forged daily data with a weekly seasonality. We predict two..."><img alt="" src="../_images/sphx_glr_plot_holt_winters_predictor_thumb.png" />
+<p><a class="reference internal" href="forecast/plot_holt_winters_predictor.html#sphx-glr-auto-examples-forecast-plot-holt-winters-predictor-py"><span class="std std-ref">Holt-Winters Predictor</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Holt-Winters Predictor</div>
+</div></div></section>
+<section id="numerical-calculus">
+<h2>Numerical Calculus<a class="headerlink" href="#numerical-calculus" title="Permalink to this heading"></a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example a synthetic time series is generated with a certain skewness (to make it more i..."><img alt="" src="../_images/sphx_glr_plot_sliding_window_integration_thumb.png" />
+<p><a class="reference internal" href="numerical_calculus/plot_sliding_window_integration.html#sphx-glr-auto-examples-numerical-calculus-plot-sliding-window-integration-py"><span class="std std-ref">Sliding window integration</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Sliding window integration</div>
+</div></div></section>
+<section id="oil-and-gas-functions">
+<h2>Oil and Gas Functions<a class="headerlink" href="#oil-and-gas-functions" title="Permalink to this heading"></a></h2>
+<p>Examples of algorithms used in the Oil and Gas industry.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="The data is from an unnamed well in the form of a pickle file. The data is a dataframe that con..."><img alt="" src="../_images/sphx_glr_plot_well_prod_status_thumb.png" />
+<p><a class="reference internal" href="oil_and_gas/plot_well_prod_status.html#sphx-glr-auto-examples-oil-and-gas-plot-well-prod-status-py"><span class="std std-ref">Check for the production status of a well</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Check for the production status of a well</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Gas density is calculated using real gas equations from input pressure, temperature and specifi..."><img alt="" src="../_images/sphx_glr_plot_gas_density_calcs_thumb.png" />
+<p><a class="reference internal" href="oil_and_gas/plot_gas_density_calcs.html#sphx-glr-auto-examples-oil-and-gas-plot-gas-density-calcs-py"><span class="std std-ref">Calculation of gas density</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Calculation of gas density</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="We use data from an emergency shut-down valve sensor on a compressor. The figure shows reading ..."><img alt="" src="../_images/sphx_glr_plot_shut_in_detector_thumb.png" />
+<p><a class="reference internal" href="oil_and_gas/plot_shut_in_detector.html#sphx-glr-auto-examples-oil-and-gas-plot-shut-in-detector-py"><span class="std std-ref">Detection of valve shut-in state</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Detection of valve shut-in state</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In reservoir and production engineering, knowledge of the shut-in pressure can help estimate re..."><img alt="" src="../_images/sphx_glr_plot_shut_in_variables_thumb.png" />
+<p><a class="reference internal" href="oil_and_gas/plot_shut_in_variables.html#sphx-glr-auto-examples-oil-and-gas-plot-shut-in-variables-py"><span class="std std-ref">Calculation of shut-in pressure</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Calculation of shut-in pressure</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="The calculation of fluid properties is a fundamental component of mass balance and other method..."><img alt="" src="../_images/sphx_glr_plot_live_fluid_properties_thumb.png" />
+<p><a class="reference internal" href="oil_and_gas/plot_live_fluid_properties.html#sphx-glr-auto-examples-oil-and-gas-plot-live-fluid-properties-py"><span class="std std-ref">Calculate fluid properties given pressure and temperature</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Calculate fluid properties given pressure and temperature</div>
+</div></div></section>
+<section id="reindex-function">
+<h2>Reindex function<a class="headerlink" href="#reindex-function" title="Permalink to this heading"></a></h2>
+<p>Example on how to reindex two time-series.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="When working with multiple time series it is often important that time stamps are aligned. Even..."><img alt="" src="../_images/sphx_glr_plot_pearson_correlation_thumb.png" />
+<p><a class="reference internal" href="reindex/plot_pearson_correlation.html#sphx-glr-auto-examples-reindex-plot-pearson-correlation-py"><span class="std std-ref">Re-indexing and compute Pearson correlation coefficient</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Re-indexing and compute Pearson correlation coefficient</div>
+</div></div></section>
+<section id="resampling-functions">
+<h2>Resampling Functions<a class="headerlink" href="#resampling-functions" title="Permalink to this heading"></a></h2>
+<p>Examples of how to use the resampling functions included in Cognite Charts.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of aggregating (grouping) data on regions defined by a series with integers denoting di..."><img alt="" src="../_images/sphx_glr_plot_group_by_region_thumb.png" />
+<p><a class="reference internal" href="resample/plot_group_by_region.html#sphx-glr-auto-examples-resample-plot-group-by-region-py"><span class="std std-ref">Group by Region</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Group by Region</div>
+</div></div></section>
+<section id="synthetic-signal-generation">
+<h2>Synthetic Signal Generation<a class="headerlink" href="#synthetic-signal-generation" title="Permalink to this heading"></a></h2>
+<p>Examples of how to generate synthetic signals.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="We will generate a linear time series with a sampling frequency of 4 hours, from 1975/05/09 to ..."><img alt="" src="../_images/sphx_glr_plot_synthetic_gaps_thumb.png" />
+<p><a class="reference internal" href="signals/plot_synthetic_gaps.html#sphx-glr-auto-examples-signals-plot-synthetic-gaps-py"><span class="std std-ref">Inserting gaps in a time series</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Inserting gaps in a time series</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="We will generate three univariate polynomials of a given time series. The order of the polynomi..."><img alt="" src="../_images/sphx_glr_plot_univariate_polynomial_thumb.png" />
+<p><a class="reference internal" href="signals/plot_univariate_polynomial.html#sphx-glr-auto-examples-signals-plot-univariate-polynomial-py"><span class="std std-ref">Univariate Polynomial</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Univariate Polynomial</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to ge..."><img alt="" src="../_images/sphx_glr_plot_wavy_signals_thumb.png" />
+<p><a class="reference internal" href="signals/plot_wavy_signals.html#sphx-glr-auto-examples-signals-plot-wavy-signals-py"><span class="std std-ref">Wavy signal generation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Wavy signal generation</div>
+</div></div></section>
+<section id="smoothing-functions">
+<h2>Smoothing Functions<a class="headerlink" href="#smoothing-functions" title="Permalink to this heading"></a></h2>
+<p>Examples of how to use the smoothing functions included in Cognite Charts.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Savitzky-Golay smoother. We use data f..."><img alt="" src="../_images/sphx_glr_plot_sg_smooth_thumb.png" />
+<p><a class="reference internal" href="smooth/plot_sg_smooth.html#sphx-glr-auto-examples-smooth-plot-sg-smooth-py"><span class="std std-ref">Data smoothing with the Savitzky-Golay filter</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Data smoothing with the Savitzky-Golay filter</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Simple Moving Average (SMA), Linear We..."><img alt="" src="../_images/sphx_glr_plot_ma_thumb.png" />
+<p><a class="reference internal" href="smooth/plot_ma.html#sphx-glr-auto-examples-smooth-plot-ma-py"><span class="std std-ref">Data smoothing with Moving Averages</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Data smoothing with Moving Averages</div>
+</div></div></section>
+<section id="statistics">
+<h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this heading"></a></h2>
+<p>Example on how to use statistics functions in InDSL.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection from time series data using DBSCAN and spline regression. We use d..."><img alt="" src="../_images/sphx_glr_plot_remove_outliers_thumb.png" />
+<p><a class="reference internal" href="statistics/plot_remove_outliers.html#sphx-glr-auto-examples-statistics-plot-remove-outliers-py"><span class="std std-ref">Outlier detection with DBSCAN and spline regression</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Outlier detection with DBSCAN and spline regression</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example calculates the rolling pearson correlation coefficient between two synthetic times..."><img alt="" src="../_images/sphx_glr_plot_pearson_correlation_thumb1.png" />
+<p><a class="reference internal" href="statistics/plot_pearson_correlation.html#sphx-glr-auto-examples-statistics-plot-pearson-correlation-py"><span class="std std-ref">Pearson correlation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Pearson correlation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline r..."><img alt="" src="../_images/sphx_glr_plot_detect_outliers_001_thumb.png" />
+<p><a class="reference internal" href="statistics/plot_detect_outliers_001.html#sphx-glr-auto-examples-statistics-plot-detect-outliers-001-py"><span class="std std-ref">Outlier detection with DBSCAN and spline regression 001</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Outlier detection with DBSCAN and spline regression 001</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline r..."><img alt="" src="../_images/sphx_glr_plot_detect_outliers_002_thumb.png" />
+<p><a class="reference internal" href="statistics/plot_detect_outliers_002.html#sphx-glr-auto-examples-statistics-plot-detect-outliers-002-py"><span class="std std-ref">Outlier detection with DBSCAN and spline regression 002</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Outlier detection with DBSCAN and spline regression 002</div>
+</div></div></section>
+<section id="sustainability-functions">
+<h2>Sustainability Functions<a class="headerlink" href="#sustainability-functions" title="Permalink to this heading"></a></h2>
+<p>Examples of how to use the sustainability functions.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Given the power consumption of a process unit and data regarding the emissions and cost factors..."><img alt="" src="../_images/sphx_glr_plot_cumulative_co2_thumb.png" />
+<p><a class="reference internal" href="sustainability/plot_cumulative_co2.html#sphx-glr-auto-examples-sustainability-plot-cumulative-co2-py"><span class="std std-ref">Cumulative CO2 Production and Cost</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Cumulative CO2 Production and Cost</div>
+</div></div></section>
+<section id="function-versioning">
+<h2>Function versioning<a class="headerlink" href="#function-versioning" title="Permalink to this heading"></a></h2>
+<p>Example on how to implement versions of a function in InDSL.</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="InDSL comes with the :pyindsl.versioning module, which allows to implement multiple versions of..."><img alt="" src="../_images/sphx_glr_versioned_function_thumb.png" />
+<p><a class="reference internal" href="versioning/versioned_function.html#sphx-glr-auto-examples-versioning-versioned-function-py"><span class="std std-ref">Function versioning</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Function versioning</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

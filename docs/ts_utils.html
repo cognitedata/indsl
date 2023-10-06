@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic time series functions &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data quality" href="auto_examples/data_quality/index.html" />
+    <link rel="prev" title="Sustainability" href="sustainability.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic time series functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.operators">Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.absolute"><code class="docutils literal notranslate"><span class="pre">absolute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.arithmetic_mean"><code class="docutils literal notranslate"><span class="pre">arithmetic_mean()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.arithmetic_mean_many"><code class="docutils literal notranslate"><span class="pre">arithmetic_mean_many()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.div"><code class="docutils literal notranslate"><span class="pre">div()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.inv"><code class="docutils literal notranslate"><span class="pre">inv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.mul"><code class="docutils literal notranslate"><span class="pre">mul()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.neg"><code class="docutils literal notranslate"><span class="pre">neg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.power"><code class="docutils literal notranslate"><span class="pre">power()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.sqrt"><code class="docutils literal notranslate"><span class="pre">sqrt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.sub"><code class="docutils literal notranslate"><span class="pre">sub()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.numerical_calculus">Numerical calculus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.differentiate"><code class="docutils literal notranslate"><span class="pre">differentiate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.integrate_windows"><code class="docutils literal notranslate"><span class="pre">integrate_windows()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.sliding_window_integration"><code class="docutils literal notranslate"><span class="pre">sliding_window_integration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.trapezoidal_integration"><code class="docutils literal notranslate"><span class="pre">trapezoidal_integration()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.window_index"><code class="docutils literal notranslate"><span class="pre">window_index()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.logarithmic_functions">Logarithmic functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.logarithmic_functions.exp"><code class="docutils literal notranslate"><span class="pre">exp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.logarithmic_functions.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.logarithmic_functions.log10"><code class="docutils literal notranslate"><span class="pre">log10()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.logarithmic_functions.log2"><code class="docutils literal notranslate"><span class="pre">log2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.logarithmic_functions.logn"><code class="docutils literal notranslate"><span class="pre">logn()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.trigonometric_functions">Trigonometric functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.arccos"><code class="docutils literal notranslate"><span class="pre">arccos()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.arccosh"><code class="docutils literal notranslate"><span class="pre">arccosh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.arcsin"><code class="docutils literal notranslate"><span class="pre">arcsin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.arcsinh"><code class="docutils literal notranslate"><span class="pre">arcsinh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.arctan"><code class="docutils literal notranslate"><span class="pre">arctan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.arctan2"><code class="docutils literal notranslate"><span class="pre">arctan2()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.arctanh"><code class="docutils literal notranslate"><span class="pre">arctanh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.cos"><code class="docutils literal notranslate"><span class="pre">cos()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.cosh"><code class="docutils literal notranslate"><span class="pre">cosh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.deg2rad"><code class="docutils literal notranslate"><span class="pre">deg2rad()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.rad2deg"><code class="docutils literal notranslate"><span class="pre">rad2deg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.sin"><code class="docutils literal notranslate"><span class="pre">sin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.sinh"><code class="docutils literal notranslate"><span class="pre">sinh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.tan"><code class="docutils literal notranslate"><span class="pre">tan()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.trigonometric_functions.tanh"><code class="docutils literal notranslate"><span class="pre">tanh()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.utility_functions">Utility functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.bin_map"><code class="docutils literal notranslate"><span class="pre">bin_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.ceil"><code class="docutils literal notranslate"><span class="pre">ceil()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.clip"><code class="docutils literal notranslate"><span class="pre">clip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.create_series_from_timesteps"><code class="docutils literal notranslate"><span class="pre">create_series_from_timesteps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.floor"><code class="docutils literal notranslate"><span class="pre">floor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.generate_step_series"><code class="docutils literal notranslate"><span class="pre">generate_step_series()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.get_timestamps"><code class="docutils literal notranslate"><span class="pre">get_timestamps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.iqr_test"><code class="docutils literal notranslate"><span class="pre">iqr_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.maximum"><code class="docutils literal notranslate"><span class="pre">maximum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.minimum"><code class="docutils literal notranslate"><span class="pre">minimum()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.modified_z_scores_test"><code class="docutils literal notranslate"><span class="pre">modified_z_scores_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.normality_assumption_test"><code class="docutils literal notranslate"><span class="pre">normality_assumption_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.remove"><code class="docutils literal notranslate"><span class="pre">remove()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.replace"><code class="docutils literal notranslate"><span class="pre">replace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.round"><code class="docutils literal notranslate"><span class="pre">round()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.set_timestamps"><code class="docutils literal notranslate"><span class="pre">set_timestamps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.sign"><code class="docutils literal notranslate"><span class="pre">sign()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.threshold"><code class="docutils literal notranslate"><span class="pre">threshold()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.threshold_test"><code class="docutils literal notranslate"><span class="pre">threshold_test()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.time_shift"><code class="docutils literal notranslate"><span class="pre">time_shift()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.union"><code class="docutils literal notranslate"><span class="pre">union()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.z_scores_test"><code class="docutils literal notranslate"><span class="pre">z_scores_test()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Basic time series functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ts_utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-time-series-functions">
+<h1>Basic time series functions<a class="headerlink" href="#basic-time-series-functions" title="Permalink to this heading"></a></h1>
+<section id="module-indsl.ts_utils.operators">
+<span id="operators"></span><h2>Operators<a class="headerlink" href="#module-indsl.ts_utils.operators" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.absolute">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">absolute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.absolute" title="Permalink to this definition"></a></dt>
+<dd><p>Absolute value.</p>
+<p>The absolute value of time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series or numbers</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.add">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.add" title="Permalink to this definition"></a></dt>
+<dd><p>Add.</p>
+<p>Add any two time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – Time-series or number.</p></li>
+<li><p><strong>b</strong> – Time-series or number.</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.arithmetic_mean">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">arithmetic_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.arithmetic_mean" title="Permalink to this definition"></a></dt>
+<dd><p>Arithmetic mean.</p>
+<p>The mean of two time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – Time series or number</p></li>
+<li><p><strong>b</strong> – Time series or number</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.arithmetic_mean_many">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">arithmetic_mean_many</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="headerlink" href="#indsl.ts_utils.operators.arithmetic_mean_many" title="Permalink to this definition"></a></dt>
+<dd><p>Arithmetic mean many.</p>
+<p>The mean of multiple time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – List of time series</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.div">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">div</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.div" title="Permalink to this definition"></a></dt>
+<dd><p>Division.</p>
+<p>Divide two time series or numbers. If the time series in the
+denominator contains zeros, all instances are dropped from the final
+result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – Numerator</p></li>
+<li><p><strong>b</strong> – Denominator</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.inv">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.inv" title="Permalink to this definition"></a></dt>
+<dd><p>Inverse.</p>
+<p>Element-wise inverse of time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series or numbers</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.mod">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.mod" title="Permalink to this definition"></a></dt>
+<dd><p>Modulo.</p>
+<p>Modulo of time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – dividend time series or number</p></li>
+<li><p><strong>b</strong> – divisor time series or number</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.mul">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">mul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.mul" title="Permalink to this definition"></a></dt>
+<dd><p>Multiplication.</p>
+<p>Multiply two time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – Time-series or number.</p></li>
+<li><p><strong>b</strong> – Time-series or number.</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.neg">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">neg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.neg" title="Permalink to this definition"></a></dt>
+<dd><p>Negation.</p>
+<p>Negation of time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series or numbers</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.power">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">power</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.power" title="Permalink to this definition"></a></dt>
+<dd><p>Power.</p>
+<p>Power of time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – base time series or number</p></li>
+<li><p><strong>b</strong> – exponent time series or number</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.sqrt">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">sqrt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.sqrt" title="Permalink to this definition"></a></dt>
+<dd><p>Square root.</p>
+<p>Square root of time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series or numbers</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.operators.sub">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.operators.</span></span><span class="sig-name descname"><span class="pre">sub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.operators.sub" title="Permalink to this definition"></a></dt>
+<dd><p>Subtraction.</p>
+<p>The difference between two time series or numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – Time-series or number.</p></li>
+<li><p><strong>b</strong> – Time-series or number.</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-indsl.ts_utils.numerical_calculus">
+<span id="numerical-calculus"></span><h2>Numerical calculus<a class="headerlink" href="#module-indsl.ts_utils.numerical_calculus" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.differentiate">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">differentiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.differentiate" title="Permalink to this definition"></a></dt>
+<dd><p>Differentiation.</p>
+<p>Differentiation (finite difference) using a second-order accurate numerical method (central difference).
+Boundary points are computed using a first-order accurate method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series.</p></li>
+<li><p><strong>time_unit</strong> – Frequency.
+User defined granularity to potentially override unit of time. Defaults to 1 h.
+Accepts integer followed by time unit string (ms|s|m|h|d). For example: ‘1s’, ‘5m’, ‘3h’ or ‘1d’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>First order derivative.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.integrate_windows">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">integrate_windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_to_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_windows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.integrate_windows" title="Permalink to this definition"></a></dt>
+<dd><p>Integrate the windows.</p>
+<p>Performs the integration, through the trapezoidal- or midpoint-method.
+Since all the from and to window indexes are available and all inputs are np.ndarrays, this is parallelized and sped up with numba.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> – Values to integrate corrected to the integrand rate.</p></li>
+<li><p><strong>dt</strong> – The time in milliseconds between datapoints.</p></li>
+<li><p><strong>from_to_index</strong> – index is the start of a window and value is the end index of the window.</p></li>
+<li><p><strong>number_of_windows</strong> – the number of windows to integrate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of each integrated window.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.sliding_window_integration">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">sliding_window_integration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:05:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrand_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.sliding_window_integration" title="Permalink to this definition"></a></dt>
+<dd><p>Sliding window integration.</p>
+<p>Siding window integration using trapezoidal rule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series.</p></li>
+<li><p><strong>window_length</strong> – <p>window_length
+the length of time the window. Defaults to ‘5 minute’. Valid time units are:</p>
+<blockquote>
+<div><ul>
+<li><p>‘W’, ‘D’, ‘T’, ‘S’, ‘L’, ‘U’, or ‘N’</p></li>
+<li><p>‘days’ or ‘day’</p></li>
+<li><p>‘hours’, ‘hour’, ‘hr’, or ‘h’</p></li>
+<li><p>‘minutes’, ‘minute’, ‘min’, or ‘m’</p></li>
+<li><p>‘seconds’, ‘second’, or ‘sec’</p></li>
+<li><p>‘milliseconds’, ‘millisecond’, ‘millis’, or ‘milli’</p></li>
+<li><p>‘microseconds’, ‘microsecond’, ‘micros’, or ‘micro’</p></li>
+<li><p>‘nanoseconds’, ‘nanosecond’, ‘nanos’, ‘nano’, or ‘ns’.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>integrand_rate</strong> – <p>integrand_rate.
+if the integrands rate is per sec, per hour, per day.
+Defaults to ‘1 hour’. Valid time units are:</p>
+<blockquote>
+<div><ul>
+<li><p>‘W’, ‘D’, ‘T’, ‘S’, ‘L’, ‘U’, or ‘N’</p></li>
+<li><p>‘days’ or ‘day’</p></li>
+<li><p>‘hours’, ‘hour’, ‘hr’, or ‘h’</p></li>
+<li><p>‘minutes’, ‘minute’, ‘min’, or ‘m’</p></li>
+<li><p>‘seconds’, ‘second’, or ‘sec’</p></li>
+<li><p>‘milliseconds’, ‘millisecond’, ‘millis’, or ‘milli’</p></li>
+<li><p>‘microseconds’, ‘microsecond’, ‘micros’, or ‘micro’</p></li>
+<li><p>‘nanoseconds’, ‘nanosecond’, ‘nanos’, ‘nano’, or ‘ns’.</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.trapezoidal_integration">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">trapezoidal_integration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.trapezoidal_integration" title="Permalink to this definition"></a></dt>
+<dd><p>Integration.</p>
+<p>Cumulative integration using trapezoidal rule with an optional user-defined time unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series.</p></li>
+<li><p><strong>time_unit</strong> – Frequency.
+User defined granularity to potentially override unit of time. Defaults to 1 h.
+Accepted formats can be found here: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html">https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html</a>.
+Some examples are: ‘1s’, ‘5m’, ‘3h’ or ‘1d’, but combinations also work: “1d 6h 43s”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cumulative integral.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.window_index">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">window_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">np_datetime_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">windowlength_in_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.window_index" title="Permalink to this definition"></a></dt>
+<dd><p>Sliding window indexing.</p>
+<p>Returns a np.ndarray where the index corresponds to the starting point of a window,
+the value at the index corresponds to numerical indexes for the end of the window.
+This gives the window span each window is supposed to integrate to.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>np_datetime_ns</strong> – Datetime in integer ns.</p></li>
+<li><p><strong>windowlength_in_ns</strong> – The length of the window in ns.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Retruns:</dt><dd><p>np.ndarray: indexing of timewindows</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-indsl.ts_utils.logarithmic_functions">
+<span id="logarithmic-functions"></span><h2>Logarithmic functions<a class="headerlink" href="#module-indsl.ts_utils.logarithmic_functions" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.logarithmic_functions.exp">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.logarithmic_functions.</span></span><span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.logarithmic_functions.exp" title="Permalink to this definition"></a></dt>
+<dd><p>Exp.</p>
+<p>Calculates the exponential of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time-series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.logarithmic_functions.log">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.logarithmic_functions.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.logarithmic_functions.log" title="Permalink to this definition"></a></dt>
+<dd><p>Ln.</p>
+<p>Calculates the natural logarithm of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time-series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.logarithmic_functions.log10">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.logarithmic_functions.</span></span><span class="sig-name descname"><span class="pre">log10</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.logarithmic_functions.log10" title="Permalink to this definition"></a></dt>
+<dd><p>Log base 10.</p>
+<p>Calculates the logarithm with base 10 of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time-series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.logarithmic_functions.log2">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.logarithmic_functions.</span></span><span class="sig-name descname"><span class="pre">log2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.logarithmic_functions.log2" title="Permalink to this definition"></a></dt>
+<dd><p>Log base 2.</p>
+<p>Calculates the logarithm with base 2 of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time-series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.logarithmic_functions.logn">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.logarithmic_functions.</span></span><span class="sig-name descname"><span class="pre">logn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.logarithmic_functions.logn" title="Permalink to this definition"></a></dt>
+<dd><p>Log, any base.</p>
+<p>Calculates the logarithm with base “n” of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Input time-series or number</p></li>
+<li><p><strong>base</strong> – Base time-series or number</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-indsl.ts_utils.trigonometric_functions">
+<span id="trigonometric-functions"></span><h2>Trigonometric functions<a class="headerlink" href="#module-indsl.ts_utils.trigonometric_functions" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.arccos">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">arccos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.arccos" title="Permalink to this definition"></a></dt>
+<dd><p>Arccos.</p>
+<p>Calculates the trigonometric arccosine of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.arccosh">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">arccosh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.arccosh" title="Permalink to this definition"></a></dt>
+<dd><p>Arccosh.</p>
+<p>Calculates the hyperbolic arccosine of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.arcsin">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">arcsin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.arcsin" title="Permalink to this definition"></a></dt>
+<dd><p>Arcsin.</p>
+<p>Calculates the trigonometric arcsine of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.arcsinh">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">arcsinh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.arcsinh" title="Permalink to this definition"></a></dt>
+<dd><p>Arcsinh.</p>
+<p>Calculates the hyperbolic arcsine of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.arctan">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">arctan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.arctan" title="Permalink to this definition"></a></dt>
+<dd><p>Arctan.</p>
+<p>Calculate inverse hyperbolic tangent of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.arctan2">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">arctan2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.arctan2" title="Permalink to this definition"></a></dt>
+<dd><p>Arctan(x1, x2).</p>
+<p>Element-wise arc tangent of x1/x2 choosing the quadrant
+correctly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> – First time series or number</p></li>
+<li><p><strong>x2</strong> – Second time series or number</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.arctanh">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">arctanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.arctanh" title="Permalink to this definition"></a></dt>
+<dd><p>Arctanh.</p>
+<p>Calculates the hyperbolic arctangent of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.cos">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">cos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.cos" title="Permalink to this definition"></a></dt>
+<dd><p>Cos.</p>
+<p>Calculates the trigonometric cosine of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.cosh">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">cosh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.cosh" title="Permalink to this definition"></a></dt>
+<dd><p>Cosh.</p>
+<p>Calculates the hyperbolic cosine of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.deg2rad">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">deg2rad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.deg2rad" title="Permalink to this definition"></a></dt>
+<dd><p>Degrees to radians.</p>
+<p>Converts angles from degrees to radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.rad2deg">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">rad2deg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.rad2deg" title="Permalink to this definition"></a></dt>
+<dd><p>Radians to degrees.</p>
+<p>Converts angles from radiants to degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.sin">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.sin" title="Permalink to this definition"></a></dt>
+<dd><p>Sin.</p>
+<p>Calculates the trigonometric sine of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.sinh">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">sinh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.sinh" title="Permalink to this definition"></a></dt>
+<dd><p>Sinh.</p>
+<p>Calculates the hyperbolic sine of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.tan">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">tan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.tan" title="Permalink to this definition"></a></dt>
+<dd><p>Tan.</p>
+<p>Calculates the trigonometric tangent of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.trigonometric_functions.tanh">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.trigonometric_functions.</span></span><span class="sig-name descname"><span class="pre">tanh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.trigonometric_functions.tanh" title="Permalink to this definition"></a></dt>
+<dd><p>Tanh.</p>
+<p>Calculates the hyperbolic tangent of time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-indsl.ts_utils.utility_functions">
+<span id="utility-functions"></span><h2>Utility functions<a class="headerlink" href="#module-indsl.ts_utils.utility_functions" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.bin_map">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">bin_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.bin_map" title="Permalink to this definition"></a></dt>
+<dd><p>Element-wise greater-than.</p>
+<p>Maps to a binary array by checking if one time series is greater than another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> – First time series or number</p></li>
+<li><p><strong>x2</strong> – Second time series or number</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.ceil">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">ceil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.ceil" title="Permalink to this definition"></a></dt>
+<dd><p>Round up.</p>
+<p>Rounds up a time series to the nearest integer greater than or
+equal to the current value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.clip">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.clip" title="Permalink to this definition"></a></dt>
+<dd><p>Clip (low, high).</p>
+<p>Given an interval, values of the time series outside the
+interval are clipped to the interval edges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>pd.Series</em>) – time series</p></li>
+<li><p><strong>low</strong> – Lower limit
+Lower clipping limit. Default: -infinity</p></li>
+<li><p><strong>high</strong> – Upper limit
+Upper clipping limit. Default: +infinity</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.create_series_from_timesteps">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">create_series_from_timesteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">timedelta</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.create_series_from_timesteps" title="Permalink to this definition"></a></dt>
+<dd><p>Time series from timestamps.</p>
+<p>Create a time series which starts on the 2021-1-1 and contains data points
+with the provided timesteps in seconds. All values of the output series are zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timesteps</strong> – Time steps between points.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.floor">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">floor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.floor" title="Permalink to this definition"></a></dt>
+<dd><p>Round down.</p>
+<p>Rounds a time series down to the nearest integer smaller than
+or equal to the current value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.generate_step_series">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">generate_step_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.generate_step_series" title="Permalink to this definition"></a></dt>
+<dd><p>Step-wise time series.</p>
+<p>Construct a step-wise time series (with 0-1 values) from a flag time series.
+Consecutive 1 values are merged in one step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flag</strong> – Binary time series.
+The length of the flag time series has to be the same as the original data points.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Given 4 datapoints and a flag with values [0, 0, 1, 0]</p>
+<blockquote>
+<div><p>data points: x——-x——-x——-x
+flag:        0       0       1       0</p>
+</div></blockquote>
+<p>The resulting step series is represented as:</p>
+<blockquote>
+<div><blockquote>
+<div><p>x——-x</p>
+</div></blockquote>
+<dl class="simple">
+<dt>step series: x—————x</dt><dd><p>0               01      1</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.get_timestamps">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">get_timestamps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ns'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'us'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ms'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'s'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'m'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'h'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'D'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'W'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ms'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.get_timestamps" title="Permalink to this definition"></a></dt>
+<dd><p>Get index of time series.</p>
+<p>Get timestamps of the time series as values.
+The timestamps follow the Unix convention (Number of seconds
+starting from January 1st, 1970). Precision loss in the order of
+nanoseconds may happen if unit is not nanoseconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time-series</p></li>
+<li><p><strong>unit</strong> – Timestamp unit
+Valid values “ns|us|ms|s|m|h|D|W”. Default “ms”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – series is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – unit is not a string</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.iqr_test">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">iqr_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'upper'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'lower'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'upper'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'greater'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'less'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'greater'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.iqr_test" title="Permalink to this definition"></a></dt>
+<dd><p>Z-scores test.</p>
+<p>This functions performs a iqr test and returns a binary time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Data values.</p></li>
+<li><p><strong>limit</strong> – Cut-off limit.</p></li>
+<li><p><strong>direction</strong> – Direction of the test.
+Options:
+- “greater”: the function will check if the values are greater than the cut-off limit.
+- “less”: the function will check if the values are less than the cut-off limit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Binary np.array with the results of the test.</dt><dd><p>1 values indicate that the test has passed.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.maximum">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.maximum" title="Permalink to this definition"></a></dt>
+<dd><p>Element-wise maximum.</p>
+<p>Computes the maximum value of two time series or
+numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> – First time series or number</p></li>
+<li><p><strong>x2</strong> – Second time series or number</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.minimum">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.minimum" title="Permalink to this definition"></a></dt>
+<dd><p>Element-wise minimum.</p>
+<p>Computes the minimum value of two time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x1</strong> – First time series or number</p></li>
+<li><p><strong>x2</strong> – Second time series or number</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.modified_z_scores_test">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">modified_z_scores_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'greater'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'less'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'greater'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.modified_z_scores_test" title="Permalink to this definition"></a></dt>
+<dd><p>Z-scores test.</p>
+<p>This functions performs a modified z-scores test given a cut-off value and returns a binary time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Data values.</p></li>
+<li><p><strong>cutoff</strong> – Cut-off value.</p></li>
+<li><p><strong>direction</strong> – Direction of the test.
+Options:
+- “greater”: the function will check if the modified z-scores are greater than the cut-off
+- “less”: the function will check if the modified z-scores are less than the cut-off</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Binary np.array with the results of the test.</dt><dd><p>1 values indicate that the test has passed.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.normality_assumption_test">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">normality_assumption_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_data_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_p_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_W</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.normality_assumption_test" title="Permalink to this definition"></a></dt>
+<dd><p>Test for normality assumption.</p>
+<p>This function performs a Shapiro-Wilk test to check if the data is normally distributed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series</p></li>
+<li><p><strong>max_data_points</strong> – Maximum number of data points.
+The test is only performed if the time series contains less data points than this value.
+Default to 5000.</p></li>
+<li><p><strong>min_p_value</strong> – Minimum p value.
+Probability of the time series not being normally distributed.
+Default to 0.05.</p></li>
+<li><p><strong>min_W</strong> – Minimum W value.
+W is between 0 and 1, small values lead to a rejection of the
+normality assumption. Ref: <a class="reference external" href="https://www.nrc.gov/docs/ML1714/ML17143A100.pdf">https://www.nrc.gov/docs/ML1714/ML17143A100.pdf</a>
+Default to 0.5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – time series has more than the maximum number of datapoints allowed for this test.</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – time series is uniform and not normally distributed</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – time series is not normally distributed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.remove">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_remove</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_from</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_to</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove.</p>
+<p>Remove specific values or a range of values from a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series</p></li>
+<li><p><strong>to_remove</strong> – Values
+List of values to remove. The values must be seperated by semicolons. Infinity and undefined values can be
+replaced by using the keywords inf, -inf and nan. If empty, which is the default, all values are kept.</p></li>
+<li><p><strong>range_from</strong> – Range start
+Only values above this parameter will be kept. If empty, which is the default, this range filter is deactivated.</p></li>
+<li><p><strong>range_to</strong> – Range end
+Only values above this parameter will be kept. If empty, which is the default, the range filter is deactivated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – series is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – to_remove is not a list</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.replace">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.replace" title="Permalink to this definition"></a></dt>
+<dd><p>Replace.</p>
+<p>Replace values in a time series. The values to replace should be
+a semicolon-separated list. Undefined and infinity values can be replaced
+by using nan, inf and -inf (e.g. 1.0, 5, inf, -inf, 20, nan).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series</p></li>
+<li><p><strong>to_replace</strong> – Replace
+List of values to replace. The values must be seperated by semicolons. Infinity and undefined values can be
+replaced by using the keywords inf, -inf and nan. The default is to replace no values.</p></li>
+<li><p><strong>value</strong> – Value used as replacement.
+Default is 0.0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – series is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – to_replace is not a list</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – value is not a number</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.round">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">round</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.round" title="Permalink to this definition"></a></dt>
+<dd><p>Round.</p>
+<p>Rounds a time series to a given number of decimals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – time series</p></li>
+<li><p><strong>decimals</strong> – number of decimals</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.set_timestamps">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">set_timestamps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp_series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ns'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'us'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ms'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'s'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'m'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'h'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'D'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'W'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ms'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.set_timestamps" title="Permalink to this definition"></a></dt>
+<dd><p>Set index of time series.</p>
+<p>Sets the time series values to the Unix timestamps.
+The timestamps follow the Unix convention (Number of seconds
+starting from January 1st, 1970). Both input time series
+must have the same length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timestamp_series</strong> – Timestamp time series</p></li>
+<li><p><strong>value_series</strong> – Value time series</p></li>
+<li><p><strong>unit</strong> – Timestamp unit
+Valid values “ns|us|ms|s|m|h|D|W”. Default “ms”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – timestamp_series or value_series are not time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – unit is not a string</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – timestamp_series and value_series do not have the same length</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.sign">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.sign" title="Permalink to this definition"></a></dt>
+<dd><p>Sign.</p>
+<p>Element-wise indication of the sign of a time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – time series</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.threshold">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-inf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">inf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.ts_utils.utility_functions.threshold" title="Permalink to this definition"></a></dt>
+<dd><p>Threshold.</p>
+<p>Indicates if the input series exceeds the lower and higher limits. The output series
+is 1.0 if the input is between the (inclusive) limits, and 0.0 otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time series</p></li>
+<li><p><strong>low</strong> – Lower limit
+threshold. Default: -infinity</p></li>
+<li><p><strong>high</strong> – Upper limit
+threshold. Default: +infinity</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – series is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – low or high are not floats</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.threshold_test">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">threshold_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'greater'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'less'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.threshold_test" title="Permalink to this definition"></a></dt>
+<dd><p>Threshold test.</p>
+<p>This functions performs a threshold test based on a direction (greater than or less than).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Data values.</p></li>
+<li><p><strong>cutoff</strong> – Cut-off value.</p></li>
+<li><p><strong>direction</strong> – Direction of the test.
+Options:
+- “greater”: the function will check if the values are greater than the cut-off limit.
+- “less”: the function will check if the values are less than the cut-off limit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Binary np.array with the results of the test.</dt><dd><p>1 values indicate that the test has passed.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.time_shift">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">time_shift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'ns'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'us'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ms'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'s'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'m'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'h'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'D'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'W'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ms'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.time_shift" title="Permalink to this definition"></a></dt>
+<dd><p>Shift time series.</p>
+<p>Shift time series by a time period</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> – Time-series</p></li>
+<li><p><strong>n_units</strong> – Time periods to shift
+Number of time periods to shift</p></li>
+<li><p><strong>unit</strong> – Time period unit
+Valid values “ns|us|ms|s|m|h|D|W”. Default “ms”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – series is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – n_units is not a number</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – unit is not a string</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.union">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">series2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.union" title="Permalink to this definition"></a></dt>
+<dd><p>Union.</p>
+<p>Takes the union of two time series. If a time stamp
+occurs in both series, the value of the first time series is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series1</strong> – time series</p></li>
+<li><p><strong>series2</strong> – time series</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – series1 or series2 is not a time series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.utility_functions.z_scores_test">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.utility_functions.</span></span><span class="sig-name descname"><span class="pre">z_scores_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'greater'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'less'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'greater'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.utility_functions.z_scores_test" title="Permalink to this definition"></a></dt>
+<dd><p>Z-scores test.</p>
+<p>This functions performs a z-scores test given a cut-off value and returns a binary time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Data values.</p></li>
+<li><p><strong>cutoff</strong> – Cut-off
+Number of standard deviations from the mean.</p></li>
+<li><p><strong>direction</strong> – Direction of the test.
+Options:
+- “greater”: the function will check if the z-scores are greater than the cut-off
+- “less”: the function will check if the z-scores are less than the cut-off</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Binary np.array with the results of the test.</dt><dd><p>1 values indicate that the test has passed.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sustainability.html" class="btn btn-neutral float-left" title="Sustainability" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auto_examples/data_quality/index.html" class="btn btn-neutral float-right" title="Data quality" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

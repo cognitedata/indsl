@@ -1,0 +1,79 @@
+
+
+.. _sphx_glr_auto_examples_signals:
+
+Synthetic Signal Generation
+___________________________
+
+Examples of how to generate synthetic signals.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We will generate a linear time series with a sampling frequency of 4 hours, from 1975/05/09 to ...">
+
+.. only:: html
+
+  .. image:: /auto_examples/signals/images/thumb/sphx_glr_plot_synthetic_gaps_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_signals_plot_synthetic_gaps.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Inserting gaps in a time series</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="We will generate three univariate polynomials of a given time series. The order of the polynomi...">
+
+.. only:: html
+
+  .. image:: /auto_examples/signals/images/thumb/sphx_glr_plot_univariate_polynomial_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_signals_plot_univariate_polynomial.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Univariate Polynomial</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to ge...">
+
+.. only:: html
+
+  .. image:: /auto_examples/signals/images/thumb/sphx_glr_plot_wavy_signals_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_signals_plot_wavy_signals.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Wavy signal generation</div>
+    </div>
+
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/signals/plot_synthetic_gaps
+   /auto_examples/signals/plot_univariate_polynomial
+   /auto_examples/signals/plot_wavy_signals
+

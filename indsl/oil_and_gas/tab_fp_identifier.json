@@ -1,0 +1,126 @@
+{
+    "TM": {
+        "description": "Temperature",
+        "unit": "°C"
+    },
+    "PT": {
+        "description": "Pressure",
+        "unit": "Pa"
+    },
+    "RS": {
+        "description": "Gas mass fraction in gas/oil mixture",
+        "unit": "-"
+    },
+    "RSW": {
+        "description": "Water vapor mass fraction in gas phase",
+        "unit": "-"
+    },
+    "ROG": {
+        "description": "Gas density",
+        "unit": "kg/m3"
+    },
+    "DROGDP": {
+        "description": "Derivative of gas density with respect to 124 pressure",
+        "unit": "s2 /m2"
+    },
+    "DROGDT": {
+        "description": "Derivative of gas density with respect to temperature",
+        "unit": "kg/m3 ·°C"
+    },
+    "ROHL": {
+        "description": "Oil density",
+        "unit": "kg/m3"
+    },
+    "DROHLDP": {
+        "description": "Derivative of oil density with respect to pressure",
+        "unit": "s2 /m2"
+    },
+    "DROHLDT": {
+        "description": "Derivative of oil density with respect to temperature",
+        "unit": "kg/m3 ·°C"
+    },
+    "ROWT": {
+        "description": "Water density",
+        "unit": "kg/m3"
+    },
+    "DROWTDP": {
+        "description": "Derivative of water density with respect to pressure",
+        "unit": "s2 /m2"
+    },
+    "DROWTDT": {
+        "description": "Derivative of water density with respect to temperature",
+        "unit": "kg/m3 ·°C"
+    },
+    "TCG": {
+        "description": "Gas thermal conductivity",
+        "unit": "W/m·°C"
+    },
+    "TCHL": {
+        "description": "Oil thermal conductivity",
+        "unit": "W/m·°C"
+    },
+    "TCWT": {
+        "description": "Water thermal conductivity",
+        "unit": "W/m·°C"
+    },
+    "CPG": {
+        "description": "Gas thermal capacity",
+        "unit": "J/kg·°C"
+    },
+    "CPHL": {
+        "description": "Oil thermal capacity",
+        "unit": "J/kg·°C"
+    },
+    "CPWT": {
+        "description": "Water thermal capacity",
+        "unit": "J/kg·°C"
+    },
+    "HG": {
+        "description": "Gas enthalpy",
+        "unit": "J/kg"
+    },
+    "HHL": {
+        "description": "Oil enthalpy",
+        "unit": "J/kg"
+    },
+    "HWT": {
+        "description": "Water enthalpy",
+        "unit": "J/kg"
+    },
+    "VISG": {
+        "description": "Gas viscosity",
+        "unit": "N·s/m2"
+    },
+    "VISHL": {
+        "description": "Oil viscosity",
+        "unit": "N·s/m2"
+    },
+    "VISWT": {
+        "description": "Water viscosity",
+        "unit": "N·s/m2"
+    },
+    "SEG": {
+        "description": "Gas entropy",
+        "unit": "J/kg·°C"
+    },
+    "SEHL": {
+        "description": "Oil entropy",
+        "unit": "J/kg·°C"
+    },
+    "SEWT": {
+        "description": "Water entropy",
+        "unit": "J/kg·°C"
+    },
+    "SIGGHL": {
+        "description": "Surface tension between gas and oil",
+        "unit": "N/m"
+    },
+    "SIGGWT": {
+        "description": "Surface tension between gas and water",
+        "unit": "N/m"
+    },
+    "SIGHLWT": {
+        "description": "Surface tension between oil and water",
+        "unit": "N/m"
+    }
+}

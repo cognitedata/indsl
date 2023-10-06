@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Function versioning &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contributing" href="../../contribute.html" />
+    <link rel="prev" title="Function versioning" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            indsl
+              <img src="../../_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Function versioning</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Function versioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#implementation-of-v1-0">Implementation of v1.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation-of-v1-1">Implementation of v1.1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getting-versioned-functions-and-their-versions">Getting versioned functions and their versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-versioned-functions">Running versioned functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Function versioning</a></li>
+      <li class="breadcrumb-item active">Function versioning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/auto_examples/versioning/versioned_function.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-versioning-versioned-function-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="function-versioning">
+<span id="sphx-glr-auto-examples-versioning-versioned-function-py"></span><h1>Function versioning<a class="headerlink" href="#function-versioning" title="Permalink to this heading"></a></h1>
+<p>InDSL comes with the <a class="reference internal" href="../../dev_tools.html#module-indsl.versioning" title="indsl.versioning"><code class="xref py py-mod docutils literal notranslate"><span class="pre">indsl.versioning</span></code></a> module, which allows to implement multiple versions of InDSL functions.
+As a library user, one can then select and execute a specific function version.</p>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<p>In this example, we implement the <cite>abs_diff</cite> function, which computes the element-wise absolute difference of two time-series.
+We will first implement a naive version of that function, which we name version 1.0 (versioning in inDSL always starts with 1.0),
+followed by a more robust version 1.1.</p>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading"></a></h2>
+<section id="implementation-of-v1-0">
+<h3>Implementation of v1.0<a class="headerlink" href="#implementation-of-v1-0" title="Permalink to this heading"></a></h3>
+<p>We begin with a simple implementation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">indsl</span> <span class="kn">import</span> <span class="n">versioning</span>
+
+
+<span class="nd">@versioning</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">abs_diff</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>They key in this function definition is the <a class="reference internal" href="../../dev_tools.html#indsl.versioning.register" title="indsl.versioning.register"><code class="xref py py-func docutils literal notranslate"><span class="pre">indsl.versioning.register()</span></code></a> decorator.
+This decorator registers the function as a versioned function with name <cite>abs_diff</cite> and version <cite>1.0</cite>.
+We also mark the function as deprecated, since we will soon implement a new version of the function.
+This means that we can retrieve and execute this version, even after newer version of the same functions have been registered.</p>
+<p>Our, initial implementation is not very robust and results easily in <cite>nan</cite> outputs.
+This happens specifically when we apply <cite>abs`diff</cite> to time-series with non-matching indices:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;1H&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;2H&quot;</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
+
+<span class="n">abs_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2022-01-01 00:00:00    0.0
+2022-01-01 01:00:00    NaN
+2022-01-01 02:00:00    0.0
+2022-01-01 03:00:00    NaN
+2022-01-01 04:00:00    0.0
+dtype: float64
+</pre></div>
+</div>
+<p>Version 1.1 will fix this issue through a more robust implementation.</p>
+</section>
+<section id="implementation-of-v1-1">
+<h3>Implementation of v1.1<a class="headerlink" href="#implementation-of-v1-1" title="Permalink to this heading"></a></h3>
+<p>Next, we implement the new version of the <cite>abs_diff</cite> and mark it as version 1.1.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indsl.resample</span> <span class="kn">import</span> <span class="n">reindex</span>  <span class="c1"># noqa</span>
+
+
+<span class="nd">@versioning</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+<span class="k">def</span> <span class="nf">abs_diff</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">reindex</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We rely on the build-in function <cite>reindex</cite> to align the indices of the time-series (using linear-interpolation) before performing the operations.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2022-01-01 00:00:00    0.0
+2022-01-01 01:00:00    0.0
+2022-01-01 02:00:00    0.0
+2022-01-01 03:00:00    0.0
+2022-01-01 04:00:00    0.0
+Freq: H, dtype: float64
+</pre></div>
+</div>
+</section>
+<section id="getting-versioned-functions-and-their-versions">
+<h3>Getting versioned functions and their versions<a class="headerlink" href="#getting-versioned-functions-and-their-versions" title="Permalink to this heading"></a></h3>
+<p>We can get a list of all versioned functions with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">versioning</span><span class="o">.</span><span class="n">get_registered_functions</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;no_op&#39;, &#39;SG_SMOOTHER&#39;, &#39;ALMA_SMOOTHER&#39;, &#39;ARMA_SMOOTHER&#39;, &#39;BTR_SMOOTHER&#39;, &#39;CHB_SMOOTHER&#39;, &#39;EXP_WMA&#39;, &#39;LINEAR_WMA&#39;, &#39;SIMPLE_MA&#39;, &#39;INTERPOLATE&#39;, &#39;RESAMPLE_EXTENDED&#39;, &#39;RESAMPLE&#39;, &#39;POLY_REGRESSOR&#39;, &#39;SHUTIN_CALC&#39;, &#39;PI_CALC&#39;, &#39;PASSTHROUGH&#39;, &#39;OUTLIER_DETECTOR&#39;, &#39;DRIFT_DETECTOR&#39;, &#39;SS_DETECTOR&#39;, &#39;VARIABLE_MA&#39;, &#39;WAVELET_FILTER&#39;, &#39;STATUS_FLAG_FILTER&#39;, &#39;OUTLIERS_REMOVE&#39;, &#39;ROUND&#39;, &#39;FLOOR&#39;, &#39;CEIL&#39;, &#39;SIGN&#39;, &#39;CLIP&#39;, &#39;MAX&#39;, &#39;MIN&#39;, &#39;BIN_MAP&#39;, &#39;SIN&#39;, &#39;COS&#39;, &#39;TAN&#39;, &#39;ARCSIN&#39;, &#39;ARCCOS&#39;, &#39;ARCTAN&#39;, &#39;ARCTAN2&#39;, &#39;DEG2RAD&#39;, &#39;RAD2DEG&#39;, &#39;SINH&#39;, &#39;COSH&#39;, &#39;TANH&#39;, &#39;ARCSINH&#39;, &#39;ARCCOSH&#39;, &#39;ARCTANH&#39;, &#39;ADD&#39;, &#39;SUB&#39;, &#39;MUL&#39;, &#39;DIV&#39;, &#39;POW&#39;, &#39;INV&#39;, &#39;SQRT&#39;, &#39;NEG&#39;, &#39;ABS&#39;, &#39;MOD&#39;, &#39;INTEGRATE&#39;, &#39;DDX&#39;, &#39;EXP&#39;, &#39;LOG&#39;, &#39;LOG2&#39;, &#39;LOG10&#39;, &#39;LOGN&#39;, &#39;versioning_test_op&#39;, &#39;abs_diff&#39;]
+</pre></div>
+</div>
+<p>We can retrieve which versions we have of a function with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">versioning</span><span class="o">.</span><span class="n">get_versions</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;1.0&#39;, &#39;1.1&#39;]
+</pre></div>
+</div>
+</section>
+<section id="running-versioned-functions">
+<h3>Running versioned functions<a class="headerlink" href="#running-versioned-functions" title="Permalink to this heading"></a></h3>
+<p>We can access and run specific function version with the <cite>versioning.get</cite> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff_v1</span> <span class="o">=</span> <span class="n">versioning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+<span class="n">abs_diff_v1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2022-01-01 00:00:00    0.0
+2022-01-01 01:00:00    NaN
+2022-01-01 02:00:00    0.0
+2022-01-01 03:00:00    NaN
+2022-01-01 04:00:00    0.0
+dtype: float64
+</pre></div>
+</div>
+<p>Omitting the version argument will automatically select the latest version</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff_v1_1</span> <span class="o">=</span> <span class="n">versioning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">)</span>
+<span class="n">abs_diff_v1_1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># sphinx_gallery_thumbnail_path = &#39;_static/images/versioning_thumbnail.png&#39;</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2022-01-01 00:00:00    0.0
+2022-01-01 01:00:00    0.0
+2022-01-01 02:00:00    0.0
+2022-01-01 03:00:00    0.0
+2022-01-01 04:00:00    0.0
+Freq: H, dtype: float64
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.270 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-versioning-versioned-function-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/5de75731f01690b7ed8da2b559f04489/versioned_function.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">versioned_function.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/e19fb1d2b1d72e5e4159efb1c018b470/versioned_function.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">versioned_function.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Function versioning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../contribute.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

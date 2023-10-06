@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistics &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sustainability" href="sustainability.html" />
+    <link rel="prev" title="Smooth" href="smooth.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Statistics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#confidence-bands">Confidence bands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.statistics.confidence.bands"><code class="docutils literal notranslate"><span class="pre">bands()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#outlier-detection">Outlier detection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.statistics.outliers.detect_outliers"><code class="docutils literal notranslate"><span class="pre">detect_outliers()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#outlier-removal">Outlier removal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.statistics.outliers.remove_outliers"><code class="docutils literal notranslate"><span class="pre">remove_outliers()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pearson-correlation">Pearson correlation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.statistics.pearson_correlation"><code class="docutils literal notranslate"><span class="pre">pearson_correlation()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Statistics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/statistics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="statistics">
+<h1>Statistics<a class="headerlink" href="#statistics" title="Permalink to this heading"></a></h1>
+<section id="confidence-bands">
+<h2>Confidence bands<a class="headerlink" href="#confidence-bands" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.statistics.confidence.bands">
+<span class="sig-prename descclassname"><span class="pre">indsl.statistics.confidence.</span></span><span class="sig-name descname"><span class="pre">bands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'1h'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#indsl.statistics.confidence.bands" title="Permalink to this definition"></a></dt>
+<dd><p>Confidence bands.</p>
+<p>Confidence bands, also known as Bollinger Bands, are a statistical characterization of a time series fluctuations.
+The confidence bands display a graphical envelope (upper and lower bands) given by the deviation (expressed by the envelope’s width). The envelope width is estimated as a factor of the standard deviation for a given
+time period.</p>
+<p>Two input parameters are required to describe the historical behavior of the data, a time window, N, and a
+multiplication factor, K. The window influences the “responsiveness” of the bands to magnitude and frequency of data
+variations. The multiplication factor influences the width of the envelope.</p>
+<p>The Bollinger Bands consist of an N-period moving average (MA) and upper and lower bands at K times an N-period
+standard deviation above and below the moving average (MA +/- K*stdev).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>period</strong> – Window.
+Window length in seconds. Used to estimate the moving average and standard deviation. Defaults to 3600.</p></li>
+<li><p><strong>K</strong> – Factor.
+Factor used to estimate the width of the envelope K*stdev. Defaults to 2.</p></li>
+<li><p><strong>as_json</strong> – JSON?
+Return a json dictionary (True) or a pandas DataFrame (False). Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time index, moving average, and upper and lower rolling confidence bands.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>JSON or pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="outlier-detection">
+<h2>Outlier detection<a class="headerlink" href="#outlier-detection" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.statistics.outliers.detect_outliers">
+<span class="sig-prename descclassname"><span class="pre">indsl.statistics.outliers.</span></span><span class="sig-name descname"><span class="pre">detect_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg_smooth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">del_zero_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.statistics.outliers.detect_outliers" title="Permalink to this definition"></a></dt>
+<dd><p>Outlier detection.</p>
+<p>Identifies outliers combining two methods, dbscan and csap.</p>
+<ul class="simple">
+<li><p><strong>dbscan</strong>: Density-based clustering algorithm used to identify clusters of varying shape and size within a data
+set. Does not require a pre-determined set number of clusters. Able to identify outliers as noise, instead of
+classifying them into a cluster. Flexible when it comes to the size and shape of clusters, which makes it more
+useful for noise, real life data.</p></li>
+<li><p><strong>csaps regression</strong>: Cubic smoothing spline algorithm. Residuals from the regression are computed. Data points with
+high residuals (3 Standard Deviations from the Mean) are considered as outliers.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.
+The data has to be non-uniform.</p></li>
+<li><p><strong>reg_smooth</strong> – Smoothing factor.
+The smoothing parameter that determines the weighted sum of terms in the regression, and it is limited by
+the range [0,1]. Defaults to 0.9. Ref: <a class="reference external" href="https://csaps.readthedocs.io/en/latest/formulation.html#definition">https://csaps.readthedocs.io/en/latest/formulation.html#definition</a></p></li>
+<li><p><strong>min_samples</strong> – <p>Minimum samples.
+Minimum number of data points required to form a distinct cluster. Defaults to 4.
+Defines the minimum number of data points required to form a distinct cluster. Rules of thumb for selecting
+the minimum samples value:</p>
+<ul>
+<li><p>The larger the data set, the larger the value of MinPts should be.</p></li>
+<li><p>If the data set is noisier, choose a larger value of MinPts Generally, MinPts should be greater than or
+equal to the dimensionality of the data set. For 2-dimensional data, use DBSCAN’s default value of 4
+(Ester et al., 1996).</p></li>
+<li><p>If your data has more than 2 dimensions, choose MinPts = 2*dim, where dim= the dimensions of your data
+set (Sander et al., 1998).</p></li>
+</ul>
+</p></li>
+<li><p><strong>eps</strong> – Distance threshold.
+Defines the maximum distance between two samples for one to be considered as in the
+neighborhood of the other (i.e. belonging to the same cluster). This is the most important DBSCAN parameter
+to choose appropriately for your dataset and distance function. If no value is given, it is set automatically
+using Nearest Neighbors algorithm to calculate the average distance between each point and its k
+nearest neighbors, where k = min_samples (minimum samples). In ascending order on a k-distance graph, the
+optimal value for the threshold is at the point of maximum curvature (i.e. after plotting the average
+k-distances in where the graph has the greatest slope). This is not a maximum bound on the distances of
+points within a cluster.
+Defaults to None, eps value has to be &gt; 0.0.</p></li>
+<li><p><strong>time_window</strong> – Time window.
+Length of the time period to compute the rolling mean. The rolling mean and the data point value are the two features considered when calculating the distance to the furthest neighbour.
+This distance allows us to find the right epsilon when training dbscan. Defaults to ‘60min’.
+Accepted format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.
+If a number without unit (such as ‘60’)is given, it will be considered as the number of minutes.</p></li>
+<li><p><strong>del_zero_val</strong> – Remove zeros.
+Removes data points containing a value of 0. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Time series.</dt><dd><p>Binary time series indicating outliers: Outlier= 1, Not an outlier = 0</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/statistics/plot_detect_outliers_001.html#sphx-glr-auto-examples-statistics-plot-detect-outliers-001-py"><span class="std std-ref">Outlier detection with DBSCAN and spline regression 001</span></a></p></li>
+<li><p><a class="reference internal" href="auto_examples/statistics/plot_detect_outliers_002.html#sphx-glr-auto-examples-statistics-plot-detect-outliers-002-py"><span class="std std-ref">Outlier detection with DBSCAN and spline regression 002</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="outlier-removal">
+<h2>Outlier removal<a class="headerlink" href="#outlier-removal" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.statistics.outliers.remove_outliers">
+<span class="sig-prename descclassname"><span class="pre">indsl.statistics.outliers.</span></span><span class="sig-name descname"><span class="pre">remove_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg_smooth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">del_zero_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.statistics.outliers.remove_outliers" title="Permalink to this definition"></a></dt>
+<dd><p>Outlier removal.</p>
+<p>Identifies and removes outliers combining two methods, dbscan and csap.</p>
+<ul class="simple">
+<li><p><strong>dbscan</strong>: Density-based clustering algorithm used to identify clusters of varying shape and size within a data
+set. Does not require a pre-determined set number of clusters. Able to identify outliers as noise, instead of
+classifying them into a cluster. Flexible when it comes to the size and shape of clusters, which makes it more
+useful for noise, real life data.</p></li>
+<li><p><strong>csaps regression</strong>: Cubic smoothing spline algorithm. Residuals from the regression are computed. Data points with
+high residuals (3 Standard Deviations from the Mean) are considered as outliers.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>reg_smooth</strong> – Smoothing factor.
+The smoothing parameter that determines the weighted sum of terms in the regression, and it is limited by
+the range [0,1]. Defaults to 0.9. Ref: <a class="reference external" href="https://csaps.readthedocs.io/en/latest/formulation.html#definition">https://csaps.readthedocs.io/en/latest/formulation.html#definition</a></p></li>
+<li><p><strong>min_samples</strong> – <p>Minimum samples.
+Minimum number of data points required to form a distinct cluster. Defaults to 4.
+Defines the minimum number of data points required to form a distinct cluster. Rules of thumb for selecting
+the minimum samples value:</p>
+<ul>
+<li><p>The larger the data set, the larger the value of MinPts should be.</p></li>
+<li><p>If the data set is noisier, choose a larger value of MinPts Generally, MinPts should be greater than or
+equal to the dimensionality of the data set. For 2-dimensional data, use DBSCAN’s default value of 4
+(Ester et al., 1996).</p></li>
+<li><p>If your data has more than 2 dimensions, choose MinPts = 2*dim, where dim= the dimensions of your data
+set (Sander et al., 1998).</p></li>
+</ul>
+</p></li>
+<li><p><strong>eps</strong> – Distance threshold.
+Defines the maximum distance between two samples for one to be considered as in the
+neighborhood of the other (i.e. belonging to the same cluster). This is the most important DBSCAN parameter
+to choose appropriately for your dataset and distance function. If no value is given, it is set automatically
+using Nearest Neighbors algorithm to calculate the average distance between each point and its k
+nearest neighbors, where k = min_samples (minimum samples). In ascending order on a k-distance graph, the
+optimal value for the threshold is at the point of maximum curvature (i.e. after plotting the average
+k-distances in where the graph has the greatest slope). This is not a maximum bound on the distances of
+points within a cluster.
+Defaults to None, eps value has to be &gt; 0.0.</p></li>
+<li><p><strong>time_window</strong> – Time window.
+Length of the time period to compute the rolling mean. The rolling mean and the data point value are the two features considered when calculating the distance to the furthest neighbour.
+This distance allows us to find the right epsilon when training dbscan. Defaults to ‘60min’.
+Accepted format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.
+If a number without unit (such as ‘60’)is given, it will be considered as the number of minutes.</p></li>
+<li><p><strong>del_zero_val</strong> – Remove zeros.
+Removes data points containing a value of 0. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series without outliers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/statistics/plot_remove_outliers.html#sphx-glr-auto-examples-statistics-plot-remove-outliers-py"><span class="std std-ref">Outlier detection with DBSCAN and spline regression</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="pearson-correlation">
+<h2>Pearson correlation<a class="headerlink" href="#pearson-correlation" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.statistics.pearson_correlation">
+<span class="sig-prename descclassname"><span class="pre">indsl.statistics.</span></span><span class="sig-name descname"><span class="pre">pearson_correlation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:15:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.statistics.pearson_correlation" title="Permalink to this definition"></a></dt>
+<dd><p>Pearson correlation.</p>
+<p>This function measures the linear correlation between two time series along a rolling window.
+Pearson’s definition of correlation: <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">https://en.wikipedia.org/wiki/Pearson_correlation_coefficient</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data1</strong> – Time series.</p></li>
+<li><p><strong>data2</strong> – Time series.</p></li>
+<li><p><strong>time_window</strong> – Time window.
+Length of the time period to compute the Pearson correlation. Defaults to ‘minutes=15’.
+Time unit should be in days, hours, minutes or seconds. Accepted formats can be found here:
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html">https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html</a>.</p></li>
+<li><p><strong>min_periods</strong> – Minimum samples.
+Minimum number of observations required in the given time window (otherwise, the result is set to 0).
+Defaults to 1.</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – data is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – data is empty</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – time_window is not of type pandas.Timedelta</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/statistics/plot_pearson_correlation.html#sphx-glr-auto-examples-statistics-plot-pearson-correlation-py"><span class="std std-ref">Pearson correlation</span></a></p></li>
+</ul>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="smooth.html" class="btn btn-neutral float-left" title="Smooth" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sustainability.html" class="btn btn-neutral float-right" title="Sustainability" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

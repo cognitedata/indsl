@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing &mdash; indsl 8.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Code of Conduct" href="code_of_conduct.html" />
+    <link rel="prev" title="Function versioning" href="auto_examples/versioning/versioned_function.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            indsl
+              <img src="_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-a-new-charts-compliant-algorithm">Contributing a new CHARTS compliant algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preliminaries-and-setup">Preliminaries and setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#develop-your-algorithm">Develop your algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-or-extras">Core or Extras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#document-your-algorithm">Document your algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#front-and-back-end-compliance">Front and back end compliance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-an-example-to-the-gallery-of-charts">Add an example to the Gallery of Charts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-documentation-build">Verify documentation build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version-your-algorithm">Version your algorithm</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#do-i-need-to-version-my-algorithm">Do I need to version my algorithm?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-version-my-function">How do I version my function?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-pull-request">Create a pull request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-a-free-form-algorithm">Contributing a free form algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-style">Coding Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contribute.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading"></a></h1>
+<p>This project is a community effort and contributions are welcomed. Currently, it is privately hosted in
+<a class="reference external" href="https://github.com/cognitedata/indsl">GitHub</a>. It is publicly available but only open for internal contributions at
+the moment. It is also to open for contribution to our customers via the
+<a class="reference external" href="https://hub.cognite.com/groups/charts-early-adopter-164">Early Adopter program</a> on
+<a class="reference external" href="https://hub.cognite.com/">Cognite Hub</a> our community site. If you’re not yet a member of
+<a class="reference external" href="https://hub.cognite.com/">Cognite Hub</a> please sign up
+following the steps in <a class="reference external" href="https://hub.cognite.com/welcome-to-cognite-hub-73/how-to-sign-up-for-cognite-hub-and-learn-617">this guide</a>.</p>
+<p>The main objective of the InDLS is to <strong>provide industrial domain experts and data scientist with a rich library of
+algorithms to speed up their work</strong>. Therefore, we highly encourage data scientists with industrial domain knowledge
+to contribute algorithms and models within their niche expeertise. <em>Nevertheless, we are industry and scientific domain
+agnostic</em>. We accept any type of algorithm that improves the industrial data science experience and development.</p>
+<p>Given the above, we are picky when it comes to adding new algorithms and how we document them. We want to speed up our
+user’s tasks with algorithms that minimize their exploratory and analytic work. We strive to include
+methods that will save them time and provide comprehensive documentation for each algorithm.
+Keep this in mind when developing a new algorithm.</p>
+<p>There are multiple ways to contribute, the most common ones are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>New algorithm</p></li>
+<li><p>Documentation</p></li>
+<li><p>Examples: <span class="xref std std-ref">sphx_glr_auto_examples</span></p></li>
+<li><p>Bug reports</p></li>
+</ul>
+</div></blockquote>
+<p>We encourage contribution of algorithms that are compliant with the <a href="https://charts.cogniteapp.com/" target="_blank">Cognite Charts</a> calculations engine. Therefore, this
+guide focuses on the requirements to comply with it. Nevertheless, we accept any other algorithms (not exposed through
+<a href="https://charts.cogniteapp.com/" target="_blank">Cognite Charts</a>) to be used by installing the python package in your preferred development environment.</p>
+<p><em>Although the core of this project are the industrial algorithms, improving our documentation is very
+important and making our library more robust over time is of paramount importance. Please don’t hesitate to submit a
+Github pull request for something as small as a typo.</em></p>
+<section id="contributing-a-new-charts-compliant-algorithm">
+<h2>Contributing a new CHARTS compliant algorithm<a class="headerlink" href="#contributing-a-new-charts-compliant-algorithm" title="Permalink to this heading"></a></h2>
+<p>For an algorithm to play well with the CHARTS front-end (user interface) and the
+calculations back-end it has to adhere to some function I/O requirements, documentation (docstrings) format and a few
+other requirements to expose the algorithm to the front and back-end. The first few basic requirements to keep in mind
+before developing and algorithm are:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>It must belong to a particular toolbox. All the toolboxes are listed under the <code class="docutils literal notranslate"><span class="pre">indsl/</span></code> folder.</p></li>
+<li><p>It must be a python function: <code class="docutils literal notranslate"><span class="pre">def():</span></code></p></li>
+<li><p>Input data is passed to each algorithm as one or more <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> (one for each time series) with a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> index.</p></li>
+<li><p>The output must be a <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> with a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> index for it to be displayed on the UI.</p></li>
+<li><p>Function parameters types allowed are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Time series: <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code></p></li>
+<li><p>Time series or float: <code class="docutils literal notranslate"><span class="pre">Union[pd.Series,</span> <span class="pre">float]</span></code></p></li>
+<li><p>Integer: <code class="docutils literal notranslate"><span class="pre">int</span></code></p></li>
+<li><p>Float: <code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/enum.html">Enumerations</a>: <code class="docutils literal notranslate"><span class="pre">Enum</span></code></p></li>
+<li><p>String: <code class="docutils literal notranslate"><span class="pre">str</span></code></p></li>
+<li><p>Timestamp: <code class="docutils literal notranslate"><span class="pre">pd.Timestamp</span></code></p></li>
+<li><p>Timedelta: <code class="docutils literal notranslate"><span class="pre">pd.Timedelta</span></code></p></li>
+<li><p>String option: <code class="docutils literal notranslate"><span class="pre">Literal</span></code></p></li>
+<li><p>List of floats: <code class="docutils literal notranslate"><span class="pre">List[int]</span></code></p></li>
+<li><p>List of floats: <code class="docutils literal notranslate"><span class="pre">List[float]</span></code></p></li>
+<li><p>Optional type: <code class="docutils literal notranslate"><span class="pre">Optional[float]</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We currently support python functions with <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> as data input and outputs (I/O). This restriction
+is in place to simplify how the CHARTS infrastructure fetches and displays data.</p>
+</div>
+<section id="preliminaries-and-setup">
+<h3>Preliminaries and setup<a class="headerlink" href="#preliminaries-and-setup" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We recommend using Python 3.10 for development.</p>
+<dl class="simple">
+<dt>Avoid duplicating code. Before starting a new algorithm, check for similar ones in the following places:</dt><dd><ul class="simple">
+<li><p>The <a class="reference external" href="https://github.com/cognitedata/indsl/tree/master/indsl">toolboxes</a></p></li>
+<li><p>The <a class="reference external" href="https://github.com/cognitedata/indsl/pulls">PR list</a></p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<p>This project uses <a class="reference external" href="https://python-poetry.org/">Poetry</a> for dependency management. Install it before starting</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: "$ ";
+}
+</style><span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>poetry</span>
+</pre></div></div><ol class="arabic simple">
+<li><p>Clone the <a class="reference external" href="https://github.com/cognitedata/indsl">InDSL</a> main repository on
+GitHub to your local environment.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>clone<span class="w"> </span>git@github.com:cognitedata/indsl.git</span>
+<span class="prompt1"><span class="nb">cd</span><span class="w"> </span>indsl</span>
+</pre></div></div><ol class="arabic simple" start="2">
+<li><p>Install the project dependencies.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>install<span class="w"> </span>--all-extras</span>
+</pre></div></div><ol class="arabic simple" start="3">
+<li><p>Synchronize your local master branch with the remote master branch.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>master</span>
+<span class="prompt1">git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master</span>
+</pre></div></div></section>
+<section id="develop-your-algorithm">
+<h3>Develop your algorithm<a class="headerlink" href="#develop-your-algorithm" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Create a feature branch to work on your new algorithm. Never work on the <em>master</em> or <em>documentation</em> branches.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my_new_algorithm</span>
+</pre></div></div></li>
+<li><p>Install <em>pre-commit</em> to run code style checks before each commit.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install<span class="w">  </span><span class="c1"># Only needed if not installed</span></span>
+<span class="prompt1">poetry<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files</span>
+</pre></div></div></li>
+<li><p>If you need any additional module not in the installed dependencies, install it using the <code class="docutils literal notranslate"><span class="pre">add</span></code> command. If you
+need the new module for development, use the <code class="docutils literal notranslate"><span class="pre">--dev</span></code> option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>add<span class="w"> </span>new_module</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>add<span class="w"> </span>new_module<span class="w"> </span>--dev</span>
+</pre></div></div></li>
+<li><p>Develop the new algorithm on your local branch. Use the exception classes defined in
+<a class="reference external" href="https://github.com/cognitedata/indsl/tree/master/indsl/exceptions.py">indsl/exceptions.py</a>
+when raising errors that are caused by invalid or erroneous user input. InDSL provides the &#64;check_types
+decorator (from <a class="reference external" href="https://github.com/agronholm/typeguard">typeguard</a>) for run-time type checking,
+which should be used instead of checking each input type explicitly. When finished or reach an important
+milestone, use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> to record it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>add<span class="w"> </span>.</span>
+<span class="prompt1">git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Short but concise commit message with your changes&quot;</span></span>
+</pre></div></div><p>If your function is not valid for certain input values, an error <strong>must</strong> be thrown. For example,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">UserValueError</span><span class="p">(</span><span class="s2">&quot;Length cannot be negative.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">length</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</li>
+<li><p>As you develop the algorithm it is good practice to add tests to it. All tests are stored in the root folder
+<a class="reference external" href="https://github.com/cognitedata/indsl/tree/master/tests">tests/</a> using the same folder structure
+as the <code class="docutils literal notranslate"><span class="pre">indsl/</span></code> folder. We run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to verify pull requests before merging with the master
+version. Before sending your pull request for review, make sure you have written tests for the algorithm and ran
+them locally to verify they pass.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>New algorithms without proper tests will not be merged - help us keep the code coverage at a high level!</strong></p>
+</div>
+</section>
+<section id="core-or-extras">
+<h3>Core or Extras<a class="headerlink" href="#core-or-extras" title="Permalink to this heading"></a></h3>
+<p>InDSL is divided into two main categories: core and extras. The core algorithms are the ones that only require
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy``and</span> <span class="pre">``pandas</span></code> as dependencies. The extras are algorithms that require additional dependencies.</p>
+<p>If your algorithm requires additional dependencies, add them to the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file as optional dependencies and
+also add them under the <code class="docutils literal notranslate"><span class="pre">tool.poetry.extras</span></code> section in an appropriate category. The dependencies will also need to be
+lazy loaded to avoid loading them when the core part of the library is imported. To do this you need to import the
+dependencies in the function itself, and not at the top of the file.</p>
+</section>
+<section id="document-your-algorithm">
+<h3>Document your algorithm<a class="headerlink" href="#document-your-algorithm" title="Permalink to this heading"></a></h3>
+<p>CHARTS compliant algorithms must follow a few simple docstrings formatting requirements for the information to be parsed
+and properly displayed on the user interface and included in the technical documentation.</p>
+<ol class="arabic">
+<li><p>Use <cite>r”””raw triple double quotes”””</cite> docstrings to document your algorithm. This allows using backslashes in the
+documentation, hence LaTeX formulas are properly parsed and rendered. The documentation targets both data science
+developers and CHARTS users and the <cite>r”””</cite> allows us properly render formulas in the CHARTS UI and
+in the InDSL documentation. If you are not sure how to document, refer to any algorithm in the
+<code class="docutils literal notranslate"><span class="pre">indsl</span></code>/ folder for inspiration.</p></li>
+<li><p>Follow <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google Style</a> unless otherwise is stated in this guide.</p></li>
+<li><p><strong>Function name</strong>: after the first <cite>r”””</cite>, write a short (1-5 words) descriptive name for your function with no punctuation at the end.
+This will be the function name displayed on the CHARTS user interface.</p></li>
+<li><p>Add an empty space line break after the title.</p></li>
+<li><p>Write a comprehensive description of your function. Take care to use full words to describe input arguments.
+For example, in code you might use <code class="docutils literal notranslate"><span class="pre">poly_order</span></code> as an argument but in the description use <code class="docutils literal notranslate"><span class="pre">polynomial</span> <span class="pre">order</span></code>
+instead.</p></li>
+<li><p><strong>Parameter names and descriptions</strong>: define all the function arguments after <code class="docutils literal notranslate"><span class="pre">Args:</span></code> by listing all arguments,
+using tabs to differentiate each one and their respective description. Adhere as close as possible to the following formatting rules for each parameter name and description:</p>
+<blockquote>
+<div><ul>
+<li><p>A parameter name must have 30 characters or less, excluding units defined within square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>
+(more on this below). Square brackets are only allowed to input units in a parameter name. Using brackets within
+a parameter name for something different to units might generate an error in the pre-commit tests.</p></li>
+<li><p>Must end with a period punctuation mark <code class="docutils literal notranslate"><span class="pre">.</span></code></p></li>
+<li><p>Use LaTeX language for typing formulas, if any, as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use the command <code class="docutils literal notranslate"><span class="pre">:math:`LaTeX</span> <span class="pre">formula`</span></code> for inline formulas</p></li>
+<li><p>Use the command <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">math::</span></code> for full line equations</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>If a parameter requires specific units, these must be typed as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Enclosed in square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code></p></li>
+<li><p>In Roman (not italic) font</p></li>
+<li><p>If using LaTeX language, use the <code class="docutils literal notranslate"><span class="pre">:math:</span></code> inline formula command, and the command <code class="docutils literal notranslate"><span class="pre">\mathrm{}</span></code> to render
+the units in Roman font.</p></li>
+<li><p>Placed at the end of the string</p></li>
+</ul>
+</div></blockquote>
+<p>For example:</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">Args:</span>
+
+<span class="s2">    ...</span>
+
+<span class="s2">    pump_hydraulic_power: Pump hydraulic power [W].</span>
+<span class="s2">    pump_liquid_flowrate: Pump liquid flowrate [:math:`\mathrm{\frac{m^3}</span><span class="si">{h}</span><span class="s2">}`].</span>
+
+<span class="s2">    ...</span>
+</pre></div>
+</div>
+<p>This is a <a class="reference external" href="https://github.com/cognitedata/indsl/blob/master/indsl/smooth/savitzky_golay.py">basic example</a>
+of how to document a function :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">...</span>
+
+<span class="sd">Args:</span>
+<span class="sd">    data: Time series.</span>
+<span class="sd">    window_length: Window.</span>
+<span class="sd">        Point-wise length of the filter window (i.e. number of data points). A large window results in a stronger</span>
+<span class="sd">        smoothing effect and vice-versa. If the filter window length is not defined by the user, a</span>
+<span class="sd">        length of about 1/5 of the length of time series is set.</span>
+<span class="sd">    polyorder: Polynomial order.</span>
+<span class="sd">        Order of the polynomial used to fit the samples. Must be less than the filter window length.</span>
+<span class="sd">        Hint: A small polynomial order (e.g. 1) results in a stronger data smoothing effect.</span>
+<span class="sd">        Defaults to 1, which typically results in a smoothed time series representing the dominating data trend</span>
+<span class="sd">        and attenuates fluctuations.</span>
+
+<span class="sd">Returns:</span>
+<span class="sd">    pd.Series: Time series</span>
+<span class="sd">    If you want, it is possible to add more text here to describe the output.</span>
+
+<span class="sd">...</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Define the function output after <code class="docutils literal notranslate"><span class="pre">Returns:</span></code> as shown above.</p></li>
+<li><p>The above are the minimal requirements to expose the documentation on the user interface and technical docs. But
+feel free to add more <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">supported sections</a>.</p></li>
+<li><p>Go to the <code class="docutils literal notranslate"><span class="pre">docs-source/source/</span></code> folder and find the appropriate toolbox <code class="docutils literal notranslate"><span class="pre">rst</span></code> file (e.g. <code class="docutils literal notranslate"><span class="pre">smooth.rst</span></code>)</p></li>
+<li><p>Add the a new entry with the name of your function as a subtitle, underlined with the symbol <code class="docutils literal notranslate"><span class="pre">^</span></code>.</p></li>
+<li><p>Add the sphinx directive <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">autofunction::</span></code> followed by the path to your new algorithm (see the example below).
+This will autogenerate the documentation from the code docstrings.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt2:before {
+  content: " ";
+}
+</style><span class="prompt2">.. autofunction:: indsl.smooth.sg</span>
+</pre></div></div><ol class="arabic simple" start="11">
+<li><p>If you have coded an example, add the sphinx directive <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">topic::</span> <span class="pre">Examples:</span></code> and below it the sphinx reference
+to find the autogenerated material (see example below). The construct is as follows,
+<code class="docutils literal notranslate"><span class="pre">sphx_glr_autoexamples_{toolbox_folder}_{example_code}.py</span></code></p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">.. topic:: Examples:</span>
+<span class="prompt2"></span>
+<span class="prompt2">    * :ref:`sphx_glr_auto_examples_smooth_plot_sg_smooth.py`</span>
+</pre></div></div></section>
+<section id="front-and-back-end-compliance">
+<h3>Front and back end compliance<a class="headerlink" href="#front-and-back-end-compliance" title="Permalink to this heading"></a></h3>
+<p>For the  algorithm to be picked up by the front and back end, and display user relevant information, take the following
+steps.</p>
+<ol class="arabic">
+<li><p>Add human readable names to each input parameter (not the input data) in your algorithm. These will be displayed on
+the UI, hence avoid using long names or special characters.</p></li>
+<li><p>Add a technical but human readable description of your algorithm, the inputs required, what it does, and the
+expected result. This will be displayed on the UI and targets our users (i.e. domain experts).</p>
+<blockquote>
+<div></div></blockquote>
+</li>
+<li><p>Add the &#64;check_types decorator to the functions that contain Python type annotations. This makes sure that the function is always called with inputs of the same type as specified in the function signature.</p></li>
+<li><dl class="simple">
+<dt>Add your function to the attribute <code class="docutils literal notranslate"><span class="pre">__cognite__</span></code> in the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file of the toolbox module your algorithm belongs to. For example, the</dt><dd><p><a class="reference external" href="https://github.com/cognitedata/indsl/blob/master/indsl/smooth/savitzky_golay.py">Savitzky-Golay smoother</a>
+(<a class="reference internal" href="smooth.html#indsl.smooth.sg" title="indsl.smooth.sg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">indsl.smooth.sg()</span></code></a>) belongs to the <code class="docutils literal notranslate"><span class="pre">smooth</span></code> toolbox. Therefore, we add <code class="docutils literal notranslate"><span class="pre">sg</span></code> to the list <code class="docutils literal notranslate"><span class="pre">__cognite__</span></code>
+in the file <code class="docutils literal notranslate"><span class="pre">indsl/smooth/__init__.py</span></code>.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>This would be a good time to push your changes to the remote repository</p>
+</section>
+<section id="add-an-example-to-the-gallery-of-charts">
+<h3>Add an example to the Gallery of Charts<a class="headerlink" href="#add-an-example-to-the-gallery-of-charts" title="Permalink to this heading"></a></h3>
+<p><span class="xref std std-ref">sphx_glr_auto_examples</span> is an auto generated collection of examples of our industrial data science
+algorithms. Following the steps below, your example will be automatically added to the gallery. We take care of
+auto generating the figures, adding the code to the gallery, and links to downloadable python and notebook versions
+of your code for other data scientists to use or get inspired by (sharing is caring!). We use <a class="reference external" href="https://sphinx-gallery.github.io/stable/index.html">Sphinx-Gallery</a> for this purpose, if you want to find out more about what you
+can do to generate generate your example.</p>
+<p>We want to offer our user and developers as much information as possible about our industrial algorithms. Therefore we
+<strong>strongly encourage</strong> all data scientist and developers to include one or more examples (license to go crazy here)
+to show off all the amazing features and functionalities of your new algorithm and how it can be used.</p>
+<ol class="arabic simple">
+<li><p>Clone the INDSL repo and create your own local branch.</p></li>
+<li><p>Go to the toolbox folder in <code class="docutils literal notranslate"><span class="pre">examples</span></code> where your algorithm belongs to (e.g. <code class="docutils literal notranslate"><span class="pre">smooth</span></code>)</p></li>
+<li><p>Create a new python file with the prefix <em>plot_</em>. For example <code class="docutils literal notranslate"><span class="pre">plot_my_new_algo_feature.py</span></code>.</p></li>
+<li><p>At the top of the file, add a triple quote docstring that start with the title of your example enclose by
+top and bottom equal symbols (as shown below), followed by a description of your example. For inspiration, check
+the <span class="xref std std-ref">sphx_glr_auto_examples</span> or one of the examples in the repository
+(e.g. <code class="docutils literal notranslate"><span class="pre">examples/smooth/plot_sg_smooth.py</span></code>).</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2"><span class="s2">&quot;&quot;&quot;</span></span>
+<span class="prompt2"><span class="o">=============</span></span>
+<span class="prompt2"><span class="n">Example</span> <span class="n">title</span></span>
+<span class="prompt2"><span class="o">=============</span></span>
+<span class="prompt2"><span class="n">Description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">example</span> <span class="ow">and</span> <span class="n">what</span> <span class="n">feature</span> <span class="n">of</span> <span class="n">the</span> <span class="n">algorithm</span> <span class="n">I</span><span class="s1">&#39;m showing off.</span></span>
+<span class="prompt2"><span class="s2">&quot;&quot;&quot;</span></span>
+<span class="prompt2"></span>
+<span class="prompt2"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt2"><span class="o">...</span></span>
+</pre></div></div><ol class="arabic simple" start="5">
+<li><p>Once you are done developing the example record your changes using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;path_to_file&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&lt;commit_message&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span> <span class="pre">origin</span> <span class="pre">&lt;your_branch_name&gt;</span></code></p></li>
+<li><p>You can test the Sphinx build of your PR by following the steps in the section below.</p></li>
+</ol>
+</section>
+<section id="verify-documentation-build">
+<h3>Verify documentation build<a class="headerlink" href="#verify-documentation-build" title="Permalink to this heading"></a></h3>
+<p>It is highly recommended to check that the documentation for your new function is built and displayed
+correctly. Note that you will need all of the following Sphinx python libraries to successfully build the documentation (these packages can be installed with pip):
+* sphinx-gallery
+* sphinx
+* sphinx-prompt
+* sphinx-rtd-theme</p>
+<p>While testing the build, some files that <em>should not be committed to the remote repository</em>, will be
+autogenerated in the folder <code class="docutils literal notranslate"><span class="pre">docs-source/source/auto_examples/</span></code>. If these are committed nothing will really happen,
+except for the PR probably being longer than expected and could confuse the reviewers if they are not aware of this.
+To avoid it there are two two options:</p>
+<ol class="arabic simple">
+<li><p>Don’t stage the files inside the folder <code class="docutils literal notranslate"><span class="pre">docs-source/source/auto_examples/</span></code>, or</p></li>
+<li><p>add the folder <code class="docutils literal notranslate"><span class="pre">docs-source/source/auto_examples/</span></code> to the file <code class="docutils literal notranslate"><span class="pre">.git/info/exclude</span></code> to locally exclude the folder
+from any commit. You can use your IDE git integration to locally exclude files
+(e.g. <a class="reference external" href="https://www.jetbrains.com/help/pycharm/set-up-a-git-repository.html#ignore-files">PyCharm</a>).</p></li>
+</ol>
+<p>Once you taken care of the above, do the following:</p>
+<ol class="arabic simple">
+<li><p>Install the dependencies needed to build the documentation:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">poetry install --with docs</span>
+</pre></div></div><ol class="arabic simple" start="2">
+<li><p>In your terminal, go to the folder <code class="docutils literal notranslate"><span class="pre">docs-source/</span></code></p></li>
+<li><p>Clean the previous build (if any) using</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">make clean</span>
+</pre></div></div><ol class="arabic simple" start="4">
+<li><p>Build the documentation with</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">make html</span>
+</pre></div></div><ol class="arabic" start="5">
+<li><p>If there were errors during the build, address them and repeat steps 2-3.</p></li>
+<li><p>If the build was successful, open the html file located in <cite>build/html/index.html</cite> and review it navigating to the
+section(s) relevant to your new function.</p>
+<p>For mac users the file can be opened with the following command:</p>
+</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">open build/html/index.html</span>
+</pre></div></div><ol class="arabic simple" start="7">
+<li><p>Once satisfied with the documentation, commit and push the changes.</p></li>
+</ol>
+</section>
+<section id="version-your-algorithm">
+<h3>Version your algorithm<a class="headerlink" href="#version-your-algorithm" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is only relevant if you are changing an existing function in InDSL.</p>
+</div>
+<p>For industrial applications, consistency and reproducibility of calculation results is of critical importance.
+For this reason, InDSL keeps a version history of InDSL functions that developers user can choose from.
+Older versions can be marked as deprecated to notify users that a new version is available.
+The example <a class="reference internal" href="auto_examples/versioning/versioned_function.html#sphx-glr-auto-examples-versioning-versioned-function-py"><span class="std std-ref">Function versioning</span></a> demonstrates in more detail how the function versioning works in InDSL.</p>
+<section id="do-i-need-to-version-my-algorithm">
+<h4>Do I need to version my algorithm?<a class="headerlink" href="#do-i-need-to-version-my-algorithm" title="Permalink to this heading"></a></h4>
+<p>You need to version your algorithm if:</p>
+<ol class="arabic simple">
+<li><p>You are changing an existing InDSL function, and one of the following conditions holds:</p>
+<ul class="simple">
+<li><p>The signature of the new function is incompatible with the old function. For instance if a parameter was renamed or a new parameter was added without a default value.</p></li>
+<li><p>The modifications change the function output for any given input.</p></li>
+</ul>
+</li>
+<li><p>You are changing a helper function that is used by other InDSL functions. In that case you need to version the helper function and all affected InDSL functions.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to avoid code duplication, one should explore if the modifications can be implemented in a backwards-compatible manner (for instance through a new parameter with a default value).</p>
+</div>
+</section>
+<section id="how-do-i-version-my-function">
+<h4>How do I version my function?<a class="headerlink" href="#how-do-i-version-my-function" title="Permalink to this heading"></a></h4>
+<p>As an example, we consider a function <cite>myfunc</cite> in <cite>mymod.py</cite>.
+A new function version is released through the following steps.</p>
+<ol class="arabic">
+<li><p>Move the function from <cite>mymod.py</cite> to <cite>mymod_vX.py</cite>, where <cite>X</cite> denotes the current function version. If the function is not versioned yet, create the file <cite>mymod_v1.py</cite>.</p></li>
+<li><p>If not already present, add the <code class="xref py py-func docutils literal notranslate"><span class="pre">versioning.register()</span></code> decorator to the function. Specifically,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: mymod_v1.py</span>
+<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+   <span class="c1"># old implementation</span>
+</pre></div>
+</div>
+<p>becomes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: mymod_v1.py</span>
+<span class="kn">from</span> <span class="nn">indsl</span> <span class="kn">import</span> <span class="n">versioning</span>
+
+<span class="nd">@versioning</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+   <span class="c1"># old implementation</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>: The first version of any function <strong>must</strong> be 1.0! Also note that <code class="code docutils literal notranslate"><span class="pre">deprecated=True</span></code>: InDSL allows at most
+one non-deprecated version. For functions already in CHARTS, deprecating all versions will remove the functions from the front-end.</p>
+</li>
+<li><p>Add the new implementation to <cite>mymod.py</cite> and import <cite>mymod_v1.py</cite>. The modified <cite>mymod.py</cite> file will look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: mymod.py</span>
+<span class="kn">from</span> <span class="nn">indsl</span> <span class="kn">import</span> <span class="n">versioning</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">mymod_v1</span>  <span class="c1"># noqa</span>
+
+<span class="nd">@versioning</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span> <span class="n">changelog</span><span class="o">=</span><span class="s2">&quot;Describe here how the function changed compared to the previous version&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+   <span class="c1"># new implementation</span>
+</pre></div>
+</div>
+<p>Make sure to increment the version number (a single positive integer) of the new implementation. Optionally, non-breaking changes can be versioned.
+In that case follow the <a class="reference external" href="https://semver.org/">semantic versioning guidelines</a>.</p>
+</li>
+<li><p>Make sure the all versions of the function <cite>myfunc</cite> are tested. If the tests of the most recent version are in <cite>test_mymod.py</cite>, tests for the deprecated
+function can be placed in <cite>test_mymod_v1.py</cite>.</p></li>
+</ol>
+</section>
+</section>
+<section id="create-a-pull-request">
+<h3>Create a pull request<a class="headerlink" href="#create-a-pull-request" title="Permalink to this heading"></a></h3>
+<p>Before a PR is merged it needs to be approved by of our internal developers. If you expect to keep on working on your
+algorithm and are not ready to start the review process, please label the PR as a <code class="docutils literal notranslate"><span class="pre">draft</span></code>.</p>
+<p>To make the review process a better experience, we encourage complying with the following guidelines:</p>
+<ol class="arabic">
+<li><p>Give your pull request a helpful title. If it is part of a <a class="reference external" href="https://cognitedata.atlassian.net/jira/software/projects/PI/boards/402/backlog">JIRA task in our development backlog</a>, please add the task reference so
+it can be tracked by our team. If you are fixing a bug or improving documentation, using “BUG &lt;ISSUE TITLE&gt;” and
+“DOC &lt;DESCRIPTION&gt;” is enough.</p></li>
+<li><p>Make sure your code passes all the tests. You could run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> globally, but this is not recommended as it
+will take a long time as our library grows. Typically, running a few tests only on your new algorithm is enough.
+For example, if you created a <code class="docutils literal notranslate"><span class="pre">new_algorithm</span></code> in the <code class="docutils literal notranslate"><span class="pre">smooth</span></code> toolbox and added the tests
+<code class="docutils literal notranslate"><span class="pre">test_new_algorithm.py</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/smooth/test_new_algorithm.py</span></code> to run the tests specific to your algorithm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/smooth</span></code> to run the whole tests for the <code class="docutils literal notranslate"><span class="pre">smooth</span></code> toolbox module</p></li>
+</ul>
+<blockquote>
+<div></div></blockquote>
+</li>
+<li><p>Make sure your code is properly commented and documented. We can not highlight enough how important documenting
+your algorithm is for the succes of this product.</p></li>
+<li><p>Make sure the documentation renders properly. For details on how to build the documentation. Check our documentation guidelines (WIP). The official documentation will be built and deployed by our CI/CD workflows.</p></li>
+<li><p>Make sure the function renders properly in the UI.
+To preview the function node access the storybook build results url, which can be found in the PR comments.
+In chromatic, scroll down and inspect the stories for the function.</p></li>
+<li><p>Add test to all new algorithms or improvements to algorithms. These test add robustness to our code base and
+ensure that future modifications comply with the desired behavior of the algorithm.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">black</span></code> to auto-format your code contributions. Our pre-commit will run black for the entire project once you
+are ready to commit and push to the remote branch. But this can take some time as our code base grows. Therefore, it
+is good practice to run periodically run <code class="docutils literal notranslate"><span class="pre">black</span></code> only for your new code.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">black<span class="w"> </span><span class="o">{</span>source_file_or_directory<span class="o">}</span></span>
+</pre></div></div><p>This is not an exact list of requirements or guidelines. If you have suggestions, don’t hesitate to submit an issue or
+a PR with enhancement to this document.</p>
+<p>Finally, once you have completed your new contribution, sync with the remote/master branch one last in case there have
+been any recent changes to the code base:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>master</span>
+<span class="prompt1">git<span class="w"> </span>pull</span>
+<span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span><span class="o">{</span>my_branch_name<span class="o">}</span></span>
+<span class="prompt1">git<span class="w"> </span>merge<span class="w"> </span>master</span>
+</pre></div></div><p>Then use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> to record your new algorithm and send it to the remote
+repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>add<span class="w"> </span>.</span>
+<span class="prompt1">git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Explicit commit message&quot;</span></span>
+<span class="prompt1">git<span class="w"> </span>push</span>
+</pre></div></div><p>Go to the <a class="reference external" href="https://github.com/cognitedata/indsl/pulls">InDSL repository PR page</a>, start
+a <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">pull</span> <span class="pre">request</span></code> and let the review process begin.</p>
+</section>
+</section>
+<section id="contributing-a-free-form-algorithm">
+<h2>Contributing a free form algorithm<a class="headerlink" href="#contributing-a-free-form-algorithm" title="Permalink to this heading"></a></h2>
+<p>It is possible to contribute to InDSL without the algorithm being exposed in the CHARTS application.
+In this case, the algorithm will only be available to users who install the InDSL python package.
+It  <strong>should not</strong> be included in the <code class="docutils literal notranslate"><span class="pre">__cognite__</span></code> attribute of the toolbox <cite>__init__.py</cite> file.
+Although the algorithm doesn’t need to meet the requirements mentioned in the <span class="xref std std-ref">previous</span> section, it is still important to</p>
+<blockquote>
+<div><p>document it properly, add all necessary tests and potentially an example to the documentation.</p>
+</div></blockquote>
+</section>
+<section id="coding-style">
+<h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>To ensure consistency throughout the code, we recommend using the following style conventions when contributing to the library:</dt><dd><ul class="simple">
+<li><p>Call the time series parameter of your function <code class="docutils literal notranslate"><span class="pre">data</span></code> unless a more specific name can be given, like <code class="docutils literal notranslate"><span class="pre">pressure</span></code> or <code class="docutils literal notranslate"><span class="pre">temperature</span></code>.</p></li>
+<li><p>Use abbreviations when defining the types of function arguments. For example <code class="docutils literal notranslate"><span class="pre">pd.</span></code> instead of <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Reviewer guidelines</p>
+<p>Any InDSL function that is exposed in the CHARTS application (i.e. any function that is listed in <cite>__cognite__</cite> in the <cite>__init__.py</cite> files), must be reviewed by a member of the CHARTS development team.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="auto_examples/versioning/versioned_function.html" class="btn btn-neutral float-left" title="Function versioning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="code_of_conduct.html" class="btn btn-neutral float-right" title="Code of Conduct" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

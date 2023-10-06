@@ -1,0 +1,85 @@
+name: Visual Testing
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  visual-testing:
+    if: github.event_name == 'push' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    name: Visual Testing
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14.x"
+          cache: yarn
+          registry-url: "https://registry.npmjs.org"
+          cache-dependency-path: .function-preview
+      - name: Install dependencies
+        # Ignore scripts because they can steal the token
+        run: yarn install --ignore-scripts --frozen-lockfile
+        working-directory: .function-preview
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_READONLY_TOKEN }}
+
+      - name: Run operations script
+        run: |
+          sudo apt -y install gnome-keyring
+          pip install --upgrade requests
+          pip install poetry
+          poetry install
+          PYTHONPATH=$PWD poetry run python .function-preview/get_operations/main.py
+
+      # 👇 Checks if the branch is master and accepts all changes in Chromatic
+      - name: Publish to Chromatic and auto accept changes
+        if: github.ref == 'refs/heads/master'
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true
+          workingDir: .function-preview
+
+      - name: Publish to Chromatic
+        if: github.ref != 'refs/heads/master'
+        id: chromatic-pr
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
+          exitOnceUploaded: true
+          workingDir: .function-preview
+
+      - name: Find Comment
+        if: github.ref != 'refs/heads/master' && steps.chromatic-pr.outputs.buildUrl
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: Chromatic Results
+
+      - name: Create or update comment
+        if: github.ref != 'refs/heads/master' && steps.chromatic-pr.outputs.buildUrl
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            # Chromatic Results
+            - Storybook build results: ${{ steps.chromatic-pr.outputs.buildUrl }}
+            - Review URL: ${{ steps.chromatic-pr.outputs.storybookUrl }}
+          edit-mode: replace

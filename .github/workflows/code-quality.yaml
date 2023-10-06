@@ -1,0 +1,149 @@
+name: Code Quality
+on:
+  pull_request: {}
+  push:
+    branches: [master]
+
+jobs:
+  code-quality:
+    name: Code Quality
+    strategy:
+      matrix:
+        platform: [ubuntu-latest]
+        python-version: ["3.10"]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Linting
+        uses: pre-commit/action@v3.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  test-core:
+    name: Test Core
+    strategy:
+        matrix:
+            platform: [ubuntu-latest, macos-latest, windows-latest]
+            python-version: ["3.8", "3.9", "3.10", "3.11"]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: |
+            pipx install poetry # setup-python action requires installing poetry with pipx
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'poetry'
+          # setup-python uses by default poetry.lock hash as part of the cache key.
+          # Since we run test-core and test-extras we need to make sure they store different caches.
+          # Adding an extra file (e.g. pyproject.toml) to the extra cache-dependency-path will ensure that we
+          # create a different cache key than the one generated for test-extras.
+          # We can then be sure that test-core will run using only core dependencies.
+          cache-dependency-path: |
+            poetry.lock
+            pyproject.toml  # Force a different cache key for extras vs core above
+
+      - name: Install Core Dependencies
+        run: |
+            poetry install
+
+      - name: Run Core Tests
+        run: poetry run pytest -m core --cov-report=xml --junitxml=test-results.xml
+
+      - name: Upload Unit Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Unit Test Results (Python ${{ matrix.python-version }})
+          path: test-results.xml
+
+      - name: Upload Coverage Reports
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+
+  test-extras:
+    name: Test Extras
+    strategy:
+        matrix:
+            platform: [ubuntu-latest, macos-latest, windows-latest]
+            python-version: ["3.8", "3.9", "3.10", "3.11"]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: |
+            pipx install poetry # setup-python action requires installing poetry with pipx
+
+      - uses: actions/setup-python@v4
+        with:
+            python-version: ${{ matrix.python-version }}
+            cache: 'poetry'
+            cache-dependency-path: |
+                poetry.lock
+
+      - name: Install Extras Dependencies
+        run: |
+            poetry install --all-extras
+
+      - name: Run Extras Tests
+        env:
+            NUMBA_DISABLE_JIT: 1
+        run: poetry run pytest --cov-report=xml --junitxml=test-results-extras.xml
+
+      - name: Upload Unit Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Unit Test Results (Python ${{ matrix.python-version }})
+          path: test-results-extras.xml
+
+      - name: Upload Coverage Reports
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+
+  run-examples:
+    name: Run Examples
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        # Semantic version range syntax or exact version of a Python version
+        python-version: '3.10'
+    - name: Install dependencies
+      run: |
+          pipx install poetry # setup-python action requires installing poetry with pipx
+          poetry install --with docs
+    - name: Run Examples
+      run: |
+          cd docs-source
+          poetry run make html
+
+  publish-test-results:
+    name: "Publish Unit Tests Results"
+    needs: code-quality
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: artifacts/**/test-results.xml
+          check_name: Unit Test Results
