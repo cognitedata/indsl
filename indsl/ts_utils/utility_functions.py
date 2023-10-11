@@ -388,7 +388,7 @@ def generate_step_series(flag: pd.Series) -> pd.Series:
                          0               01      1
     """
     # add first point as the start of the step time series
-    step_time_series = pd.Series([flag[0]], index=[flag.index[0]])
+    step_time_series = pd.Series([flag.iloc[0]], index=[flag.index[0]])
 
     # compute actual_value - previous_value
     flag_shift = flag.diff(1)
@@ -426,7 +426,7 @@ def generate_step_series(flag: pd.Series) -> pd.Series:
 
     # add last point if it doesn't exist
     if flag.index[-1] != step_time_series.index[-1]:
-        step_time_series = pd.concat([step_time_series, pd.Series(flag[-1], index=[flag.index[-1]])])
+        step_time_series = pd.concat([step_time_series, pd.Series(flag.iloc[-1], index=[flag.index[-1]])])
 
     # remove the last point if the number of 1 values is odd
     if len(step_time_series[step_time_series == 1]) % 2 != 0:
