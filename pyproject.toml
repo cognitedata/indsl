@@ -130,7 +130,7 @@ version_files = ["pyproject.toml:version"]
 
 [tool.pyright]
 # Added just so pylance in vscode doesn't complain too much
-pythonVersion = "3.8"
+pythonVersion = "3.9"
 typeCheckingMode = "basic"
 include = ["indsl"]
 ignore = ["tests"]
