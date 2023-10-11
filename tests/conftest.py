@@ -43,6 +43,6 @@ def generate_synthetic_industrial_data_with_outliers(request):
     outliers = data.iloc[locations] + data.mean() * rng.uniform(0.5, 1, len(locations)) * direction
 
     data_w_outliers = data.copy()
-    data_w_outliers[locations] = outliers
+    data_w_outliers.iloc[locations] = outliers
 
     return data_w_outliers, outliers
