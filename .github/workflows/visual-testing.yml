@@ -39,7 +39,7 @@ jobs:
           sudo apt -y install gnome-keyring
           pip install --upgrade requests
           pip install poetry
-          poetry install
+          poetry install --all-extras
           PYTHONPATH=$PWD poetry run python .function-preview/get_operations/main.py
 
       # 👇 Checks if the branch is master and accepts all changes in Chromatic
