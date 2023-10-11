@@ -393,7 +393,12 @@ def fill_gaps(
     mask = np.logical_and(nan_group_size > small_gap, nan_group_size <= mask_gap)
     data[mask] = data.interpolate(method="linear", limit_direction="forward", limit=inter_gap)
 
-    return data.fillna(method=method)
+    if method in ["ffill", "pad"]:
+        return data.ffill()
+    elif method in ["backfill", "bfill"]:
+        return data.bfill()
+    else:
+        raise UserValueError(f"Method {method} is not supported. Use 'ffill', 'backfill', 'bfill' or 'pad'.")
 
 
 def number_of_events(out: pd.Series):

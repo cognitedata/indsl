@@ -132,7 +132,7 @@ def test_change_point_detector():
     expected_ts = pd.Series(index=t, data=[0] * len(t))
     for cp in change_points:
         # sets the value of 1 to the timestamp of the current change point
-        expected_ts[cp] = 1
+        expected_ts.iloc[cp] = 1
         # add the value of 0 to 1ns before and after the timestamp of the current change point
         expected_ts = pd.concat(
             [
