@@ -18,9 +18,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="../../_static/documentation_options.js?v=15c97ff8"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -131,10 +131,17 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="threshold-breach-check-for-difference-between-two-data-points-over-a-period-of-time">
-<span id="sphx-glr-auto-examples-data-quality-plot-datapoint-diff-py"></span><h1>Threshold breach check for difference between two data points over a period of time<a class="headerlink" href="#threshold-breach-check-for-difference-between-two-data-points-over-a-period-of-time" title="Permalink to this heading"></a></h1>
+<span id="sphx-glr-auto-examples-data-quality-plot-datapoint-diff-py"></span><h1>Threshold breach check for difference between two data points over a period of time<a class="headerlink" href="#threshold-breach-check-for-difference-between-two-data-points-over-a-period-of-time" title="Link to this heading"></a></h1>
 <p>Example of visualizing breach of threshold in hour count in a time series representing running hours of a piece of
 equipment.</p>
-<img src="../../_images/sphx_glr_plot_datapoint_diff_001.png" srcset="../../_images/sphx_glr_plot_datapoint_diff_001.png" alt="Check if difference between two datapoints at a distance of 24 hours exceeds the threshold" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_datapoint_diff_001.png" srcset="../../_images/sphx_glr_plot_datapoint_diff_001.png" alt="Check if difference between two datapoints at a distance of 24 hours exceeds the threshold" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/cristinaferrer/indsl/indsl/equipment/volume_vessel.py:31: UserWarning: Couldn&#39;t import fluids.numba_vectorized: No module named &#39;fluids.vectorized&#39;. Default to import fluids.vectorized.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 
@@ -193,7 +200,7 @@ equipment.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.776 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 2.605 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-datapoint-diff-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/4aa69c633594bd7b6e170644e973042e/plot_datapoint_diff.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_datapoint_diff.py</span></code></a></p>

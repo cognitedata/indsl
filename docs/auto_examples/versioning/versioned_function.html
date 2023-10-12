@@ -18,9 +18,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="../../_static/documentation_options.js?v=15c97ff8"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -134,19 +134,19 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="function-versioning">
-<span id="sphx-glr-auto-examples-versioning-versioned-function-py"></span><h1>Function versioning<a class="headerlink" href="#function-versioning" title="Permalink to this heading"></a></h1>
+<span id="sphx-glr-auto-examples-versioning-versioned-function-py"></span><h1>Function versioning<a class="headerlink" href="#function-versioning" title="Link to this heading"></a></h1>
 <p>InDSL comes with the <a class="reference internal" href="../../dev_tools.html#module-indsl.versioning" title="indsl.versioning"><code class="xref py py-mod docutils literal notranslate"><span class="pre">indsl.versioning</span></code></a> module, which allows to implement multiple versions of InDSL functions.
 As a library user, one can then select and execute a specific function version.</p>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <p>In this example, we implement the <cite>abs_diff</cite> function, which computes the element-wise absolute difference of two time-series.
 We will first implement a naive version of that function, which we name version 1.0 (versioning in inDSL always starts with 1.0),
 followed by a more robust version 1.1.</p>
 </section>
 <section id="implementation">
-<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading"></a></h2>
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading"></a></h2>
 <section id="implementation-of-v1-0">
-<h3>Implementation of v1.0<a class="headerlink" href="#implementation-of-v1-0" title="Permalink to this heading"></a></h3>
+<h3>Implementation of v1.0<a class="headerlink" href="#implementation-of-v1-0" title="Link to this heading"></a></h3>
 <p>We begin with a simple implementation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -185,7 +185,7 @@ dtype: float64
 <p>Version 1.1 will fix this issue through a more robust implementation.</p>
 </section>
 <section id="implementation-of-v1-1">
-<h3>Implementation of v1.1<a class="headerlink" href="#implementation-of-v1-1" title="Permalink to this heading"></a></h3>
+<h3>Implementation of v1.1<a class="headerlink" href="#implementation-of-v1-1" title="Link to this heading"></a></h3>
 <p>Next, we implement the new version of the <cite>abs_diff</cite> and mark it as version 1.1.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indsl.resample</span> <span class="kn">import</span> <span class="n">reindex</span>  <span class="c1"># noqa</span>
 
@@ -211,7 +211,7 @@ Freq: H, dtype: float64
 </div>
 </section>
 <section id="getting-versioned-functions-and-their-versions">
-<h3>Getting versioned functions and their versions<a class="headerlink" href="#getting-versioned-functions-and-their-versions" title="Permalink to this heading"></a></h3>
+<h3>Getting versioned functions and their versions<a class="headerlink" href="#getting-versioned-functions-and-their-versions" title="Link to this heading"></a></h3>
 <p>We can get a list of all versioned functions with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">versioning</span><span class="o">.</span><span class="n">get_registered_functions</span><span class="p">()</span>
 </pre></div>
@@ -230,7 +230,7 @@ Freq: H, dtype: float64
 </div>
 </section>
 <section id="running-versioned-functions">
-<h3>Running versioned functions<a class="headerlink" href="#running-versioned-functions" title="Permalink to this heading"></a></h3>
+<h3>Running versioned functions<a class="headerlink" href="#running-versioned-functions" title="Link to this heading"></a></h3>
 <p>We can access and run specific function version with the <cite>versioning.get</cite> command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff_v1</span> <span class="o">=</span> <span class="n">versioning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
 <span class="n">abs_diff_v1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
