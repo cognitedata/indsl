@@ -35,8 +35,19 @@ equipment.
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/cristinaferrer/indsl/indsl/equipment/volume_vessel.py:31: UserWarning: Couldn't import fluids.numba_vectorized: No module named 'fluids.vectorized'. Default to import fluids.vectorized.
+      warnings.warn(
 
 
+
+
+
+
+|
 
 .. code-block:: default
 
@@ -101,7 +112,7 @@ equipment.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.776 seconds)
+   **Total running time of the script:** (0 minutes 4.008 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_datapoint_diff.py:

@@ -18,9 +18,9 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/documentation_options.js?v=15c97ff8"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -135,7 +135,7 @@
            <div itemprop="articleBody">
              
   <section id="contributing">
-<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading"></a></h1>
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
 <p>This project is a community effort and contributions are welcomed. Currently, it is privately hosted in
 <a class="reference external" href="https://github.com/cognitedata/indsl">GitHub</a>. It is publicly available but only open for internal contributions at
 the moment. It is also to open for contribution to our customers via the
@@ -167,7 +167,7 @@ guide focuses on the requirements to comply with it. Nevertheless, we accept any
 important and making our library more robust over time is of paramount importance. Please don’t hesitate to submit a
 Github pull request for something as small as a typo.</em></p>
 <section id="contributing-a-new-charts-compliant-algorithm">
-<h2>Contributing a new CHARTS compliant algorithm<a class="headerlink" href="#contributing-a-new-charts-compliant-algorithm" title="Permalink to this heading"></a></h2>
+<h2>Contributing a new CHARTS compliant algorithm<a class="headerlink" href="#contributing-a-new-charts-compliant-algorithm" title="Link to this heading"></a></h2>
 <p>For an algorithm to play well with the CHARTS front-end (user interface) and the
 calculations back-end it has to adhere to some function I/O requirements, documentation (docstrings) format and a few
 other requirements to expose the algorithm to the front and back-end. The first few basic requirements to keep in mind
@@ -204,7 +204,7 @@ before developing and algorithm are:</p>
 is in place to simplify how the CHARTS infrastructure fetches and displays data.</p>
 </div>
 <section id="preliminaries-and-setup">
-<h3>Preliminaries and setup<a class="headerlink" href="#preliminaries-and-setup" title="Permalink to this heading"></a></h3>
+<h3>Preliminaries and setup<a class="headerlink" href="#preliminaries-and-setup" title="Link to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We recommend using Python 3.10 for development.</p>
@@ -239,7 +239,7 @@ GitHub to your local environment.</p></li>
 <span class="prompt1">git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master</span>
 </pre></div></div></section>
 <section id="develop-your-algorithm">
-<h3>Develop your algorithm<a class="headerlink" href="#develop-your-algorithm" title="Permalink to this heading"></a></h3>
+<h3>Develop your algorithm<a class="headerlink" href="#develop-your-algorithm" title="Link to this heading"></a></h3>
 <ol class="arabic">
 <li><p>Create a feature branch to work on your new algorithm. Never work on the <em>master</em> or <em>documentation</em> branches.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my_new_algorithm</span>
@@ -281,7 +281,7 @@ them locally to verify they pass.</p></li>
 </div>
 </section>
 <section id="core-or-extras">
-<h3>Core or Extras<a class="headerlink" href="#core-or-extras" title="Permalink to this heading"></a></h3>
+<h3>Core or Extras<a class="headerlink" href="#core-or-extras" title="Link to this heading"></a></h3>
 <p>InDSL is divided into two main categories: core and extras. The core algorithms are the ones that only require
 <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy``and</span> <span class="pre">``pandas</span></code> as dependencies. The extras are algorithms that require additional dependencies.</p>
 <p>If your algorithm requires additional dependencies, add them to the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file as optional dependencies and
@@ -290,7 +290,7 @@ lazy loaded to avoid loading them when the core part of the library is imported.
 dependencies in the function itself, and not at the top of the file.</p>
 </section>
 <section id="document-your-algorithm">
-<h3>Document your algorithm<a class="headerlink" href="#document-your-algorithm" title="Permalink to this heading"></a></h3>
+<h3>Document your algorithm<a class="headerlink" href="#document-your-algorithm" title="Link to this heading"></a></h3>
 <p>CHARTS compliant algorithms must follow a few simple docstrings formatting requirements for the information to be parsed
 and properly displayed on the user interface and included in the technical documentation.</p>
 <ol class="arabic">
@@ -399,7 +399,7 @@ to find the autogenerated material (see example below). The construct is as foll
 <span class="prompt2">    * :ref:`sphx_glr_auto_examples_smooth_plot_sg_smooth.py`</span>
 </pre></div></div></section>
 <section id="front-and-back-end-compliance">
-<h3>Front and back end compliance<a class="headerlink" href="#front-and-back-end-compliance" title="Permalink to this heading"></a></h3>
+<h3>Front and back end compliance<a class="headerlink" href="#front-and-back-end-compliance" title="Link to this heading"></a></h3>
 <p>For the  algorithm to be picked up by the front and back end, and display user relevant information, take the following
 steps.</p>
 <ol class="arabic">
@@ -422,7 +422,7 @@ in the file <code class="docutils literal notranslate"><span class="pre">indsl/s
 <p>This would be a good time to push your changes to the remote repository</p>
 </section>
 <section id="add-an-example-to-the-gallery-of-charts">
-<h3>Add an example to the Gallery of Charts<a class="headerlink" href="#add-an-example-to-the-gallery-of-charts" title="Permalink to this heading"></a></h3>
+<h3>Add an example to the Gallery of Charts<a class="headerlink" href="#add-an-example-to-the-gallery-of-charts" title="Link to this heading"></a></h3>
 <p><span class="xref std std-ref">sphx_glr_auto_examples</span> is an auto generated collection of examples of our industrial data science
 algorithms. Following the steps below, your example will be automatically added to the gallery. We take care of
 auto generating the figures, adding the code to the gallery, and links to downloadable python and notebook versions
@@ -455,7 +455,7 @@ the <span class="xref std std-ref">sphx_glr_auto_examples</span> or one of the e
 </ol>
 </section>
 <section id="verify-documentation-build">
-<h3>Verify documentation build<a class="headerlink" href="#verify-documentation-build" title="Permalink to this heading"></a></h3>
+<h3>Verify documentation build<a class="headerlink" href="#verify-documentation-build" title="Link to this heading"></a></h3>
 <p>It is highly recommended to check that the documentation for your new function is built and displayed
 correctly. Note that you will need all of the following Sphinx python libraries to successfully build the documentation (these packages can be installed with pip):
 * sphinx-gallery
@@ -499,7 +499,7 @@ section(s) relevant to your new function.</p>
 </ol>
 </section>
 <section id="version-your-algorithm">
-<h3>Version your algorithm<a class="headerlink" href="#version-your-algorithm" title="Permalink to this heading"></a></h3>
+<h3>Version your algorithm<a class="headerlink" href="#version-your-algorithm" title="Link to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section is only relevant if you are changing an existing function in InDSL.</p>
@@ -509,7 +509,7 @@ For this reason, InDSL keeps a version history of InDSL functions that developer
 Older versions can be marked as deprecated to notify users that a new version is available.
 The example <a class="reference internal" href="auto_examples/versioning/versioned_function.html#sphx-glr-auto-examples-versioning-versioned-function-py"><span class="std std-ref">Function versioning</span></a> demonstrates in more detail how the function versioning works in InDSL.</p>
 <section id="do-i-need-to-version-my-algorithm">
-<h4>Do I need to version my algorithm?<a class="headerlink" href="#do-i-need-to-version-my-algorithm" title="Permalink to this heading"></a></h4>
+<h4>Do I need to version my algorithm?<a class="headerlink" href="#do-i-need-to-version-my-algorithm" title="Link to this heading"></a></h4>
 <p>You need to version your algorithm if:</p>
 <ol class="arabic simple">
 <li><p>You are changing an existing InDSL function, and one of the following conditions holds:</p>
@@ -526,7 +526,7 @@ The example <a class="reference internal" href="auto_examples/versioning/version
 </div>
 </section>
 <section id="how-do-i-version-my-function">
-<h4>How do I version my function?<a class="headerlink" href="#how-do-i-version-my-function" title="Permalink to this heading"></a></h4>
+<h4>How do I version my function?<a class="headerlink" href="#how-do-i-version-my-function" title="Link to this heading"></a></h4>
 <p>As an example, we consider a function <cite>myfunc</cite> in <cite>mymod.py</cite>.
 A new function version is released through the following steps.</p>
 <ol class="arabic">
@@ -568,7 +568,7 @@ function can be placed in <cite>test_mymod_v1.py</cite>.</p></li>
 </section>
 </section>
 <section id="create-a-pull-request">
-<h3>Create a pull request<a class="headerlink" href="#create-a-pull-request" title="Permalink to this heading"></a></h3>
+<h3>Create a pull request<a class="headerlink" href="#create-a-pull-request" title="Link to this heading"></a></h3>
 <p>Before a PR is merged it needs to be approved by of our internal developers. If you expect to keep on working on your
 algorithm and are not ready to start the review process, please label the PR as a <code class="docutils literal notranslate"><span class="pre">draft</span></code>.</p>
 <p>To make the review process a better experience, we encourage complying with the following guidelines:</p>
@@ -618,7 +618,7 @@ a <code class="docutils literal notranslate"><span class="pre">New</span> <span 
 </section>
 </section>
 <section id="contributing-a-free-form-algorithm">
-<h2>Contributing a free form algorithm<a class="headerlink" href="#contributing-a-free-form-algorithm" title="Permalink to this heading"></a></h2>
+<h2>Contributing a free form algorithm<a class="headerlink" href="#contributing-a-free-form-algorithm" title="Link to this heading"></a></h2>
 <p>It is possible to contribute to InDSL without the algorithm being exposed in the CHARTS application.
 In this case, the algorithm will only be available to users who install the InDSL python package.
 It  <strong>should not</strong> be included in the <code class="docutils literal notranslate"><span class="pre">__cognite__</span></code> attribute of the toolbox <cite>__init__.py</cite> file.
@@ -628,7 +628,7 @@ Although the algorithm doesn’t need to meet the requirements mentioned in the 
 </div></blockquote>
 </section>
 <section id="coding-style">
-<h2>Coding Style<a class="headerlink" href="#coding-style" title="Permalink to this heading"></a></h2>
+<h2>Coding Style<a class="headerlink" href="#coding-style" title="Link to this heading"></a></h2>
 <dl class="simple">
 <dt>To ensure consistency throughout the code, we recommend using the following style conventions when contributing to the library:</dt><dd><ul class="simple">
 <li><p>Call the time series parameter of your function <code class="docutils literal notranslate"><span class="pre">data</span></code> unless a more specific name can be given, like <code class="docutils literal notranslate"><span class="pre">pressure</span></code> or <code class="docutils literal notranslate"><span class="pre">temperature</span></code>.</p></li>
