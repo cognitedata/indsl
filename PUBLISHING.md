@@ -19,4 +19,4 @@ The workflow for publishing the `indsl` library consists of bumping the version 
     1. Delete any local branch called **build-docs**:
         `git branch -d build-docs`
     2. Run [build-docs.sh](./build_docs.sh). This will automatically create a new local branch called `build-docs`, commit the built documentation and push to github.
-    3. Create a PR and ask someone in the Cognite `Charts InDSL Review` to approve and merge. When merged to master, github pages will redeploy the documentation page.
+    3. Create a PR and ask someone in the Cognite `Charts InDSL Review` to approve and merge. When merged to main, github pages will redeploy the documentation page.

@@ -210,7 +210,7 @@ is in place to simplify how the CHARTS infrastructure fetches and displays data.
 <p>We recommend using Python 3.10 for development.</p>
 <dl class="simple">
 <dt>Avoid duplicating code. Before starting a new algorithm, check for similar ones in the following places:</dt><dd><ul class="simple">
-<li><p>The <a class="reference external" href="https://github.com/cognitedata/indsl/tree/master/indsl">toolboxes</a></p></li>
+<li><p>The <a class="reference external" href="https://github.com/cognitedata/indsl/tree/main/indsl">toolboxes</a></p></li>
 <li><p>The <a class="reference external" href="https://github.com/cognitedata/indsl/pulls">PR list</a></p></li>
 </ul>
 </dd>
@@ -233,15 +233,15 @@ GitHub to your local environment.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>install<span class="w"> </span>--all-extras</span>
 </pre></div></div><ol class="arabic simple" start="3">
-<li><p>Synchronize your local master branch with the remote master branch.</p></li>
+<li><p>Synchronize your local main branch with the remote main branch.</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>master</span>
-<span class="prompt1">git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>main</span>
+<span class="prompt1">git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main</span>
 </pre></div></div></section>
 <section id="develop-your-algorithm">
 <h3>Develop your algorithm<a class="headerlink" href="#develop-your-algorithm" title="Link to this heading"></a></h3>
 <ol class="arabic">
-<li><p>Create a feature branch to work on your new algorithm. Never work on the <em>master</em> or <em>documentation</em> branches.</p>
+<li><p>Create a feature branch to work on your new algorithm. Never work on the <em>main</em> or <em>documentation</em> branches.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my_new_algorithm</span>
 </pre></div></div></li>
 <li><p>Install <em>pre-commit</em> to run code style checks before each commit.</p>
@@ -254,7 +254,7 @@ need the new module for development, use the <code class="docutils literal notra
 </pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>add<span class="w"> </span>new_module<span class="w"> </span>--dev</span>
 </pre></div></div></li>
 <li><p>Develop the new algorithm on your local branch. Use the exception classes defined in
-<a class="reference external" href="https://github.com/cognitedata/indsl/tree/master/indsl/exceptions.py">indsl/exceptions.py</a>
+<a class="reference external" href="https://github.com/cognitedata/indsl/tree/main/indsl/exceptions.py">indsl/exceptions.py</a>
 when raising errors that are caused by invalid or erroneous user input. InDSL provides the &#64;check_types
 decorator (from <a class="reference external" href="https://github.com/agronholm/typeguard">typeguard</a>) for run-time type checking,
 which should be used instead of checking each input type explicitly. When finished or reach an important
@@ -270,8 +270,8 @@ milestone, use <code class="docutils literal notranslate"><span class="pre">git<
 </div>
 </li>
 <li><p>As you develop the algorithm it is good practice to add tests to it. All tests are stored in the root folder
-<a class="reference external" href="https://github.com/cognitedata/indsl/tree/master/tests">tests/</a> using the same folder structure
-as the <code class="docutils literal notranslate"><span class="pre">indsl/</span></code> folder. We run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to verify pull requests before merging with the master
+<a class="reference external" href="https://github.com/cognitedata/indsl/tree/main/tests">tests/</a> using the same folder structure
+as the <code class="docutils literal notranslate"><span class="pre">indsl/</span></code> folder. We run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to verify pull requests before merging with the main
 version. Before sending your pull request for review, make sure you have written tests for the algorithm and ran
 them locally to verify they pass.</p></li>
 </ol>
@@ -350,7 +350,7 @@ the units in Roman font.</p></li>
 <span class="s2">    ...</span>
 </pre></div>
 </div>
-<p>This is a <a class="reference external" href="https://github.com/cognitedata/indsl/blob/master/indsl/smooth/savitzky_golay.py">basic example</a>
+<p>This is a <a class="reference external" href="https://github.com/cognitedata/indsl/blob/main/indsl/smooth/savitzky_golay.py">basic example</a>
 of how to document a function :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">...</span>
@@ -412,7 +412,7 @@ expected result. This will be displayed on the UI and targets our users (i.e. do
 </li>
 <li><p>Add the &#64;check_types decorator to the functions that contain Python type annotations. This makes sure that the function is always called with inputs of the same type as specified in the function signature.</p></li>
 <li><dl class="simple">
-<dt>Add your function to the attribute <code class="docutils literal notranslate"><span class="pre">__cognite__</span></code> in the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file of the toolbox module your algorithm belongs to. For example, the</dt><dd><p><a class="reference external" href="https://github.com/cognitedata/indsl/blob/master/indsl/smooth/savitzky_golay.py">Savitzky-Golay smoother</a>
+<dt>Add your function to the attribute <code class="docutils literal notranslate"><span class="pre">__cognite__</span></code> in the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file of the toolbox module your algorithm belongs to. For example, the</dt><dd><p><a class="reference external" href="https://github.com/cognitedata/indsl/blob/main/indsl/smooth/savitzky_golay.py">Savitzky-Golay smoother</a>
 (<a class="reference internal" href="smooth.html#indsl.smooth.sg" title="indsl.smooth.sg"><code class="xref py py-meth docutils literal notranslate"><span class="pre">indsl.smooth.sg()</span></code></a>) belongs to the <code class="docutils literal notranslate"><span class="pre">smooth</span></code> toolbox. Therefore, we add <code class="docutils literal notranslate"><span class="pre">sg</span></code> to the list <code class="docutils literal notranslate"><span class="pre">__cognite__</span></code>
 in the file <code class="docutils literal notranslate"><span class="pre">indsl/smooth/__init__.py</span></code>.</p>
 </dd>
@@ -602,12 +602,12 @@ is good practice to run periodically run <code class="docutils literal notransla
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">black<span class="w"> </span><span class="o">{</span>source_file_or_directory<span class="o">}</span></span>
 </pre></div></div><p>This is not an exact list of requirements or guidelines. If you have suggestions, don’t hesitate to submit an issue or
 a PR with enhancement to this document.</p>
-<p>Finally, once you have completed your new contribution, sync with the remote/master branch one last in case there have
+<p>Finally, once you have completed your new contribution, sync with the remote/main branch one last in case there have
 been any recent changes to the code base:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>master</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>main</span>
 <span class="prompt1">git<span class="w"> </span>pull</span>
 <span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span><span class="o">{</span>my_branch_name<span class="o">}</span></span>
-<span class="prompt1">git<span class="w"> </span>merge<span class="w"> </span>master</span>
+<span class="prompt1">git<span class="w"> </span>merge<span class="w"> </span>main</span>
 </pre></div></div><p>Then use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> to record your new algorithm and send it to the remote
 repository:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>add<span class="w"> </span>.</span>

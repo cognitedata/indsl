@@ -104,7 +104,7 @@ should be placed on (timestamp).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 46.271 seconds)
+   **Total running time of the script:** (0 minutes 50.145 seconds)
 
 
 .. _sphx_glr_download_auto_examples_resample_plot_group_by_region.py:

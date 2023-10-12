@@ -6,10 +6,10 @@
 
 Computation times
 =================
-**00:04.008** total execution time for **auto_examples_data_quality** files:
+**00:02.605** total execution time for **auto_examples_data_quality** files:
 
 +------------------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_data_quality_plot_datapoint_diff.py` (``plot_datapoint_diff.py``)                         | 00:04.008 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_data_quality_plot_datapoint_diff.py` (``plot_datapoint_diff.py``)                         | 00:02.605 | 0.0 MB |
 +------------------------------------------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_auto_examples_data_quality_plot_completeness.py` (``plot_completeness.py``)                             | 00:00.000 | 0.0 MB |
 +------------------------------------------------------------------------------------------------------------------------+-----------+--------+
