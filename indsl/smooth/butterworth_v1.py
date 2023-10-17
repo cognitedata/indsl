@@ -9,8 +9,8 @@ from indsl.type_check import check_types
 
 
 # noinspection SpellCheckingInspection
-@check_types
 @versioning.register(version="1.0", deprecated=True)
+@check_types
 def butterworth(
     data: pd.Series, N: int = 50, Wn: float = 0.1, output: str = "sos", btype: str = "lowpass"
 ) -> pd.Series:

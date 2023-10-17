@@ -20,8 +20,9 @@ except ImportError:
     prange = None  # Only core dependencies installed. Will raise an error later
 
 
-@check_types
+
 @versioning.register(version="2.0", changelog="Removed granlularity argument; updated parameter types")
+@check_types
 def trapezoidal_integration(series: pd.Series, time_unit: pd.Timedelta = pd.Timedelta("1 h")) -> pd.Series:
     """Integration.
 
@@ -43,8 +44,8 @@ def trapezoidal_integration(series: pd.Series, time_unit: pd.Timedelta = pd.Time
     return pd.Series(arr, index=series.index)
 
 
-@check_types
 @versioning.register(version="2.0", changelog="Removed granlularity argument; updated parameter types")
+@check_types
 def differentiate(series: pd.Series, time_unit: pd.Timedelta = pd.Timedelta("1h")) -> pd.Series:
     """Differentiation.
 
