@@ -533,6 +533,7 @@ A new function version is released through the following steps.</p>
 <li><p>Move the function from <cite>mymod.py</cite> to <cite>mymod_vX.py</cite>, where <cite>X</cite> denotes the current function version. If the function is not versioned yet, create the file <cite>mymod_v1.py</cite>.</p></li>
 <li><p>If not already present, add the <code class="xref py py-func docutils literal notranslate"><span class="pre">versioning.register()</span></code> decorator to the function. Specifically,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: mymod_v1.py</span>
+<span class="nd">@check_types</span>
 <span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
    <span class="c1"># old implementation</span>
 </pre></div>
@@ -542,12 +543,14 @@ A new function version is released through the following steps.</p>
 <span class="kn">from</span> <span class="nn">indsl</span> <span class="kn">import</span> <span class="n">versioning</span>
 
 <span class="nd">@versioning</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nd">@check_types</span>
 <span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
    <span class="c1"># old implementation</span>
 </pre></div>
 </div>
 <p><strong>Note</strong>: The first version of any function <strong>must</strong> be 1.0! Also note that <code class="code docutils literal notranslate"><span class="pre">deprecated=True</span></code>: InDSL allows at most
 one non-deprecated version. For functions already in CHARTS, deprecating all versions will remove the functions from the front-end.</p>
+<p><strong>Note</strong>: <cite>check_types</cite> decorator should be placed before <cite>versioning.register</cite> decorator.</p>
 </li>
 <li><p>Add the new implementation to <cite>mymod.py</cite> and import <cite>mymod_v1.py</cite>. The modified <cite>mymod.py</cite> file will look like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: mymod.py</span>
