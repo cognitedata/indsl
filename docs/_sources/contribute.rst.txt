@@ -442,6 +442,7 @@ A new function version is released through the following steps.
    .. code-block:: python
 
            # file: mymod_v1.py
+           @check_types
            def myfunc(...)
               # old implementation
 
@@ -453,11 +454,14 @@ A new function version is released through the following steps.
            from indsl import versioning
 
            @versioning.register(version="1.0", deprecated=True)
+           @check_types
            def myfunc(...)
               # old implementation
 
    **Note**: The first version of any function **must** be 1.0! Also note that :code:`deprecated=True`: InDSL allows at most
    one non-deprecated version. For functions already in CHARTS, deprecating all versions will remove the functions from the front-end.
+
+   **Note**: `check_types` decorator should be placed before `versioning.register` decorator.
 
 3) Add the new implementation to `mymod.py` and import `mymod_v1.py`. The modified `mymod.py` file will look like:
 
