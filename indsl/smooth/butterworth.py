@@ -12,12 +12,12 @@ from . import butterworth_v1  # noqa
 
 
 # noinspection SpellCheckingInspection
-@check_types
 @versioning.register(
     version="2.0",
     changelog="Unused or irrelevant lines of code removed and filter output parameter "
     "removed from function signature and set to `sos`.",
 )
+@check_types
 def butterworth(
     data: pd.Series,
     N: int = 50,
