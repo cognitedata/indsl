@@ -77,7 +77,7 @@ Preliminaries and setup
     We recommend using Python 3.10 for development.
 
     Avoid duplicating code. Before starting a new algorithm, check for similar ones in the following places:
-        * The `toolboxes <https://github.com/cognitedata/indsl/tree/master/indsl>`_
+        * The `toolboxes <https://github.com/cognitedata/indsl/tree/main/indsl>`_
         * The `PR list <https://github.com/cognitedata/indsl/pulls>`_
 
 This project uses `Poetry <https://python-poetry.org/>`_ for dependency management. Install it before starting
@@ -101,17 +101,17 @@ This project uses `Poetry <https://python-poetry.org/>`_ for dependency manageme
 
     poetry install --all-extras
 
-3. Synchronize your local master branch with the remote master branch.
+3. Synchronize your local main branch with the remote main branch.
 
 .. prompt:: bash $
 
-    git checkout master
-    git pull origin master
+    git checkout main
+    git pull origin main
 
 Develop your algorithm
 ----------------------
 
-1. Create a feature branch to work on your new algorithm. Never work on the *master* or *documentation* branches.
+1. Create a feature branch to work on your new algorithm. Never work on the *main* or *documentation* branches.
 
    .. prompt:: bash $
 
@@ -136,7 +136,7 @@ Develop your algorithm
       poetry add new_module --dev
 
 4. Develop the new algorithm on your local branch. Use the exception classes defined in
-   `indsl/exceptions.py <https://github.com/cognitedata/indsl/tree/master/indsl/exceptions.py>`_
+   `indsl/exceptions.py <https://github.com/cognitedata/indsl/tree/main/indsl/exceptions.py>`_
    when raising errors that are caused by invalid or erroneous user input. InDSL provides the @check_types
    decorator (from `typeguard <https://github.com/agronholm/typeguard>`_) for run-time type checking,
    which should be used instead of checking each input type explicitly. When finished or reach an important
@@ -159,8 +159,8 @@ Develop your algorithm
 
 
 5. As you develop the algorithm it is good practice to add tests to it. All tests are stored in the root folder
-   `tests/ <https://github.com/cognitedata/indsl/tree/master/tests>`_ using the same folder structure
-   as the ``indsl/`` folder. We run ``pytest`` to verify pull requests before merging with the master
+   `tests/ <https://github.com/cognitedata/indsl/tree/main/tests>`_ using the same folder structure
+   as the ``indsl/`` folder. We run ``pytest`` to verify pull requests before merging with the main
    version. Before sending your pull request for review, make sure you have written tests for the algorithm and ran
    them locally to verify they pass.
 
@@ -236,7 +236,7 @@ and properly displayed on the user interface and included in the technical docum
 
        ...
 
-This is a `basic example <https://github.com/cognitedata/indsl/blob/master/indsl/smooth/savitzky_golay.py>`_
+This is a `basic example <https://github.com/cognitedata/indsl/blob/main/indsl/smooth/savitzky_golay.py>`_
 of how to document a function :
 
 .. code:: python
@@ -307,7 +307,7 @@ steps.
 
 4. Add your function to the attribute ``__cognite__`` in the ``__init__.py`` file of the toolbox module your algorithm belongs to. For example, the
     `Savitzky-Golay smoother
-    <https://github.com/cognitedata/indsl/blob/master/indsl/smooth/savitzky_golay.py>`_
+    <https://github.com/cognitedata/indsl/blob/main/indsl/smooth/savitzky_golay.py>`_
     (:meth:`indsl.smooth.sg`) belongs to the ``smooth`` toolbox. Therefore, we add ``sg`` to the list ``__cognite__``
     in the file ``indsl/smooth/__init__.py``.
 
@@ -525,15 +525,15 @@ To make the review process a better experience, we encourage complying with the 
 This is not an exact list of requirements or guidelines. If you have suggestions, don't hesitate to submit an issue or
 a PR with enhancement to this document.
 
-Finally, once you have completed your new contribution, sync with the remote/master branch one last in case there have
+Finally, once you have completed your new contribution, sync with the remote/main branch one last in case there have
 been any recent changes to the code base:
 
 .. prompt:: bash
 
-    git checkout master
+    git checkout main
     git pull
     git checkout {my_branch_name}
-    git merge master
+    git merge main
 
 Then use ``git add``, ``git commit``, and ``git push`` to record your new algorithm and send it to the remote
 repository:

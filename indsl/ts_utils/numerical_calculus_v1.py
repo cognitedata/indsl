@@ -16,8 +16,8 @@ def granularity_to_ns(granularity, time_unit):  # noqa: D103
     return granularity_to_ms(granularity) * 1e6
 
 
-@check_types
 @versioning.register(version="1.0", deprecated=True)
+@check_types
 def trapezoidal_integration(series: pd.Series, granularity: str = "1h", time_unit: str = "auto"):
     """Integration.
 
@@ -41,8 +41,8 @@ def trapezoidal_integration(series: pd.Series, granularity: str = "1h", time_uni
     return pd.Series(arr, index=series.index)
 
 
-@check_types
 @versioning.register(version="1.0", deprecated=True)
+@check_types
 def differentiate(series: pd.Series, granularity: str = "1h", time_unit: str = "auto"):
     """Differentiation.
 
