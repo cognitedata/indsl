@@ -10,6 +10,7 @@ The workflow for publishing the `indsl` library consists of bumping the version 
         If you want this to be a prerelease, set an environment variable INPUT_PRERELEASE to `alpha`, `beta` or `rc` on the parameter
 
     3. Modify the CHANGELOG.md if needed and commit the changes for `CHANGELOG.md`, `pyproject.toml`.
+    (Make sure that indsl version is updated in `pyproject.toml`)
     4. Push the branch to github
     5. Push the new tag to github: `git push origin --tags`
     6. Create a PR and ask someone in the Cognite `Charts InDSL Review` to approve and merge.
