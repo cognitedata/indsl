@@ -111,7 +111,7 @@ line-length = 120
 ignore = ["E501", "E731", "W605","D100", "D104", "D105", "RUF002", "UP006", "UP007", "UP035"]
 target-version = "py38"
 select = ["D", "E", "W",  "F", "I", "T", "RUF", "TID", "UP"]
-exclude = ["tests", "examples", "docs-source", "docs", ".function-preview"]
+exclude = ["tests", "examples", "docs-source", "docs"]
 
 [tool.ruff.pydocstyle]
 convention = "google"
