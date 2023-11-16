@@ -12,18 +12,18 @@ classifiers = ["Topic :: Scientific/Engineering"]
 
 [tool.poetry.dependencies]
 # Core dependencies
-python = ">=3.9,<3.12"
+python = ">=3.9,<3.13"
 scipy = "^1.7.3"
 pandas = "~2.0.3"
 typeguard = "^4.0.0"
 packaging = "^23.0"
-numpy = "^1.24.0"
+numpy = "^1.26.0"
 typing-extensions = "^4.6.3"
 
 # Optional extras dependencies
 fluids = { version = "^1.0.22", optional = true }
 matplotlib = { version = "^3.4.0", optional = true }
-numba = { version = "^0.57.0", optional = true }
+numba = { version = "^0.58.0", optional = true }
 kneed = { version = "^0.8.0", optional = true }
 csaps = { version = "^1.1.0", optional = true }
 statsmodels = { version = "^0.14.0", optional = true }
