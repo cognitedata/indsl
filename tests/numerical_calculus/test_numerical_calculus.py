@@ -72,7 +72,7 @@ def test_sliding_window_integration(datapoints, datapoint_freq, window_length, i
     y = np.ones(datapoints)
     series = pd.Series(y, index=pd.date_range(start=datetime(2000, 1, 1), periods=datapoints, freq=datapoint_freq))
     res = sliding_window_integration(series, window_length, integrand_rate)  #
-    assert res[len(res) - 1] == pytest.approx(result)
+    assert res.iloc[len(res) - 1] == pytest.approx(result)
 
 
 @pytest.mark.extras

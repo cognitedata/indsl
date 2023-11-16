@@ -162,9 +162,9 @@ def ssid(
     # Initialize filter and variance
     filt0 = data_ini[0:Ls].mean()
     var0 = data_ini[0:Ls].var()
-    initial = data_ini[Ls - 1]
+    initial = data_ini.iloc[Ls - 1]
 
-    start_val = df[0]
+    start_val = df.iloc[0]
     filt = np.array([alpha1 * start_val + (1 - alpha1) * filt0])
     var1 = np.array([alpha2 * (start_val - filt0) ** 2 + (1 - alpha2) * var0])
     var2 = np.array([alpha3 * (start_val - initial) ** 2 + (1 - alpha3) * var0])

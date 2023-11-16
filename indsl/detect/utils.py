@@ -44,7 +44,7 @@ def resample_timeseries(data: pd.Series, is_step: bool = False) -> pd.Series:
 
     # interpolate missing values
     if is_step:
-        data_interpolated = data_missing_values.interpolate(method="ffill")
+        data_interpolated = data_missing_values.ffill()
     else:
         data_interpolated = data_missing_values.interpolate(method="time")
 

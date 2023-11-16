@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "indsl"
-version = "8.2.0"
+version = "8.2.1"
 description = "Industrial Data Science Library by Cognite"
 authors = ["Cognite"]
 license = "Apache-2.0"
@@ -14,7 +14,7 @@ classifiers = ["Topic :: Scientific/Engineering"]
 # Core dependencies
 python = ">=3.9,<3.13"
 scipy = "^1.7.3"
-pandas = "^2.1.0"
+pandas = "~2.0.3"
 typeguard = "^4.0.0"
 packaging = "^23.0"
 numpy = "^1.26.0"
@@ -43,7 +43,7 @@ toml = "^0.10.2"
 marshmallow = "^3.17.0"
 docstring-to-markdown = "^0.10"
 coverage = "^7.0.0"
-ruff = "^0.0.287"
+ruff = "^0.0.292"
 pytest = ">=6.2.2,<8.0.0"
 
 [tool.poetry.group.docs]
@@ -111,7 +111,7 @@ line-length = 120
 ignore = ["E501", "E731", "W605","D100", "D104", "D105", "RUF002", "UP006", "UP007", "UP035"]
 target-version = "py38"
 select = ["D", "E", "W",  "F", "I", "T", "RUF", "TID", "UP"]
-exclude = ["tests", "examples", "docs-source", "docs", ".function-preview"]
+exclude = ["tests", "examples", "docs-source", "docs"]
 
 [tool.ruff.pydocstyle]
 convention = "google"
@@ -124,13 +124,13 @@ known-third-party = ["pytest"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "8.2.0"
+version = "8.2.1"
 tag_format = "v$version"
 version_files = ["pyproject.toml:version"]
 
 [tool.pyright]
 # Added just so pylance in vscode doesn't complain too much
-pythonVersion = "3.8"
+pythonVersion = "3.9"
 typeCheckingMode = "basic"
 include = ["indsl"]
 ignore = ["tests"]

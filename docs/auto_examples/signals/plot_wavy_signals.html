@@ -18,9 +18,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="../../_static/documentation_options.js?v=15c97ff8"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -130,7 +130,7 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="wavy-signal-generation">
-<span id="sphx-glr-auto-examples-signals-plot-wavy-signals-py"></span><h1>Wavy signal generation<a class="headerlink" href="#wavy-signal-generation" title="Permalink to this heading"></a></h1>
+<span id="sphx-glr-auto-examples-signals-plot-wavy-signals-py"></span><h1>Wavy signal generation<a class="headerlink" href="#wavy-signal-generation" title="Link to this heading"></a></h1>
 <p>Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to generate a simple wave
 (wave 1 in the top left panel) or complex signals in a few steps. The figure below shows the generation of four
 different waves that are recursively added together to create an increasingly complex signal. And, combining it with
@@ -196,7 +196,7 @@ plus a linearly increasing signal.</p>
 </pre></div>
 </div>
 <img src="../../_images/sphx_glr_plot_wavy_signals_001.png" srcset="../../_images/sphx_glr_plot_wavy_signals_001.png" alt="Generating and Adding Sinusoidal Signals" class = "sphx-glr-single-img"/><section id="add-white-noise">
-<span id="addwhitenoise"></span><h2>Add white noise<a class="headerlink" href="#add-white-noise" title="Permalink to this heading"></a></h2>
+<span id="addwhitenoise"></span><h2>Add white noise<a class="headerlink" href="#add-white-noise" title="Link to this heading"></a></h2>
 <p>To make the final signal more realistic, let’s add white noise to it. We
 can use the <a class="reference internal" href="../../signals.html#indsl.signals.noise.white_noise" title="indsl.signals.noise.white_noise"><code class="xref py py-meth docutils literal notranslate"><span class="pre">indsl.signals.noise.white_noise()</span></code></a> method. It will estimate
 the power (i.e. variance) of the signal and add white (random) noise to it,
@@ -209,7 +209,7 @@ with a given signal-to-noise ratio (SNR).</p>
 </div>
 <img src="../../_images/sphx_glr_plot_wavy_signals_002.png" srcset="../../_images/sphx_glr_plot_wavy_signals_002.png" alt="Signal with White Noise" class = "sphx-glr-single-img"/></section>
 <section id="add-wave-with-brownian-noise">
-<span id="addwavewithbrowniannoise"></span><h2>Add wave with brownian noise<a class="headerlink" href="#add-wave-with-brownian-noise" title="Permalink to this heading"></a></h2>
+<span id="addwavewithbrowniannoise"></span><h2>Add wave with brownian noise<a class="headerlink" href="#add-wave-with-brownian-noise" title="Link to this heading"></a></h2>
 <p>We can use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">indsl.signals.noise.wave_with_brownian_noise()</span></code> method.
 It produces a sinusoidal signal with brownian noise.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>

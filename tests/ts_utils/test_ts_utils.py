@@ -194,7 +194,7 @@ def test_make_uniform():
     # Act
     result_interpolation = make_uniform(not_uniform_df, interpolation="linear")
     # Assert
-    assert result_interpolation["values"][1] == 1.5
+    assert result_interpolation["values"].iloc[1] == 1.5
     assert not result_interpolation.isnull().values.any()
 
     # Act
@@ -318,7 +318,7 @@ def test_scalar_to_pandas_series():
     # Act
     float_result = scalar_to_pandas_series(float_data)
     # Assert
-    assert float_result[0] == float_data
+    assert float_result.iloc[0] == float_data
 
     # Arrange
     series_data = pd.Series(3.4, index=pd.date_range(start="1970", end=pd.Timestamp.now(), periods=2))
