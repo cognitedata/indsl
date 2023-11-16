@@ -4,7 +4,7 @@
     "local>cognitedata/renovate-config",
     ":automergeMinor"
   ],
-  "ignorePaths": ["**/.function-preview/**"],
+  "ignorePaths": [],
   "stabilityDays": 31,
   "labels": [
     "dependencies",
