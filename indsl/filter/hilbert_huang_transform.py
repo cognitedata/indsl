@@ -15,7 +15,7 @@ DROP_SENTINAL = np.iinfo(np.int32).min
 
 
 class EMDSiftConvergenceError(Exception):
-    """Exception
+    """Exception.
 
     Exception to be raised when the Empirical Mode Decomposition (EMD) sift process fails to converge.
     """
@@ -32,7 +32,7 @@ class EMDSiftConvergenceError(Exception):
 
 
 def bin_indices(data, boundaries):
-    """Determine the bin indices
+    """Determine the bin indices.
 
     Determine the bin index for each value based on bin edges.
 
@@ -61,8 +61,9 @@ def bin_indices(data, boundaries):
 
 
 def compute_hilbert_huang_2d_spectrum(values_X, values_Z, x_boundaries):
-    """Calculate a 2D Hilbert-Huang power distribution in sparse format.
+    """Compute 2D Hilbert-Huang spectrum.
 
+    Calculate a 2D Hilbert-Huang power distribution in sparse format.
     This utility function generates a sparse matrix that captures a two-dimensional
     power distribution. It's typically not intended for direct end-user interaction.
 
@@ -124,20 +125,14 @@ def compute_hilbert_huang_2d_spectrum(values_X, values_Z, x_boundaries):
 
 
 def validate_dimensionality(array_to_validate):
-    """Confirm that all provided arrays have two dimensions.
+    """Validate dimensionality.
 
+    Confirm that all provided arrays have two dimensions.
     If an array is 1-dimensional, a second singleton dimension will be appended.
-    Also, the function checks that arrays have consistent dimensions.
     """
     modified_arrays = []
     if array_to_validate.ndim == 1:
         modified_arrays = array_to_validate[:, np.newaxis]
-
-    min_ndim = float("inf")
-    if array_to_validate.ndim < min_ndim:
-        min_ndim = array_to_validate.ndim
-    else:
-        raise ValueError("All arrays must have the same number of dimensions.")
 
     if len(modified_arrays) == 1:
         return modified_arrays[0]
@@ -149,7 +144,9 @@ def finalize_spectrum_processing(
     input_spectrum,
     output_as_sparse=True,
 ):
-    """Conduct standard post-processing on the provided spectrum.
+    """Finalize spectrum processing.
+
+    Conduct standard post-processing on the provided spectrum.
 
     Args:
         input_spectrum (ndarray): Input spectrum
@@ -173,7 +170,9 @@ def finalize_spectrum_processing(
 
 
 def establish_histogram_bins(min_value, max_value, bin_count):
-    """Determine the bin edges and central values for histogram construction.
+    """Establish histogram bins.
+
+    Determine the bin edges and central values for histogram construction.
 
     Args:
         min_value (float): Lower boundary for bin edges.
@@ -239,8 +238,8 @@ def calculate_bin_centers_from_edges(bin_edges):
     return bin_centers
 
 
-def adjust_histogram_bins(dataset):
-    """Determine appropriate histogram bin settings.
+def determine_histogram_bins(dataset):
+    """Determine histogram bins.
 
     This function determines the appropriate histogram
     bin settings based on the provided dataset array and returns one array for
@@ -295,7 +294,7 @@ def hilbert_huang_spectrum(
     instant_freq = validate_dimensionality(instant_freq)
     instant_amp = validate_dimensionality(instant_amp)
 
-    bin_edges, frequency_bins = adjust_histogram_bins(instant_freq)
+    bin_edges, frequency_bins = determine_histogram_bins(instant_freq)
 
     # Compute the 2D spectrum
     spectral_data = compute_hilbert_huang_2d_spectrum(instant_freq, instant_amp, bin_edges)
