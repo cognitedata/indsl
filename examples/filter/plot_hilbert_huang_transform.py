@@ -102,12 +102,6 @@ axs.plot(signal_to_detrend.index, signal_to_detrend.values, label="Signal")
 
 # Trend extracted from the signal using rho
 axs.plot(signal_to_detrend.index, trend_rho, label="Trend of the signal (new package)")
-print("WWWWWWW signal_to_detrend.index = ", signal_to_detrend.index.shape)
-print("WWWWW trend_rho = ", trend_rho.shape)
-# print("WWWWWW trend_rho_old = ", trend_rho_old.shape)
-
-# Trend extracted from the signal using rho_old (You can also plot it on a separate axis if needed)
-# axs.plot(signal_to_detrend.index, trend_rho_old, linestyle="--", label="Trend of the signal (old package)")
 
 axs.set_title("Trend found using Hilbert-Huang Transform and empirical mode decomposition")
 
@@ -117,55 +111,3 @@ plt.setp(axs.get_xticklabels(), rotation=45)
 axs.legend(loc="lower right")
 plt.tight_layout()
 plt.show()
-
-
-# trend = hilbert_huang_transform(signal_to_detrend)
-
-# fig, ax = plt.subplots(3, 1, figsize=[9, 7])
-
-# ax[0].plot(wave01, label="Wave 1")
-# ax[0].plot(wave02, label="Wave 2")
-# ax[0].plot(wave03, label="Wave 3")
-# ax[0].set_title("Oscillatory components")
-# ax[0].set_ylabel("Amplitude")
-# ax[0].legend()
-
-# ax[1].plot(trend_01, label="Polynomial 1")
-# ax[1].plot(trend_02, label="Polynomial 2")
-# ax[1].set_title("Trends & Drift")
-# ax[1].set_ylabel("Magnitude")
-# ax[1].legend()
-
-# color = "tab:red"
-# ax2 = ax[1].twinx()
-# ax2.plot(-drift, color=color)
-# ax2.set_ylabel("Drift", color=color)
-# ax2.tick_params(axis="y", labelcolor=color)
-
-# ax[2].plot(signal, label="Signal without noise")
-# ax[2].set_title("Signal without noise")
-# ax[2].set_ylabel("Magnitude")
-# ax[2].set_xlabel("Date")
-# plt.show()
-
-# # sphinx_gallery_thumbnail_number = 2
-# fig2, axs = plt.subplots(figsize=[9, 7])
-
-# # original signal
-# axs.plot(signal_to_detrend.index, signal_to_detrend.values, label="Signal")
-
-# # Trend extracted from the signal
-# axs.plot(signal_to_detrend.index, trend, label="Trend of the signal")
-
-
-# axs.set_title("Trend found using Hilbert-Huang Transform and empirical mode decomposition")
-
-# # Formatting x axis
-# # myFmt = DateFormatter("%b %d, %H:%M")
-# # axs.xaxis.set_major_formatter(myFmt)
-# axs.xaxis.set_major_formatter(DateFormatter("%b %d, %H:%M"))
-# plt.setp(axs.get_xticklabels(), rotation=45)
-# #
-# axs.legend(loc="lower right")
-# plt.tight_layout()
-# plt.show()
