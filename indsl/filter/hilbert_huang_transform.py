@@ -558,15 +558,7 @@ def hilbert_huang_spectrum(
     logger.debug("Frequency bins: {0} to {1} with {2} divisions".format(bin_edges[0], bin_edges[-1], len(bin_edges)))
 
     # Compute the 2D spectrum
-    print(
-        "Shape of instant_amp and instant_freq, respectively, before compute_hilbert_huang_2d_spectrum:",
-        instant_amp.shape,
-        instant_freq.shape,
-    )
-
     spectral_data = compute_hilbert_huang_2d_spectrum(instant_freq, instant_amp, bin_edges)
-
-    print("Shape of spectral_data after compute_hilbert_huang_2d_spectrum:", spectral_data.shape)
 
     dimension_to_aggregate = np.where([0, aggregate_time, aggregate_imfs])[0]
 
@@ -606,7 +598,7 @@ def hilbert_huang_transform(
 
     Given their complexity, it is often difficult to study the entire signals as a whole.
     Therefore, the HHT aims to capture the time-varying nature and non-linear dynamics of such signals by
-    decomposing them into individual oscillatory components by the use the EMD (and the Hilbert transform).
+    decomposing them into individual oscillatory components by the use the EMD.
     These components are oscillatory modes of the full signal with well-defined instantaneous frequencies called
     Intrinsic Mode Functions (IMFs).
 
@@ -688,6 +680,7 @@ def hilbert_huang_transform(
     if max_num_imfs is not None and max_num_imfs <= len(imfs):
         imfs = imfs[:max_num_imfs]
 
+    # Compute the analytic signal for each IMF using the Hilbert transform and store them in a list
     analytic_signals = []
     for imf in imfs:
         analytic_signal = hilbert(imf)
@@ -721,8 +714,6 @@ def hilbert_huang_transform(
     _, hht = hilbert_huang_spectrum(
         flat_avg_frequency, flat_amplitude, aggregate_imfs=False, aggregate_time=False, data_sample_rate=sample_rate_hz
     )
-
-    sample_rate_hz = int(1 / (np.mean(np.diff(timestamps))))
 
     # Loop for rho calculations
     for i in range(index_of_the_last_imf - 1, -1, -1):
