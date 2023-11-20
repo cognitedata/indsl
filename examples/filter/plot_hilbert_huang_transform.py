@@ -1,3 +1,20 @@
+"""
+=====================================================================================
+Trend extraction using the Hilbert-Huang Transform
+=====================================================================================
+Example of trend extraction from non-linear, non-stationary signals using Empirical Mode Decomposition (EMD) and the
+Hilbert-Huang Transform. We generate a synthetic signal composed of:
+    * Three oscillatory signals of different but significant amplitudes
+    * Two polynomial functions or trends
+    * Data drift
+To make the case more realistic, from an industrial perspective, the timestamps are modified to make them nonuniform
+and 35% of the data points are randomly removed. Finally, Gaussian noise with a signal-to-noise ratio of 10 db is
+added to it.
+The figure below shows each of the components of the synthetic signal (except for the Gaussian noise), the resulting
+synthetic signal and the trend obtained by means of Empirical Mode Decomposition and the Hilbert-Huang method
+implemented. It can be seen that the trend reflects the general signal behaviour.
+"""
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
