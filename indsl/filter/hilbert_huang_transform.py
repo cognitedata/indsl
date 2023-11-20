@@ -3,7 +3,6 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 import scipy.sparse as sp
-from sparse import COO
 
 from scipy.signal import hilbert
 
@@ -17,7 +16,6 @@ DROP_SENTINAL = np.iinfo(np.int32).min
 
 class EMDSiftConvergenceError(Exception):
     """Exception
-
 
     Exception to be raised when the Empirical Mode Decomposition (EMD) sift process fails to converge.
     """
@@ -81,6 +79,8 @@ def compute_hilbert_huang_2d_spectrum(values_X, values_Z, x_boundaries):
             A sparse representation of the 2D power distribution.
 
     """
+    from sparse import COO
+
     # Ensure inputs are verified in calling functions.
     # Determine bin indices for primary dimension
     primary_indices = bin_indices(values_X, x_boundaries)
@@ -234,7 +234,6 @@ def calculate_bin_centers_from_edges(bin_edges):
 
     The function calculates the bin centers from the given array of bin edges.
     """
-
     bin_centers = (bin_edges[1:] + bin_edges[:-1]) / 2
 
     return bin_centers
