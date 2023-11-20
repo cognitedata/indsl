@@ -11,10 +11,10 @@ from indsl.type_check import check_types
 @check_types
 def calculate_shutin_interval(
     shut_valve: pd.Series,
-    min_shutin_len: int = 6,
-    min_time_btw_shutins: int = 1,
+    min_shutin_len: float = 6,
+    min_time_btw_shutins: float = 1,
     shutin_state_below_threshold: bool = True,
-    shutin_threshold: Optional[int] = None,
+    shutin_threshold: Optional[float] = None,
 ) -> pd.Series:
     """Shut-in interval.
 

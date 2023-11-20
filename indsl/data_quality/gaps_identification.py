@@ -175,6 +175,6 @@ def gaps_identification_threshold(data: pd.Series, time_delta: pd.Timedelta = pd
     is_gap_series = is_gap_series.astype(int)
 
     # duplicate the last flag value since the flag series should have the same length as the original data points
-    flag_series = pd.concat([is_gap_series, pd.Series(is_gap_series[-1], index=[last_index])])
+    flag_series = pd.concat([is_gap_series, pd.Series(is_gap_series.iloc[-1], index=[last_index])])
 
     return generate_step_series(flag_series)

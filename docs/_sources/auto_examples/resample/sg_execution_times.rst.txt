@@ -6,8 +6,8 @@
 
 Computation times
 =================
-**00:08.339** total execution time for **auto_examples_resample** files:
+**01:08.071** total execution time for **auto_examples_resample** files:
 
 +----------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_resample_plot_group_by_region.py` (``plot_group_by_region.py``) | 00:08.339 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_resample_plot_group_by_region.py` (``plot_group_by_region.py``) | 01:08.071 | 0.0 MB |
 +----------------------------------------------------------------------------------------------+-----------+--------+

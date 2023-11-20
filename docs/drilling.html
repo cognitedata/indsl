@@ -18,9 +18,9 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="_static/documentation_options.js?v=15c97ff8"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -136,14 +136,14 @@
            <div itemprop="articleBody">
              
   <section id="drilling">
-<h1>Drilling<a class="headerlink" href="#drilling" title="Permalink to this heading"></a></h1>
+<h1>Drilling<a class="headerlink" href="#drilling" title="Link to this heading"></a></h1>
 <section id="flag-detection">
-<h2>Flag Detection<a class="headerlink" href="#flag-detection" title="Permalink to this heading"></a></h2>
+<h2>Flag Detection<a class="headerlink" href="#flag-detection" title="Link to this heading"></a></h2>
 <section id="rotation-detection">
-<h3>Rotation Detection<a class="headerlink" href="#rotation-detection" title="Permalink to this heading"></a></h3>
+<h3>Rotation Detection<a class="headerlink" href="#rotation-detection" title="Link to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.drilling.rotation_detection">
-<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">rotation_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rot_vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.rotation_detection" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">rotation_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rot_vel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.rotation_detection" title="Link to this definition"></a></dt>
 <dd><p>Rotation detection.</p>
 <p>A simple on/off detection of rotation of a drill string based on a threshold</p>
 <dl class="field-list simple">
@@ -167,10 +167,10 @@ Binary time series indicating rotation on or rotation off: Rotation on = 1, Rota
 
 </section>
 <section id="on-bottom-detection">
-<h3>On-Bottom Detection<a class="headerlink" href="#on-bottom-detection" title="Permalink to this heading"></a></h3>
+<h3>On-Bottom Detection<a class="headerlink" href="#on-bottom-detection" title="Link to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.drilling.onbottom_detection">
-<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">onbottom_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hole_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.onbottom_detection" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">onbottom_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hole_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.onbottom_detection" title="Link to this definition"></a></dt>
 <dd><p>On bottom detection.</p>
 <p>A simple on/off bottom of the hole detection for a drilling assembly</p>
 <dl class="field-list simple">
@@ -199,10 +199,10 @@ Binary time series indicating if the drill bit is on bottom or off bottom: On bo
 
 </section>
 <section id="in-hole-detection">
-<h3>In-Hole Detection<a class="headerlink" href="#in-hole-detection" title="Permalink to this heading"></a></h3>
+<h3>In-Hole Detection<a class="headerlink" href="#in-hole-detection" title="Link to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.drilling.inhole_detection">
-<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">inhole_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.inhole_detection" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">inhole_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bit_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.inhole_detection" title="Link to this definition"></a></dt>
 <dd><p>In hole detection.</p>
 <p>A simple in/out of the hole detection for a drilling assembly</p>
 <dl class="field-list simple">
@@ -226,10 +226,10 @@ Binary time series indicating if the drill bit is in well or out of the well: In
 
 </section>
 <section id="circulation-detection">
-<h3>Circulation Detection<a class="headerlink" href="#circulation-detection" title="Permalink to this heading"></a></h3>
+<h3>Circulation Detection<a class="headerlink" href="#circulation-detection" title="Link to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.drilling.circulation_detection">
-<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">circulation_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.circulation_detection" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">circulation_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.circulation_detection" title="Link to this definition"></a></dt>
 <dd><p>Circulation detection.</p>
 <p>A simple on/off circulation detection for the pumping fluids into the well.</p>
 <dl class="field-list simple">

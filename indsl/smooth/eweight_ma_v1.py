@@ -64,7 +64,7 @@ def ewma(
         for i, value in enumerate(data):
             ewma_vals[i] = ewma_pt_not_adjust(data.values, value, min_periods, ewma_vals, i, a)
     else:
-        ewma_vals[0] = data[0]
+        ewma_vals[0] = data.iloc[0]
         for i, value in enumerate(data):
             if i == 0:
                 continue
