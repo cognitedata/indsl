@@ -837,13 +837,13 @@ files = [
 
 [[package]]
 name = "emd-signal"
-version = "1.5.1"
+version = "1.5.2"
 description = "Implementation of the Empirical Mode Decomposition (EMD) and its variations"
 optional = false
 python-versions = "<4,>=3.6"
 files = [
-    {file = "EMD-signal-1.5.1.tar.gz", hash = "sha256:e134ec88706897238f9af187d75c69b1742e8237547bddfc1792672f3e954b62"},
-    {file = "EMD_signal-1.5.1-py3-none-any.whl", hash = "sha256:11e6d4ef7c77fdfbb991eb9f0e58ae5e1fb0eb0fc7d0ce4de28e1b02b830ebf7"},
+    {file = "EMD-signal-1.5.2.tar.gz", hash = "sha256:8e4f1f6d4ff7751b3a308789b575b10b2596f60ca52acbb14efc32b8fba98f38"},
+    {file = "EMD_signal-1.5.2-py3-none-any.whl", hash = "sha256:a5a55233f7d94f9e92fe43515fb54cc470a1c374ae035a0fe2f848153f777dc8"},
 ]
 
 [package.dependencies]
