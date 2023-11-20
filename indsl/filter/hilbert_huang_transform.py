@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class EMDSiftConvergenceError(Exception):
     """Exception to be raised when the Empirical Mode Decomposition (EMD) sift process fails to converge.
 
-    Attributes
+    Attributes:
     ----------
     message : str
         Description of the error explaining why the sift process failed to converge.
@@ -263,7 +263,6 @@ def finalize_spectrum_processing(
     -----
     Assumes input data have been pre-processed by upper-level functions.
     """
-
     if output_mode == "power":
         logger.debug("Transforming amplitude to power format")
         input_spectrum = input_spectrum**2
@@ -420,7 +419,6 @@ def calculate_bin_centers_from_edges(bin_edges, calculation_mode="mean"):
     ValueError
         If the provided calculation_mode is not recognized.
     """
-
     if calculation_mode == "geometric":
         bin_centers = np.sqrt(bin_edges[1:] * bin_edges[:-1])
     elif calculation_mode == "mean":
