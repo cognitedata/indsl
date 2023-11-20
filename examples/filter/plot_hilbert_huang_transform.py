@@ -109,7 +109,6 @@ ax[2].plot(signal, label="Signal without noise")
 ax[2].set_title("Signal without noise")
 ax[2].set_ylabel("Magnitude")
 ax[2].set_xlabel("Date")
-# plt.show()
 
 # sphinx_gallery_thumbnail_number = 2
 fig2, axs = plt.subplots(figsize=[9, 7])
@@ -118,7 +117,7 @@ fig2, axs = plt.subplots(figsize=[9, 7])
 axs.plot(signal_to_detrend.index, signal_to_detrend.values, label="Signal")
 
 # Trend extracted from the signal using rho
-axs.plot(signal_to_detrend.index, trend_rho, label="Trend of the signal (new package)")
+axs.plot(signal_to_detrend.index, trend_rho, label="Trend of the signal")
 
 axs.set_title("Trend found using Hilbert-Huang Transform and empirical mode decomposition")
 
