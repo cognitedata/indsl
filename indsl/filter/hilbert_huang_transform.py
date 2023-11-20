@@ -1,14 +1,15 @@
+import logging
+
 from typing import Optional
 
 import numpy as np
 import pandas as pd
 
-import logging
+import scipy.sparse as sp
 
 from PyEMD import EMD
 from scipy.signal import hilbert  # type: ignore
 from indsl.ts_utils import get_timestamps
-import scipy.sparse as sp
 
 MIN_DATA_PT = 10
 
@@ -17,8 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 class EMDSiftConvergenceError(Exception):
-    """
-    Exception to be raised when the Empirical Mode Decomposition (EMD) sift process fails to converge.
+    """Exception to be raised when the Empirical Mode Decomposition (EMD) sift process fails to converge.
 
     Attributes
     ----------
@@ -27,8 +27,7 @@ class EMDSiftConvergenceError(Exception):
     """
 
     def __init__(self, message: str):
-        """
-        Initializes the EMDSiftConvergenceError instance.
+        """Initializes the EMDSiftConvergenceError instance.
 
         Parameters
         ----------
@@ -51,7 +50,7 @@ def bin_indices(data, boundaries):
         Sequence defining the boundaries of the bins. Having N boundaries will define N-1 bins.
         Each boundary is inclusive at the start and exclusive at the end.
 
-    Returns
+    Returns:
     -------
     ndarray
         An array denoting the index of the bin each data point belongs to.
@@ -84,14 +83,10 @@ def compute_hilbert_huang_2d_spectrum(values_X, values_Z, x_boundaries):
     x_boundaries : ndarray
         A vector defining bin boundaries for values_X
 
-    Returns
+    Returns:
     -------
     sparse_spectrum
         A sparse representation of the 2D power distribution.
-
-    Notes
-    -----
-    Refer to the main function `hilberthuang` for more context.
 
     """
     # Ensure inputs are verified in calling functions.
@@ -140,8 +135,7 @@ def compute_hilbert_huang_2d_spectrum(values_X, values_Z, x_boundaries):
 
 
 def validate_dimensionality(arrays_to_validate, variable_names, calling_function):
-    """
-    Confirm that all provided arrays have two dimensions.
+    """Confirm that all provided arrays have two dimensions.
 
     If an array is 1-dimensional, a second singleton dimension will be appended.
 
@@ -154,7 +148,7 @@ def validate_dimensionality(arrays_to_validate, variable_names, calling_function
     calling_function : str
         Name of the function that invokes this validation function.
 
-    Returns
+    Returns:
     -------
     modified_arrays
         List of arrays after ensuring they have 2 dimensions.
@@ -174,8 +168,7 @@ def validate_dimensionality(arrays_to_validate, variable_names, calling_function
 
 
 def validate_dimensions_consistency(arrays_list, variable_labels, invoking_function, specific_axis=None):
-    """
-    Validate that all provided arrays have consistent dimensions.
+    """Validate that all provided arrays have consistent dimensions.
 
     If dimensions aren't consistent across arrays, it will raise an error.
 
@@ -191,7 +184,7 @@ def validate_dimensions_consistency(arrays_list, variable_labels, invoking_funct
         Specific axis to check for dimensional consistency.
         If not provided, all axes will be compared.
 
-    Raises
+    Raises:
     ------
     ValueError
         If the arrays in arrays_list have inconsistent shapes.
@@ -222,12 +215,12 @@ def validate_dimensions_consistency(arrays_list, variable_labels, invoking_funct
     ]  # Check if the dimensions are consistent across all arrays
 
     if not all(is_consistent):
-        log_msg = "In {0}: Dimensions inconsistency detected among inputs".format(invoking_function)
+        log_msg = f"In {invoking_function}: Dimensions inconsistency detected among inputs"
         logger.error(log_msg)
 
         error_details = "Differing dimensions among inputs: "
         for idx, arr in enumerate(arrays_list):
-            error_details += "'{0}': {1}, ".format(variable_labels[idx], arr.shape)
+            error_details += f"'{variable_labels[idx]}': {arr.shape}, "
         logger.error(error_details)
         raise ValueError(error_details)
 
@@ -242,8 +235,7 @@ def finalize_spectrum_processing(
     output_as_sparse=True,
     dense_output_size_limit=50,
 ):
-    """
-    Conduct standard post-processing on the provided spectrum.
+    """Conduct standard post-processing on the provided spectrum.
 
     Parameters
     ----------
@@ -262,12 +254,12 @@ def finalize_spectrum_processing(
     dense_output_size_limit : float, optional
         Max size (in GB) of dense output. If exceeded, raises an error. Default is 10 GB.
 
-    Returns
+    Returns:
     -------
     ndarray
         Post-processed spectrum.
 
-    Notes
+    Notes:
     -----
     Assumes input data have been pre-processed by upper-level functions.
     """
@@ -315,8 +307,7 @@ def finalize_spectrum_processing(
 
 
 def establish_histogram_bins(min_value, max_value, bin_count, bin_spacing="linear"):
-    """
-    Determine the bin edges and central values for histogram construction.
+    """Determine the bin edges and central values for histogram construction.
 
     Parameters
     ----------
@@ -329,14 +320,14 @@ def establish_histogram_bins(min_value, max_value, bin_count, bin_spacing="linea
     bin_spacing : {'linear', 'log'}, default='linear'
         Method to define spacing between bins, either linearly or logarithmically.
 
-    Returns
+    Returns:
     -------
     bin_edges : ndarray
         1D array denoting bin edges.
     bin_centers : ndarray
         1D array indicating bin central values.
 
-    Examples
+    Examples:
     --------
     Creating histogram bins between 1 Hz and 5 Hz with four linearly spaced bins:
 
@@ -365,8 +356,7 @@ def establish_histogram_bins(min_value, max_value, bin_count, bin_spacing="linea
 def calculate_histogram_bins(
     dataset, bin_count=None, strategy="sqrt", axis_scale="linear", margin=1e-3, bin_limit=2048
 ):
-    """
-    Determine bin edges and centers for histogram based on dataset properties.
+    """Determine bin edges and centers for histogram based on dataset properties.
 
     If bin_count is given, strategy is disregarded.
 
@@ -385,7 +375,7 @@ def calculate_histogram_bins(
     bin_limit : int, default=2048
         Maximum allowable number of bins.
 
-    Returns
+    Returns:
     -------
     edges : ndarray
         1D array of bin edges.
@@ -409,8 +399,7 @@ def calculate_histogram_bins(
 
 
 def calculate_bin_centers_from_edges(bin_edges, calculation_mode="mean"):
-    """
-    Derive bin centers from a given array of bin edges.
+    """Derive bin centers from a given array of bin edges.
 
     Parameters
     ----------
@@ -421,12 +410,12 @@ def calculate_bin_centers_from_edges(bin_edges, calculation_mode="mean"):
         - 'mean': Average of two consecutive edges.
         - 'geometric': Geometric mean of two consecutive edges.
 
-    Returns
+    Returns:
     -------
     bin_centers : ndarray
         Calculated bin centers.
 
-    Raises
+    Raises:
     ------
     ValueError
         If the provided calculation_mode is not recognized.
@@ -443,8 +432,7 @@ def calculate_bin_centers_from_edges(bin_edges, calculation_mode="mean"):
 
 
 def adjust_histogram_bins(bin_params, dataset):
-    """
-    Determine the appropriate histogram bin settings based on user input.
+    """Determine the appropriate histogram bin settings based on user input.
 
     Parameters
     ----------
@@ -456,7 +444,7 @@ def adjust_histogram_bins(bin_params, dataset):
     dataset : ndarray, optional
         Data array used for bin calculation if bin_params is None.
 
-    Returns
+    Returns:
     -------
     ndarray
         Array of bin edges.
@@ -526,19 +514,19 @@ def hilbert_huang_spectrum(
     size_limit_gb : float, optional
         If the non-sparse output exceeds this size (in GB), an error is raised. Default is 10 GB.
 
-    Returns
+    Returns:
     -------
     frequency_bins : ndarray
         Array of histogram bin centers for each frequency.
     final_spectra : ndarray
         The calculated Hilbert-Huang Transform.
 
-    Notes
+    Notes:
     -----
     The sparse output uses the COOrdinate format from the sparse package. This is memory-efficient, but might not be
     compatible with all functions expecting full arrays.
 
-    References
+    References:
     ----------
     Huang, N. E., et al. (1998). The empirical mode decomposition and the Hilbert spectrum for nonlinear and
     non-stationary time series analysis. Proceedings of the Royal Society of London. Series A: Mathematical, Physical
@@ -553,9 +541,9 @@ def hilbert_huang_spectrum(
     )
 
     logger.info("INITIATED: Hilbert-Huang Transformation calculation")
-    logger.debug("Processing on {0} samples across {1} IMFs ".format(instant_freq.shape[0], instant_freq.shape[1]))
+    logger.debug(f"Processing on {instant_freq.shape[0]} samples across {instant_freq.shape[1]} IMFs ")
     bin_edges, frequency_bins = adjust_histogram_bins(bin_edges, instant_freq.flatten())
-    logger.debug("Frequency bins: {0} to {1} with {2} divisions".format(bin_edges[0], bin_edges[-1], len(bin_edges)))
+    logger.debug(f"Frequency bins: {bin_edges[0]} to {bin_edges[-1]} with {len(bin_edges)} divisions")
 
     # Compute the 2D spectrum
     spectral_data = compute_hilbert_huang_2d_spectrum(instant_freq, instant_amp, bin_edges)
@@ -573,7 +561,7 @@ def hilbert_huang_spectrum(
         dense_output_size_limit=size_limit_gb,
     )
 
-    logger.info("FINISHED: Hilbert-Huang Transformation - resulting size {0}".format(final_spectra.shape))
+    logger.info(f"FINISHED: Hilbert-Huang Transformation - resulting size {final_spectra.shape}")
     return frequency_bins, final_spectra
 
 
@@ -584,8 +572,7 @@ def hilbert_huang_transform(
     error_tolerance: float = 0.05,
     return_trend: bool = True,
 ) -> pd.Series:
-    r"""
-    Perform the Hilbert-Huang Transform (HHT) to find the trend of a signal.
+    r"""Perform the Hilbert-Huang Transform (HHT) to find the trend of a signal.
 
     The Hilbert-Huang Transform is a technique that combines Empirical Mode Decomposition (EMD)
     and the Hilbert Transform to analyze non-stationary and non-linear time series data,
