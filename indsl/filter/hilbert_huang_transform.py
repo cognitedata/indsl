@@ -615,9 +615,9 @@ def hilbert_huang_transform(
     Then, we smoothly connect these points to create upper and lower envelopes using spline interpolation
     that capture the signal's overall trend. Next, we calculate the average of these envelopes and subtract
     it from the original signal, resulting in the first IMF—a high-frequency component. We repeat this process,
-    sifting out the IMFs one by one until each IMF satisfies the wiggling and envelope criteria. The final result
-    is a collection of IMFs, ordered by their frequencies, that represent the different oscillatory modes present
-    in the original signal.
+    sifting out the IMFs one by one until each IMF satisfies the two conditions for it to be an IMF. Read
+    more about this in the given sources. The final result is a collection of IMFs, ordered by their frequencies,
+    that represent the different oscillatory modes present in the original signal.
 
     \textbf{The Hilbert Transform} is a mathematical operation that, when applied to a real-valued time series signal,
     produces a corresponding analytic signal which is a complex-valued function derived
