@@ -4,12 +4,13 @@ from typing import Optional
 
 import numpy as np
 import pandas as pd
-
 import scipy.sparse as sp
 
 from PyEMD import EMD
-from scipy.signal import hilbert  # type: ignore
+from scipy.signal import hilbert
+
 from indsl.ts_utils import get_timestamps
+
 
 MIN_DATA_PT = 10
 
