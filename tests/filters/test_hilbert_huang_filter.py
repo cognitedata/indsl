@@ -82,7 +82,7 @@ def test_trend_data_perturb_timestamp():
     signal_with_noise = white_noise(signal, snr_db=30, seed=42)
     signal_with_perturbation = perturb_timestamp(signal_with_noise)
 
-    trend = hilbert_huang_filter(signal_with_perturbation)
+    trend = hilbert_huang_transform(signal_with_perturbation)
     detrended_signal = sub(signal_with_perturbation, trend, True)
 
     expected_detrended_signal = sub(signal_with_perturbation, signal, True)

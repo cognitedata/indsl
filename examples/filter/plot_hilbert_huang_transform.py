@@ -61,11 +61,11 @@ signal = (
     + pd.Series(trend_02)
     - pd.Series(drift)
 )
-signal_w_noise = perturb_timestamp(white_noise(signal, snr_db=30))
+signal_w_noise = perturb_timestamp(white_noise(signal, snr_db=10))
 signal_to_detrend = insert_data_gaps(signal_w_noise, fraction=0.35)
 
 # Unpack the trend values from the tuple
-trend_rho, trend_rho_old = hilbert_huang_transform(signal_to_detrend)
+trend_rho = hilbert_huang_transform(signal_to_detrend)
 
 fig, ax = plt.subplots(3, 1, figsize=[9, 7])
 
@@ -92,7 +92,7 @@ ax[2].plot(signal, label="Signal without noise")
 ax[2].set_title("Signal without noise")
 ax[2].set_ylabel("Magnitude")
 ax[2].set_xlabel("Date")
-plt.show()
+# plt.show()
 
 # sphinx_gallery_thumbnail_number = 2
 fig2, axs = plt.subplots(figsize=[9, 7])
@@ -102,9 +102,12 @@ axs.plot(signal_to_detrend.index, signal_to_detrend.values, label="Signal")
 
 # Trend extracted from the signal using rho
 axs.plot(signal_to_detrend.index, trend_rho, label="Trend of the signal (new package)")
+print("WWWWWWW signal_to_detrend.index = ", signal_to_detrend.index.shape)
+print("WWWWW trend_rho = ", trend_rho.shape)
+# print("WWWWWW trend_rho_old = ", trend_rho_old.shape)
 
 # Trend extracted from the signal using rho_old (You can also plot it on a separate axis if needed)
-axs.plot(signal_to_detrend.index, trend_rho_old, linestyle="--", label="Trend of the signal (old package)")
+# axs.plot(signal_to_detrend.index, trend_rho_old, linestyle="--", label="Trend of the signal (old package)")
 
 axs.set_title("Trend found using Hilbert-Huang Transform and empirical mode decomposition")
 
