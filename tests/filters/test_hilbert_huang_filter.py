@@ -41,8 +41,6 @@ def test_trend_of_signal():
 
     detrended_signal = signal_with_noise - trend
 
-    expected_detrended_signal = signal_with_noise - signal
-
     # mean is close to zero
     assert abs(np.mean(detrended_signal)) <= 0.05
     # assert np.allclose(trend, signal, atol=0.04, rtol=0.04)
