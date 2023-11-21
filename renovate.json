@@ -1,10 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>cognitedata/renovate-config",
+    "local>cognitedata/renovate-config-public",
     ":automergeMinor"
   ],
-  "ignorePaths": ["**/.function-preview/**"],
+  "ignorePaths": [],
   "stabilityDays": 31,
   "labels": [
     "dependencies",

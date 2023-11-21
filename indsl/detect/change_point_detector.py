@@ -46,7 +46,7 @@ def cpd_ed_pelt(data: pd.Series, min_distance: int = 1) -> pd.Series:
 
     # add the change points to the time series
     for cp in change_points:
-        change_points_ts[cp] = 1
+        change_points_ts.iloc[cp] = 1
         # add the value of 0 to 1ns before and after the timestamp of the current change point
         change_points_ts = pd.concat(
             [

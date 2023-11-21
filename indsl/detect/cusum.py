@@ -225,7 +225,7 @@ class Cusum:
             if len(self.time_alarm):
                 ax1.plot(
                     time_alarm_initial_index,
-                    self.data[self.time_alarm_initial],
+                    self.data.iloc[self.time_alarm_initial],
                     ">",
                     mfc="b",
                     mec="g",

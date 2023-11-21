@@ -18,9 +18,9 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=37b3a9b0"></script>
+        <script src="../../_static/documentation_options.js?v=15c97ff8"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -147,9 +147,9 @@
 to download the full example code</p>
 </div>
 <section class="sphx-glr-example-title" id="detect-out-of-range-outliers-in-sensor-data">
-<span id="sphx-glr-auto-examples-data-quality-plot-out-of-range-py"></span><h1>Detect out of range outliers in sensor data<a class="headerlink" href="#detect-out-of-range-outliers-in-sensor-data" title="Permalink to this heading"></a></h1>
+<span id="sphx-glr-auto-examples-data-quality-plot-out-of-range-py"></span><h1>Detect out of range outliers in sensor data<a class="headerlink" href="#detect-out-of-range-outliers-in-sensor-data" title="Link to this heading"></a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
 <p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">out_of_range()</span></code> function uses Savitzky-Golay smoothing (SG) - <code class="xref py py-func docutils literal notranslate"><span class="pre">sg()</span></code> to estimate the main trend of the data:</p>
 <p>The algorithm carries out two iterations to determine the trend and detect extreme outliers.</p>
 <p>The outlier detection is based on  the <a href="https://en.wikipedia.org/wiki/Studentized_residual#:~:text=In%20statistics%2C%20a%20studentized%20residual,in%20the%20detection%20of%20outliers." target="_blank">studentized residuals</a> and the <a href="https://mathworld.wolfram.com/BonferroniCorrection.html" target="_blank">Bonferroni Correction</a>. The residuals between
@@ -178,7 +178,7 @@ detection works step by step.</p>
 </div>
 </section>
 <section id="non-linear-non-stationary-synthetic-signal">
-<h2>Non-linear, non-stationary synthetic signal<a class="headerlink" href="#non-linear-non-stationary-synthetic-signal" title="Permalink to this heading"></a></h2>
+<h2>Non-linear, non-stationary synthetic signal<a class="headerlink" href="#non-linear-non-stationary-synthetic-signal" title="Link to this heading"></a></h2>
 <p>We’ll use a pre-defined test data set with a non-linear, non-stationary time series with “<cite>industrial</cite>”
 characteristics. This data set is a time series composed of 3 oscillatory components, 2 nonlinear trends, sensor
 linear drift (small decrease over time) and white noise. The signal has non-uniform
@@ -217,7 +217,7 @@ to generate this signal are also part of InDSL: <code class="xref py py-func doc
 </div>
 </section>
 <section id="insert-extreme-outliers">
-<h2>Insert extreme outliers<a class="headerlink" href="#insert-extreme-outliers" title="Permalink to this heading"></a></h2>
+<h2>Insert extreme outliers<a class="headerlink" href="#insert-extreme-outliers" title="Link to this heading"></a></h2>
 <p>This algorithm was tested with outliers generated at different locations. Five percent (5%) of the data points at
 random locations were replaced by outliers. To do so we used <a href="#id1"><span class="problematic" id="id2">|Numpy's|</span></a> random generator with different seeds.
 Feel free to use one of the 5 seeds below. The algorithm will work with 100% precision for these conditions and
@@ -237,7 +237,7 @@ limits of the algorithm.</p>
 </pre></div>
 </div>
 <section id="initial-conditions-test-data-set">
-<h3>Initial conditions: test data set<a class="headerlink" href="#initial-conditions-test-data-set" title="Permalink to this heading"></a></h3>
+<h3>Initial conditions: test data set<a class="headerlink" href="#initial-conditions-test-data-set" title="Link to this heading"></a></h3>
 <p>The figure below shows the original data set and the outliers inserted. We took care to give the outliers random
 values, both far and close to the main trend. But far enough for these to be categorized as an extreme deviation from
 the expected behavior of the data.</p>
@@ -254,9 +254,9 @@ the expected behavior of the data.</p>
 <img src="../../_images/sphx_glr_plot_out_of_range_001.png" srcset="../../_images/sphx_glr_plot_out_of_range_001.png" alt="Test Data Set" class = "sphx-glr-single-img"/></section>
 </section>
 <section id="initial-iteration">
-<h2>Initial iteration<a class="headerlink" href="#initial-iteration" title="Permalink to this heading"></a></h2>
+<h2>Initial iteration<a class="headerlink" href="#initial-iteration" title="Link to this heading"></a></h2>
 <section id="trend-estimate">
-<h3>1. Trend estimate<a class="headerlink" href="#trend-estimate" title="Permalink to this heading"></a></h3>
+<h3>1. Trend estimate<a class="headerlink" href="#trend-estimate" title="Link to this heading"></a></h3>
 <p>As mentioned before, we will use a SG smoother to estimate the trend. To demonstrate how the initial pass works, we’ll run the SG independently. The SG smoother
 requires a point-wise window length and a polynomial order. The bigger the window, more data
 used to estimate the local trend. With the polynomial order we influence how much we want the fit to follow the
@@ -269,7 +269,7 @@ of 20 data points and 3rd order polynomial fit.</p>
 </div>
 </section>
 <section id="studentized-residuals-and-bonferroni-correction">
-<h3>2. Studentized residuals and Bonferroni correction<a class="headerlink" href="#studentized-residuals-and-bonferroni-correction" title="Permalink to this heading"></a></h3>
+<h3>2. Studentized residuals and Bonferroni correction<a class="headerlink" href="#studentized-residuals-and-bonferroni-correction" title="Link to this heading"></a></h3>
 <p>Identifying potential outliers is done by comparing how much each data point deviates from the estimated
 main trend (i.e. the residuals). However, since in most cases little information about the data is readily
 available and extreme outliers are expected to be sparse and uncommon, the <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution" target="_blank">Student's-t distribution</a> is well
@@ -305,7 +305,7 @@ of the correction. Again, the Bonferroni Correction is explicitly calculated her
 </div>
 </section>
 <section id="outliers-detected-with-the-initial-pass">
-<h3>3. Outliers detected with the initial pass<a class="headerlink" href="#outliers-detected-with-the-initial-pass" title="Permalink to this heading"></a></h3>
+<h3>3. Outliers detected with the initial pass<a class="headerlink" href="#outliers-detected-with-the-initial-pass" title="Link to this heading"></a></h3>
 <p>The figure below shows the results of the initial pass. The SG method does a good job at estimating the trend, except
 for a few periods in the data where a larger number of outliers are grouped together. This causes strong nonlinear
 behavior in the estimated trend, and as a consequence some data points are miss-identified as outliers. But overall,
@@ -326,7 +326,7 @@ a good enough baseline.</p>
 <img src="../../_images/sphx_glr_plot_out_of_range_002.png" srcset="../../_images/sphx_glr_plot_out_of_range_002.png" alt="First Iteration: Savitzky-Golay trend" class = "sphx-glr-single-img"/></section>
 </section>
 <section id="last-iteration">
-<h2>Last iteration<a class="headerlink" href="#last-iteration" title="Permalink to this heading"></a></h2>
+<h2>Last iteration<a class="headerlink" href="#last-iteration" title="Link to this heading"></a></h2>
 <p>For the last iteration the outliers previously detected are removed and then use the SG method to estimate the main trend.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tolerance_pass02</span> <span class="o">=</span> <span class="mf">0.01</span>
 <span class="n">trend_pass02</span> <span class="o">=</span> <span class="n">sg</span><span class="p">(</span><span class="n">filtered_ts_pass01</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">polyorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -352,7 +352,7 @@ a good enough baseline.</p>
 </div>
 </section>
 <section id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading"></a></h2>
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h2>
 <p>The figure below shows the original data, the trend estimated using the SG method, the outliers artificially
 inserted, and the outliers detected by the full method (<code class="xref py py-func docutils literal notranslate"><span class="pre">out_of_range()</span></code>). A perfect performance is observed, all
 outliers are detected. This “perfect” performance will not always be the case but this function provides a very

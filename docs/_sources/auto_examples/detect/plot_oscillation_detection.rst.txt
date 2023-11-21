@@ -57,7 +57,7 @@ Identifies if a signal contains one or more oscillatory components. Based on the
 
  .. code-block:: none
 
-    /home/cristinaferrer/indsl/indsl/detect/oscillation_detector.py:578: UserWarning: The figure layout has changed to tight
+    /home/cristinaferrer/indsl/indsl/detect/oscillation_detector.py:580: UserWarning: The figure layout has changed to tight
       fig.tight_layout()
 
 
@@ -117,7 +117,7 @@ Identifies if a signal contains one or more oscillatory components. Based on the
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.827 seconds)
+   **Total running time of the script:** (0 minutes 1.319 seconds)
 
 
 .. _sphx_glr_download_auto_examples_detect_plot_oscillation_detection.py:

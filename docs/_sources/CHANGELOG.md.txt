@@ -1,4 +1,29 @@
 # Changelog
+## v8.2.1
+* chore(deps): update pre-commit hook commitizen-tools/commitizen to v3.8.0 in #1
+* chore(deps): lock file maintenance in #3
+* chore(deps): update pre-commit hook commitizen-tools/commitizen to v3.8.1 in #4
+* chore(deps): update pre-commit hook psf/black to v23.9.0 in #5
+* chore(deps): update pre-commit hook commitizen-tools/commitizen to v3.8.2 in #7
+* fix: pandas future (deprecation) warnings  in #9
+* chore(deps): update pre-commit hook psf/black to v23.9.1 in #12
+* chore: deprecate support for python 3.8 in #10
+* fix(deps): update dependency numpy to v1.25.2 in #14
+* docs: rename master with main  in #19
+* docs: change support email  in #17
+* chore(deps): update dependency ruff to ^0.0.288 in #20
+* chore(deps): update pre-commit hook astral-sh/ruff-pre-commit to v0.0.288 in #21
+* docs: update compiled doc files  in #22
+* chore(deps): update dependency ruff to ^0.0.289 in #23
+* chore(deps): update pre-commit hook astral-sh/ruff-pre-commit to v0.0.289 in #24
+* fix: cannot find function version in #26
+* chore: remove python 3.8 for CI test extras  in #29
+* docs: build documentation  in #28
+* chore(deps): update pre-commit hook pre-commit/pre-commit-hooks to v4.5.0 in #16
+* chore(deps): update pre-commit hook pre-commit/mirrors-mypy to v1.6.0 in #15
+* chore(deps): update dependency docstring-to-markdown to v0.12 in #13
+* fix: corrected types by @anvar-akhiiartdinov in #31
+* chore(deps-dev): bump urllib3 from 2.0.6 to 2.0.7  in #27
 ## v8.2.0
 * fix(deps): update dependency numpy to v1.25.1 in #1056
 * chore(deps): update pre-commit hook commitizen-tools/commitizen to v3.5.4 in #1058

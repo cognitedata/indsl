@@ -2,7 +2,7 @@ name: Code Quality
 on:
   pull_request: {}
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   code-quality:
@@ -13,7 +13,7 @@ jobs:
         python-version: ["3.10"]
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Linting
@@ -26,10 +26,10 @@ jobs:
     strategy:
         matrix:
             platform: [ubuntu-latest, macos-latest, windows-latest]
-            python-version: ["3.8", "3.9", "3.10", "3.11"]
+            python-version: ["3.9", "3.10", "3.11", "3.12"]
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
         run: |
             pipx install poetry # setup-python action requires installing poetry with pipx
@@ -72,10 +72,10 @@ jobs:
     strategy:
         matrix:
             platform: [ubuntu-latest, macos-latest, windows-latest]
-            python-version: ["3.8", "3.9", "3.10", "3.11"]
+            python-version: ["3.9", "3.10", "3.11"]
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install poetry
         run: |
             pipx install poetry # setup-python action requires installing poetry with pipx
@@ -113,14 +113,14 @@ jobs:
     name: Run Examples
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
         # Semantic version range syntax or exact version of a Python version
-        python-version: '3.10'
+        python-version: '3.11'
     - name: Install dependencies
       run: |
           pipx install poetry # setup-python action requires installing poetry with pipx
