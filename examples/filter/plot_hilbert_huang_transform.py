@@ -119,7 +119,7 @@ axs.plot(signal_to_detrend.index, signal_to_detrend.values, label="Signal")
 # Trend extracted from the signal using rho
 axs.plot(signal_to_detrend.index, trend_rho, label="Trend of the signal")
 
-axs.set_title("Trend found using Hilbert-Huang Transform and empirical mode decomposition")
+axs.set_title("Trend found using the Hilbert-Huang Transform")
 
 # Formatting x axis
 axs.xaxis.set_major_formatter(DateFormatter("%b %d, %H:%M"))
