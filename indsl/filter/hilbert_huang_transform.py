@@ -69,7 +69,7 @@ def _calculate_histogram_bins_and_centers(dataset, margin=1e-8):
     return bin_edges
 
 
-def _hilbert_huang_spectrum(
+def _hilbert_spectrum(
     instant_freq,
     instant_amp,
     use_sparse_format=True,
@@ -171,7 +171,7 @@ def hilbert_huang_transform(
     frequency = np.gradient(phase) / (2 * np.pi * dt)
     amplitude = np.abs(analytic_signals)
 
-    # Do some array gymnastics to get the right shapes
+    # Transpose to get the right shape for the array
     frequency_array = np.array(frequency).T
 
     # average over time
@@ -179,11 +179,13 @@ def hilbert_huang_transform(
 
     amplitude_array = np.array(amplitude)
 
+    # Ensure that the arrays are 1D by flattening them
+    # to avoid errors if the arrays have more than 2 dimensions
     flat_amplitude = amplitude_array.flatten()
     flat_avg_frequency = avg_frequency_array.flatten()
 
-    # compute Hilbert-Huang spectrum for each IMF separately and sum over time to get Hilbert marginal spectrum
-    hht = _hilbert_huang_spectrum(flat_avg_frequency, flat_amplitude)
+    # compute Hilbert spectrum
+    hht = _hilbert_spectrum(flat_avg_frequency, flat_amplitude)
 
     # Loop for rho calculations
     for i in range(index_of_the_last_imf - 1, -1, -1):
