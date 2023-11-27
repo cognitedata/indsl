@@ -13,8 +13,8 @@ from indsl.ts_utils import get_timestamps
 DROP_SENTINAL = np.iinfo(np.int32).min
 
 
-def _compute_hilbert_huang_2d_spectrum(values_X, values_Z, x_boundaries):
-    """Compute 2D Hilbert-Huang spectrum.
+def _compute_hilbert_2d_spectrum(values_X, values_Z, x_boundaries):
+    """Compute 2D Hilbert spectrum.
 
     Calculate a 2D Hilbert-Huang power distribution in sparse format.
     This utility function generates a sparse matrix that captures a two-dimensional
@@ -74,7 +74,7 @@ def _hilbert_spectrum(
     instant_amp,
     use_sparse_format=True,
 ):
-    """Compute a Hilbert-Huang Spectrum (HHT).
+    """Hilbert Spectrum.
 
     Calculate the Hilbert-Huang Transform (HHT) from instantaneous frequency and amplitude.
     This transform depicts the energy of a time-series signal over both time and frequency domains. By default, the
@@ -87,7 +87,7 @@ def _hilbert_spectrum(
     bin_edges = _calculate_histogram_bins_and_centers(instant_freq.ravel())
 
     # Calculate the 2D Hilbert spectrum
-    spectral_data = _compute_hilbert_huang_2d_spectrum(instant_freq, instant_amp, bin_edges)
+    spectral_data = _compute_hilbert_2d_spectrum(instant_freq, instant_amp, bin_edges)
 
     # Calculate the final spectrum as a power spectrum and return the result in the desired format (sparse or dense)
     final_spectra = spectral_data**2 if use_sparse_format else spectral_data.todense()
@@ -101,23 +101,16 @@ def hilbert_huang_transform(
     error_tolerance: float = 0.05,
     return_trend: bool = True,
 ) -> pd.Series:
-    r"""Perform the Hilbert-Huang Transform (HHT) to find the trend of a signal.
+    r"""Hilbert-Huang Transform.
 
     The Hilbert-Huang Transform is a technique that combines Empirical Mode Decomposition (EMD)
     and the Hilbert Transform to analyze non-stationary and non-linear time series data,
     where the Hilbert transform is applied to each mode after having performed the EMD.
-    Non-stationary signals are signals that vary in frequency and amplitude over time,
-    and cannot be adequately represented by fixed parameters, whereas non-linear signals are signals
-    that cannot be represented by a linear function and can exhibit complex and unpredictable behavior.
-    Signals from different physical phenomena in the world are rarely purely linear or
-    stationary, so the HHT is a useful tool for analyzing real-world signals.
-
-    Given their complexity, it is often difficult to study the entire signals as a whole.
-    Therefore, the HHT aims to capture the time-varying nature and non-linear dynamics of such signals by
-    decomposing them into individual oscillatory components by the use the EMD.
-    These components are oscillatory modes of the full signal with well-defined instantaneous frequencies called
+    These are oscillatory modes of the full signal with well-defined instantaneous frequencies called
     Intrinsic Mode Functions (IMFs). We calculate the hilbert spectrum of the IMFs to determine the significant ones
-    from which we extract the trend as their sum. You can read more about this in the given sources.
+    from which we extract the trend as their sum. One can select either the trend or the detrended signal as an output
+    of this function. You can read more about the Hilbert-Huang Transformation and the sifting process
+    in the given sources.
 
     Args:
         signal (pd.Series): Input time series signal.
@@ -184,8 +177,12 @@ def hilbert_huang_transform(
     flat_amplitude = amplitude_array.flatten()
     flat_avg_frequency = avg_frequency_array.flatten()
 
-    # compute Hilbert spectrum
+    # timestamps = get_timestamps(signal, "s")
+    # sample_rate_hz = 1 / (np.mean(np.diff(timestamps.to_numpy())))
+
+    # compute the marginal Hilbert spectrum as a sum over the sample rate of the Hilbert spectrum
     hht = _hilbert_spectrum(flat_avg_frequency, flat_amplitude)
+    # marginal_hilbert_spectrum = sample_rate_hz * np.sum(hht, axis=0)
 
     # Loop for rho calculations
     for i in range(index_of_the_last_imf - 1, -1, -1):

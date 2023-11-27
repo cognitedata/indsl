@@ -33,6 +33,23 @@ Examples of how to use the filter functions included in Cognite Charts.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Trend extraction using the Hilbert-Huang Transform">
+
+.. only:: html
+
+  .. image:: /auto_examples/filter/images/thumb/sphx_glr_plot_hilbert_huang_transform_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_filter_plot_hilbert_huang_transform.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Trend extraction using the Hilbert-Huang Transform</div>
+    </div>
+
+
+.. raw:: html
+
     </div>
 
 
@@ -40,4 +57,5 @@ Examples of how to use the filter functions included in Cognite Charts.
    :hidden:
 
    /auto_examples/filter/plot_wavelet_filter
+   /auto_examples/filter/plot_hilbert_huang_transform
 
