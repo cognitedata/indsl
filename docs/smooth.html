@@ -274,65 +274,65 @@ Time window used to resample the calculated exponential moving average series. D
 <section id="linear-weighted-moving-average">
 <h3>Linear weighted moving average<a class="headerlink" href="#linear-weighted-moving-average" title="Link to this heading"></a></h3>
 <dl class="py function">
-<dt class="sig sig-object py" id="indsl.smooth.sma">
-<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">sma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.sma" title="Link to this definition"></a></dt>
-<dd><p>Simple moving average (SMA).</p>
-<p>Plain simple average that computes the sum of the values of the observations in a time_window divided by the number of observations in the time_window.
-SMA time series are much less noisy than the original time series. However, SMA time series lag the original time series, which means that changes in the trend are only seen with a delay (lag) of time_window/2.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – Time series.</p></li>
-<li><p><strong>time_window</strong> – Window.
-Length of the time period to compute the average. Defaults to ‘60min’.
-Accepted string format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.</p></li>
-<li><p><strong>min_periods</strong> – Minimum samples.
-Minimum number of observations in window required to have a value (otherwise result is NA). Defaults  to 1.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Smoothed time series</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pandas.Series</p>
-</dd>
-</dl>
-</dd></dl>
+  <dt class="sig sig-object py" id="indsl.smooth.lwma">
+  <span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">lwma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.lwma" title="Link to this definition"></a></dt>
+  <dd><p>Linear weighted moving average.</p>
+  <p>The linear weighted moving average gives more weight to the more recent observations and gradually less to the older
+  ones.</p>
+  <dl class="field-list simple">
+  <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+  <dd class="field-odd"><ul class="simple">
+  <li><p><strong>data</strong> – Time series.</p></li>
+  <li><p><strong>time_window</strong> – Time window.
+  Length of the time period to compute the rolling mean. Defaults to ‘60min’.
+  If the user gives a number without unit (such as ‘60’), it will be considered as the number of minutes.
+  Accepted string format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.</p></li>
+  <li><p><strong>min_periods</strong> – Minimum samples.
+  Minimum number of observations in the time window required to estimate a value (otherwise result is NA).
+  Defaults to 1.</p></li>
+  <li><p><strong>resample</strong> – Resample.
+  Resamples the calculated linear weighted moving average series. Defaults to False</p></li>
+  <li><p><strong>resample_window</strong> – Resampling window.
+  Time window used to resample the calculated linear weighted moving average series. Defaults to ‘60min’.</p></li>
+  </ul>
+  </dd>
+  <dt class="field-even">Returns<span class="colon">:</span></dt>
+  <dd class="field-even"><p>Smoothed time series.</p>
+  </dd>
+  <dt class="field-odd">Return type<span class="colon">:</span></dt>
+  <dd class="field-odd"><p>pandas.Series</p>
+  </dd>
+  </dl>
+  </dd></dl>
 
 </section>
 <section id="simple-moving-average">
 <h3>Simple moving average<a class="headerlink" href="#simple-moving-average" title="Link to this heading"></a></h3>
 <dl class="py function">
-<dt class="sig sig-object py" id="indsl.smooth.lwma">
-<span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">lwma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.lwma" title="Link to this definition"></a></dt>
-<dd><p>Linear weighted moving average.</p>
-<p>The linear weighted moving average gives more weight to the more recent observations and gradually less to the older
-ones.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – Time series.</p></li>
-<li><p><strong>time_window</strong> – Time window.
-Length of the time period to compute the rolling mean. Defaults to ‘60min’.
-If the user gives a number without unit (such as ‘60’), it will be considered as the number of minutes.
-Accepted string format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.</p></li>
-<li><p><strong>min_periods</strong> – Minimum samples.
-Minimum number of observations in the time window required to estimate a value (otherwise result is NA).
-Defaults to 1.</p></li>
-<li><p><strong>resample</strong> – Resample.
-Resamples the calculated linear weighted moving average series. Defaults to False</p></li>
-<li><p><strong>resample_window</strong> – Resampling window.
-Time window used to resample the calculated linear weighted moving average series. Defaults to ‘60min’.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Smoothed time series.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>pandas.Series</p>
-</dd>
-</dl>
-</dd></dl>
+  <dt class="sig sig-object py" id="indsl.smooth.sma">
+  <span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">sma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.sma" title="Link to this definition"></a></dt>
+  <dd><p>Simple moving average (SMA).</p>
+  <p>Plain simple average that computes the sum of the values of the observations in a time_window divided by the number of observations in the time_window.
+  SMA time series are much less noisy than the original time series. However, SMA time series lag the original time series, which means that changes in the trend are only seen with a delay (lag) of time_window/2.</p>
+  <dl class="field-list simple">
+  <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+  <dd class="field-odd"><ul class="simple">
+  <li><p><strong>data</strong> – Time series.</p></li>
+  <li><p><strong>time_window</strong> – Window.
+  Length of the time period to compute the average. Defaults to ‘60min’.
+  Accepted string format: ‘3w’, ‘10d’, ‘5h’, ‘30min’, ’10s’.</p></li>
+  <li><p><strong>min_periods</strong> – Minimum samples.
+  Minimum number of observations in window required to have a value (otherwise result is NA). Defaults  to 1.</p></li>
+  </ul>
+  </dd>
+  <dt class="field-even">Returns<span class="colon">:</span></dt>
+  <dd class="field-even"><p>Smoothed time series</p>
+  </dd>
+  <dt class="field-odd">Return type<span class="colon">:</span></dt>
+  <dd class="field-odd"><p>pandas.Series</p>
+  </dd>
+  </dl>
+  </dd></dl>
 
 <aside class="topic">
 <p class="topic-title">Examples:</p>
