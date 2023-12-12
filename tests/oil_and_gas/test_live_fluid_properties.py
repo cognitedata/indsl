@@ -12,7 +12,7 @@ from indsl.oil_and_gas.live_fluid_properties import retrieve_fluid_properties
 @pytest.mark.core
 def test_fluid_property_retrieve():
     # testing main interpolation functionality
-    pvt_data = pkl.load(open("datasets/data/pvt_data.pkl", "rb"))
+    pvt_data = pd.read_pickle("datasets/data/pvt_data.pkl")
     pressure = pd.Series([20000, 18560000.0, 4320000, 2500000])
     temperature = pd.Series([-100, 198.9, 25, 3])
 
@@ -29,7 +29,7 @@ def test_fluid_property_retrieve():
 def test_error_handling():
     # testing the error handling function to make sure pressure and temperature sensors are within
     # the range of the fluid property table.
-    pvt_data = pkl.load(open("datasets/data/pvt_data.pkl", "rb"))
+    pvt_data = pd.read_pickle("datasets/data/pvt_data.pkl")
     pressure = pd.Series([1000000, 5000000, 4320000, 2500000])
     temperature = pd.Series([-110, 100, 25, 3])
 
@@ -52,7 +52,7 @@ def test_error_handling():
 @pytest.mark.core
 def test_false_parameter():
     # check is the input `param` is a fluid property that is in the fluid files.
-    pvt_data = pkl.load(open("datasets/data/pvt_data.pkl", "rb"))
+    pvt_data = pd.read_pickle("datasets/data/pvt_data.pkl")
     pressure = pd.Series([1000000, 5000000, 4320000, 2500000])
     temperature = pd.Series([-50, 100, 25, 3])
 
