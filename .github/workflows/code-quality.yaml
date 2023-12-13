@@ -132,7 +132,7 @@ jobs:
 
   publish-test-results:
     name: "Publish Unit Tests Results"
-    needs: code-quality
+    needs: [test-core, test-extras]
     runs-on: ubuntu-latest
     if: always()
     steps:
