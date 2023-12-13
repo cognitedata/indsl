@@ -146,4 +146,3 @@ jobs:
         if: always()
         with:
           files: artifacts/**/test-results.xml
-          check_name: Unit Test Results
