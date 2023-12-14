@@ -58,7 +58,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Unit Test Results (Python ${{ matrix.python-version }})
+          name: Unit Test Results (Python ${{ matrix.python-version }} - ${{ matrix.platform }})
           path: test-results.xml
 
       - name: Upload Coverage Reports
@@ -94,14 +94,14 @@ jobs:
       - name: Run Extras Tests
         env:
             NUMBA_DISABLE_JIT: 1
-        run: poetry run pytest --cov-report=xml --junitxml=test-results-extras.xml
+        run: poetry run pytest --cov-report=xml --junitxml=test-results.xml
 
       - name: Upload Unit Test Results
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Unit Test Results (Python ${{ matrix.python-version }})
-          path: test-results-extras.xml
+          name: Unit Test Extras Results (Python ${{ matrix.python-version }} - ${{ matrix.platform }})
+          path: test-results.xml
 
       - name: Upload Coverage Reports
         uses: codecov/codecov-action@v3
@@ -132,7 +132,7 @@ jobs:
 
   publish-test-results:
     name: "Publish Unit Tests Results"
-    needs: code-quality
+    needs: [test-core, test-extras]
     runs-on: ubuntu-latest
     if: always()
     steps:
