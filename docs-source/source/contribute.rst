@@ -18,7 +18,7 @@ There are multiple ways to contribute, the most common ones are:
 
     * New algorithm
     * Documentation
-    * Examples: :ref:`sphx_glr_auto_examples`
+    * Examples
     * Bug reports
 
 We encourage contribution of algorithms that are compliant with the |charts_link| calculations engine. Therefore, this
