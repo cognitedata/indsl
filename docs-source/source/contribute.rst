@@ -68,8 +68,6 @@ Preliminaries and setup
 
 .. note::
 
-    We recommend using Python 3.10 for development.
-
     Avoid duplicating code. Before starting a new algorithm, check for similar ones in the following places:
         * The `toolboxes <https://github.com/cognitedata/indsl/tree/main/indsl>`_
         * The `PR list <https://github.com/cognitedata/indsl/pulls>`_
@@ -383,7 +381,7 @@ Once you taken care of the above, do the following:
 
 .. prompt:: terminal
 
-    make html
+   poetry run make html
 
 5. If there were errors during the build, address them and repeat steps 2-3.
 
