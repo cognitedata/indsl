@@ -2,17 +2,11 @@
 Contributing
 ============
 
-This project is a community effort and contributions are welcomed. Currently, it is privately hosted in
-`GitHub <https://github.com/cognitedata/indsl>`_. It is publicly available but only open for internal contributions at
-the moment. It is also to open for contribution to our customers via the
-`Early Adopter program <https://hub.cognite.com/groups/charts-early-adopter-164>`_ on
-`Cognite Hub <https://hub.cognite.com/>`_ our community site. If you're not yet a member of
-`Cognite Hub <https://hub.cognite.com/>`_ please sign up
-following the steps in `this guide <https://hub.cognite.com/welcome-to-cognite-hub-73/how-to-sign-up-for-cognite-hub-and-learn-617>`_.
+This project is a community effort and contributions are welcomed. InDSL is publicly available and open for contributions `here <https://github.com/cognitedata/indsl>`_. Engage on our community site, `Cognite Hub <https://hub.cognite.com/>`_, for discussion, suggestions and questions about InDSL.
 
 The main objective of the InDLS is to **provide industrial domain experts and data scientist with a rich library of
 algorithms to speed up their work**. Therefore, we highly encourage data scientists with industrial domain knowledge
-to contribute algorithms and models within their niche expeertise. *Nevertheless, we are industry and scientific domain
+to contribute algorithms and models within their area of expertise. *We are industry and scientific domain
 agnostic*. We accept any type of algorithm that improves the industrial data science experience and development.
 
 Given the above, we are picky when it comes to adding new algorithms and how we document them. We want to speed up our
@@ -35,11 +29,11 @@ guide focuses on the requirements to comply with it. Nevertheless, we accept any
 important and making our library more robust over time is of paramount importance. Please don't hesitate to submit a
 Github pull request for something as small as a typo.*
 
-Contributing a new CHARTS compliant algorithm
+Contributing a new Cognite Charts compliant algorithm
 =============================================
 
-For an algorithm to play well with the CHARTS front-end (user interface) and the
-calculations back-end it has to adhere to some function I/O requirements, documentation (docstrings) format and a few
+For an algorithm to play well with the Charts front-end (user interface) and the
+calculations back-end it has to adhere to some function input and output requirements, documentation (docstrings) format and a few
 other requirements to expose the algorithm to the front and back-end. The first few basic requirements to keep in mind
 before developing and algorithm are:
 
@@ -65,8 +59,8 @@ before developing and algorithm are:
 
 .. note::
 
-    We currently support python functions with ``pd.Series`` as data input and outputs (I/O). This restriction
-    is in place to simplify how the CHARTS infrastructure fetches and displays data.
+    We currently support python functions with ``pd.Series`` as the type of data input and outputs. This restriction
+    is in place to simplify how the Charts infrastructure fetches and displays data.
 
 
 Preliminaries and setup
@@ -181,19 +175,19 @@ dependencies in the function itself, and not at the top of the file.
 Document your algorithm
 -----------------------
 
-CHARTS compliant algorithms must follow a few simple docstrings formatting requirements for the information to be parsed
+Charts compliant algorithms must follow a few simple docstrings formatting requirements for the information to be parsed
 and properly displayed on the user interface and included in the technical documentation.
 
 1. Use `r"""raw triple double quotes"""` docstrings to document your algorithm. This allows using backslashes in the
    documentation, hence LaTeX formulas are properly parsed and rendered. The documentation targets both data science
-   developers and CHARTS users and the `r"""` allows us properly render formulas in the CHARTS UI and
+   developers and Charts users and the `r"""` allows us properly render formulas in the Charts UI and
    in the InDSL documentation. If you are not sure how to document, refer to any algorithm in the
    ``indsl``/ folder for inspiration.
 
 2. Follow `Google Style  <https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings>`_ unless otherwise is stated in this guide.
 
 3. **Function name**: after the first `r"""`, write a short (1-5 words) descriptive name for your function with no punctuation at the end.
-   This will be the function name displayed on the CHARTS user interface.
+   This will be the function name displayed on the Charts user interface.
 
 4. Add an empty space line break after the title.
 
@@ -459,7 +453,7 @@ A new function version is released through the following steps.
               # old implementation
 
    **Note**: The first version of any function **must** be 1.0! Also note that :code:`deprecated=True`: InDSL allows at most
-   one non-deprecated version. For functions already in CHARTS, deprecating all versions will remove the functions from the front-end.
+   one non-deprecated version. For functions already in Charts, deprecating all versions will remove the functions from the front-end.
 
    **Note**: `check_types` decorator should be placed before `versioning.register` decorator.
 
@@ -562,7 +556,7 @@ a ``New pull request`` and let the review process begin.
 
 Contributing a free form algorithm
 =============================================
-It is possible to contribute to InDSL without the algorithm being exposed in the CHARTS application.
+It is possible to contribute to InDSL without the algorithm being exposed in the Charts application.
 In this case, the algorithm will only be available to users who install the InDSL python package.
 It  **should not** be included in the ``__cognite__`` attribute of the toolbox `__init__.py` file.
 Although the algorithm doesn't need to meet the requirements mentioned in the :ref:`previous <contributing-a-new-charts-compliant-algorithm>` section, it is still important to
@@ -577,4 +571,4 @@ To ensure consistency throughout the code, we recommend using the following styl
 
 Reviewer guidelines
 
-Any InDSL function that is exposed in the CHARTS application (i.e. any function that is listed in `__cognite__` in the `__init__.py` files), must be reviewed by a member of the CHARTS development team.
+Any InDSL function that is exposed in the Charts application (i.e. any function that is listed in `__cognite__` in the `__init__.py` files), must be reviewed by a member of the Charts development team.
