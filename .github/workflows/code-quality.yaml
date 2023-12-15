@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
   test-core:
-    name: Unit Test Results
+    name: Test Core
     strategy:
         matrix:
             platform: [ubuntu-latest, macos-latest, windows-latest]
