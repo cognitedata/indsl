@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
   test-core:
-    name: Test Core
+    name: test-core
     strategy:
         matrix:
             platform: [ubuntu-latest, macos-latest, windows-latest]
@@ -68,7 +68,7 @@ jobs:
           fail_ci_if_error: true
 
   test-extras:
-    name: Test Extras
+    name: test-extras
     strategy:
         matrix:
             platform: [ubuntu-latest, macos-latest, windows-latest]
