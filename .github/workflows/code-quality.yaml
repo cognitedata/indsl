@@ -131,7 +131,7 @@ jobs:
           poetry run make html
 
   publish-test-results:
-    name: "Publish Unit Tests Results"
+    name: "test-core"
     needs: [test-core, test-extras]
     runs-on: ubuntu-latest
     if: always()
