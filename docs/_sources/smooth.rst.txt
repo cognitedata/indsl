@@ -16,11 +16,11 @@ Exponential weighted moving average
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. autofunction:: indsl.smooth.ewma
 
-Linear weighted moving average
+Simple moving average
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. autofunction:: indsl.smooth.sma
 
-Simple moving average
+Linear weighted moving average
 ^^^^^^^^^^^^^^^^^^^^^
 .. autofunction:: indsl.smooth.lwma
 
