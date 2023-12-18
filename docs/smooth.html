@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smooth &mdash; indsl 8.2.0 documentation</title>
+  <title>Smooth &mdash; indsl 8.2.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
@@ -18,7 +18,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=15c97ff8"></script>
+        <script src="_static/documentation_options.js?v=b1b1fbe1"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -75,11 +75,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.ewma"><code class="docutils literal notranslate"><span class="pre">ewma()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#linear-weighted-moving-average">Linear weighted moving average</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-moving-average">Simple moving average</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.sma"><code class="docutils literal notranslate"><span class="pre">sma()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#simple-moving-average">Simple moving average</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linear-weighted-moving-average">Linear weighted moving average</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#indsl.smooth.lwma"><code class="docutils literal notranslate"><span class="pre">lwma()</span></code></a></li>
 </ul>
 </li>
@@ -271,8 +271,8 @@ Time window used to resample the calculated exponential moving average series. D
 </dd></dl>
 
 </section>
-<section id="linear-weighted-moving-average">
-<h3>Linear weighted moving average<a class="headerlink" href="#linear-weighted-moving-average" title="Link to this heading"></a></h3>
+<section id="simple-moving-average">
+<h3>Simple moving average<a class="headerlink" href="#simple-moving-average" title="Link to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.smooth.sma">
 <span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">sma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.sma" title="Link to this definition"></a></dt>
@@ -300,8 +300,8 @@ Minimum number of observations in window required to have a value (otherwise res
 </dd></dl>
 
 </section>
-<section id="simple-moving-average">
-<h3>Simple moving average<a class="headerlink" href="#simple-moving-average" title="Link to this heading"></a></h3>
+<section id="linear-weighted-moving-average">
+<h3>Linear weighted moving average<a class="headerlink" href="#linear-weighted-moving-average" title="Link to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.smooth.lwma">
 <span class="sig-prename descclassname"><span class="pre">indsl.smooth.</span></span><span class="sig-name descname"><span class="pre">lwma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.smooth.lwma" title="Link to this definition"></a></dt>
