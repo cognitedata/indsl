@@ -3535,17 +3535,24 @@ test = ["cython (>=3.0)", "filelock", "html5lib", "pytest (>=4.6)", "setuptools 
 
 [[package]]
 name = "sphinx-gallery"
-version = "0.14.0"
+version = "0.15.0"
 description = "A `Sphinx <https://www.sphinx-doc.org/en/master/>`_ extension that builds an HTML gallery of examples from any set of Python scripts."
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "sphinx-gallery-0.14.0.tar.gz", hash = "sha256:2a4a0aaf032955508e1d0f3495199a3c7819ce420e71096bff0bca551a4043c2"},
-    {file = "sphinx_gallery-0.14.0-py3-none-any.whl", hash = "sha256:55b3ad1f378abd126232c166192270ac0a3ef615dec10b66c961ed2967be1df6"},
+    {file = "sphinx-gallery-0.15.0.tar.gz", hash = "sha256:7217fe98f8c4cce248db798c48f34183e4cdb277d2381e188182f92a14ec26b7"},
+    {file = "sphinx_gallery-0.15.0-py3-none-any.whl", hash = "sha256:d66d38d901f6b65b6e3ee6c2584e37476b035d9e52907b1593a3f312946ae724"},
 ]
 
 [package.dependencies]
+pillow = "*"
 sphinx = ">=4"
+
+[package.extras]
+jupyterlite = ["jupyterlite-sphinx"]
+recommender = ["numpy"]
+show-api-usage = ["graphviz"]
+show-memory = ["memory-profiler"]
 
 [[package]]
 name = "sphinx-prompt"
@@ -4103,4 +4110,4 @@ stats = ["statsmodels"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "fdc6d98b46259fe49ed1ab612fba9f0bb2044503e242c696172220cdcb605e25"
+content-hash = "285fa4377739e674e0a4207d4fd9f90b37c4fa1ce856ba491d793bd59b685527"
