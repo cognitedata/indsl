@@ -11,6 +11,7 @@ from indsl.signals.noise import RedNoise, Sinusoidal, TimeSampler, TimeSeries
 from indsl.ts_utils.utility_functions import TimeUnits
 from indsl.type_check import check_types
 from indsl.validations import validate_series_has_time_index
+from indsl.warnings import IndslUserWarning
 
 
 @check_types
@@ -574,7 +575,9 @@ def _make_index(
     # Catch strange sample frequency inputs
     if not isinstance(freq, pd.Timedelta):
         freq = pd.Timedelta(1, "m")
-        warnings.warn("Can't recognize the sample frequency, setting it to the '1 m' default.")
+        warnings.warn(
+            "Can't recognize the sample frequency, setting it to the '1 m' default.", category=IndslUserWarning
+        )
 
     if freq.total_seconds() <= 0:
         raise UserValueError(

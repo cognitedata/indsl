@@ -10,6 +10,7 @@ import pandas as pd
 from indsl.exceptions import FLUIDS_REQUIRED
 from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
+from indsl.warnings import IndslUserWarning
 
 
 NUMBA_DISABLED = os.environ.get("NUMBA_DISABLE_JIT") == "1"
@@ -29,7 +30,8 @@ else:
             import fluids.vectorized as fv
         except ImportError as e:
             warnings.warn(
-                f"Couldn't import fluids.numba_vectorized: {e!s}. Default to import fluids.vectorized.", UserWarning
+                f"Couldn't import fluids.numba_vectorized: {e!s}. Default to import fluids.vectorized.",
+                category=IndslUserWarning,
             )
             fv = None  # Only core dependencies available. Will raise an error later
 
