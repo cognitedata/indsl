@@ -6,15 +6,9 @@
 
 ### Fix
 
-- linting
-- removing python version file
 - removing recommended python version
 - Switch back function descriptions (#72)
 - Update note about availability after open sourcing (#74)
-- Add check_name
-- Try to remove check_name
-- Specify correct dependency of GH jobs
-- Fix unit test upload
 - upgrade pandas to 2.1.4 (#69)
 - **deps**: Revert "fix(deps): update dependency pandas to ~2.1.0 (#18)"
 - **deps**: update dependency pandas to ~2.1.0 (#18)
