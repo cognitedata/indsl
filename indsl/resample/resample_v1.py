@@ -14,6 +14,7 @@ from indsl.exceptions import UserTypeError, UserValueError
 from indsl.ts_utils.ts_utils import fill_gaps, get_fixed_freq, is_na_all
 from indsl.type_check import check_types
 from indsl.validations import validate_series_has_time_index
+from indsl.warnings import IndslUserWarning
 
 
 @versioning.register(version="1.0", deprecated=True)
@@ -102,7 +103,8 @@ def resample(
         if not granularity_current:
             # TODO: pick max resolution and apply to the rest of the timeseries?
             warnings.warn(
-                "Can't infer time series resolution with missing data. Please provide resolution", UserWarning
+                "Can't infer time series resolution with missing data. Please provide resolution",
+                category=IndslUserWarning,
             )
             return data
 

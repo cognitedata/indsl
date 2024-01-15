@@ -10,6 +10,7 @@ from indsl import versioning
 from indsl.exceptions import CSAPS_REQUIRED, KNEED_REQUIRED, SCIKIT_LEARN_REQUIRED, UserValueError
 from indsl.type_check import check_types
 from indsl.validations import validate_series_has_time_index, validate_series_is_not_empty
+from indsl.warnings import IndslUserWarning
 
 
 @versioning.register(version="1.0", deprecated=True)
@@ -220,7 +221,7 @@ def _get_outlier_indices(
     if str.isdigit(time_window):  # if user gives '60' it will be considered as '60min'
         warnings.warn(
             f"Missing time unit in argument 'time_window' in remove_outliers function, assuming {time_window}min.",
-            UserWarning,
+            category=IndslUserWarning,
         )
         time_window = str(time_window) + "min"
 
