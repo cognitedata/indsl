@@ -1,3 +1,18 @@
+## v8.3.0 (2024-01-15)
+
+### Feat
+
+- python-3.12 (#6)
+
+### Fix
+
+- removing recommended python version
+- Switch back function descriptions (#72)
+- Update note about availability after open sourcing (#74)
+- upgrade pandas to 2.1.4 (#69)
+- **deps**: Revert "fix(deps): update dependency pandas to ~2.1.0 (#18)"
+- **deps**: update dependency pandas to ~2.1.0 (#18)
+
 ## v8.2.1
 * chore(deps): update pre-commit hook commitizen-tools/commitizen to v3.8.0 in #1
 * chore(deps): lock file maintenance in #3
