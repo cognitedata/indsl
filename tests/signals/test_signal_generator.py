@@ -16,7 +16,7 @@ from indsl.signals.generator import (
     perturb_timestamp,
     sine_wave,
 )
-
+from indsl.warnings import IndslUserWarning
 
 test_data_4index = [
     ("1975/5/9", "1975-5-10", pd.Timedelta("1s"), 1.0, pd.Timedelta("1 day")),
@@ -33,7 +33,7 @@ test_data_warns = [
 
 @pytest.mark.parametrize("bad_rate", [(-99999), (None)])
 def test_wrong_sample_rate(bad_rate):
-    with pytest.warns(UserWarning):
+    with pytest.warns(IndslUserWarning):
         _make_index(freq=bad_rate)
 
 
@@ -65,7 +65,7 @@ def test_index_generator(start_date, end_date, sample_rate, expected_mean, expec
     test_data_warns,
 )
 def test_sample_freq_warns(start_date, end_date, sample_rate, expected_mean, expected_dt):
-    with pytest.warns(UserWarning):
+    with pytest.warns(IndslUserWarning):
         # Test that the generated DatetimeIndex has the correct sampling frequency and duration based on input parameters
         idx = _make_index(start=start_date, end=end_date, freq=sample_rate)
         # Convert to time, where t=0 is idx[0]

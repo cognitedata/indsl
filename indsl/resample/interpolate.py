@@ -12,6 +12,7 @@ from indsl import versioning
 from indsl.exceptions import UserValueError
 from indsl.ts_utils.ts_utils import functional_mean, is_na_all
 from indsl.type_check import check_types
+from indsl.warnings import IndslUserWarning
 
 from . import interpolate_v1  # noqa
 
@@ -65,7 +66,7 @@ def interpolate(
     """
     # Check if all values are NaN
     if is_na_all(data):
-        warnings.warn("All values in the time series are NaN.", UserWarning)
+        warnings.warn("All values in the time series are NaN.", category=IndslUserWarning)
         return data
 
     # Allow for other ways of defining forward filling for stepwise functions
@@ -92,7 +93,7 @@ def interpolate(
 
     # Check for empty time series
     if len(observations) < 2:
-        warnings.warn("The time series contains less than two values.", UserWarning)
+        warnings.warn("The time series contains less than two values.", category=IndslUserWarning)
         return data
 
     # x and y datapoints used to construct linear piecewise function

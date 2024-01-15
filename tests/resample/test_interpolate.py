@@ -4,6 +4,7 @@ import pandas as pd
 import pytest
 
 from indsl.resample.interpolate import interpolate
+from indsl.warnings import IndslUserWarning
 
 from ..generate_data import create_non_uniform_data, create_uniform_data, set_na_random_data
 
@@ -17,14 +18,14 @@ from ..generate_data import create_non_uniform_data, create_uniform_data, set_na
     ],
 )
 def test_too_few_data_warnings(input):
-    with pytest.warns(UserWarning):
+    with pytest.warns(IndslUserWarning):
         interpolated_data = interpolate(input)
         assert len(interpolated_data) == len(input)
 
 
 # Test for all NaN data
 def test_all_nan_data():
-    with pytest.warns(UserWarning):
+    with pytest.warns(IndslUserWarning):
         test_data = create_uniform_data(np.ones(10) * np.nan)
         interpolated_data = interpolate(test_data)
         assert len(interpolated_data) == len(test_data)

@@ -11,6 +11,7 @@ import scipy.integrate
 
 from indsl.exceptions import UserRuntimeError, UserValueError
 from indsl.type_check import check_types
+from indsl.warnings import IndslUserWarning
 
 
 _unit_in_ms_without_week = {"s": 1000, "m": 60000, "h": 3600000, "d": 86400000}
@@ -292,8 +293,8 @@ def time_parse(time_window: str = "60min", function_name: str = "") -> pd.Timede
     """
     if str.isdigit(time_window):  # if user gives '60' it will be considered as '60min'
         warnings.warn(
-            f"Missing time unit in argument 'time_window' in {function_name} function, assuming {time_window}min.",
-            UserWarning,
+            f"Missing time unit in argument 'time_window' in {function_name} function, assuming {time_window} min.",
+            category=IndslUserWarning,
         )
         time_window = str(time_window) + "min"
     try:
