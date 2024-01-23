@@ -22,7 +22,13 @@ def docstring_to_json(module):
                 parsed_docstring = docstring_parser.parse(docstring, docstring_parser.DocstringStyle.GOOGLE)
                 short_description = parsed_docstring.short_description if parsed_docstring.short_description else ""
                 # remove "." from the end of the names if they're in short_description, but keep them for the descriptions
-                output_dict[PREFIX + "_" + name.upper().replace(" ", "_")] = short_description
+                output_dict[PREFIX + "_" + name.upper().replace(" ", "_")] = short_description.replace("\n", " ")
+                parameters = parsed_docstring.params if parsed_docstring.params else []
+                for parameter in parameters:
+                    description = parameter.description if parameter.description else ""
+                    output_dict[PREFIX + "_" + parameter.arg_name.upper().replace(" ", "_")] = description.replace(
+                        "\n", " "
+                    )
 
     with open("toolboxes.json", "w") as f:
         json.dump(output_dict, f, indent=4)
