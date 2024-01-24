@@ -1,5 +1,10 @@
 import inspect
+from typing import Optional
+
+# import re
 import docstring_parser
+
+# import docstring_to_markdown
 import indsl
 import json
 
@@ -11,12 +16,62 @@ TOOLBOX_NAME = "TOOLBOX_NAME"
 COGNITE = "__cognite__"
 
 
-def create_key(*args):
-    return "_".join(arg.upper().replace(" ", "_") for arg in args)
+# def _parse_docstring_element_textcreate_key(*args):
+#     return "_".join(arg.upper().replace(" ", "_") for arg in args)
 
 
-def create_value(value):
-    return value.replace("\n", " ").replace(".", "").replace("_", " ").capitalize()
+def create_key(
+    toolbox: Optional[str] = None,
+    function_name: Optional[str] = None,
+    description: Optional[bool] = False,
+    parameter: Optional[str] = None,
+    return_name: Optional[str] = None,
+):
+    if toolbox:
+        return PREFIX + "_" + "TOOLBOX" + "_" + toolbox.upper().replace(" ", "_")
+    if return_name and function_name:
+        return PREFIX + "_" + function_name.upper().replace(" ", "_") + "_" + RETURN
+    if parameter and function_name and description:
+        return (
+            PREFIX
+            + "_"
+            + function_name.upper().replace(" ", "_")
+            + "_"
+            + parameter.upper().replace(" ", "_")
+            + "_"
+            + DESCRIPTION
+        )
+    if parameter and function_name:
+        return PREFIX + "_" + function_name.upper().replace(" ", "_") + "_" + parameter.upper().replace(" ", "_")
+    if function_name and description:
+        return PREFIX + "_" + function_name.upper().replace(" ", "_") + "_" + DESCRIPTION
+    if function_name:
+        return PREFIX + "_" + function_name.upper().replace(" ", "_")
+    return None
+
+
+def create_value(value: str):
+    return value.replace("\n", " ").replace(".", "")
+
+
+# def convert_to_rendering_format(docstring: str) -> str:
+#     docstring = re.sub(" +", " ", docstring)
+#     try:
+#         return docstring_to_markdown.rst_to_markdown(docstring)
+#     except Exception:
+#         return docstring
+
+
+def _parse_docstring_element_text(docstring):
+    lines = docstring.splitlines()
+    name = lines[0]
+    description = "\n".join(lines[1:]) or None
+    name = name.rstrip(".")
+
+    return name, description
+
+
+# TODO: ADD MARKDOWN AND THINK ABOUT VERSIONING, OUTLIER V1 THAT IS DEPRECATED
 
 
 def docstring_to_json(module):
@@ -24,7 +79,7 @@ def docstring_to_json(module):
     for _, module in inspect.getmembers(indsl):
         toolbox_name = getattr(module, TOOLBOX_NAME, None)
         if toolbox_name is not None:
-            output_dict[create_key(PREFIX, toolbox_name)] = toolbox_name
+            output_dict[create_key(toolbox=toolbox_name)] = toolbox_name
 
         # extract doctring from each function
         functions_to_export = getattr(module, COGNITE, [])
@@ -34,24 +89,32 @@ def docstring_to_json(module):
                 docstring = str(function.__doc__) if function.__doc__ else ""
                 parsed_docstring = docstring_parser.parse(docstring, docstring_parser.DocstringStyle.GOOGLE)
                 short_description = parsed_docstring.short_description if parsed_docstring.short_description else ""
-                output_dict[create_key(PREFIX, name)] = create_value(short_description)
+                output_dict[create_key(function_name=name)] = create_value(short_description)
+
+                # long description
+                if parsed_docstring.long_description:
+                    output_dict[create_key(function_name=name, description=True)] = parsed_docstring.long_description
 
                 # Parameter names and descriptions
                 parameters = parsed_docstring.params if parsed_docstring.params else []
                 for parameter in parameters:
                     description = parameter.description if parameter.description else ""
-                    output_dict[create_key(PREFIX, parameter.arg_name, PARAMETER)] = create_value(parameter.arg_name)
-                    output_dict[create_key(PREFIX, parameter.arg_name, PARAMETER, DESCRIPTION)] = description.replace(
-                        "\n", " "
-                    ).replace(parameter.arg_name, "")
+                    parameter_name, description = _parse_docstring_element_text(parameter.description)
+                    if parameter_name:
+                        output_dict[create_key(function_name=name, parameter=parameter.arg_name)] = parameter_name
+                    if description:
+                        output_dict[
+                            create_key(function_name=name, parameter=parameter.arg_name, description=True)
+                        ] = description
 
                 # Name of the return value
                 if parsed_docstring.returns:
-                    return_names = parsed_docstring.returns.return_name
-                    if return_names:
-                        for return_name in return_names:
-                            if return_name:
-                                output_dict[create_key(PREFIX, return_name, RETURN)] = create_value(return_name)
+                    return_name = parsed_docstring.returns.description
+                    if return_name:
+                        # return_name, _ = _parse_docstring_element_text(return_name)
+                        output_dict[
+                            create_key(function_name=name, return_name=return_name)
+                        ] = _parse_docstring_element_text(return_name)[0]
 
     with open("toolboxes.json", "w") as f:
         json.dump(output_dict, f, indent=4)
