@@ -26,9 +26,16 @@ def docstring_to_json(module):
                 parameters = parsed_docstring.params if parsed_docstring.params else []
                 for parameter in parameters:
                     description = parameter.description if parameter.description else ""
-                    output_dict[PREFIX + "_" + parameter.arg_name.upper().replace(" ", "_")] = description.replace(
-                        "\n", " "
+                    # separate the parameter name from the description, there should be one field for paramater name and one for parameter description
+                    output_dict[PREFIX + "_" + parameter.arg_name.upper().replace(" ", "_")] = (
+                        parameter.arg_name.replace("\n", " ").replace(".", "").replace("_", " ").capitalize()
                     )
+                    # remove the parameter name from the parameter description.
+                    # E.g., "INDSL_ALPHA_DESCRIPTION": "Alpha. Only applies to either Ridge or Lasso.."
+                    # -> "INDSL_ALPHA_DESCRIPTION": "Only applies to either Ridge or Lasso."
+                    output_dict[
+                        PREFIX + "_" + parameter.arg_name.upper().replace(" ", "_") + "_DESCRIPTION"
+                    ] = description.replace("\n", " ").replace(parameter.arg_name, "")
 
     with open("toolboxes.json", "w") as f:
         json.dump(output_dict, f, indent=4)
