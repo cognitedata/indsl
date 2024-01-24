@@ -31,11 +31,17 @@ def docstring_to_json(module):
                         parameter.arg_name.replace("\n", " ").replace(".", "").replace("_", " ").capitalize()
                     )
                     # remove the parameter name from the parameter description.
-                    # E.g., "INDSL_ALPHA_DESCRIPTION": "Alpha. Only applies to either Ridge or Lasso.."
-                    # -> "INDSL_ALPHA_DESCRIPTION": "Only applies to either Ridge or Lasso."
+                    # E.g., "INDSL_ALPHA_DESCRIPTION": "Alpha. Only applies to either Ridge or Lasso..."
+                    # -> "INDSL_ALPHA_DESCRIPTION": "Only applies to either Ridge or Lasso..."
                     output_dict[
                         PREFIX + "_" + parameter.arg_name.upper().replace(" ", "_") + "_DESCRIPTION"
                     ] = description.replace("\n", " ").replace(parameter.arg_name, "")
+                # name of the return value
+                return_name = parsed_docstring.returns.return_name if parsed_docstring.returns else ""
+                if return_name:
+                    output_dict[PREFIX + "_" + return_name.upper().replace(" ", "_") + "_RETURN"] = return_name.replace(
+                        "\n", " "
+                    ).replace(".", "")
 
     with open("toolboxes.json", "w") as f:
         json.dump(output_dict, f, indent=4)
