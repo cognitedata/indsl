@@ -14,7 +14,7 @@ def test_json_file_creation():
     test_module = type("test_module", (object,), {"test_function": test_function})
 
     # Call the docstring_to_json function with the test module
-    parse_docstrings.docstring_to_json(test_module)
+    parse_docstrings._docstring_to_json(test_module)
 
     # Check whether the expected JSON file has been created
     assert os.path.isfile("toolboxes.json")

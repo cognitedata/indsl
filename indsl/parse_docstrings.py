@@ -1,8 +1,10 @@
 import inspect
+import re
 from typing import Optional
 
 # import re
 import docstring_parser
+from docstring_to_markdown.rst import rst_to_markdown
 
 # import docstring_to_markdown
 import indsl
@@ -20,7 +22,7 @@ COGNITE = "__cognite__"
 #     return "_".join(arg.upper().replace(" ", "_") for arg in args)
 
 
-def create_key(
+def _create_key(
     toolbox: Optional[str] = None,
     function_name: Optional[str] = None,
     description: Optional[bool] = False,
@@ -50,7 +52,7 @@ def create_key(
     return None
 
 
-def create_value(value: str):
+def _create_value(value: str):
     return value.replace("\n", " ").replace(".", "")
 
 
@@ -71,15 +73,23 @@ def _parse_docstring_element_text(docstring):
     return name, description
 
 
+def _convert_to_rendering_format(docstring: str) -> str:
+    docstring = re.sub(" +", " ", docstring)
+    try:
+        return rst_to_markdown(docstring)
+    except Exception:
+        return docstring
+
+
 # TODO: ADD MARKDOWN AND THINK ABOUT VERSIONING, OUTLIER V1 THAT IS DEPRECATED
 
 
-def docstring_to_json(module):
+def _docstring_to_json(module):
     output_dict = {}
     for _, module in inspect.getmembers(indsl):
         toolbox_name = getattr(module, TOOLBOX_NAME, None)
         if toolbox_name is not None:
-            output_dict[create_key(toolbox=toolbox_name)] = toolbox_name
+            output_dict[_create_key(toolbox=toolbox_name)] = toolbox_name
 
         # extract doctring from each function
         functions_to_export = getattr(module, COGNITE, [])
@@ -89,11 +99,13 @@ def docstring_to_json(module):
                 docstring = str(function.__doc__) if function.__doc__ else ""
                 parsed_docstring = docstring_parser.parse(docstring, docstring_parser.DocstringStyle.GOOGLE)
                 short_description = parsed_docstring.short_description if parsed_docstring.short_description else ""
-                output_dict[create_key(function_name=name)] = create_value(short_description)
+                output_dict[_create_key(function_name=name)] = _create_value(short_description)
 
                 # long description
                 if parsed_docstring.long_description:
-                    output_dict[create_key(function_name=name, description=True)] = parsed_docstring.long_description
+                    output_dict[_create_key(function_name=name, description=True)] = _convert_to_rendering_format(
+                        parsed_docstring.long_description
+                    )
 
                 # Parameter names and descriptions
                 parameters = parsed_docstring.params if parsed_docstring.params else []
@@ -101,11 +113,11 @@ def docstring_to_json(module):
                     description = parameter.description if parameter.description else ""
                     parameter_name, description = _parse_docstring_element_text(parameter.description)
                     if parameter_name:
-                        output_dict[create_key(function_name=name, parameter=parameter.arg_name)] = parameter_name
+                        output_dict[_create_key(function_name=name, parameter=parameter.arg_name)] = parameter_name
                     if description:
                         output_dict[
-                            create_key(function_name=name, parameter=parameter.arg_name, description=True)
-                        ] = description
+                            _create_key(function_name=name, parameter=parameter.arg_name, description=True)
+                        ] = _convert_to_rendering_format(description)
 
                 # Name of the return value
                 if parsed_docstring.returns:
@@ -113,7 +125,7 @@ def docstring_to_json(module):
                     if return_name:
                         # return_name, _ = _parse_docstring_element_text(return_name)
                         output_dict[
-                            create_key(function_name=name, return_name=return_name)
+                            _create_key(function_name=name, return_name=return_name)
                         ] = _parse_docstring_element_text(return_name)[0]
 
     with open("toolboxes.json", "w") as f:
