@@ -2,9 +2,10 @@ import inspect
 import json
 import re
 
-from typing import Optional
+
 import typing
-from indsl import versioning
+
+from typing import Optional
 
 
 import docstring_parser
@@ -12,6 +13,8 @@ import docstring_parser
 from docstring_to_markdown.rst import rst_to_markdown
 
 import indsl
+
+from indsl import versioning
 
 
 PREFIX = "INDSL"
