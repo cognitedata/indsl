@@ -1,12 +1,9 @@
 import inspect
 import json
 import re
-
-
 import typing
 
 from typing import Optional
-
 
 import docstring_parser
 
