@@ -150,6 +150,7 @@ def _generate_key_for_versioned_function(function, name, output_dict):
 
 # Write the keys and values to the JSON file
 def create_mapping_for_translations(module):
+    """Create a JSON file with keys and values for the translation mapping."""
     output_dict = {}
     for _, module in inspect.getmembers(indsl, inspect.ismodule):
         toolbox_name = getattr(module, TOOLBOX_NAME, None)
