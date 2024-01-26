@@ -1,6 +1,5 @@
 import os
 
-# import docstring_to_json from parse_docstrings.py
 import indsl.parse_docstrings as parse_docstrings
 
 
@@ -13,7 +12,6 @@ def test_json_file_creation():
     # Create a test module that contains the test function
     test_module = type("test_module", (object,), {"test_function": test_function})
 
-    # Call the docstring_to_json function with the test module
     parse_docstrings.create_mapping_for_translations(test_module)
 
     # Check whether the expected JSON file has been created
