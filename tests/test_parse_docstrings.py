@@ -18,12 +18,12 @@ def test_json_file_creation():
                 Test return description.
 
         Returns:
-            Test return.
+            pd.Series: Test return.
         """
         return test_return
 
     # Create a test module that contains the test function
-    test_module = type("test_module", (object,), {"test_function": test_function("test_parameter")})
+    test_module = type("test_module", (object,), {"test_function": test_function("test_parameter", "test_return")})
 
     create_translation.create_mapping_for_translations(test_module)
 
