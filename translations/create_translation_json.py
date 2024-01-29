@@ -57,9 +57,6 @@ def _generate_key_for_parameters(name: str, output_dict: dict, parameters, versi
             output_dict[description_key] = _convert_to_rendering_format(description)
 
 
-# TODO: REFACTOR AND FIGURE OUT WHY TOOLBOX_NAME IS INCLUDED IN THE JSON FILE. FIGURE OUT WHY VERSIONING FUNCTION APPEARS IN THE JSON.
-
-
 # Generation of the keys and values
 def _generate_key_for_function(function: typing.Callable, name: str, output_dict: dict, version: Optional[str] = None):
     docstring = str(function.__doc__) if function.__doc__ else ""
