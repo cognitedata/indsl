@@ -7,11 +7,8 @@ import translations.create_translation_json as create_translation
 
 
 def test_json_file_creation():
-    # Create a JSON file with the translation keys and values for the full indsl package
+    # Create a dictionaru with the translation keys and values for the full indsl package
     output_dictionary = create_translation.create_mapping_for_translations(indsl)
-
-    # Check whether the expected JSON file has been created
-    assert os.path.isfile("translated_toolboxes.json")
 
     # check that they keys and values are output_dictionary
     assert output_dictionary.get("INDSL_DRIFT_1.0") == "Drift"
