@@ -19,11 +19,6 @@ TOOLBOX_NAME = "TOOLBOX_NAME"
 COGNITE = "__cognite__"
 
 
-# Format the string to uppercase and replace spaces with underscores
-def _format_str(s: Optional[str]) -> str:
-    return s.upper().replace(" ", "_") if s else ""
-
-
 # Parse the docstring element text
 def _parse_docstring_element_text(docstring):
     lines = docstring.splitlines()
@@ -115,12 +110,19 @@ def _generate_key_for_versioned_function(function, output_dict):
 def create_mapping_for_translations(module):
     """Create a JSON file with keys and values for the translation mapping."""
     output_dict = {}
-    for _, module in inspect.getmembers(indsl, inspect.ismodule):
+    for _, module in inspect.getmembers(module, inspect.ismodule):
         toolbox_name = getattr(module, TOOLBOX_NAME, None)
         if toolbox_name is not None and toolbox_name != "Not listed operations":
             output_dict[create_key(toolbox=toolbox_name)] = toolbox_name
             # extract doctring from each function
             _generate_translation_mapping_for_functions(output_dict, module)
 
-    with open("translated_toolboxes.json", "w") as f:
+    # write to translations/en/translated_toolboxes.json
+    with open("en/translated_toolboxes.json", "w") as f:
         json.dump(output_dict, f, indent=4)
+
+
+def create_mapping_for_indsl_translations():
+    """Create mapping for InDSL."""
+    module = indsl
+    create_mapping_for_translations(module)
