@@ -107,7 +107,7 @@ def _generate_key_for_versioned_function(function, output_dict):
         )
 
 
-# Write the keys and values to the JSON file
+# Create the output dictionary for the JSON file
 def create_mapping_for_translations():
     """Create a the output dictionary for the JSON file."""
     output_dict = {}
@@ -115,12 +115,13 @@ def create_mapping_for_translations():
         toolbox_name = getattr(module, TOOLBOX_NAME, None)
         if toolbox_name is not None and toolbox_name != "Not listed operations":
             output_dict[create_key(toolbox=toolbox_name)] = toolbox_name
-            # extract doctring from each function
+
             _generate_translation_mapping_for_functions(output_dict, module)
 
     return output_dict
 
 
+# Write the keys and values to the JSON file
 def create_json_file():
     """Create mapping for InDSL and write to file."""
     output_dict = create_mapping_for_translations()

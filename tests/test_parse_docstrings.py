@@ -6,10 +6,10 @@ import translations.create_translation_json as create_translation
 
 
 def test_json_file_creation():
-    # Create a dictionaru with the translation keys and values for the full indsl package
+    # Create a dictionary with the translation keys and values for the full indsl package
     output_dictionary = create_translation.create_mapping_for_translations()
 
-    # check that they keys and values are output_dictionary
+    # check that the keys and values are in the output_dictionary
     assert output_dictionary.get("INDSL_DRIFT_1.0") == "Drift"
     assert output_dictionary.get("INDSL_DRIFT_DESCRIPTION_1.0") == (
         "This function detects data drift (deviation) by comparing two rolling averages, short and long interval, of the signal. The\ndeviation between the short and long term average is considered significant if it is above a given threshold\nmultiplied by the rolling standard deviation of the long term average."
