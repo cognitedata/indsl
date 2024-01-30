@@ -1,5 +1,6 @@
 import inspect
 import json
+import os
 import re
 import typing
 
@@ -108,7 +109,7 @@ def _generate_key_for_versioned_function(function, output_dict):
 
 # Write the keys and values to the JSON file
 def create_mapping_for_translations(module):
-    """Create a JSON file with keys and values for the translation mapping."""
+    """Create a the output dictionary for the JSON file."""
     output_dict = {}
     for _, module in inspect.getmembers(module, inspect.ismodule):
         toolbox_name = getattr(module, TOOLBOX_NAME, None)
@@ -117,12 +118,13 @@ def create_mapping_for_translations(module):
             # extract doctring from each function
             _generate_translation_mapping_for_functions(output_dict, module)
 
-    # write to translations/en/translated_toolboxes.json
-    with open("en/translated_toolboxes.json", "w") as f:
-        json.dump(output_dict, f, indent=4)
+    return output_dict
 
 
-def create_mapping_for_indsl_translations():
-    """Create mapping for InDSL."""
+def create_json_file():
+    """Create mapping for InDSL and write to file."""
     module = indsl
-    create_mapping_for_translations(module)
+    output_dict = create_mapping_for_translations(module)
+    file_path = os.path.join(os.path.dirname(__file__), "en", "translated_docstrings.json")
+    with open(file_path, "w") as f:
+        json.dump(output_dict, f, indent=4)
