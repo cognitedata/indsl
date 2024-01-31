@@ -23,7 +23,7 @@ jobs:
 
     - name: Generate Translation JSON
       run: |
-        cd /translations
+        cd translations
         poetry run python create_translation_json.py
 
     - name: Push to Locize
