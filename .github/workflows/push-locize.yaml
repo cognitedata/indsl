@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./translations
+        working-directory: /home/runner/work/indsl/translations
     steps:
     - uses: actions/checkout@v4
 
