@@ -1,0 +1,37 @@
+name: Push JSON to Locize
+
+on:
+  workflow_dispatch:
+
+jobs:
+  push-locize:
+    name: "Push JSON to Locize"
+    runs-on: ubuntu-latest
+    environment: "CD"
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install poetry
+        poetry install
+
+    - name: Generate Translation JSON
+      run: |
+        poetry run python ./translations/create_translation_json.py
+
+    - name: Push to Locize
+      env:
+        LOCIZE_API_KEY: ${{ secrets.LOCIZE_API_KEY }}
+        LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
+      run: |
+        curl -X POST \
+             -H "Authorization: Bearer $LOCIZE_API_KEY" \
+             -H "Content-Type: application/json" \
+             --data-binary "@translations/en/translated_docstrings.json" \
+             "https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en"
