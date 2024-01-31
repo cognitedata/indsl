@@ -23,7 +23,6 @@ jobs:
 
     - name: Generate Translation JSON
       run: |
-        cd .. 
         cd /translations
         poetry run python create_translation_json.py
 
