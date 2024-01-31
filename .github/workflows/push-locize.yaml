@@ -42,5 +42,5 @@ jobs:
         curl -X POST \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
-             --data-binary "@translated_docstrings.json" \
+             -d @translated_docstrings.json" \
              "https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en" || echo "Locize Publishing Failed"
