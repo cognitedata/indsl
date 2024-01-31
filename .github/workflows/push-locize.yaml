@@ -8,7 +8,6 @@ jobs:
   push-locize:
     name: "Push JSON to Locize"
     runs-on: ubuntu-latest
-    environment: "CD"
     steps:
     - uses: actions/checkout@v4
 
