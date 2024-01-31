@@ -21,9 +21,10 @@ jobs:
         pip install poetry
         poetry install
 
-    - name: Generate Translation JSON
+    - name: Generate Translation JSON 
+      working-directory: translations
       run: |
-        poetry run python translations/create_translation_json.py
+        poetry run python create_translation_json.py
 
     - name: Push to Locize
       env:
