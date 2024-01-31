@@ -8,6 +8,9 @@ jobs:
   push-locize:
     name: "Push JSON to Locize"
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./translations
     steps:
     - uses: actions/checkout@v4
 
@@ -25,10 +28,6 @@ jobs:
       run: |
         pip install poetry
         poetry install
-
-    - name: List directory contents
-      run: |
-        ls -la
 
     - name: Generate Translation JSON
       working-directory: ./translations
