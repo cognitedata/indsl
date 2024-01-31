@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: "CD"
     steps:
-    - uses: actions/checkout@v2
-    
+    - uses: actions/checkout@v2    
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -24,7 +23,7 @@ jobs:
 
     - name: Generate Translation JSON
       run: |
-        poetry run python -c "from translations.create_translation_json import create_json_file; create_json_file()"
+        poetry run python ./translations/create_translation_json.py
 
     - name: Push to Locize
       env:

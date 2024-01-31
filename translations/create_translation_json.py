@@ -128,3 +128,7 @@ def create_json_file():
     file_path = os.path.join(os.path.dirname(__file__), "en", "translated_docstrings.json")
     with open(file_path, "w") as f:
         json.dump(output_dict, f, indent=4)
+
+
+if __name__ == "__main__":
+    create_json_file()
