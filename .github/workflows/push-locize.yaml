@@ -1,0 +1,24 @@
+name: Push JSON to Locize
+
+on:
+  workflow_dispatch:
+
+jobs:
+  push-locize:
+    name: "Push JSON to Locize"
+    runs-on: ubuntu-latest
+    environment: "CD"
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Push to Locize
+      env:
+        namespace: "indsl"
+        version: "latest"
+        language: "en"
+        project: "charts"
+        LOCIZE_API_KEY: ${{ secrets.LOCIZE_API_KEY }}
+        LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
+      run: |
+        yarn push:locize
