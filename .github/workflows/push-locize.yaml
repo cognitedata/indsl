@@ -37,7 +37,6 @@ jobs:
       working-directory: ./translations
       run: |
         poetry run python create_translation_json.py
-        echo create_translation_json.py
 
     - name: Debug after running script
       run: |
@@ -45,7 +44,7 @@ jobs:
         ls
 
     - name: Print contents of JSON file
-      run: cat translations/en/translated_docstrings.json
+      run: cat /en/translated_docstrings.json
 
     - name: Push to Locize
       env:
