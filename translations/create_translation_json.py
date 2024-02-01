@@ -125,7 +125,7 @@ def create_mapping_for_translations():
 def create_json_file():
     """Create mapping for InDSL and write to file."""
     output_dict = create_mapping_for_translations()
-    file_path = os.path.join(os.path.dirname(__file__), "en", "translated_docstrings.json")
+    file_path = os.path.join("en", "translated_docstrings.json")
     with open(file_path, "w") as f:
         json.dump(output_dict, f, indent=4)
 
