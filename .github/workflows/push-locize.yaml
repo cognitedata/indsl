@@ -44,5 +44,5 @@ jobs:
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
              -d @translated_operations.json \
-             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en
+             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/en/indsl
 
