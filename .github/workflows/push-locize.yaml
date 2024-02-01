@@ -53,5 +53,5 @@ jobs:
         curl -X POST \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
-             --json "@./en/translated_docstrings.json" \
+             --data-binary "@/home/runner/work/indsl/translations/en/translated_docstrings.json" \
              "https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en"
