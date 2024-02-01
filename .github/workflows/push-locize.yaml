@@ -33,8 +33,6 @@ jobs:
       working-directory: ./translations
       run: |
         poetry run python create_translation_json.py
-        pwd
-        ls
 
     - name: Push to Locize
       working-directory: ./translations
@@ -45,5 +43,5 @@ jobs:
         curl -X POST \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
-             -d @translated_docstrings.json \
+             -d @translated_operations.json \
              https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en || echo "Locize Publishing Failed"
