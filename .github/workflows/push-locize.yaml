@@ -51,6 +51,7 @@ jobs:
         LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
       run: |
         content=$(cat ./en/translated_docstrings.json)
+        echo content
         curl -X POST \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
