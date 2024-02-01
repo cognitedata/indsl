@@ -29,6 +29,10 @@ jobs:
         pip install poetry
         poetry install
 
+    - name: Debug directory structure
+      run: |
+        ls -lR /home/runner/work/indsl/
+
     - name: Generate Translation JSON
       working-directory: ./translations
       run: |
