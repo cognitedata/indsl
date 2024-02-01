@@ -40,8 +40,17 @@ jobs:
         LOCIZE_API_KEY: ${{ secrets.LOCIZE_API_KEY }}
         LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
       run: |
-        curl --fail --request -X POST \
+        response=$(curl -X POST \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
              -d @translated_operations.json \
-             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en || echo "Locize Publishing Failed"
+             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en)
+        status_code=$(echo "$response" | grep -Fi HTTP/ | awk '{print $2}')
+        echo "Locize API Response Status Code: $status_code"
+        echo "Locize API Response Body:"
+        echo "$response"
+
+        if [ "$status_code" -ne 200 ]; then
+          echo "Locize API request failed with status code $status_code"
+          exit 1
+        fi
