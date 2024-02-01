@@ -39,6 +39,11 @@ jobs:
         poetry run python create_translation_json.py
         echo create_translation_json.py
 
+    - name: Debug after running script
+      run: |
+        pwd
+        ls
+
     - name: Print contents of JSON file
       run: cat translations/en/translated_docstrings.json
 
