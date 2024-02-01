@@ -33,8 +33,8 @@ jobs:
       working-directory: ./translations
       run: |
         poetry run python create_translation_json.py
-        cat translated_docstrings.json
-
+        pwd
+        ls
 
     - name: Push to Locize
       working-directory: ./translations
