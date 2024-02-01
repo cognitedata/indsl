@@ -1,6 +1,5 @@
 import inspect
 import json
-import pathlib
 import re
 import typing
 

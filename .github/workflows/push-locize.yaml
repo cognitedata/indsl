@@ -14,11 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Get directory
-      run: |
-        pwd
-        ls
-
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -44,5 +39,4 @@ jobs:
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
              -d @translated_operations.json \
-             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/en/indsl
-
+             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/en/indsl/
