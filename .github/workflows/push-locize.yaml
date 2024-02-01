@@ -34,7 +34,6 @@ jobs:
         ls -lR /home/runner/work/indsl/
 
     - name: Generate Translation JSON
-      working-directory: ./translations
       run: |
         poetry run python create_translation_json.py
 
@@ -44,7 +43,7 @@ jobs:
         ls
 
     - name: Print contents of JSON file
-      run: cat /en/translated_docstrings.json
+      run: cat ./en/translated_docstrings.json
 
     - name: Push to Locize
       env:
@@ -54,5 +53,5 @@ jobs:
         curl -X POST \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
-             --data-binary "@./en/translated_docstrings.json" \
+             --json "@./en/translated_docstrings.json" \
              "https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en"
