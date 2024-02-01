@@ -40,9 +40,8 @@ jobs:
         LOCIZE_API_KEY: ${{ secrets.LOCIZE_API_KEY }}
         LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
       run: |
-        content=`cat translated_docstrings.json`
         curl -X POST \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
-             -d content \
-             "https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en" || echo "Locize Publishing Failed"
+             -d @translated_docstrings.json \
+             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en || echo "Locize Publishing Failed"
