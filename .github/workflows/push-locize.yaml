@@ -45,8 +45,4 @@ jobs:
              -H "Content-Type: application/json" \
              -d @translated_operations.json \
              https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/indsl/en
-        if [[ $? != 0 ]] ; then
-             echo "error"
-             exit 1
-        fi
-        echo "worked"
+
