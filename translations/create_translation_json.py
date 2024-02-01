@@ -113,7 +113,7 @@ def create_mapping_for_translations():
     output_dict = {}
     for _, module in inspect.getmembers(indsl, inspect.ismodule):
         toolbox_name = getattr(module, TOOLBOX_NAME, None)
-        if toolbox_name is not None and toolbox_name != "Not listed operations":
+        if toolbox_name is not None and toolbox_name != "Not listed operations" and toolbox_name != "Operators":
             output_dict[create_key(toolbox=toolbox_name)] = toolbox_name
 
             _generate_translation_mapping_for_functions(output_dict, module)
