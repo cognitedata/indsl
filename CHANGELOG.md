@@ -1,43 +1,9 @@
 ## v8.3.1 (2024-02-02)
 
-### Feat
+### Fix
 
 - github actions script to push json to locize
 - script to add docstring info in a json file
-
-### Fix
-
-- update github action
-- push strings 2
-- push strings
-- fixing url
-- changing back
-- linting
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- path
-- use correct file path github actions script
-- upating changelog
 
 ## v8.3.0 (2024-01-15)
 
