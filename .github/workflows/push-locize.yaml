@@ -43,7 +43,7 @@ jobs:
     # print the contents of keys_from_locize.json
     - name: Print contents of keys_from_locize.json
       working-directory: ./translations
-      run: cat keys_from_locize.json
+      run: echo keys_from_locize.json
 
 
 
