@@ -39,7 +39,12 @@ jobs:
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
              https://api.locize.app/export/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations > keys_from_locize.json
-             
+
+    # print the contents of keys_from_locize.json
+    - name: Print contents of keys_from_locize.json
+      working-directory: ./translations
+      run: cat keys_from_locize.json
+
 
 
     - name: Generate Translation JSON
