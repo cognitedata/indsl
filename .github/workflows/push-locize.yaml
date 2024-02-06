@@ -1,7 +1,7 @@
 name: Push JSON to Locize
 
 on:
-  workflow_dispatch:
+  pull_request: {}
 
 jobs:
   push-locize:
