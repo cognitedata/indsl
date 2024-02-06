@@ -22,20 +22,35 @@ jobs:
       run: |
         pip install poetry
         poetry install
-
+      
     - name: Generate Translation JSON
       working-directory: ./translations
       run: |
         poetry run python create_translation_json.py
 
+    # - name: Push to Locize
+    #   working-directory: ./translations
+    #   env:
+    #     LOCIZE_API_KEY: ${{ secrets.LOCIZE_API_KEY }}
+    #     LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
+    #   run: |
+    #     curl --fail-with-body -X POST \
+    #          -H "Authorization: Bearer $LOCIZE_API_KEY" \
+    #          -H "Content-Type: application/json" \
+    #          -d @translated_operations.json \
+    #          https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/en/indsl
+
     - name: Push to Locize
       working-directory: ./translations
       env:
-        LOCIZE_API_KEY: ${{ secrets.LOCIZE_API_KEY }}
-        LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
+        LOCIZE_API_KEY: "9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b"
+        LOCIZE_PROJECT_ID: "52167e6e-aea8-4433-83f7-f65976dd5f18"
       run: |
         curl --fail-with-body -X POST \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
-             -d @translated_operations.json \
-             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/en/indsl
+             -d @Users/vebjorngilberg/Documents/work/cognite/repos/indsl/translations/en/translated_docstrings.json \
+             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations
+        
+
+
