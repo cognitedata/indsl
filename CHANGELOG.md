@@ -1,3 +1,10 @@
+## v8.3.1 (2024-02-02)
+
+### Fix
+
+- github actions script to push json to locize
+- script to add docstring info in a json file
+
 ## v8.3.0 (2024-01-15)
 
 ### Feat
