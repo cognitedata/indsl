@@ -35,5 +35,5 @@ def validate_timedelta(timedelta: pd.Timedelta) -> None:
     if timedelta is pd.NaT:
         raise UserValueError("Timedelta is invalid (NaT).")
 
-    if timedelta.value < 0:
-        raise UserValueError("Timedelta must be strictly positive. The smallest possible value is '1ns'")
+    if timedelta.value <= 0:
+        raise UserValueError("Timedelta must be strictly positive. The smallest possible value is '1s'")

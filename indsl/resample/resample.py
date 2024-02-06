@@ -12,7 +12,7 @@ from indsl import versioning
 from indsl.exceptions import UserTypeError
 from indsl.ts_utils.ts_utils import fill_gaps, get_fixed_freq, is_na_all
 from indsl.type_check import check_types
-from indsl.validations import validate_series_has_time_index, validate_series_is_not_empty
+from indsl.validations import validate_series_has_time_index, validate_series_is_not_empty, validate_timedelta
 from indsl.warnings import IndslUserWarning
 
 from . import resample_v1  # noqa
@@ -175,6 +175,7 @@ def resample_to_granularity(
     """
     validate_series_has_time_index(series)
     validate_series_is_not_empty(series)
+    validate_timedelta(granularity)
 
     # Translates from cdf aggregates to pandas method names:
     # TODO: 'mean' (point-weighted) does not equal CDF average (time-weighted).
