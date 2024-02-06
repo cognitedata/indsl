@@ -125,8 +125,10 @@ def create_json_file():
     """Create mapping for InDSL and write to file."""
     output_dict = create_mapping_for_translations()
     file_path = "translated_operations.json"
-    with open(file_path, "w") as f:
-        json.dump(output_dict, f, indent=4)
+    # limit the number of keys to 1000
+    output_dict = {k: output_dict[k] for k in list(output_dict.keys())[:1000]}
+    with open(file_path, "w") as file:
+        json.dump(output_dict, file, indent=4)
 
 
 if __name__ == "__main__":
