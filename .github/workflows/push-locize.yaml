@@ -38,7 +38,7 @@ jobs:
         curl --fail-with-body -X GET \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
-             https://api.locize.app/export/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations > keys_from_locize.json || echo "Curl command failed with status code $?"
+             https://api.locize.app/export/52167e6e-aea8-4433-83f7-f65976dd5f18/latest/en/vebjorn-translations > keys_from_locize.json
 
     # print the contents of keys_from_locize.json
     - name: Print contents of keys_from_locize.json
