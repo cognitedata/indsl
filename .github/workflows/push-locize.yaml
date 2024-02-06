@@ -26,7 +26,9 @@ jobs:
     # Step 1: pull translated_operations.json from Locize
     # Step 2: generate new translated_operations.json with potential changes to the strings and keys
     # Step 3: Compare the two files and push only the changed strings to locize
+    
 
+    # pull from locize and generate a file called keys_from_locize.json
     - name: Pull from Locize
       working-directory: ./translations
       env:
@@ -36,8 +38,8 @@ jobs:
         curl --fail-with-body -X GET \
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
-             -d @keys_from_locize.json \
-             https://api.locize.app/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations
+             https://api.locize.app/export/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations > keys_from_locize.json
+             
 
 
     - name: Generate Translation JSON
