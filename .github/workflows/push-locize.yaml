@@ -50,4 +50,4 @@ jobs:
              -H "Authorization: Bearer $LOCIZE_API_KEY" \
              -H "Content-Type: application/json" \
              -d @translated_operations.json \
-             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/vebjorn-translations
+             https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations
