@@ -6,7 +6,7 @@ from indsl import versioning
 from indsl.type_check import check_types
 
 
-@versioning.register(version="1.0", deprecated=True)
+@versioning.register(version="1.1", deprecated=True)
 @check_types
 def drift(
     data: pd.Series,
