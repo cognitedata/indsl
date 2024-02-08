@@ -174,9 +174,9 @@ def compare_and_push_to_locize():
 
     # Push the keys_diff.json to locize
     push_response = requests.post(
-        f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/vebjorn-translations",
+        f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
         headers={"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"},
-        data=keys_diff,
+        data=json.dumps(keys_diff),
         timeout=30,
     )
     push_response.raise_for_status()
