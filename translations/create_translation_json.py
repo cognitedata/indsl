@@ -149,7 +149,7 @@ def compare_and_push_to_locize():
     for key, value in translated_operations.items():
         if keys_from_locize.get(key) != value:
             keys_diff[key] = value
-
+    print(keys_diff)
     # Push the keys_diff.json to locize
     try:
         if keys_diff:
