@@ -24,9 +24,10 @@ jobs:
         poetry install
 
     # Run create_translated_operations.py
-    - name: Create translated_operations.json
+    - name: Create translated operations json
+      working-directory: ./translations
       run: |
-        poetry run python create_translated_operations.py
+        poetry run python create_translation_json.py
 
     # Step 1: pull translated_operations.json from Locize
     # Step 2: generate new translated_operations.json with potential changes to the strings and keys
