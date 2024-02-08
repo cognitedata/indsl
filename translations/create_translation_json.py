@@ -154,11 +154,11 @@ def compare_and_push_to_locize():
         print(f"Failed to pull data from Locize: {pull_response.status_code}")
 
     # Get the keys from locize, this is the source of truth
-    with open("keys_from_locize.json") as file:
+    with open("keys_from_locize.json", "r") as file:
         keys_from_locize = json.load(file)
 
     # Get new keys and values with potential changes from the create_json_file() function
-    with open("translated_operations.json") as file:
+    with open("translated_operations.json", "r") as file:
         translated_operations = json.load(file)
 
     # Compare the keys and values from locize with the new keys and values and make a new file with the differences
