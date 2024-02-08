@@ -19,6 +19,11 @@ from indsl.create_translation_key import create_key
 TOOLBOX_NAME = "TOOLBOX_NAME"
 COGNITE = "__cognite__"
 
+LOCIZE_API_KEY = "9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b"
+LOCIZE_PROJECT_ID = "52167e6e-aea8-4433-83f7-f65976dd5f18"
+NAMESPACE = "vebjorn-translations"
+OUTPUT_FILE = "keys_from_locize.json"
+
 
 # Parse the docstring element text
 def _parse_docstring_element_text(docstring):
@@ -132,24 +137,18 @@ def create_json_file():
         json.dump(output_dict, file, indent=4)
 
 
-# Compare keys_from_locize.json with the output of create_json_file() and make a new file with the differences including the keys and values
+# Compare keys_from_locize.json with the output of create_json_file() and make a new file with the differences
 def compare_and_push_to_locize():
-    # Configuration
-    LOCIZE_API_KEY = "9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b"
-    LOCIZE_PROJECT_ID = "52167e6e-aea8-4433-83f7-f65976dd5f18"
-    NAMESPACE = "vebjorn-translations"
-    OUTPUT_FILE = "keys_from_locize.json"
-
+    """Push differences to locize."""
     # Pull data from locize
-    url = f"https://api.locize.app/export/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
+    pull_url = f"https://api.locize.app/export/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
     headers = {"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"}
 
-    pull_response = requests.get(url, headers=headers, timeout=30)
+    pull_response = requests.get(pull_url, headers=headers, timeout=30)
     if pull_response.status_code == 200:
         with open(OUTPUT_FILE, "w") as file:
             file.write(pull_response.text)
         print(f"Data saved to {OUTPUT_FILE}")
-        print(OUTPUT_FILE)
     else:
         print(f"Failed to pull data from Locize: {pull_response.status_code}")
 
@@ -168,14 +167,16 @@ def compare_and_push_to_locize():
             keys_diff[key] = value
 
     # Push the keys_diff.json to locize
-    push_response = requests.post(
-        f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
-        headers={"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"},
-        data=json.dumps(keys_diff),
-        timeout=30,
-    )
-    push_response.raise_for_status()
-    print(push_response)
+    if keys_diff:
+        push_response = requests.post(
+            f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
+            headers=headers,
+            data=json.dumps(keys_diff),
+            timeout=30,
+        )
+        push_response.raise_for_status()
+    else:
+        print("No changes to push to Locize.")
 
 
 if __name__ == "__main__":
