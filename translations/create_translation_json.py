@@ -122,19 +122,23 @@ def create_mapping_for_translations():
             output_dict[create_key(toolbox=toolbox_name)] = toolbox_name
 
             _generate_translation_mapping_for_functions(output_dict, module)
+    # limit the number of keys to 1000
+    output_dict = {k: output_dict[k] for k in list(output_dict.keys())[:1000]}
 
     return output_dict
 
 
 # Write the keys and values to the JSON file
-def create_json_file():
-    """Create mapping for InDSL and write to file."""
-    output_dict = create_mapping_for_translations()
-    file_path = "translated_operations.json"
-    # limit the number of keys to 1000
-    output_dict = {k: output_dict[k] for k in list(output_dict.keys())[:1000]}
-    with open(file_path, "w") as file:
-        json.dump(output_dict, file, indent=4)
+# def create_json_file():
+#     """Create mapping for InDSL and write to file."""
+#     output_dict = create_mapping_for_translations()
+#     # file_path = "translated_operations.json"
+#     # limit the number of keys to 1000
+#     output_dict = {k: output_dict[k] for k in list(output_dict.keys())[:1000]}
+#     # with open(file_path, "w") as file:
+#     #     json.dump(output_dict, file, indent=4)
+
+#     return output_dict
 
 
 # Compare keys_from_locize.json with the output of create_json_file() and make a new file with the differences
@@ -146,18 +150,15 @@ def compare_and_push_to_locize():
 
     pull_response = requests.get(pull_url, headers=headers, timeout=30)
     if pull_response.status_code == 200:
-        with open(OUTPUT_FILE, "w") as file:
-            file.write(pull_response.text)
+        keys_from_locize = pull_response.json()
     else:
         pull_response.raise_for_status()
 
     # Get the keys from locize, this is the source of truth
-    with open("keys_from_locize.json", "r") as file:
-        keys_from_locize = json.load(file)
+    keys_from_locize = pull_response.json()
 
-    # Get new keys and values with potential changes from the create_json_file() function
-    with open("translated_operations.json", "r") as file:
-        translated_operations = json.load(file)
+    # Get new keys and values with potential changes from the create_mapping_for_translations() function
+    translated_operations = create_mapping_for_translations()
 
     # Compare the keys and values from locize with the new keys and values and make a new file with the differences
     keys_diff = {}
@@ -182,5 +183,4 @@ def compare_and_push_to_locize():
 
 
 if __name__ == "__main__":
-    create_json_file()
     compare_and_push_to_locize()
