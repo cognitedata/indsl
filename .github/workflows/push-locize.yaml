@@ -23,39 +23,40 @@ jobs:
         pip install poetry
         poetry install
 
+    # Run create_translated_operations.py
+    - name: Create translated_operations.json
+      run: |
+        poetry run python create_translated_operations.py
+
     # Step 1: pull translated_operations.json from Locize
     # Step 2: generate new translated_operations.json with potential changes to the strings and keys
     # Step 3: Compare the two files and push only the changed strings to locize
     
 
     # pull from locize and generate a file called keys_from_locize.json
-    - name: Pull from Locize
-      working-directory: ./translations
-      env:
-        LOCIZE_API_KEY: '9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b'
-        LOCIZE_PROJECT_ID: '52167e6e-aea8-4433-83f7-f65976dd5f18'
-      run: |
-        curl --fail-with-body -X GET \
-             -H "Authorization: Bearer $LOCIZE_API_KEY" \
-             -H "Content-Type: application/json" \
-             https://api.locize.app/export/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations > keys_from_locize.json
+    # - name: Pull from Locize
+    #   working-directory: ./translations
+    #   env:
+    #     LOCIZE_API_KEY: '9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b'
+    #     LOCIZE_PROJECT_ID: '52167e6e-aea8-4433-83f7-f65976dd5f18'
+    #   run: |
+    #     curl --fail-with-body -X GET \
+    #          -H "Authorization: Bearer $LOCIZE_API_KEY" \
+    #          -H "Content-Type: application/json" \
+    #          https://api.locize.app/export/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations > keys_from_locize.json
 
-    # print the contents of keys_from_locize.json
-    - name: Print contents of keys_from_locize.json
-      working-directory: ./translations
-      run: cat keys_from_locize.json
+    # # print the contents of keys_from_locize.json
+    # - name: Print contents of keys_from_locize.json
+    #   working-directory: ./translations
+    #   run: cat keys_from_locize.json
 
-    # upload keys_from_locize.json as an artifact
-    - name: Upload keys_from_locize.json
-      uses: actions/upload-artifact@v2
-      with:
-        name: keys_from_locize.json
-        path: ./translations/keys_from_locize.json
-
-    - name: Generate Translation JSON
-      working-directory: ./translations
-      run: |
-        poetry run python create_translation_json.py
+    # # upload keys_from_locize.json as an artifact
+    # - name: Upload keys_from_locize.json
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: keys_from_locize.json
+    #     path: ./translations/keys_from_locize.json
+  
 
     # - name: Push to Locize
     #   working-directory: ./translations
@@ -78,5 +79,5 @@ jobs:
     #     curl --fail-with-body -X POST \
     #          -H "Authorization: Bearer $LOCIZE_API_KEY" \
     #          -H "Content-Type: application/json" \
-    #          -d @translated_operations.json \
+    #          -d @keys_diff.json \
     #          https://api.locize.app/update/$LOCIZE_PROJECT_ID/latest/en/vebjorn-translations
