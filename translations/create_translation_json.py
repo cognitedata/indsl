@@ -1,5 +1,6 @@
 import inspect
 import json
+import os
 import re
 import typing
 
@@ -18,9 +19,6 @@ from indsl.create_translation_key import create_key
 
 TOOLBOX_NAME = "TOOLBOX_NAME"
 COGNITE = "__cognite__"
-
-LOCIZE_API_KEY = "9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b"
-LOCIZE_PROJECT_ID = "52167e6e-aea8-4433-83f7-f65976dd5f18"
 NAMESPACE = "vebjorn-translations"
 OUTPUT_FILE = "keys_from_locize.json"
 
@@ -145,8 +143,8 @@ def create_mapping_for_translations():
 def compare_and_push_to_locize():
     """Push differences to locize."""
     # Pull data from locize
-    pull_url = f"https://api.locize.app/export/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
-    headers = {"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"}
+    pull_url = f'https://api.locize.app/keys/{os.getenv("LOCIZE_PROJECT_ID")}/{NAMESPACE}/en'
+    headers = {"Authorization": f'Bearer {os.getenv("LOCIZE_API_KEY")}', "Content-Type": "application/json"}
 
     pull_response = requests.get(pull_url, headers=headers, timeout=30)
     if pull_response.status_code == 200:
@@ -170,8 +168,8 @@ def compare_and_push_to_locize():
     try:
         if keys_diff:
             push_response = requests.post(
-                f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
-                headers={"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"},
+                f'https://api.locize.app/update/{os.getenv("LOCIZE_PROJECT_ID")}/latest/en/{NAMESPACE}',
+                headers=headers,
                 data=json.dumps(keys_diff),
                 timeout=30,
             )
