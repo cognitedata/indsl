@@ -167,10 +167,6 @@ def compare_and_push_to_locize():
         if keys_from_locize.get(key) != value:
             keys_diff[key] = value
 
-    # Save the differences to a new file
-    with open("keys_diff.json", "w") as diff_file:
-        json.dump(keys_diff, diff_file, indent=4)
-
     # Push the keys_diff.json to locize
     push_response = requests.post(
         f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
