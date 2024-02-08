@@ -140,16 +140,19 @@ def compare_and_push_to_locize():
 
     # Get the keys from locize, this is the source of truth
     keys_from_locize = pull_response.json()
+    print("keys_from_locize: ", keys_from_locize)
 
     # Get new keys and values with potential changes from the create_mapping_for_translations() function
     translated_operations = create_mapping_for_translations()
 
-    # Compare the keys and values from locize with the new keys and values and make a new file with the differences
+    # Compare the keys and values from locize with the new keys and values and make a new file with ONLY the differences
     keys_diff = {}
-    for key, value in translated_operations.items():
+    translated_operations_items = translated_operations.items()
+    for key, value in translated_operations_items:
         if keys_from_locize.get(key) != value:
             keys_diff[key] = value
-    print(keys_diff)
+    print("keys_diff: ", keys_diff)
+
     # Push the keys_diff.json to locize
     try:
         if keys_diff:
