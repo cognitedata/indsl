@@ -45,6 +45,7 @@ def test_all_nan_data():
         assert len(imputed_data) == len(test_data)
         assert imputed_data.isna().all()
 
+
 @pytest.mark.core
 def test_positive_granularity():
     with pytest.raises(UserValueError) as e:
@@ -54,6 +55,7 @@ def test_positive_granularity():
         granularity = pd.Timedelta(0, "m")
         resample_to_granularity(test_data, granularity=granularity)
         assert "Timedelta must be strictly positive. The smallest possible value is '1ns'" in str(e.value)
+
 
 # test correct output size
 @pytest.mark.parametrize("test_length", [(200), (10)])
