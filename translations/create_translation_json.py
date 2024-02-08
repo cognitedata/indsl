@@ -132,7 +132,7 @@ def create_mapping_for_translations():
 def compare_and_push_to_locize():
     """Push differences to locize."""
     # Pull data from locize
-    pull_url = f"https://api.locize.app/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
+    pull_url = f"https://api.locize.app/export/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
     headers = {"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"}
 
     pull_response = requests.get(pull_url, headers=headers, timeout=30)
