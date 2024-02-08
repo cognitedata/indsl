@@ -1,5 +1,6 @@
 import inspect
 import json
+import os
 import re
 import typing
 
@@ -8,6 +9,7 @@ from typing import Optional
 import docstring_parser
 
 from docstring_to_markdown.rst import rst_to_markdown
+import requests
 
 import indsl
 
@@ -131,5 +133,55 @@ def create_json_file():
         json.dump(output_dict, file, indent=4)
 
 
+# Compare keys_from_locize.json with the output of create_json_file() and make a new file with the differences including the keys and values
+def compare_and_push_to_locize():
+    # Configuration
+    LOCIZE_API_KEY = "9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b"
+    LOCIZE_PROJECT_ID = "52167e6e-aea8-4433-83f7-f65976dd5f18"
+    NAMESPACE = "vebjorn-translations"
+    OUTPUT_FILE = "./translations/keys_from_locize.json"
+
+    # Pull data from locize
+    url = f"https://api.locize.app/export/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
+    headers = {"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"}
+
+    pull_response = requests.get(url, headers=headers, timeout=30)
+    if pull_response.status_code == 200:
+        with open(OUTPUT_FILE, "w") as file:
+            file.write(pull_response.text)
+        print(f"Data saved to {OUTPUT_FILE}")
+        print(pull_response)
+    else:
+        print(f"Failed to pull data from Locize: {pull_response.status_code}")
+
+    # Get the keys from locize, this is the source of truth
+    with open("keys_from_locize.json", "r") as file:
+        keys_from_locize = json.load(file)
+
+    # Get new keys and values with potential changes from the create_json_file() function
+    with open("translated_operations.json", "r") as file:
+        translated_operations = json.load(file)
+
+    # Compare the keys and values from locize with the new keys and values and make a new file with the differences
+    keys_diff = {}
+    for key, value in translated_operations.items():
+        if keys_from_locize.get(key) != value:
+            keys_diff[key] = value
+
+    # Save the differences to a new file
+    with open("keys_diff.json", "w") as diff_file:
+        json.dump(keys_diff, diff_file, indent=4)
+
+    # Push the keys_diff.json to locize
+    push_response = requests.post(
+        f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/vebjorn-translations",
+        headers={"Authorization": f"Bearer {os.environ['LOCIZE_API_KEY']}", "Content-Type": "application/json"},
+        data=keys_diff,
+        timeout=30,
+    )
+    push_response.raise_for_status()
+
+
 if __name__ == "__main__":
     create_json_file()
+    compare_and_push_to_locize()
