@@ -166,16 +166,19 @@ def compare_and_push_to_locize():
             keys_diff[key] = value
 
     # Push the keys_diff.json to locize
-    if keys_diff != {}:
-        push_response = requests.post(
-            f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
-            headers=headers,
-            data=json.dumps(keys_diff),
-            timeout=30,
-        )
-        push_response.raise_for_status()
-    else:
-        pass
+    try:
+        if keys_diff:
+            push_response = requests.post(
+                f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
+                headers={"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"},
+                data=json.dumps(keys_diff),
+                timeout=30,
+            )
+            push_response.raise_for_status()
+        else:
+            pass
+    except requests.exceptions.RequestException as e:
+        print(e)
 
 
 if __name__ == "__main__":
