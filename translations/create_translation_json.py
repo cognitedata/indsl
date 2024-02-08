@@ -150,7 +150,7 @@ def compare_and_push_to_locize():
         with open(OUTPUT_FILE, "w") as file:
             file.write(pull_response.text)
         print(f"Data saved to {OUTPUT_FILE}")
-        print(pull_response)
+        print(OUTPUT_FILE)
     else:
         print(f"Failed to pull data from Locize: {pull_response.status_code}")
 
@@ -180,6 +180,7 @@ def compare_and_push_to_locize():
         timeout=30,
     )
     push_response.raise_for_status()
+    print(push_response)
 
 
 if __name__ == "__main__":
