@@ -148,9 +148,8 @@ def compare_and_push_to_locize():
     if pull_response.status_code == 200:
         with open(OUTPUT_FILE, "w") as file:
             file.write(pull_response.text)
-        print(f"Data saved to {OUTPUT_FILE}")
     else:
-        print(f"Failed to pull data from Locize: {pull_response.status_code}")
+        pull_response.raise_for_status()
 
     # Get the keys from locize, this is the source of truth
     with open("keys_from_locize.json", "r") as file:
@@ -167,7 +166,7 @@ def compare_and_push_to_locize():
             keys_diff[key] = value
 
     # Push the keys_diff.json to locize
-    if keys_diff:
+    if keys_diff != {}:
         push_response = requests.post(
             f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
             headers=headers,
@@ -176,7 +175,7 @@ def compare_and_push_to_locize():
         )
         push_response.raise_for_status()
     else:
-        print("No changes to push to Locize.")
+        pass
 
 
 if __name__ == "__main__":
