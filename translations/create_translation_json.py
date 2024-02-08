@@ -139,7 +139,7 @@ def compare_and_push_to_locize():
     LOCIZE_API_KEY = "9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b"
     LOCIZE_PROJECT_ID = "52167e6e-aea8-4433-83f7-f65976dd5f18"
     NAMESPACE = "vebjorn-translations"
-    OUTPUT_FILE = "./translations/keys_from_locize.json"
+    OUTPUT_FILE = "keys_from_locize.json"
 
     # Pull data from locize
     url = f"https://api.locize.app/export/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
