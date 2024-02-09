@@ -137,6 +137,7 @@ def compare_and_push_to_locize():
 
     pull_response = requests.get(pull_url, headers=headers, timeout=30)
     pull_response.raise_for_status()
+    print(pull_response.headers["Content-Type"])
 
     # Get the keys from locize, this is the source of truth. Avoid rounding numbers in the keys_from_locize. E.g. 1.0 -> 1
     # Avoid rounding numbers in the keys_from_locize. E.g. 1.0 -> 1
