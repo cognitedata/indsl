@@ -22,7 +22,6 @@ COGNITE = "__cognite__"
 LOCIZE_API_KEY = "9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b"
 LOCIZE_PROJECT_ID = "52167e6e-aea8-4433-83f7-f65976dd5f18"
 NAMESPACE = "vebjorn-translations"
-OUTPUT_FILE = "keys_from_locize.json"
 
 
 # Parse the docstring element text
@@ -153,7 +152,7 @@ def compare_and_push_to_locize():
             data_diff[key] = value
     # print("data_diff: ", data_diff)
 
-    # Push data_diff to locize. Don't print the error message
+    # Push data_diff to locize
     try:
         if data_diff:
             push_response = requests.post(
