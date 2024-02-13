@@ -132,47 +132,55 @@ def create_mapping_for_translations():
 def compare_and_push_to_locize():
     """Push differences to locize."""
     # Pull data from locize
-    pull_url = f"https://api.locize.app/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
+    # pull_url = f"https://api.locize.app/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
     headers = {"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"}
+    translated_operations = create_mapping_for_translations()
+    push_response = requests.post(
+        f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
+        headers=headers,
+        data=json.dumps(translated_operations),
+        timeout=30,
+    )
+    push_response.raise_for_status()
 
-    pull_response = requests.get(pull_url, headers=headers, timeout=30)
-    pull_response.raise_for_status()
+    # pull_response = requests.get(pull_url, headers=headers, timeout=30)
+    # pull_response.raise_for_status()
 
     # Get the keys from locize, this is the source of truth. Avoid rounding numbers in the keys_from_locize. E.g. 1.0 -> 1
     # Avoid rounding numbers in the keys_from_locize. E.g. 1.0 -> 1
     # print raw response to see if there are any rounding issues
-    print("raw response: ", pull_response.text)
+    # print("raw response: ", pull_response.text)
 
     # if a key in pull_response ends with _number, add .0 to the key. So if the key is INDSL_DRIFT_1, it should be INDSL_DRIFT_1.0
 
-    keys_from_locize = pull_response.json()
-    pull_response.raise_for_status()
+    # keys_from_locize = pull_response.json()
+    # pull_response.raise_for_status()
 
     # Get new keys and values with potential changes from the create_mapping_for_translations() function
-    translated_operations = create_mapping_for_translations()
+    # translated_operations = create_mapping_for_translations()
 
     # Compare the keys and values from locize with the new keys and values and make a new file with ONLY the differences
-    keys_diff = {}
-    translated_operations_items = translated_operations.items()
-    for key, value in translated_operations_items:
-        if keys_from_locize.get(key) != value:
-            keys_diff[key] = value
-    print("keys_diff: ", keys_diff)
+    # keys_diff = {}
+    # translated_operations_items = translated_operations.items()
+    # for key, value in translated_operations_items:
+    #     if keys_from_locize.get(key) != value:
+    #         keys_diff[key] = value
+    # print("keys_diff: ", keys_diff)
 
     # Push the keys_diff.json to locize
-    try:
-        if keys_diff:
-            push_response = requests.post(
-                f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
-                headers=headers,
-                data=json.dumps(keys_diff),
-                timeout=30,
-            )
-            push_response.raise_for_status()
-        else:
-            pass
-    except requests.exceptions.RequestException as e:
-        print(e)
+    # try:
+    #     if keys_diff:
+    #         push_response = requests.post(
+    #             f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
+    #             headers=headers,
+    #             data=json.dumps(keys_diff),
+    #             timeout=30,
+    #         )
+    #         push_response.raise_for_status()
+    #     else:
+    #         pass
+    # except requests.exceptions.RequestException as e:
+    #     print(e)
 
 
 if __name__ == "__main__":
