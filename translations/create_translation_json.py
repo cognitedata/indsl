@@ -131,7 +131,6 @@ def create_mapping_for_translations():
 # Compare the data from Locize with the output of create_mapping_for_translations() and push the differences
 def compare_and_push_to_locize():
     """Push differences to locize."""
-
     # Pull the keys and values from Locize, this is the source of truth. Avoid rounding versions, e.g. 1_0 -> 1
     # In order to avoid this we version our functions with 1_0 rather than 1.0
     pull_url = f"https://api.locize.app/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
@@ -140,7 +139,7 @@ def compare_and_push_to_locize():
     pull_response = requests.get(pull_url, headers=headers, timeout=30)
     pull_response.raise_for_status()
 
-    print("raw response: ", pull_response.text)
+    # print("raw response: ", pull_response.text)
     data_from_locize = pull_response.json()
 
     # Get new keys and values from InDSL with potential changes
@@ -152,9 +151,9 @@ def compare_and_push_to_locize():
     for key, value in translated_operations_items:
         if data_from_locize.get(key) != value:
             data_diff[key] = value
-    print("data_diff: ", data_diff)
+    # print("data_diff: ", data_diff)
 
-    # Push keys_diff.json to locize
+    # Push data_diff to locize. Don't print the error message
     try:
         if data_diff:
             push_response = requests.post(
@@ -166,8 +165,8 @@ def compare_and_push_to_locize():
             push_response.raise_for_status()
         else:
             pass
-    except requests.exceptions.RequestException as e:
-        print(e)
+    except requests.exceptions.RequestException:
+        pass
 
 
 if __name__ == "__main__":
