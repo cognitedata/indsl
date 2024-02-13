@@ -18,7 +18,7 @@ def datapoint_diff_over_time_period(
     difference_threshold: int = 24,
     tolerance: pd.Timedelta = pd.Timedelta("1H"),
 ) -> pd.Series:
-    """Diff. between two.
+    """Diff. between two datapoints.
 
     The function is created in order to automate data quality check for time series with values that shouldn't be
     increasing more than a certain threshold over a certain amount of hours. For each data point in a given
