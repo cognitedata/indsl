@@ -94,6 +94,7 @@ def calculate_well_prod_status(
 @check_types
 def merge_valves(valves: list[pd.Series]) -> pd.Series:
     """Merge n number of valve time series on the same flow into one.
+
     The lowest value of the valves is taken at each time step.
 
     Args:
@@ -122,7 +123,9 @@ def calculate_xmt_prod_status(
     threshold_choke: float = 5.0,  # Per cent. Range 0-100. Default 5%
     align_timesteps: bool = False,
 ) -> pd.Series:
-    """Determine if the well is producing. In order for this to be the case, the following has to happen:
+    """Determine if the well is producing.
+
+    In order for this to be the case, the following has to happen:
 
             * All Master, Annulus, Xover and Choke data have to come from the same well.
             * Check if the master, annulus, xover and choke valve openings are above their respective threshold values at a given time.
