@@ -26,5 +26,8 @@ jobs:
     # Run create_translated_operations.py, -u to show output
     - name: Create translated operations json
       working-directory: ./translations
+      env:
+        LOCIZE_API_KEY: ${{ secrets.LOCIZE_API_KEY }}
+        LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
       run: |
         poetry run python -u create_translation_json.py

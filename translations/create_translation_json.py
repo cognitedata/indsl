@@ -1,5 +1,6 @@
 import inspect
 import json
+import os
 import re
 import typing
 
@@ -19,9 +20,9 @@ from indsl.create_translation_key import create_key
 TOOLBOX_NAME = "TOOLBOX_NAME"
 COGNITE = "__cognite__"
 
-LOCIZE_API_KEY = "9e22ecf1-1fe7-41f2-827b-9f51b7c67f8b"
-LOCIZE_PROJECT_ID = "52167e6e-aea8-4433-83f7-f65976dd5f18"
-NAMESPACE = "vebjorn-translations"
+LOCIZE_API_KEY = os.getenv("LOCIZE_API_KEY")
+LOCIZE_PROJECT_ID = os.getenv("LOCIZE_PROJECT_ID")
+NAMESPACE = "indsl"
 
 
 # Parse the docstring element text
