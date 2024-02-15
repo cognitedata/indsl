@@ -70,7 +70,7 @@ def flow_through_valve_initial_incompressible(
     if SG < 0:
         raise UserValueError("Specific gravity cannot be negative.")
 
-    inlet_P, outlet_P, valve_opening = auto_align([inlet_P, outlet_P, valve_opening], align_timestamps) # type: ignore
+    inlet_P, outlet_P, valve_opening = auto_align([inlet_P, outlet_P, valve_opening], align_timestamps)  # type: ignore
 
     if type == "Linear":
         Cv = (max_Cv - min_Cv) / (max_opening - min_opening) * valve_opening + (
@@ -87,7 +87,7 @@ def flow_through_valve_initial_incompressible(
 
     Q = 0.865 * Cv * np.sqrt((inlet_P - outlet_P) / SG)
 
-    return scalar_to_pandas_series(Q) # type: ignore
+    return scalar_to_pandas_series(Q)  # type: ignore
 
 
 @versioning.register(
@@ -153,7 +153,7 @@ def flow_through_valve(
     if SG < 0:
         raise UserValueError("Specific gravity cannot be negative.")
 
-    inlet_P, outlet_P, valve_opening = auto_align([inlet_P, outlet_P, valve_opening], align_timestamps) # type: ignore
+    inlet_P, outlet_P, valve_opening = auto_align([inlet_P, outlet_P, valve_opening], align_timestamps)  # type: ignore
 
     if type == "Linear":
         Cv = (max_Cv - min_Cv) / (max_opening - min_opening) * valve_opening + (
@@ -170,4 +170,4 @@ def flow_through_valve(
 
     Q = 0.865 * Cv * np.sqrt((inlet_P - outlet_P) / SG)
 
-    return scalar_to_pandas_series(Q) # type: ignore
+    return scalar_to_pandas_series(Q)  # type: ignore

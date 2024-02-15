@@ -23,7 +23,7 @@ def calculate_well_prod_status(
     threshold_wing: float = 1,
     threshold_choke: float = 5,
     align_timesteps: bool = False,
-) -> pd.Series: #TODO Consider removing this function and using calculate_xmt_prod_status instead
+) -> pd.Series:  # TODO Consider removing this function and using calculate_xmt_prod_status instead
     """Check if the well is producing.
 
     Determine if the well is producing. In order for this to be the case, the following has to happen:
@@ -90,6 +90,7 @@ def calculate_well_prod_status(
         index=master_valve.index,
     )
 
+
 @check_types
 def merge_valves(valves: list[pd.Series]) -> pd.Series:
     """Merge n number of valve time series on the same flow into one.
@@ -109,21 +110,20 @@ def merge_valves(valves: list[pd.Series]) -> pd.Series:
         return pd.Series([])
 
 
-#@check_types
+# @check_types
 def calculate_xmt_prod_status(
-    choke_valve: pd.Series, # Can be partially opened. The others are binary (0 or 1)
+    choke_valve: pd.Series,  # Can be partially opened. The others are binary (0 or 1)
     master_valves: Optional[list[pd.Series]] = None,
     annulus_valves: Optional[list[pd.Series]] = None,
-    xover_valves: Optional[list[pd.Series]] = None, 
-    threshold_master: float = 1.0, # Per cent. Range 0-100. Default 1%
-    threshold_annulus: float = 1.0, # Per cent. Range 0-100. Default 1%
-    threshold_xover: float = 1.0, # Per cent. Range 0-100. Default 1%
-    threshold_choke: float = 5.0, # Per cent. Range 0-100. Default 5%
+    xover_valves: Optional[list[pd.Series]] = None,
+    threshold_master: float = 1.0,  # Per cent. Range 0-100. Default 1%
+    threshold_annulus: float = 1.0,  # Per cent. Range 0-100. Default 1%
+    threshold_xover: float = 1.0,  # Per cent. Range 0-100. Default 1%
+    threshold_choke: float = 5.0,  # Per cent. Range 0-100. Default 5%
     align_timesteps: bool = False,
 ) -> pd.Series:
-    """
-    Determine if the well is producing. In order for this to be the case, the following has to happen:
-    
+    """Determine if the well is producing. In order for this to be the case, the following has to happen:
+
             * All Master, Annulus, Xover and Choke data have to come from the same well.
             * Check if the master, annulus, xover and choke valve openings are above their respective threshold values at a given time.
             * If any of the valves are below the threshold opening, then the well is closed.
@@ -139,7 +139,7 @@ def calculate_xmt_prod_status(
             Time series of the annulus valves.
         xover_valves:  Xover Valves
             Time series of the xover valves.
-        
+
         threshold_master: Master threshold
             Threshold percentage value from 0%-100%.
         threshold_annulus: Annulus threshold
@@ -155,42 +155,42 @@ def calculate_xmt_prod_status(
         pandas.Series: Well Status
             Well production status (1 means open, 0 means closed).
     """
-
     wellhead_super_valves = []
-    wellhead_thresholds = []   
+    wellhead_thresholds = []
     if master_valves:
         wellhead_super_valves.append(merge_valves(master_valves))
         wellhead_thresholds.append(threshold_master)
-    if annulus_valves:  
+    if annulus_valves:
         wellhead_super_valves.append(merge_valves(annulus_valves))
         wellhead_thresholds.append(threshold_annulus)
     if xover_valves:
         wellhead_super_valves.append(merge_valves(xover_valves))
         wellhead_thresholds.append(threshold_xover)
 
-    # Input validation    
+    # Input validation
     if not wellhead_super_valves:
-        raise UserValueError("At least one of the wellhead valve time series (master, annulus or xover) must be provided")
-    
+        raise UserValueError(
+            "At least one of the wellhead valve time series (master, annulus or xover) must be provided"
+        )
+
     if any(valve.empty for valve in [*wellhead_super_valves, choke_valve]):
         raise UserValueError("Empty Series are not allowed for valve inputs")
-    
+
     if any([i < 0 for i in [*wellhead_thresholds, threshold_choke]]):
-        raise UserValueError(
-            "Threshold value has to be greater than or equal to 0"
-        )
-    
+        raise UserValueError("Threshold value has to be greater than or equal to 0")
+
     if any([i > 100 for i in [*wellhead_thresholds, threshold_choke]]):
-        raise UserValueError(
-            "Threshold value has to be less than or equal to 100"
-        )
-    
+        raise UserValueError("Threshold value has to be less than or equal to 100")
+
     # Aligning time series on time index
     *wellhead_super_valves, choke_valve = auto_align(
-        [*wellhead_super_valves, choke_valve], align_timesteps,
+        [*wellhead_super_valves, choke_valve],
+        align_timesteps,
     )
 
-    is_wellhead_super_valves_open = [valve >= threshold for valve, threshold in zip(wellhead_super_valves, wellhead_thresholds)]
+    is_wellhead_super_valves_open = [
+        valve >= threshold for valve, threshold in zip(wellhead_super_valves, wellhead_thresholds)
+    ]
     is_choke_valve_open = choke_valve >= threshold_choke
 
     is_wellhead_open = pd.Series(
