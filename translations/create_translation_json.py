@@ -131,8 +131,7 @@ def create_mapping_for_translations():
 # Compare the data from Locize with the output of create_mapping_for_translations() and push the differences
 def compare_and_push_to_locize():
     """Push differences to locize."""
-    # Pull the keys and values from Locize, this is the source of truth. Avoid rounding versions, e.g. 1_0 -> 1
-    # In order to avoid this we version our functions with 1_0 rather than 1.0
+    # Pull the keys and values from Locize
     pull_url = f"https://api.locize.app/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
     headers = {"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"}
 
