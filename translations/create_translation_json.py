@@ -150,7 +150,6 @@ def compare_and_push_to_locize():
     for key, value in translated_operations_items:
         if data_from_locize.get(key) != value:
             data_diff[key] = value
-    print("data_diff: ", data_diff)
 
     # Push data_diff to locize
     try:
