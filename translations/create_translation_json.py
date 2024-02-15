@@ -141,9 +141,11 @@ def compare_and_push_to_locize():
 
     # print("raw response: ", pull_response.text)
     data_from_locize = pull_response.json()
+    print("number of keys from Locize: ", len(data_from_locize))
 
     # Get new keys and values from InDSL with potential changes
     translated_operations = create_mapping_for_translations()
+    print("number of keys from InDSL: ", len(translated_operations))
 
     # Compare the keys and values from Locize with the new keys and values and make a new file with only the differences
     data_diff = {}
