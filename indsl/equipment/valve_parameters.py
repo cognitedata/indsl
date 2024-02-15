@@ -10,7 +10,7 @@ from indsl.ts_utils.ts_utils import scalar_to_pandas_series
 from indsl.type_check import check_types
 from indsl.validations import UserValueError
 
-from . import valve_parameters_  # noqa
+from . import valve_parameters_  # type: ignore noqa
 
 
 @versioning.register(
@@ -99,7 +99,7 @@ def flow_through_valve(
     elif isinstance(SG, pd.Series) and (SG < 0).all():
         raise UserValueError("Specific gravity cannot be negative.")
 
-    inlet_P, outlet_P, valve_opening = auto_align([inlet_P, outlet_P, valve_opening], align_timestamps)
+    inlet_P, outlet_P, valve_opening = auto_align([inlet_P, outlet_P, valve_opening], align_timestamps) # type: ignore
 
     if type == "Linear":
         Cv = (max_Cv - min_Cv) / (max_opening - min_opening) * valve_opening + (
@@ -118,10 +118,10 @@ def flow_through_valve(
         Q = 0.865 * Cv * np.sqrt((inlet_P - outlet_P) / SG)
     elif (gas_expansion_factor is not None) and (inlet_T is not None) and (Z is not None):
         x = (inlet_P - outlet_P) / inlet_P
-        Q = 417 * Cv * inlet_P * gas_expansion_factor * np.sqrt(x / (SG * inlet_T * Z))
+        Q = 417 * Cv * inlet_P * gas_expansion_factor * np.sqrt(x / (SG * inlet_T * Z)) # type: ignore
     else:
         raise UserValueError(
             "'gas_expansion_factor', 'inlet_T' and 'Z' all need to be initalized with numerical values if 'type' is compressible."
         )
 
-    return scalar_to_pandas_series(Q)
+    return scalar_to_pandas_series(Q) # type: ignore
