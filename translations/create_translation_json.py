@@ -122,7 +122,7 @@ def create_mapping_for_translations():
             output_dict[create_key(toolbox=toolbox_name)] = toolbox_name
 
             _generate_translation_mapping_for_functions(output_dict, module)
-    # limit the number of keys to 1000
+
     output_dict = {k: output_dict[k] for k in list(output_dict.keys())}
 
     return output_dict
