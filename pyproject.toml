@@ -14,7 +14,7 @@ classifiers = ["Topic :: Scientific/Engineering"]
 # Core dependencies
 python = ">=3.9,<3.13"
 scipy = "^1.7.3"
-pandas = "~2.1.4"
+pandas = "~2.2.0"
 typeguard = "^4.0.0"
 packaging = "^23.0"
 numpy = "^1.26.0"
