@@ -1,11 +1,13 @@
 import inspect
 import json
+import os
 import re
 import typing
 
 from typing import Optional
 
 import docstring_parser
+import requests
 
 from docstring_to_markdown.rst import rst_to_markdown
 
@@ -17,6 +19,10 @@ from indsl.create_translation_key import create_key
 
 TOOLBOX_NAME = "TOOLBOX_NAME"
 COGNITE = "__cognite__"
+
+LOCIZE_API_KEY = os.getenv("LOCIZE_API_KEY")
+LOCIZE_PROJECT_ID = os.getenv("LOCIZE_PROJECT_ID")
+NAMESPACE = "indsl"
 
 
 # Parse the docstring element text
@@ -117,17 +123,48 @@ def create_mapping_for_translations():
 
             _generate_translation_mapping_for_functions(output_dict, module)
 
+    output_dict = {k: output_dict[k] for k in list(output_dict.keys())}
+
     return output_dict
 
 
-# Write the keys and values to the JSON file
-def create_json_file():
-    """Create mapping for InDSL and write to file."""
-    output_dict = create_mapping_for_translations()
-    file_path = "translated_operations.json"
-    with open(file_path, "w") as f:
-        json.dump(output_dict, f, indent=4)
+# Compare the data from Locize with the output of create_mapping_for_translations() and push the differences
+def compare_and_push_to_locize():
+    """Push differences to locize."""
+    # Pull the keys and values from Locize
+    pull_url = f"https://api.locize.app/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
+    headers = {"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"}
+
+    pull_response = requests.get(pull_url, headers=headers, timeout=30)
+    pull_response.raise_for_status()
+
+    data_from_locize = pull_response.json()
+
+    # Get new keys and values from InDSL with potential changes
+    translated_operations = create_mapping_for_translations()
+
+    # Compare the keys and values from Locize with the new keys and values and make a new file with only the differences
+    data_diff = {}
+    translated_operations_items = translated_operations.items()
+    for key, value in translated_operations_items:
+        if data_from_locize.get(key) != value:
+            data_diff[key] = value
+
+    # Push data_diff to locize
+    try:
+        if data_diff:
+            push_response = requests.post(
+                f"https://api.locize.app/update/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}",
+                headers=headers,
+                data=json.dumps(data_diff),
+                timeout=30,
+            )
+            push_response.raise_for_status()
+        else:
+            pass
+    except requests.exceptions.RequestException:
+        pass
 
 
 if __name__ == "__main__":
-    create_json_file()
+    compare_and_push_to_locize()
