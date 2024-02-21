@@ -50,7 +50,7 @@ def _generate_key_for_parameters(name: str, output_dict: dict, parameters, versi
         param_name, description = _parse_docstring_element_text(parameter.description)
         if param_name:
             key = create_key(function_name=name, parameter=parameter.arg_name, version=version)
-            output_dict[key] = param_name
+            output_dict[key] = _convert_to_rendering_format(param_name)
         if description:
             description_key = create_key(
                 function_name=name, parameter=parameter.arg_name, description=True, version=version
