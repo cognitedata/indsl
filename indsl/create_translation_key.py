@@ -39,5 +39,5 @@ def create_key(
             elif description:
                 elements.append(DESCRIPTION)
 
-    version_str = f"_{_format_str(version)}" if version else ""
+    version_str = f"_{_format_str(version.replace('.', '_'))}" if version else ""
     return "_".join(elements) + version_str if elements else None
