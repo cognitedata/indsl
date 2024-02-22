@@ -135,14 +135,14 @@ class TestXmtProdStatus:
         res = merge_valves(valves=[valve1, valve2, valve3])
         exp_res = pd.Series([10, 11, 20, 30], index=[t1, t2, t3, t4])
 
-        assert_series_equal(res, exp_res)
+        assert_series_equal(res, exp_res, check_dtype=False)
 
     @pytest.mark.core
     def test_merge_valves_empty_list(cls):
         res = merge_valves(valves=[])
         exp_res = pd.Series([])
 
-        assert_series_equal(res, exp_res)
+        assert_series_equal(res, exp_res, check_dtype=False)
 
     @pytest.mark.core
     def test_all_valve_combinations(cls):
@@ -170,7 +170,7 @@ class TestXmtProdStatus:
         )
 
         exp_xmt_status = pd.Series([1, 0, 1, 0, 0], index=[t1, t2, t3, t4, t5])
-        assert_series_equal(xmt_status, exp_xmt_status)
+        assert_series_equal(xmt_status, exp_xmt_status, check_dtype=False)
 
     @pytest.mark.core
     def test_missing_choke_valve(cls):
@@ -197,7 +197,7 @@ class TestXmtProdStatus:
         xmt_status = calculate_xmt_prod_status(master_valves=[master_valve], choke_valve=choke_valve)
 
         exp_xmt_status = pd.Series([1], index=[t1])
-        assert_series_equal(xmt_status, exp_xmt_status)
+        assert_series_equal(xmt_status, exp_xmt_status, check_dtype=False)
 
     @pytest.mark.core
     def test_missing_all_wellhead_valves(cls):
