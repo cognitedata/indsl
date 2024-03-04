@@ -43,7 +43,7 @@ toml = "^0.10.2"
 marshmallow = "^3.17.0"
 docstring-to-markdown = "^0.10"
 coverage = "^7.0.0"
-ruff = "^0.1.0"
+ruff = "^0.2.0"
 pytest = ">=6.2.2,<8.0.0"
 
 [tool.poetry.group.docs]
