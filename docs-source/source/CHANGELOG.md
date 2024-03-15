@@ -1,4 +1,13 @@
 # Changelog
+## v8.3.2 (2024-02-23)
+
+### Fix
+
+- generation of parameter name should be formatted
+- **deps**: update dependency pandas to ~2.2.0
+- **deps**: update dependency scikit-learn to v1.4.0
+- **deps**: update dependency numpy to v1.26.3
+
 ## v8.3.1 (2024-02-02)
 
 ### Fix

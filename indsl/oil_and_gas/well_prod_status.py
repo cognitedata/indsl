@@ -74,9 +74,9 @@ def calculate_well_prod_status(
         )  # it is not physical to have an opening more than 100
 
     thresholds = [  # make modifications for threshold if range is between 0-1.
-        _pct_to_fraction(threshold)
-        if max(valve) <= 1.0
-        else float(threshold)  # if the valve series is between 0-1 then it should have a
+        (
+            _pct_to_fraction(threshold) if max(valve) <= 1.0 else float(threshold)
+        )  # if the valve series is between 0-1 then it should have a
         for threshold, valve in zip(thresholds, valves)  # max value of 1 so we change the threshold from percentage
     ]  # to fraction.
     threshold_master, threshold_wing, threshold_choke = thresholds
