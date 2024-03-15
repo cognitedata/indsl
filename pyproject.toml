@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "indsl"
-version = "8.3.1"
+version = "8.3.2"
 description = "Industrial Data Science Library by Cognite"
 authors = ["Cognite"]
 license = "Apache-2.0"
@@ -14,7 +14,7 @@ classifiers = ["Topic :: Scientific/Engineering"]
 # Core dependencies
 python = ">=3.9,<3.13"
 scipy = "^1.7.3"
-pandas = "~2.1.4"
+pandas = "~2.2.0"
 typeguard = "^4.0.0"
 packaging = "^23.0"
 numpy = "^1.26.0"
@@ -23,7 +23,7 @@ typing-extensions = "^4.6.3"
 # Optional extras dependencies
 fluids = { version = "^1.0.22", optional = true }
 matplotlib = { version = "^3.4.0", optional = true }
-numba = { version = "^0.58.0", optional = true }
+numba = { version = "^0.59.0", optional = true }
 kneed = { version = "^0.8.0", optional = true }
 csaps = { version = "^1.1.0", optional = true }
 statsmodels = { version = "^0.14.0", optional = true }
@@ -32,7 +32,7 @@ scikit-learn = { version = "^1.3.0", optional = true }
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = { version = "^3.0", python = "^3.6.1" }
-black = "^23.0.0"
+black = "^24.0.0"
 ipykernel = "^6.9.1"
 pytest-cov = "^4.0.0"
 commitizen = "^3.0.0"
@@ -43,7 +43,7 @@ toml = "^0.10.2"
 marshmallow = "^3.17.0"
 docstring-to-markdown = "^0.10"
 coverage = "^7.0.0"
-ruff = "^0.1.0"
+ruff = "^0.2.0"
 pytest = ">=6.2.2,<8.0.0"
 
 [tool.poetry.group.docs]
@@ -124,7 +124,7 @@ known-third-party = ["pytest"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "8.3.1"
+version = "8.3.2"
 tag_format = "v$version"
 version_files = ["pyproject.toml:version"]
 
