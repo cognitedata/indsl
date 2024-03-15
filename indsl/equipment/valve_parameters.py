@@ -10,8 +10,6 @@ from indsl.ts_utils.ts_utils import scalar_to_pandas_series
 from indsl.type_check import check_types
 from indsl.validations import UserValueError
 
-from . import valve_parameters_  # noqa
-
 
 @versioning.register(
     version="3.0",
@@ -125,3 +123,50 @@ def flow_through_valve(
         )
 
     return scalar_to_pandas_series(Q)
+
+
+@check_types
+def flow_through_gate_valves(
+    p_A: Union[pd.Series, float],  # Gauge Pressure at block terminal A
+    p_B: Union[pd.Series, float],  # Gauge Pressure at block terminal B
+    C_D: Union[pd.Series, float],  # Flow Discharge Coefficient
+    x_0: Union[pd.Series, float],  # Initial opening
+    x: Union[pd.Series, float],  # Gate displacement from initial position
+    D: Union[pd.Series, float],  # Diameter of the orifice
+    rho: Union[pd.Series, float],  # Density of the fluid
+    p_cr: Union[pd.Series, float],  # Minimum pressure for turbulent flow
+    A_leak: Union[pd.Series, float] = 0,  # Closed valve leakage area
+) -> pd.Series:
+    r"""Flow through gate valves.
+
+    This function is used to calculate the flow rate through a gate valve. The calculation is based on the Bernoulli equation and the orifice equation.
+
+    Args:
+        p_A: Gauge Pressure at block terminal A
+        p_B: Gauge Pressure at block terminal B
+        C_D: Flow Discharge Coefficient
+        x_0: Initial opening
+        x: Gate displacement from initial position
+        D: Diameter of the orifice
+        rho: Density of the fluid
+        rho_cr: Minimum pressure for turbulent flow
+        A_leak: Closed valve leakage area. Defaults to 0.
+
+    Returns:
+        pd.Series: Flow rate through gate valve
+
+    """
+    p_delta = p_A - p_B  # Pressure differential
+    h = x_0 + x  # Valve opening
+
+    # Instantaneous orifice passage area
+    A_opening = A_leak
+    if (h > 0) and (h < 2 * D):
+        A_orifice = np.pi * D**2 / 4
+        A_overlap = ((D**2 / 2) * (np.arccos(h / D))) - (h * np.sqrt(D**2 - h**2) / 2)
+        A_opening = A_orifice - A_overlap
+
+    # Flow Rate
+    q = C_D * A_opening * np.sqrt(2 / rho) * (p_delta) / (p_delta**2 + p_cr**2) ** 0.25
+
+    return q  # type: ignore
