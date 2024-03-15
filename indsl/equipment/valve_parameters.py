@@ -149,7 +149,7 @@ def flow_through_gate_valves(
         x: Gate displacement from initial position
         D: Diameter of the orifice
         rho: Density of the fluid
-        rho_cr: Minimum pressure for turbulent flow
+        p_cr: Minimum pressure for turbulent flow
         A_leak: Closed valve leakage area. Defaults to 0.
 
     Returns:
