@@ -1,6 +1,6 @@
 #!/bin/bash
 git checkout -b build-docs
-echo -e "# Changelog\n$(cat CHANGELOG.md)" > docs-source/source/CHANGELOG.md
+echo "# Changelog\n$(cat CHANGELOG.md)" > docs-source/source/CHANGELOG.md
 git commit docs-source/source/CHANGELOG.md -m "docs: update CHANGELOG.md"
 cd docs-source/
 make clean
