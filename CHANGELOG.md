@@ -1,3 +1,10 @@
+## v8.3.3 (2024-03-20)
+
+### Fix
+
+- change  descriptions of arguments
+- **deps**: update dependency numba to ^0.59.0
+
 ## v8.3.2 (2024-02-23)
 
 ### Fix
