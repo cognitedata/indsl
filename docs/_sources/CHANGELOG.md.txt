@@ -1,4 +1,4 @@
-- # Changelog
+# Changelog
 ## v8.3.3 (2024-03-20)
 
 ### Fix
