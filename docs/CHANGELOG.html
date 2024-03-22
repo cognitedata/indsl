@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; indsl 8.3.3 documentation</title>
+  <title>Changelog &mdash; indsl 8.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
@@ -20,7 +20,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=53e4bfcb"></script>
+        <script src="_static/documentation_options.js?v=ea47c46f"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -89,6 +89,10 @@
 <li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v8-4-0-2024-03-22">v8.4.0 (2024-03-22)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#feat">Feat</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#v8-3-3-2024-03-20">v8.3.3 (2024-03-20)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#fix">Fix</a></li>
 </ul>
@@ -102,256 +106,256 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v8-3-0-2024-01-15">v8.3.0 (2024-01-15)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#feat">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v8-2-1">v8.2.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v8-2-0">v8.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v8-1-0">v8.1.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v8-0-1">v8.0.1</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v8-0-0">v8.0.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">Fix</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#v7-0-1">v7.0.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Feat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id9">Fix</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#v7-0-1">v7.0.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Fix</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#v7-0-0">v7.0.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id10">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v6-6-0a1-pre-release">v6.6.0a1 Pre-release</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id12">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v6-6-0a0-2023-07-04">v6.6.0a0 (2023-07-04)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v6-5-0-2023-03-31">v6.5.0 (2023-03-31)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id16">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">Fix</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#v6-4-4-2023-03-23">v6.4.4 (2023-03-23)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Feat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id18">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v6-4-3-2023-02-23">v6.4.3 (2023-02-23)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v6-4-4-2023-03-23">v6.4.4 (2023-03-23)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id19">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v6-4-2-2023-01-24">v6.4.2 (2023-01-24)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v6-4-3-2023-02-23">v6.4.3 (2023-02-23)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id20">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v6-4-1-2023-01-24">v6.4.1 (2023-01-24)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v6-4-2-2023-01-24">v6.4.2 (2023-01-24)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id21">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v6-4-0-2022-12-13">v6.4.0 (2022-12-13)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id22">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">Fix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v6-4-1-2023-01-24">v6.4.1 (2023-01-24)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v6-3-1-2022-11-09">v6.3.1 (2022-11-09)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v6-4-0-2022-12-13">v6.4.0 (2022-12-13)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Feat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id24">Fix</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#v6-3-1-2022-11-09">v6.3.1 (2022-11-09)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Fix</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#v6-3-0-2022-11-08">v6.3.0 (2022-11-08)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id25">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v6-2-0-2022-09-29">v6.2.0 (2022-09-29)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id27">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v6-1-0-2022-08-25">v6.1.0 (2022-08-25)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id29">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v6-0-1-2022-08-17">v6.0.1 (2022-08-17)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id30">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v6-0-0-2022-08-17">v6.0.0 (2022-08-17)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id31">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id32">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">Fix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#refactor">Refactor</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-8-2-2022-08-09">v4.8.2 (2022-08-09)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id33">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-8-1-2022-08-09">v4.8.1 (2022-08-09)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id34">Refactor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id35">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">Refactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-8-0-2022-07-26">v4.8.0 (2022-07-26)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id36">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id37">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id37">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-7-0-2022-07-07">v4.7.0 (2022-07-07)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id38">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id40">Refactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">Refactor</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-6-0-2022-06-16">v4.6.0 (2022-06-16)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id41">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id42">Fix</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#v4-5-1-2022-06-09">v4.5.1 (2022-06-09)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id42">Feat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id43">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v4-5-0-2022-05-25">v4.5.0 (2022-05-25)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v4-5-1-2022-06-09">v4.5.1 (2022-06-09)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id44">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id45">Feat</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v4-5-0-2022-05-25">v4.5.0 (2022-05-25)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id45">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-4-1-2022-05-18">v4.4.1 (2022-05-18)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id46">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id47">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-4-0-2022-05-11">v4.4.0 (2022-05-11)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id47">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id48">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id49">Refactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">Refactor</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-3-1-2022-05-04">v4.3.1 (2022-05-04)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id50">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-3-0-2022-04-27">v4.3.0 (2022-04-27)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id51">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id52">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id52">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id53">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-2-2-2022-04-21">v4.2.2 (2022-04-21)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id53">Fix</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#v4-2-1-2022-04-21">v4.2.1 (2022-04-21)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id54">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v4-2-0-2022-04-20">v4.2.0 (2022-04-20)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v4-2-1-2022-04-21">v4.2.1 (2022-04-21)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id55">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id56">Feat</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v4-2-0-2022-04-20">v4.2.0 (2022-04-20)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id56">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id57">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-1-1-2022-03-30">v4.1.1 (2022-03-30)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id57">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id58">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-1-0-2022-03-22">v4.1.0 (2022-03-22)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id58">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id59">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id60">Refactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id59">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id60">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id61">Refactor</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v4-0-2-2022-03-01">v4.0.2 (2022-03-01)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id61">Fix</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#v4-0-1-2022-02-28">v4.0.1 (2022-02-28)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id62">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v4-0-0-2022-02-24">v4.0.0 (2022-02-24)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v4-0-1-2022-02-28">v4.0.1 (2022-02-28)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id63">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id64">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id65">Refactor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#v4-0-0-2022-02-24">v4.0.0 (2022-02-24)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id64">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id65">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id66">Refactor</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v3-1-1-2022-02-02">v3.1.1 (2022-02-02)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id66">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id67">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v3-1-0-2022-01-21">v3.1.0 (2022-01-21)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id67">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id68">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id68">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id69">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v3-0-0-2022-01-14">v3.0.0 (2022-01-14)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id69">Refactor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id70">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id71">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id70">Refactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id71">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id72">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v2-1-0-2022-01-05">v2.1.0 (2022-01-05)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id72">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id73">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id73">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id74">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v2-0-0-2021-12-20">v2.0.0 (2021-12-20)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id74">Feat</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id75">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id75">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id76">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v1-0-0-2021-12-06">v1.0.0 (2021-12-06)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id76">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id77">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id77">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id78">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-2-1-2021-11-11">v0.2.1 (2021-11-11)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id78">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id79">Fix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-2-0-2021-11-04">v0.2.0 (2021-11-04)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id79">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id80">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-0-2021-10-29">v0.1.0 (2021-10-29)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id80">Fix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id81">Feat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id81">Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id82">Feat</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-0-8-2021-10-18">v0.0.8 (2021-10-18)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id82">Fix</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#v0-0-7-2021-10-18">v0.0.7 (2021-10-18)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id83">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v0-0-6-2021-10-18">v0.0.6 (2021-10-18)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v0-0-7-2021-10-18">v0.0.7 (2021-10-18)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id84">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id85">0.0.6 (2021-10-18)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id86">Fix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-0-6-2021-10-18">v0.0.6 (2021-10-18)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id85">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id87">0.0.5 (2021-10-18)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id88">Fix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id86">0.0.6 (2021-10-18)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id87">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#v0-0-4-2021-10-13">v0.0.4 (2021-10-13)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id88">0.0.5 (2021-10-18)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id89">Fix</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id90">0.0.3 (2021-10-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-0-4-2021-10-13">v0.0.4 (2021-10-13)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id90">Fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id91">0.0.3 (2021-10-08)</a></li>
 </ul>
 </li>
 </ul>
@@ -382,6 +386,15 @@
              
   <section id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
+<section id="v8-4-0-2024-03-22">
+<h2>v8.4.0 (2024-03-22)<a class="headerlink" href="#v8-4-0-2024-03-22" title="Link to this heading"></a></h2>
+<section id="feat">
+<h3>Feat<a class="headerlink" href="#feat" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Add Discharge Reciprocating Pump function</p></li>
+</ul>
+</section>
+</section>
 <section id="v8-3-3-2024-03-20">
 <h2>v8.3.3 (2024-03-20)<a class="headerlink" href="#v8-3-3-2024-03-20" title="Link to this heading"></a></h2>
 <section id="fix">
@@ -416,14 +429,14 @@
 </section>
 <section id="v8-3-0-2024-01-15">
 <h2>v8.3.0 (2024-01-15)<a class="headerlink" href="#v8-3-0-2024-01-15" title="Link to this heading"></a></h2>
-<section id="feat">
-<h3>Feat<a class="headerlink" href="#feat" title="Link to this heading"></a></h3>
+<section id="id3">
+<h3>Feat<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>python-3.12 (#6)</p></li>
 </ul>
 </section>
-<section id="id3">
-<h3>Fix<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<section id="id4">
+<h3>Fix<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>removing recommended python version</p></li>
 <li><p>Switch back function descriptions (#72)</p></li>
@@ -506,13 +519,13 @@
 </section>
 <section id="v8-1-0">
 <h2>v8.1.0<a class="headerlink" href="#v8-1-0" title="Link to this heading"></a></h2>
-<section id="id4">
-<h3>Feat<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<section id="id5">
+<h3>Feat<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <ul>
 <li><p>chore(deps): update dependency sphinx to &lt;7.2 (#1051)</p></li>
 <li><p>chore(deps): update python docker tag to v3.11.5 (#1053)</p></li>
 <li><p>chore(deps): lock file maintenance (#1054)</p></li>
-<li><h3 class="rubric" id="id5">Fix</h3>
+<li><h3 class="rubric" id="id6">Fix</h3>
 </li>
 <li><p>fix: Add type conversion in Change Point Detection algorithm (#1047)</p></li>
 <li><p>fix: check if valve is empty (#1050)</p></li>
@@ -521,8 +534,8 @@
 </section>
 <section id="v8-0-1">
 <h2>v8.0.1<a class="headerlink" href="#v8-0-1" title="Link to this heading"></a></h2>
-<section id="id6">
-<h3>Fix<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3>Fix<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix: create a poetry group for fluids (#1048)</p></li>
 </ul>
@@ -530,8 +543,8 @@
 </section>
 <section id="v8-0-0">
 <h2>v8.0.0<a class="headerlink" href="#v8-0-0" title="Link to this heading"></a></h2>
-<section id="id7">
-<h3>Feat<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<section id="id8">
+<h3>Feat<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>docs: build docs (#1021)</p></li>
 <li><p>chore(deps): update pre-commit hook commitizen-tools/commitizen to v3.4.0 (#1023)</p></li>
@@ -560,8 +573,8 @@
 <li><p>chore(deps): lock file maintenance (#1045)</p></li>
 </ul>
 </section>
-<section id="id8">
-<h3>Fix<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<section id="id9">
+<h3>Fix<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix(deps): update dependency scipy to v1.11.1 (#1039)</p></li>
 <li><p>fix: raise UserValueError if alpha is outside the range (0, 1] in Cusum (#1037)</p></li>
@@ -570,23 +583,23 @@
 </section>
 <section id="v7-0-1">
 <h2>v7.0.1<a class="headerlink" href="#v7-0-1" title="Link to this heading"></a></h2>
-<section id="id9">
-<h3>Fix<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3>Fix<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <p>fix: remove matplotlib from indsl main depenencies, use lazy import (#1019)</p>
 </section>
 </section>
 <section id="v7-0-0">
 <h2>v7.0.0<a class="headerlink" href="#v7-0-0" title="Link to this heading"></a></h2>
-<section id="id10">
-<h3>Feat<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id11">
+<h3>Feat<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>chore(deps): update pre-commit hook commitizen-tools/commitizen to v3.3.0 (1014)</p></li>
 <li><p>chore(deps): lock file maintenance (#1016)</p></li>
 <li><p>chore(deps): update dependency myst-parser to v2 (#1015)</p></li>
 </ul>
 </section>
-<section id="id11">
-<h3>Fix<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id12">
+<h3>Fix<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix: exclude plot from oscillation detector in charts (#1017)</p></li>
 </ul>
@@ -594,15 +607,15 @@
 </section>
 <section id="v6-6-0a1-pre-release">
 <h2>v6.6.0a1 Pre-release<a class="headerlink" href="#v6-6-0a1-pre-release" title="Link to this heading"></a></h2>
-<section id="id12">
-<h3>Feat<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<section id="id13">
+<h3>Feat<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>chore(deps): lock file maintenance (#1009)</p></li>
 <li><p>chore(deps): update dependency sphinx to v7 (#1006)</p></li>
 </ul>
 </section>
-<section id="id13">
-<h3>Fix<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<section id="id14">
+<h3>Fix<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix: raise UserValueError if x is duplicated (#1005)</p></li>
 <li><p>fix: updates after panadas v2 (#1012)</p></li>
@@ -611,15 +624,15 @@
 </section>
 <section id="v6-6-0a0-2023-07-04">
 <h2>v6.6.0a0 (2023-07-04)<a class="headerlink" href="#v6-6-0a0-2023-07-04" title="Link to this heading"></a></h2>
-<section id="id14">
-<h3>Feat<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<section id="id15">
+<h3>Feat<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>calculate datapoint difference over a time period (#851)</p></li>
 <li><p>valve flow for compressible fluid (#670)</p></li>
 </ul>
 </section>
-<section id="id15">
-<h3>Fix<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<section id="id16">
+<h3>Fix<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>use Literal from typing_extensions (#999)</p></li>
 <li><p><strong>deps</strong>: update dependency scikit-image to ^0.21.0 (#1003)</p></li>
@@ -638,14 +651,14 @@
 </section>
 <section id="v6-5-0-2023-03-31">
 <h2>v6.5.0 (2023-03-31)<a class="headerlink" href="#v6-5-0-2023-03-31" title="Link to this heading"></a></h2>
-<section id="id16">
-<h3>Feat<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<section id="id17">
+<h3>Feat<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>feat: add groupby region calculation (#933)</p></li>
 </ul>
 </section>
-<section id="id17">
-<h3>Fix<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<section id="id18">
+<h3>Fix<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add <code class="docutils literal notranslate"><span class="pre">pd.Timedelta</span></code> validation to <code class="docutils literal notranslate"><span class="pre">trapezoidal_integration</span></code> (#946)</p></li>
 <li><p>move away from numba implementation for fluids library (#943)</p></li>
@@ -654,8 +667,8 @@
 </section>
 <section id="v6-4-4-2023-03-23">
 <h2>v6.4.4 (2023-03-23)<a class="headerlink" href="#v6-4-4-2023-03-23" title="Link to this heading"></a></h2>
-<section id="id18">
-<h3>Fix<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<section id="id19">
+<h3>Fix<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>remove emd (#940)</p></li>
 </ul>
@@ -663,8 +676,8 @@
 </section>
 <section id="v6-4-3-2023-02-23">
 <h2>v6.4.3 (2023-02-23)<a class="headerlink" href="#v6-4-3-2023-02-23" title="Link to this heading"></a></h2>
-<section id="id19">
-<h3>Fix<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<section id="id20">
+<h3>Fix<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>deps</strong>: update dependency packaging to v23 (#921)</p></li>
 <li><p>remove emd dependency from indsl (#923)</p></li>
@@ -673,8 +686,8 @@
 </section>
 <section id="v6-4-2-2023-01-24">
 <h2>v6.4.2 (2023-01-24)<a class="headerlink" href="#v6-4-2-2023-01-24" title="Link to this heading"></a></h2>
-<section id="id20">
-<h3>Fix<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<section id="id21">
+<h3>Fix<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>numpy warning (#909)</p></li>
 </ul>
@@ -682,8 +695,8 @@
 </section>
 <section id="v6-4-1-2023-01-24">
 <h2>v6.4.1 (2023-01-24)<a class="headerlink" href="#v6-4-1-2023-01-24" title="Link to this heading"></a></h2>
-<section id="id21">
-<h3>Fix<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<section id="id22">
+<h3>Fix<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>data quality base class handle consecutive gaps as separate events [DEGR-1298] (#906)</p></li>
 <li><p><strong>deps</strong>: update dependency packaging to v22 (#898)</p></li>
@@ -693,15 +706,15 @@
 </section>
 <section id="v6-4-0-2022-12-13">
 <h2>v6.4.0 (2022-12-13)<a class="headerlink" href="#v6-4-0-2022-12-13" title="Link to this heading"></a></h2>
-<section id="id22">
-<h3>Feat<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<section id="id23">
+<h3>Feat<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add drilling toolbox and basic detection algorithms (#832)</p></li>
 <li><p>check licenses with dependencies CI action [DEGR-956] (#879)</p></li>
 </ul>
 </section>
-<section id="id23">
-<h3>Fix<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<section id="id24">
+<h3>Fix<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>remove gustavo as author (#884)</p></li>
 <li><p>Refactor title of example for value decrease check (#880)</p></li>
@@ -712,8 +725,8 @@
 </section>
 <section id="v6-3-1-2022-11-09">
 <h2>v6.3.1 (2022-11-09)<a class="headerlink" href="#v6-3-1-2022-11-09" title="Link to this heading"></a></h2>
-<section id="id24">
-<h3>Fix<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<section id="id25">
+<h3>Fix<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>publish</strong>: add auto-merge label to PR (#863)</p></li>
 </ul>
@@ -721,16 +734,16 @@
 </section>
 <section id="v6-3-0-2022-11-08">
 <h2>v6.3.0 (2022-11-08)<a class="headerlink" href="#v6-3-0-2022-11-08" title="Link to this heading"></a></h2>
-<section id="id25">
-<h3>Feat<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<section id="id26">
+<h3>Feat<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add new optional argument for resample_timeseries utility function (#830)</p></li>
 <li><p>add auto approve workflow for renovate[bot] PRs (#854)</p></li>
 <li><p>add auto update label to renovate (#841)</p></li>
 </ul>
 </section>
-<section id="id26">
-<h3>Fix<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<section id="id27">
+<h3>Fix<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>deps</strong>: update dependency numba to ^0.56.0 (#827)</p></li>
 <li><p>Instantiate outlier detection function (#846)</p></li>
@@ -739,14 +752,14 @@
 </section>
 <section id="v6-2-0-2022-09-29">
 <h2>v6.2.0 (2022-09-29)<a class="headerlink" href="#v6-2-0-2022-09-29" title="Link to this heading"></a></h2>
-<section id="id27">
-<h3>Feat<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<section id="id28">
+<h3>Feat<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Data Quality Function for validity dimension - Out of range outlier detection (#667)</p></li>
 </ul>
 </section>
-<section id="id28">
-<h3>Fix<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<section id="id29">
+<h3>Fix<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><strong>deps</strong>: update dependency kneed to ^0.8.0 (#831)</p></li>
 </ul>
@@ -754,8 +767,8 @@
 </section>
 <section id="v6-1-0-2022-08-25">
 <h2>v6.1.0 (2022-08-25)<a class="headerlink" href="#v6-1-0-2022-08-25" title="Link to this heading"></a></h2>
-<section id="id29">
-<h3>Feat<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<section id="id30">
+<h3>Feat<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add data profiling metrics (#739)</p></li>
 </ul>
@@ -763,8 +776,8 @@
 </section>
 <section id="v6-0-1-2022-08-17">
 <h2>v6.0.1 (2022-08-17)<a class="headerlink" href="#v6-0-1-2022-08-17" title="Link to this heading"></a></h2>
-<section id="id30">
-<h3>Fix<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<section id="id31">
+<h3>Fix<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix failing pypi push (#819)</p></li>
 </ul>
@@ -772,14 +785,14 @@
 </section>
 <section id="v6-0-0-2022-08-17">
 <h2>v6.0.0 (2022-08-17)<a class="headerlink" href="#v6-0-0-2022-08-17" title="Link to this heading"></a></h2>
-<section id="id31">
-<h3>Feat<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<section id="id32">
+<h3>Feat<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add range option to remove function (#814)</p></li>
 </ul>
 </section>
-<section id="id32">
-<h3>Fix<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<section id="id33">
+<h3>Fix<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>print correct filenames in docstring test (#808)</p></li>
 <li><p>smoothers should handle empty data series [CHART-1005] (#800)</p></li>
@@ -803,8 +816,8 @@
 </section>
 <section id="v4-8-2-2022-08-09">
 <h2>v4.8.2 (2022-08-09)<a class="headerlink" href="#v4-8-2-2022-08-09" title="Link to this heading"></a></h2>
-<section id="id33">
-<h3>Fix<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
+<section id="id34">
+<h3>Fix<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>all versioned functions start with v1.0 (#788)</p></li>
 </ul>
@@ -812,14 +825,14 @@
 </section>
 <section id="v4-8-1-2022-08-09">
 <h2>v4.8.1 (2022-08-09)<a class="headerlink" href="#v4-8-1-2022-08-09" title="Link to this heading"></a></h2>
-<section id="id34">
-<h3>Refactor<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<section id="id35">
+<h3>Refactor<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>introduce new naming convention for versioned function (#782)</p></li>
 </ul>
 </section>
-<section id="id35">
-<h3>Fix<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<section id="id36">
+<h3>Fix<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>replace Enum with Literal types in InDSL functions [CHART-763] [CHART-1007] (#781)</p></li>
 <li><p>use stricter data types in remove outliers [CHART-1342] (#776)</p></li>
@@ -838,8 +851,8 @@
 </section>
 <section id="v4-8-0-2022-07-26">
 <h2>v4.8.0 (2022-07-26)<a class="headerlink" href="#v4-8-0-2022-07-26" title="Link to this heading"></a></h2>
-<section id="id36">
-<h3>Fix<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<section id="id37">
+<h3>Fix<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Increase coverage for confidence bands function (#746)</p></li>
 <li><p>Added coverage for drift detector (#745)</p></li>
@@ -848,8 +861,8 @@
 <li><p>cusum docstring (#732)</p></li>
 </ul>
 </section>
-<section id="id37">
-<h3>Feat<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
+<section id="id38">
+<h3>Feat<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Refactor outlier removal and create function for outlier detection (#741)</p></li>
 <li><p>Pearson correlation rolling window (#711)</p></li>
@@ -858,21 +871,21 @@
 </section>
 <section id="v4-7-0-2022-07-07">
 <h2>v4.7.0 (2022-07-07)<a class="headerlink" href="#v4-7-0-2022-07-07" title="Link to this heading"></a></h2>
-<section id="id38">
-<h3>Fix<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
+<section id="id39">
+<h3>Fix<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Add duration unit for unchanged signal detector (#712)</p></li>
 <li><p>fix example recycle valve power loss (#717)</p></li>
 </ul>
 </section>
-<section id="id39">
-<h3>Feat<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
+<section id="id40">
+<h3>Feat<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>python 3.10 (#721)</p></li>
 </ul>
 </section>
-<section id="id40">
-<h3>Refactor<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
+<section id="id41">
+<h3>Refactor<a class="headerlink" href="#id41" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>remove todo functions (#707)</p></li>
 </ul>
@@ -880,15 +893,15 @@
 </section>
 <section id="v4-6-0-2022-06-16">
 <h2>v4.6.0 (2022-06-16)<a class="headerlink" href="#v4-6-0-2022-06-16" title="Link to this heading"></a></h2>
-<section id="id41">
-<h3>Feat<a class="headerlink" href="#id41" title="Link to this heading"></a></h3>
+<section id="id42">
+<h3>Feat<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add cusum function (#540)</p></li>
 <li><p>add sustainability calculations (#686)</p></li>
 </ul>
 </section>
-<section id="id42">
-<h3>Fix<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<section id="id43">
+<h3>Fix<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>coverage upgrade for butterworth filter (#690)</p></li>
 </ul>
@@ -896,8 +909,8 @@
 </section>
 <section id="v4-5-1-2022-06-09">
 <h2>v4.5.1 (2022-06-09)<a class="headerlink" href="#v4-5-1-2022-06-09" title="Link to this heading"></a></h2>
-<section id="id43">
-<h3>Fix<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
+<section id="id44">
+<h3>Fix<a class="headerlink" href="#id44" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>error message in holt winters predictor (#688)</p></li>
 <li><p>make test of initial version accept more formats (#685)</p></li>
@@ -909,14 +922,14 @@
 </section>
 <section id="v4-5-0-2022-05-25">
 <h2>v4.5.0 (2022-05-25)<a class="headerlink" href="#v4-5-0-2022-05-25" title="Link to this heading"></a></h2>
-<section id="id44">
-<h3>Fix<a class="headerlink" href="#id44" title="Link to this heading"></a></h3>
+<section id="id45">
+<h3>Fix<a class="headerlink" href="#id45" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add correct type of parameters for density methods (DQ score) (#666)</p></li>
 </ul>
 </section>
-<section id="id45">
-<h3>Feat<a class="headerlink" href="#id45" title="Link to this heading"></a></h3>
+<section id="id46">
+<h3>Feat<a class="headerlink" href="#id46" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Unchanged signal identification of time series (#638)</p></li>
 </ul>
@@ -924,8 +937,8 @@
 </section>
 <section id="v4-4-1-2022-05-18">
 <h2>v4.4.1 (2022-05-18)<a class="headerlink" href="#v4-4-1-2022-05-18" title="Link to this heading"></a></h2>
-<section id="id46">
-<h3>Fix<a class="headerlink" href="#id46" title="Link to this heading"></a></h3>
+<section id="id47">
+<h3>Fix<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>typo in Pump recycle valve power description (#661)</p></li>
 </ul>
@@ -933,22 +946,22 @@
 </section>
 <section id="v4-4-0-2022-05-11">
 <h2>v4.4.0 (2022-05-11)<a class="headerlink" href="#v4-4-0-2022-05-11" title="Link to this heading"></a></h2>
-<section id="id47">
-<h3>Feat<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
+<section id="id48">
+<h3>Feat<a class="headerlink" href="#id48" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>allow union of scalar and series parameters to pump and valve f… (#636)</p></li>
 <li><p>Rolling standard deviation of time delta (#582)</p></li>
 </ul>
 </section>
-<section id="id48">
-<h3>Fix<a class="headerlink" href="#id48" title="Link to this heading"></a></h3>
+<section id="id49">
+<h3>Fix<a class="headerlink" href="#id49" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix bug in reindex if bounded=True and input contains NaNs [CHART-1224] (#644)</p></li>
 <li><p>Raise UserValueError if time series is empty in remove_outliers [CHART-1226] (#642)</p></li>
 </ul>
 </section>
-<section id="id49">
-<h3>Refactor<a class="headerlink" href="#id49" title="Link to this heading"></a></h3>
+<section id="id50">
+<h3>Refactor<a class="headerlink" href="#id50" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>restructure add equipment (#624)</p></li>
 </ul>
@@ -956,8 +969,8 @@
 </section>
 <section id="v4-3-1-2022-05-04">
 <h2>v4.3.1 (2022-05-04)<a class="headerlink" href="#v4-3-1-2022-05-04" title="Link to this heading"></a></h2>
-<section id="id50">
-<h3>Fix<a class="headerlink" href="#id50" title="Link to this heading"></a></h3>
+<section id="id51">
+<h3>Fix<a class="headerlink" href="#id51" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>wrong resampling when one input has two values (#631)</p></li>
 <li><p>small bug (#627)</p></li>
@@ -967,8 +980,8 @@
 </section>
 <section id="v4-3-0-2022-04-27">
 <h2>v4.3.0 (2022-04-27)<a class="headerlink" href="#v4-3-0-2022-04-27" title="Link to this heading"></a></h2>
-<section id="id51">
-<h3>Fix<a class="headerlink" href="#id51" title="Link to this heading"></a></h3>
+<section id="id52">
+<h3>Fix<a class="headerlink" href="#id52" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add density functions to init (#616)</p></li>
 <li><p>Tuple to floats inputs (#613)</p></li>
@@ -976,8 +989,8 @@
 <li><p>throw UserValueErrors in ts_utils [CHART-1190] (#602)</p></li>
 </ul>
 </section>
-<section id="id52">
-<h3>Feat<a class="headerlink" href="#id52" title="Link to this heading"></a></h3>
+<section id="id53">
+<h3>Feat<a class="headerlink" href="#id53" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>[DataQuality] density function and score (#562)</p></li>
 <li><p>Constant value (#583)</p></li>
@@ -987,8 +1000,8 @@
 </section>
 <section id="v4-2-2-2022-04-21">
 <h2>v4.2.2 (2022-04-21)<a class="headerlink" href="#v4-2-2-2022-04-21" title="Link to this heading"></a></h2>
-<section id="id53">
-<h3>Fix<a class="headerlink" href="#id53" title="Link to this heading"></a></h3>
+<section id="id54">
+<h3>Fix<a class="headerlink" href="#id54" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>gracefully handle empty time series in DataQualityScore.compute_score (#594)</p></li>
 </ul>
@@ -996,8 +1009,8 @@
 </section>
 <section id="v4-2-1-2022-04-21">
 <h2>v4.2.1 (2022-04-21)<a class="headerlink" href="#v4-2-1-2022-04-21" title="Link to this heading"></a></h2>
-<section id="id54">
-<h3>Fix<a class="headerlink" href="#id54" title="Link to this heading"></a></h3>
+<section id="id55">
+<h3>Fix<a class="headerlink" href="#id55" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>format flag time series  (#588)</p></li>
 <li><p>typo gas density calcs (#574)</p></li>
@@ -1008,14 +1021,14 @@
 </section>
 <section id="v4-2-0-2022-04-20">
 <h2>v4.2.0 (2022-04-20)<a class="headerlink" href="#v4-2-0-2022-04-20" title="Link to this heading"></a></h2>
-<section id="id55">
-<h3>Fix<a class="headerlink" href="#id55" title="Link to this heading"></a></h3>
+<section id="id56">
+<h3>Fix<a class="headerlink" href="#id56" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>sg from float to series (#569)</p></li>
 </ul>
 </section>
-<section id="id56">
-<h3>Feat<a class="headerlink" href="#id56" title="Link to this heading"></a></h3>
+<section id="id57">
+<h3>Feat<a class="headerlink" href="#id57" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add uncertainty estimation data quality function [Chart-1102] (#535)</p></li>
 <li><p>feat: gap identification by timedelta threshold (#546)</p></li>
@@ -1024,8 +1037,8 @@
 </section>
 <section id="v4-1-1-2022-03-30">
 <h2>v4.1.1 (2022-03-30)<a class="headerlink" href="#v4-1-1-2022-03-30" title="Link to this heading"></a></h2>
-<section id="id57">
-<h3>Fix<a class="headerlink" href="#id57" title="Link to this heading"></a></h3>
+<section id="id58">
+<h3>Fix<a class="headerlink" href="#id58" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>formatting centrifugal pumps (#548)</p></li>
 </ul>
@@ -1033,8 +1046,8 @@
 </section>
 <section id="v4-1-0-2022-03-22">
 <h2>v4.1.0 (2022-03-22)<a class="headerlink" href="#v4-1-0-2022-03-22" title="Link to this heading"></a></h2>
-<section id="id58">
-<h3>Fix<a class="headerlink" href="#id58" title="Link to this heading"></a></h3>
+<section id="id59">
+<h3>Fix<a class="headerlink" href="#id59" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>function extreme (outlier detection) had an error in a formula.   (#541)</p></li>
 <li><p>fix crashing resample_to_granularity for interpolation aggregats [CHART-1103] (#537)</p></li>
@@ -1042,16 +1055,16 @@
 <li><p>update extreme outlier logic (#513)</p></li>
 </ul>
 </section>
-<section id="id59">
-<h3>Feat<a class="headerlink" href="#id59" title="Link to this heading"></a></h3>
+<section id="id60">
+<h3>Feat<a class="headerlink" href="#id60" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New function: centrifugal pump parameters (#530)</p></li>
 <li><p>New function: change to sdk-core to limit package size (#533)</p></li>
 <li><p>New function: trend extraction  [CHART-992] (#525)</p></li>
 </ul>
 </section>
-<section id="id60">
-<h3>Refactor<a class="headerlink" href="#id60" title="Link to this heading"></a></h3>
+<section id="id61">
+<h3>Refactor<a class="headerlink" href="#id61" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>replace deprecated distutils.Version class with packaging.version.Version (#524)</p></li>
 </ul>
@@ -1059,8 +1072,8 @@
 </section>
 <section id="v4-0-2-2022-03-01">
 <h2>v4.0.2 (2022-03-01)<a class="headerlink" href="#v4-0-2-2022-03-01" title="Link to this heading"></a></h2>
-<section id="id61">
-<h3>Fix<a class="headerlink" href="#id61" title="Link to this heading"></a></h3>
+<section id="id62">
+<h3>Fix<a class="headerlink" href="#id62" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>[DataQuality] Improvements to data quality score algorithms (#512)</p></li>
 </ul>
@@ -1068,8 +1081,8 @@
 </section>
 <section id="v4-0-1-2022-02-28">
 <h2>v4.0.1 (2022-02-28)<a class="headerlink" href="#v4-0-1-2022-02-28" title="Link to this heading"></a></h2>
-<section id="id62">
-<h3>Fix<a class="headerlink" href="#id62" title="Link to this heading"></a></h3>
+<section id="id63">
+<h3>Fix<a class="headerlink" href="#id63" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix sg error (#507)</p></li>
 <li><p>[DataQuality] More robust gap based data quality score (#504)</p></li>
@@ -1078,16 +1091,16 @@
 </section>
 <section id="v4-0-0-2022-02-24">
 <h2>v4.0.0 (2022-02-24)<a class="headerlink" href="#v4-0-0-2022-02-24" title="Link to this heading"></a></h2>
-<section id="id63">
-<h3>Fix<a class="headerlink" href="#id63" title="Link to this heading"></a></h3>
+<section id="id64">
+<h3>Fix<a class="headerlink" href="#id64" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Versioning: replace deprecation_warning with changelog [CHART-1041] (#494)</p></li>
 <li><p>Versioning: enforce 1.0 as first version for versioned functions [CHART-1055] (#492)</p></li>
 <li><p>Fix argument docstring for well_prod_status function (#483)</p></li>
 </ul>
 </section>
-<section id="id64">
-<h3>Feat<a class="headerlink" href="#id64" title="Link to this heading"></a></h3>
+<section id="id65">
+<h3>Feat<a class="headerlink" href="#id65" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>DataQuality: add abstract and gap-based data quality scores [Chart-1023] (#474)</p></li>
 <li><p>New function: arithmetic mean for multiple time series (#481)</p></li>
@@ -1095,8 +1108,8 @@
 <li><p>New function: sliding window integrator (#438)</p></li>
 </ul>
 </section>
-<section id="id65">
-<h3>Refactor<a class="headerlink" href="#id65" title="Link to this heading"></a></h3>
+<section id="id66">
+<h3>Refactor<a class="headerlink" href="#id66" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Collect common validation functions into validations.py (#459)</p></li>
 </ul>
@@ -1104,8 +1117,8 @@
 </section>
 <section id="v3-1-1-2022-02-02">
 <h2>v3.1.1 (2022-02-02)<a class="headerlink" href="#v3-1-1-2022-02-02" title="Link to this heading"></a></h2>
-<section id="id66">
-<h3>Fix<a class="headerlink" href="#id66" title="Link to this heading"></a></h3>
+<section id="id67">
+<h3>Fix<a class="headerlink" href="#id67" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Improve visual representation of change points (#393)</p></li>
 </ul>
@@ -1113,15 +1126,15 @@
 </section>
 <section id="v3-1-0-2022-01-21">
 <h2>v3.1.0 (2022-01-21)<a class="headerlink" href="#v3-1-0-2022-01-21" title="Link to this heading"></a></h2>
-<section id="id67">
-<h3>Feat<a class="headerlink" href="#id67" title="Link to this heading"></a></h3>
+<section id="id68">
+<h3>Feat<a class="headerlink" href="#id68" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Negative running hours data quality model  (#340)</p></li>
 <li><p>Threshold function [CHART-948] (#382)</p></li>
 </ul>
 </section>
-<section id="id68">
-<h3>Fix<a class="headerlink" href="#id68" title="Link to this heading"></a></h3>
+<section id="id69">
+<h3>Fix<a class="headerlink" href="#id69" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Change RuntimeError to UserRuntimeError in change point detector [CHART-937] (#370)</p></li>
 <li><p>Improve input validation for trapezoidal_integration [CHART-935] (#371)</p></li>
@@ -1133,14 +1146,14 @@
 </section>
 <section id="v3-0-0-2022-01-14">
 <h2>v3.0.0 (2022-01-14)<a class="headerlink" href="#v3-0-0-2022-01-14" title="Link to this heading"></a></h2>
-<section id="id69">
-<h3>Refactor<a class="headerlink" href="#id69" title="Link to this heading"></a></h3>
+<section id="id70">
+<h3>Refactor<a class="headerlink" href="#id70" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Deprecate old style operation names [CHART-921] (#338)</p></li>
 </ul>
 </section>
-<section id="id70">
-<h3>Fix<a class="headerlink" href="#id70" title="Link to this heading"></a></h3>
+<section id="id71">
+<h3>Fix<a class="headerlink" href="#id71" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Use pandas Timedelta types in line and sine_wave functions (#341)</p></li>
 <li><p>Return UserRuntimeError in status_flag_filter (#336)</p></li>
@@ -1148,8 +1161,8 @@
 <li><p>Add default parameter values to replace/remove [CHART-909] (#335)</p></li>
 </ul>
 </section>
-<section id="id71">
-<h3>Feat<a class="headerlink" href="#id71" title="Link to this heading"></a></h3>
+<section id="id72">
+<h3>Feat<a class="headerlink" href="#id72" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Support deprecation of versioned functions [CHART-919] (#337)</p></li>
 <li><p>Support for Python 3.9 (#342)</p></li>
@@ -1160,8 +1173,8 @@
 </section>
 <section id="v2-1-0-2022-01-05">
 <h2>v2.1.0 (2022-01-05)<a class="headerlink" href="#v2-1-0-2022-01-05" title="Link to this heading"></a></h2>
-<section id="id72">
-<h3>Fix<a class="headerlink" href="#id72" title="Link to this heading"></a></h3>
+<section id="id73">
+<h3>Fix<a class="headerlink" href="#id73" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Validate inputs for detect algorithms [CHART-855] (#312)</p></li>
 <li><p>_make_index Timedelta error and docs build error due to wrong path and type errors (#306)</p></li>
@@ -1171,8 +1184,8 @@
 <li><p>Use Literal type annotations in interpolate and resample functions [CHART-870] (#278)</p></li>
 </ul>
 </section>
-<section id="id73">
-<h3>Feat<a class="headerlink" href="#id73" title="Link to this heading"></a></h3>
+<section id="id74">
+<h3>Feat<a class="headerlink" href="#id74" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New function: univariate polynomial (#295)</p></li>
 <li><p>Automatically validate input output types (#260)</p></li>
@@ -1182,8 +1195,8 @@
 </section>
 <section id="v2-0-0-2021-12-20">
 <h2>v2.0.0 (2021-12-20)<a class="headerlink" href="#v2-0-0-2021-12-20" title="Link to this heading"></a></h2>
-<section id="id74">
-<h3>Feat<a class="headerlink" href="#id74" title="Link to this heading"></a></h3>
+<section id="id75">
+<h3>Feat<a class="headerlink" href="#id75" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New function: completeness score (#243)</p></li>
 <li><p>Add exceptions types for errors targeted to users [Chart-832] (#252)</p></li>
@@ -1194,8 +1207,8 @@
 <li><p>New function: synthetic signal generator (#62)</p></li>
 </ul>
 </section>
-<section id="id75">
-<h3>Fix<a class="headerlink" href="#id75" title="Link to this heading"></a></h3>
+<section id="id76">
+<h3>Fix<a class="headerlink" href="#id76" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix path to valve_data.pkl (#259)</p></li>
 </ul>
@@ -1203,8 +1216,8 @@
 </section>
 <section id="v1-0-0-2021-12-06">
 <h2>v1.0.0 (2021-12-06)<a class="headerlink" href="#v1-0-0-2021-12-06" title="Link to this heading"></a></h2>
-<section id="id76">
-<h3>Fix<a class="headerlink" href="#id76" title="Link to this heading"></a></h3>
+<section id="id77">
+<h3>Fix<a class="headerlink" href="#id77" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix path to data set (#212)</p></li>
 <li><p>Improve error handling in reindex with short time series [CHART-804] (#194)</p></li>
@@ -1212,8 +1225,8 @@
 <li><p>Add default parameter values for clip function (#193)</p></li>
 </ul>
 </section>
-<section id="id77">
-<h3>Feat<a class="headerlink" href="#id77" title="Link to this heading"></a></h3>
+<section id="id78">
+<h3>Feat<a class="headerlink" href="#id78" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New functions: get_timestamps, get_timestamps and shift [CHART-813] (#172)</p></li>
 <li><p>New functions: replace/remove [CHART-789 CHART-808] (#189)</p></li>
@@ -1224,8 +1237,8 @@
 </section>
 <section id="v0-2-1-2021-11-11">
 <h2>v0.2.1 (2021-11-11)<a class="headerlink" href="#v0-2-1-2021-11-11" title="Link to this heading"></a></h2>
-<section id="id78">
-<h3>Fix<a class="headerlink" href="#id78" title="Link to this heading"></a></h3>
+<section id="id79">
+<h3>Fix<a class="headerlink" href="#id79" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Complete and fix docstrings for all indsl functions [CHART-739] (#121)</p></li>
 <li><p>Solve pandas resampling issue when input datetime index only contains date (#69)</p></li>
@@ -1234,8 +1247,8 @@
 </section>
 <section id="v0-2-0-2021-11-04">
 <h2>v0.2.0 (2021-11-04)<a class="headerlink" href="#v0-2-0-2021-11-04" title="Link to this heading"></a></h2>
-<section id="id79">
-<h3>Feat<a class="headerlink" href="#id79" title="Link to this heading"></a></h3>
+<section id="id80">
+<h3>Feat<a class="headerlink" href="#id80" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Add auto align for inDSL functions [CHART-643] (#61)</p></li>
 <li><p>Support for function versioning [CHART-674] (#45)</p></li>
@@ -1244,15 +1257,15 @@
 </section>
 <section id="v0-1-0-2021-10-29">
 <h2>v0.1.0 (2021-10-29)<a class="headerlink" href="#v0-1-0-2021-10-29" title="Link to this heading"></a></h2>
-<section id="id80">
-<h3>Fix<a class="headerlink" href="#id80" title="Link to this heading"></a></h3>
+<section id="id81">
+<h3>Fix<a class="headerlink" href="#id81" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added missing resample import such that function would be availa… (#65)</p></li>
 <li><p>Improved/removed all test warnings #27 (#29)</p></li>
 </ul>
 </section>
-<section id="id81">
-<h3>Feat<a class="headerlink" href="#id81" title="Link to this heading"></a></h3>
+<section id="id82">
+<h3>Feat<a class="headerlink" href="#id82" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>New function: re-indexing [Chart 626] (#19)</p></li>
 </ul>
@@ -1260,8 +1273,8 @@
 </section>
 <section id="v0-0-8-2021-10-18">
 <h2>v0.0.8 (2021-10-18)<a class="headerlink" href="#v0-0-8-2021-10-18" title="Link to this heading"></a></h2>
-<section id="id82">
-<h3>Fix<a class="headerlink" href="#id82" title="Link to this heading"></a></h3>
+<section id="id83">
+<h3>Fix<a class="headerlink" href="#id83" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Improvements to the ED-Pelt Change Point Detection algorithm (#22)</p></li>
 </ul>
@@ -1269,8 +1282,8 @@
 </section>
 <section id="v0-0-7-2021-10-18">
 <h2>v0.0.7 (2021-10-18)<a class="headerlink" href="#v0-0-7-2021-10-18" title="Link to this heading"></a></h2>
-<section id="id83">
-<h3>Fix<a class="headerlink" href="#id83" title="Link to this heading"></a></h3>
+<section id="id84">
+<h3>Fix<a class="headerlink" href="#id84" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fixes on PR process (#34)</p></li>
 <li><p>fix PR process</p></li>
@@ -1279,26 +1292,26 @@
 </section>
 <section id="v0-0-6-2021-10-18">
 <h2>v0.0.6 (2021-10-18)<a class="headerlink" href="#v0-0-6-2021-10-18" title="Link to this heading"></a></h2>
-<section id="id84">
-<h3>Fix<a class="headerlink" href="#id84" title="Link to this heading"></a></h3>
+<section id="id85">
+<h3>Fix<a class="headerlink" href="#id85" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fixes on PR process (#34)</p></li>
 </ul>
 </section>
 </section>
-<section id="id85">
-<h2>0.0.6 (2021-10-18)<a class="headerlink" href="#id85" title="Link to this heading"></a></h2>
 <section id="id86">
-<h3>Fix<a class="headerlink" href="#id86" title="Link to this heading"></a></h3>
+<h2>0.0.6 (2021-10-18)<a class="headerlink" href="#id86" title="Link to this heading"></a></h2>
+<section id="id87">
+<h3>Fix<a class="headerlink" href="#id87" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix ci pipeline (#33)</p></li>
 </ul>
 </section>
 </section>
-<section id="id87">
-<h2>0.0.5 (2021-10-18)<a class="headerlink" href="#id87" title="Link to this heading"></a></h2>
 <section id="id88">
-<h3>Fix<a class="headerlink" href="#id88" title="Link to this heading"></a></h3>
+<h2>0.0.5 (2021-10-18)<a class="headerlink" href="#id88" title="Link to this heading"></a></h2>
+<section id="id89">
+<h3>Fix<a class="headerlink" href="#id89" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>add default granularity to integration and differentiation functions (#21)</p></li>
 </ul>
@@ -1306,16 +1319,16 @@
 </section>
 <section id="v0-0-4-2021-10-13">
 <h2>v0.0.4 (2021-10-13)<a class="headerlink" href="#v0-0-4-2021-10-13" title="Link to this heading"></a></h2>
-<section id="id89">
-<h3>Fix<a class="headerlink" href="#id89" title="Link to this heading"></a></h3>
+<section id="id90">
+<h3>Fix<a class="headerlink" href="#id90" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>fix github pipelines (#8)</p></li>
 <li><p>change name of main branch to master in pipelines (#7)</p></li>
 </ul>
 </section>
 </section>
-<section id="id90">
-<h2>0.0.3 (2021-10-08)<a class="headerlink" href="#id90" title="Link to this heading"></a></h2>
+<section id="id91">
+<h2>0.0.3 (2021-10-08)<a class="headerlink" href="#id91" title="Link to this heading"></a></h2>
 </section>
 </section>
 
