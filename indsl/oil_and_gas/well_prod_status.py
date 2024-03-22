@@ -23,7 +23,7 @@ def calculate_well_prod_status(
     threshold_wing: float = 1,
     threshold_choke: float = 5,
     align_timesteps: bool = False,
-) -> pd.Series:  
+) -> pd.Series:
     """Check if the well is producing.
 
     Determine if the well is producing. In order for this to be the case, the following has to happen:
