@@ -4,7 +4,7 @@ from .pump_parameters import (
     pump_hydraulic_power,
     pump_shaft_power,
     recycle_valve_power_loss,
-    total_head,
+    total_head, pump_discharge_reciprocating_pump,
 )
 from .valve_parameters import flow_through_valve
 from .volume_vessel import (
@@ -26,6 +26,7 @@ __all__ = [
     "filled_volume_ellipsoidal_head_vessel",
     "filled_volume_spherical_head_vessel",
     "filled_volume_torispherical_head_vessel",
+    "pump_discharge_reciprocating_pump"
 ]
 
 __cognite__ = [
@@ -37,4 +38,5 @@ __cognite__ = [
     "filled_volume_ellipsoidal_head_vessel",
     "filled_volume_spherical_head_vessel",
     "filled_volume_torispherical_head_vessel",
+    "pump_discharge_reciprocating_pump"
 ]
