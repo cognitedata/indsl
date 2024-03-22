@@ -318,7 +318,7 @@ def remove(
         range_from: Range start
             Only values above this parameter will be kept. If empty, which is the default, this range filter is deactivated.
         range_to: Range end
-            Only values above this parameter will be kept. If empty, which is the default, the range filter is deactivated.
+            Only values below this parameter will be kept. If empty, which is the default, the range filter is deactivated.
 
     Returns:
         pd.Series: time series
