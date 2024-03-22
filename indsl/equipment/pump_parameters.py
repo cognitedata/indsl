@@ -229,5 +229,5 @@ def pump_discharge_reciprocating_pump(
     """
     area, length_of_stroke, number_of_revolutions_per_second = auto_align([area, length_of_stroke, number_of_revolutions_per_second], align_timesteps)  # type: ignore
 
-    discharge = area * length_of_stroke * number_of_revolutions_per_second * 60
+    discharge = area * length_of_stroke * number_of_revolutions_per_second * 60  # type: ignore
     return scalar_to_pandas_series(discharge)
