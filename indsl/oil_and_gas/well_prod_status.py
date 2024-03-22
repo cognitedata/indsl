@@ -23,7 +23,7 @@ def calculate_well_prod_status(
     threshold_wing: float = 1,
     threshold_choke: float = 5,
     align_timesteps: bool = False,
-) -> pd.Series:  # TODO Consider removing this function and using calculate_xmt_prod_status instead
+) -> pd.Series:  
     """Check if the well is producing.
 
     Determine if the well is producing. In order for this to be the case, the following has to happen:
@@ -124,6 +124,8 @@ def calculate_xmt_prod_status(
     align_timesteps: bool = False,
 ) -> pd.Series:
     """Determine if the well is producing.
+
+    This function is an improvement of the 'calculate_well_prod_status' function, and this new function is recommended for calculating production status for xmas trees.
 
     In order for this to be the case, the following has to happen:
 
