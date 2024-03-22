@@ -208,7 +208,7 @@ def pump_discharge_reciprocating_pump(
     number_of_revolutions_per_second: Union[pd.Series, float],
     align_timesteps: bool = False,
 ) -> pd.Series:
-    r"""Pump discharge for reciprocating pump.
+    r"""Pump discharge
 
     This calculation can be used to calculate the discharge of a reciprocating pump.
     The formula for the discharge of a reciprocating pump is:
