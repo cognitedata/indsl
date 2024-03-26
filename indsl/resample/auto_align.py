@@ -11,7 +11,7 @@ from .reindex import reindex_many
 
 
 def _is_timeseries(data: Any) -> bool:
-    return isinstance(data, pd.Series) and np.issubdtype(data.index, np.datetime64)
+    return isinstance(data, pd.Series) and np.issubdtype(data.index, np.datetime64)  # type: ignore
 
 
 @check_types
