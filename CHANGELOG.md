@@ -1,3 +1,9 @@
+## v8.4.0 (2024-03-22)
+
+### Feat
+
+- Add Discharge Reciprocating Pump function
+
 ## v8.3.3 (2024-03-20)
 
 ### Fix
