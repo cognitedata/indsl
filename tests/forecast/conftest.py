@@ -26,6 +26,7 @@ def create_multistep_data_arma():
 
     return (perfect_data, test_data)
 
+
 @pytest.fixture
 def create_onestep_data_arma():
     # Create data
@@ -43,6 +44,7 @@ def create_onestep_data_arma():
     perfect_data = pd.Series(y_hat, index=x_dt)
 
     return (perfect_data, test_data)
+
 
 def _combine_single_periods_into_one(x, cycles, trend, seasonal_factor, trend_factor):
     one_period = np.sin(x)

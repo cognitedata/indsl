@@ -486,7 +486,7 @@ def normality_assumption_test(
     W, p_value = shapiro(series)
 
     if p_value < min_p_value or W < min_W:
-        raise UserValueError(f"This time series is not normally distributed")
+        raise UserValueError("This time series is not normally distributed")
 
     return None
 
