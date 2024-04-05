@@ -22,7 +22,7 @@ def test_empty_data():
 
 
 def test_resample_to_granularity_count():
-    data = pd.Series([random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1H"))
+    data = pd.Series([random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1h"))
     resampled_data = resample_to_granularity(data, granularity="2h", aggregate=AggregateEnum.COUNT)
     assert len(resampled_data) == len(data) // 2
     assert all(resampled_data == 2)
@@ -36,7 +36,7 @@ def test_resample_to_granularity_count():
     ],
 )
 def test_resample_to_granularity_interpolate(aggregate, expected_resampled_data):
-    data = pd.Series(list(range(24)), index=pd.date_range("2020-02-03", periods=24, freq="1H"))
+    data = pd.Series(list(range(24)), index=pd.date_range("2020-02-03", periods=24, freq="1h"))
     resampled_data = resample_to_granularity(data, granularity="30m", aggregate=aggregate)
     assert len(resampled_data) == len(data) * 2 - 1
     assert all(resampled_data.values == expected_resampled_data)

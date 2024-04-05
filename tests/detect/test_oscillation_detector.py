@@ -39,7 +39,7 @@ def test_prediction_accuracy(sin_wave_array_extensive, start_date, frequency):
     """Test accuracy of LPC polynomial fit."""
     values = sin_wave_array_extensive
     data = pd.Series(values, index=pd.date_range(start=start_date, freq=frequency, periods=len(values)))
-    results = helper_oscillation_detector(data)
+    results = helper_oscillation_detector(data, visualize=False)
 
     assert results["oscillations"]
     assert np.abs(np.average(results["fit"][1] - np.array(data))) < 1e-3

@@ -9,11 +9,11 @@ from indsl.statistics.confidence import bands
 @pytest.mark.core
 def test_confidence_bands():
     test_data = pd.Series(
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1H")
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h")
     )
 
     # Estimate a 1 hour rolling average and confidence bands with 2 standard deviations
-    period = "2H"
+    period = "2h"
     K = 2
     expected = {
         "avg": [1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5],

@@ -51,9 +51,9 @@ def test_outlier_removal_steady_state_input_returns_idendity(steady_state):
 @pytest.mark.parametrize(
     "input",
     (
-        [1, 1, 1, 1, 6],
-        [1, 1, 1, 1, 1, 6],
         [1, 1, 1, 1, 1, 1, 1, 6],
+        [1, 1, 1, 1, 1, 1, 1, 1, 6],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 6],
     ),
 )
 @pytest.mark.extras

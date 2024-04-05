@@ -86,14 +86,14 @@ def test_low_density_identification_z_scores_short_list():
 def test_test_low_density_identification_z_normality_assumption():
     np.random.seed(21)
     # uniform time series
-    data = np.zeros(10)
-    time_index = pd.date_range("2020-01-01", periods=10, freq="s")
+    data = np.zeros(1000)
+    time_index = pd.date_range("2020-01-01", periods=1000, freq="s")
     uniform_distribution_series = pd.Series(data=data, index=time_index)
     with pytest.raises(UserValueError) as excinfo:
         low_density_identification_z_scores(
-            data=uniform_distribution_series, time_window=pd.Timedelta("1s"), test_normality_assumption=True
+            data=uniform_distribution_series, time_window=pd.Timedelta("5s"), test_normality_assumption=True
         )
-    assert "This time series is uniform and not normally distributed" in str(excinfo.value)
+    assert "This time series is not normally distributed" in str(excinfo.value)
 
     # Normally distributed time series
     length = 1000

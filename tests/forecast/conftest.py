@@ -9,9 +9,9 @@ from tests.detect.test_utils import RNGContext
 
 
 @pytest.fixture
-def create_data_arma():
+def create_multistep_data_arma():
     # Create data
-    fx = "7H"
+    fx = "1h"
     x_dt = pd.date_range(start="1970", freq=fx, end="02-01-1970")
     x = np.linspace(0, 10, len(x_dt))
 
@@ -26,6 +26,23 @@ def create_data_arma():
 
     return (perfect_data, test_data)
 
+@pytest.fixture
+def create_onestep_data_arma():
+    # Create data
+    fx = "7h"
+    x_dt = pd.date_range(start="1970", freq=fx, end="02-01-1970")
+    x = np.linspace(0, 10, len(x_dt))
+
+    y_hat = 1e-2 * x**2 - 1e-1 * x + 2
+    with RNGContext():
+        y_tilde = np.random.normal(size=len(x), scale=0.05)
+
+    y = y_hat + y_tilde
+
+    test_data = pd.Series(y, index=x_dt)
+    perfect_data = pd.Series(y_hat, index=x_dt)
+
+    return (perfect_data, test_data)
 
 def _combine_single_periods_into_one(x, cycles, trend, seasonal_factor, trend_factor):
     one_period = np.sin(x)

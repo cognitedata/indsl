@@ -80,12 +80,9 @@ def window_index(np_datetime_ns: npt.NDArray[np.float64], windowlength_in_ns: in
     Retruns:
         np.ndarray: indexing of timewindows
     """
-    if prange is None:
-        raise ImportError(NUMBA_REQUIRED)
-
     from_to_index = np.zeros(len(np_datetime_ns), dtype=np.int64)
     end = np_datetime_ns[len(np_datetime_ns) - 1]
-    for i in prange(len(from_to_index)):
+    for i in range(len(from_to_index)):
         end_of_window_ns = np_datetime_ns[i] + windowlength_in_ns
         from_to_index[i] = (np.abs(np_datetime_ns - end_of_window_ns)).argmin()  # finds the nearest index
         if end <= np_datetime_ns[i] + windowlength_in_ns:

@@ -87,6 +87,10 @@ def group_by_region(
             raise UserValueError(
                 f"`{timestamp=}` not recognized. Must be one of [`Region center`, `Region start`, `Region end`, `Entire region`]"
             )
-        result = pd.concat([result, pd.Series(data[region_index].agg(options[aggregate]), index=index)])
+        new_data = pd.Series(data[region_index].agg(options[aggregate]), index=index)
+        if result.empty:
+            result = new_data
+        else:
+            result = pd.concat([result, new_data])
 
     return result

@@ -33,32 +33,32 @@ def test_prolong_indicator(values, indicator, expectation):
             pd.Series([0], index=[pd.to_datetime(1490195805, unit="s")]),
         ),
         (
-            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="H")),
-            pd.Series([0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="h")),
+            pd.Series([0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 2, 1, 3, 5], index=pd.date_range("2018-01-01", periods=5, freq="H")),
-            pd.Series([0, 0, 1, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 2, 1, 3, 5], index=pd.date_range("2018-01-01", periods=5, freq="h")),
+            pd.Series([0, 0, 1, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 0, 1, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="H")),
-            pd.Series([0, 1, 0, 1, 0], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 0, 1, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="h")),
+            pd.Series([0, 1, 0, 1, 0], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 2, 3, 3, 2], index=pd.date_range("2018-01-01", periods=5, freq="H")),
-            pd.Series([0, 0, 0, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 2, 3, 3, 2], index=pd.date_range("2018-01-01", periods=5, freq="h")),
+            pd.Series([0, 0, 0, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 2, 3, 2, 2], index=pd.date_range("2018-01-01", periods=5, freq="H")),
-            pd.Series([0, 0, 0, 1, 1], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 2, 3, 2, 2], index=pd.date_range("2018-01-01", periods=5, freq="h")),
+            pd.Series([0, 0, 0, 1, 1], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 2, 1, 1, 5, 6, 0, 1, 6, 2], index=pd.date_range("2018-01-01", periods=10, freq="H")),
-            pd.Series([0, 0, 1, 1, 0, 0, 1, 1, 0, 1], index=pd.date_range("2018-01-01", periods=10, freq="H")),
+            pd.Series([1, 2, 1, 1, 5, 6, 0, 1, 6, 2], index=pd.date_range("2018-01-01", periods=10, freq="h")),
+            pd.Series([0, 0, 1, 1, 0, 0, 1, 1, 0, 1], index=pd.date_range("2018-01-01", periods=10, freq="h")),
         ),
         (
-            pd.Series([10, 20, 1, 1, 5, 6, 0, 10, 6, 7], index=pd.date_range("2018-01-01", periods=10, freq="H")),
-            pd.Series([0, 0, 1, 1, 1, 1, 1, 1, 1, 1], index=pd.date_range("2018-01-01", periods=10, freq="H")),
+            pd.Series([10, 20, 1, 1, 5, 6, 0, 10, 6, 7], index=pd.date_range("2018-01-01", periods=10, freq="h")),
+            pd.Series([0, 0, 1, 1, 1, 1, 1, 1, 1, 1], index=pd.date_range("2018-01-01", periods=10, freq="h")),
         ),
     ],
 )
@@ -76,44 +76,44 @@ def test_value_decrease_default_threshold(input, expectation):
             pd.Series([0], index=[pd.to_datetime(1490195805, unit="s")]),
         ),
         (
-            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="h")),
             0.55,
-            pd.Series([0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 2, 1, 1, 5], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 2, 1, 1, 5], index=pd.date_range("2018-01-01", periods=5, freq="h")),
             1.3,
-            pd.Series([0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 0, 1, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 0, 1, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="h")),
             0.3,
-            pd.Series([0, 1, 0, 1, 0], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([0, 1, 0, 1, 0], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 0, 1, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 0, 1, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="h")),
             2,
-            pd.Series([0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 2, 3, 3, 2], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([1, 2, 3, 3, 2], index=pd.date_range("2018-01-01", periods=5, freq="h")),
             0.4,
-            pd.Series([0, 0, 0, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([0, 0, 0, 0, 1], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([4, 2, 5, 2, 3], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([4, 2, 5, 2, 3], index=pd.date_range("2018-01-01", periods=5, freq="h")),
             2.7,
-            pd.Series([0, 0, 0, 1, 1], index=pd.date_range("2018-01-01", periods=5, freq="H")),
+            pd.Series([0, 0, 0, 1, 1], index=pd.date_range("2018-01-01", periods=5, freq="h")),
         ),
         (
-            pd.Series([1, 2, 1, 1, 5, 6, 0, 1, 6, 2], index=pd.date_range("2018-01-01", periods=10, freq="H")),
+            pd.Series([1, 2, 1, 1, 5, 6, 0, 1, 6, 2], index=pd.date_range("2018-01-01", periods=10, freq="h")),
             10.377,
-            pd.Series([0, 0, 0, 0, 0, 0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=10, freq="H")),
+            pd.Series([0, 0, 0, 0, 0, 0, 0, 0, 0, 0], index=pd.date_range("2018-01-01", periods=10, freq="h")),
         ),
         (
-            pd.Series([10, 20, 1, 1, 5, 26, 20, 4, 6, 20], index=pd.date_range("2018-01-01", periods=10, freq="H")),
+            pd.Series([10, 20, 1, 1, 5, 26, 20, 4, 6, 20], index=pd.date_range("2018-01-01", periods=10, freq="h")),
             15,
-            pd.Series([0, 0, 1, 1, 1, 0, 0, 1, 1, 0], index=pd.date_range("2018-01-01", periods=10, freq="H")),
+            pd.Series([0, 0, 1, 1, 1, 0, 0, 1, 1, 0], index=pd.date_range("2018-01-01", periods=10, freq="h")),
         ),
     ],
 )
@@ -128,7 +128,7 @@ def test_value_decrease_threshold_negative_error():
     """test errors for threshold (Threshold should be a non-negative float)"""
     with pytest.raises(UserValueError):
         value_decrease_check(
-            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="H")), -3
+            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="h")), -3
         )  # threshold is negative float
 
 
@@ -136,7 +136,7 @@ def test_value_decrease_threshold_negative_error():
 def test_value_decrease_threshold_negative_error_message():
     with pytest.raises(UserValueError) as exc:
         value_decrease_check(
-            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="H")), -7.1
+            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="h")), -7.1
         )  # testing the error message
     assert "Threshold should be a non-negative float." in str(exc.value)
 
@@ -145,7 +145,7 @@ def test_value_decrease_threshold_negative_error_message():
 def test_value_decrease_threshold_type_error():
     with pytest.raises(UserTypeError):
         value_decrease_check(
-            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="H")), "7.1"
+            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="h")), "7.1"
         )  # threshold is not a float
 
 
@@ -153,7 +153,7 @@ def test_value_decrease_threshold_type_error():
 def test_value_decrease_threshold_no_errors():
     try:
         value_decrease_check(
-            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="H")), 1.0
+            pd.Series([1, 2, 3, 4, 5], index=pd.date_range("2018-01-01", periods=5, freq="h")), 1.0
         )  # no error raised
     except pytest.raises(UserValueError) as exc:
         assert False, f"'value_decrease_check' raised an exception {exc}"
@@ -170,7 +170,7 @@ def test_value_decrease_x_type_error():
 def test_value_decrease_x_empty_error():
     with pytest.raises(UserValueError):
         value_decrease_check(
-            pd.Series([np.nan, np.nan], index=pd.date_range("2018-01-01", periods=2, freq="H")).dropna()
+            pd.Series([np.nan, np.nan], index=pd.date_range("2018-01-01", periods=2, freq="h")).dropna()
         )  # x is empty
 
 

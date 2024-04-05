@@ -16,7 +16,7 @@ from indsl.filter.wavelet_filter_v1 import wavelet_filter as wavelet_filter_v1
 def test_wavelet_filter_options_run(wavelet):
     try:
         input = pd.Series(np.random.random(100), index=pd.date_range(0, freq="1s", periods=100))
-        wavelet_filter(input, wavelet=wavelet)
+        wavelet_filter(input, wavelet=wavelet, level=1)
     except Exception as e:
         pytest.fail(
             f"Running wavelet_filter with wavelet={wavelet} crashed, even though it should not. Exception details: {e}"

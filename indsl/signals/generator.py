@@ -245,7 +245,7 @@ def _get_sample_frequency(sample_freq: float, unit: TimeUnits):
     Args:
         sample_freq: Frequency magnitude
         unit: Time unit
-            Valid values "ns|us|ms|s|m|h|D|W". Default is "m" (minutes)
+            Valid values "ns|us|ms|s|m|h|d|W". Default is "m" (minutes)
 
     Returns:
         str: Frequency string
@@ -254,9 +254,9 @@ def _get_sample_frequency(sample_freq: float, unit: TimeUnits):
     if unit == "m":
         use_unit = "min"
     elif unit == "s":
-        use_unit = "S"
+        use_unit = "s"
     elif unit == "W":
-        use_unit = "D"
+        use_unit = "d"
         sample_freq = sample_freq * 7
     else:
         use_unit = unit
@@ -366,7 +366,7 @@ def insert_data_gaps(
         gap_loc = rng.choice(np.arange(1, original_length - 1), size=points_to_remove, replace=False, shuffle=False)
         return data.loc[data.index.difference(data.index[gap_loc])]
     elif method == "Single":
-        gap_loc = int(rng.integers(low=buffer1, high=buffer2, size=1))
+        gap_loc = rng.integers(low=buffer1, high=buffer2, size=1)[0]
         # Move the start of the gap location away from the end of the time series so that the data gap ends right
         # at the buffer
         if gap_loc + points_to_remove > buffer2:

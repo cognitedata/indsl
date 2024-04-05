@@ -131,10 +131,10 @@ def test_reindex_distribution(method, kind):
     periods2 = 400
 
     data1 = pd.Series(
-        [random.random() * i for i in range(periods1)], index=pd.date_range("2020-02-03", periods=periods1, freq="3H")
+        [random.random() * i for i in range(periods1)], index=pd.date_range("2020-02-03", periods=periods1, freq="3h")
     )
     data2 = pd.Series(
-        [random.random() * i for i in range(periods2)], index=pd.date_range("2020-02-03", periods=periods2, freq="2H")
+        [random.random() * i for i in range(periods2)], index=pd.date_range("2020-02-03", periods=periods2, freq="2h")
     )
 
     std_d1 = np.std(data1)
@@ -153,10 +153,10 @@ def test_reindex_distribution(method, kind):
 @pytest.mark.core
 def test_reindexed_data_contains_no_nans():
     data1 = pd.Series(
-        [random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1H")
+        [random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1h")
     )
     data2 = pd.Series(
-        [random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1H")
+        [random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1h")
     )
 
     data1[1:5] = np.nan
@@ -170,10 +170,10 @@ def test_reindexed_data_contains_no_nans():
 @pytest.mark.core
 def test_if_data_starts_with_nan_values_and_bounded_is_true_then_output_range_is_reduced():
     data1 = pd.Series(
-        [random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1H")
+        [random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1h")
     )
     data2 = pd.Series(
-        [random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1H")
+        [random.random() * i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1h")
     )
 
     data1[0:5] = np.nan

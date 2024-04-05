@@ -13,7 +13,7 @@ from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
 
 
-TimeUnits = Literal["ns", "us", "ms", "s", "m", "h", "D", "W"]
+TimeUnits = Literal["ns", "us", "ms", "s", "m", "h", "d", "W"]
 
 
 # Rounding and utility functions
@@ -31,7 +31,7 @@ def round(x, decimals: int):
         pd.Series: time series
 
     """
-    return np.round_(x, decimals=decimals)
+    return np.round(x, decimals=decimals)
 
 
 def floor(x):
@@ -485,10 +485,8 @@ def normality_assumption_test(
 
     W, p_value = shapiro(series)
 
-    if p_value == 1.0 and W == 1.0:
-        raise UserValueError("This time series is uniform and not normally distributed")
     if p_value < min_p_value or W < min_W:
-        raise UserValueError("This time series is not normally distributed")
+        raise UserValueError(f"This time series is not normally distributed")
 
     return None
 

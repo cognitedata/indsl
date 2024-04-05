@@ -9,10 +9,10 @@ from indsl.ts_utils.ts_utils import fill_gaps
 # Nothing should be done, if there is no empty data
 @pytest.mark.core
 def test_no_filling():
-    data = pd.Series([i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1H"))
+    data = pd.Series([i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1h"))
 
     # upsampled to 30 min
-    gapped_filled = fill_gaps(data, granularity="1H")
+    gapped_filled = fill_gaps(data, granularity="1h")
 
     assert np.array_equal(data, gapped_filled)
 
@@ -20,13 +20,13 @@ def test_no_filling():
 # Test that length is kept
 @pytest.mark.core
 def test_same_length():
-    data = pd.Series([i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1H"))
+    data = pd.Series([i for i in range(24)], index=pd.date_range("2020-02-03", periods=24, freq="1h"))
 
     # we compare this
     ln1 = len(data)
     # to the length after removing part of it
     data[4:10] = np.nan
 
-    testy = fill_gaps(data, granularity="1H")
+    testy = fill_gaps(data, granularity="1h")
 
     assert ln1 == len(testy)

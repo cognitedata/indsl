@@ -80,10 +80,10 @@ This happens specifically when we apply `abs`diff` to time-series with non-match
 .. code-block:: default
 
 
-    idx = pd.date_range("2022-01-01", periods=5, freq="1H")
+    idx = pd.date_range("2022-01-01", periods=5, freq="1h")
     a = pd.Series([1, 2, 3, 4, 5], index=idx)
 
-    idx = pd.date_range("2022-01-01", periods=3, freq="2H")
+    idx = pd.date_range("2022-01-01", periods=3, freq="2h")
     b = pd.Series([1, 3, 5], index=idx)
 
     abs_diff(a, b)

@@ -288,19 +288,19 @@ def test_fill_gates():
 
     # Act
     with pytest.raises(UserValueError) as excinfo:
-        fill_gaps(data, interpolate_resolution=pd.Timedelta("0T"))
+        fill_gaps(data, interpolate_resolution=pd.Timedelta("0min"))
     # Assert
     assert "interpolate_resolution can not be 0" in str(excinfo.value)
 
     # Act
     with pytest.raises(UserValueError) as excinfo:
-        fill_gaps(data, ffill_resolution=pd.Timedelta("0T"))
+        fill_gaps(data, ffill_resolution=pd.Timedelta("0min"))
     # Assert
     assert "ffill_resolution can not be 0" in str(excinfo.value)
 
     # Act
     with pytest.raises(UserValueError) as excinfo:
-        fill_gaps(data, granularity=pd.Timedelta("0T"))
+        fill_gaps(data, granularity=pd.Timedelta("0min"))
     # Assert
     assert "granularity can not be 0" in str(excinfo.value)
 

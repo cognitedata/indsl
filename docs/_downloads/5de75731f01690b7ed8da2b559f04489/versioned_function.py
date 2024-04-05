@@ -46,10 +46,10 @@ def abs_diff(a: pd.Series, b: pd.Series) -> pd.Series:
 # Our, initial implementation is not very robust and results easily in `nan` outputs.
 # This happens specifically when we apply `abs`diff` to time-series with non-matching indices:
 
-idx = pd.date_range("2022-01-01", periods=5, freq="1H")
+idx = pd.date_range("2022-01-01", periods=5, freq="1h")
 a = pd.Series([1, 2, 3, 4, 5], index=idx)
 
-idx = pd.date_range("2022-01-01", periods=3, freq="2H")
+idx = pd.date_range("2022-01-01", periods=3, freq="2h")
 b = pd.Series([1, 3, 5], index=idx)
 
 abs_diff(a, b)

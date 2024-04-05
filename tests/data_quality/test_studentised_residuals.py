@@ -15,7 +15,7 @@ def test_anomaly_detector():
     # Create fake data
     with RNGContext():
         sig = np.random.normal(loc=100, size=1000, scale=1)
-    index = pd.date_range(start="1970", periods=len(sig), freq="1T")
+    index = pd.date_range(start="1970", periods=len(sig), freq="1min")
 
     # Add anomalies
     anom_num = [61, 61, 126, 83, 133, 21, 126, 126, 187, 13, 86, 140, 44, 146, 89, 135, 52, 31, 43, 197]

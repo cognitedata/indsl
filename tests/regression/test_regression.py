@@ -16,7 +16,7 @@ def test_poly_regression(method):
 
     # Setting up test polynomial data
     x = np.linspace(0, 10, 100)
-    x_dt = pd.date_range(start="1970", periods=len(x), freq="1T")
+    x_dt = pd.date_range(start="1970", periods=len(x), freq="1min")
 
     # Creating a polynomial of degree 2
     y_hat = 1e-2 * x**2 - 1e-1 * x + 2
@@ -40,7 +40,7 @@ def test_poly_regression(method):
 def create_test_data():
     # Setting up test polynomial data
     x = np.linspace(0, 10, 100)
-    x_dt = pd.date_range(start="1970", periods=len(x), freq="1T")
+    x_dt = pd.date_range(start="1970", periods=len(x), freq="1min")
 
     # Creating a polynomial of degree 2
     y_hat = 1e-2 * x**2 - 1e-1 * x + 2

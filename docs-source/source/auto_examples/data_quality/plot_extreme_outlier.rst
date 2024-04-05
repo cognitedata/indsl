@@ -57,7 +57,7 @@ subsequently processed with a smoother to refine the underlying signal if desire
 
     # Create Toy clean dataset
     nx = 1000
-    index = pd.date_range(start="1970", periods=nx, freq="1T")
+    index = pd.date_range(start="1970", periods=nx, freq="1min")
     x = np.linspace(0, 10, nx)
     signal = 2 * x**2 - 10 * x + 2
     noise = np.random.normal(loc=100, size=nx, scale=2)

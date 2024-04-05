@@ -77,7 +77,7 @@ The input parameters used by the algorithm in this example are:
     # generate synthetic data with shift
     y = np.random.randn(300)
     y[100:200] += 6
-    index = pd.date_range(start="1970", periods=300, freq="1T")
+    index = pd.date_range(start="1970", periods=300, freq="1min")
     raw_data = pd.Series(y, index=index)
 
     # get cusum results and plot the intermidiate figures
