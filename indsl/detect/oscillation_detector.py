@@ -576,7 +576,7 @@ def plot_lpc_roots(threshold, time, data, predicted, f, Pxx, roots, distance):
     except ImportError:
         raise ImportError(MATPLOTLIB_REQUIRED)
 
-    fig = plt.figure(figsize=(9, 6), layout='tight')
+    fig = plt.figure(figsize=(9, 6), layout="tight")
 
     gs = GridSpec(2, 3, figure=fig)
     ax1 = fig.add_subplot(gs[0, :])
