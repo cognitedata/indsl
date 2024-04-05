@@ -1,13 +1,13 @@
 [![Downloads](https://static.pepy.tech/personalized-badge/indsl?period=total&units=international_system&left_color=black&right_color=brightgreen&left_text=PyPi%20Downloads)](https://pepy.tech/project/indsl) [![Code Quality](https://github.com/cognitedata/indsl/actions/workflows/code-quality.yaml/badge.svg)](https://github.com/cognitedata/indsl/actions/workflows/code-quality.yaml) [![CodeQL](https://github.com/cognitedata/indsl/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/cognitedata/indsl/actions/workflows/codeql-analysis.yml) [![codecov](https://codecov.io/gh/cognitedata/indsl/branch/main/graph/badge.svg?token=N63jUovh1o)](https://codecov.io/gh/cognitedata/indsl)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <a href="https://cognite.com/">
     <img src="https://github.com/cognitedata/cognite-python-docs/blob/master/img/cognite_logo.png" alt="Cognite logo" title="Cognite" align="right" height="80" />
 </a>
 
-Industrial Data Science Library
-=========================================
+# Industrial Data Science Library
 
 This is Cognite's collection of data science algorithms and models. Its objective is twofold. First, empower domain
 experts to conduct exploratory work, root cause analysis, and analyze data via <a href="https://charts.cogniteapp.com/" target="_blank">Cognite Charts</a>.
@@ -15,10 +15,11 @@ Second, curate a collection industry relevant data science algorithms to be used
 For more information, consult the <a href="https://docs.cognite.com/cdf/charts/" target="_blank">Charts documentation page</a>.
 
 ## Documentation
-* [InDSL Home](https://indsl.docs.cognite.com/)
-* [Data Science Developer Guidelines](https://indsl.docs.cognite.com/contribute.html)
-* [Gallery of Charts - Examples](https://indsl.docs.cognite.com/auto_examples/index.html)
-* [Publishing new versions of InDSL](./PUBLISHING.md)
+
+- [InDSL Home](https://indsl.docs.cognite.com/)
+- [Data Science Developer Guidelines](https://indsl.docs.cognite.com/contribute.html)
+- [Gallery of Charts - Examples](https://indsl.docs.cognite.com/auto_examples/index.html)
+- [Publishing new versions of InDSL](./PUBLISHING.md)
 
 ## Contributors ✨
 
@@ -47,6 +48,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
+<!-- forked repo -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
