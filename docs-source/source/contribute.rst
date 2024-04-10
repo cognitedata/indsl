@@ -29,8 +29,67 @@ guide focuses on the requirements to comply with it. Nevertheless, we accept any
 important and making our library more robust over time is of paramount importance. Please don't hesitate to submit a
 Github pull request for something as small as a typo.*
 
+Open source contributions
+=========================
+
+Thank you for considering contributing to InDSL! We welcome all contributions, including but not limited to the following:
+
+    * Bug reports
+    * Code contributions
+    * Reviewing pull requests
+    * Documentation improvements
+    * Sharing the project with others
+
+We encourage you to read this document to understand how to contribute to the project. If you have any questions, please
+reach out to us on `Cognite Hub <https://hub.cognite.com/>`_. We are happy to help you get started, and we welcome your
+efforts to improve InDSL as long as everyone involved is treated with respect. Cordiality is highly appreciated. 
+Please read our `Code of Conduct <https://indsl.docs.cognite.com/code_of_conduct.html>`_ before contributing.
+
+
+Code contributions
+------------------
+
+A good PR should be concise, clear, and easy to understand. In order to contribute, follow these steps:
+
+
+1. **Fork the repository**: Fork the `repository <https://github.com/cognitedata/indsl>`_ to your own GitHub account.
+
+
+2. **Run the tests**: Confirm that the tests pass on your local machine. We use `pytest` for testing. 
+If they fail, investigate why they do. If you are unable to fix the issue, please reach out to us.
+
+3. **Make your changes**: Make your changes to the code base. Make sure to follow the coding style and documentation guidelines.
+We use Flake8 to enforce the coding style, which in addition to pre-commit checks, will run automatically when you push your changes.
+You can also run pre-commit checks manually for all staged files by running ``poetry run pre-commit run --all-files``. 
+You can find the full list of formatting requirements specified in the 
+`.pre-commit-config.yaml <https://github.com/cognitedata/indsl/blob/main/.pre-commit-config.yaml>`_ file in the root of the repository.
+We follow the Google Python Style Guide for docstrings.
+
+4. **Write tests**: If you are adding a new feature or fixing a bug, write tests to cover the new code. 
+Make sure that they pass.
+
+
+5. **Make a pull request**: Once you are satisfied with your changes and all of the tests pass, make a pull request to 
+the main repository using the conventional commit message format.
+
+
+Code Review Process
+-------------------
+
+Contributions will only be merged after a code review. You are expected to address and incorporate feedback from the review unless 
+there are compelling reasons not to. 
+If you disagree with the feedback, present your objections clearly and respectfully. 
+If the feedback is still deemed applicable after further discussion, you must either implement the suggested changes or choose 
+to withdraw your contribution.
+
+Documentation Contributions
+---------------------------
+
+We always appreciate enhancements to our documentation! The documentation source files are located in the docs-source directory of 
+our codebase. They are formatted in reStructuredText and compiled with Sphinx to produce comprehensive documentation.
+
 Contributing a new Cognite Charts compliant algorithm
-=============================================
+=====================================================
 
 For an algorithm to play well with the Charts front-end (user interface) and the
 calculations back-end it has to adhere to some function input and output requirements, documentation (docstrings) format and a few
