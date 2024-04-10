@@ -44,7 +44,7 @@ def onbottom_detection(
     A simple on/off bottom of the hole detection for a drilling assembly
 
     Args:
-        bit_depth: Measured depth of the drill bit.
+        bit_depth: Drill bit measured depth.
             Time series with the measured depth of the drilling string
         hole_depth: Measured depth of the well.
             Time series with the measured depth of the well
@@ -85,7 +85,7 @@ def inhole_detection(
     A simple in/out of the hole detection for a drilling assembly
 
     Args:
-        bit_depth: Measured depth of the drill bit.
+        bit_depth: Drill bit measured depth.
             Time series with the measured depth of the drilling string
         thresh: Inhole threshold.
             Minimum bit depth for the drilling assembly to be considered in the hole
@@ -109,7 +109,7 @@ def circulation_detection(
     A simple on/off circulation detection for the pumping fluids into the well.
 
     Args:
-        flow_rate: Volumetric flow of drilling fluids going into the well.
+        flow_rate: Well fluid flow rate.
             Time series with the flow rate of the down hole drilling rig pumps
         thresh: Circulation thresholdthreshold.
             Minimum flow rate for circulation of fluids into the well to be considered on.
