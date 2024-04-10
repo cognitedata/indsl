@@ -52,8 +52,8 @@ Code contributions
 A good PR should be concise, clear, and easy to understand. In order to contribute, follow these steps:
 
 
-1. **Fork the repository**: Fork the `repository <https://github.com/cognitedata/indsl>`_ to your own GitHub account.
-
+1. **Fork the repository**: Fork the `repository <https://github.com/cognitedata/indsl>`_ 
+to your own GitHub account.
 
 2. **Run the tests**: Confirm that the tests pass on your local machine. We use `pytest` for testing. 
 If they fail, investigate why they do. If you are unable to fix the issue, please reach out to us.
@@ -67,7 +67,6 @@ We follow the Google Python Style Guide for docstrings.
 
 4. **Write tests**: If you are adding a new feature or fixing a bug, write tests to cover the new code. 
 Make sure that they pass.
-
 
 5. **Make a pull request**: Once you are satisfied with your changes and all of the tests pass, make a pull request to 
 the main repository using the conventional commit message format.
