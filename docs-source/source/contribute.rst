@@ -50,17 +50,15 @@ to your own GitHub account.
 If they fail and you are unable to fix the issue, please reach out to us.
 
 3. **Make your changes**: Make your changes to the code base. Make sure to follow the coding style and documentation guidelines.
-We use Flake8 to enforce the coding style, which in addition to pre-commit checks, will run automatically when you push your changes.
+Pre-commit checks will run automatically when you push your changes.
 You can also run pre-commit checks manually for all staged files by running ``poetry run pre-commit run --all-files``. 
-You can find the full list of formatting requirements specified in the 
-`.pre-commit-config.yaml <https://github.com/cognitedata/indsl/blob/main/.pre-commit-config.yaml>`_ file in the root of the repository.
 We follow the Google Python Style Guide for docstrings.
 
 4. **Write tests**: If you are adding a new feature or fixing a bug, write tests using the `pytest` framework to cover the new code. 
 Make sure that they pass.
 
-5. **Make a pull request**: Once you are satisfied with your changes and all of the tests pass, make a pull request to 
-the main repository using the conventional commit message format.
+5. **Make a pull request**: Once you are satisfied with your changes and all of the tests pass, make a pull request
+using the conventional commit message format.
 
 
 Code Review Process
@@ -130,12 +128,12 @@ This project uses `Poetry <https://python-poetry.org/>`_ for dependency manageme
    pip install poetry
 
 
-1. Clone the `InDSL <https://github.com/cognitedata/indsl>`_ main repository on
+1. Fork the `InDSL <https://github.com/cognitedata/indsl>`_ main repository on
    GitHub to your local environment.
 
 .. prompt:: bash $
 
-    git clone git@github.com:cognitedata/indsl.git
+    git clone git@github.com:yourusername/indsl.git
     cd indsl
 
 2. Install the project dependencies.
@@ -370,7 +368,7 @@ We want to offer our user and developers as much information as possible about o
 **strongly encourage** all data scientist and developers to include one or more examples (license to go crazy here)
 to show off all the amazing features and functionalities of your new algorithm and how it can be used.
 
-1. Clone the INDSL repo and create your own local branch.
+1. Fork the INDSL repo and create your own local branch.
 2. Go to the toolbox folder in ``examples`` where your algorithm belongs to (e.g. ``smooth``)
 3. Create a new python file with the prefix *plot_*. For example ``plot_my_new_algo_feature.py``.
 4. At the top of the file, add a triple quote docstring that start with the title of your example enclose by
