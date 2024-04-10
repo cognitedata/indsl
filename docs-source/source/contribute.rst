@@ -2,7 +2,9 @@
 Contributing
 ============
 
-This project is a community effort and contributions are welcomed. InDSL is publicly available and open for contributions `here <https://github.com/cognitedata/indsl>`_. Engage on our community site, `Cognite Hub <https://hub.cognite.com/>`_, for discussion, suggestions and questions about InDSL.
+This project is a community effort and contributions are welcomed. InDSL is publicly available and open for contributions 
+`here <https://github.com/cognitedata/indsl>`_. Engage on our community site, `Cognite Hub <https://hub.cognite.com/>`_, 
+for discussion, suggestions and questions about InDSL.
 
 The main objective of the InDLS is to **provide industrial domain experts and data scientist with a rich library of
 algorithms to speed up their work**. Therefore, we highly encourage data scientists with industrial domain knowledge
@@ -32,22 +34,11 @@ Github pull request for something as small as a typo.*
 Open source contributions
 =========================
 
-Thank you for considering contributing to InDSL! We welcome all contributions, including but not limited to the following:
-
-    * Bug reports
-    * Code contributions
-    * Reviewing pull requests
-    * Documentation improvements
-    * Sharing the project with others
-
-We encourage you to read this document to understand how to contribute to the project. If you have any questions, please
-reach out to us on `Cognite Hub <https://hub.cognite.com/>`_. We are happy to help you get started, and we welcome your
-efforts to improve InDSL as long as everyone involved is treated with respect. Cordiality is highly appreciated. 
+Thank you for considering contributing to InDSL! We welcome all contributions as listed above.
+We encourage you to read this document to understand how to contribute to the project.
+Also, we are happy to help you get started, and we welcome your efforts to improve InDSL 
+as long as everyone involved is treated with respect. Cordiality is highly appreciated. 
 Please read our `Code of Conduct <https://indsl.docs.cognite.com/code_of_conduct.html>`_ before contributing.
-
-
-Code contributions
-------------------
 
 A good PR should be concise, clear, and easy to understand. In order to contribute, follow these steps:
 
@@ -56,7 +47,7 @@ A good PR should be concise, clear, and easy to understand. In order to contribu
 to your own GitHub account.
 
 2. **Run the tests**: Confirm that the tests pass on your local machine. We use `pytest` for testing. 
-If they fail, investigate why they do. If you are unable to fix the issue, please reach out to us.
+If they fail and you are unable to fix the issue, please reach out to us.
 
 3. **Make your changes**: Make your changes to the code base. Make sure to follow the coding style and documentation guidelines.
 We use Flake8 to enforce the coding style, which in addition to pre-commit checks, will run automatically when you push your changes.
