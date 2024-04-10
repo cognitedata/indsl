@@ -85,8 +85,10 @@ to withdraw your contribution.
 Documentation Contributions
 ---------------------------
 
-We always appreciate enhancements to our documentation! The documentation source files are located in the docs-source directory of 
-our codebase. They are formatted in reStructuredText and compiled with Sphinx to produce comprehensive documentation.
+Improvements to our documentation are much appreciated! The documentation source files are located in the 
+`docs-source/source <https://github.com/cognitedata/indsl/tree/main/docs-source/source>`_ directory of 
+our codebase. They are formatted in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
+and compiled with Sphinx to produce comprehensive documentation.
 
 Contributing a new Cognite Charts compliant algorithm
 =====================================================
