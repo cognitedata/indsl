@@ -65,7 +65,7 @@ You can find the full list of formatting requirements specified in the
 `.pre-commit-config.yaml <https://github.com/cognitedata/indsl/blob/main/.pre-commit-config.yaml>`_ file in the root of the repository.
 We follow the Google Python Style Guide for docstrings.
 
-4. **Write tests**: If you are adding a new feature or fixing a bug, write tests to cover the new code. 
+4. **Write tests**: If you are adding a new feature or fixing a bug, write tests using the `pytest` framework to cover the new code. 
 Make sure that they pass.
 
 5. **Make a pull request**: Once you are satisfied with your changes and all of the tests pass, make a pull request to 
