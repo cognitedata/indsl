@@ -128,8 +128,10 @@ This project uses `Poetry <https://python-poetry.org/>`_ for dependency manageme
    pip install poetry
 
 
-1. Fork the `InDSL <https://github.com/cognitedata/indsl>`_ main repository on
-   GitHub to your local environment.
+1. For open source contributions, fork the `InDSL <https://github.com/cognitedata/indsl>`_ main repository on
+   GitHub to your local environment. If you are a Cognite employee or this contribution is internal, 
+   you may clone the repository directly by switching out `yourusername` with 
+   `cognitedata`.
 
 .. prompt:: bash $
 
@@ -368,7 +370,8 @@ We want to offer our user and developers as much information as possible about o
 **strongly encourage** all data scientist and developers to include one or more examples (license to go crazy here)
 to show off all the amazing features and functionalities of your new algorithm and how it can be used.
 
-1. Fork the INDSL repo and create your own local branch.
+1. For open source contributions, fork the INDSL repo and create your own local branch. 
+   If you are a Cognite employee or this contribution is internal, you may clone the repository directly.
 2. Go to the toolbox folder in ``examples`` where your algorithm belongs to (e.g. ``smooth``)
 3. Create a new python file with the prefix *plot_*. For example ``plot_my_new_algo_feature.py``.
 4. At the top of the file, add a triple quote docstring that start with the title of your example enclose by
