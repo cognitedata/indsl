@@ -57,8 +57,8 @@ We follow the Google Python Style Guide for docstrings.
 4. **Write tests**: If you are adding a new feature or fixing a bug, write tests using the `pytest` framework to cover the new code. 
 Make sure that they pass.
 
-5. **Make a pull request**: Once you are satisfied with your changes and all of the tests pass, make a pull request
-using the conventional commit message format.
+5. **Make a pull request**: Once you are satisfied with your changes and all of the tests pass, make a pull request 
+in the base repository using the conventional commit message format.
 
 
 Code Review Process
