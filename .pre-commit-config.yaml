@@ -41,4 +41,4 @@ repos:
         stages:
           - commit-msg
     repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.18.2
+    rev: v3.18.3
