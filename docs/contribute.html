@@ -87,6 +87,11 @@
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#open-source-contributions">Open source contributions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-review-process">Code Review Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documentation-contributions">Documentation Contributions</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#contributing-a-new-cognite-charts-compliant-algorithm">Contributing a new Cognite Charts compliant algorithm</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#preliminaries-and-setup">Preliminaries and setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#develop-your-algorithm">Develop your algorithm</a></li>
@@ -138,7 +143,9 @@
              
   <section id="contributing">
 <h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading"></a></h1>
-<p>This project is a community effort and contributions are welcomed. InDSL is publicly available and open for contributions <a class="reference external" href="https://github.com/cognitedata/indsl">here</a>. Engage on our community site, <a class="reference external" href="https://hub.cognite.com/">Cognite Hub</a>, for discussion, suggestions and questions about InDSL.</p>
+<p>This project is a community effort and contributions are welcomed. InDSL is publicly available and open for contributions
+<a class="reference external" href="https://github.com/cognitedata/indsl">here</a>. Engage on our community site, <a class="reference external" href="https://hub.cognite.com/">Cognite Hub</a>,
+for discussion, suggestions and questions about InDSL.</p>
 <p>The main objective of the InDLS is to <strong>provide industrial domain experts and data scientist with a rich library of
 algorithms to speed up their work</strong>. Therefore, we highly encourage data scientists with industrial domain knowledge
 to contribute algorithms and models within their area of expertise. <em>We are industry and scientific domain
@@ -162,6 +169,42 @@ guide focuses on the requirements to comply with it. Nevertheless, we accept any
 <p><em>Although the core of this project are the industrial algorithms, improving our documentation is very
 important and making our library more robust over time is of paramount importance. Please don’t hesitate to submit a
 Github pull request for something as small as a typo.</em></p>
+<section id="open-source-contributions">
+<h2>Open source contributions<a class="headerlink" href="#open-source-contributions" title="Link to this heading"></a></h2>
+<p>Thank you for considering contributing to InDSL! We welcome all contributions as listed above.
+We encourage you to read this document to understand how to contribute to the project.
+Also, we are happy to help you get started, and we welcome your efforts to improve InDSL
+as long as everyone involved is treated with respect. Cordiality is highly appreciated.
+Please read our <a class="reference external" href="https://indsl.docs.cognite.com/code_of_conduct.html">Code of Conduct</a> before contributing.</p>
+<p>A good PR should be concise, clear, and easy to understand. In order to contribute, follow these steps:</p>
+<p>1. <strong>Fork the repository</strong>: Fork the <a class="reference external" href="https://github.com/cognitedata/indsl">repository</a>
+to your own GitHub account.</p>
+<p>2. <strong>Run the tests</strong>: Confirm that the tests pass on your local machine. We use <cite>pytest</cite> for testing.
+If they fail and you are unable to fix the issue, please reach out to us.</p>
+<p>3. <strong>Make your changes</strong>: Make your changes to the code base. Make sure to follow the coding style and documentation guidelines.
+Pre-commit checks will run automatically when you push your changes.
+You can also run pre-commit checks manually for all staged files by running <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span> <span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code>.
+We follow the Google Python Style Guide for docstrings.</p>
+<p>4. <strong>Write tests</strong>: If you are adding a new feature or fixing a bug, write tests using the <cite>pytest</cite> framework to cover the new code.
+Make sure that they pass.</p>
+<p>5. <strong>Make a pull request</strong>: Once you are satisfied with your changes and all of the tests pass, make a pull request
+in the base repository using the conventional commit message format.</p>
+<section id="code-review-process">
+<h3>Code Review Process<a class="headerlink" href="#code-review-process" title="Link to this heading"></a></h3>
+<p>Contributions will only be merged after a code review. You are expected to address and incorporate feedback from the review unless
+there are compelling reasons not to.
+If you disagree with the feedback, present your objections clearly and respectfully.
+If the feedback is still deemed applicable after further discussion, you must either implement the suggested changes or choose
+to withdraw your contribution.</p>
+</section>
+<section id="documentation-contributions">
+<h3>Documentation Contributions<a class="headerlink" href="#documentation-contributions" title="Link to this heading"></a></h3>
+<p>Improvements to our documentation are much appreciated! The documentation source files are located in the
+<a class="reference external" href="https://github.com/cognitedata/indsl/tree/main/docs-source/source">docs-source/source</a> directory of
+our codebase. They are formatted in <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">reStructuredText</a>
+and compiled with Sphinx to produce comprehensive documentation.</p>
+</section>
+</section>
 <section id="contributing-a-new-cognite-charts-compliant-algorithm">
 <h2>Contributing a new Cognite Charts compliant algorithm<a class="headerlink" href="#contributing-a-new-cognite-charts-compliant-algorithm" title="Link to this heading"></a></h2>
 <p>For an algorithm to play well with the Charts front-end (user interface) and the
@@ -218,8 +261,8 @@ span.prompt1:before {
 }
 </style><span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>poetry</span>
 </pre></div></div><ol class="arabic simple">
-<li><p>Clone the <a class="reference external" href="https://github.com/cognitedata/indsl">InDSL</a> main repository on
-GitHub to your local environment.</p></li>
+<li><p>For open source contributions, fork the <a class="reference external" href="https://github.com/cognitedata/indsl">InDSL</a> main repository on
+GitHub to your local environment. If the contribution is internal, you may clone the repository directly.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>clone<span class="w"> </span>git@github.com:cognitedata/indsl.git</span>
 <span class="prompt1"><span class="nb">cd</span><span class="w"> </span>indsl</span>
@@ -427,7 +470,8 @@ can do to generate generate your example.</p>
 <strong>strongly encourage</strong> all data scientist and developers to include one or more examples (license to go crazy here)
 to show off all the amazing features and functionalities of your new algorithm and how it can be used.</p>
 <ol class="arabic simple">
-<li><p>Clone the INDSL repo and create your own local branch.</p></li>
+<li><p>For open source contributions, fork the INDSL repo and create your own local branch.
+For internal contributions, you may clone the repository directly.</p></li>
 <li><p>Go to the toolbox folder in <code class="docutils literal notranslate"><span class="pre">examples</span></code> where your algorithm belongs to (e.g. <code class="docutils literal notranslate"><span class="pre">smooth</span></code>)</p></li>
 <li><p>Create a new python file with the prefix <em>plot_</em>. For example <code class="docutils literal notranslate"><span class="pre">plot_my_new_algo_feature.py</span></code>.</p></li>
 <li><p>At the top of the file, add a triple quote docstring that start with the title of your example enclose by
