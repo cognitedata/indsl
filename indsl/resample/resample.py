@@ -98,7 +98,11 @@ def resample(
     # To resample data to uniform distribution
     if not granularity_current:
         # it returns none if it isn't able to infer the resolution
-        granularity_current = pd.infer_freq(data.index)
+        inferred_freq = pd.infer_freq(data.index)
+        if inferred_freq is not None:
+            granularity_current = pd.to_timedelta("1" + inferred_freq)
+        else:
+            granularity_current = None
 
         if not granularity_current:
             # TODO: pick max resolution and apply to the rest of the timeseries?
