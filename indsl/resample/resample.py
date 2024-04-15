@@ -112,12 +112,8 @@ def resample(
     data = data.asfreq(freq=granularity_current)
 
     # add 1 if number is missing, in order to help Timedelta read it
-    # add 1 if number is missing, in order to help Timedelta read it
-    granularity_current_str = str(granularity_current)
     granularity_current = (
-        granularity_current
-        if any(char.isdigit() for char in granularity_current_str)
-        else pd.Timedelta("1" + granularity_current_str)
+        granularity_current if any(char.isdigit() for char in granularity_current) else "1" + granularity_current
     )
 
     # remove nan
