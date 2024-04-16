@@ -157,7 +157,7 @@ def test_resample_downsample_method():
     )
 
     with pytest.raises(UserTypeError) as excinfo:
-        resample(data=not_uniform_data, granularity_next=None, num=-1)
+        resample(data=not_uniform_data, granularity_next=None, granularity_current=None, num=-1)
     expected = "Either num or granularity_next has to be set."
     assert expected in str(excinfo.value)
 
