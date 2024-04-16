@@ -90,7 +90,7 @@ def resample(
     if granularity_next is None and (num is None or num <= 0):
         raise UserTypeError("Either num or granularity_next has to be set.")
 
-    if not isinstance(granularity_current, pd.Timedelta):
+    if granularity_current and not isinstance(granularity_current, (pd.Timedelta, type(None))):
         raise UserTypeError("granularity_current must be a pandas Timedelta object.")
 
     validate_series_has_time_index(data)
