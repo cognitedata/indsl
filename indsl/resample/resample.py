@@ -90,6 +90,9 @@ def resample(
     if granularity_next is None and (num is None or num <= 0):
         raise UserTypeError("Either num or granularity_next has to be set.")
 
+    if granularity_current and not isinstance(granularity_current, (pd.Timedelta, type(None))):
+        raise UserTypeError("granularity_current must be a pandas Timedelta object or None.")
+
     validate_series_has_time_index(data)
     validate_series_is_not_empty(data)
     if is_na_all(data):
@@ -98,23 +101,20 @@ def resample(
     # To resample data to uniform distribution
     if not granularity_current:
         # it returns none if it isn't able to infer the resolution
-        granularity_current = pd.infer_freq(data.index)
-
-        if not granularity_current:
+        inferred_freq = pd.infer_freq(data.index)
+        if inferred_freq:
+            # pd.infer_freq does not include a numerical prefix for the duration itself. We need to add it.
+            granularity_current = pd.to_timedelta("1" + inferred_freq)  # type: ignore
+        else:
             # TODO: pick max resolution and apply to the rest of the timeseries?
             warnings.warn(
                 "Can't infer time series resolution with missing data. Please provide resolution",
                 category=IndslUserWarning,
             )
-            return data
+            return data  # Early return if no granularity can be inferred
 
     # make sure that it is uniform
     data = data.asfreq(freq=granularity_current)
-
-    # add 1 if number is missing, in order to help Timedelta read it
-    granularity_current = (
-        granularity_current if any(char.isdigit() for char in granularity_current) else "1" + granularity_current
-    )
 
     # remove nan
     data = fill_gaps(
