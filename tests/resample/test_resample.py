@@ -113,7 +113,9 @@ def test_no_value_returned_is_nan():
 
     data[1:5] = np.nan
 
-    resampled = resample(data, granularity_next=pd.Timedelta("30T"), method="fourier")
+    resampled = resample(
+        data, granularity_next=pd.Timedelta("30T"), granularity_current=pd.Timedelta("1H"), method="fourier"
+    )
 
     assert not resampled.isna().any()
 
