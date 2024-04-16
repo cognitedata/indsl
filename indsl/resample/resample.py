@@ -103,7 +103,7 @@ def resample(
         # it returns none if it isn't able to infer the resolution
         inferred_freq = pd.infer_freq(data.index)
         if inferred_freq:
-            # pd.infer_freq do not include a numerical prefix themselves. We need to add it.
+            # pd.infer_freq does not include a numerical prefix for the duration itself. We need to add it.
             granularity_current = pd.to_timedelta("1" + inferred_freq)  # type: ignore
         else:
             # TODO: pick max resolution and apply to the rest of the timeseries?
