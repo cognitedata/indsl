@@ -4,30 +4,12 @@ import inspect
 import docstring_parser
 import pandas as pd
 import pytest
-
-import indsl
-
-
-def _get_all_operations():
-    indsl_functions = []
-    for _, module in inspect.getmembers(indsl):
-        toolbox_name = getattr(module, "TOOLBOX_NAME", None)
-        if toolbox_name is None:
-            continue
-        functions_to_export = getattr(module, "__cognite__", [])
-        functions_map = inspect.getmembers(module, inspect.isfunction)
-        for name, function in functions_map:
-            if name in functions_to_export:
-                indsl_functions.append(function)
-    return indsl_functions
+from .conftest import indsl_functions
 
 
 def _parse_docstring_element_text(docstring_container, item):
     docstring_info = docstring_container[item]
     return docstring_info.description.splitlines()
-
-
-indsl_functions = _get_all_operations()
 
 
 def get_unwrapped_file(function):
