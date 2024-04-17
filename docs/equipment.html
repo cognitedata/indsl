@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Equipment &mdash; indsl 8.3.2 documentation</title>
+  <title>Equipment &mdash; indsl 8.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
@@ -20,7 +20,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=f79c3bd2"></script>
+        <script src="_static/documentation_options.js?v=ea47c46f"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -91,6 +91,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#recycle-valve-power-loss">Recycle valve power loss</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#indsl.equipment.recycle_valve_power_loss"><code class="docutils literal notranslate"><span class="pre">recycle_valve_power_loss()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#discharge-reciprocating-pump">Discharge Reciprocating Pump</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.equipment.pump_discharge_reciprocating_pump"><code class="docutils literal notranslate"><span class="pre">pump_discharge_reciprocating_pump()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -521,6 +525,40 @@ Automatically align time stamp  of input time series. Defaults to False.</p></li
 <li><p><a class="reference internal" href="auto_examples/equipment/plot_recycle_valve_power_loss.html#sphx-glr-auto-examples-equipment-plot-recycle-valve-power-loss-py"><span class="std std-ref">Pump recycle valve power loss</span></a></p></li>
 </ul>
 </aside>
+</section>
+<section id="discharge-reciprocating-pump">
+<h3>Discharge Reciprocating Pump<a class="headerlink" href="#discharge-reciprocating-pump" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.equipment.pump_discharge_reciprocating_pump">
+<span class="sig-prename descclassname"><span class="pre">indsl.equipment.</span></span><span class="sig-name descname"><span class="pre">pump_discharge_reciprocating_pump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_of_stroke</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_revolutions_per_second</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.equipment.pump_discharge_reciprocating_pump" title="Link to this definition"></a></dt>
+<dd><p>Pump discharge.</p>
+<p>This calculation can be used to calculate the discharge of a reciprocating pump.
+The formula for the discharge of a reciprocating pump is:</p>
+<div class="math notranslate nohighlight">
+\[Discharge = Area \times Length\:of\:stroke \times Number\:of\:revolutions\:per\:second\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>area</strong> – Area of the pump [m^2].</p></li>
+<li><p><strong>length_of_stroke</strong> – Length of the stroke [m].</p></li>
+<li><p><strong>number_of_revolutions_per_second</strong> – Number of strokes per second [strokes/s].</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Discharge [bbl/day].</dt><dd><p>Discharge of the reciprocating pump.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 <section id="valves">

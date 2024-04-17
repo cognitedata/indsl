@@ -120,7 +120,7 @@ def sine_wave(
             Date-time string when the time series starts. The date must be a string, for example:
             "1975-05-09 20:09:10".
         end_date: End date
-            Date-time string when the time series starts. The date must be a string, for example:
+            Date-time string when the time series ends. The date must be a string, for example:
             "1975-05-09 20:09:10".
         sample_freq: Frequency.
             Sampling frequency as a time delta, value, and time unit. Defaults to '1 minute'. Valid time units are:

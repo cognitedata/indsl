@@ -76,7 +76,7 @@ def percent_BEP_flowrate(
             Percentage of current flow rate to BEP
 
     """
-    pump_liquid_flowrate, BEP_flowrate = auto_align([pump_liquid_flowrate, BEP_flowrate], align_timesteps)
+    pump_liquid_flowrate, BEP_flowrate = auto_align([pump_liquid_flowrate, BEP_flowrate], align_timesteps)  # type: ignore
     percent_BEP_Q = pump_liquid_flowrate / BEP_flowrate * 100
 
     return scalar_to_pandas_series(percent_BEP_Q)
@@ -114,7 +114,7 @@ def pump_hydraulic_power(
 
     """
     # auto-align
-    pump_liquid_flowrate, total_head, den = auto_align([pump_liquid_flowrate, total_head, den], align_timesteps)
+    pump_liquid_flowrate, total_head, den = auto_align([pump_liquid_flowrate, total_head, den], align_timesteps)  # type: ignore
     P = pump_liquid_flowrate * den * 9.81 * total_head
 
     return scalar_to_pandas_series(P)
@@ -160,11 +160,11 @@ def pump_shaft_power(
     """
     # auto-align
     pump_liquid_flowrate, pump_hydraulic_power, eff_parameter_1, eff_parameter_2, eff_intercept = auto_align(
-        [pump_liquid_flowrate, pump_hydraulic_power, eff_parameter_1, eff_parameter_2, eff_intercept], align_timesteps
+        [pump_liquid_flowrate, pump_hydraulic_power, eff_parameter_1, eff_parameter_2, eff_intercept], align_timesteps  # type: ignore
     )
 
     p = (eff_parameter_1, eff_parameter_2, eff_intercept)
-    eff = np.polyval(p, pump_liquid_flowrate) / 100
+    eff = np.polyval(p, pump_liquid_flowrate) / 100  # type: ignore
 
     P = pump_hydraulic_power / eff
 
@@ -199,3 +199,35 @@ def recycle_valve_power_loss(
             Power loss by recirculation though the pump.
     """
     return pump_hydraulic_power(Q_valve, total_head, den, align_timestamps)
+
+
+@check_types
+def pump_discharge_reciprocating_pump(
+    area: Union[pd.Series, float],
+    length_of_stroke: Union[pd.Series, float],
+    number_of_revolutions_per_second: Union[pd.Series, float],
+    align_timesteps: bool = False,
+) -> pd.Series:
+    r"""Pump discharge.
+
+    This calculation can be used to calculate the discharge of a reciprocating pump.
+    The formula for the discharge of a reciprocating pump is:
+
+    .. math::
+        Discharge = Area \times Length\:of\:stroke \times Number\:of\:revolutions\:per\:second
+
+    Args:
+        area: Area of the pump [m^2].
+        length_of_stroke: Length of the stroke [m].
+        number_of_revolutions_per_second: Number of strokes per second [strokes/s].
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
+
+    Returns:
+        pd.Series: Discharge [bbl/day].
+            Discharge of the reciprocating pump.
+    """
+    area, length_of_stroke, number_of_revolutions_per_second = auto_align([area, length_of_stroke, number_of_revolutions_per_second], align_timesteps)  # type: ignore
+
+    discharge = area * length_of_stroke * number_of_revolutions_per_second * 60  # type: ignore
+    return scalar_to_pandas_series(discharge)

@@ -2,7 +2,9 @@
 Contributing
 ============
 
-This project is a community effort and contributions are welcomed. InDSL is publicly available and open for contributions `here <https://github.com/cognitedata/indsl>`_. Engage on our community site, `Cognite Hub <https://hub.cognite.com/>`_, for discussion, suggestions and questions about InDSL.
+This project is a community effort and contributions are welcomed. InDSL is publicly available and open for contributions 
+`here <https://github.com/cognitedata/indsl>`_. Engage on our community site, `Cognite Hub <https://hub.cognite.com/>`_, 
+for discussion, suggestions and questions about InDSL.
 
 The main objective of the InDLS is to **provide industrial domain experts and data scientist with a rich library of
 algorithms to speed up their work**. Therefore, we highly encourage data scientists with industrial domain knowledge
@@ -29,8 +31,55 @@ guide focuses on the requirements to comply with it. Nevertheless, we accept any
 important and making our library more robust over time is of paramount importance. Please don't hesitate to submit a
 Github pull request for something as small as a typo.*
 
+Open source contributions
+=========================
+
+Thank you for considering contributing to InDSL! We welcome all contributions as listed above.
+We encourage you to read this document to understand how to contribute to the project.
+Also, we are happy to help you get started, and we welcome your efforts to improve InDSL 
+as long as everyone involved is treated with respect. Cordiality is highly appreciated. 
+Please read our `Code of Conduct <https://indsl.docs.cognite.com/code_of_conduct.html>`_ before contributing.
+
+A good PR should be concise, clear, and easy to understand. In order to contribute, follow these steps:
+
+
+1. **Fork the repository**: Fork the `repository <https://github.com/cognitedata/indsl>`_ 
+to your own GitHub account.
+
+2. **Run the tests**: Confirm that the tests pass on your local machine. We use `pytest` for testing. 
+If they fail and you are unable to fix the issue, please reach out to us.
+
+3. **Make your changes**: Make your changes to the code base. Make sure to follow the coding style and documentation guidelines.
+Pre-commit checks will run automatically when you push your changes.
+You can also run pre-commit checks manually for all staged files by running ``poetry run pre-commit run --all-files``. 
+We follow the Google Python Style Guide for docstrings.
+
+4. **Write tests**: If you are adding a new feature or fixing a bug, write tests using the `pytest` framework to cover the new code. 
+Make sure that they pass.
+
+5. **Make a pull request**: Once you are satisfied with your changes and all of the tests pass, make a pull request 
+in the base repository using the conventional commit message format.
+
+
+Code Review Process
+-------------------
+
+Contributions will only be merged after a code review. You are expected to address and incorporate feedback from the review unless 
+there are compelling reasons not to. 
+If you disagree with the feedback, present your objections clearly and respectfully. 
+If the feedback is still deemed applicable after further discussion, you must either implement the suggested changes or choose 
+to withdraw your contribution.
+
+Documentation Contributions
+---------------------------
+
+Improvements to our documentation are much appreciated! The documentation source files are located in the 
+`docs-source/source <https://github.com/cognitedata/indsl/tree/main/docs-source/source>`_ directory of 
+our codebase. They are formatted in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
+and compiled with Sphinx to produce comprehensive documentation.
+
 Contributing a new Cognite Charts compliant algorithm
-=============================================
+=====================================================
 
 For an algorithm to play well with the Charts front-end (user interface) and the
 calculations back-end it has to adhere to some function input and output requirements, documentation (docstrings) format and a few
@@ -79,8 +128,8 @@ This project uses `Poetry <https://python-poetry.org/>`_ for dependency manageme
    pip install poetry
 
 
-1. Clone the `InDSL <https://github.com/cognitedata/indsl>`_ main repository on
-   GitHub to your local environment.
+1. For open source contributions, fork the `InDSL <https://github.com/cognitedata/indsl>`_ main repository on
+   GitHub to your local environment. If the contribution is internal, you may clone the repository directly.
 
 .. prompt:: bash $
 
@@ -319,7 +368,8 @@ We want to offer our user and developers as much information as possible about o
 **strongly encourage** all data scientist and developers to include one or more examples (license to go crazy here)
 to show off all the amazing features and functionalities of your new algorithm and how it can be used.
 
-1. Clone the INDSL repo and create your own local branch.
+1. For open source contributions, fork the INDSL repo and create your own local branch. 
+   For internal contributions, you may clone the repository directly.
 2. Go to the toolbox folder in ``examples`` where your algorithm belongs to (e.g. ``smooth``)
 3. Create a new python file with the prefix *plot_*. For example ``plot_my_new_algo_feature.py``.
 4. At the top of the file, add a triple quote docstring that start with the title of your example enclose by

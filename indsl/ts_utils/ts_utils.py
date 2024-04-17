@@ -40,9 +40,7 @@ def granularity_to_ms(granularity: str) -> int:
     ms = time_string_to_ms(r"(\d+)({})", granularity, _unit_in_ms_without_week)
     if ms is None:
         raise UserValueError(
-            "Invalid granularity format: `{}`. Must be on format <integer>(s|m|h|d). E.g. '5m', '3h' or '1d'.".format(
-                granularity
-            )
+            f"Invalid granularity format: `{granularity}`. Must be on format <integer>(s|m|h|d). E.g. '5m', '3h' or '1d'."
         )
     return ms
 
@@ -54,9 +52,7 @@ def time_ago_to_ms(time_ago_string: str) -> int:
     ms = time_string_to_ms(r"(\d+)({})-ago", time_ago_string, _unit_in_ms)
     if ms is None:
         raise UserValueError(
-            "Invalid time-ago format: `{}`. Must be on format <integer>(s|m|h|d|w)-ago or 'now'. E.g. '3d-ago' or '1w-ago'.".format(
-                time_ago_string
-            )
+            f"Invalid time-ago format: `{time_ago_string}`. Must be on format <integer>(s|m|h|d|w)-ago or 'now'. E.g. '3d-ago' or '1w-ago'."
         )
     return ms
 
