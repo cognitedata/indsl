@@ -192,7 +192,7 @@ def set_timestamps(timestamp_series: pd.Series, value_series: pd.Series, unit: T
         timestamp_series: Timestamp time series
         value_series: Value time series
         unit: Timestamp unit
-          Valid values "ns|us|ms|s|m|h|D|W". Default "ms"
+          Valid values "ns|us|ms|s|m|h|d|W". Default "ms"
 
     Returns:
         pd.Series: time series
@@ -221,7 +221,7 @@ def get_timestamps(series: pd.Series, unit: TimeUnits = "ms") -> pd.Series:
     Args:
         series: Time-series
         unit: Timestamp unit
-          Valid values "ns|us|ms|s|m|h|D|W". Default "ms"
+          Valid values "ns|us|ms|s|m|h|d|W". Default "ms"
 
     Returns:
         pd.Series: time series
@@ -249,7 +249,7 @@ def time_shift(series: pd.Series, n_units: float = 0, unit: TimeUnits = "ms") ->
         n_units: Time periods to shift
             Number of time periods to shift
         unit: Time period unit
-          Valid values "ns|us|ms|s|m|h|D|W". Default "ms"
+          Valid values "ns|us|ms|s|m|h|d|W". Default "ms"
 
     Returns:
         pd.Series: time series
