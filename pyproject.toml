@@ -44,7 +44,7 @@ marshmallow = "^3.17.0"
 docstring-to-markdown = "^0.10"
 coverage = "^7.0.0"
 ruff = "^0.2.0"
-pytest = ">=8.0.0,<8.1.0"
+pytest = "^8.1.0"
 
 [tool.poetry.group.docs]
 optional = true

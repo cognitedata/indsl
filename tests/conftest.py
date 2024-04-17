@@ -1,10 +1,28 @@
+import inspect
+
 import numpy as np
 import pytest
 
+import indsl
 from datasets.data.synthetic_industrial_data import non_linear_non_stationary_signal
 
-
 seeds = [10, 1975, 2000, 1, 89756]
+
+def get_all_operations():
+    indsl_functions = []
+    for _, module in inspect.getmembers(indsl):
+        toolbox_name = getattr(module, "TOOLBOX_NAME", None)
+        if toolbox_name is None:
+            continue
+        functions_to_export = getattr(module, "__cognite__", [])
+        functions_map = inspect.getmembers(module, inspect.isfunction)
+        for name, function in functions_map:
+            if name in functions_to_export:
+                indsl_functions.append(function)
+    return indsl_functions
+
+
+indsl_functions = get_all_operations()
 
 
 @pytest.fixture(scope="function", params=seeds)
