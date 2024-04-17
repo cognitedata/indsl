@@ -69,7 +69,7 @@ from indsl.resample import reindex_v1  # noqa
 
 @versioning.register(version="1.1")  # type: ignore
 def abs_diff(a: pd.Series, b: pd.Series) -> pd.Series:
-    a, b = reindex(a, b)
+    a, b = reindex_v1.reindex(a, b)
     return (a - b).abs()
 
 
