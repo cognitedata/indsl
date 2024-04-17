@@ -8,6 +8,7 @@ from datasets.data.synthetic_industrial_data import non_linear_non_stationary_si
 
 seeds = [10, 1975, 2000, 1, 89756]
 
+
 def get_all_operations():
     indsl_functions = []
     for _, module in inspect.getmembers(indsl):
