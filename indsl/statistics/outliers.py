@@ -223,7 +223,6 @@ def _get_outlier_indices(
         df.dropna()
     )  # dropping nan values, as nearest neighbors and other regression functions do not handle nan values
     df = df.rename(columns={df.columns[0]: "val"})
-
     df["rolling_mean"] = df["val"].rolling(time_window, min_periods=1).mean()  # calculate features
 
     if del_zero_val:  # delete 0 values if user requests it
