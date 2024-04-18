@@ -219,7 +219,9 @@ def _get_outlier_indices(
         raise UserValueError("eps should be > 0.0.")
 
     df = data.to_frame()
-    df = df.dropna()    # dropping nan values, as nearest neighbors and other regression functions do not handle nan values
+    df = (
+        df.dropna()
+    )  # dropping nan values, as nearest neighbors and other regression functions do not handle nan values
     df = df.rename(columns={df.columns[0]: "val"})
 
     df["rolling_mean"] = df["val"].rolling(time_window, min_periods=1).mean()  # calculate features
@@ -229,7 +231,7 @@ def _get_outlier_indices(
 
     df_dbscan = df[["val"]].copy()
     validate_series_is_not_empty(df_dbscan)
-    if eps is None:    # If eps is not given by user, calculate best eps to use for dbscan with nearest neighbors
+    if eps is None:  # If eps is not given by user, calculate best eps to use for dbscan with nearest neighbors
         # calculate distance to the further neighbor in order to find best epsilon (radius) parameter for dbscan
         n_neighbors = min(max(1, len(df) - 3), 6)
         nbrs = NearestNeighbors(n_neighbors=n_neighbors).fit(df)
@@ -238,13 +240,15 @@ def _get_outlier_indices(
 
         dist = np.sort(distances[:, -1])
         i = np.arange(len(dist))
-        try:    # handle cases where np regressor of KneeLocator does not converge
+        try:  # handle cases where np regressor of KneeLocator does not converge
             knee = KneeLocator(i, dist, S=1, curve="convex", direction="increasing", interp_method="polynomial")
             if knee.knee is not None:
-                eps = dist[knee.knee] if dist[knee.knee] > 0 else 0.5  # if calculated eps is 0, use 0.5 as default value
-            else:   # there can be cases where KneeLocator converges, but knee.knee is still None
+                eps = (
+                    dist[knee.knee] if dist[knee.knee] > 0 else 0.5
+                )  # if calculated eps is 0, use 0.5 as default value
+            else:  # there can be cases where KneeLocator converges, but knee.knee is still None
                 eps = 0.5
-        except Exception:   # not catching, as regression might not converge for different reasons
+        except Exception:  # not catching, as regression might not converge for different reasons
             eps = 0.5
 
     # train dbscan
@@ -260,7 +264,9 @@ def _get_outlier_indices(
 
     # Apply cubic spline regression on the remaining data points to detect additional outliers
     df_reg = df.loc[df_without_dbscan_outliers.index, :]
-    if len(df_reg) >= 1: # Only perform cubic spline regression if there are enough data points remaining after removing the outliers from dbscan
+    if (
+        len(df_reg) >= 1
+    ):  # Only perform cubic spline regression if there are enough data points remaining after removing the outliers from dbscan
         date_int = df_reg.index.to_series().astype(np.int64)
         date_int_stand = (date_int - date_int.mean()) / date_int.std()
         csaps_data = csaps(date_int_stand, df_reg["val"], date_int_stand, smooth=reg_smooth)
@@ -274,7 +280,6 @@ def _get_outlier_indices(
         all_outliers = outlier_indices_dbscan.append(outlier_indices_res_std)
     else:
         all_outliers = outlier_indices_dbscan
-    print(all_outliers)
     return all_outliers
 
 
