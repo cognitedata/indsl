@@ -8,7 +8,7 @@ from numpy.testing import assert_almost_equal
 from pandas.testing import assert_series_equal
 
 from indsl.exceptions import UserValueError
-from indsl.statistics.outliers import detect_outliers, outlier_percent, remove_outliers
+from indsl.statistics.outliers import detect_outliers, outlier_percent, remove_outliers, _get_outlier_indices
 
 
 def generate_data_with_outliers(num_points: int = 100):
@@ -24,6 +24,28 @@ def generate_data_with_outliers(num_points: int = 100):
     rng1.shuffle(values)
 
     return pd.Series(values, index=pd.date_range("2021-02-09 00:00:00", "2021-03-09 09:00:00", periods=1020))
+
+@pytest.mark.parametrize(
+    "input,expected",
+    [
+        ([0, 9, 0, 0, 0, 0], pd.to_datetime(['2020-01-01 00:00:01'])),
+        ([0, 9, 0, 0, 6, 0, 0], pd.to_datetime(['2020-01-01 00:00:01', '2020-01-01 00:00:04'])),
+        ([0, 9, 0, 8, 0, 0, 6, 0, 4], pd.to_datetime(['2020-01-01 00:00:01', '2020-01-01 00:00:03', '2020-01-01 00:00:06', '2020-01-01 00:00:08'])),
+        ([0, 9, 0, 1, 0, 0, 1, 0, 1], pd.to_datetime(['2020-01-01 00:00:01'])),
+    ]
+)
+
+@pytest.mark.extras
+def test_detect_outlier_indices(input, expected):
+    min_samples = 3
+    time_window = pd.Timedelta("1m")
+    del_zero_val = True  # False
+    reg_smooth = 0.5
+    test_data = pd.Series(input, index=pd.date_range('2020-01-01', periods=len(input), freq="1s"))
+    outlier_indices = _get_outlier_indices(data=test_data, min_samples=min_samples, eps=None, time_window=time_window,
+                                           del_zero_val=del_zero_val, reg_smooth=reg_smooth)
+    assert outlier_indices is not None
+    assert outlier_indices.to_list() == expected.to_list()
 
 
 @pytest.mark.extras
