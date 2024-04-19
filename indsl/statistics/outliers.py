@@ -276,7 +276,7 @@ def _get_outlier_indices(
         res_stand_outliers = res[res["val_stand"] >= 3]
 
         outlier_indices_res_std = res_stand_outliers.index
-        all_outliers = pd.concat([outlier_indices_dbscan, outlier_indices_res_std])
+        all_outliers = outlier_indices_dbscan.union(outlier_indices_res_std)
     else:
         all_outliers = outlier_indices_dbscan
     return all_outliers
