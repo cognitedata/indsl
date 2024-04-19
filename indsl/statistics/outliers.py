@@ -264,7 +264,7 @@ def _get_outlier_indices(
     # Apply cubic spline regression on the remaining data points to detect additional outliers
     df_reg = df.loc[df_without_dbscan_outliers.index, :]
     if (
-        len(df_reg) >= 1
+        len(df_reg) >= 4
     ):  # Only perform cubic spline regression if there are enough data points remaining after removing the outliers from dbscan
         date_int = df_reg.index.to_series().astype(np.int64)
         date_int_stand = (date_int - date_int.mean()) / date_int.std()
@@ -276,7 +276,7 @@ def _get_outlier_indices(
         res_stand_outliers = res[res["val_stand"] >= 3]
 
         outlier_indices_res_std = res_stand_outliers.index
-        all_outliers = outlier_indices_dbscan.append(outlier_indices_res_std)
+        all_outliers = pd.concat([outlier_indices_dbscan, outlier_indices_res_std])
     else:
         all_outliers = outlier_indices_dbscan
     return all_outliers

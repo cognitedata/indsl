@@ -44,7 +44,7 @@ def generate_data_with_outliers(num_points: int = 100):
 def test_detect_outlier_indices(input, expected):
     min_samples = 3
     time_window = pd.Timedelta("1m")
-    del_zero_val = True  # False
+    del_zero_val = True
     reg_smooth = 0.5
     test_data = pd.Series(input, index=pd.date_range("2020-01-01", periods=len(input), freq="1s"))
     outlier_indices = _get_outlier_indices(
