@@ -2,13 +2,13 @@ repos:
   - hooks:
       - id: black
     repo: https://github.com/psf/black
-    rev: 24.2.0
+    rev: 24.3.0
   - hooks:
       - id: ruff
         args: ["--fix"]
 
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.3.0
+    rev: v0.3.4
   - hooks:
       - id: debug-statements
         exclude: ^docs(-source)?/
@@ -41,4 +41,4 @@ repos:
         stages:
           - commit-msg
     repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.18.0
+    rev: v3.20.0
