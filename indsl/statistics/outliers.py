@@ -239,7 +239,7 @@ def _get_outlier_indices(
 
         dist = np.sort(distances[:, -1])
         i = np.arange(len(dist))
-        if len(dist) > 2: # dist should have more than 2 datapoints to calculate a knee
+        if len(dist) > 2:  # dist should have more than 2 datapoints to calculate a knee
             knee = KneeLocator(i, dist, S=1, curve="convex", direction="increasing", interp_method="polynomial")
             if knee.knee is not None:
                 eps = (
