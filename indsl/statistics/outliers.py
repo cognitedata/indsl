@@ -239,15 +239,15 @@ def _get_outlier_indices(
 
         dist = np.sort(distances[:, -1])
         i = np.arange(len(dist))
-        try:  # handle cases where np regressor of KneeLocator does not converge
+        if len(dist) > 2: # dist should have more than 2 datapoints to calculate a knee
             knee = KneeLocator(i, dist, S=1, curve="convex", direction="increasing", interp_method="polynomial")
             if knee.knee is not None:
                 eps = (
                     dist[knee.knee] if dist[knee.knee] > 0 else 0.5
                 )  # if calculated eps is 0, use 0.5 as default value
-            else:  # there can be cases where KneeLocator converges, but knee.knee is still None
+            else:
                 eps = 0.5
-        except Exception:  # not catching, as regression might not converge for different reasons
+        else:
             eps = 0.5
 
     # train dbscan
