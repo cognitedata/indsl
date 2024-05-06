@@ -166,7 +166,7 @@ def remove_outliers(
 @check_types
 def _get_outlier_indices(
     data: pd.Series,
-    min_samples,
+    min_samples: int,
     eps: Optional[float],
     time_window: pd.Timedelta,
     del_zero_val: bool,
@@ -219,8 +219,10 @@ def _get_outlier_indices(
         raise UserValueError("eps should be > 0.0.")
 
     df = data.to_frame()
+    df = (
+        df.dropna()
+    )  # dropping nan values, as nearest neighbors and other regression functions do not handle nan values
     df = df.rename(columns={df.columns[0]: "val"})
-
     df["rolling_mean"] = df["val"].rolling(time_window, min_periods=1).mean()  # calculate features
 
     if del_zero_val:  # delete 0 values if user requests it
@@ -228,46 +230,55 @@ def _get_outlier_indices(
 
     df_dbscan = df[["val"]].copy()
     validate_series_is_not_empty(df_dbscan)
-
-    if eps is None:
+    if eps is None:  # If eps is not given by user, calculate best eps to use for dbscan with nearest neighbors
         # calculate distance to the further neighbor in order to find best epsilon (radius) parameter for dbscan
-        n_neighbors = min(len(df) - 3, 6)
+        n_neighbors = min(max(1, len(df) - 3), 6)
         nbrs = NearestNeighbors(n_neighbors=n_neighbors).fit(df)
         distances, _ = nbrs.kneighbors(df)
         df["knn_dist"] = distances[:, -1]
 
         dist = np.sort(distances[:, -1])
         i = np.arange(len(dist))
-        knee = KneeLocator(i, dist, S=1, curve="convex", direction="increasing", interp_method="polynomial")
-        eps = dist[knee.knee] if dist[knee.knee] > 0 else 0.5  # if calculated eps is 0, use 0.5 as default value
+        if len(dist) > 2:  # dist should have more than 2 datapoints to calculate a knee
+            knee = KneeLocator(i, dist, S=1, curve="convex", direction="increasing", interp_method="polynomial")
+            if knee.knee is not None:
+                eps = (
+                    dist[knee.knee] if dist[knee.knee] > 0 else 0.5
+                )  # if calculated eps is 0, use 0.5 as default value
+            else:
+                eps = 0.5
+        else:
+            eps = 0.5
 
     # train dbscan
     dbscan_model = DBSCAN(eps=eps, min_samples=min_samples).fit(df_dbscan)
     labels = dbscan_model.labels_
 
     outlier_positions = np.where(labels == -1)[0]
-
     # Get indices of outlier data points calculated using dbscan
     outlier_indices_dbscan = df.iloc[outlier_positions].index
 
     # Delete outliers detected by dbscan
     df_without_dbscan_outliers = df.drop(outlier_indices_dbscan)
 
-    # Apply regression on the remaining data points
+    # Apply cubic spline regression on the remaining data points to detect additional outliers
     df_reg = df.loc[df_without_dbscan_outliers.index, :]
-    date_int = df_reg.index.to_series().astype(np.int64)
-    date_int_stand = (date_int - date_int.mean()) / date_int.std()
-    csaps_data = csaps(date_int_stand, df_reg["val"], date_int_stand, smooth=reg_smooth)
+    if (
+        len(df_reg) >= 4
+    ):  # Only perform cubic spline regression if there are enough data points remaining after removing the outliers from dbscan
+        date_int = df_reg.index.to_series().astype(np.int64)
+        date_int_stand = (date_int - date_int.mean()) / date_int.std()
+        csaps_data = csaps(date_int_stand, df_reg["val"], date_int_stand, smooth=reg_smooth)
 
-    # Delete points with high residuals
-    res = pd.DataFrame(abs(df_reg["val"] - csaps_data))
-    res["val_stand"] = (res["val"] - res["val"].mean()) / res["val"].std()
-    res_stand_outliers = res[res["val_stand"] >= 3]
+        # Delete points with high residuals
+        res = pd.DataFrame(abs(df_reg["val"] - csaps_data))
+        res["val_stand"] = (res["val"] - res["val"].mean()) / res["val"].std()
+        res_stand_outliers = res[res["val_stand"] >= 3]
 
-    outlier_indices_res_std = res_stand_outliers.index
-
-    all_outliers = outlier_indices_dbscan.append(outlier_indices_res_std)
-
+        outlier_indices_res_std = res_stand_outliers.index
+        all_outliers = outlier_indices_dbscan.union(outlier_indices_res_std)
+    else:
+        all_outliers = outlier_indices_dbscan
     return all_outliers
 
 
