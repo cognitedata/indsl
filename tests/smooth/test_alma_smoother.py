@@ -11,7 +11,7 @@ from tests.detect.test_utils import RNGContext
 def test_alma_smooth_poly():
     # Creating a polynomial of degree 2
     x = np.linspace(0, 10, 1000)
-    x_dt = pd.date_range(start="1970", periods=len(x), freq="1H")
+    x_dt = pd.date_range(start="1970", periods=len(x), freq="1h")
 
     y_hat = 1e-2 * x**2 - 1e-1 * x + 2
     with RNGContext():
@@ -36,7 +36,7 @@ def test_alma_smooth_poly():
 def test_alma_smooth_linear():
     # Creating a polynomial of degree 2
     x = np.linspace(0, 10, 1000)
-    x_dt = pd.date_range(start="1970", periods=len(x), freq="1H")
+    x_dt = pd.date_range(start="1970", periods=len(x), freq="1h")
 
     with RNGContext():
         y_hat = 120 * np.ones(len(x))

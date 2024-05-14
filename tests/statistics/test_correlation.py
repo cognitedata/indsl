@@ -28,10 +28,10 @@ def generate_data(aligned):
         y2 += 5
         y2 += np.random.randn(10) * 0.5  # add noise
 
-    index1 = pd.date_range(start="1970", periods=10, freq="1T")
+    index1 = pd.date_range(start="1970", periods=10, freq="1min")
 
     if not aligned:
-        index2 = pd.date_range(start="1970-01-01 00:00:30", periods=10, freq="1T")
+        index2 = pd.date_range(start="1970-01-01 00:00:30", periods=10, freq="1min")
     else:
         index2 = index1.copy()
     return pd.Series(y1, index=index1), pd.Series(y2, index=index2)

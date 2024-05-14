@@ -55,7 +55,7 @@ This example calculates the rolling pearson correlation coefficient between two 
     y2 = y1.copy()  # create data2 from data1
     y2 += 5  # add deviation
     y2 += rng.standard_normal(num_datapoints) * 0.5  # add noise
-    index = pd.date_range(start="1970", periods=num_datapoints, freq="1T")
+    index = pd.date_range(start="1970", periods=num_datapoints, freq="1min")
     data1, data2 = pd.Series(y1, index=index), pd.Series(y2, index=index)
 
     # calculate the rolling pearson correlation

@@ -7,12 +7,11 @@ from indsl.forecast.arma_predictor import MethodType, arma_predictor
 
 
 @pytest.mark.extras
-def test_arma_predictor_one_step(create_data_arma):
+def test_arma_predictor_one_step(create_onestep_data_arma):
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore")
         # Create data
-        perfect_data = create_data_arma[0]
-        test_data = create_data_arma[1]
+        perfect_data, test_data = create_onestep_data_arma
 
         # Run ARMA smoother
         res = arma_predictor(test_data, steps=1, method=MethodType.ONESTEP, train_fraction=0.8)
@@ -26,13 +25,12 @@ def test_arma_predictor_one_step(create_data_arma):
 
 
 @pytest.mark.extras
-def test_arma_predictor_multi_step(create_data_arma):
+def test_arma_predictor_multi_step(create_multistep_data_arma):
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore")
 
         # Create data
-        perfect_data = create_data_arma[0]
-        test_data = create_data_arma[1]
+        perfect_data, test_data = create_multistep_data_arma
 
         # Run ARMA smoother
         res = arma_predictor(test_data, steps=5, method=MethodType.MULTISTEP, train_fraction=0.8)

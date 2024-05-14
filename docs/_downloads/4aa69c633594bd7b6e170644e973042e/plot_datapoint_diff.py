@@ -25,7 +25,7 @@ data = data.squeeze()
 data.index = pd.to_datetime(data.index)
 
 # apply function to calculate difference between datapoint over a period of 1 day
-hour_count_default_threshold = datapoint_diff_over_time_period(data, pd.Timedelta("1D"), 24, pd.Timedelta("1H"))
+hour_count_default_threshold = datapoint_diff_over_time_period(data, pd.Timedelta("1d"), 24, pd.Timedelta("1h"))
 
 # Resample and forward fill generated step series
 resampled_step_series_default_threshold = hour_count_default_threshold.resample("60min")

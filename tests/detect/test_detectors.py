@@ -34,7 +34,9 @@ def test_steady_state_detector():
     """
 
     # Create artificial data with transient behaviour
-    t = pd.date_range(start=pd.to_datetime("2019-01-01 00:00:00"), end=pd.to_datetime("2019-01-02 00:00:00"), freq="1T")
+    t = pd.date_range(
+        start=pd.to_datetime("2019-01-01 00:00:00"), end=pd.to_datetime("2019-01-02 00:00:00"), freq="1min"
+    )
     with RNGContext():
         sig = np.random.normal(size=1000, scale=0.5) + 10
         disturbance = np.random.normal(size=200, scale=0.5) + 20

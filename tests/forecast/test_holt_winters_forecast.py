@@ -13,12 +13,12 @@ from indsl.forecast.holt_winters_predictor import holt_winters_predictor
 @pytest.mark.parametrize(
     "trend,seasonal_growth,trend_growth,trend_method,seasonal_method,fx,end_ts,periods,cycles",
     [
-        (0.2, 1, 1, "add", "add", "1D", "12-31-2023", 365, 3),
-        (0, 1, 1, "add", "add", "1D", "12-31-2023", 365, 3),
-        (1, 1, 1, "add", "add", "1H", "03-25-2021 23:00", 7 * 24, 12),
-        (0.5, 1, 1.5, "mul", "add", "1D", "12-31-2023", 30, 12 * 3),
-        (0.1, 1.5, 1, "add", "mul", "1D", "12-31-2023", 30, 12 * 3),
-        (0.2, 2, 1.5, "mul", "mul", "1D", "12-31-2025", 30, 12 * 5),
+        (0.2, 1, 1, "add", "add", "1d", "12-31-2023", 365, 3),
+        (0, 1, 1, "add", "add", "1d", "12-31-2023", 365, 3),
+        (1, 1, 1, "add", "add", "1h", "03-25-2021 23:00", 7 * 24, 12),
+        (0.5, 1, 1.5, "mul", "add", "1d", "12-31-2023", 30, 12 * 3),
+        (0.1, 1.5, 1, "add", "mul", "1d", "12-31-2023", 30, 12 * 3),
+        (0.2, 2, 1.5, "mul", "mul", "1d", "12-31-2025", 30, 12 * 5),
     ],
 )
 def test_holt_winters_predictor(

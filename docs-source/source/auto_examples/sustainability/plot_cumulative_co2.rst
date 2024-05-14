@@ -57,7 +57,7 @@ CO2 produced and the cost associated with that. Here is an example using the pow
     base_path = os.path.dirname("")
     data = pd.read_csv(os.path.join(base_path, "../../datasets/data/compressor_power_output.csv"), index_col=0)
     data.index = pd.to_datetime(data.index)
-    power = data[data.columns[0]].resample("1H").mean().ffill()  # Unit is in kW
+    power = data[data.columns[0]].resample("1h").mean().ffill()  # Unit is in kW
 
     # Specify factors
     co2_cost_factor = 0.5  # NOK/kg CO2

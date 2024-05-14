@@ -58,7 +58,7 @@ def test_gap_data_quality_score_analyser(
 ):
     # create mock data
     N = len(mock_gaps)
-    index = pd.date_range(start="2020-02-01", periods=N, freq="D")
+    index = pd.date_range(start="2020-02-01", periods=N, freq="d")
     data = pd.Series(np.zeros(N), index=index)
     mock_return_value = pd.Series(mock_gaps, index=index)
 
@@ -157,7 +157,7 @@ def test_get_gaps(
 ):
     # create mock data
     N = len(mock_gaps)
-    index = pd.date_range(start="2020-02-01", periods=N, freq="D")
+    index = pd.date_range(start="2020-02-01", periods=N, freq="d")
     data = pd.Series(np.zeros(N), index=index)
     mock_return_value = pd.Series(mock_gaps, index=index)
 

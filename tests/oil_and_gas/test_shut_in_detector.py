@@ -93,7 +93,7 @@ def test_calculate_shutin_no_state_change(valve_data, shutin_threshold, expected
     """Test if the function correctly handles cases where the valve state doesn't change."""
 
     # Define common date range
-    date_range = pd.date_range(start="2021-01-01", periods=6, freq="H")
+    date_range = pd.date_range(start="2021-01-01", periods=6, freq="h")
 
     # Cases where all valve states are 1 and 0
     valve_ts = pd.Series(valve_data, index=date_range).astype(float)

@@ -14,9 +14,9 @@ from indsl.validations import (
 @check_types
 def datapoint_diff_over_time_period(
     data: pd.Series,
-    time_period: pd.Timedelta = pd.Timedelta("1D"),
+    time_period: pd.Timedelta = pd.Timedelta("1d"),
     difference_threshold: int = 24,
-    tolerance: pd.Timedelta = pd.Timedelta("1H"),
+    tolerance: pd.Timedelta = pd.Timedelta("1h"),
 ) -> pd.Series:
     """Diff. between two datapoints.
 

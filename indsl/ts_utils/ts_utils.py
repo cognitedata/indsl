@@ -353,13 +353,13 @@ def fill_gaps(
     if granularity is None:
         # If granularity is not given as input. Granularity will be inferred from the data
         granularity = pd.Timedelta(data.index.inferred_freq)
-    if granularity == pd.Timedelta("0T"):
+    if granularity == pd.Timedelta("0min"):
         raise UserValueError("granularity can not be 0")
 
-    if ffill_resolution == pd.Timedelta("0T"):
+    if ffill_resolution == pd.Timedelta("0min"):
         raise UserValueError("ffill_resolution can not be 0")
 
-    if interpolate_resolution == pd.Timedelta("0T"):
+    if interpolate_resolution == pd.Timedelta("0min"):
         raise UserValueError("interpolate_resolution can not be 0")
 
     small_gap = 0

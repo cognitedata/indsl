@@ -23,7 +23,7 @@ from indsl.sustainability.co2_emissions_calculations import (
 base_path = os.path.dirname("")
 data = pd.read_csv(os.path.join(base_path, "../../datasets/data/compressor_power_output.csv"), index_col=0)
 data.index = pd.to_datetime(data.index)
-power = data[data.columns[0]].resample("1H").mean().ffill()  # Unit is in kW
+power = data[data.columns[0]].resample("1h").mean().ffill()  # Unit is in kW
 
 # Specify factors
 co2_cost_factor = 0.5  # NOK/kg CO2
@@ -31,9 +31,10 @@ emissions_factor = 0.21  # kg CO2/kWh
 
 # Perform emissions calculations
 rate_co2_produced = rate_of_emissions(power, emissions_factor)
-co2_produced = cumulative_co2_production(rate_co2_produced)
-co2_cost = cumulative_co2_cost(power, co2_cost_factor=co2_cost_factor, emissions_factor=emissions_factor)
-
+co2_produced = cumulative_co2_production(rate_co2_produced, start_date=data.index[0])
+co2_cost = cumulative_co2_cost(
+    power, co2_cost_factor=co2_cost_factor, emissions_factor=emissions_factor, start_date=data.index[0]
+)
 
 # Plotting
 plt.subplots(2, 2, figsize=(10, 10))

@@ -144,17 +144,13 @@ class Sinusoidal:
         self.ftype = ftype
         self.frequency = frequency
 
-    def sample_next(self, time, samples, errors):
+    def sample_next(self, time: float) -> float:
         """Sample a single time point.
 
         Parameters:
         ----------
         time : number
             Time at which a sample was required
-        samples : array-like
-            all samples taken so far
-        errors : array-like
-            all errors taken so far
 
         Returns:
         -------
@@ -240,10 +236,10 @@ class TimeSeries:
                 t = time_vector[i]
                 # Sample error
                 if self.noise_generator is not None:
-                    errors[i] = self.noise_generator.sample_next(t, samples[: i - 1], errors[: i - 1])
+                    errors[i] = self.noise_generator.sample_next(t)
 
                 # Sample signal
-                signal = self.signal_generator.sample_next(t, samples[: i - 1], errors[: i - 1])
+                signal = self.signal_generator.sample_next(t)
                 signals[i] = signal
 
                 # Compound signal and noise
@@ -263,17 +259,13 @@ class BaseNoise:
         """Initialize the BaseNoise object."""
         raise NotImplementedError
 
-    def sample_next(self, t, samples, errors):  # We provide t for irregularly sampled timeseries
+    def sample_next(self, t: float) -> float:  # We provide t for irregularly sampled timeseries
         """Samples next point based on history of samples and errors.
 
         Parameters:
         ----------
         t : int
             time
-        samples : array-like
-            all samples taken so far
-        errors : array-like
-            all errors sampled so far
 
         Returns:
         -------
@@ -310,17 +302,13 @@ class RedNoise(BaseNoise):
         self.previous_value = None
         self.previous_time = None
 
-    def sample_next(self, t, samples, errors):
+    def sample_next(self, t: float) -> float:
         """Samples next point based on history of samples and errors.
 
         Parameters:
         ----------
         t : int
             time
-        samples : array-like
-            all samples taken so far
-        errors : array-like
-            all errors sampled so far
 
         Returns:
         -------
@@ -331,7 +319,7 @@ class RedNoise(BaseNoise):
             red_noise = self.start_value
         else:
             time_diff = t - self.previous_time
-            wnoise = np.random.normal(loc=self.mean, scale=self.std, size=1)
+            wnoise = np.random.normal(loc=self.mean, scale=self.std, size=1)[0]
             red_noise = (self.tau / (self.tau + time_diff)) * (time_diff * wnoise + self.previous_value)
         self.previous_time = t
         self.previous_value = red_noise

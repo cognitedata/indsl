@@ -28,9 +28,9 @@ from indsl.exceptions import UserTypeError, UserValueError
                     ]
                 ),
             ),
-            pd.Timedelta("4H"),
+            pd.Timedelta("4h"),
             4,
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
             pd.Series(
                 data=np.array([0.0, 0.0]),
                 index=np.array(
@@ -106,9 +106,9 @@ from indsl.exceptions import UserTypeError, UserValueError
                     ]
                 ),
             ),
-            pd.Timedelta("1D"),
+            pd.Timedelta("1d"),
             24,
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
             pd.Series(
                 data=np.array([0.0, 0.0, 1.0, 1.0, 0.0]),
                 index=np.array(
@@ -147,9 +147,9 @@ from indsl.exceptions import UserTypeError, UserValueError
                     ]
                 ),
             ),
-            pd.Timedelta("5H"),
+            pd.Timedelta("5h"),
             5,
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
             pd.Series(
                 data=np.array([0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0]),
                 index=np.array(
@@ -193,9 +193,9 @@ from indsl.exceptions import UserTypeError, UserValueError
                     ]
                 ),
             ),
-            pd.Timedelta("5H"),
+            pd.Timedelta("5h"),
             10,
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
             pd.Series(
                 data=np.array([0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0]),
                 index=np.array(
@@ -224,9 +224,9 @@ from indsl.exceptions import UserTypeError, UserValueError
                     ]
                 ),
             ),
-            pd.Timedelta("2H"),
+            pd.Timedelta("2h"),
             2,
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
             pd.Series(
                 data=np.array([0.0, 0.0]),
                 index=np.array(
@@ -249,16 +249,16 @@ def test_datapoint_diff_last_x_hours(data, time_period, difference_threshold, to
 
 def test_datapoint_diff_no_time_index():
     with pytest.raises(UserTypeError, match="Expected a time series, got index type int64"):
-        datapoint_diff_over_time_period(pd.Series(dtype=np.float64), pd.Timedelta("10H"), 10, pd.Timedelta("1H"))
+        datapoint_diff_over_time_period(pd.Series(dtype=np.float64), pd.Timedelta("10h"), 10, pd.Timedelta("1h"))
 
 
 def test_datapoint_diff_no_data():
     with pytest.raises(UserValueError, match="Time series is empty."):
         datapoint_diff_over_time_period(
             pd.Series(index=pd.date_range("2022-01-01 10:00:00", "2022-01-01 10:29:00", periods=0), dtype=np.float64),
-            pd.Timedelta("5H"),
+            pd.Timedelta("5h"),
             5,
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
         )
 
 
@@ -266,9 +266,9 @@ def test_datapoint_diff_min_length():
     with pytest.raises(UserValueError, match="Expected series with length >= 2, got length 1"):
         datapoint_diff_over_time_period(
             pd.Series(index=pd.date_range("2022-01-01 10:00:00", "2022-01-01 10:29:00", periods=1), dtype=np.float64),
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
             1,
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
         )
 
 
@@ -278,5 +278,5 @@ def test_datapoint_diff_timedelta_unit():
             pd.Series(index=pd.date_range("2022-01-01 10:00:00", "2022-01-01 11:00:00", periods=6), dtype=np.float64),
             pd.Timedelta("0.1s"),
             1,
-            pd.Timedelta("1H"),
+            pd.Timedelta("1h"),
         )

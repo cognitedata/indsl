@@ -26,7 +26,7 @@ def cusum_data(scope="module"):
     with RNGContext():
         y = np.random.randn(300)
     y[100:200] += 6
-    index = pd.date_range(start="1970", periods=300, freq="1T")
+    index = pd.date_range(start="1970", periods=300, freq="1min")
     return pd.Series(y, index=index)
 
 

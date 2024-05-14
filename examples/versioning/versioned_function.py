@@ -46,10 +46,10 @@ def abs_diff(a: pd.Series, b: pd.Series) -> pd.Series:
 # Our, initial implementation is not very robust and results easily in `nan` outputs.
 # This happens specifically when we apply `abs`diff` to time-series with non-matching indices:
 
-idx = pd.date_range("2022-01-01", periods=5, freq="1H")
+idx = pd.date_range("2022-01-01", periods=5, freq="1h")
 a = pd.Series([1, 2, 3, 4, 5], index=idx)
 
-idx = pd.date_range("2022-01-01", periods=3, freq="2H")
+idx = pd.date_range("2022-01-01", periods=3, freq="2h")
 b = pd.Series([1, 3, 5], index=idx)
 
 abs_diff(a, b)
@@ -64,12 +64,12 @@ abs_diff(a, b)
 # Next, we implement the new version of the `abs_diff` and mark it as version 1.1.
 #
 
-from indsl.resample import reindex  # noqa
+from indsl.resample import reindex_v1  # noqa
 
 
 @versioning.register(version="1.1")  # type: ignore
 def abs_diff(a: pd.Series, b: pd.Series) -> pd.Series:
-    a, b = reindex(a, b)
+    a, b = reindex_v1.reindex(a, b)
     return (a - b).abs()
 
 

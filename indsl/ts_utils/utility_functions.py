@@ -13,7 +13,7 @@ from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
 
 
-TimeUnits = Literal["ns", "us", "ms", "s", "m", "h", "D", "W"]
+TimeUnits = Literal["ns", "us", "ms", "s", "m", "h", "d", "W"]
 
 
 # Rounding and utility functions
@@ -31,7 +31,7 @@ def round(x, decimals: int):
         pd.Series: time series
 
     """
-    return np.round_(x, decimals=decimals)
+    return np.round(x, decimals=decimals)
 
 
 def floor(x):
@@ -192,7 +192,7 @@ def set_timestamps(timestamp_series: pd.Series, value_series: pd.Series, unit: T
         timestamp_series: Timestamp time series
         value_series: Value time series
         unit: Timestamp unit
-          Valid values "ns|us|ms|s|m|h|D|W". Default "ms"
+          Valid values "ns|us|ms|s|m|h|d|W". Default "ms"
 
     Returns:
         pd.Series: time series
@@ -221,7 +221,7 @@ def get_timestamps(series: pd.Series, unit: TimeUnits = "ms") -> pd.Series:
     Args:
         series: Time-series
         unit: Timestamp unit
-          Valid values "ns|us|ms|s|m|h|D|W". Default "ms"
+          Valid values "ns|us|ms|s|m|h|d|W". Default "ms"
 
     Returns:
         pd.Series: time series
@@ -249,7 +249,7 @@ def time_shift(series: pd.Series, n_units: float = 0, unit: TimeUnits = "ms") ->
         n_units: Time periods to shift
             Number of time periods to shift
         unit: Time period unit
-          Valid values "ns|us|ms|s|m|h|D|W". Default "ms"
+          Valid values "ns|us|ms|s|m|h|d|W". Default "ms"
 
     Returns:
         pd.Series: time series
@@ -485,8 +485,6 @@ def normality_assumption_test(
 
     W, p_value = shapiro(series)
 
-    if p_value == 1.0 and W == 1.0:
-        raise UserValueError("This time series is uniform and not normally distributed")
     if p_value < min_p_value or W < min_W:
         raise UserValueError("This time series is not normally distributed")
 

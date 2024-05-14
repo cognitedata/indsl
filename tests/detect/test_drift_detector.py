@@ -17,7 +17,7 @@ def test_drift_detector(drift_function):
         y2 = np.random.normal(size=1000, loc=10)
     y = np.concatenate([y1, y2])
 
-    x_dt = pd.date_range(start="1970", periods=len(y), freq="1H")
+    x_dt = pd.date_range(start="1970", periods=len(y), freq="1h")
     test_data = pd.Series(y, index=x_dt)
 
     # Run drift detector

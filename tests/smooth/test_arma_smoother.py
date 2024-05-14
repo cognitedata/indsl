@@ -15,7 +15,7 @@ def test_arma_smoother():
 
     # Create data
     x = np.linspace(0, 10, 1000)
-    x_dt = pd.date_range(start="1970", periods=len(x), freq="1H")
+    x_dt = pd.date_range(start="1970", periods=len(x), freq="1h")
 
     y_hat = 1e-2 * x**2 - 1e-1 * x + 2
     with RNGContext():
