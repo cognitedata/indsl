@@ -79,9 +79,9 @@ def retrieve_fluid_properties(
     assert (pvt_data.attrs["file_type"]) == "tab", "File is not a '.tab' file"
 
     column_names, pvt_table = pvt_data.columns, pvt_data.values
-    assert param in column_names, (
-        "Parameter is not a property of the fluid file. Valid inputs are %s" % column_names.values
-    )
+    assert (
+        param in column_names
+    ), f"Parameter is not a property of the fluid file. Valid inputs are {column_names.values}"
 
     pvt_table_dict_file = os.path.join(os.path.dirname(__file__), "tab_fp_identifier.json")
     pvt_table_dict = json.load(open(pvt_table_dict_file, "rb"))
