@@ -3677,13 +3677,13 @@ test = ["cython (>=3.0)", "defusedxml (>=0.7.1)", "pytest (>=6.0)", "setuptools 
 
 [[package]]
 name = "sphinx-gallery"
-version = "0.15.0"
-description = "A `Sphinx <https://www.sphinx-doc.org/en/master/>`_ extension that builds an HTML gallery of examples from any set of Python scripts."
+version = "0.16.0"
+description = "A Sphinx extension that builds an HTML gallery of examples from any set of Python scripts."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "sphinx-gallery-0.15.0.tar.gz", hash = "sha256:7217fe98f8c4cce248db798c48f34183e4cdb277d2381e188182f92a14ec26b7"},
-    {file = "sphinx_gallery-0.15.0-py3-none-any.whl", hash = "sha256:d66d38d901f6b65b6e3ee6c2584e37476b035d9e52907b1593a3f312946ae724"},
+    {file = "sphinx_gallery-0.16.0-py3-none-any.whl", hash = "sha256:f5456514f4efb230a6f1db6241667774ca3ee8f15e9a7456678f1d1815118e60"},
+    {file = "sphinx_gallery-0.16.0.tar.gz", hash = "sha256:3912765bc5e7b5451dc471ad50ead808a9752280b23fd2ec4277719a5ef68e42"},
 ]
 
 [package.dependencies]
@@ -4235,4 +4235,4 @@ stats = ["statsmodels"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "40db3d9482af93ad781a829990c178a0f22ef847a98aa6b28f494c79b93adfbe"
+content-hash = "bbcc1eb7ab66c6eb852c5cc2db7629a0056ac82da29f312499aa0e550a15a47f"
