@@ -482,6 +482,8 @@ def normality_assumption_test(
     """
     if len(series) > max_data_points:
         raise UserValueError(f"This time series exceeds the limit of {max_data_points} datapoints to perform the test.")
+    if len(series) < 3:
+        raise UserValueError("Time series must contain at least 3 data points.")
 
     W, p_value = shapiro(series)
 
