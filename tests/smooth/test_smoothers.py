@@ -149,3 +149,10 @@ def test_smoothers_little_data(filter_function, length):
 def test_smoothers_nan_inf_data(filter_function):
     data = pd.Series([np.inf, np.nan], index=pd.date_range(start=0, freq="1s", periods=2))
     filter_function(data)
+
+
+@pytest.mark.core
+def test_butterworth_validation():
+    data = pd.Series(np.random.randn(10))
+    with pytest.raises(UserValueError):
+        butterworth(data, Wn=10)

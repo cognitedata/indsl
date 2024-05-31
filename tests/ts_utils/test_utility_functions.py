@@ -8,8 +8,14 @@ import pytest
 
 from pandas.testing import assert_series_equal
 
+from indsl.exceptions import UserValueError
 from indsl.ts_utils import get_timestamps, set_timestamps, time_shift, union
-from indsl.ts_utils.utility_functions import TimeUnits, create_series_from_timesteps, generate_step_series
+from indsl.ts_utils.utility_functions import (
+    TimeUnits,
+    create_series_from_timesteps,
+    generate_step_series,
+    normality_assumption_test,
+)
 
 from ..generate_data import create_uniform_data
 
@@ -159,3 +165,10 @@ def test_create_series_from_timesteps():
     timesteps = 1 * [second] + [1.0 / 60 / 60 * second] + 1 * [second]
     x = create_series_from_timesteps(timesteps)
     assert_series_equal(x, expected_series)
+
+
+@pytest.mark.core
+def test_normality_assumption_validation():
+    data = pd.Series(np.random.randn(2))
+    with pytest.raises(UserValueError):
+        normality_assumption_test(data)
