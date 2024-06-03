@@ -6,6 +6,7 @@ import pandas as pd
 from scipy.signal import butter, sosfilt
 
 from indsl import versioning
+from indsl.exceptions import UserValueError
 from indsl.type_check import check_types
 
 from . import butterworth_v1  # noqa
@@ -49,7 +50,8 @@ def butterworth(
 
     if len(data) < 1:
         return data
-
+    if (Wn <= 0) or (Wn >= 1):
+        raise UserValueError("Critical frequency must be between 0 and 1")
     filter_output = butter(N=N, Wn=Wn, output="sos", btype=btype)
     # Apply second order segments
     filtered = sosfilt(filter_output, data, axis=0)
