@@ -28,5 +28,4 @@ __cognite__ = [
     "cpd_ed_pelt",
     "unchanged_signal_detector",
     "cusum",
-    "oscillation_detector",
 ]
