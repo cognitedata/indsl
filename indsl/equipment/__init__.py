@@ -1,4 +1,5 @@
 # Copyright 2023 Cognite AS
+from .operational_availability_ import operational_availability
 from .pump_parameters import (
     percent_BEP_flowrate,
     pump_discharge_reciprocating_pump,
@@ -8,7 +9,6 @@ from .pump_parameters import (
     total_head,
 )
 from .valve_parameters import flow_through_valve
-from .operational_availability_ import operational_availability
 from .volume_vessel import (
     filled_volume_ellipsoidal_head_vessel,
     filled_volume_spherical_head_vessel,
