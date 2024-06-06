@@ -10,7 +10,7 @@ of a system using the `operational_availability` function.
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from indsl.equipment.operational_availability import operational_availability
+from indsl.equipment.operational_availability_ import operational_availability
 
 # Create some dummy data
 up_time_data = pd.Series([1] * 365, index=pd.date_range(start="2023-01-01", periods=365, freq="D"))

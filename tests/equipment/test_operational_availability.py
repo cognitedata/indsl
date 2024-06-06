@@ -1,7 +1,7 @@
 # Tests for the calculate_operational_availability function in the equipment module
 import pytest
 import pandas as pd
-from indsl.equipment.operational_availability import operational_availability
+from indsl.equipment.operational_availability_ import operational_availability
 
 
 @pytest.mark.core
