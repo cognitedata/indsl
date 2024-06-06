@@ -15,9 +15,9 @@ def operational_availability(up_time_data: pd.Series, down_time_data: pd.Series)
         A_o = \frac{MUT}{MUT + MDT}
 
     Args:
-      up_time_data : pd.Series
+      up_time_data: Up time data.
           Time series data of equipment up time.
-      down_time_data : pd.Series
+      down_time_data: Down time data.
           Time series data of equipment down time.
 
     Returns:

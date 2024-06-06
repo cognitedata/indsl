@@ -24,6 +24,6 @@ _operational_availability = operational_availability(up_time_data=up_time_data, 
 
 plt.plot(_operational_availability)
 plt.xlabel("Date")
-plt.ylabel("Operational Availability")
+plt.ylabel("Operational Availability (%)")
 plt.title("Operational Availability")
 plt.show()
