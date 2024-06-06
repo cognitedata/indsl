@@ -1,10 +1,9 @@
 # Tests for the calculate_operational_availability function in the equipment module
 import pytest
 import pandas as pd
-from indsl.equipment.operational_availability import calculate_operational_availability
+from indsl.equipment.operational_availability import operational_availability
 
 
-# parametrize with test data for 1 year
 @pytest.mark.core
 @pytest.mark.parametrize(
     "up_time_data, down_time_data, expected",
@@ -22,5 +21,5 @@ from indsl.equipment.operational_availability import calculate_operational_avail
     ],
 )
 def test_calculate_operational_availability(up_time_data, down_time_data, expected):
-    result = calculate_operational_availability(up_time_data=up_time_data, down_time_data=down_time_data)
+    result = operational_availability(up_time_data=up_time_data, down_time_data=down_time_data)
     pd.testing.assert_series_equal(result, expected)

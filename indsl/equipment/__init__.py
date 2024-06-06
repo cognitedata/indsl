@@ -1,5 +1,5 @@
 # Copyright 2023 Cognite AS
-from .operational_availability import calculate_operational_availability
+from .operational_availability import operational_availability
 from .pump_parameters import (
     percent_BEP_flowrate,
     pump_discharge_reciprocating_pump,
@@ -29,7 +29,7 @@ __all__ = [
     "filled_volume_spherical_head_vessel",
     "filled_volume_torispherical_head_vessel",
     "pump_discharge_reciprocating_pump",
-    "calculate_operational_availability",
+    "operational_availability",
 ]
 
 __cognite__ = [
@@ -42,5 +42,5 @@ __cognite__ = [
     "filled_volume_spherical_head_vessel",
     "filled_volume_torispherical_head_vessel",
     "pump_discharge_reciprocating_pump",
-    "calculate_operational_availability",
+    "operational_availability",
 ]
