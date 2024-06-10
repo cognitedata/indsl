@@ -1,3 +1,11 @@
+"""
+==========================
+Mean time between failures
+==========================
+This example demonstrates how to calculate and plot the mean time between failures (MTBF)
+of a system using the `MTBF` function.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 

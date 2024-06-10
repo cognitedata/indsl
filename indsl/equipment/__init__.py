@@ -1,4 +1,5 @@
 # Copyright 2023 Cognite AS
+from .mean_time_between_failures_ import mean_time_between_failures
 from .pump_parameters import (
     percent_BEP_flowrate,
     pump_discharge_reciprocating_pump,
@@ -28,6 +29,7 @@ __all__ = [
     "filled_volume_spherical_head_vessel",
     "filled_volume_torispherical_head_vessel",
     "pump_discharge_reciprocating_pump",
+    "mean_time_between_failures",
 ]
 
 __cognite__ = [
@@ -40,4 +42,5 @@ __cognite__ = [
     "filled_volume_spherical_head_vessel",
     "filled_volume_torispherical_head_vessel",
     "pump_discharge_reciprocating_pump",
+    "mean_time_between_failures",
 ]
