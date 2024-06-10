@@ -36,6 +36,13 @@ def mean_time_between_failures(mean_time_to_failure: pd.Series, mean_time_to_res
       pd.Series
         Time series data of the MTBF of the system.
     """
-    mtbf = mean_time_to_failure + mean_time_to_resolution
+    # Resample the data to daily frequency
+    mttf = mean_time_to_failure.resample("D").mean()
+    mttres = mean_time_to_resolution.resample("D").mean()
+
+    mtbf = mttf + mttres
+
+    # Fill NaN values with 0
+    mtbf = mtbf.fillna(0)
 
     return mtbf
