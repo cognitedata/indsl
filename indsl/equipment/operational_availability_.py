@@ -37,6 +37,6 @@ def operational_availability(availability: pd.Series, output: str = "UT") -> pd.
     total_hours = status_series.resample("D").sum()
 
     # Take the absolute value of each point
-    total_hours = total_hours.abs()
+    total_hours = total_hours.abs().astype(float)
 
     return total_hours

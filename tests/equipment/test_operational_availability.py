@@ -4,22 +4,51 @@ import pandas as pd
 from indsl.equipment.operational_availability_ import operational_availability
 
 
-@pytest.mark.core
 @pytest.mark.parametrize(
-    "up_time_data, down_time_data, expected",
+    "availability, output, expected",
     [
+        # Test case 1: Alternating availability pattern
         (
-            pd.Series([1] * 365, index=pd.date_range(start="2023-01-01", periods=365, freq="D")),
-            pd.Series([1] * 365, index=pd.date_range(start="2023-01-01", periods=365, freq="D")),
-            pd.Series([0.5] * 365, index=pd.date_range(start="2023-01-01", periods=365, freq="D")).astype(float),
+            pd.Series([1, 0, 1, 0, 1, 0, 1, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
+            "UT",
+            pd.Series([1, 0, 1, 0, 1, 0, 1, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
+                float
+            ),
         ),
+        # Test case 2: All ones (always available)
         (
-            pd.Series([1] * 365, index=pd.date_range(start="2023-01-01", periods=365, freq="D")),
-            pd.Series([0] * 365, index=pd.date_range(start="2023-01-01", periods=365, freq="D")),
-            pd.Series([1] * 365, index=pd.date_range(start="2023-01-01", periods=365, freq="D")).astype(float),
+            pd.Series([1, 1, 1, 1, 1, 1, 1, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
+            "UT",
+            pd.Series([1, 1, 1, 1, 1, 1, 1, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
+                float
+            ),
+        ),
+        # Test case 3: All zeros (never available)
+        (
+            pd.Series([0, 0, 0, 0, 0, 0, 0, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
+            "UT",
+            pd.Series([0, 0, 0, 0, 0, 0, 0, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
+                float
+            ),
+        ),
+        # Test case 4: Mixed availability
+        (
+            pd.Series([1, 0, 0, 1, 1, 0, 0, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
+            "UT",
+            pd.Series([1, 0, 0, 1, 1, 0, 0, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
+                float
+            ),
+        ),
+        # Test case 5: Mixed availability, output DT
+        (
+            pd.Series([1, 0, 0, 1, 1, 0, 0, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
+            "DT",
+            pd.Series([0, 1, 1, 0, 0, 1, 1, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
+                float
+            ),
         ),
     ],
 )
-def test_calculate_operational_availability(up_time_data, down_time_data, expected):
-    result = operational_availability(up_time_data=up_time_data, down_time_data=down_time_data)
+def test_operational_availability(availability, output, expected):
+    result = operational_availability(availability=availability, output=output)
     pd.testing.assert_series_equal(result, expected)
