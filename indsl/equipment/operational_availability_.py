@@ -1,10 +1,12 @@
+# Copyright 2024 Cognite AS
+from typing import Literal
 import pandas as pd
 
 from indsl.type_check import check_types
 
 
 @check_types
-def operational_availability(availability: pd.Series, output: str = "UT") -> pd.Series:
+def operational_availability(availability: pd.Series, output: Literal["Uptime", "Downtime"]) -> pd.Series:
     r"""Operational availability.
 
     Calculate the operational availability of a system based on
@@ -17,16 +19,16 @@ def operational_availability(availability: pd.Series, output: str = "UT") -> pd.
         availability: Availability.
             Time series data of the availability of the system.
         output: Output type.
-            A string representing the output of the function. Either 'UT' for uptime or 'DT' for downtime.
+            A string representing the output of the function. Either 'Uptime' for uptime or 'Downtime' for downtime.
 
     Returns:
         pd.Series
             Time series data of the operational availability or downtime of the system.
     """
-    if output not in ["UT", "DT"]:
+    if output not in ["Uptime", "Downtime"]:
         raise ValueError("Output must be either 'UT' for uptime or 'DT' for downtime.")
 
-    if output == "DT":
+    if output == "Downtime":
         # Invert the availability to get downtime (1 when down, 0 when up)
         status_series = 1 - availability
     else:
