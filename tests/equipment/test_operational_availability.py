@@ -10,7 +10,7 @@ from indsl.equipment.operational_availability_ import operational_availability
         # Test case 1: Alternating availability pattern
         (
             pd.Series([1, 0, 1, 0, 1, 0, 1, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
-            "UT",
+            "Uptime",
             pd.Series([1, 0, 1, 0, 1, 0, 1, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
                 float
             ),
@@ -18,7 +18,7 @@ from indsl.equipment.operational_availability_ import operational_availability
         # Test case 2: All ones (always available)
         (
             pd.Series([1, 1, 1, 1, 1, 1, 1, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
-            "UT",
+            "Uptime",
             pd.Series([1, 1, 1, 1, 1, 1, 1, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
                 float
             ),
@@ -26,7 +26,7 @@ from indsl.equipment.operational_availability_ import operational_availability
         # Test case 3: All zeros (never available)
         (
             pd.Series([0, 0, 0, 0, 0, 0, 0, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
-            "UT",
+            "Uptime",
             pd.Series([0, 0, 0, 0, 0, 0, 0, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
                 float
             ),
@@ -34,7 +34,7 @@ from indsl.equipment.operational_availability_ import operational_availability
         # Test case 4: Mixed availability
         (
             pd.Series([1, 0, 0, 1, 1, 0, 0, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
-            "UT",
+            "Uptime",
             pd.Series([1, 0, 0, 1, 1, 0, 0, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
                 float
             ),
@@ -42,7 +42,7 @@ from indsl.equipment.operational_availability_ import operational_availability
         # Test case 5: Mixed availability, output DT
         (
             pd.Series([1, 0, 0, 1, 1, 0, 0, 1], index=pd.date_range(start="2023-01-01", periods=8, freq="D")),
-            "DT",
+            "Downtime",
             pd.Series([0, 1, 1, 0, 0, 1, 1, 0], index=pd.date_range(start="2023-01-01", periods=8, freq="D")).astype(
                 float
             ),

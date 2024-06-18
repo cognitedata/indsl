@@ -23,13 +23,13 @@ availability_data = pd.Series(
 )
 
 # Calculate the operational availability and downtime
-availability_daily_uptime = operational_availability(availability=availability_data, output="UT")
-availability_hourly_uptime = operational_availability(availability=availability_data, output="UT")
-availability_monthly_uptime = operational_availability(availability=availability_data, output="UT")
+availability_daily_uptime = operational_availability(availability=availability_data, output="Uptime")
+availability_hourly_uptime = operational_availability(availability=availability_data, output="Uptime")
+availability_monthly_uptime = operational_availability(availability=availability_data, output="Uptime")
 
-availability_daily_downtime = operational_availability(availability=availability_data, output="DT")
-availability_hourly_downtime = operational_availability(availability=availability_data, output="DT")
-availability_monthly_downtime = operational_availability(availability=availability_data, output="DT")
+availability_daily_downtime = operational_availability(availability=availability_data, output="Downtime")
+availability_hourly_downtime = operational_availability(availability=availability_data, output="Downtime")
+availability_monthly_downtime = operational_availability(availability=availability_data, output="Downtime")
 
 # Plot the downtime and/or uptime
 plt.plot(availability_daily_downtime, "o-", label="Downtime")
