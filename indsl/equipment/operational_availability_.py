@@ -1,5 +1,6 @@
 # Copyright 2024 Cognite AS
 from typing import Literal
+
 import pandas as pd
 
 from indsl.type_check import check_types
