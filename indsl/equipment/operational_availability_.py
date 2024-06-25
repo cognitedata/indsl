@@ -23,7 +23,7 @@ def operational_availability(availability: pd.Series, output: Literal["Uptime", 
             A string representing the output of the function. Either 'Uptime' for uptime or 'Downtime' for downtime.
 
     Returns:
-        pd.Series
+        pd.Series: Total hours per time period.
             Time series data of the operational availability or downtime of the system.
     """
     if output not in ["Uptime", "Downtime"]:
