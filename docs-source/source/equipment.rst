@@ -87,6 +87,7 @@ Operational availability
 
    * :ref:`sphx_glr_auto_examples_equipment_plot_operational_availability.py`
 
+
 Mean time between failures
 --------------------------
 .. autofunction:: indsl.equipment.mean_time_between_failures_.mean_time_between_failures
