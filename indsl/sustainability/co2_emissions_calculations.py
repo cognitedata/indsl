@@ -70,7 +70,7 @@ def rate_of_emissions(data: pd.Series, emissions_factor: float) -> pd.Series:
         emissions_factor: CO2 emitted per unit of energy (e.g., kg CO2/MJ), mass (e.g., kg CO2/kg fuel), or volume (e.g., kg CO2/m^3 fuel).
 
     Returns:
-        pd.Series: Rate of emissions (e.g., kg CO2/time or tonnes CO2/time).
+        pandas.Series: Rate of emissions (e.g., kg CO2/time or tonnes CO2/time).
     """
     return data * emissions_factor
 
@@ -88,7 +88,7 @@ def cumulative_co2_production(rate_of_emissions: pd.Series, start_date: Optional
         start_date: Start date to begin cumulative calculation.
 
     Returns:
-        pd.Series: Cumulative CO2 emissions (e.g., kg CO2 or tonnes CO2).
+        pandas.Series: Cumulative CO2 emissions (e.g., kg CO2 or tonnes CO2).
     """
     # Assign start_date to be start of year if not defined
     if start_date is None:
@@ -115,7 +115,7 @@ def cumulative_co2_cost(
         start_date: Start date to begin cumulative calculation.
 
     Returns:
-        pd.Series: Cumulative cost of CO2 emissions (e.g., USD).
+        pandas.Series: Cumulative cost of CO2 emissions (e.g., USD).
     """
     rate_co2_produced = rate_of_emissions(data, emissions_factor)
     total_co2_produced = cumulative_co2_production(rate_co2_produced, start_date=start_date)
