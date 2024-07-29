@@ -6,7 +6,6 @@ Darcy Friction Factor
 
 This example generates a Moody diagram using the Darcy friction factor function
 """
-# import os
 import warnings
 
 import matplotlib.pyplot as plt
@@ -14,7 +13,6 @@ import pandas as pd
 import numpy as np
 
 from indsl.fluid_dynamics import Darcy_friction_factor
-
 
 # suppress "No frequency information was given" warning - Frequency information is derived from datetime index
 warnings.filterwarnings("ignore")
