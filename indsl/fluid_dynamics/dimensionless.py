@@ -22,7 +22,7 @@ def Re(
     Re = velocity * density * length_scale / d_viscosity
 
     Args:
-        velocity: Flow velocity [m/s].
+        velocity: Fluid velocity [m/s].
         density: Density [kg/m3].
             Density of the fluid.
         d_viscosity: Dynamic viscosity [kg/ms].
@@ -43,14 +43,14 @@ def Re(
 
 @check_types
 def Fr(velocity: Union[pd.Series, float], length_scale: Union[pd.Series, float]) -> pd.Series:
-    """Froud Number.
+    """Froude Number.
 
     The Froude number is a ratio of inertial and gravitational forces
 
     Froude = velocity / sqrt( g * length_Scale), g = 9.81 acceleration due to gravity [m/s2]
 
     Args:
-        velocity: Flow velocity [m/s].
+        velocity: Fluid velocity [m/s].
         length_scale: Characteristic length [m].
             Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
             of a physical system. Often, the characteristic length is the volume of a system divided by its surface.
@@ -72,20 +72,23 @@ def Fr_density_scaled(
     density_2: Union[pd.Series, float],
     length_scale: Union[pd.Series, float],
 ) -> pd.Series:
-    """Density scaled Froud Number.
+    r"""Density scaled Froude Number.
 
     The Froude number is a ratio of inertial and gravitational forces.
     The density scaled Fround number is typically used in two phase flow
 
-    Froude = u / sqrt( g * L*(1-rho1/rho2 ) )
-        u: velocity
-        g: 9.81 acceleration due to gravity [m/s2]
+    Froude = u / sqrt( g * L*(1-rho1/rho2 ) ) :math:`\frac{u}{\sqrt{g L (1 - \frac{\rho_1}{\rho_2})}}`
+        u: velocity :math:`\mathrm{\frac{m}{s}}`
+        g: 9.81 acceleration due to gravity [:math:`\mathrm{\frac{m}{s^2}}`]
+        L: Length scale [:math:`\mathrm{m}`]
+        :math:`\rho_1`: Density lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`]
+        :math:`\rho_2`: Density heavier fluid [:math:`\mathrm{\frac{kg}{m^3}}`]
 
     Args:
-        velocity: Average fluid velocity [m/s].
-        density_1: Density of the lighter fluid [kg/m3].
-        density_2: Density of the denser fluid [kg/m3].
-        length_scale: Characteristic length [m].
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`].
+        density_1: Density lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
+        density_2: Density heavier fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
+        length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. For pipe flow, the characteristic length is normally the pipe diameter
 
     Returns:
@@ -153,19 +156,25 @@ def Fr_2phase(
     inclination: Union[pd.Series, float],
     diameter: Union[pd.Series, float],
 ) -> pd.Series:
-    """2 phase Froud Number.
+    r"""2 phase Froude Number.
 
     The Froude number is a ratio of inertial and gravitational forces.
+    This calculated a Froude number for a two phase pipe flow situation.
 
     Args:
         liquid_fraction: Volume fraction of the liquid [-].
             The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1.
-        superficial_velocity_gas: Gas superficial velocity [m/s].
-        superficial_velocity_liquid: Liquid superficial velocity [m/s].
-        density_gas: Density of the lighter fluid [kg/m3].
-        density_liquid: Density of the denser fluid [kg/m3].
-        inclination: Pipe inclination [degrees]
-        diameter: Pipe inner diameter [m].
+        superficial_velocity_gas: Gas superficial velocity [:math:`\mathrm{\frac{m}{s}}`].
+            The superficial flow is defined as the hypothetical flow velocity had the phase covered the entire flow area.
+            :math:`US_{phase} = \frac{Q_{phase}}{\alpha_{phase}}}`
+            :math:`US_{phase}`: Superficial flow velocity of the phase
+            :math:`Q_{phase}`: Volume flow velocity of the phase
+            :math:`\alpha_{phase}`: Area covered by the phase
+        superficial_velocity_liquid: Liquid superficial velocity [:math:`\mathrm{\frac{m}{s}}`].
+        density_gas: Density of the lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
+        density_liquid: Density of the denser fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
+        inclination: Pipe inclination [:math:`\mathrm{deg}`]
+        diameter: Pipe inner diameter [:math:`\mathrm{m}`].
 
     Returns:
         pandas.Series: 2 phase Froude number [-]
@@ -198,22 +207,27 @@ def Fr_inviscid_kelvin_helmholtz(
     inclination: Union[pd.Series, float],
     diameter: Union[pd.Series, float],
 ) -> pd.Series:
-    """Inviscid Kelvin Helmholtz Froud Number.
+    r"""Inviscid Kelvin Helmholtz Froude Number.
 
     The Froude number is a ratio of inertial and gravitational forces.
 
     Args:
         liquid_fraction: Volume fraction of the liquid [-].
             The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1.
-        superficial_velocity_gas: Gas superficial speed [m/s].
-        superficial_velocity_liquid: Liquid superficial speed [m/s].
-        density_gas: Density of the lighter fluid [kg/m3].
-        density_liquid: Density of the denser fluid [kg/m3].
-        inclination: Pipe inclination [degrees]
-        diameter: Pipe inner diameter [m].
+        superficial_velocity_gas: Gas superficial speed [:math:`\mathrm{\frac{m}{s}}`].
+            The superficial flow is defined as the hypothetical flow velocity had the phase covered the entire flow area.
+            :math:`US_{phase} = \frac{Q_{phase}}{\alpha_{phase}}}`
+            :math:`US_{phase}`: Superficial flow velocity of the phase
+            :math:`Q_{phase}`: Volume flow velocity of the phase
+            :math:`\alpha_{phase}`: Area covered by the phase
+        superficial_velocity_liquid: Liquid superficial speed [:math:`\mathrm{\frac{m}{s}}`].
+        density_gas: Density of the lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
+        density_liquid: Density of the denser fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
+        inclination: Pipe inclination [:math:`\mathrm{deg}`]
+        diameter: Pipe inner diameter [:math:`\mathrm{m}`].
 
     Returns:
-        pandas.Series: Inviscid Kelvin Helmholtz Froud number [-]
+        pandas.Series: Inviscid Kelvin Helmholtz Froude number [-]
     """
     acceleration_gravity = 9.81
 
@@ -371,18 +385,18 @@ def We(
     surface_tension: Union[pd.Series, float],
     length_scale: Union[pd.Series, float],
 ) -> pd.Series:
-    """Weber Number.
+    r"""Weber Number.
 
     The Weber number describes the ratio between deforming inertial forces and stabilizing cohesive forces
     for liquids flowing through a fluid medium.
     For example, the Weber number characterizes the atomizing quality of a spray and the resulting droplet size when producing emulsions.
 
-    We = rho*u**2*L/sigma
+    :math:`We = \frac{\rho u^2 L}{\sigma}`
 
-         rho: fluid density,
-         u: fluid velocity
-         L: length_scale
-         sigma: surface_tension
+        :math:`\rho`: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
+        :math:`u`: Fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+        :math:`L`: Lenght scale [:math:`\mathrm{m}`]
+        :math:`\sigma`: Surface tension [:math:`\mathrm{\frac{N}{m}}`]
 
     Args:
         velocity: Flow speed [m/s].
@@ -410,24 +424,26 @@ def Pressure_scaled(
     density: Union[pd.Series, float],
     length_scale: Union[pd.Series, float],
 ) -> pd.Series:
-    """Scaled pressure gradient.
+    r"""Scaled pressure gradient.
 
     Pressure gradient on a dimentionless form
 
     PI = dpz * L / (rho*u**2)
+    :math:`PI = \frac{\mathrm{d}P}{\mathrm{d}x}\frac{L}{\rho u^2}`
 
          dpz: pressure gradient
-         L: length_scale
-         u: fluid velocity
-         rho: fluid density
+        :math:`\frac{\mathrm{d}P}{\mathrm{d}x}`: Pressure gradient [:math:`\mathrm{\frac{Pa}{m}}`]
+        :math:`u`: Fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+        :math:`L`: Lenght scale [:math:`\mathrm{m}`]
+        :math:`\rho`: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
+
 
     Args:
-        pressure_gradient: Pressure gradient [Pa/m].
+        pressure_gradient: Pressure gradient [:math:`\mathrm{\frac{Pa}{m}}`].
             Presure gradient in the flow direction (along the pipe, assuming pipe flow)
-        velocity: Flow velocity [m/s].
-        density: Density [kg/m3].
-            Density of the fluid.
-        length_scale: Characteristic length [m].
+        velocity: Flow velocity [:math:`\mathrm{\frac{m}{s}}`].
+        density: Density [:math:`\mathrm{\frac{kg}{m^3}}`].
+        length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. For pipe flow, the characteristic length is normally the pipe diameter
 
     Returns:

@@ -18,11 +18,11 @@ def Haaland(Re: pd.Series, roughness: float) -> pd.Series:
     the accuracy of the data.
 
     Args:
-        Re: Reynolds Number
+        Re: Reynolds Number [-]
         roughness: Surface roughness
 
     Returns:
-        pandas.Series: Friction factor
+        pandas.Series: Friction factor [-]
     """
     den = -1.8 * np.log10((6.9 / Re[Re != 0]) + (roughness / 3.7) ** 1.1)
     return 1 / den**2
@@ -30,9 +30,10 @@ def Haaland(Re: pd.Series, roughness: float) -> pd.Series:
 
 @check_types
 def Colebrook(Re: Union[pd.Series, float], roughness_scaled: Union[pd.Series, float]) -> pd.Series:
-    """Fast Colebrook approximation.
+    r"""Colebrook approximation.
 
-    The algorithm is taken from the following article
+    A computationally efficient Colebrook approximation taken from the following article
+
      "Fast and Accurate Approximations for the Colebrook Equation"
      Dag Biberg
      Journal of Fluids Engineering Copyright VC 2017 by ASME MARCH 2017, Vol. 139 / 031401-1
@@ -41,7 +42,8 @@ def Colebrook(Re: Union[pd.Series, float], roughness_scaled: Union[pd.Series, fl
 
     Args:
         Re: Reynolds Number [-]
-        roughness_scaled: Scaled surface roughness
+        roughness_scaled: Scaled surface roughness [-].
+            The wall surface roughness is normally scaled with the pipe inner diameter
 
     Returns:
         pandas.Series: Friction factor [-]
@@ -66,10 +68,10 @@ def Colebrook(Re: Union[pd.Series, float], roughness_scaled: Union[pd.Series, fl
 
 @check_types
 def friction_factor_laminar(Re: Union[pd.Series, float]) -> pd.Series:
-    """Friction factor for laminar flow.
+    r"""Friction factor for laminar flow.
 
-    friction_factor = 64/Re
-        Re: Reynolds number = rho*u*D/mu
+    friction_factor = :math:`\frac{64}{Re}`
+        Re: Reynolds number = :math:`\frac{\rho u D}{\mu}`
 
     Args:
         Re: Reynolds Number [-]
@@ -119,13 +121,17 @@ def Darcy_friction_factor(
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
 ) -> pd.Series:
-    """Computes the Darcy friction factor, including the laminar-turbulent transition.
+    """Darcy friction factor.
+
+    Computes the Darcy friction factor, including the laminar-turbulent transition.
 
     Args:
-        Re: Reynolds Number [-]
-        roughness_scaled: Scaled surface roughness [-]
-        laminar_limit: Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
-        turbulent_limit: Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
+        Re: Reynolds Number [-].
+        roughness_scaled: Scaled surface roughness [-].
+        laminar_limit: Laminar transition [-].
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+        turbulent_limit: Trubulent transition
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
 
     Returns:
         pandas.Series: Darcy friction factor [-]
@@ -171,18 +177,20 @@ def __Darcy_friction_factor_dimensional(
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
 ) -> pd.Series:
-    """Computes the Darcy friction factor, including the laminar-turbulent transition.
+    r"""Computes the Darcy friction factor, including the laminar-turbulent transition.
 
     The input is on dimensional form
 
     Args:
-        velocity: Average fluid velocity [m/s]
-        density: Fluid density [kg/m3]
-        d_viscosity: Dynamic viscosity [kg/ms]
-        diameter: Pipe inner diameter [m]
-        roughness: unscaled wall inner surface roughness [m]
-        laminar_limit:   Limit where lower Reynolds numbers give pure laminar flow
-        turbulent_limit: Limit where higher Reynolds numbers give pure turbulent flow
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
+        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`]
+        diameter: Pipe inner diameter [:math:`\mathrm{m}}`]
+        roughness: unscaled wall inner surface roughness [:math:`\mathrm{m}}`]
+        laminar_limit: Laminar transition [-].
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+        turbulent_limit: Trubulent transition.
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
 
     Returns:
         pandas.Series: Darcy friction factor [-]
@@ -205,19 +213,25 @@ def pipe_wall_shear_stress(
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
 ) -> pd.Series:
-    """Computes the wall shear stress for single phase flow.
+    r"""Single phase wall shear stress.
+
+    Computes the wall shear stress for single phase flow.
+
+     :math:`\tau = \lambda\frac{u^2 D}{8}`
 
     Args:
-        velocity: Average fluid velocity [m/s]
-        density: Fluid density [kg/m3]
-        d_viscosity: Dynamic viscosity [kg/ms]
-        diameter: Pipe inner diameter [m]
-        roughness: unscaled wall inner surface roughness [m]
-        laminar_limit:   Limit where lower Reynolds numbers give pure laminar flow [-]
-        turbulent_limit: Limit where higher Reynolds numbers give pure turbulent flow [-]
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
+        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`]
+        diameter: Pipe inner diameter [:math:`\mathrm{m}`]
+        roughness: unscaled wall inner surface roughness [:math:`\mathrm{m}`]
+        laminar_limit: Laminar transition [-].
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+        turbulent_limit: Trubulent transition.
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
 
     Returns:
-        pandas.Series: Pipe wall shear stress [Pa]
+        pandas.Series: Pipe wall shear stress [:math:`\mathrm{Pa}`]
     """
     friction_factor = __Darcy_friction_factor_dimensional(
         velocity, density, d_viscosity, diameter, roughness, laminar_limit, turbulent_limit
@@ -236,21 +250,25 @@ def pipe_pressure_gradient(
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
 ) -> pd.Series:
-    """Computes the pressure gradient for single phase flow.
+    r"""Single phase pressure gradient.
 
-        dpdz = 4*lambda*u**2/8
+    Computes the pressure gradient for single phase flow in pipe.
+
+        dpdz = :math:`\lambda\frac{u^2 D}{2}`
 
     Args:
-        velocity: Average fluid velocity [m/s]
-        density: Fluid density [kg/m3]
-        d_viscosity: Dynamic viscosity [kg/ms]
-        diameter: Pipe inner diameter [m]
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
+        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`]
+        diameter: Pipe inner diameter [:math:`\mathrm{m}`]
         roughness: unscaled wall inner surface roughness [-]
-        laminar_limit:   Limit where lower Reynolds numbers give pure laminar flow
-        turbulent_limit: Limit where higher Reynolds numbers give pure turbulent flow
+        laminar_limit: Laminar transition [-].
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+        turbulent_limit: Trubulent transition.
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
 
     Returns:
-        pandas.Series: Fluid pressure gradient [Pa/m]
+        pandas.Series: Fluid pressure gradient [:math:`\mathrm{\frac{Pa}{m}}`]
     """
     w_shear_stress = pipe_wall_shear_stress(
         velocity, density, d_viscosity, diameter, roughness, laminar_limit, turbulent_limit
@@ -271,23 +289,27 @@ def pipe_pressure_drop(
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
 ) -> pd.Series:
-    """Computes the pressure drop for single phase flow.
+    r"""Single phase pressure drop.
+
+    Computes the pressure drop for single phase flow in a pipe, adding frictional pressure drop and gravitational pressure drop
 
         It assumes constant properties along pipeline
 
     Args:
-        velocity: Average fluid velocity [m/s]
-        density: Fluid density [kg/m3]
-        d_viscosity: Dynamic viscosity [kg/ms]
-        diameter: Pipe inner diameter [m]
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
+        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`]
+        diameter: Pipe inner diameter [:math:`\mathrm{m}`]
         roughness: unscaled wall inner surface roughness [-]
         pipe_length: total length of pipe [-]
         pipe_height_difference: Difference in height between strt and end of pipe [-]
-        laminar_limit:   Limit where lower Reynolds numbers give pure laminar flow
-        turbulent_limit: Limit where higher Reynolds numbers give pure turbulent flow
+        laminar_limit: Laminar transition [-].
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+        turbulent_limit: Trubulent transition.
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
 
     Returns:
-        pandas.Series: Pipe pressure drop [Pa]
+        pandas.Series: Pipe pressure drop [:math:`\mathrm{Pa}`]
     """
     acceleration_gravity = 9.81
 
