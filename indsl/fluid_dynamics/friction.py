@@ -217,7 +217,18 @@ def pipe_wall_shear_stress(
 
     Computes the wall shear stress for single phase flow.
 
-     :math:`\tau = \lambda\frac{u^2 D}{8}`
+        :math:`\tau = \lambda\frac{u^2 D}{8}`
+
+            :math:`\tau`: Wall shear stress [:math:`\mathrm{Pa}`]
+
+            :math:`x`: Direction along pipeline [:math:`\mathrm{m}`]
+
+            :math:`\lambda`: Friction factor [:math:`\mathrm{-}`]
+
+            :math:`u`: Fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+
+            :math:`D`: Pipe diameter [:math:`\mathrm{m}`]
+
 
     Args:
         velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
@@ -252,9 +263,20 @@ def pipe_pressure_gradient(
 ) -> pd.Series:
     r"""Single phase pressure gradient.
 
-    Computes the pressure gradient for single phase flow in pipe.
+    Computes the pressure gradient from wall friction in single phase flow in pipe.
 
-        dpdz = :math:`\lambda\frac{u^2 D}{2}`
+        :math:`\frac{\mathrm{d}P}{\mathrm{d}x} = \lambda\frac{u^2 D}{2}`
+
+            :math:`P`: Pressure [:math:`\mathrm{Pa}`]
+
+            :math:`x`: Direction along pipeline [:math:`\mathrm{m}`]
+
+            :math:`\lambda`: Friction factor [:math:`\mathrm{-}`]
+
+            :math:`u`: Fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+
+            :math:`D`: Pipe diameter [:math:`\mathrm{m}`]
+
 
     Args:
         velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]

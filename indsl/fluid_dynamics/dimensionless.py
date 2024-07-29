@@ -43,15 +43,23 @@ def Re(
 
 @check_types
 def Fr(velocity: Union[pd.Series, float], length_scale: Union[pd.Series, float]) -> pd.Series:
-    """Froude Number.
+    r"""Froude Number.
 
     The Froude number is a ratio of inertial and gravitational forces
 
-    Froude = velocity / sqrt( g * length_Scale), g = 9.81 acceleration due to gravity [m/s2]
+    :math:`Fr = \frac{u}{\sqrt{g L}}`
+
+        u: velocity :math:`\mathrm{\frac{m}{s}}`
+
+        g: 9.81 acceleration due to gravity [:math:`\mathrm{\frac{m}{s^2}}`]
+
+        L: Length scale [:math:`\mathrm{m}`]
+
+
 
     Args:
-        velocity: Fluid velocity [m/s].
-        length_scale: Characteristic length [m].
+        velocity: Fluid velocity [:math:`\mathrm{\frac{m}{s}}`].
+        length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
             of a physical system. Often, the characteristic length is the volume of a system divided by its surface.
 
@@ -59,6 +67,7 @@ def Fr(velocity: Union[pd.Series, float], length_scale: Union[pd.Series, float])
         pandas.Series: Froude number [-]
     """
     acceleration_gravity = 9.81
+
     Fr_ = velocity / np.sqrt(acceleration_gravity * length_scale)
     if not isinstance(Fr_, pd.Series):
         Fr_ = pd.Series(Fr_)
@@ -77,11 +86,16 @@ def Fr_density_scaled(
     The Froude number is a ratio of inertial and gravitational forces.
     The density scaled Fround number is typically used in two phase flow
 
-    Froude = u / sqrt( g * L*(1-rho1/rho2 ) ) :math:`\frac{u}{\sqrt{g L (1 - \frac{\rho_1}{\rho_2})}}`
+    :math:`Fr_{\rho-scaled} =\frac{u}{\sqrt{g L (1 - \frac{\rho_1}{\rho_2})}}`
+
         u: velocity :math:`\mathrm{\frac{m}{s}}`
+
         g: 9.81 acceleration due to gravity [:math:`\mathrm{\frac{m}{s^2}}`]
+
         L: Length scale [:math:`\mathrm{m}`]
+
         :math:`\rho_1`: Density lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`]
+
         :math:`\rho_2`: Density heavier fluid [:math:`\mathrm{\frac{kg}{m^3}}`]
 
     Args:
@@ -166,10 +180,9 @@ def Fr_2phase(
             The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1.
         superficial_velocity_gas: Gas superficial velocity [:math:`\mathrm{\frac{m}{s}}`].
             The superficial flow is defined as the hypothetical flow velocity had the phase covered the entire flow area.
-            :math:`US_{phase} = \frac{Q_{phase}}{\alpha_{phase}}}`
-            :math:`US_{phase}`: Superficial flow velocity of the phase
-            :math:`Q_{phase}`: Volume flow velocity of the phase
-            :math:`\alpha_{phase}`: Area covered by the phase
+            :math:`US_{phase} = \frac{Q_{phase}}{\alpha_{phase}}`. Superficial flow velocity of the phase.
+            :math:`Q_{phase}`: Volume flow velocity of the phase.
+            :math:`\alpha_{phase}`: Flow area covered by the phase.
         superficial_velocity_liquid: Liquid superficial velocity [:math:`\mathrm{\frac{m}{s}}`].
         density_gas: Density of the lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
         density_liquid: Density of the denser fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
@@ -214,12 +227,11 @@ def Fr_inviscid_kelvin_helmholtz(
     Args:
         liquid_fraction: Volume fraction of the liquid [-].
             The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1.
-        superficial_velocity_gas: Gas superficial speed [:math:`\mathrm{\frac{m}{s}}`].
+        superficial_velocity_gas: Gas superficial velocity [:math:`\mathrm{\frac{m}{s}}`].
             The superficial flow is defined as the hypothetical flow velocity had the phase covered the entire flow area.
-            :math:`US_{phase} = \frac{Q_{phase}}{\alpha_{phase}}}`
-            :math:`US_{phase}`: Superficial flow velocity of the phase
-            :math:`Q_{phase}`: Volume flow velocity of the phase
-            :math:`\alpha_{phase}`: Area covered by the phase
+            :math:`US_{phase} = \frac{Q_{phase}}{\alpha_{phase}}`. Superficial flow velocity of the phase.
+            :math:`Q_{phase}`: Volume flow velocity of the phase.
+            :math:`\alpha_{phase}`: Flow area covered by the phase.
         superficial_velocity_liquid: Liquid superficial speed [:math:`\mathrm{\frac{m}{s}}`].
         density_gas: Density of the lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
         density_liquid: Density of the denser fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
@@ -394,17 +406,20 @@ def We(
     :math:`We = \frac{\rho u^2 L}{\sigma}`
 
         :math:`\rho`: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
+
         :math:`u`: Fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+
         :math:`L`: Lenght scale [:math:`\mathrm{m}`]
+
         :math:`\sigma`: Surface tension [:math:`\mathrm{\frac{N}{m}}`]
 
     Args:
-        velocity: Flow speed [m/s].
-        density: Density [kg/m3].
+        velocity: Flow speed [:math:`\mathrm{\frac{m}{s}}`].
+        density: Density [:math:`\mathrm{\frac{kg}{m^3}}`].
             Density of the fluid.
-        surface_tension: Surface tension to the surrounding fluid [N/m].
+        surface_tension: Surface tension to the surrounding fluid [:math:`\mathrm{\frac{N}{m}}`].
             Surface tension between the current fluid (the spesified density) and the surrounding fluid
-        length_scale: Characteristic length [m].
+        length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
             of a physical system. Often, the characteristic length is the volume of a system divided by its surface.
 
@@ -428,15 +443,15 @@ def Pressure_scaled(
 
     Pressure gradient on a dimentionless form
 
-    PI = dpz * L / (rho*u**2)
     :math:`PI = \frac{\mathrm{d}P}{\mathrm{d}x}\frac{L}{\rho u^2}`
 
-         dpz: pressure gradient
         :math:`\frac{\mathrm{d}P}{\mathrm{d}x}`: Pressure gradient [:math:`\mathrm{\frac{Pa}{m}}`]
-        :math:`u`: Fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
-        :math:`L`: Lenght scale [:math:`\mathrm{m}`]
-        :math:`\rho`: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
 
+        :math:`u`: Fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
+
+        :math:`L`: Lenght scale [:math:`\mathrm{m}`]
+
+        :math:`\rho`: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
 
     Args:
         pressure_gradient: Pressure gradient [:math:`\mathrm{\frac{Pa}{m}}`].
