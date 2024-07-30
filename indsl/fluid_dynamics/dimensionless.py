@@ -240,7 +240,7 @@ def Fr_inviscid_kelvin_helmholtz(
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
 
     Returns:
-        pandas.Series: Inviscid Kelvin Helmholtz Froude number [-]
+        pandas.Series: IKH Froude number [-]
     """
     acceleration_gravity = 9.81
 

@@ -77,7 +77,7 @@ def friction_factor_laminar(Re: Union[pd.Series, float]) -> pd.Series:
         Re: Reynolds Number [-].
 
     Returns:
-        pandas.Series: Friction factor for laminar flow [-]
+        pandas.Series: Friction factor laminar flow [-]
     """
     friction_factor = 64 / Re
     if not isinstance(friction_factor, pd.Series):
@@ -188,7 +188,8 @@ def __Darcy_friction_factor_dimensional(
         density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`].
         d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`].
         diameter: Pipe inner diameter [:math:`\mathrm{m}}`].
-        roughness: unscaled wall inner surface roughness [:math:`\mathrm{m}}`].
+        roughness: unscaled surface roughness [:math:`\mathrm{m}`].
+            unscaled pipe inner wall surface roughness.
         laminar_limit: Laminar transition [-].
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
         turbulent_limit: Trubulent transition.
@@ -237,7 +238,8 @@ def pipe_wall_shear_stress(
         density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`].
         d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`].
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
-        roughness: unscaled wall inner surface roughness [:math:`\mathrm{m}`].
+        roughness: unscaled surface roughness [:math:`\mathrm{m}`].
+            unscaled pipe inner wall surface roughness.
         laminar_limit: Laminar transition [-].
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
@@ -285,7 +287,8 @@ def pipe_pressure_gradient(
         density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`].
         d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`].
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
-        roughness: unscaled wall inner surface roughness [-].
+        roughness: unscaled surface roughness [:math:`\mathrm{m}`].
+            unscaled pipe inner wall surface roughness.
         laminar_limit: Laminar transition [-].
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
@@ -324,7 +327,8 @@ def pipe_pressure_drop(
         density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`].
         d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`].
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
-        roughness: unscaled wall inner surface roughness [-].
+        roughness: unscaled surface roughness [:math:`\mathrm{m}`].
+            unscaled pipe inner wall surface roughness.
         pipe_length: total length of pipe [-].
         pipe_height_difference: Difference in height between strt and end of pipe [-].
         laminar_limit: Laminar transition [-].
