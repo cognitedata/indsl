@@ -136,7 +136,7 @@ def __Fr_2phase_base(
             The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1
         superficial_velocity_gas: Gas superficial velocity [m/s].
         superficial_velocity_liquid: Liquid superficial velocity [m/s].
-        inclination: Pipe inclination [degrees]
+        inclination: Pipe inclination [degrees].
         diameter: Pipe inner diameter [m].
 
     Returns:
@@ -176,7 +176,7 @@ def Fr_2phase(
     This calculated a Froude number for a two phase pipe flow situation.
 
     Args:
-        liquid_fraction: Volume fraction of the liquid [-].
+        liquid_fraction: Volume fraction of liquid [-].
             The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1.
         superficial_velocity_gas: Gas superficial velocity [:math:`\mathrm{\frac{m}{s}}`].
             The superficial flow is defined as the hypothetical flow velocity had the phase covered the entire flow area.
@@ -186,7 +186,7 @@ def Fr_2phase(
         superficial_velocity_liquid: Liquid superficial velocity [:math:`\mathrm{\frac{m}{s}}`].
         density_gas: Density of the lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
         density_liquid: Density of the denser fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
-        inclination: Pipe inclination [:math:`\mathrm{deg}`]
+        inclination: Pipe inclination [:math:`\mathrm{deg}`].
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
 
     Returns:
@@ -220,12 +220,13 @@ def Fr_inviscid_kelvin_helmholtz(
     inclination: Union[pd.Series, float],
     diameter: Union[pd.Series, float],
 ) -> pd.Series:
-    r"""Inviscid Kelvin Helmholtz Froude Number.
+    r"""IKH Froude Number.
 
+    Invicid Kelvin Helmholtz Froude number.
     The Froude number is a ratio of inertial and gravitational forces.
 
     Args:
-        liquid_fraction: Volume fraction of the liquid [-].
+        liquid_fraction: Volume fraction of liquid [-].
             The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1.
         superficial_velocity_gas: Gas superficial velocity [:math:`\mathrm{\frac{m}{s}}`].
             The superficial flow is defined as the hypothetical flow velocity had the phase covered the entire flow area.
@@ -235,7 +236,7 @@ def Fr_inviscid_kelvin_helmholtz(
         superficial_velocity_liquid: Liquid superficial speed [:math:`\mathrm{\frac{m}{s}}`].
         density_gas: Density of the lighter fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
         density_liquid: Density of the denser fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
-        inclination: Pipe inclination [:math:`\mathrm{deg}`]
+        inclination: Pipe inclination [:math:`\mathrm{deg}`].
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
 
     Returns:
@@ -417,7 +418,7 @@ def We(
         velocity: Flow speed [:math:`\mathrm{\frac{m}{s}}`].
         density: Density [:math:`\mathrm{\frac{kg}{m^3}}`].
             Density of the fluid.
-        surface_tension: Surface tension to the surrounding fluid [:math:`\mathrm{\frac{N}{m}}`].
+        surface_tension: Surface tension [:math:`\mathrm{\frac{N}{m}}`].
             Surface tension between the current fluid (the spesified density) and the surrounding fluid
         length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. A characteristic length is an important dimension that defines the scale

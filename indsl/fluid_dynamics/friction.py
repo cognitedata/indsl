@@ -18,8 +18,8 @@ def Haaland(Re: pd.Series, roughness: float) -> pd.Series:
     the accuracy of the data.
 
     Args:
-        Re: Reynolds Number [-]
-        roughness: Surface roughness
+        Re: Reynolds Number [-].
+        roughness: Surface roughness [m].
 
     Returns:
         pandas.Series: Friction factor [-]
@@ -41,7 +41,7 @@ def Colebrook(Re: Union[pd.Series, float], roughness_scaled: Union[pd.Series, fl
     This is a faster and more accurat approximation to Colebrook than Haaland
 
     Args:
-        Re: Reynolds Number [-]
+        Re: Reynolds Number [-].
         roughness_scaled: Scaled surface roughness [-].
             The wall surface roughness is normally scaled with the pipe inner diameter
 
@@ -68,13 +68,13 @@ def Colebrook(Re: Union[pd.Series, float], roughness_scaled: Union[pd.Series, fl
 
 @check_types
 def friction_factor_laminar(Re: Union[pd.Series, float]) -> pd.Series:
-    r"""Friction factor for laminar flow.
+    r"""Friction factor laminar flow.
 
     friction_factor = :math:`\frac{64}{Re}`
         Re: Reynolds number = :math:`\frac{\rho u D}{\mu}`
 
     Args:
-        Re: Reynolds Number [-]
+        Re: Reynolds Number [-].
 
     Returns:
         pandas.Series: Friction factor for laminar flow [-]
@@ -95,10 +95,12 @@ def __Darcy_friction_factor_point(
     """Computes the Darcy friction factor, including the laminar-turbulent transition.
 
     Args:
-        Re: Reynolds Number [-]
-        roughness_scaled: Scaled surface roughness [-]
-        laminar_limit: Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
-        turbulent_limit: Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
+        Re: Reynolds Number [-].
+        roughness_scaled: Scaled surface roughness [-].
+        laminar_limit: Laminar transition [-].
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+        turbulent_limit: Turbulent transition
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
 
     Returns:
         pandas.Series: Friction factor [-]
@@ -130,7 +132,7 @@ def Darcy_friction_factor(
         roughness_scaled: Scaled surface roughness [-].
         laminar_limit: Laminar transition [-].
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
-        turbulent_limit: Trubulent transition
+        turbulent_limit: Turbulent transition
             Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
 
     Returns:
@@ -182,11 +184,11 @@ def __Darcy_friction_factor_dimensional(
     The input is on dimensional form
 
     Args:
-        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
-        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
-        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`]
-        diameter: Pipe inner diameter [:math:`\mathrm{m}}`]
-        roughness: unscaled wall inner surface roughness [:math:`\mathrm{m}}`]
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`].
+        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`].
+        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`].
+        diameter: Pipe inner diameter [:math:`\mathrm{m}}`].
+        roughness: unscaled wall inner surface roughness [:math:`\mathrm{m}}`].
         laminar_limit: Laminar transition [-].
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
         turbulent_limit: Trubulent transition.
@@ -231,15 +233,15 @@ def pipe_wall_shear_stress(
 
 
     Args:
-        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
-        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
-        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`]
-        diameter: Pipe inner diameter [:math:`\mathrm{m}`]
-        roughness: unscaled wall inner surface roughness [:math:`\mathrm{m}`]
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`].
+        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`].
+        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`].
+        diameter: Pipe inner diameter [:math:`\mathrm{m}`].
+        roughness: unscaled wall inner surface roughness [:math:`\mathrm{m}`].
         laminar_limit: Laminar transition [-].
-            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
-            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].
 
     Returns:
         pandas.Series: Pipe wall shear stress [:math:`\mathrm{Pa}`]
@@ -279,15 +281,15 @@ def pipe_pressure_gradient(
 
 
     Args:
-        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
-        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
-        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`]
-        diameter: Pipe inner diameter [:math:`\mathrm{m}`]
-        roughness: unscaled wall inner surface roughness [-]
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`].
+        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`].
+        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`].
+        diameter: Pipe inner diameter [:math:`\mathrm{m}`].
+        roughness: unscaled wall inner surface roughness [-].
         laminar_limit: Laminar transition [-].
-            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
-            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].
 
     Returns:
         pandas.Series: Fluid pressure gradient [:math:`\mathrm{\frac{Pa}{m}}`]
@@ -318,17 +320,17 @@ def pipe_pressure_drop(
         It assumes constant properties along pipeline
 
     Args:
-        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`]
-        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`]
-        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`]
-        diameter: Pipe inner diameter [:math:`\mathrm{m}`]
-        roughness: unscaled wall inner surface roughness [-]
-        pipe_length: total length of pipe [-]
-        pipe_height_difference: Difference in height between strt and end of pipe [-]
+        velocity: Average fluid velocity [:math:`\mathrm{\frac{m}{s}}`].
+        density: Fluid density [:math:`\mathrm{\frac{kg}{m^3}}`].
+        d_viscosity: Dynamic viscosity [:math:`\mathrm{\frac{kg}{m s}}`].
+        diameter: Pipe inner diameter [:math:`\mathrm{m}`].
+        roughness: unscaled wall inner surface roughness [-].
+        pipe_length: total length of pipe [-].
+        pipe_height_difference: Difference in height between strt and end of pipe [-].
         laminar_limit: Laminar transition [-].
-            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
+            Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
-            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
+            Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].
 
     Returns:
         pandas.Series: Pipe pressure drop [:math:`\mathrm{Pa}`]
