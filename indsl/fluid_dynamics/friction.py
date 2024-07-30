@@ -340,7 +340,7 @@ def pipe_pressure_drop(
     Returns:
         pandas.Series: Pipe pressure drop [:math:`\mathrm{Pa}`]
     """
-    acceleration_gravity = 9.81
+    from indsl.fluid_dynamics.constants import acceleration_gravity
 
     dP_gravity = density * acceleration_gravity * pipe_height_difference
     dP_fric = pipe_length * pipe_pressure_gradient(

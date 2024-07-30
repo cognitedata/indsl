@@ -66,7 +66,7 @@ def Fr(velocity: Union[pd.Series, float], length_scale: Union[pd.Series, float])
     Returns:
         pandas.Series: Froude number [-]
     """
-    acceleration_gravity = 9.81
+    from indsl.fluid_dynamics.constants import acceleration_gravity
 
     Fr_ = velocity / np.sqrt(acceleration_gravity * length_scale)
     if not isinstance(Fr_, pd.Series):
@@ -108,7 +108,8 @@ def Fr_density_scaled(
     Returns:
         pandas.Series: Density scaled Froude number [-]
     """
-    acceleration_gravity = 9.81
+    from indsl.fluid_dynamics.constants import acceleration_gravity
+
     Fr_ = velocity / np.sqrt(acceleration_gravity * length_scale * (1 - density_1 / density_2))
     if not isinstance(Fr_, pd.Series):
         Fr_ = pd.Series(Fr_)
@@ -192,7 +193,7 @@ def Fr_2phase(
     Returns:
         pandas.Series: 2 phase Froude number [-]
     """
-    acceleration_gravity = 9.81
+    from indsl.fluid_dynamics.constants import acceleration_gravity
 
     velocity_gas, velocity_liquid, height_gas, height_liquid, cos_inclination = __Fr_2phase_base(
         liquid_fraction, superficial_velocity_gas, superficial_velocity_liquid, inclination, diameter
@@ -242,7 +243,7 @@ def Fr_inviscid_kelvin_helmholtz(
     Returns:
         pandas.Series: IKH Froude number [-]
     """
-    acceleration_gravity = 9.81
+    from indsl.fluid_dynamics.constants import acceleration_gravity
 
     velocity_gas, velocity_liquid, height_gas, height_liquid, cos_inclination = __Fr_2phase_base(
         liquid_fraction, superficial_velocity_gas, superficial_velocity_liquid, inclination, diameter
