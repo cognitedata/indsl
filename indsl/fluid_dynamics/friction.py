@@ -329,8 +329,9 @@ def pipe_pressure_drop(
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
         roughness: unscaled surface roughness [:math:`\mathrm{m}`].
             unscaled pipe inner wall surface roughness.
-        pipe_length: total length of pipe [-].
-        pipe_height_difference: Difference in height between strt and end of pipe [-].
+        pipe_length: total length of pipe [:math:`\mathrm{m}`].
+        pipe_height_difference: Height difference [:math:`\mathrm{m}`].
+            Difference in height between start and end of pipe.
         laminar_limit: Laminar transition [-].
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
