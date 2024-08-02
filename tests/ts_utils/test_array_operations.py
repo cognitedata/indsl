@@ -67,4 +67,3 @@ def test_timeseries_max():
 
     timeseries_max_indsl = timeseries_max(WHP_series)
     assert math.isclose(timeseries_max_indsl.values[0] - timeseries_max_test, 0, abs_tol=1e-8)
-
