@@ -79,7 +79,7 @@ def time_weighted_std(data: pd.Series) -> pd.Series:
 
 @check_types
 def timeseries_min(data: pd.Series) -> pd.Series:
-    """Minimum value for the time series.
+    """Min value for the time series.
 
     The returned timeseries has a constant value
 
@@ -87,7 +87,7 @@ def timeseries_min(data: pd.Series) -> pd.Series:
         data: Time series.
 
     Returns:
-        pandas.Series: Minimum value timeseries.
+        pandas.Series: Min value timeseries.
     """
     n = len(data)
     if n == 0:
@@ -104,7 +104,7 @@ def timeseries_min(data: pd.Series) -> pd.Series:
 
 @check_types
 def timeseries_max(data: pd.Series) -> pd.Series:
-    """Maximum value for the time series.
+    """Max value for the time series.
 
     The returned timeseries has a constant value
 
@@ -112,13 +112,13 @@ def timeseries_max(data: pd.Series) -> pd.Series:
         data: Time series.
 
     Returns:
-        pandas.Series: Maximum value timeseries.
+        pandas.Series: Maxi value timeseries.
     """
     n = len(data)
     if n == 0:
         raise UserValueError("Expected at least one item in data parameter, got zero instead.")
 
-    # Extract the smallest value
+    # Extract the largest value
     timeseries_max = data.max()
 
     # We need to convert it into a pandas Series
