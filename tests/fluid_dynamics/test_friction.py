@@ -183,30 +183,3 @@ def test_pipe_pressure_drop(
         turbulent_limit=4000.0,
     )
     assert_series_equal(dp, expected)
-
-
-# @pytest.mark.core
-# def test_colebrook_equation(density_in=400, d_viscosity_in=0.0005, diameter_in=0.3, roughness_in=1e-6):
-#     n = 10
-#     speed = pd.Series(np.power(10,np.linspace(-1, 1, n)))
-#     density = pd.Series(density_in*np.ones(n))
-#     d_viscosity = pd.Series(d_viscosity_in*np.ones(n))
-#     diameter = pd.Series(diameter_in*np.ones(n))
-#     roughness = pd.Series(roughness_in*np.ones(n))
-
-#     reynolds_number = Re(speed, density, d_viscosity, diameter)
-#     roughness_scaled = Roughness_scaled(roughness,diameter)
-
-#     expected = pd.Series( [0.02477638978434275,
-#                            0.02198522280388084,
-#                            0.019627346492709717,
-#                            0.01762047066000431,
-#                            0.01590097897824371,
-#                            0.014419332465349731,
-#                            0.01313680489558208,
-#                            0.012023163797165308,
-#                            0.011055032278903839,
-#                            0.010214732571882303] )
-
-#     friction_factor = Colebrook(reynolds_number, roughness_scaled)
-#     assert_series_equal(friction_factor, expected)
