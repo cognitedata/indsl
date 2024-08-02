@@ -6,8 +6,6 @@ import pytest
 
 from indsl.ts_utils import time_weighted_mean, time_weighted_std, timeseries_min, timeseries_max
 
-# from indsl.ts_utils.operators import arithmetic_mean_many
-
 
 @pytest.mark.core
 def test_time_weighted_mean():
@@ -70,23 +68,3 @@ def test_timeseries_max():
     timeseries_max_indsl = timeseries_max(WHP_series)
     assert math.isclose(timeseries_max_indsl.values[0] - timeseries_max_test, 0, abs_tol=1e-8)
 
-
-# test_time_weighted_mean()
-
-# assert add(5, 70) == 75
-
-# # Add arrays
-# num1 = np.array([5, 70])
-# num2 = np.array([70, 5])
-# assert add(num1, num2).mean() == 75
-
-# # Add pandas series
-# arr1 = pd.Series(data=np.array([5, 6, 7]))
-# arr2 = pd.Series(data=np.array([70, 69, 68]))
-# assert add(arr1, arr2).mean() == 75
-
-# # Add pandas data frame
-# df1 = pd.DataFrame(data={"a": np.array([5, 6, 7]), "b": np.array([70, 69, 68])})
-# df2 = pd.DataFrame(data={"a": np.array([70, 69, 68]), "b": np.array([5, 6, 7])})
-# assert add(df1.a, df1.b).mean() == 75
-# assert add(df1, df2).mean().mean() == 75
