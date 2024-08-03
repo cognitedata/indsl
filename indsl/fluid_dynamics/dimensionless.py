@@ -4,6 +4,7 @@ from typing import Tuple, Union
 import numpy as np
 import pandas as pd
 
+from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
 
 
@@ -13,6 +14,7 @@ def Re(
     density: Union[pd.Series, float],
     d_viscosity: Union[pd.Series, float],
     length_scale: Union[pd.Series, float],
+    align_timesteps: bool = False,
 ) -> pd.Series:
     """Reynolds Number.
 
@@ -30,19 +32,29 @@ def Re(
         length_scale: Characteristic length [m].
             Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
             of a physical system. Often, the characteristic length is the volume of a system divided by its surface.
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Reynolds number [-]
     """
-    # If all are not pd.Series we calculate and convert output
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        velocity, density, d_viscosity, length_scale = auto_align(
+            [velocity, density, d_viscosity, length_scale], align_timesteps
+        )
+
     Re_ = velocity * density * length_scale / d_viscosity
+    # If output is not pd.Series we construct a series
     if not isinstance(Re_, pd.Series):
         Re_ = pd.Series(Re_)
     return Re_
 
 
 @check_types
-def Fr(velocity: Union[pd.Series, float], length_scale: Union[pd.Series, float]) -> pd.Series:
+def Fr(
+    velocity: Union[pd.Series, float], length_scale: Union[pd.Series, float], align_timesteps: bool = False
+) -> pd.Series:
     r"""Froude Number.
 
     The Froude number is a ratio of inertial and gravitational forces
@@ -62,11 +74,17 @@ def Fr(velocity: Union[pd.Series, float], length_scale: Union[pd.Series, float])
         length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
             of a physical system. Often, the characteristic length is the volume of a system divided by its surface.
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Froude number [-]
     """
     from indsl.fluid_dynamics.constants import acceleration_gravity
+
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        velocity, length_scale = auto_align([velocity, length_scale], align_timesteps)
 
     Fr_ = velocity / np.sqrt(acceleration_gravity * length_scale)
     if not isinstance(Fr_, pd.Series):
@@ -80,6 +98,7 @@ def Fr_density_scaled(
     density_1: Union[pd.Series, float],
     density_2: Union[pd.Series, float],
     length_scale: Union[pd.Series, float],
+    align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Density scaled Froude Number.
 
@@ -104,11 +123,19 @@ def Fr_density_scaled(
         density_2: Density heavier fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
         length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. For pipe flow, the characteristic length is normally the pipe diameter
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Density scaled Froude number [-]
     """
     from indsl.fluid_dynamics.constants import acceleration_gravity
+
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        velocity, density_1, density_2, length_scale = auto_align(
+            [velocity, density_1, density_2, length_scale], align_timesteps
+        )
 
     Fr_ = velocity / np.sqrt(acceleration_gravity * length_scale * (1 - density_1 / density_2))
     if not isinstance(Fr_, pd.Series):
@@ -170,6 +197,7 @@ def Fr_2phase(
     density_liquid: Union[pd.Series, float],
     inclination: Union[pd.Series, float],
     diameter: Union[pd.Series, float],
+    align_timesteps: bool = False,
 ) -> pd.Series:
     r"""2 phase Froude Number.
 
@@ -189,11 +217,36 @@ def Fr_2phase(
         density_liquid: Density of the denser fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
         inclination: Pipe inclination [:math:`\mathrm{deg}`].
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: 2 phase Froude number [-]
     """
     from indsl.fluid_dynamics.constants import acceleration_gravity
+
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        (
+            liquid_fraction,
+            superficial_velocity_gas,
+            superficial_velocity_liquid,
+            density_gas,
+            density_liquid,
+            inclination,
+            diameter,
+        ) = auto_align(
+            [
+                liquid_fraction,
+                superficial_velocity_gas,
+                superficial_velocity_liquid,
+                density_gas,
+                density_liquid,
+                inclination,
+                diameter,
+            ],
+            align_timesteps,
+        )
 
     velocity_gas, velocity_liquid, height_gas, height_liquid, cos_inclination = __Fr_2phase_base(
         liquid_fraction, superficial_velocity_gas, superficial_velocity_liquid, inclination, diameter
@@ -220,6 +273,7 @@ def Fr_inviscid_kelvin_helmholtz(
     density_liquid: Union[pd.Series, float],
     inclination: Union[pd.Series, float],
     diameter: Union[pd.Series, float],
+    align_timesteps: bool = False,
 ) -> pd.Series:
     r"""IKH Froude Number.
 
@@ -239,11 +293,36 @@ def Fr_inviscid_kelvin_helmholtz(
         density_liquid: Density of the denser fluid [:math:`\mathrm{\frac{kg}{m^3}}`].
         inclination: Pipe inclination [:math:`\mathrm{deg}`].
         diameter: Pipe inner diameter [:math:`\mathrm{m}`].
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: IKH Froude number [-]
     """
     from indsl.fluid_dynamics.constants import acceleration_gravity
+
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        (
+            liquid_fraction,
+            superficial_velocity_gas,
+            superficial_velocity_liquid,
+            density_gas,
+            density_liquid,
+            inclination,
+            diameter,
+        ) = auto_align(
+            [
+                liquid_fraction,
+                superficial_velocity_gas,
+                superficial_velocity_liquid,
+                density_gas,
+                density_liquid,
+                inclination,
+                diameter,
+            ],
+            align_timesteps,
+        )
 
     velocity_gas, velocity_liquid, height_gas, height_liquid, cos_inclination = __Fr_2phase_base(
         liquid_fraction, superficial_velocity_gas, superficial_velocity_liquid, inclination, diameter
@@ -398,6 +477,7 @@ def We(
     density: Union[pd.Series, float],
     surface_tension: Union[pd.Series, float],
     length_scale: Union[pd.Series, float],
+    align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Weber Number.
 
@@ -424,10 +504,18 @@ def We(
         length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
             of a physical system. Often, the characteristic length is the volume of a system divided by its surface.
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Weber number [-]
     """
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        velocity, density, surface_tension, length_scale = auto_align(
+            [velocity, density, surface_tension, length_scale], align_timesteps
+        )
+
     We_ = density * velocity * velocity * length_scale / surface_tension
     if not isinstance(We_, pd.Series):
         We_ = pd.Series(We_)
@@ -440,6 +528,7 @@ def Pressure_scaled(
     velocity: Union[pd.Series, float],
     density: Union[pd.Series, float],
     length_scale: Union[pd.Series, float],
+    align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Scaled pressure gradient.
 
@@ -462,10 +551,18 @@ def Pressure_scaled(
         density: Density [:math:`\mathrm{\frac{kg}{m^3}}`].
         length_scale: Characteristic length [:math:`\mathrm{m}`].
             Characteristic linear dimension. For pipe flow, the characteristic length is normally the pipe diameter
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Scaled pressure gradient [-]
     """
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        pressure_gradient, velocity, density, length_scale = auto_align(
+            [pressure_gradient, velocity, density, length_scale], align_timesteps
+        )
+
     dP_scaled = pressure_gradient * length_scale / (density * velocity * velocity)
     if not isinstance(dP_scaled, pd.Series):
         dP_scaled = pd.Series(dP_scaled)
@@ -473,7 +570,11 @@ def Pressure_scaled(
 
 
 @check_types
-def Roughness_scaled(roughness: Union[pd.Series, float], diameter: Union[pd.Series, float]) -> pd.Series:
+def Roughness_scaled(
+    roughness: Union[pd.Series, float],
+    diameter: Union[pd.Series, float],
+    align_timesteps: bool = False,
+) -> pd.Series:
     """Scaled pipe roughness.
 
     This is the roughness that is used in the Darcy-Weisbach equation
@@ -484,10 +585,15 @@ def Roughness_scaled(roughness: Union[pd.Series, float], diameter: Union[pd.Seri
         roughness: Pipe inner roughness [m].
             Pipe inner roughness as sand size equivalent
         diameter: Pipe diameter [m].
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Scaled pipe roughness number [-]
     """
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        roughness, diameter = auto_align([roughness, diameter], align_timesteps)
     roughness_scaled = roughness / diameter
     if not isinstance(roughness_scaled, pd.Series):
         roughness_scaled = pd.Series(roughness_scaled)

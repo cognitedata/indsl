@@ -4,6 +4,7 @@ from typing import Union
 import numpy as np
 import pandas as pd
 
+from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
 
 
@@ -29,7 +30,11 @@ def Haaland(Re: pd.Series, roughness: float) -> pd.Series:
 
 
 @check_types
-def Colebrook(Re: Union[pd.Series, float], roughness_scaled: Union[pd.Series, float]) -> pd.Series:
+def Colebrook(
+    Re: Union[pd.Series, float],
+    roughness_scaled: Union[pd.Series, float],
+    align_timesteps: bool = False,
+) -> pd.Series:
     r"""Colebrook approximation.
 
     A computationally efficient Colebrook approximation taken from the following article
@@ -44,11 +49,17 @@ def Colebrook(Re: Union[pd.Series, float], roughness_scaled: Union[pd.Series, fl
         Re: Reynolds Number [-].
         roughness_scaled: Scaled surface roughness [-].
             The wall surface roughness is normally scaled with the pipe inner diameter
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Friction factor [-]
     """
     from math import log as m_log
+
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        Re, roughness_scaled = auto_align([Re, roughness_scaled], align_timesteps)
 
     a = 2 / m_log(10)
     b = 2.51
@@ -122,6 +133,7 @@ def Darcy_friction_factor(
     roughness_scaled: Union[pd.Series, float],
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
+    align_timesteps: bool = False,
 ) -> pd.Series:
     """Darcy friction factor.
 
@@ -134,10 +146,15 @@ def Darcy_friction_factor(
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]
         turbulent_limit: Turbulent transition
             Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Darcy friction factor [-]
     """
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        Re, roughness_scaled = auto_align([Re, roughness_scaled], align_timesteps)
     # Check if all input is float
     if not isinstance(Re, pd.Series) and not isinstance(roughness_scaled, pd.Series):
         darcy_friction_factor = pd.Series(
@@ -215,6 +232,7 @@ def pipe_wall_shear_stress(
     roughness: Union[pd.Series, float],
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
+    align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Single phase wall shear stress.
 
@@ -244,10 +262,18 @@ def pipe_wall_shear_stress(
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
             Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Pipe wall shear stress [:math:`\mathrm{Pa}`]
     """
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        velocity, density, d_viscosity, diameter, roughness = auto_align(
+            [velocity, density, d_viscosity, diameter, roughness], align_timesteps
+        )
+
     friction_factor = __Darcy_friction_factor_dimensional(
         velocity, density, d_viscosity, diameter, roughness, laminar_limit, turbulent_limit
     )
@@ -264,6 +290,7 @@ def pipe_pressure_gradient(
     roughness: Union[pd.Series, float],
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
+    align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Single phase pressure gradient.
 
@@ -293,10 +320,18 @@ def pipe_pressure_gradient(
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
             Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Fluid pressure gradient [:math:`\mathrm{\frac{Pa}{m}}`]
     """
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        velocity, density, d_viscosity, diameter, roughness = auto_align(
+            [velocity, density, d_viscosity, diameter, roughness], align_timesteps
+        )
+
     w_shear_stress = pipe_wall_shear_stress(
         velocity, density, d_viscosity, diameter, roughness, laminar_limit, turbulent_limit
     )
@@ -315,6 +350,7 @@ def pipe_pressure_drop(
     pipe_height_difference: Union[pd.Series, float],
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
+    align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Single phase pressure drop.
 
@@ -336,11 +372,19 @@ def pipe_pressure_drop(
             Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].
         turbulent_limit: Trubulent transition.
             Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].
+        align_timesteps: Auto-align.
+            Automatically align time stamp  of input time series. Default is False.
 
     Returns:
         pandas.Series: Pipe pressure drop [:math:`\mathrm{Pa}`]
     """
     from indsl.fluid_dynamics.constants import acceleration_gravity
+
+    # Every Series input needs to be autaligned, unless opted out
+    if align_timesteps:
+        velocity, density, d_viscosity, diameter, roughness, pipe_length, pipe_height_difference = auto_align(
+            [velocity, density, d_viscosity, diameter, roughness, pipe_length, pipe_height_difference], align_timesteps
+        )
 
     dP_gravity = density * acceleration_gravity * pipe_height_difference
     dP_fric = pipe_length * pipe_pressure_gradient(

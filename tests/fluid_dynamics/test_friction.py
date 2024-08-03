@@ -47,6 +47,50 @@ def test_colebrook_equation(density_in=400, d_viscosity_in=0.0005, diameter_in=0
 
 
 @pytest.mark.core
+def test_colebrook_equation_2(density_in=400, d_viscosity_in=0.0005, diameter_in=0.3, roughness_in=1e-6):
+    n = 10
+
+    from datetime import datetime
+
+    index = [datetime(2024, 8, 1, hour, 0, 0) for hour in range(1, n + 1, 1)]
+    remove_idx = 4
+    index_short = index.copy()
+    index_short.pop(remove_idx)
+
+    diameter = pd.Series(diameter_in * np.ones(n), index=index)
+    diameter_short = pd.Series(np.delete(diameter.values, [remove_idx]), index=index_short)
+
+    speed = pd.Series(np.power(10, np.linspace(-1, 1, n)), index=index)
+    density = pd.Series(density_in * np.ones(n), index=index)
+    d_viscosity = pd.Series(d_viscosity_in * np.ones(n), index=index)
+    roughness = pd.Series(roughness_in * np.ones(n), index=index)
+
+    reynolds_number = Re(speed, density, d_viscosity, diameter_short, align_timesteps=True)
+    roughness_scaled = Roughness_scaled(roughness, diameter_short, align_timesteps=True)
+
+    roughness_scaled_short = pd.Series(np.delete(roughness_scaled.values, [remove_idx]), index=index_short)
+    friction_factor = Colebrook(reynolds_number, roughness_scaled_short, align_timesteps=True)
+
+    expected = pd.Series(
+        [
+            0.02477638978434275,
+            0.02198522280388084,
+            0.019627346492709717,
+            0.01762047066000431,
+            0.01590097897824371,
+            0.014419332465349731,
+            0.01313680489558208,
+            0.012023163797165308,
+            0.011055032278903839,
+            0.010214732571882303,
+        ],
+        index=friction_factor.index,
+    )
+
+    assert_series_equal(friction_factor, expected)
+
+
+@pytest.mark.core
 def test_laminar_friction_factor():
     n = 10
     Re = pd.Series(np.linspace(1, 2300, n))
@@ -81,6 +125,44 @@ def test_Darcy_friction_factor(roughness_scaled_in=1e-6):
     assert_series_equal(friction_factor, expected)
 
 
+@pytest.mark.core
+def test_Darcy_friction_factor_2(roughness_scaled_in=1e-6):
+    n = 10
+
+    from datetime import datetime
+
+    index = [datetime(2024, 8, 1, hour, 0, 0) for hour in range(1, n + 1, 1)]
+    remove_idx = 4
+    index_short = index.copy()
+    index_short.pop(remove_idx)
+
+    Re = pd.Series(np.power(10, np.linspace(-1, 4, n)), index=index)
+
+    roughness_scaled = pd.Series(roughness_scaled_in * np.ones(n), index=index)
+    roughness_scaled_short = pd.Series(np.delete(roughness_scaled, [remove_idx]), index=index_short)
+
+    friction_factor = Darcy_friction_factor(
+        Re, roughness_scaled_short, laminar_limit=2300.0, turbulent_limit=4000.0, align_timesteps=True
+    )
+
+    expected = pd.Series(
+        [
+            640.0,
+            178.08380174125597,
+            49.55287569159212,
+            13.788382016204055,
+            3.836699202041222,
+            1.067584343808038,
+            0.29706168535121774,
+            0.08265917856095249,
+            0.029095115698637902,
+            0.030878684089060478,
+        ],
+        index=friction_factor.index,
+    )
+    assert_series_equal(friction_factor, expected)
+
+
 def test_pipe_wall_shear_stress(density_in=400, d_viscosity_in=0.0005, diameter_in=0.3, roughness_in=1e-6):
     n = 10
     velocity = pd.Series(np.power(10, np.linspace(-1, 1, n)))
@@ -110,6 +192,53 @@ def test_pipe_wall_shear_stress(density_in=400, d_viscosity_in=0.0005, diameter_
     assert_series_equal(tau, expected)
 
 
+def test_pipe_wall_shear_stress_2(density_in=400, d_viscosity_in=0.0005, diameter_in=0.3, roughness_in=1e-6):
+    n = 10
+
+    from datetime import datetime
+
+    index = [datetime(2024, 8, 1, hour, 0, 0) for hour in range(1, n + 1, 1)]
+    remove_idx = 4
+    index_short = index.copy()
+    index_short.pop(remove_idx)
+
+    velocity = pd.Series(np.power(10, np.linspace(-1, 1, n)), index=index)
+    density = pd.Series(density_in * np.ones(n), index=index)
+    d_viscosity = pd.Series(d_viscosity_in * np.ones(n), index=index)
+    diameter = pd.Series(diameter_in * np.ones(n), index=index)
+    roughness = pd.Series(roughness_in * np.ones(n), index=index)
+    roughness_short = pd.Series(np.delete(roughness.values, [remove_idx]), index=index_short)
+
+    tau = pipe_wall_shear_stress(
+        velocity,
+        density,
+        d_viscosity,
+        diameter,
+        roughness_short,
+        laminar_limit=2300,
+        turbulent_limit=4000,
+        align_timesteps=True,
+    )
+
+    expected = pd.Series(
+        [
+            0.012388194892171378,
+            0.030587594211278556,
+            0.07598370788351963,
+            0.1898107662230114,
+            0.47661932310548355,
+            1.202644811575807,
+            3.0487823456341725,
+            7.764256587323961,
+            19.8648630288629,
+            51.07366285941152,
+        ],
+        index=tau.index,
+    )
+
+    assert_series_equal(tau, expected)
+
+
 def test_pipe_pressure_gradient(density_in=400, d_viscosity_in=0.0005, diameter_in=0.3, roughness_in=1e-6):
     n = 10
     velocity = pd.Series(np.power(10, np.linspace(-1, 1, n)))
@@ -136,6 +265,53 @@ def test_pipe_pressure_gradient(density_in=400, d_viscosity_in=0.0005, diameter_
     dpdz = pipe_pressure_gradient(
         velocity, density, d_viscosity, diameter, roughness, laminar_limit=2300.0, turbulent_limit=4000.0
     )
+    assert_series_equal(dpdz, expected)
+
+
+def test_pipe_pressure_gradient_2(density_in=400, d_viscosity_in=0.0005, diameter_in=0.3, roughness_in=1e-6):
+    n = 10
+
+    from datetime import datetime
+
+    index = [datetime(2024, 8, 1, hour, 0, 0) for hour in range(1, n + 1, 1)]
+    remove_idx = 4
+    index_short = index.copy()
+    index_short.pop(remove_idx)
+
+    velocity = pd.Series(np.power(10, np.linspace(-1, 1, n)), index=index)
+    density = pd.Series(density_in * np.ones(n), index=index)
+    d_viscosity = pd.Series(d_viscosity_in * np.ones(n), index=index)
+    diameter = pd.Series(diameter_in * np.ones(n), index=index)
+    roughness = pd.Series(roughness_in * np.ones(n), index=index)
+    roughness_short = pd.Series(np.delete(roughness.values, [remove_idx]), index=index_short)
+
+    dpdz = pipe_pressure_gradient(
+        velocity,
+        density,
+        d_viscosity,
+        diameter,
+        roughness_short,
+        laminar_limit=2300.0,
+        turbulent_limit=4000.0,
+        align_timesteps=True,
+    )
+
+    expected = pd.Series(
+        [
+            0.16517593189561838,
+            0.4078345894837141,
+            1.013116105113595,
+            2.530810216306819,
+            6.354924308073114,
+            16.035264154344095,
+            40.6504312751223,
+            103.52342116431947,
+            264.86484038483866,
+            680.9821714588203,
+        ],
+        index=dpdz.index,
+    )
+
     assert_series_equal(dpdz, expected)
 
 
@@ -182,4 +358,62 @@ def test_pipe_pressure_drop(
         laminar_limit=2300.0,
         turbulent_limit=4000.0,
     )
+    assert_series_equal(dp, expected)
+
+
+def test_pipe_pressure_drop_2(
+    density_in=400,
+    d_viscosity_in=0.0005,
+    diameter_in=0.3,
+    roughness_in=1e-6,
+    pipe_length_in=10,
+    pipe_height_difference_in=1.1,
+):
+    n = 10
+
+    from datetime import datetime
+
+    index = [datetime(2024, 8, 1, hour, 0, 0) for hour in range(1, n + 1, 1)]
+    remove_idx = 4
+    index_short = index.copy()
+    index_short.pop(remove_idx)
+
+    velocity = pd.Series(np.power(10, np.linspace(-1, 1, n)), index=index)
+    density = pd.Series(density_in * np.ones(n), index=index)
+    d_viscosity = pd.Series(d_viscosity_in * np.ones(n), index=index)
+    diameter = pd.Series(diameter_in * np.ones(n), index=index)
+    roughness = pd.Series(roughness_in * np.ones(n), index=index)
+    roughness_short = pd.Series(np.delete(roughness.values, [remove_idx]), index=index_short)
+    pipe_length = pd.Series(pipe_length_in * np.ones(n), index=index)
+    pipe_height_difference = pd.Series(pipe_height_difference_in * np.ones(n), index=index)
+
+    dp = pipe_pressure_drop(
+        velocity,
+        density,
+        d_viscosity,
+        diameter,
+        roughness,
+        pipe_length,
+        pipe_height_difference,
+        laminar_limit=2300.0,
+        turbulent_limit=4000.0,
+        align_timesteps=True,
+    )
+
+    expected = pd.Series(
+        [
+            4318.051759318957,
+            4320.478345894838,
+            4326.531161051136,
+            4341.708102163068,
+            4379.949243080731,
+            4476.752641543441,
+            4722.904312751223,
+            5351.634211643195,
+            6965.048403848387,
+            11126.221714588202,
+        ],
+        index=dp.index,
+    )
+
     assert_series_equal(dp, expected)
