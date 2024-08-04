@@ -1,6 +1,7 @@
 # Copyright 2024 Cognite AS
 from typing import List
 
+import numpy as np
 import pandas as pd
 
 from indsl.exceptions import UserValueError
@@ -16,7 +17,8 @@ def sequence_interpolation_1d(
 
     The input time serie is interpolated to the input sequence to create the return timeseries.
     The x_values represent the input timeseries and the y_values represent the output timeseries.
-    The interpolation routine is a simple linear interpolation
+    The interpolation routine is a simple linear interpolation.
+    If the input series is outside the interpolation range, the return value is extrapolated.
 
     Args:
         signal (pandas.Series): Time series
@@ -40,7 +42,9 @@ def sequence_interpolation_1d(
 
     from scipy.interpolate import interp1d
 
-    interpolator = interp1d(x_values, y_values)
+    interpolator = interp1d(
+        x_values, y_values, fill_value="extrapolate"
+    )  # extrapolate if the input value is outside the interpolation table
     output = interpolator(signal.values)
     output_series = pd.Series(output, index=signal.index)
 
@@ -59,8 +63,10 @@ def sequence_interpolation_2d(
     """2D interpolation of a sequence.
 
     The input time series is interpolated to the input sequence to create the return timeseries.
-    The x_values represent the input timeseries and the y_values represent the output timeseries.
-    The interpolation routine is a simple linear interpolation
+    The x_values and y_values represent the input timeseries and the z_values represent the output timeseries.
+    The interpolation routine is a simple linear interpolation.
+    If the input point is outside the convec hull of the interpolation region the nearest point is returned.
+
     Args:
         signal_x (pandas.Series): Time series x-value
         signal_y (pandas.Series): Time series y-value
@@ -94,9 +100,21 @@ def sequence_interpolation_2d(
     signal_x, signal_y = auto_align([signal_x, signal_y], align_timesteps)
 
     # x_values.dtype
-    from scipy.interpolate import LinearNDInterpolator
+    from scipy.interpolate import LinearNDInterpolator, NearestNDInterpolator
 
-    interpolator = LinearNDInterpolator(list(zip(interp_x, interp_y)), interp_z)
+    interpolator = LinearNDInterpolator(
+        list(zip(interp_x, interp_y)), interp_z, rescale=True
+    )  # rescale makes it more robust to large difference in scale between the input series
+
     output = interpolator(signal_x.values, signal_y.values)
+
+    # If some of the input values are outside the
+    idx_nan = np.isnan(output)
+    if idx_nan.any():
+        interpolator_nnd = NearestNDInterpolator(list(zip(interp_x, interp_y)), interp_z, rescale=True)
+        # Only run it on the values that has nan
+        input_x_nan = signal_x.values[idx_nan]
+        input_y_nan = signal_y.values[idx_nan]
+        output[idx_nan] = interpolator_nnd(input_x_nan, input_y_nan)
     output_series = pd.Series(output, index=signal_x.index)
     return output_series

@@ -68,3 +68,54 @@ def test_sequence_interpolation_2d():
     )
 
     pytest.approx(interpolation_test_result, interpolation_function_result)
+
+
+@pytest.mark.core
+def test_sequence_interpolation_2d_outside():
+    """
+    Contains input parameters that are outside the convec hull of the interpolation input points
+    """
+    import pickle
+
+    WHP_series = pd.pandas.read_pickle("./tests/signals/pd_series_WHP.pkl")
+    WHT_series = pd.pandas.read_pickle("./tests/signals/pd_series_WHT.pkl")
+    # auto-align
+    WHP_series, WHT_series = auto_align([WHP_series, WHT_series], True)
+
+    # defining the interpolation curve
+    from numpy.random import uniform
+
+    n = 200
+    params_P = uniform(WHP_series.min() * 0.99, WHP_series.max() * 0.99, size=n)
+    params_T = uniform(WHT_series.min() * 0.99, WHT_series.max() * 0.99, size=n)
+
+    params_z = (
+        (np.sin(params_P / params_P.max() * np.pi - np.pi * 0.5) + 1)
+        * 0.5
+        * (np.sin(params_T / params_T.max() * np.pi - np.pi * 0.5) + 1)
+        * 0.5
+    )
+
+    from scipy.interpolate import LinearNDInterpolator, NearestNDInterpolator
+
+    interpolator = LinearNDInterpolator(list(zip(params_P, params_T)), params_z)
+    output = interpolator(WHP_series.values, WHT_series.values)
+    output_series = pd.Series(output, index=WHP_series.index)
+    interpolation_test_result = pd.Series(output, index=WHP_series.index)
+
+    # Do the input parameters outside the convex hull using nearest neighbor
+    idx_nan = np.isnan(output)
+    interpolator_nnd = NearestNDInterpolator(list(zip(params_P, params_T)), params_z, rescale=True)
+    # Only run it on the values that has nan
+    input_x_nan = WHP_series.values[idx_nan]
+    input_y_nan = WHT_series.values[idx_nan]
+    output[idx_nan] = interpolator_nnd(input_x_nan, input_y_nan)
+
+    interpolation_function_result = sequence_interpolation_2d(
+        WHP_series, WHT_series, params_P.tolist(), params_T.tolist(), params_z.tolist()
+    )
+
+    pytest.approx(interpolation_test_result, interpolation_function_result)
+
+
+# test_sequence_interpolation_2d_outside()
