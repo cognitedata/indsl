@@ -103,7 +103,9 @@ def __Darcy_friction_factor_point(
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
 ) -> float:
-    """Computes the Darcy friction factor, including the laminar-turbulent transition.
+    """Darcy friction factor.
+
+    Computes the Darcy friction factor, including the laminar-turbulent transition.
 
     Args:
         Re: Reynolds Number [-].
