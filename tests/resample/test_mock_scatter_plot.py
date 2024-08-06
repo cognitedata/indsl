@@ -17,7 +17,7 @@ from indsl.resample.mock_scatter_plot import reindex_scatter, reindex_scatter_x
 @pytest.mark.core
 def test_reindex_scatter():
 
-    HCV_series = pd.read_pickle("./tests/resample/pd_series_HCV.pkl")
+    HCV_series = pd.read_pickle("./datasets/data/pd_series_HCV.pkl")
     # defining the interpolation curve
     n = 20
     x_values = np.linspace(0, 100, n)
@@ -63,6 +63,3 @@ def test_reindex_scatter():
         axr.plot(signal_scatter.index, signal_scatter.values, "xr")
         axr.plot(signal_scatter_x.index, signal_scatter_x * 0.01, ".g")
         plt.show()
-
-
-# test_reindex_scatter()
