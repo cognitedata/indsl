@@ -6,7 +6,7 @@
     <img src="https://github.com/cognitedata/cognite-python-docs/blob/master/img/cognite_logo.png" alt="Cognite logo" title="Cognite" align="right" height="80" />
 </a>
 
-Industrial Data Science Library
+Industrial Data Science Library 
 =========================================
 
 This is Cognite's collection of data science algorithms and models. Its objective is twofold. First, empower domain
