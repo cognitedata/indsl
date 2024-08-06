@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2024 Cognite AS
 import numpy as np
 import pandas as pd
 import math
