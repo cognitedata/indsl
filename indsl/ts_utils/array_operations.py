@@ -3,8 +3,8 @@ import numpy as np
 # Simple operations
 import pandas as pd
 
-from indsl.exceptions import UserValueError
 from indsl.type_check import check_types
+from indsl.validations import validate_series_is_not_empty
 
 
 @check_types
@@ -21,9 +21,9 @@ def time_weighted_mean(data: pd.Series) -> pd.Series:
     """
     from scipy.integrate import trapezoid
 
-    n = len(data)
-    if n == 0:
-        raise UserValueError("Expected at least one item in data parameter, got zero instead.")
+    # Check if the time series is empty
+    validate_series_is_not_empty(data)
+
     # We need to convert the datetime to timestamp
     timestamps = np.array([val.timestamp() for val in data.index])
 
@@ -52,9 +52,8 @@ def time_weighted_std(data: pd.Series) -> pd.Series:
     """
     from scipy.integrate import trapezoid
 
-    n = len(data)
-    if n == 0:
-        raise UserValueError("Expected at least one item in data parameter, got zero instead.")
+    # Check if the time series is empty
+    validate_series_is_not_empty(data)
 
     # We need to convert the datetime to timestamp
     timestamps = np.array([val.timestamp() for val in data.index])
@@ -89,9 +88,8 @@ def timeseries_min(data: pd.Series) -> pd.Series:
     Returns:
         pandas.Series: Min value timeseries.
     """
-    n = len(data)
-    if n == 0:
-        raise UserValueError("Expected at least one item in data parameter, got zero instead.")
+    # Check if the time series is empty
+    validate_series_is_not_empty(data)
 
     # Extract the smallest value
     timeseries_min = data.min()
@@ -114,9 +112,8 @@ def timeseries_max(data: pd.Series) -> pd.Series:
     Returns:
         pandas.Series: Maxi value timeseries.
     """
-    n = len(data)
-    if n == 0:
-        raise UserValueError("Expected at least one item in data parameter, got zero instead.")
+    # Check if the time series is empty
+    validate_series_is_not_empty(data)
 
     # Extract the largest value
     timeseries_max = data.max()
