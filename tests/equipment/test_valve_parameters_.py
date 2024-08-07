@@ -99,7 +99,7 @@ def test_flow_through_valve_linear_and_eq(method):
         align_timestamps=False,
     )
     exp_res = pd.Series(
-        [np.NaN, np.NaN, 3.46, 3.46, np.NaN, np.NaN], index=pd.date_range("1970-01-01 00:00:00", periods=6, freq="1s")
+        [np.nan, np.nan, 3.46, 3.46, np.nan, np.nan], index=pd.date_range("1970-01-01 00:00:00", periods=6, freq="1s")
     )
     assert_series_equal(res, exp_res)
 

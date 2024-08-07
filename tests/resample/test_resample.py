@@ -164,7 +164,7 @@ def test_resample_downsample_method():
     assert_series_equal(not_uniform_data, res_data)
 
     # uniform
-    uniform_data = pd.Series([1, np.NaN, 3, 4], index=pd.date_range("2020-07-14 01:00:01", periods=4, freq="1s"))
+    uniform_data = pd.Series([1, np.nan, 3, 4], index=pd.date_range("2020-07-14 01:00:01", periods=4, freq="1s"))
     res_data = resample(data=uniform_data, method="mean", granularity_next=pd.Timedelta("2s"))
     expected_res = pd.Series([1.0, 2.0, 4.0], index=pd.date_range("2020-07-14 01:00:00", periods=3, freq="2s"))
     expected_res = expected_res.asfreq(freq="2s")

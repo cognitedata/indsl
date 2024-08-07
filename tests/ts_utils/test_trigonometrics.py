@@ -185,7 +185,7 @@ def test_arctan2_pandas_series():
 
     res_not_align_timesteps = arctan2(n1, n2, align_timesteps=False)
     exp_res_not_align_timesteps = pd.Series(
-        [np.pi / 2, -np.pi / 2, np.pi / 4, -np.pi / 4, -3 * np.pi / 4, 3 * np.pi / 4, np.pi, np.NaN, np.NaN],
+        [np.pi / 2, -np.pi / 2, np.pi / 4, -np.pi / 4, -3 * np.pi / 4, 3 * np.pi / 4, np.pi, np.nan, np.nan],
         index=pd.date_range("2020-07-13 01:00:01", periods=9, freq="1s"),
     )
     assert_series_equal(exp_res_not_align_timesteps, res_not_align_timesteps)
