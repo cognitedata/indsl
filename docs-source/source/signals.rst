@@ -67,3 +67,16 @@ Univariate Polynomial
 .. topic:: Examples with univariate polynomial generators:
 
    * :ref:`sphx_glr_auto_examples_signals_plot_univariate_polynomial.py`   
+
+
+Sequence interpolation
+----------------------
+
+1D interpolation of a sequence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. autofunction:: indsl.signals.sequence_interpolation.sequence_interpolation_1d
+
+2D interpolation of a sequence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. autofunction:: indsl.signals.sequence_interpolation.sequence_interpolation_2d
+
