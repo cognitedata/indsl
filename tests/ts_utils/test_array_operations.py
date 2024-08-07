@@ -40,10 +40,9 @@ def test_time_weighted_std():
     timeseries_average = timeseries_sum / (timestamps[-1] - timestamps[0])
 
     # Then calculate the stadard deviation
-    timeseries_sum = trapezoid((WHP_series.values - timeseries_average), x=timestamps)
-
-    # Then calculate the stadard deviation
-    timeseries_std = np.sqrt(trapezoid((WHP_series.values - timeseries_average), x=timestamps))
+    timeseries_std = np.sqrt(
+        trapezoid((WHP_series.values - timeseries_average) ** 2, x=timestamps) / (timestamps[-1] - timestamps[0])
+    )
 
     time_weighted_std_indsl = time_weighted_std(WHP_series)
     assert math.isclose(time_weighted_std_indsl.values[0] - timeseries_std, 0, abs_tol=1e-8)
