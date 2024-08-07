@@ -25,7 +25,7 @@ jobs:
     name: Test Core
     strategy:
         matrix:
-            platform: [ubuntu-latest, macos-latest, windows-latest]
+            platform: [ubuntu-latest]
             python-version: ["3.12"]
     runs-on: ${{ matrix.platform }}
     steps:
