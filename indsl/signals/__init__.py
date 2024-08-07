@@ -2,6 +2,7 @@
 from .generator import const_value, insert_data_gaps, line, perturb_timestamp, sine_wave, wave_with_brownian_noise
 from .noise import white_noise
 from .polynomial import univariate_polynomial
+from .user_specified_timeseries import user_specified_timeseries
 
 
 TOOLBOX_NAME = "Signal generator"
@@ -15,6 +16,7 @@ __all__ = [
     "univariate_polynomial",
     "const_value",
     "wave_with_brownian_noise",
+    "user_specified_timeseries",
 ]
 
 __cognite__ = [
@@ -26,4 +28,5 @@ __cognite__ = [
     "univariate_polynomial",
     "const_value",
     "wave_with_brownian_noise",
+    "user_specified_timeseries",
 ]
