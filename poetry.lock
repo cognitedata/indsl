@@ -1079,33 +1079,34 @@ files = [
 
 [[package]]
 name = "imageio"
-version = "2.34.2"
+version = "2.35.0"
 description = "Library for reading and writing a wide range of image, video, scientific, and volumetric data formats."
 optional = true
 python-versions = ">=3.8"
 files = [
-    {file = "imageio-2.34.2-py3-none-any.whl", hash = "sha256:a0bb27ec9d5bab36a9f4835e51b21d2cb099e1f78451441f94687ff3404b79f8"},
-    {file = "imageio-2.34.2.tar.gz", hash = "sha256:5c0c0ee8faa018a1c42f649b90395dd4d3bb6187c09053a0cd6f1fdd51bbff5e"},
+    {file = "imageio-2.35.0-py3-none-any.whl", hash = "sha256:ebfb39c0ad7acf93750d7ee151664238aaa9208f202288ea6f3ca7cb0ed719c3"},
+    {file = "imageio-2.35.0.tar.gz", hash = "sha256:e88f759803d2968e19a55fa8372e9fbe12967a8598fe042d8719ca46d03f4256"},
 ]
 
 [package.dependencies]
-numpy = "*"
+numpy = "<2.0.0"
 pillow = ">=8.3.2"
 
 [package.extras]
-all-plugins = ["astropy", "av", "imageio-ffmpeg", "pillow-heif", "psutil", "tifffile"]
-all-plugins-pypy = ["av", "imageio-ffmpeg", "pillow-heif", "psutil", "tifffile"]
+all-plugins = ["astropy", "av", "imageio-ffmpeg", "psutil", "tifffile"]
+all-plugins-pypy = ["av", "imageio-ffmpeg", "psutil", "tifffile"]
 build = ["wheel"]
 dev = ["black", "flake8", "fsspec[github]", "pytest", "pytest-cov"]
 docs = ["numpydoc", "pydata-sphinx-theme", "sphinx (<6)"]
 ffmpeg = ["imageio-ffmpeg", "psutil"]
 fits = ["astropy"]
-full = ["astropy", "av", "black", "flake8", "fsspec[github]", "gdal", "imageio-ffmpeg", "itk", "numpydoc", "pillow-heif", "psutil", "pydata-sphinx-theme", "pytest", "pytest-cov", "sphinx (<6)", "tifffile", "wheel"]
+full = ["astropy", "av", "black", "flake8", "fsspec[github]", "gdal", "imageio-ffmpeg", "itk", "numpy (>2)", "numpydoc", "pillow-heif", "psutil", "pydata-sphinx-theme", "pytest", "pytest-cov", "rawpy", "sphinx (<6)", "tifffile", "wheel"]
 gdal = ["gdal"]
 itk = ["itk"]
 linting = ["black", "flake8"]
 pillow-heif = ["pillow-heif"]
 pyav = ["av"]
+rawpy = ["numpy (>2)", "rawpy"]
 test = ["fsspec[github]", "pytest", "pytest-cov"]
 tifffile = ["tifffile"]
 
@@ -2070,40 +2071,51 @@ tests = ["pytest", "pytz", "simplejson"]
 
 [[package]]
 name = "matplotlib"
-version = "3.9.1.post1"
+version = "3.9.2"
 description = "Python plotting package"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "matplotlib-3.9.1.post1-cp310-cp310-macosx_10_12_x86_64.whl", hash = "sha256:3779ad3e8b72df22b8a622c5796bbcfabfa0069b835412e3c1dec8ee3de92d0c"},
-    {file = "matplotlib-3.9.1.post1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:ec400340f8628e8e2260d679078d4e9b478699f386e5cc8094e80a1cb0039c7c"},
-    {file = "matplotlib-3.9.1.post1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:82c18791b8862ea095081f745b81f896b011c5a5091678fb33204fef641476af"},
-    {file = "matplotlib-3.9.1.post1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:621a628389c09a6b9f609a238af8e66acecece1cfa12febc5fe4195114ba7446"},
-    {file = "matplotlib-3.9.1.post1-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:9a54734ca761ebb27cd4f0b6c2ede696ab6861052d7d7e7b8f7a6782665115f5"},
-    {file = "matplotlib-3.9.1.post1-cp310-cp310-win_amd64.whl", hash = "sha256:0721f93db92311bb514e446842e2b21c004541dcca0281afa495053e017c5458"},
-    {file = "matplotlib-3.9.1.post1-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:b08b46058fe2a31ecb81ef6aa3611f41d871f6a8280e9057cb4016cb3d8e894a"},
-    {file = "matplotlib-3.9.1.post1-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:22b344e84fcc574f561b5731f89a7625db8ef80cdbb0026a8ea855a33e3429d1"},
-    {file = "matplotlib-3.9.1.post1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4b49fee26d64aefa9f061b575f0f7b5fc4663e51f87375c7239efa3d30d908fa"},
-    {file = "matplotlib-3.9.1.post1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:89eb7e89e2b57856533c5c98f018aa3254fa3789fcd86d5f80077b9034a54c9a"},
-    {file = "matplotlib-3.9.1.post1-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:c06e742bade41fda6176d4c9c78c9ea016e176cd338e62a1686384cb1eb8de41"},
-    {file = "matplotlib-3.9.1.post1-cp311-cp311-win_amd64.whl", hash = "sha256:c44edab5b849e0fc1f1c9d6e13eaa35ef65925f7be45be891d9784709ad95561"},
-    {file = "matplotlib-3.9.1.post1-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:bf28b09986aee06393e808e661c3466be9c21eff443c9bc881bce04bfbb0c500"},
-    {file = "matplotlib-3.9.1.post1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:92aeb8c439d4831510d8b9d5e39f31c16c7f37873879767c26b147cef61e54cd"},
-    {file = "matplotlib-3.9.1.post1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f15798b0691b45c80d3320358a88ce5a9d6f518b28575b3ea3ed31b4bd95d009"},
-    {file = "matplotlib-3.9.1.post1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d59fc6096da7b9c1df275f9afc3fef5cbf634c21df9e5f844cba3dd8deb1847d"},
-    {file = "matplotlib-3.9.1.post1-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:ab986817a32a70ce22302438691e7df4c6ee4a844d47289db9d583d873491e0b"},
-    {file = "matplotlib-3.9.1.post1-cp312-cp312-win_amd64.whl", hash = "sha256:0d78e7d2d86c4472da105d39aba9b754ed3dfeaeaa4ac7206b82706e0a5362fa"},
-    {file = "matplotlib-3.9.1.post1-cp39-cp39-macosx_10_12_x86_64.whl", hash = "sha256:bd07eba6431b4dc9253cce6374a28c415e1d3a7dc9f8aba028ea7592f06fe172"},
-    {file = "matplotlib-3.9.1.post1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:ca230cc4482010d646827bd2c6d140c98c361e769ae7d954ebf6fff2a226f5b1"},
-    {file = "matplotlib-3.9.1.post1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ace27c0fdeded399cbc43f22ffa76e0f0752358f5b33106ec7197534df08725a"},
-    {file = "matplotlib-3.9.1.post1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9a4f3aeb7ba14c497dc6f021a076c48c2e5fbdf3da1e7264a5d649683e284a2f"},
-    {file = "matplotlib-3.9.1.post1-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:23f96fbd4ff4cfa9b8a6b685a65e7eb3c2ced724a8d965995ec5c9c2b1f7daf5"},
-    {file = "matplotlib-3.9.1.post1-cp39-cp39-win_amd64.whl", hash = "sha256:2808b95452b4ffa14bfb7c7edffc5350743c31bda495f0d63d10fdd9bc69e895"},
-    {file = "matplotlib-3.9.1.post1-pp39-pypy39_pp73-macosx_10_15_x86_64.whl", hash = "sha256:ffc91239f73b4179dec256b01299d46d0ffa9d27d98494bc1476a651b7821cbe"},
-    {file = "matplotlib-3.9.1.post1-pp39-pypy39_pp73-macosx_11_0_arm64.whl", hash = "sha256:f965ebca9fd4feaaca45937c4849d92b70653057497181100fcd1e18161e5f29"},
-    {file = "matplotlib-3.9.1.post1-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:801ee9323fd7b2da0d405aebbf98d1da77ea430bbbbbec6834c0b3af15e5db44"},
-    {file = "matplotlib-3.9.1.post1-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:50113e9b43ceb285739f35d43db36aa752fb8154325b35d134ff6e177452f9ec"},
-    {file = "matplotlib-3.9.1.post1.tar.gz", hash = "sha256:c91e585c65092c975a44dc9d4239ba8c594ba3c193d7c478b6d178c4ef61f406"},
+    {file = "matplotlib-3.9.2-cp310-cp310-macosx_10_12_x86_64.whl", hash = "sha256:9d78bbc0cbc891ad55b4f39a48c22182e9bdaea7fc0e5dbd364f49f729ca1bbb"},
+    {file = "matplotlib-3.9.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:c375cc72229614632c87355366bdf2570c2dac01ac66b8ad048d2dabadf2d0d4"},
+    {file = "matplotlib-3.9.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:1d94ff717eb2bd0b58fe66380bd8b14ac35f48a98e7c6765117fe67fb7684e64"},
+    {file = "matplotlib-3.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ab68d50c06938ef28681073327795c5db99bb4666214d2d5f880ed11aeaded66"},
+    {file = "matplotlib-3.9.2-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:65aacf95b62272d568044531e41de26285d54aec8cb859031f511f84bd8b495a"},
+    {file = "matplotlib-3.9.2-cp310-cp310-win_amd64.whl", hash = "sha256:3fd595f34aa8a55b7fc8bf9ebea8aa665a84c82d275190a61118d33fbc82ccae"},
+    {file = "matplotlib-3.9.2-cp311-cp311-macosx_10_12_x86_64.whl", hash = "sha256:d8dd059447824eec055e829258ab092b56bb0579fc3164fa09c64f3acd478772"},
+    {file = "matplotlib-3.9.2-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:c797dac8bb9c7a3fd3382b16fe8f215b4cf0f22adccea36f1545a6d7be310b41"},
+    {file = "matplotlib-3.9.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d719465db13267bcef19ea8954a971db03b9f48b4647e3860e4bc8e6ed86610f"},
+    {file = "matplotlib-3.9.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8912ef7c2362f7193b5819d17dae8629b34a95c58603d781329712ada83f9447"},
+    {file = "matplotlib-3.9.2-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:7741f26a58a240f43bee74965c4882b6c93df3e7eb3de160126d8c8f53a6ae6e"},
+    {file = "matplotlib-3.9.2-cp311-cp311-win_amd64.whl", hash = "sha256:ae82a14dab96fbfad7965403c643cafe6515e386de723e498cf3eeb1e0b70cc7"},
+    {file = "matplotlib-3.9.2-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:ac43031375a65c3196bee99f6001e7fa5bdfb00ddf43379d3c0609bdca042df9"},
+    {file = "matplotlib-3.9.2-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:be0fc24a5e4531ae4d8e858a1a548c1fe33b176bb13eff7f9d0d38ce5112a27d"},
+    {file = "matplotlib-3.9.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bf81de2926c2db243c9b2cbc3917619a0fc85796c6ba4e58f541df814bbf83c7"},
+    {file = "matplotlib-3.9.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f6ee45bc4245533111ced13f1f2cace1e7f89d1c793390392a80c139d6cf0e6c"},
+    {file = "matplotlib-3.9.2-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:306c8dfc73239f0e72ac50e5a9cf19cc4e8e331dd0c54f5e69ca8758550f1e1e"},
+    {file = "matplotlib-3.9.2-cp312-cp312-win_amd64.whl", hash = "sha256:5413401594cfaff0052f9d8b1aafc6d305b4bd7c4331dccd18f561ff7e1d3bd3"},
+    {file = "matplotlib-3.9.2-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:18128cc08f0d3cfff10b76baa2f296fc28c4607368a8402de61bb3f2eb33c7d9"},
+    {file = "matplotlib-3.9.2-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:4876d7d40219e8ae8bb70f9263bcbe5714415acfdf781086601211335e24f8aa"},
+    {file = "matplotlib-3.9.2-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:6d9f07a80deab4bb0b82858a9e9ad53d1382fd122be8cde11080f4e7dfedb38b"},
+    {file = "matplotlib-3.9.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f7c0410f181a531ec4e93bbc27692f2c71a15c2da16766f5ba9761e7ae518413"},
+    {file = "matplotlib-3.9.2-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:909645cce2dc28b735674ce0931a4ac94e12f5b13f6bb0b5a5e65e7cea2c192b"},
+    {file = "matplotlib-3.9.2-cp313-cp313-win_amd64.whl", hash = "sha256:f32c7410c7f246838a77d6d1eff0c0f87f3cb0e7c4247aebea71a6d5a68cab49"},
+    {file = "matplotlib-3.9.2-cp313-cp313t-macosx_10_13_x86_64.whl", hash = "sha256:37e51dd1c2db16ede9cfd7b5cabdfc818b2c6397c83f8b10e0e797501c963a03"},
+    {file = "matplotlib-3.9.2-cp313-cp313t-macosx_11_0_arm64.whl", hash = "sha256:b82c5045cebcecd8496a4d694d43f9cc84aeeb49fe2133e036b207abe73f4d30"},
+    {file = "matplotlib-3.9.2-cp313-cp313t-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f053c40f94bc51bc03832a41b4f153d83f2062d88c72b5e79997072594e97e51"},
+    {file = "matplotlib-3.9.2-cp313-cp313t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:dbe196377a8248972f5cede786d4c5508ed5f5ca4a1e09b44bda889958b33f8c"},
+    {file = "matplotlib-3.9.2-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:5816b1e1fe8c192cbc013f8f3e3368ac56fbecf02fb41b8f8559303f24c5015e"},
+    {file = "matplotlib-3.9.2-cp39-cp39-macosx_10_12_x86_64.whl", hash = "sha256:cef2a73d06601437be399908cf13aee74e86932a5ccc6ccdf173408ebc5f6bb2"},
+    {file = "matplotlib-3.9.2-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:e0830e188029c14e891fadd99702fd90d317df294c3298aad682739c5533721a"},
+    {file = "matplotlib-3.9.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:03ba9c1299c920964e8d3857ba27173b4dbb51ca4bab47ffc2c2ba0eb5e2cbc5"},
+    {file = "matplotlib-3.9.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1cd93b91ab47a3616b4d3c42b52f8363b88ca021e340804c6ab2536344fad9ca"},
+    {file = "matplotlib-3.9.2-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:6d1ce5ed2aefcdce11904fc5bbea7d9c21fff3d5f543841edf3dea84451a09ea"},
+    {file = "matplotlib-3.9.2-cp39-cp39-win_amd64.whl", hash = "sha256:b2696efdc08648536efd4e1601b5fd491fd47f4db97a5fbfd175549a7365c1b2"},
+    {file = "matplotlib-3.9.2-pp39-pypy39_pp73-macosx_10_15_x86_64.whl", hash = "sha256:d52a3b618cb1cbb769ce2ee1dcdb333c3ab6e823944e9a2d36e37253815f9556"},
+    {file = "matplotlib-3.9.2-pp39-pypy39_pp73-macosx_11_0_arm64.whl", hash = "sha256:039082812cacd6c6bec8e17a9c1e6baca230d4116d522e81e1f63a74d01d2e21"},
+    {file = "matplotlib-3.9.2-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:6758baae2ed64f2331d4fd19be38b7b4eae3ecec210049a26b6a4f3ae1c85dcc"},
+    {file = "matplotlib-3.9.2-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:050598c2b29e0b9832cde72bcf97627bf00262adbc4a54e2b856426bb2ef0697"},
+    {file = "matplotlib-3.9.2.tar.gz", hash = "sha256:96ab43906269ca64a6366934106fa01534454a69e471b7bf3d79083981aaab92"},
 ]
 
 [package.dependencies]
@@ -2294,13 +2306,13 @@ test = ["pep440", "pre-commit", "pytest", "testpath"]
 
 [[package]]
 name = "nbsphinx"
-version = "0.9.4"
+version = "0.9.5"
 description = "Jupyter Notebook Tools for Sphinx"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "nbsphinx-0.9.4-py3-none-any.whl", hash = "sha256:22cb1d974a8300e8118ca71aea1f649553743c0c5830a54129dcd446e6a8ba17"},
-    {file = "nbsphinx-0.9.4.tar.gz", hash = "sha256:042a60806fc23d519bc5bef59d95570713913fe442fda759d53e3aaf62104794"},
+    {file = "nbsphinx-0.9.5-py3-none-any.whl", hash = "sha256:d82f71084425db1f48e72515f15c25b4de8652ceaab513ee462ac05f1b8eae0a"},
+    {file = "nbsphinx-0.9.5.tar.gz", hash = "sha256:736916e7b0dab28fc904f4a9ae3b53a9a50c29fccc6329c052fcc7485abcf2b7"},
 ]
 
 [package.dependencies]
@@ -2979,48 +2991,54 @@ files = [
 
 [[package]]
 name = "pywavelets"
-version = "1.6.0"
+version = "1.7.0"
 description = "PyWavelets, wavelet transform module"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 files = [
-    {file = "pywavelets-1.6.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:ddc1ff5ad706313d930f857f9656f565dfb81b85bbe58a9db16ad8fa7d1537c5"},
-    {file = "pywavelets-1.6.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:78feab4e0c25fa32034b6b64cb854c6ce15663b4f0ffb25d8f0ee58915300f9b"},
-    {file = "pywavelets-1.6.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:be36f08efe9bc3abf40cf40cd2ee0aa0db26e4894e13ce5ac178442864161e8c"},
-    {file = "pywavelets-1.6.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0595c51472c9c5724fe087cb73e2797053fd25c788d6553fdad6ff61abc60e91"},
-    {file = "pywavelets-1.6.0-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:058a750477dde633ac53b8806f835af3559d52db6532fb2b93c1f4b5441365b8"},
-    {file = "pywavelets-1.6.0-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:538795d9c4181152b414285b5a7f72ac52581ecdcdce74b6cca3fa0b8a5ab0aa"},
-    {file = "pywavelets-1.6.0-cp310-cp310-win32.whl", hash = "sha256:47de024ba4f9df97e98b5f540340e1a9edd82d2c477450bef8c9b5381487128e"},
-    {file = "pywavelets-1.6.0-cp310-cp310-win_amd64.whl", hash = "sha256:e2c44760c0906ddf2176920a2613287f6eea947f166ce7eee9546081b06a6835"},
-    {file = "pywavelets-1.6.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:d91aaaf6de53b758bcdc96c81cdb5a8607758602be49f691188c0e108cf1e738"},
-    {file = "pywavelets-1.6.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:3b5302edb6d1d1ff6636d37c9ff29c4892f2a3648d736cc1df01f3f36e25c8cf"},
-    {file = "pywavelets-1.6.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c5e655446e37a3c87213d5c6386b86f65c4d61736b4432d720171e7dd6523d6a"},
-    {file = "pywavelets-1.6.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9ec7d69b746a0eaa327b829a3252a63619f2345e263177be5dd9bf30d7933c8d"},
-    {file = "pywavelets-1.6.0-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:97ea9613bd6b7108ebb44b709060adc7e2d5fac73be7152342bdd5513d75f84e"},
-    {file = "pywavelets-1.6.0-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:48b3813c6d1a7a8194f37dbb5dbbdf2fe1112152c91445ea2e54f64ff6350c36"},
-    {file = "pywavelets-1.6.0-cp311-cp311-win32.whl", hash = "sha256:4ffb484d096a5eb10af7121e0203546a03e1369328df321a33ef91f67bac40cf"},
-    {file = "pywavelets-1.6.0-cp311-cp311-win_amd64.whl", hash = "sha256:274bc47b289585383aa65519b3fcae5b4dee5e31db3d4198d4fad701a70e59f7"},
-    {file = "pywavelets-1.6.0-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:d6ec113386a432e04103f95e351d2657b42145bd1e1ed26513423391bcb5f011"},
-    {file = "pywavelets-1.6.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:ab652112d3932d21f020e281e06926a751354c2b5629fb716f5eb9d0104b84e5"},
-    {file = "pywavelets-1.6.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:47b0314a22616c5f3f08760f0e00b4a15b7c7dadca5e39bb701cf7869a4207c5"},
-    {file = "pywavelets-1.6.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:138471513bc0a4cd2ddc4e50c7ec04e3468c268e101a0d02f698f6aedd1d5e79"},
-    {file = "pywavelets-1.6.0-cp312-cp312-musllinux_1_1_aarch64.whl", hash = "sha256:67936491ae3e5f957c428e34fdaed21f131535b8d60c7c729a1b539ce8864837"},
-    {file = "pywavelets-1.6.0-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:dd798cee3d28fb3d32a26a00d9831a20bf316c36d685e4ced01b4e4a8f36f5ce"},
-    {file = "pywavelets-1.6.0-cp312-cp312-win32.whl", hash = "sha256:e772f7f0c16bfc3be8ac3cd10d29a9920bb7a39781358856223c491b899e6e79"},
-    {file = "pywavelets-1.6.0-cp312-cp312-win_amd64.whl", hash = "sha256:4ef15a63a72afa67ae9f4f3b06c95c5382730fb3075e668d49a880e65f2f089c"},
-    {file = "pywavelets-1.6.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:627df378e63e9c789b6f2e7060cb4264ebae6f6b0efc1da287a2c060de454a1f"},
-    {file = "pywavelets-1.6.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:a413b51dc19e05243fe0b0864a8e8a16b5ca9bf2e4713da00a95b1b5747a5367"},
-    {file = "pywavelets-1.6.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:be615c6c1873e189c265d4a76d1751ec49b17e29725e6dd2e9c74f1868f590b7"},
-    {file = "pywavelets-1.6.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4021ef69ec9f3862f66580fc4417be728bd78722914394594b48212fd1fcaf21"},
-    {file = "pywavelets-1.6.0-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:8fbf7b61b28b5457693c034e58a01622756d1fd60a80ae13ac5888b1d3e57e80"},
-    {file = "pywavelets-1.6.0-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:f58ddbb0a6cd243928876edfc463b990763a24fb94498607d6fea690e32cca4c"},
-    {file = "pywavelets-1.6.0-cp39-cp39-win32.whl", hash = "sha256:42a22e68e345b6de7d387ef752111ab4530c98048d2b4bdac8ceefb078b4ead6"},
-    {file = "pywavelets-1.6.0-cp39-cp39-win_amd64.whl", hash = "sha256:32198de321892743c1a3d1957fe1cd8a8ecc078bfbba6b8f3982518e897271d7"},
-    {file = "pywavelets-1.6.0.tar.gz", hash = "sha256:ea027c70977122c5fc27b2510f0a0d9528f9c3df6ea3e4c577ca55fd00325a5b"},
+    {file = "pywavelets-1.7.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d99156b461f914cafbe6ee3b511612a83e90061addbe1f2660f522e9841fbdc4"},
+    {file = "pywavelets-1.7.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:953b877c43f1fa53204b1b0eedd04efa6739378a873e79fa34ee5296d47a9ca1"},
+    {file = "pywavelets-1.7.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0fc5e0e592678e43c18dd169b0d8471e9a5ffb5eb7ff4bdc8f447c882f78aa8b"},
+    {file = "pywavelets-1.7.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a469a7e73f5ab1d59b52a525a89a4a280426d1ba08eb081261f8bc6775f101d6"},
+    {file = "pywavelets-1.7.0-cp310-cp310-musllinux_1_2_aarch64.whl", hash = "sha256:3740c84de06fab5081c8f08994f12f9ee94dc2eb4d818eaeace3bdb0b838e2fc"},
+    {file = "pywavelets-1.7.0-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:1a550fdbe134040c04f1bb46cfe13a1a903c5dce13090b681106e4db99feba81"},
+    {file = "pywavelets-1.7.0-cp310-cp310-win32.whl", hash = "sha256:d5fc7fbad53379c30b2c9d46c235130a4b96e0597653e32e7680a310da06bd07"},
+    {file = "pywavelets-1.7.0-cp310-cp310-win_amd64.whl", hash = "sha256:0b37212b7524438f694cb619cc4a0a3dc54ad77b63a18d0e8e6364f525fffd91"},
+    {file = "pywavelets-1.7.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:392553248aed33eac6f38647acacdba94dd6a8f283319c2d9852de7a871d6d0f"},
+    {file = "pywavelets-1.7.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:ae3ae86ba69d75327b1c5cd368138fb9329bc7eb7418d6b0ce9504c5070974ef"},
+    {file = "pywavelets-1.7.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d81d2486e4f9b65f7c6cab252f3e706c8e8e72bbd0311f72c1a5ec56c947d257"},
+    {file = "pywavelets-1.7.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:05dc2930cf9b7f61a24b2fe52b18e9d6046012fc46fc360355222781a95a1378"},
+    {file = "pywavelets-1.7.0-cp311-cp311-musllinux_1_2_aarch64.whl", hash = "sha256:8565de589f42283bca17ddca298f1188a26ef8ee75cadc4a4744cadf5a79cfdf"},
+    {file = "pywavelets-1.7.0-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:8bdab6b1781f01c087c54782d656a4fc1df77796c241f122445adcbb24892839"},
+    {file = "pywavelets-1.7.0-cp311-cp311-win32.whl", hash = "sha256:c7b47d94aefe6e03085f4d9ce74f6133741164d470ac2839af9906686c6c2ed1"},
+    {file = "pywavelets-1.7.0-cp311-cp311-win_amd64.whl", hash = "sha256:3e3c8c0fa44f4de7bf05c5d12883b227aaf6dcf46deb3f6f5a9fa5bb79c33283"},
+    {file = "pywavelets-1.7.0-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:badb7dc70ecd8042ddd98fdd41803d5e5b28bf7c90910bb1751906812326ab54"},
+    {file = "pywavelets-1.7.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:74e838e0225783f37ae346e60a9f783b4a31adc5731b9cb6d687ee5c93bd87b7"},
+    {file = "pywavelets-1.7.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:6ad14d8b5a412a621406276b8ae8ee1e369ba7a7f8e517fb87355bcb8106820f"},
+    {file = "pywavelets-1.7.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:0bd2611076f5d2c4ad940421bbb3c450b6a53d8ca24bde02662455dc67c70dac"},
+    {file = "pywavelets-1.7.0-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:40ebb994b332d48db3b0564e3c335c4f8ba236283939f5167de099766cf16517"},
+    {file = "pywavelets-1.7.0-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:4a2a8cc39901f09d82fc94007026f9aed63876e334ae043eb26caa601aee2551"},
+    {file = "pywavelets-1.7.0-cp312-cp312-win32.whl", hash = "sha256:0cd599c78fc240cbadb63344d73912fc79e8dccbb0db8a8bd5143df400c3a519"},
+    {file = "pywavelets-1.7.0-cp312-cp312-win_amd64.whl", hash = "sha256:29a912c074977db6adf3782dfbd414945805039b755d0c23979bc823f1b4e9c3"},
+    {file = "pywavelets-1.7.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:6a322607b8c2985997ea45317d36cab58f0223ccf4c5b6540b612ed067d099ff"},
+    {file = "pywavelets-1.7.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:0f402424288178fd105a5cb76e1818649dc67e4a08d1b9974c8c7ef01dc5feb3"},
+    {file = "pywavelets-1.7.0-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4ff81dd8288afdd5f2eae6c44f963152b41e14e2e5fc647b608c97bd6f8270fe"},
+    {file = "pywavelets-1.7.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:259ccf233879cf0ed66052ffd174dcabe6314e92b53aa2de25f4ae50b08ea1e3"},
+    {file = "pywavelets-1.7.0-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:105249d2bf824bddfb286e4e08934ff1e8829aa3077dab74ce3b2921a09caa43"},
+    {file = "pywavelets-1.7.0-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:eac60fdb28bd421f72eb18824bd2e4f36c3dab0d7f4802ebfe4bbf68744a524a"},
+    {file = "pywavelets-1.7.0-cp313-cp313-win32.whl", hash = "sha256:097bd03ee1b687942fa2f82ad0d35849879eef0ac82fc6f757d6ef881c53db6d"},
+    {file = "pywavelets-1.7.0-cp313-cp313-win_amd64.whl", hash = "sha256:71918b973950c013c17ff28c3fc2958dfff68ec767ef60cd927a3ac4ff5a7345"},
+    {file = "pywavelets-1.7.0-cp313-cp313t-macosx_11_0_arm64.whl", hash = "sha256:5b7e1a212269d3e48318388744684b702c6a649a70758e35e9a88614316e9b91"},
+    {file = "pywavelets-1.7.0-cp313-cp313t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a0d8c641aa26e040d62166cbe2052dd3cd575e3e0c78c00c52770be6d7dd386b"},
+    {file = "pywavelets-1.7.0-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:e0611ffb6ceeee1b677bd224e657895193eec03ad39538f5263ce61db465f836"},
+    {file = "pywavelets-1.7.0.tar.gz", hash = "sha256:b47250e5bb853e37db5db423bafc82847f4cde0ffdf7aebb06336a993bc174f6"},
 ]
 
 [package.dependencies]
-numpy = ">=1.22.4,<3"
+numpy = ">=1.23,<3"
+
+[package.extras]
+optional = ["scipy (>=1.9)"]
 
 [[package]]
 name = "pywin32"
@@ -3610,18 +3628,18 @@ win32 = ["pywin32"]
 
 [[package]]
 name = "setuptools"
-version = "72.1.0"
+version = "72.2.0"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "setuptools-72.1.0-py3-none-any.whl", hash = "sha256:5a03e1860cf56bb6ef48ce186b0e557fdba433237481a9a625176c2831be15d1"},
-    {file = "setuptools-72.1.0.tar.gz", hash = "sha256:8d243eff56d095e5817f796ede6ae32941278f542e0f941867cc05ae52b162ec"},
+    {file = "setuptools-72.2.0-py3-none-any.whl", hash = "sha256:f11dd94b7bae3a156a95ec151f24e4637fb4fa19c878e4d191bfb8b2d82728c4"},
+    {file = "setuptools-72.2.0.tar.gz", hash = "sha256:80aacbf633704e9c8bfa1d99fa5dd4dc59573efcf9e4042c13d3bcef91ac2ef9"},
 ]
 
 [package.extras]
 core = ["importlib-metadata (>=6)", "importlib-resources (>=5.10.2)", "jaraco.text (>=3.7)", "more-itertools (>=8.8)", "ordered-set (>=3.1.1)", "packaging (>=24)", "platformdirs (>=2.6.2)", "tomli (>=2.0.1)", "wheel (>=0.43.0)"]
-doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier"]
+doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier", "towncrier (<24.7)"]
 test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "importlib-metadata", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "jaraco.test", "mypy (==1.11.*)", "packaging (>=23.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-home (>=0.5)", "pytest-mypy", "pytest-perf", "pytest-ruff (<0.4)", "pytest-ruff (>=0.2.1)", "pytest-ruff (>=0.3.2)", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
 
 [[package]]
@@ -3659,13 +3677,13 @@ files = [
 
 [[package]]
 name = "soupsieve"
-version = "2.5"
+version = "2.6"
 description = "A modern CSS selector implementation for Beautiful Soup."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "soupsieve-2.5-py3-none-any.whl", hash = "sha256:eaa337ff55a1579b6549dc679565eac1e3d000563bcb1c8ab0d0fefbc0c2cdc7"},
-    {file = "soupsieve-2.5.tar.gz", hash = "sha256:5663d5a7b3bfaeee0bc4372e7fc48f9cff4940b3eec54a6451cc5299f1097690"},
+    {file = "soupsieve-2.6-py3-none-any.whl", hash = "sha256:e72c4ff06e4fb6e4b5a9f0f55fe6e81514581fca1515028625d0f299c602ccc9"},
+    {file = "soupsieve-2.6.tar.gz", hash = "sha256:e2e68417777af359ec65daac1057404a3c8a5455bb8abc36f1a9866ab1a51abb"},
 ]
 
 [[package]]
@@ -4041,13 +4059,13 @@ files = [
 
 [[package]]
 name = "tomlkit"
-version = "0.13.0"
+version = "0.13.2"
 description = "Style preserving TOML library"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "tomlkit-0.13.0-py3-none-any.whl", hash = "sha256:7075d3042d03b80f603482d69bf0c8f345c2b30e41699fd8883227f89972b264"},
-    {file = "tomlkit-0.13.0.tar.gz", hash = "sha256:08ad192699734149f5b97b45f1f18dad7eb1b6d16bc72ad0c2335772650d7b72"},
+    {file = "tomlkit-0.13.2-py3-none-any.whl", hash = "sha256:7a974427f6e119197f670fbbbeae7bef749a6c14e793db934baefc1b5f03efde"},
+    {file = "tomlkit-0.13.2.tar.gz", hash = "sha256:fff5fe59a87295b278abd31bec92c15d9bc4a06885ab12bcea52c71119392e79"},
 ]
 
 [[package]]
