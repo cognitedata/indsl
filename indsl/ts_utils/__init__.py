@@ -1,4 +1,5 @@
 # Copyright 2023 Cognite AS
+from .array_operations import time_weighted_mean, time_weighted_std, timeseries_max, timeseries_min
 from .logarithmic_functions import exp, log, log2, log10, logn
 from .logical_operations import logical_check
 from .numerical_calculus import differentiate, sliding_window_integration, trapezoidal_integration
@@ -132,6 +133,10 @@ __all__ = [
     "time_parse",
     "time_string_to_ms",
     "time_to_points",
+    "time_weighted_mean",
+    "time_weighted_std",
+    "timeseries_max",
+    "timeseries_min",
 ]
 
 
@@ -186,4 +191,8 @@ __cognite__ = [
     "sliding_window_integration",
     "arithmetic_mean",
     "logical_check",
+    "time_weighted_mean",
+    "time_weighted_std",
+    "timeseries_max",
+    "timeseries_min",
 ]
