@@ -105,6 +105,69 @@ before developing and algorithm are:
         * List of floats: ``List[float]``
         * Optional type: ``Optional[float]``
 
+Functions exposed to Charts should also contain the following: 
+   1. Steps used in the calculation:
+      A detailed explanation of the algorithm or formula used in the function must be provided. For example:
+      .. code:: python
+
+         r"""Total head calculation.
+         ...
+         Steps:
+         1. Subtract the suction pressure from the discharge pressure to find the pressure difference.
+         2. Divide the result by the product of the gravitational constant (9.81 m/s²) and the fluid density.
+         3. The result is the total head (in meters) of the pump.
+         ...
+         """
+
+   2. URL links to further external documentation
+      If your function uses an external formula or concept that requires further explanation, 
+      you can link to external documentation for additional context. Here is how to add links:
+
+      .. code:: python
+
+         r"""
+         ...
+         For more information on centrifugal pumps and head pressure, you can visit:
+         `Centrifugal Pump Theory <https://www.pumpfundamentals.com/>`_.
+         ...
+         """
+
+   3. Main formulas, in Latex format, used for the calculations
+      Make sure to use the proper LaTeX formatting in the docstring 
+      to clearly describe the mathematical operations involved. Here’s an example:
+
+      .. code:: python
+
+         r"""
+         ...
+         Formula for total head :math:`h` [m]:
+         .. math::
+            h = \frac{P_{discharge} - P_{suction}}{9.81 \cdot \rho_L}
+
+         Where:
+         - :math:`P_{discharge}` is the discharge pressure [Pa]
+         - :math:`P_{suction}` is the suction pressure [Pa]
+         - :math:`\rho_L` is the density of the fluid [:math:`kg/m^3`].
+         ...
+         """
+   4. Good description of what each input parameter does and its limits.
+      Each input parameter should be described in detail, including units, data types, 
+      and possible value ranges. Here's an example of how to describe parameters with clear limits:
+
+      .. code:: python
+
+         r"""
+         ...
+         Args: discharge_pressure: The discharge pressure of the pump in Pascals [Pa].
+            This value can either be a float or a time series (`pd.Series`). It must be positive and greater than the suction pressure.
+         suction_pressure: The suction pressure of the pump in Pascals [Pa].
+            This value can either be a float or a time series (`pd.Series`). It should be positive, and typically less than the discharge pressure.
+         den: The density of the fluid in kilograms per cubic meter [:math:`kg/m^3`].
+            This value must be a positive float or time series. A typical value for water is 1000 kg/m^3.
+         align_timesteps: Boolean flag to align time steps of the input time series.
+            If set to True, the function will automatically align the input time series by their timestamps. Default is False.
+         ...
+         """
 
 .. note::
 
