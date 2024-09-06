@@ -144,6 +144,18 @@
         "maintenance",
         "test"
       ]
+    },
+    {
+      "login": "VebjornG",
+      "name": "Vebjørn Gilberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11941626?v=4",
+      "profile": "https://github.com/VebjornG",
+      "contributions": [
+        "code",
+        "doc",
+        "review",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
