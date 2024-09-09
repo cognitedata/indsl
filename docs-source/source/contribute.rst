@@ -257,11 +257,13 @@ and properly displayed on the user interface and included in the technical docum
 
     * If a parameter requires specific units, these must be typed as follows:
 
-        * Enclosed in square brackets ``[]``
-        * In Roman (not italic) font
+        * They must be enclosed in square brackets ``[]`` to clearly 
+          distinguish them from the variable name. Failure to do so may 
+          lead to incorrect calculations or unit mismatches.
+        * They should be typed in Roman (not italic) font
         * If using LaTeX language, use the ``:math:`` inline formula command, and the command ``\mathrm{}`` to render
           the units in Roman font.
-        * Placed at the end of the string
+        * Place the unit at the end of the string, following the argument's descriptive name.
 
       For example:
 
