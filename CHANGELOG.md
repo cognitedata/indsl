@@ -5,8 +5,6 @@
 - functions operating on all elements in the time series (#274)
 - interpolation based on sequence data (#277)
 - mock scatter plot functionality (#279)
-- [AH-3246] Calculate operational availability (#241)
-- [AH-3049] Open source contributions documentation (#184)
 
 ### Fix
 
@@ -14,17 +12,7 @@
 - **deps**: update dependency scikit-image to ^0.24.0 (#215)
 - **deps**: update dependency numba to ^0.60.0 (#261)
 - disable oscillation detection in charts (#240)
-- adding checks for the user input in order to avoid ValueError (#238)
-- Various things to reduce test-warnings (#179)
-- pre-commit...
-- checking len of dist longer than 2
-- linting
-- merge conflicts
 - **deps**: update dependency scikit-image to ^0.22.0 (#42)
-- failing docs string test by importing indsl in the conftest file
-- comments from Vebjørn, one additional error fixed
-- fixing comments by Vebjørn
-- AH-759 commit prefix needed to be 'fix:' first
 
 ## v8.4.0 (2024-03-22)
 
