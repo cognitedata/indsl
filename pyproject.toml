@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "indsl"
-version = "8.4.0"
+version = "8.5.0"
 description = "Industrial Data Science Library by Cognite"
 authors = ["Cognite"]
 license = "Apache-2.0"
@@ -61,7 +61,7 @@ docstring-parser = "^0.15"
 toml = "^0.10.2"
 marshmallow = "^3.17.0"
 docstring-to-markdown = "^0.10"
-myst-parser = "^3.0.0"
+myst-parser = "^4.0.0"
 coverage = "^7.0.0"
 Sphinx = "<8.1"
 sphinx-rtd-theme = "^2.0.0"
@@ -127,7 +127,7 @@ known-third-party = ["pytest"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "8.4.0"
+version = "8.5.0"
 tag_format = "v$version"
 version_files = ["pyproject.toml:version"]
 
