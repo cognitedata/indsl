@@ -67,8 +67,6 @@ def reindex_scatter(
     """
     if align_timesteps:
         signal_x, signal_y = auto_align([signal_x, signal_y], align_timesteps)
-    # print("reindex",signal_x.index)
-    # print("reindex",signal_y.index)
 
     index_x_sorted, index_sort = __reindex_scatter_core(signal_x)
 
