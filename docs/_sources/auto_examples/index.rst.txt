@@ -367,6 +367,10 @@ Examples of how to use the filter functions included in Cognite Charts.
 
     </div>
 
+Fluid Dynamics
+______________
+
+Examples on how to use the fluid dynamics functionality.
 
 
 
@@ -375,6 +379,23 @@ Examples of how to use the filter functions included in Cognite Charts.
     <div class="sphx-glr-thumbnails">
 
 .. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example generates a Moody diagram using the Darcy friction factor function">
+
+.. only:: html
+
+  .. image:: /auto_examples/fluid_dynamics/images/thumb/sphx_glr_plot_darcy_friction_factor_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_fluid_dynamics_plot_darcy_friction_factor.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Darcy Friction Factor</div>
+    </div>
+
 
 .. thumbnail-parent-div-close
 

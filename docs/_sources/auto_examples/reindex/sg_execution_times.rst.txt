@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.954** total execution time for 2 files **from auto_examples/reindex**:
+**00:00.957** total execution time for 2 files **from auto_examples/reindex**:
 
 .. container::
 
@@ -33,7 +33,7 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_reindex_plot_mock_scatter_plot.py` (``plot_mock_scatter_plot.py``)
-     - 00:00.954
+     - 00:00.957
      - 0.0
    * - :ref:`sphx_glr_auto_examples_reindex_plot_pearson_correlation.py` (``plot_pearson_correlation.py``)
      - 00:00.000
