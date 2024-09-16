@@ -37,9 +37,7 @@ CV_array = interpolator(HCV_series.values)
 CV_series = pd.Series(CV_array, index=HCV_series.index)
 
 # We normalise choke opening such that [0,100] covers the entrie time range
-scatter_y = reindex_scatter(
-scatter_y = reindex_scatter(HCV_series, CV_series, align_timesteps=True)
-)
+scatter_y = reindex_scatter(scatter_y=reindex_scatter(HCV_series, CV_series, align_timesteps=True))
 scatter_x = reindex_scatter_x(HCV_series)
 
 
@@ -66,7 +64,7 @@ epoc_end = HCV_series.index[-1].timestamp()
 d_epoc = epoc_end - epoc_start
 # The scale of HCV_series is [x_min_value,x_max_value]. We will now map it to the epoc and then convert it to datetime
 x_min_value = 0
-x_max_value  = 100 
+x_max_value = 100
 xtic_labels_hcv = [
     (val - epoc_start) / d_epoc * (x_max_value - x_min_value) for val in xticks_pos_epoc
 ]  # gives us the HCV value for the corresponding points

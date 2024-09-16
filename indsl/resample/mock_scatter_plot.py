@@ -81,7 +81,7 @@ def reindex_scatter_x(signal_x: pd.Series) -> pd.Series:
     It returns the values from signal_y with the timestamps as the values from signal_x,
     where the timestamps has been scaled to the range of timestamps from signal_x.
     The timestamps are sorted in ascending order, and the values are sorted with the same sort-index
-    In effect this is a straight line going from x_min_value to x_max_value over the time range of signal_x
+    In effect this is a straight line going from min value to the max value of signal_x over the time range
 
     Args:
         signal_x: x-value.
