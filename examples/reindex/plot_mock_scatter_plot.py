@@ -37,7 +37,7 @@ CV_array = interpolator(HCV_series.values)
 CV_series = pd.Series(CV_array, index=HCV_series.index)
 
 # We normalise choke opening such that [0,100] covers the entrie time range
-scatter_y = reindex_scatter(scatter_y=reindex_scatter(HCV_series, CV_series, align_timesteps=True))
+scatter_y = reindex_scatter(HCV_series, CV_series, align_timesteps=True)
 scatter_x = reindex_scatter_x(HCV_series)
 
 
