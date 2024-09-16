@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Computation times &mdash; indsl 8.4.0 documentation</title>
+  <title>Computation times &mdash; indsl 8.5.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -20,8 +20,8 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=ea47c46f"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/documentation_options.js?v=9b928e36"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -116,43 +116,62 @@
              
   <section id="computation-times">
 <span id="sphx-glr-auto-examples-data-quality-sg-execution-times"></span><h1>Computation times<a class="headerlink" href="#computation-times" title="Link to this heading"></a></h1>
-<p><strong>00:02.605</strong> total execution time for <strong>auto_examples_data_quality</strong> files:</p>
-<table class="docutils align-default">
+<p><strong>00:48.509</strong> total execution time for 8 files <strong>from auto_examples/data_quality</strong>:</p>
+<div class="docutils container">
+<style scoped>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+</style>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript" class="init">
+$(document).ready( function () {
+    $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+} );
+</script><table class="table table-striped sg-datatable docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Mem (MB)</p></th>
+</tr>
+</thead>
 <tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_extreme_outlier.html#sphx-glr-auto-examples-data-quality-plot-extreme-outlier-py"><span class="std std-ref">Extreme Outliers Removal</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_extreme_outlier.py</span></code>)</p></td>
+<td><p>00:48.198</p></td>
+<td><p>0.0</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="plot_datapoint_diff.html#sphx-glr-auto-examples-data-quality-plot-datapoint-diff-py"><span class="std std-ref">Threshold breach check for difference between two data points over a period of time</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_datapoint_diff.py</span></code>)</p></td>
-<td><p>00:02.605</p></td>
-<td><p>0.0 MB</p></td>
+<td><p>00:00.311</p></td>
+<td><p>0.0</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="plot_completeness.html#sphx-glr-auto-examples-data-quality-plot-completeness-py"><span class="std std-ref">Completeness score of time series</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_completeness.py</span></code>)</p></td>
 <td><p>00:00.000</p></td>
-<td><p>0.0 MB</p></td>
+<td><p>0.0</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="plot_extreme_outlier.html#sphx-glr-auto-examples-data-quality-plot-extreme-outlier-py"><span class="std std-ref">Extreme Outliers Removal</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_extreme_outlier.py</span></code>)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_gaps_identification.html#sphx-glr-auto-examples-data-quality-plot-gaps-identification-py"><span class="std std-ref">Identifying gaps in time series</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_gaps_identification.py</span></code>)</p></td>
 <td><p>00:00.000</p></td>
-<td><p>0.0 MB</p></td>
+<td><p>0.0</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="plot_gaps_identification.html#sphx-glr-auto-examples-data-quality-plot-gaps-identification-py"><span class="std std-ref">Identifying gaps in time series</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_gaps_identification.py</span></code>)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_low_density_identification.html#sphx-glr-auto-examples-data-quality-plot-low-density-identification-py"><span class="std std-ref">Identifying low density periods</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_low_density_identification.py</span></code>)</p></td>
 <td><p>00:00.000</p></td>
-<td><p>0.0 MB</p></td>
+<td><p>0.0</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="plot_low_density_identification.html#sphx-glr-auto-examples-data-quality-plot-low-density-identification-py"><span class="std std-ref">Identifying low density periods</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_low_density_identification.py</span></code>)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_out_of_range.html#sphx-glr-auto-examples-data-quality-plot-out-of-range-py"><span class="std std-ref">Detect out of range outliers in sensor data</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_out_of_range.py</span></code>)</p></td>
 <td><p>00:00.000</p></td>
-<td><p>0.0 MB</p></td>
+<td><p>0.0</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="plot_out_of_range.html#sphx-glr-auto-examples-data-quality-plot-out-of-range-py"><span class="std std-ref">Detect out of range outliers in sensor data</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_out_of_range.py</span></code>)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="plot_rolling_stddev_timedelta.html#sphx-glr-auto-examples-data-quality-plot-rolling-stddev-timedelta-py"><span class="std std-ref">Rolling standard deviation of data points time delta</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_rolling_stddev_timedelta.py</span></code>)</p></td>
 <td><p>00:00.000</p></td>
-<td><p>0.0 MB</p></td>
+<td><p>0.0</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="plot_rolling_stddev_timedelta.html#sphx-glr-auto-examples-data-quality-plot-rolling-stddev-timedelta-py"><span class="std std-ref">Rolling standard deviation of data points time delta</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_rolling_stddev_timedelta.py</span></code>)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="plot_value_decrease_check.html#sphx-glr-auto-examples-data-quality-plot-value-decrease-check-py"><span class="std std-ref">Checking for decreasing values in a timeseries</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_value_decrease_check.py</span></code>)</p></td>
 <td><p>00:00.000</p></td>
-<td><p>0.0 MB</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="plot_value_decrease_check.html#sphx-glr-auto-examples-data-quality-plot-value-decrease-check-py"><span class="std std-ref">Checking for decreasing values in a timeseries</span></a> (<code class="docutils literal notranslate"><span class="pre">plot_value_decrease_check.py</span></code>)</p></td>
-<td><p>00:00.000</p></td>
-<td><p>0.0 MB</p></td>
+<td><p>0.0</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 
 

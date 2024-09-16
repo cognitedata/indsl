@@ -13,10 +13,11 @@ Examples of how to generate synthetic signals.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="We will generate a linear time series with a sampling frequency of 4 hours, from 1975/05/09 to ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="We will generate a linear time series with a sampling frequency of 4 hours, from 1975/05/09 to 1975/05/20, and remove 35% of the data using three different methods:">
 
 .. only:: html
 
@@ -33,7 +34,7 @@ Examples of how to generate synthetic signals.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="We will generate three univariate polynomials of a given time series. The order of the polynomi...">
+    <div class="sphx-glr-thumbcontainer" tooltip="We will generate three univariate polynomials of a given time series. The order of the polynomials will be 1, 2 and 3, respectively.">
 
 .. only:: html
 
@@ -50,7 +51,7 @@ Examples of how to generate synthetic signals.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to ge...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to generate a simple wave (wave 1 in the top left panel) or complex signals in a few steps. The figure below shows the generation of four different waves that are recursively added together to create an increasingly complex signal. And, combining it with other signals, such as sloping line, increases its functionality. The bottom panel of the figure shows all the waves plus a linearly increasing signal.">
 
 .. only:: html
 
@@ -64,6 +65,8 @@ Examples of how to generate synthetic signals.
       <div class="sphx-glr-thumbnail-title">Wavy signal generation</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
