@@ -29,12 +29,16 @@ def emissions_factor_combustor(
     * Method 3: Specify the carbon content of the fuel and use that as the emissions factor.
 
     Args:
-        emissions_factor: CO2 emitted either per mass (e.g., kg CO2/kg fuel), volume (e.g., kg CO2/m^3 fuel), or energy unit (e.g., kg CO2/MJ).
-        heating_value: Heating value of the fuel (e.g., MJ/kg fuel or MJ/m^3 fuel).
-        carbon_content: Carbon content of fuel (e.g., kg C/kg fuel or kg C/m^3 fuel).
+        emissions_factor: CO2 emitted
+            CO2 emitted either per mass (e.g., kg CO2/kg fuel), volume (e.g., kg CO2/m^3 fuel), or energy unit (e.g., kg CO2/MJ).
+        heating_value: Heating value of the fuel
+            Heating value of the fuel (e.g., MJ/kg fuel or MJ/m^3 fuel).
+        carbon_content: Carbon content of fuel
+            Carbon content of the fuel (e.g., kg C/kg fuel).Carbon content of fuel (e.g., kg C/kg fuel or kg C/m^3 fuel).
 
     Returns:
-        float: Emissions factor per mass (e.g., kg CO2/kg fuel) or volume unit (e.g., kg CO2/m^3 fuel).
+        float: Emissions factor
+            Emissions factor per mass or volume of fuel (e.g., kg CO2/kg fuel or kg CO2/m^3 fuel).
     """
     # Method 1
     if emissions_factor and (heating_value is None) and (carbon_content is None):
@@ -66,11 +70,14 @@ def rate_of_emissions(data: pd.Series, emissions_factor: float) -> pd.Series:
     The units for the time series and the emissions factor should be consistent to deliver an expected unit for the output in kg (or tonnes) CO2/time.
 
     Args:
-        data: Time series representing either power (e.g., MJ/time) or rate of fuel consumption (e.g., kg fuel/time or m^3 fuel/time).
-        emissions_factor: CO2 emitted per unit of energy (e.g., kg CO2/MJ), mass (e.g., kg CO2/kg fuel), or volume (e.g., kg CO2/m^3 fuel).
+        data: Time series
+            Time series representing either power (e.g., MJ/time) or rate of fuel consumption (e.g., kg fuel/time or m^3 fuel/time).
+        emissions_factor: Emissions factor
+            CO2 emitted per unit of energy (e.g., kg CO2/MJ), mass (e.g., kg CO2/kg fuel), or volume (e.g., kg CO2/m^3 fuel).
 
     Returns:
-        pandas.Series: Rate of emissions (e.g., kg CO2/time or tonnes CO2/time).
+        pandas.Series: Rate of emissions
+            Rate of emissions (e.g., kg CO2/time or tonnes CO2/time).
     """
     return data * emissions_factor
 
@@ -84,11 +91,14 @@ def cumulative_co2_production(rate_of_emissions: pd.Series, start_date: Optional
     it will default to the start of the current year.
 
     Args:
-        rate_of_emissions: Rate of CO2 released over time (e.g., kg CO2/time or tonnes CO2/time).
-        start_date: Start date to begin cumulative calculation.
+        rate_of_emissions: Rate of CO2 released
+            Rate of CO2 released over time (e.g., kg CO2/time or tonnes CO2/time).
+        start_date: Start date
+            Start date to begin cumulative calculation.
 
     Returns:
-        pandas.Series: Cumulative CO2 emissions (e.g., kg CO2 or tonnes CO2).
+        pandas.Series: Cumulative CO2 emissions
+            Cumulative CO2 emissions (e.g., kg CO2 or tonnes CO2).
     """
     # Assign start_date to be start of year if not defined
     if start_date is None:
@@ -109,13 +119,18 @@ def cumulative_co2_cost(
     and then uses that to calculate total CO2 emitted. This is then multiplied by the cost factor to get the total cumulative cost. Note that the co2_cost_factor, emissions_factor, and data must have consistent units to generate a currency output.
 
     Args:
-        data: Power consumption (e.g., MJ/time) or fuel consumption (e.g., kg fuel/time or m^3 fuel/time).
-        co2_cost_factor: Cost per mass of CO2 emitted (e.g., USD/kg CO2 or USD/tonne CO2).
-        emissions_factor: Mass of CO2 emitted per mass (e.g., kg CO2/kg fuel), volume (e.g., kg CO2/m^3 fuel), or energy (e.g., kg CO2/MJ) of power source consumed.
-        start_date: Start date to begin cumulative calculation.
+        data: Power or fuel consumption
+            Power consumption (e.g., MJ/time) or fuel consumption (e.g., kg fuel/time or m^3 fuel/time).
+        co2_cost_factor: Cost per mass of CO2 emitted
+            Cost per mass of CO2 emitted (e.g., USD/kg CO2 or USD/tonne CO2).
+        emissions_factor: Mass of CO2 emitted
+            Mass of CO2 emitted per mass (e.g., kg CO2/kg fuel), volume (e.g., kg CO2/m^3 fuel), or energy (e.g., kg CO2/MJ) of power source consumed.
+        start_date: Start date
+            Start date to begin cumulative calculation.
 
     Returns:
-        pandas.Series: Cumulative cost of CO2 emissions (e.g., USD).
+        pandas.Series: Cumulative cost
+            Cumulative cost of CO2 emissions (e.g., USD).
     """
     rate_co2_produced = rate_of_emissions(data, emissions_factor)
     total_co2_produced = cumulative_co2_production(rate_co2_produced, start_date=start_date)
