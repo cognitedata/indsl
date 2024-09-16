@@ -13,10 +13,11 @@ Examples of how to use the resampling functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of aggregating (grouping) data on regions defined by a series with integers denoting di...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of aggregating (grouping) data on regions defined by a series with integers denoting different states.">
 
 .. only:: html
 
@@ -30,6 +31,8 @@ Examples of how to use the resampling functions included in Cognite Charts.
       <div class="sphx-glr-thumbnail-title">Group by Region</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

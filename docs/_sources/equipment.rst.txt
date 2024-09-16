@@ -74,3 +74,15 @@ Volumetric flow through valve
 .. topic:: Examples:
 
    * :ref:`sphx_glr_auto_examples_equipment_plot_recycle_valve_power_loss.py`
+
+
+Operational Metrics
+===================
+
+Operational availability
+------------------------
+.. autofunction:: indsl.equipment.operational_availability_.operational_availability
+
+.. topic:: Examples:
+
+   * :ref:`sphx_glr_auto_examples_equipment_plot_operational_availability.py`

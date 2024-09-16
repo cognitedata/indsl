@@ -13,10 +13,11 @@ Examples of how to use the filter functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of filtering to remove noise from time series data using the Wavelet filter. We use dat...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of filtering to remove noise from time series data using the Wavelet filter. We use data from volumetric flow rate (m3/h) sensor with non-uniform sampling frequency measuring measuring flow into a compressor.">
 
 .. only:: html
 
@@ -30,6 +31,8 @@ Examples of how to use the filter functions included in Cognite Charts.
       <div class="sphx-glr-thumbnail-title">Noise removal and trending with the Wavelet filter</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

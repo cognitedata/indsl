@@ -11,6 +11,9 @@ Examples of how to use the algorithms included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -27,10 +30,11 @@ Examples on how to explore the data quality of time series.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of point outlier removal with polynomial regression and Studentized residuals. We gener...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of point outlier removal with polynomial regression and Studentized residuals. We generate a toy data set with an underlying polynomial signal that has Gaussian noise and large point outliers added to it.">
 
 .. only:: html
 
@@ -47,7 +51,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of algorithm that indicates decreasing values in time series data. This algorithm is ap...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of algorithm that indicates decreasing values in time series data. This algorithm is applied on Running Hours time series. It is a specific type of time series that is counting the number of running hours in a pump. Given that we expect the number of running hours to either stay the same (if the pump is not running) or increase with time (if the pump is running), the decrease in running hours value indicates bad data quality.">
 
 .. only:: html
 
@@ -64,7 +68,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing rolling standard deviation of time delta of time series data to identify...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing rolling standard deviation of time delta of time series data to identify dispersion in the ingestion of data.">
 
 .. only:: html
 
@@ -81,7 +85,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="It is important to know how complete a time series is. In this example, the function qualifies ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="It is important to know how complete a time series is. In this example, the function qualifies a time series on the basis of its completeness score as good, medium, or poor. The completeness score measures how complete measured by how much of the data is missing based on its median sampling frequency.">
 
 .. only:: html
 
@@ -98,7 +102,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing breach of threshold in hour count in a time series representing running ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing breach of threshold in hour count in a time series representing running hours of a piece of equipment.">
 
 .. only:: html
 
@@ -115,7 +119,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Detecting density of data points in a time series is important for finding out if the expected ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Detecting density of data points in a time series is important for finding out if the expected number of data points during a certain time window such as per hour or per day have been received.">
 
 .. only:: html
 
@@ -132,7 +136,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Identifying gaps in data is critical when working with time series. Data gaps can be for instan...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Identifying gaps in data is critical when working with time series. Data gaps can be for instance, the result of an unreliable or defective sensor, and that part of the data might need to be excluded. The exact definition of what is considered a gap requires domain knowledge and is therefore hard to automate. However, mathematical tools can help us to identify potential gaps that the domain expert can then evaluate.">
 
 .. only:: html
 
@@ -149,7 +153,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Introduction ------------ The out_of_range function uses Savitzky-Golay smoothing (SG) - sg to ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Introduction ------------ The out_of_range function uses Savitzky-Golay smoothing (SG) - sg to estimate the main trend of the data:">
 
 .. only:: html
 
@@ -163,6 +167,8 @@ Examples on how to explore the data quality of time series.
       <div class="sphx-glr-thumbnail-title">Detect out of range outliers in sensor data</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -179,10 +185,11 @@ Examples of how to use the detection functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of change point detection based on the cusum algorithm. We use synthetic data generated...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of change point detection based on the cusum algorithm. We use synthetic data generated from a standard normal distribution of mean 0 and variance 1 with a shift in some of the datapoints to simulate a change in the mean of the data.">
 
 .. only:: html
 
@@ -199,7 +206,7 @@ Examples of how to use the detection functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharm...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharma et. al. [#]_.">
 
 .. only:: html
 
@@ -216,7 +223,7 @@ Examples of how to use the detection functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of steady state detection (SSD) based on the ED-PELT change point detection (CPD) algor...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of steady state detection (SSD) based on the ED-PELT change point detection (CPD) algorithm. We use data from a compressor suction pressure sensor (in barg). The dataset contains 4 days of process of process data (sampled using 1m granularity).">
 
 .. only:: html
 
@@ -248,6 +255,8 @@ Examples of how to use the detection functions included in Cognite Charts.
     </div>
 
 
+.. thumbnail-parent-div-close
+
 .. raw:: html
 
     </div>
@@ -263,10 +272,11 @@ Examples of how to use the equipment functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip=" Pump suction pressure  Pump discharge pressure  Recycle valve outlet pressure  Recycle valve f...">
+    <div class="sphx-glr-thumbcontainer" tooltip=" Pump suction pressure  Pump discharge pressure  Recycle valve outlet pressure  Recycle valve flow coefficient (Cv) curve * Density of the fluid">
 
 .. only:: html
 
@@ -283,7 +293,24 @@ Examples of how to use the equipment functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Calculate pump parameters total head across the pump and difference from Best Efficiency Point ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Operational Availability">
+
+.. only:: html
+
+  .. image:: /auto_examples/equipment/images/thumb/sphx_glr_plot_operational_availability_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_equipment_plot_operational_availability.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Operational Availability</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculate pump parameters total head across the pump and difference from Best Efficiency Point (BEP) to current operating flowrate and power output of a centrifugal pump.">
 
 .. only:: html
 
@@ -297,6 +324,8 @@ Examples of how to use the equipment functions included in Cognite Charts.
       <div class="sphx-glr-thumbnail-title">Calculate parameters of a centrifugal pump</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -313,10 +342,11 @@ Examples of how to use the filter functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of filtering to remove noise from time series data using the Wavelet filter. We use dat...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of filtering to remove noise from time series data using the Wavelet filter. We use data from volumetric flow rate (m3/h) sensor with non-uniform sampling frequency measuring measuring flow into a compressor.">
 
 .. only:: html
 
@@ -331,6 +361,8 @@ Examples of how to use the filter functions included in Cognite Charts.
     </div>
 
 
+.. thumbnail-parent-div-close
+
 .. raw:: html
 
     </div>
@@ -342,6 +374,9 @@ Examples of how to use the filter functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -358,10 +393,11 @@ Examples of algorithms used to forecast data
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="For the Holt-Winters example we use forged daily data with a weekly seasonality. We predict two...">
+    <div class="sphx-glr-thumbcontainer" tooltip="For the Holt-Winters example we use forged daily data with a weekly seasonality. We predict two types of data, the first dataset displays an additive trend and an additive seasonality, and the second dataset displays an additive trend and a multiplicative seasonality.">
 
 .. only:: html
 
@@ -376,6 +412,8 @@ Examples of algorithms used to forecast data
     </div>
 
 
+.. thumbnail-parent-div-close
+
 .. raw:: html
 
     </div>
@@ -389,10 +427,11 @@ __________________
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example a synthetic time series is generated with a certain skewness (to make it more i...">
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example a synthetic time series is generated with a certain skewness (to make it more interesting) and a use the sliding window integration with  a integrand rate of 1 hour. In other words, carry out a sliding window integration of the data over 1 hour periods.">
 
 .. only:: html
 
@@ -406,6 +445,8 @@ __________________
       <div class="sphx-glr-thumbnail-title">Sliding window integration</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -422,10 +463,11 @@ Examples of algorithms used in the Oil and Gas industry.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The data is from an unnamed well in the form of a pickle file. The data is a dataframe that con...">
+    <div class="sphx-glr-thumbcontainer" tooltip="The data is from an unnamed well in the form of a pickle file. The data is a dataframe that consists of a time series of master, wing and choke valves. The duration of the data is about 50 days. The figure shows the time series of the valves and the output of the function which is the production status of the well (0 is OFF and 1 is ON).">
 
 .. only:: html
 
@@ -442,7 +484,7 @@ Examples of algorithms used in the Oil and Gas industry.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Gas density is calculated using real gas equations from input pressure, temperature and specifi...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Gas density is calculated using real gas equations from input pressure, temperature and specific gravity of gas. The compressibility factor is calculated explicitly (Beggs and Brill - 1973) for the pressure and temperature combinations. The plot shows the variation of the gas density for methane gas (SG = 0.55) with varying temperature and pressure.">
 
 .. only:: html
 
@@ -459,7 +501,7 @@ Examples of algorithms used in the Oil and Gas industry.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="We use data from an emergency shut-down valve sensor on a compressor. The figure shows reading ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="We use data from an emergency shut-down valve sensor on a compressor. The figure shows reading from the valve and the detected open/close state for shut-in durations of at least 6 and 24 hours in duration.">
 
 .. only:: html
 
@@ -476,7 +518,7 @@ Examples of algorithms used in the Oil and Gas industry.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In reservoir and production engineering, knowledge of the shut-in pressure can help estimate re...">
+    <div class="sphx-glr-thumbcontainer" tooltip="In reservoir and production engineering, knowledge of the shut-in pressure can help estimate reservoir properties, drawdown and productivity index. In this example, we use data from the bottom-hole pressure signal to calculate shut-in pressure after 6 and 24 hrs of the shut-in. The CSV file also contains a column with binary signal obtained from the shut-in detector. The signal was obtained using wing valve data of the corresponding well and using the following settings in the detector function: wing valve threshold is calculated, minimum duration of shut-in is 25 hrs and minimum distance between shut-ins is 24 hrs.">
 
 .. only:: html
 
@@ -493,7 +535,7 @@ Examples of algorithms used in the Oil and Gas industry.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The calculation of fluid properties is a fundamental component of mass balance and other method...">
+    <div class="sphx-glr-thumbcontainer" tooltip="The calculation of fluid properties is a fundamental component of mass balance and other methods of conservation. The goal of this feature is to calculate the fluid properties given the pressure and temperature conditions and the composition of the fluid itself. Equation of state simulators output a fluid file that is a table of the fluid properties for a range of pressure and temperature conditions. The input to these simulators is the composition of the fluid obtained from lab tests. For this specific feature, the input fluid file is a .tab file used by OLGA, a transient multiphase flow simulator.">
 
 .. only:: html
 
@@ -507,6 +549,8 @@ Examples of algorithms used in the Oil and Gas industry.
       <div class="sphx-glr-thumbnail-title">Calculate fluid properties given pressure and temperature</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -523,10 +567,11 @@ Example on how to reindex two time-series.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="When working with multiple time series it is often important that time stamps are aligned. Even...">
+    <div class="sphx-glr-thumbcontainer" tooltip="When working with multiple time series it is often important that time stamps are aligned. Even simple operations, like addition and subtraction of time series, require time stamp alignment. In this example, we demonstrate how re-indexing can be used to align time stamps.">
 
 .. only:: html
 
@@ -543,6 +588,25 @@ Example on how to reindex two time-series.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This shows how we can superimpose a scatter plot on an existing chart">
+
+.. only:: html
+
+  .. image:: /auto_examples/reindex/images/thumb/sphx_glr_plot_mock_scatter_plot_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_reindex_plot_mock_scatter_plot.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Re-indexing to mock a scatter plot</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
     </div>
 
 Resampling Functions
@@ -556,10 +620,11 @@ Examples of how to use the resampling functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of aggregating (grouping) data on regions defined by a series with integers denoting di...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of aggregating (grouping) data on regions defined by a series with integers denoting different states.">
 
 .. only:: html
 
@@ -573,6 +638,8 @@ Examples of how to use the resampling functions included in Cognite Charts.
       <div class="sphx-glr-thumbnail-title">Group by Region</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -589,10 +656,11 @@ Examples of how to generate synthetic signals.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="We will generate a linear time series with a sampling frequency of 4 hours, from 1975/05/09 to ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="We will generate a linear time series with a sampling frequency of 4 hours, from 1975/05/09 to 1975/05/20, and remove 35% of the data using three different methods:">
 
 .. only:: html
 
@@ -609,7 +677,7 @@ Examples of how to generate synthetic signals.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="We will generate three univariate polynomials of a given time series. The order of the polynomi...">
+    <div class="sphx-glr-thumbcontainer" tooltip="We will generate three univariate polynomials of a given time series. The order of the polynomials will be 1, 2 and 3, respectively.">
 
 .. only:: html
 
@@ -626,7 +694,7 @@ Examples of how to generate synthetic signals.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to ge...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to generate a simple wave (wave 1 in the top left panel) or complex signals in a few steps. The figure below shows the generation of four different waves that are recursively added together to create an increasingly complex signal. And, combining it with other signals, such as sloping line, increases its functionality. The bottom panel of the figure shows all the waves plus a linearly increasing signal.">
 
 .. only:: html
 
@@ -640,6 +708,8 @@ Examples of how to generate synthetic signals.
       <div class="sphx-glr-thumbnail-title">Wavy signal generation</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -656,10 +726,11 @@ Examples of how to use the smoothing functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Savitzky-Golay smoother. We use data f...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Savitzky-Golay smoother. We use data from volumetric flow rate (m3/h) sensor with non-uniform sampling frequency measuring flow into a compressor.">
 
 .. only:: html
 
@@ -676,7 +747,7 @@ Examples of how to use the smoothing functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Simple Moving Average (SMA), Linear We...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Simple Moving Average (SMA), Linear Weighted Moving Average (LWMA) and Exponential Weighted Moving Average smoother (EWMA). We use data from volumetric flow rate (m3/h) sensor with non-uniform sampling frequency measuring flow into a compressor. In the figure below it can be observed that using SMA produces a less noisy time series, but changes in the trend are seen with a greater delay than LWMA or EWMA. Increasing the window size results in a stronger smoothing of the data.">
 
 .. only:: html
 
@@ -690,6 +761,8 @@ Examples of how to use the smoothing functions included in Cognite Charts.
       <div class="sphx-glr-thumbnail-title">Data smoothing with Moving Averages</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -706,10 +779,11 @@ Example on how to use statistics functions in InDSL.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection from time series data using DBSCAN and spline regression. We use d...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection from time series data using DBSCAN and spline regression. We use data from a compressor suction pressure sensor. The data is in barg units and resampled to 1 minute granularity. The figure shows the data without outliers considering a time window of 40min.">
 
 .. only:: html
 
@@ -726,7 +800,7 @@ Example on how to use statistics functions in InDSL.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example calculates the rolling pearson correlation coefficient between two synthetic times...">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example calculates the rolling pearson correlation coefficient between two synthetic timeseries.">
 
 .. only:: html
 
@@ -743,7 +817,7 @@ Example on how to use statistics functions in InDSL.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline r...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline regression. The resulting figure shows outlier indicator time series generated with a time window of 60min plotted on the original time series.">
 
 .. only:: html
 
@@ -760,7 +834,7 @@ Example on how to use statistics functions in InDSL.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline r...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline regression. The resulting figure shows outliers generated with a time window of 60min marked on the original time series.">
 
 .. only:: html
 
@@ -774,6 +848,8 @@ Example on how to use statistics functions in InDSL.
       <div class="sphx-glr-thumbnail-title">Outlier detection with DBSCAN and spline regression 002</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -790,10 +866,11 @@ Examples of how to use the sustainability functions.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Given the power consumption of a process unit and data regarding the emissions and cost factors...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Given the power consumption of a process unit and data regarding the emissions and cost factors, we can work out the total amount of CO2 produced and the cost associated with that. Here is an example using the power used by a gas compressor at the Valhall platform.">
 
 .. only:: html
 
@@ -807,6 +884,8 @@ Examples of how to use the sustainability functions.
       <div class="sphx-glr-thumbnail-title">Cumulative CO2 Production and Cost</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -823,10 +902,11 @@ Example on how to implement versions of a function in InDSL.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="InDSL comes with the :pyindsl.versioning module, which allows to implement multiple versions of...">
+    <div class="sphx-glr-thumbcontainer" tooltip="InDSL comes with the :pyindsl.versioning module, which allows to implement multiple versions of InDSL functions. As a library user, one can then select and execute a specific function version.">
 
 .. only:: html
 
@@ -840,6 +920,8 @@ Example on how to implement versions of a function in InDSL.
       <div class="sphx-glr-thumbnail-title">Function versioning</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

@@ -13,10 +13,11 @@ Example on how to reindex two time-series.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="When working with multiple time series it is often important that time stamps are aligned. Even...">
+    <div class="sphx-glr-thumbcontainer" tooltip="When working with multiple time series it is often important that time stamps are aligned. Even simple operations, like addition and subtraction of time series, require time stamp alignment. In this example, we demonstrate how re-indexing can be used to align time stamps.">
 
 .. only:: html
 
@@ -33,6 +34,25 @@ Example on how to reindex two time-series.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="This shows how we can superimpose a scatter plot on an existing chart">
+
+.. only:: html
+
+  .. image:: /auto_examples/reindex/images/thumb/sphx_glr_plot_mock_scatter_plot_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_reindex_plot_mock_scatter_plot.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Re-indexing to mock a scatter plot</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
     </div>
 
 
@@ -40,4 +60,5 @@ Example on how to reindex two time-series.
    :hidden:
 
    /auto_examples/reindex/plot_pearson_correlation
+   /auto_examples/reindex/plot_mock_scatter_plot
 

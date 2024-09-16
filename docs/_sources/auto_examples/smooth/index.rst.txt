@@ -13,10 +13,11 @@ Examples of how to use the smoothing functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Savitzky-Golay smoother. We use data f...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Savitzky-Golay smoother. We use data from volumetric flow rate (m3/h) sensor with non-uniform sampling frequency measuring flow into a compressor.">
 
 .. only:: html
 
@@ -33,7 +34,7 @@ Examples of how to use the smoothing functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Simple Moving Average (SMA), Linear We...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of noise removal from time series data using the Simple Moving Average (SMA), Linear Weighted Moving Average (LWMA) and Exponential Weighted Moving Average smoother (EWMA). We use data from volumetric flow rate (m3/h) sensor with non-uniform sampling frequency measuring flow into a compressor. In the figure below it can be observed that using SMA produces a less noisy time series, but changes in the trend are seen with a greater delay than LWMA or EWMA. Increasing the window size results in a stronger smoothing of the data.">
 
 .. only:: html
 
@@ -47,6 +48,8 @@ Examples of how to use the smoothing functions included in Cognite Charts.
       <div class="sphx-glr-thumbnail-title">Data smoothing with Moving Averages</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

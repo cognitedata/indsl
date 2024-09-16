@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_versioning_versioned_function.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_versioning_versioned_function.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -43,7 +43,7 @@ We begin with a simple implementation:
 
 .. GENERATED FROM PYTHON SOURCE LINES 27-38
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import pandas as pd
@@ -77,7 +77,7 @@ This happens specifically when we apply `abs`diff` to time-series with non-match
 
 .. GENERATED FROM PYTHON SOURCE LINES 48-57
 
-.. code-block:: default
+.. code-block:: Python
 
 
     idx = pd.date_range("2022-01-01", periods=5, freq="1h")
@@ -93,8 +93,6 @@ This happens specifically when we apply `abs`diff` to time-series with non-match
 
 
 .. rst-class:: sphx-glr-script-out
-
- Out:
 
  .. code-block:: none
 
@@ -122,15 +120,15 @@ Next, we implement the new version of the `abs_diff` and mark it as version 1.1.
 
 .. GENERATED FROM PYTHON SOURCE LINES 66-76
 
-.. code-block:: default
+.. code-block:: Python
 
 
-    from indsl.resample import reindex  # noqa
+    from indsl.resample import reindex_v1  # noqa
 
 
     @versioning.register(version="1.1")  # type: ignore
     def abs_diff(a: pd.Series, b: pd.Series) -> pd.Series:
-        a, b = reindex(a, b)
+        a, b = reindex_v1.reindex(a, b)
         return (a - b).abs()
 
 
@@ -147,7 +145,7 @@ We rely on the build-in function `reindex` to align the indices of the time-seri
 
 .. GENERATED FROM PYTHON SOURCE LINES 78-81
 
-.. code-block:: default
+.. code-block:: Python
 
 
     abs_diff(a, b)
@@ -158,8 +156,6 @@ We rely on the build-in function `reindex` to align the indices of the time-seri
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
 
@@ -168,7 +164,7 @@ We rely on the build-in function `reindex` to align the indices of the time-seri
     2022-01-01 02:00:00    0.0
     2022-01-01 03:00:00    0.0
     2022-01-01 04:00:00    0.0
-    Freq: H, dtype: float64
+    Freq: h, dtype: float64
 
 
 
@@ -182,7 +178,7 @@ We can get a list of all versioned functions with:
 
 .. GENERATED FROM PYTHON SOURCE LINES 87-90
 
-.. code-block:: default
+.. code-block:: Python
 
 
     versioning.get_registered_functions()
@@ -193,12 +189,10 @@ We can get a list of all versioned functions with:
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
 
-    ['no_op', 'SG_SMOOTHER', 'ALMA_SMOOTHER', 'ARMA_SMOOTHER', 'BTR_SMOOTHER', 'CHB_SMOOTHER', 'EXP_WMA', 'LINEAR_WMA', 'SIMPLE_MA', 'INTERPOLATE', 'RESAMPLE_EXTENDED', 'RESAMPLE', 'POLY_REGRESSOR', 'SHUTIN_CALC', 'PI_CALC', 'PASSTHROUGH', 'OUTLIER_DETECTOR', 'DRIFT_DETECTOR', 'SS_DETECTOR', 'VARIABLE_MA', 'WAVELET_FILTER', 'STATUS_FLAG_FILTER', 'OUTLIERS_REMOVE', 'ROUND', 'FLOOR', 'CEIL', 'SIGN', 'CLIP', 'MAX', 'MIN', 'BIN_MAP', 'SIN', 'COS', 'TAN', 'ARCSIN', 'ARCCOS', 'ARCTAN', 'ARCTAN2', 'DEG2RAD', 'RAD2DEG', 'SINH', 'COSH', 'TANH', 'ARCSINH', 'ARCCOSH', 'ARCTANH', 'ADD', 'SUB', 'MUL', 'DIV', 'POW', 'INV', 'SQRT', 'NEG', 'ABS', 'MOD', 'INTEGRATE', 'DDX', 'EXP', 'LOG', 'LOG2', 'LOG10', 'LOGN', 'versioning_test_op', 'abs_diff']
+    ['reindex', 'reindex_many', 'interpolate', 'resample', 'resample_to_granularity', 'trapezoidal_integration', 'differentiate', 'butterworth', 'ewma', 'lwma', 'sma', 'negative_running_hours_check', 'value_decrease_check', 'drift', 'flow_through_valve', 'wavelet_filter', 'arma_predictor', 'holt_winters_predictor', 'no_op', 'detect_outliers', 'remove_outliers', 'SG_SMOOTHER', 'ALMA_SMOOTHER', 'ARMA_SMOOTHER', 'BTR_SMOOTHER', 'CHB_SMOOTHER', 'EXP_WMA', 'LINEAR_WMA', 'SIMPLE_MA', 'INTERPOLATE', 'RESAMPLE_EXTENDED', 'RESAMPLE', 'POLY_REGRESSOR', 'SHUTIN_CALC', 'PI_CALC', 'PASSTHROUGH', 'OUTLIER_DETECTOR', 'DRIFT_DETECTOR', 'SS_DETECTOR', 'VARIABLE_MA', 'WAVELET_FILTER', 'STATUS_FLAG_FILTER', 'OUTLIERS_REMOVE', 'ROUND', 'FLOOR', 'CEIL', 'SIGN', 'CLIP', 'MAX', 'MIN', 'BIN_MAP', 'SIN', 'COS', 'TAN', 'ARCSIN', 'ARCCOS', 'ARCTAN', 'ARCTAN2', 'DEG2RAD', 'RAD2DEG', 'SINH', 'COSH', 'TANH', 'ARCSINH', 'ARCCOSH', 'ARCTANH', 'ADD', 'SUB', 'MUL', 'DIV', 'POW', 'INV', 'SQRT', 'NEG', 'ABS', 'MOD', 'INTEGRATE', 'DDX', 'EXP', 'LOG', 'LOG2', 'LOG10', 'LOGN', 'versioning_test_op', 'abs_diff']
 
 
 
@@ -208,7 +202,7 @@ We can retrieve which versions we have of a function with:
 
 .. GENERATED FROM PYTHON SOURCE LINES 92-95
 
-.. code-block:: default
+.. code-block:: Python
 
 
     versioning.get_versions("abs_diff")
@@ -218,8 +212,6 @@ We can retrieve which versions we have of a function with:
 
 
 .. rst-class:: sphx-glr-script-out
-
- Out:
 
  .. code-block:: none
 
@@ -238,7 +230,7 @@ We can access and run specific function version with the `versioning.get` comman
 
 .. GENERATED FROM PYTHON SOURCE LINES 101-104
 
-.. code-block:: default
+.. code-block:: Python
 
     abs_diff_v1 = versioning.get("abs_diff", version="1.0")
     abs_diff_v1(a, b)
@@ -248,8 +240,6 @@ We can access and run specific function version with the `versioning.get` comman
 
 
 .. rst-class:: sphx-glr-script-out
-
- Out:
 
  .. code-block:: none
 
@@ -269,7 +259,7 @@ Omitting the version argument will automatically select the latest version
 
 .. GENERATED FROM PYTHON SOURCE LINES 106-110
 
-.. code-block:: default
+.. code-block:: Python
 
     abs_diff_v1_1 = versioning.get("abs_diff")
     abs_diff_v1_1(a, b)
@@ -281,8 +271,6 @@ Omitting the version argument will automatically select the latest version
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
 
@@ -291,35 +279,33 @@ Omitting the version argument will automatically select the latest version
     2022-01-01 02:00:00    0.0
     2022-01-01 03:00:00    0.0
     2022-01-01 04:00:00    0.0
-    Freq: H, dtype: float64
+    Freq: h, dtype: float64
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.270 seconds)
+   **Total running time of the script:** (0 minutes 0.014 seconds)
 
 
 .. _sphx_glr_download_auto_examples_versioning_versioned_function.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: versioned_function.ipynb <versioned_function.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: versioned_function.py <versioned_function.py>`
 
-     :download:`Download Python source code: versioned_function.py <versioned_function.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: versioned_function.ipynb <versioned_function.ipynb>`
+      :download:`Download zipped: versioned_function.zip <versioned_function.zip>`
 
 
 .. only:: html

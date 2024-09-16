@@ -11,10 +11,11 @@ __________________
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example a synthetic time series is generated with a certain skewness (to make it more i...">
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example a synthetic time series is generated with a certain skewness (to make it more interesting) and a use the sliding window integration with  a integrand rate of 1 hour. In other words, carry out a sliding window integration of the data over 1 hour periods.">
 
 .. only:: html
 
@@ -28,6 +29,8 @@ __________________
       <div class="sphx-glr-thumbnail-title">Sliding window integration</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
