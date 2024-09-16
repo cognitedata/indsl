@@ -248,7 +248,8 @@ and properly displayed on the user interface and included in the technical docum
     * A parameter name must have 30 characters or less, excluding units defined within square brackets ``[]``
       (more on this below). Square brackets are only allowed to input units in a parameter name. Using brackets within
       a parameter name for something different to units might generate an error in the pre-commit tests.
-    * Must end with a period punctuation mark ``.``
+    * Must end with a period punctuation mark ``.`` The punctuation after the parameter name will not be
+      shown in the Charts user interface, but must be included in the docstrings.
     * Use LaTeX language for typing formulas, if any, as follows:
 
         * Use the command ``:math:`LaTeX formula``` for inline formulas
