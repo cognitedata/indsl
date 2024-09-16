@@ -30,12 +30,8 @@ def test_reindex_scatter():
     # Create the series for the CV value
     CV_series = pd.Series(CV_array, index=HCV_series.index)
 
-    x_min_value = 0
-    x_max_value = 100
-    signal_scatter = reindex_scatter(
-        HCV_series, CV_series, x_min_value=x_min_value, x_max_value=x_max_value, align_timesteps=True
-    )
-    signal_scatter_x = reindex_scatter_x(HCV_series, x_min_value=x_min_value, x_max_value=x_max_value)
+    signal_scatter = reindex_scatter(HCV_series, CV_series, align_timesteps=True)
+    signal_scatter_x = reindex_scatter_x(HCV_series)
 
     # Calculate separately
     # convert timestamps to epoc
