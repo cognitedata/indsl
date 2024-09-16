@@ -6,6 +6,16 @@ Operators
 .. automodule:: indsl.ts_utils.operators
         :members:
 
+Array Operators
+---------------
+.. automodule:: indsl.ts_utils.array_operators
+        :members:
+
+Logical Operators
+-----------------
+.. automodule:: indsl.ts_utils.logical_operators
+        :members:
+
 Numerical calculus
 ------------------
 .. automodule:: indsl.ts_utils.numerical_calculus
