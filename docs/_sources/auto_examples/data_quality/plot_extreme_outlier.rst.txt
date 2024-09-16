@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_data_quality_plot_extreme_outlier.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_data_quality_plot_extreme_outlier.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -38,10 +38,21 @@ subsequently processed with a smoother to refine the underlying signal if desire
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /Users/neringaaltanaite/Project/indsl/indsl/equipment/volume_vessel.py:32: IndslUserWarning: Couldn't import fluids.numba_vectorized: No module named 'fluids.vectorized'. Default to import fluids.vectorized.
+      warnings.warn(
 
 
 
-.. code-block:: default
+
+
+
+|
+
+.. code-block:: Python
 
 
     import matplotlib.pyplot as plt
@@ -83,28 +94,26 @@ subsequently processed with a smoother to refine the underlying signal if desire
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.607 seconds)
+   **Total running time of the script:** (0 minutes 48.198 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_extreme_outlier.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_extreme_outlier.ipynb <plot_extreme_outlier.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_extreme_outlier.py <plot_extreme_outlier.py>`
 
-     :download:`Download Python source code: plot_extreme_outlier.py <plot_extreme_outlier.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_extreme_outlier.ipynb <plot_extreme_outlier.ipynb>`
+      :download:`Download zipped: plot_extreme_outlier.zip <plot_extreme_outlier.zip>`
 
 
 .. only:: html

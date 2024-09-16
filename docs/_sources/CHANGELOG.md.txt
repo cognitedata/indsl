@@ -1,4 +1,20 @@
 # Changelog
+## v8.5.0 (2024-09-09)
+
+### Feat
+
+- functions operating on all elements in the time series (#274)
+- interpolation based on sequence data (#277)
+- mock scatter plot functionality (#279)
+
+### Fix
+
+- Add example units to guide users (#253)
+- **deps**: update dependency scikit-image to ^0.24.0 (#215)
+- **deps**: update dependency numba to ^0.60.0 (#261)
+- disable oscillation detection in charts (#240)
+- **deps**: update dependency scikit-image to ^0.22.0 (#42)
+
 ## v8.4.0 (2024-03-22)
 
 ### Feat

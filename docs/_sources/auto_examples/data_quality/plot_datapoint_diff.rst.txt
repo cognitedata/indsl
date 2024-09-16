@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_data_quality_plot_datapoint_diff.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -35,21 +35,10 @@ equipment.
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /Users/vebjorngilberg/Documents/work/cognite/repos/indsl/indsl/equipment/volume_vessel.py:31: UserWarning: Couldn't import fluids.numba_vectorized: No module named 'fluids.vectorized'. Default to import fluids.vectorized.
-      warnings.warn(
 
 
 
-
-
-
-|
-
-.. code-block:: default
+.. code-block:: Python
 
     import os
 
@@ -112,7 +101,7 @@ equipment.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 14.303 seconds)
+   **Total running time of the script:** (0 minutes 0.311 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_datapoint_diff.py:
@@ -121,16 +110,17 @@ equipment.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_datapoint_diff.ipynb <plot_datapoint_diff.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_datapoint_diff.py <plot_datapoint_diff.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: plot_datapoint_diff.ipynb <plot_datapoint_diff.ipynb>`
+      :download:`Download zipped: plot_datapoint_diff.zip <plot_datapoint_diff.zip>`
 
 
 .. only:: html

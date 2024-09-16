@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cumulative CO2 Production and Cost &mdash; indsl 8.4.0 documentation</title>
+  <title>Cumulative CO2 Production and Cost &mdash; indsl 8.5.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -20,8 +20,8 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=ea47c46f"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/documentation_options.js?v=9b928e36"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -122,14 +122,14 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-sustainability-plot-cumulative-co2-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-sustainability-plot-cumulative-co2-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="cumulative-co2-production-and-cost">
 <span id="sphx-glr-auto-examples-sustainability-plot-cumulative-co2-py"></span><h1>Cumulative CO2 Production and Cost<a class="headerlink" href="#cumulative-co2-production-and-cost" title="Link to this heading"></a></h1>
 <p>Given the power consumption of a process unit and data regarding the emissions and cost factors, we can work out the total amount of
 CO2 produced and the cost associated with that. Here is an example using the power used by a gas compressor at the Valhall platform.</p>
-<img src="../../_images/sphx_glr_plot_cumulative_co2_001.png" srcset="../../_images/sphx_glr_plot_cumulative_co2_001.png" alt="Compressor Power Output, Rate of CO2 Production, Cumulative Sum of CO2 Production, Cumulative Cost of CO2" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_cumulative_co2_001.png" srcset="../../_images/sphx_glr_plot_cumulative_co2_001.png" alt="Compressor Power Output, Rate of CO2 Production, Cumulative Sum of CO2 Production, Cumulative Cost of CO2" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -153,9 +153,10 @@ CO2 produced and the cost associated with that. Here is an example using the pow
 
 <span class="c1"># Perform emissions calculations</span>
 <span class="n">rate_co2_produced</span> <span class="o">=</span> <span class="n">rate_of_emissions</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> <span class="n">emissions_factor</span><span class="p">)</span>
-<span class="n">co2_produced</span> <span class="o">=</span> <span class="n">cumulative_co2_production</span><span class="p">(</span><span class="n">rate_co2_produced</span><span class="p">)</span>
-<span class="n">co2_cost</span> <span class="o">=</span> <span class="n">cumulative_co2_cost</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> <span class="n">co2_cost_factor</span><span class="o">=</span><span class="n">co2_cost_factor</span><span class="p">,</span> <span class="n">emissions_factor</span><span class="o">=</span><span class="n">emissions_factor</span><span class="p">)</span>
-
+<span class="n">co2_produced</span> <span class="o">=</span> <span class="n">cumulative_co2_production</span><span class="p">(</span><span class="n">rate_co2_produced</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">co2_cost</span> <span class="o">=</span> <span class="n">cumulative_co2_cost</span><span class="p">(</span>
+    <span class="n">power</span><span class="p">,</span> <span class="n">co2_cost_factor</span><span class="o">=</span><span class="n">co2_cost_factor</span><span class="p">,</span> <span class="n">emissions_factor</span><span class="o">=</span><span class="n">emissions_factor</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
 
 <span class="c1"># Plotting</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -189,13 +190,16 @@ CO2 produced and the cost associated with that. Here is an example using the pow
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.511 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sustainability-plot-cumulative-co2-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.830 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sustainability-plot-cumulative-co2-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/6fcb0f672852d4c309d5b27535096a6d/plot_cumulative_co2.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_cumulative_co2.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/9eb7de3db0c50f05854e6fab9ebbb5cf/plot_cumulative_co2.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_cumulative_co2.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/6fcb0f672852d4c309d5b27535096a6d/plot_cumulative_co2.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_cumulative_co2.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/f9285d66f19b197eafe3f02c785f4ef9/plot_cumulative_co2.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_cumulative_co2.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
