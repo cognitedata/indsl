@@ -13,10 +13,11 @@ Examples of how to use the detection functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of change point detection based on the cusum algorithm. We use synthetic data generated...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of change point detection based on the cusum algorithm. We use synthetic data generated from a standard normal distribution of mean 0 and variance 1 with a shift in some of the datapoints to simulate a change in the mean of the data.">
 
 .. only:: html
 
@@ -33,7 +34,7 @@ Examples of how to use the detection functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharm...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharma et. al. [#]_.">
 
 .. only:: html
 
@@ -50,7 +51,7 @@ Examples of how to use the detection functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of steady state detection (SSD) based on the ED-PELT change point detection (CPD) algor...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of steady state detection (SSD) based on the ED-PELT change point detection (CPD) algorithm. We use data from a compressor suction pressure sensor (in barg). The dataset contains 4 days of process of process data (sampled using 1m granularity).">
 
 .. only:: html
 
@@ -81,6 +82,8 @@ Examples of how to use the detection functions included in Cognite Charts.
       <div class="sphx-glr-thumbnail-title">Unchanged signal identification of time series data</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

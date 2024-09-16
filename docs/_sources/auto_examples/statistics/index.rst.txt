@@ -13,10 +13,11 @@ Example on how to use statistics functions in InDSL.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection from time series data using DBSCAN and spline regression. We use d...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection from time series data using DBSCAN and spline regression. We use data from a compressor suction pressure sensor. The data is in barg units and resampled to 1 minute granularity. The figure shows the data without outliers considering a time window of 40min.">
 
 .. only:: html
 
@@ -33,7 +34,7 @@ Example on how to use statistics functions in InDSL.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example calculates the rolling pearson correlation coefficient between two synthetic times...">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example calculates the rolling pearson correlation coefficient between two synthetic timeseries.">
 
 .. only:: html
 
@@ -50,7 +51,7 @@ Example on how to use statistics functions in InDSL.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline r...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline regression. The resulting figure shows outlier indicator time series generated with a time window of 60min plotted on the original time series.">
 
 .. only:: html
 
@@ -67,7 +68,7 @@ Example on how to use statistics functions in InDSL.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline r...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline regression. The resulting figure shows outliers generated with a time window of 60min marked on the original time series.">
 
 .. only:: html
 
@@ -81,6 +82,8 @@ Example on how to use statistics functions in InDSL.
       <div class="sphx-glr-thumbnail-title">Outlier detection with DBSCAN and spline regression 002</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

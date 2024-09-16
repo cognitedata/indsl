@@ -13,10 +13,11 @@ Examples of algorithms used in the Oil and Gas industry.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The data is from an unnamed well in the form of a pickle file. The data is a dataframe that con...">
+    <div class="sphx-glr-thumbcontainer" tooltip="The data is from an unnamed well in the form of a pickle file. The data is a dataframe that consists of a time series of master, wing and choke valves. The duration of the data is about 50 days. The figure shows the time series of the valves and the output of the function which is the production status of the well (0 is OFF and 1 is ON).">
 
 .. only:: html
 
@@ -33,7 +34,7 @@ Examples of algorithms used in the Oil and Gas industry.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Gas density is calculated using real gas equations from input pressure, temperature and specifi...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Gas density is calculated using real gas equations from input pressure, temperature and specific gravity of gas. The compressibility factor is calculated explicitly (Beggs and Brill - 1973) for the pressure and temperature combinations. The plot shows the variation of the gas density for methane gas (SG = 0.55) with varying temperature and pressure.">
 
 .. only:: html
 
@@ -50,7 +51,7 @@ Examples of algorithms used in the Oil and Gas industry.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="We use data from an emergency shut-down valve sensor on a compressor. The figure shows reading ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="We use data from an emergency shut-down valve sensor on a compressor. The figure shows reading from the valve and the detected open/close state for shut-in durations of at least 6 and 24 hours in duration.">
 
 .. only:: html
 
@@ -67,7 +68,7 @@ Examples of algorithms used in the Oil and Gas industry.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="In reservoir and production engineering, knowledge of the shut-in pressure can help estimate re...">
+    <div class="sphx-glr-thumbcontainer" tooltip="In reservoir and production engineering, knowledge of the shut-in pressure can help estimate reservoir properties, drawdown and productivity index. In this example, we use data from the bottom-hole pressure signal to calculate shut-in pressure after 6 and 24 hrs of the shut-in. The CSV file also contains a column with binary signal obtained from the shut-in detector. The signal was obtained using wing valve data of the corresponding well and using the following settings in the detector function: wing valve threshold is calculated, minimum duration of shut-in is 25 hrs and minimum distance between shut-ins is 24 hrs.">
 
 .. only:: html
 
@@ -84,7 +85,7 @@ Examples of algorithms used in the Oil and Gas industry.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="The calculation of fluid properties is a fundamental component of mass balance and other method...">
+    <div class="sphx-glr-thumbcontainer" tooltip="The calculation of fluid properties is a fundamental component of mass balance and other methods of conservation. The goal of this feature is to calculate the fluid properties given the pressure and temperature conditions and the composition of the fluid itself. Equation of state simulators output a fluid file that is a table of the fluid properties for a range of pressure and temperature conditions. The input to these simulators is the composition of the fluid obtained from lab tests. For this specific feature, the input fluid file is a .tab file used by OLGA, a transient multiphase flow simulator.">
 
 .. only:: html
 
@@ -98,6 +99,8 @@ Examples of algorithms used in the Oil and Gas industry.
       <div class="sphx-glr-thumbnail-title">Calculate fluid properties given pressure and temperature</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

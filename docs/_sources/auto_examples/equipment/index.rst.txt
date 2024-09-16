@@ -13,10 +13,11 @@ Examples of how to use the equipment functions included in Cognite Charts.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip=" Pump suction pressure  Pump discharge pressure  Recycle valve outlet pressure  Recycle valve f...">
+    <div class="sphx-glr-thumbcontainer" tooltip=" Pump suction pressure  Pump discharge pressure  Recycle valve outlet pressure  Recycle valve flow coefficient (Cv) curve * Density of the fluid">
 
 .. only:: html
 
@@ -33,7 +34,24 @@ Examples of how to use the equipment functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Calculate pump parameters total head across the pump and difference from Best Efficiency Point ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Operational Availability">
+
+.. only:: html
+
+  .. image:: /auto_examples/equipment/images/thumb/sphx_glr_plot_operational_availability_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_equipment_plot_operational_availability.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Operational Availability</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculate pump parameters total head across the pump and difference from Best Efficiency Point (BEP) to current operating flowrate and power output of a centrifugal pump.">
 
 .. only:: html
 
@@ -48,6 +66,8 @@ Examples of how to use the equipment functions included in Cognite Charts.
     </div>
 
 
+.. thumbnail-parent-div-close
+
 .. raw:: html
 
     </div>
@@ -57,5 +77,6 @@ Examples of how to use the equipment functions included in Cognite Charts.
    :hidden:
 
    /auto_examples/equipment/plot_recycle_valve_power_loss
+   /auto_examples/equipment/plot_operational_availability
    /auto_examples/equipment/plot_pump_parameters
 
