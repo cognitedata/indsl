@@ -9,7 +9,6 @@ from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
 
 
-@check_types
 def __reindex_scatter_core(signal_x: pd.Series) -> Tuple[np.array, np.array]:
     """Reindex scatterplot core.
 
