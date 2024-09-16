@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "indsl"
-version = "8.5.0"
+version = "8.6.0"
 description = "Industrial Data Science Library by Cognite"
 authors = ["Cognite"]
 license = "Apache-2.0"
@@ -127,7 +127,7 @@ known-third-party = ["pytest"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "8.5.0"
+version = "8.6.0"
 tag_format = "v$version"
 version_files = ["pyproject.toml:version"]
 
