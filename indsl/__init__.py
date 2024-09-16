@@ -14,6 +14,7 @@ from indsl import (
     signals,
     smooth,
     statistics,
+    sustainability,
     ts_utils,
 )
 
@@ -33,5 +34,6 @@ __all__ = [
     "signals",
     "smooth",
     "statistics",
+    "sustainability",
     "ts_utils",
 ]
