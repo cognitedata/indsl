@@ -2,8 +2,8 @@
 
 ### Feat
 
-- exposing Sustainability package  (#313)
-- more dimensionless numbers and pipe friction models (#273)
+- Exposing Sustainability package  (#313)
+- Dimensionless numbers and pipe friction models (#273)
 
 ### Fix
 
