@@ -29,3 +29,11 @@ Reindex
 
    * :ref:`sphx_glr_auto_examples_reindex_plot_pearson_correlation.py`
 
+Reindex scatterplot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. autofunction:: indsl.resample.reindex_scatter
+
+Reindex scatterplot x-values
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. autofunction:: indsl.resample.reindex_scatter_x
+

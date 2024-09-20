@@ -13,10 +13,11 @@ Examples on how to explore the data quality of time series.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of point outlier removal with polynomial regression and Studentized residuals. We gener...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of point outlier removal with polynomial regression and Studentized residuals. We generate a toy data set with an underlying polynomial signal that has Gaussian noise and large point outliers added to it.">
 
 .. only:: html
 
@@ -33,7 +34,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of algorithm that indicates decreasing values in time series data. This algorithm is ap...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of algorithm that indicates decreasing values in time series data. This algorithm is applied on Running Hours time series. It is a specific type of time series that is counting the number of running hours in a pump. Given that we expect the number of running hours to either stay the same (if the pump is not running) or increase with time (if the pump is running), the decrease in running hours value indicates bad data quality.">
 
 .. only:: html
 
@@ -50,7 +51,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing rolling standard deviation of time delta of time series data to identify...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing rolling standard deviation of time delta of time series data to identify dispersion in the ingestion of data.">
 
 .. only:: html
 
@@ -67,7 +68,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="It is important to know how complete a time series is. In this example, the function qualifies ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="It is important to know how complete a time series is. In this example, the function qualifies a time series on the basis of its completeness score as good, medium, or poor. The completeness score measures how complete measured by how much of the data is missing based on its median sampling frequency.">
 
 .. only:: html
 
@@ -84,7 +85,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing breach of threshold in hour count in a time series representing running ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing breach of threshold in hour count in a time series representing running hours of a piece of equipment.">
 
 .. only:: html
 
@@ -101,7 +102,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Detecting density of data points in a time series is important for finding out if the expected ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Detecting density of data points in a time series is important for finding out if the expected number of data points during a certain time window such as per hour or per day have been received.">
 
 .. only:: html
 
@@ -118,7 +119,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Identifying gaps in data is critical when working with time series. Data gaps can be for instan...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Identifying gaps in data is critical when working with time series. Data gaps can be for instance, the result of an unreliable or defective sensor, and that part of the data might need to be excluded. The exact definition of what is considered a gap requires domain knowledge and is therefore hard to automate. However, mathematical tools can help us to identify potential gaps that the domain expert can then evaluate.">
 
 .. only:: html
 
@@ -135,7 +136,7 @@ Examples on how to explore the data quality of time series.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Introduction ------------ The out_of_range function uses Savitzky-Golay smoothing (SG) - sg to ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Introduction ------------ The out_of_range function uses Savitzky-Golay smoothing (SG) - sg to estimate the main trend of the data:">
 
 .. only:: html
 
@@ -149,6 +150,8 @@ Examples on how to explore the data quality of time series.
       <div class="sphx-glr-thumbnail-title">Detect out of range outliers in sensor data</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

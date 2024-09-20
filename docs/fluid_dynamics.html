@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fluid Dynamics &mdash; indsl 8.4.0 documentation</title>
+  <title>Fluid Dynamics &mdash; indsl 8.6.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -20,9 +20,10 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=ea47c46f"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/documentation_options.js?v=09ed50dd"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -63,8 +64,63 @@
 <li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Re"><code class="docutils literal notranslate"><span class="pre">Re()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#friction-factor-haaland-equation">Friction Factor: Haaland equation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#weber-number">Weber Number</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.We"><code class="docutils literal notranslate"><span class="pre">We()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#froude-number">Froude Number</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Fr"><code class="docutils literal notranslate"><span class="pre">Fr()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#density-scaled-froude-number">Density scaled Froude Number</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Fr_density_scaled"><code class="docutils literal notranslate"><span class="pre">Fr_density_scaled()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#phase-froude-number">2 phase Froude Number</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Fr_2phase"><code class="docutils literal notranslate"><span class="pre">Fr_2phase()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#inviscid-kelvin-helmholtz-froude-number">Inviscid Kelvin Helmholtz Froude Number</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Fr_inviscid_kelvin_helmholtz"><code class="docutils literal notranslate"><span class="pre">Fr_inviscid_kelvin_helmholtz()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#scaled-pressure-gradient">Scaled pressure gradient</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Pressure_scaled"><code class="docutils literal notranslate"><span class="pre">Pressure_scaled()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#scaled-pipe-roughness">Scaled pipe roughness</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Roughness_scaled"><code class="docutils literal notranslate"><span class="pre">Roughness_scaled()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pressure-drop-in-pipes">Pressure drop in pipes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#haaland-equation">Haaland equation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Haaland"><code class="docutils literal notranslate"><span class="pre">Haaland()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#fast-colebrook-approximation">Fast Colebrook approximation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Colebrook"><code class="docutils literal notranslate"><span class="pre">Colebrook()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#laminar-flow-friction-factor">Laminar flow friction factor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.friction_factor_laminar"><code class="docutils literal notranslate"><span class="pre">friction_factor_laminar()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#darcy-friction-factor">Darcy friction factor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.Darcy_friction_factor"><code class="docutils literal notranslate"><span class="pre">Darcy_friction_factor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#single-phase-wall-shear-stress">Single phase wall shear stress</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.pipe_wall_shear_stress"><code class="docutils literal notranslate"><span class="pre">pipe_wall_shear_stress()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#single-phase-pressure-gradient">Single phase pressure gradient</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.pipe_pressure_gradient"><code class="docutils literal notranslate"><span class="pre">pipe_pressure_gradient()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#single-phase-pressure-drop">Single phase pressure drop</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.fluid_dynamics.pipe_pressure_drop"><code class="docutils literal notranslate"><span class="pre">pipe_pressure_drop()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -137,25 +193,28 @@
 <h3>Reynolds Number<a class="headerlink" href="#reynolds-number" title="Link to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.fluid_dynamics.Re">
-<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Re</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_viscosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Re" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Re</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_viscosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Re" title="Link to this definition"></a></dt>
 <dd><p>Reynolds Number.</p>
 <p>The Reynolds number is the ratio of inertial forces to viscous forces within a fluid subjected to
 relative internal movement due to different fluid velocities.</p>
+<p>Re = velocity * density * length_scale / d_viscosity</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>speed</strong> – Flow speed.</p></li>
-<li><p><strong>density</strong> – Density.
+<li><p><strong>velocity</strong> – Fluid velocity [m/s].</p></li>
+<li><p><strong>density</strong> – Density [kg/m3].
 Density of the fluid.</p></li>
-<li><p><strong>d_viscosity</strong> – Dynamic viscosity.
+<li><p><strong>d_viscosity</strong> – Dynamic viscosity [kg/ms].
 Dynamic viscosity of the fluid.</p></li>
-<li><p><strong>length_scale</strong> – Characteristic length.
+<li><p><strong>length_scale</strong> – Characteristic length [m].
 Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
 of a physical system. Often, the characteristic length is the volume of a system divided by its surface.</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Reynolds number</p>
+<dd class="field-even"><p>Reynolds number [-]</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pandas.Series</p>
@@ -164,8 +223,263 @@ of a physical system. Often, the characteristic length is the volume of a system
 </dd></dl>
 
 </section>
-<section id="friction-factor-haaland-equation">
-<h3>Friction Factor: Haaland equation<a class="headerlink" href="#friction-factor-haaland-equation" title="Link to this heading"></a></h3>
+<section id="weber-number">
+<h3>Weber Number<a class="headerlink" href="#weber-number" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.We">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">We</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_tension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.We" title="Link to this definition"></a></dt>
+<dd><p>Weber Number.</p>
+<p>The Weber number describes the ratio between deforming inertial forces and stabilizing cohesive forces
+for liquids flowing through a fluid medium.
+For example, the Weber number characterizes the atomizing quality of a spray and the resulting droplet size when producing emulsions.</p>
+<p><span class="math notranslate nohighlight">\(We = \frac{\rho u^2 L}{\sigma}\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\rho\)</span>: Fluid density [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(u\)</span>: Fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(L\)</span>: Lenght scale [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(\sigma\)</span>: Surface tension [<span class="math notranslate nohighlight">\(\mathrm{\frac{N}{m}}\)</span>]</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>velocity</strong> – Flow speed [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>density</strong> – Density [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].
+Density of the fluid.</p></li>
+<li><p><strong>surface_tension</strong> – Surface tension [<span class="math notranslate nohighlight">\(\mathrm{\frac{N}{m}}\)</span>].
+Surface tension between the current fluid (the spesified density) and the surrounding fluid</p></li>
+<li><p><strong>length_scale</strong> – Characteristic length [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].
+Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
+of a physical system. Often, the characteristic length is the volume of a system divided by its surface.</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Weber number [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="froude-number">
+<h3>Froude Number<a class="headerlink" href="#froude-number" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.Fr">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Fr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Fr" title="Link to this definition"></a></dt>
+<dd><p>Froude Number.</p>
+<p>The Froude number is a ratio of inertial and gravitational forces</p>
+<p><span class="math notranslate nohighlight">\(Fr = \frac{u}{\sqrt{g L}}\)</span></p>
+<blockquote>
+<div><p>u: velocity <span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span></p>
+<p>g: 9.81 acceleration due to gravity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s^2}}\)</span>]</p>
+<p>L: Length scale [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>]</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>velocity</strong> – Fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>length_scale</strong> – Characteristic length [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].
+Characteristic linear dimension. A characteristic length is an important dimension that defines the scale
+of a physical system. Often, the characteristic length is the volume of a system divided by its surface.</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Froude number [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="density-scaled-froude-number">
+<h3>Density scaled Froude Number<a class="headerlink" href="#density-scaled-froude-number" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.Fr_density_scaled">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Fr_density_scaled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Fr_density_scaled" title="Link to this definition"></a></dt>
+<dd><p>Density scaled Froude Number.</p>
+<p>The Froude number is a ratio of inertial and gravitational forces.
+The density scaled Fround number is typically used in two phase flow</p>
+<p><span class="math notranslate nohighlight">\(Fr_{\rho-scaled} =\frac{u}{\sqrt{g L (1 - \frac{\rho_1}{\rho_2})}}\)</span></p>
+<blockquote>
+<div><p>u: velocity <span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span></p>
+<p>g: 9.81 acceleration due to gravity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s^2}}\)</span>]</p>
+<p>L: Length scale [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(\rho_1\)</span>: Density lighter fluid [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(\rho_2\)</span>: Density heavier fluid [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>]</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>velocity</strong> – Average fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>density_1</strong> – Density lighter fluid [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>density_2</strong> – Density heavier fluid [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>length_scale</strong> – Characteristic length [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].
+Characteristic linear dimension. For pipe flow, the characteristic length is normally the pipe diameter</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Density scaled Froude number [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="phase-froude-number">
+<h3>2 phase Froude Number<a class="headerlink" href="#phase-froude-number" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.Fr_2phase">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Fr_2phase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liquid_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">superficial_velocity_gas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">superficial_velocity_liquid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_gas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_liquid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Fr_2phase" title="Link to this definition"></a></dt>
+<dd><p>2 phase Froude Number.</p>
+<p>The Froude number is a ratio of inertial and gravitational forces.
+This calculated a Froude number for a two phase pipe flow situation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>liquid_fraction</strong> – Volume fraction of liquid [-].
+The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1.</p></li>
+<li><p><strong>superficial_velocity_gas</strong> – Gas superficial velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].
+The superficial flow is defined as the hypothetical flow velocity had the phase covered the entire flow area.
+<span class="math notranslate nohighlight">\(US_{phase} = \frac{Q_{phase}}{\alpha_{phase}}\)</span>. Superficial flow velocity of the phase.
+<span class="math notranslate nohighlight">\(Q_{phase}\)</span>: Volume flow velocity of the phase.
+<span class="math notranslate nohighlight">\(\alpha_{phase}\)</span>: Flow area covered by the phase.</p></li>
+<li><p><strong>superficial_velocity_liquid</strong> – Liquid superficial velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>density_gas</strong> – Density of the lighter fluid [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>density_liquid</strong> – Density of the denser fluid [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>inclination</strong> – Pipe inclination [<span class="math notranslate nohighlight">\(\mathrm{deg}\)</span>].</p></li>
+<li><p><strong>diameter</strong> – Pipe inner diameter [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>2 phase Froude number [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="inviscid-kelvin-helmholtz-froude-number">
+<h3>Inviscid Kelvin Helmholtz Froude Number<a class="headerlink" href="#inviscid-kelvin-helmholtz-froude-number" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.Fr_inviscid_kelvin_helmholtz">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Fr_inviscid_kelvin_helmholtz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liquid_fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">superficial_velocity_gas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">superficial_velocity_liquid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_gas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_liquid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Fr_inviscid_kelvin_helmholtz" title="Link to this definition"></a></dt>
+<dd><p>IKH Froude Number.</p>
+<p>Invicid Kelvin Helmholtz Froude number.
+The Froude number is a ratio of inertial and gravitational forces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>liquid_fraction</strong> – Volume fraction of liquid [-].
+The fluid fraction is a scaled value, so gas_fraction + liquid_fraction = 1.</p></li>
+<li><p><strong>superficial_velocity_gas</strong> – Gas superficial velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].
+The superficial flow is defined as the hypothetical flow velocity had the phase covered the entire flow area.
+<span class="math notranslate nohighlight">\(US_{phase} = \frac{Q_{phase}}{\alpha_{phase}}\)</span>. Superficial flow velocity of the phase.
+<span class="math notranslate nohighlight">\(Q_{phase}\)</span>: Volume flow velocity of the phase.
+<span class="math notranslate nohighlight">\(\alpha_{phase}\)</span>: Flow area covered by the phase.</p></li>
+<li><p><strong>superficial_velocity_liquid</strong> – Liquid superficial speed [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>density_gas</strong> – Density of the lighter fluid [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>density_liquid</strong> – Density of the denser fluid [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>inclination</strong> – Pipe inclination [<span class="math notranslate nohighlight">\(\mathrm{deg}\)</span>].</p></li>
+<li><p><strong>diameter</strong> – Pipe inner diameter [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>IKH Froude number [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="scaled-pressure-gradient">
+<h3>Scaled pressure gradient<a class="headerlink" href="#scaled-pressure-gradient" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.Pressure_scaled">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Pressure_scaled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pressure_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Pressure_scaled" title="Link to this definition"></a></dt>
+<dd><p>Scaled pressure gradient.</p>
+<p>Pressure gradient on a dimentionless form</p>
+<p><span class="math notranslate nohighlight">\(PI = \frac{\mathrm{d}P}{\mathrm{d}x}\frac{L}{\rho u^2}\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\frac{\mathrm{d}P}{\mathrm{d}x}\)</span>: Pressure gradient [<span class="math notranslate nohighlight">\(\mathrm{\frac{Pa}{m}}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(u\)</span>: Fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(L\)</span>: Lenght scale [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(\rho\)</span>: Fluid density [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>]</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure_gradient</strong> – Pressure gradient [<span class="math notranslate nohighlight">\(\mathrm{\frac{Pa}{m}}\)</span>].
+Presure gradient in the flow direction (along the pipe, assuming pipe flow)</p></li>
+<li><p><strong>velocity</strong> – Flow velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>density</strong> – Density [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>length_scale</strong> – Characteristic length [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].
+Characteristic linear dimension. For pipe flow, the characteristic length is normally the pipe diameter</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scaled pressure gradient [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="scaled-pipe-roughness">
+<h3>Scaled pipe roughness<a class="headerlink" href="#scaled-pipe-roughness" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.Roughness_scaled">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Roughness_scaled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Roughness_scaled" title="Link to this definition"></a></dt>
+<dd><p>Scaled pipe roughness.</p>
+<p>This is the roughness that is used in the Darcy-Weisbach equation</p>
+<p>roughness_scaled = roughness / diameter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>roughness</strong> – Pipe inner roughness [m].
+Pipe inner roughness as sand size equivalent</p></li>
+<li><p><strong>diameter</strong> – Pipe diameter [m].</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scaled pipe roughness number [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="pressure-drop-in-pipes">
+<h2>Pressure drop in pipes<a class="headerlink" href="#pressure-drop-in-pipes" title="Link to this heading"></a></h2>
+<section id="haaland-equation">
+<h3>Haaland equation<a class="headerlink" href="#haaland-equation" title="Link to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.fluid_dynamics.Haaland">
 <span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Haaland</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Re</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Haaland" title="Link to this definition"></a></dt>
@@ -178,12 +492,227 @@ the accuracy of the data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Re</strong> – Reynolds Number</p></li>
-<li><p><strong>roughness</strong> – Surface roughness</p></li>
+<li><p><strong>Re</strong> – Reynolds Number [-].</p></li>
+<li><p><strong>roughness</strong> – Surface roughness [m].</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Friction factor</p>
+<dd class="field-even"><p>Friction factor [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="fast-colebrook-approximation">
+<h3>Fast Colebrook approximation<a class="headerlink" href="#fast-colebrook-approximation" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.Colebrook">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Colebrook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Re</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness_scaled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Colebrook" title="Link to this definition"></a></dt>
+<dd><p>Colebrook approximation.</p>
+<p>A computationally efficient Colebrook approximation taken from the following article</p>
+<blockquote>
+<div><p>“Fast and Accurate Approximations for the Colebrook Equation”
+Dag Biberg
+Journal of Fluids Engineering Copyright VC 2017 by ASME MARCH 2017, Vol. 139 / 031401-1</p>
+</div></blockquote>
+<p>This is a faster and more accurat approximation to Colebrook than Haaland</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Re</strong> – Reynolds Number [-].</p></li>
+<li><p><strong>roughness_scaled</strong> – Scaled surface roughness [-].
+The wall surface roughness is normally scaled with the pipe inner diameter</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Friction factor [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="laminar-flow-friction-factor">
+<h3>Laminar flow friction factor<a class="headerlink" href="#laminar-flow-friction-factor" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.friction_factor_laminar">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">friction_factor_laminar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Re</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.friction_factor_laminar" title="Link to this definition"></a></dt>
+<dd><p>Friction factor laminar flow.</p>
+<dl class="simple">
+<dt>friction_factor = <span class="math notranslate nohighlight">\(\frac{64}{Re}\)</span></dt><dd><p>Re: Reynolds number = <span class="math notranslate nohighlight">\(\frac{\rho u D}{\mu}\)</span></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Re</strong> – Reynolds Number [-].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Friction factor laminar flow [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="darcy-friction-factor">
+<h3>Darcy friction factor<a class="headerlink" href="#darcy-friction-factor" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.Darcy_friction_factor">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">Darcy_friction_factor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Re</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness_scaled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laminar_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2300.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turbulent_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.Darcy_friction_factor" title="Link to this definition"></a></dt>
+<dd><p>Darcy friction factor.</p>
+<p>Computes the Darcy friction factor, including the laminar-turbulent transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Re</strong> – Reynolds Number [-].</p></li>
+<li><p><strong>roughness_scaled</strong> – Scaled surface roughness [-].</p></li>
+<li><p><strong>laminar_limit</strong> – Laminar transition [-].
+Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-]</p></li>
+<li><p><strong>turbulent_limit</strong> – Turbulent transition
+Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-]</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Darcy friction factor [-]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="single-phase-wall-shear-stress">
+<h3>Single phase wall shear stress<a class="headerlink" href="#single-phase-wall-shear-stress" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.pipe_wall_shear_stress">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">pipe_wall_shear_stress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_viscosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laminar_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2300.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turbulent_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.pipe_wall_shear_stress" title="Link to this definition"></a></dt>
+<dd><p>Single phase wall shear stress.</p>
+<p>Computes the wall shear stress for single phase flow.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\tau = \lambda\frac{u^2 D}{8}\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\tau\)</span>: Wall shear stress [<span class="math notranslate nohighlight">\(\mathrm{Pa}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(x\)</span>: Direction along pipeline [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(\lambda\)</span>: Friction factor [<span class="math notranslate nohighlight">\(\mathrm{-}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(u\)</span>: Fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(D\)</span>: Pipe diameter [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>]</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>velocity</strong> – Average fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>density</strong> – Fluid density [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>d_viscosity</strong> – Dynamic viscosity [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m s}}\)</span>].</p></li>
+<li><p><strong>diameter</strong> – Pipe inner diameter [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].</p></li>
+<li><p><strong>roughness</strong> – Unscaled surface roughness [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].
+Unscaled pipe inner wall surface roughness.</p></li>
+<li><p><strong>laminar_limit</strong> – Laminar transition [-].
+Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].</p></li>
+<li><p><strong>turbulent_limit</strong> – Trubulent transition.
+Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pipe wall shear stress [<span class="math notranslate nohighlight">\(\mathrm{Pa}\)</span>]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="single-phase-pressure-gradient">
+<h3>Single phase pressure gradient<a class="headerlink" href="#single-phase-pressure-gradient" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.pipe_pressure_gradient">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">pipe_pressure_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_viscosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laminar_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2300.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turbulent_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.pipe_pressure_gradient" title="Link to this definition"></a></dt>
+<dd><p>Single phase pressure gradient.</p>
+<p>Computes the pressure gradient from wall friction in single phase flow in pipe.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\frac{\mathrm{d}P}{\mathrm{d}x} = \lambda\frac{u^2 D}{2}\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(P\)</span>: Pressure [<span class="math notranslate nohighlight">\(\mathrm{Pa}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(x\)</span>: Direction along pipeline [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(\lambda\)</span>: Friction factor [<span class="math notranslate nohighlight">\(\mathrm{-}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(u\)</span>: Fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>]</p>
+<p><span class="math notranslate nohighlight">\(D\)</span>: Pipe diameter [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>]</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>velocity</strong> – Average fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>density</strong> – Fluid density [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>d_viscosity</strong> – Dynamic viscosity [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m s}}\)</span>].</p></li>
+<li><p><strong>diameter</strong> – Pipe inner diameter [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].</p></li>
+<li><p><strong>roughness</strong> – Unscaled surface roughness [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].
+Unscaled pipe inner wall surface roughness.</p></li>
+<li><p><strong>laminar_limit</strong> – Laminar transition [-].
+Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].</p></li>
+<li><p><strong>turbulent_limit</strong> – Trubulent transition.
+Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fluid pressure gradient [<span class="math notranslate nohighlight">\(\mathrm{\frac{Pa}{m}}\)</span>]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="single-phase-pressure-drop">
+<h3>Single phase pressure drop<a class="headerlink" href="#single-phase-pressure-drop" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.fluid_dynamics.pipe_pressure_drop">
+<span class="sig-prename descclassname"><span class="pre">indsl.fluid_dynamics.</span></span><span class="sig-name descname"><span class="pre">pipe_pressure_drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_viscosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipe_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipe_height_difference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">laminar_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2300.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turbulent_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.fluid_dynamics.pipe_pressure_drop" title="Link to this definition"></a></dt>
+<dd><p>Single phase pressure drop.</p>
+<p>Computes the pressure drop for single phase flow in a pipe, adding frictional pressure drop and gravitational pressure drop</p>
+<blockquote>
+<div><p>It assumes constant properties along pipeline</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>velocity</strong> – Average fluid velocity [<span class="math notranslate nohighlight">\(\mathrm{\frac{m}{s}}\)</span>].</p></li>
+<li><p><strong>density</strong> – Fluid density [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m^3}}\)</span>].</p></li>
+<li><p><strong>d_viscosity</strong> – Dynamic viscosity [<span class="math notranslate nohighlight">\(\mathrm{\frac{kg}{m s}}\)</span>].</p></li>
+<li><p><strong>diameter</strong> – Pipe inner diameter [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].</p></li>
+<li><p><strong>roughness</strong> – Unscaled surface roughness [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].
+Unscaled pipe inner wall surface roughness.</p></li>
+<li><p><strong>pipe_length</strong> – total length of pipe [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].</p></li>
+<li><p><strong>pipe_height_difference</strong> – Height difference [<span class="math notranslate nohighlight">\(\mathrm{m}\)</span>].
+Difference in height between start and end of pipe.</p></li>
+<li><p><strong>laminar_limit</strong> – Laminar transition [-].
+Limit where lower Reynolds numbers give pure laminar flow, Typical value is 2300 [-].</p></li>
+<li><p><strong>turbulent_limit</strong> – Trubulent transition.
+Limit where higher Reynolds numbers give pure turbulent flow. Typical value is 4000 [-].</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pipe pressure drop [<span class="math notranslate nohighlight">\(\mathrm{Pa}\)</span>]</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pandas.Series</p>

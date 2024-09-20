@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; indsl 8.4.0 documentation</title>
+  <title>Index &mdash; indsl 8.6.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -19,8 +19,8 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=ea47c46f"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/documentation_options.js?v=09ed50dd"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
@@ -208,6 +208,8 @@
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.clip">clip() (in module indsl.ts_utils.utility_functions)</a>
 </li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Colebrook">Colebrook() (in module indsl.fluid_dynamics)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="data_quality.html#indsl.data_quality.completeness.completeness_score">completeness_score() (in module indsl.data_quality.completeness)</a>
@@ -234,14 +236,16 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Darcy_friction_factor">Darcy_friction_factor() (in module indsl.fluid_dynamics)</a>
+</li>
       <li><a href="data_quality.html#indsl.data_quality.datapoint_diff_over_time_period">datapoint_diff_over_time_period() (in module indsl.data_quality)</a>
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.trigonometric_functions.deg2rad">deg2rad() (in module indsl.ts_utils.trigonometric_functions)</a>
 </li>
-      <li><a href="statistics.html#indsl.statistics.outliers.detect_outliers">detect_outliers() (in module indsl.statistics.outliers)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="statistics.html#indsl.statistics.outliers.detect_outliers">detect_outliers() (in module indsl.statistics.outliers)</a>
+</li>
       <li><a href="numerical_calculus.html#indsl.ts_utils.numerical_calculus.differentiate">differentiate() (in module indsl.ts_utils.numerical_calculus)</a>, <a href="ts_utils.html#indsl.ts_utils.numerical_calculus.differentiate">[1]</a>
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.operators.div">div() (in module indsl.ts_utils.operators)</a>
@@ -274,13 +278,23 @@
 </li>
       <li><a href="equipment.html#indsl.equipment.filled_volume_spherical_head_vessel">filled_volume_spherical_head_vessel() (in module indsl.equipment)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="equipment.html#indsl.equipment.filled_volume_torispherical_head_vessel">filled_volume_torispherical_head_vessel() (in module indsl.equipment)</a>
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.floor">floor() (in module indsl.ts_utils.utility_functions)</a>
 </li>
       <li><a href="equipment.html#indsl.equipment.valve_parameters.flow_through_valve">flow_through_valve() (in module indsl.equipment.valve_parameters)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Fr">Fr() (in module indsl.fluid_dynamics)</a>
+</li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Fr_2phase">Fr_2phase() (in module indsl.fluid_dynamics)</a>
+</li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Fr_density_scaled">Fr_density_scaled() (in module indsl.fluid_dynamics)</a>
+</li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Fr_inviscid_kelvin_helmholtz">Fr_inviscid_kelvin_helmholtz() (in module indsl.fluid_dynamics)</a>
+</li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.friction_factor_laminar">friction_factor_laminar() (in module indsl.fluid_dynamics)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -495,6 +509,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="drilling.html#indsl.drilling.onbottom_detection">onbottom_detection() (in module indsl.drilling)</a>
 </li>
+      <li><a href="equipment.html#indsl.equipment.operational_availability_.operational_availability">operational_availability() (in module indsl.equipment.operational_availability_)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="detect.html#indsl.detect.oscillation_detector.oscillation_detector">oscillation_detector() (in module indsl.detect.oscillation_detector)</a>
@@ -513,10 +529,18 @@
 </li>
       <li><a href="signals.html#indsl.signals.generator.perturb_timestamp">perturb_timestamp() (in module indsl.signals.generator)</a>
 </li>
-      <li><a href="ts_utils.html#indsl.ts_utils.operators.power">power() (in module indsl.ts_utils.operators)</a>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.pipe_pressure_drop">pipe_pressure_drop() (in module indsl.fluid_dynamics)</a>
+</li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.pipe_pressure_gradient">pipe_pressure_gradient() (in module indsl.fluid_dynamics)</a>
+</li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.pipe_wall_shear_stress">pipe_wall_shear_stress() (in module indsl.fluid_dynamics)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ts_utils.html#indsl.ts_utils.operators.power">power() (in module indsl.ts_utils.operators)</a>
+</li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Pressure_scaled">Pressure_scaled() (in module indsl.fluid_dynamics)</a>
+</li>
       <li><a href="oil_and_gas.html#indsl.oil_and_gas.productivity_index">productivity_index() (in module indsl.oil_and_gas)</a>
 </li>
       <li><a href="equipment.html#indsl.equipment.pump_discharge_reciprocating_pump">pump_discharge_reciprocating_pump() (in module indsl.equipment)</a>
@@ -543,12 +567,16 @@
 </li>
       <li><a href="resample.html#indsl.resample.reindex">reindex() (in module indsl.resample)</a>
 </li>
-      <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.remove">remove() (in module indsl.ts_utils.utility_functions)</a>
+      <li><a href="resample.html#indsl.resample.reindex_scatter">reindex_scatter() (in module indsl.resample)</a>
 </li>
-      <li><a href="statistics.html#indsl.statistics.outliers.remove_outliers">remove_outliers() (in module indsl.statistics.outliers)</a>
+      <li><a href="resample.html#indsl.resample.reindex_scatter_x">reindex_scatter_x() (in module indsl.resample)</a>
+</li>
+      <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.remove">remove() (in module indsl.ts_utils.utility_functions)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="statistics.html#indsl.statistics.outliers.remove_outliers">remove_outliers() (in module indsl.statistics.outliers)</a>
+</li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.replace">replace() (in module indsl.ts_utils.utility_functions)</a>
 </li>
       <li><a href="resample.html#indsl.resample.resample">resample() (in module indsl.resample)</a>
@@ -561,6 +589,8 @@
 </li>
       <li><a href="drilling.html#indsl.drilling.rotation_detection">rotation_detection() (in module indsl.drilling)</a>
 </li>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Roughness_scaled">Roughness_scaled() (in module indsl.fluid_dynamics)</a>
+</li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.round">round() (in module indsl.ts_utils.utility_functions)</a>
 </li>
       <li><a href="dev_tools.html#indsl.versioning.run">run() (in module indsl.versioning)</a>
@@ -571,6 +601,10 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="signals.html#indsl.signals.sequence_interpolation.sequence_interpolation_1d">sequence_interpolation_1d() (in module indsl.signals.sequence_interpolation)</a>
+</li>
+      <li><a href="signals.html#indsl.signals.sequence_interpolation.sequence_interpolation_2d">sequence_interpolation_2d() (in module indsl.signals.sequence_interpolation)</a>
+</li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.set_timestamps">set_timestamps() (in module indsl.ts_utils.utility_functions)</a>
 </li>
       <li><a href="smooth.html#indsl.smooth.sg">sg() (in module indsl.smooth)</a>
@@ -581,10 +615,10 @@
 </li>
       <li><a href="signals.html#indsl.signals.generator.sine_wave">sine_wave() (in module indsl.signals.generator)</a>
 </li>
-      <li><a href="ts_utils.html#indsl.ts_utils.trigonometric_functions.sinh">sinh() (in module indsl.ts_utils.trigonometric_functions)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ts_utils.html#indsl.ts_utils.trigonometric_functions.sinh">sinh() (in module indsl.ts_utils.trigonometric_functions)</a>
+</li>
       <li><a href="numerical_calculus.html#indsl.ts_utils.numerical_calculus.sliding_window_integration">sliding_window_integration() (in module indsl.ts_utils.numerical_calculus)</a>, <a href="ts_utils.html#indsl.ts_utils.numerical_calculus.sliding_window_integration">[1]</a>
 </li>
       <li><a href="smooth.html#indsl.smooth.sma">sma() (in module indsl.smooth)</a>
@@ -677,6 +711,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.We">We() (in module indsl.fluid_dynamics)</a>
+</li>
       <li><a href="signals.html#indsl.signals.noise.white_noise">white_noise() (in module indsl.signals.noise)</a>
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.numerical_calculus.window_index">window_index() (in module indsl.ts_utils.numerical_calculus)</a>
