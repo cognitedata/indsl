@@ -4,7 +4,7 @@ import pickle as pkl
 import pandas as pd
 import pytest
 
-from pandas.testing import assert_series_equal
+from numpy.testing import assert_equal
 
 from indsl.oil_and_gas.live_fluid_properties import retrieve_fluid_properties
 
@@ -22,7 +22,7 @@ def test_fluid_property_retrieve():
         name="Gas thermal capacity [J/kg·°C]",
     )
 
-    assert_series_equal(res, exp_res)
+    assert_equal(res.all(), exp_res.all())
 
 
 @pytest.mark.core
