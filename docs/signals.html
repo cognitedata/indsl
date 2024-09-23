@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Signals &mdash; indsl 8.4.0 documentation</title>
+  <title>Signals &mdash; indsl 8.6.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -20,8 +20,8 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=ea47c46f"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/documentation_options.js?v=09ed50dd"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -101,6 +101,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#polynomial-generators">Polynomial Generators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#univariate-polynomial">Univariate Polynomial</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#indsl.signals.polynomial.univariate_polynomial"><code class="docutils literal notranslate"><span class="pre">univariate_polynomial()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sequence-interpolation">Sequence interpolation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d-interpolation-of-a-sequence">1D interpolation of a sequence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.sequence_interpolation.sequence_interpolation_1d"><code class="docutils literal notranslate"><span class="pre">sequence_interpolation_1d()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2D interpolation of a sequence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.signals.sequence_interpolation.sequence_interpolation_2d"><code class="docutils literal notranslate"><span class="pre">sequence_interpolation_2d()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -572,6 +583,84 @@ The default is <span class="math notranslate nohighlight">\(0.0, 1.0\)</span>, w
 <li><p><a class="reference internal" href="auto_examples/signals/plot_univariate_polynomial.html#sphx-glr-auto-examples-signals-plot-univariate-polynomial-py"><span class="std std-ref">Univariate Polynomial</span></a></p></li>
 </ul>
 </aside>
+</section>
+</section>
+<section id="sequence-interpolation">
+<h2>Sequence interpolation<a class="headerlink" href="#sequence-interpolation" title="Link to this heading"></a></h2>
+<section id="d-interpolation-of-a-sequence">
+<h3>1D interpolation of a sequence<a class="headerlink" href="#d-interpolation-of-a-sequence" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.sequence_interpolation.sequence_interpolation_1d">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.sequence_interpolation.</span></span><span class="sig-name descname"><span class="pre">sequence_interpolation_1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0.0,</span> <span class="pre">1.0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0.0,</span> <span class="pre">1.0]</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.sequence_interpolation.sequence_interpolation_1d" title="Link to this definition"></a></dt>
+<dd><p>1D interpolation of a sequence.</p>
+<p>The input time serie is interpolated to the input sequence to create the return timeseries.
+The x_values represent the input timeseries and the y_values represent the output timeseries.
+The interpolation routine is a simple linear interpolation.
+If the input series is outside the interpolation range, the return value is extrapolated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal</strong> (<em>pandas.Series</em>) – Time series</p></li>
+<li><p><strong>x_values</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – The x-values
+List of coefficients separated by commas. The numbers must be entered separated by commas (e.g., 0, 1).
+The default is <span class="math notranslate nohighlight">\(0.0, 1.0\)</span>, which returns the original time series.
+The number of parameters must match the y_values.</p></li>
+<li><p><strong>y_values</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – The y-values
+List of coefficients separated by commas. The numbers must be entered separated by commas (e.g., 0, 1).
+The default is <span class="math notranslate nohighlight">\(0.0, 1.0\)</span>, which returns the original time series.
+The number of parameters must match the x_values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id2">
+<h3>2D interpolation of a sequence<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.signals.sequence_interpolation.sequence_interpolation_2d">
+<span class="sig-prename descclassname"><span class="pre">indsl.signals.sequence_interpolation.</span></span><span class="sig-name descname"><span class="pre">sequence_interpolation_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0.0,</span> <span class="pre">1.0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0.0,</span> <span class="pre">1.0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[0.0,</span> <span class="pre">1.0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.signals.sequence_interpolation.sequence_interpolation_2d" title="Link to this definition"></a></dt>
+<dd><p>2D interpolation of a sequence.</p>
+<p>The input time series is interpolated to the input sequence to create the return timeseries.
+The x_values and y_values represent the input timeseries and the z_values represent the output timeseries.
+The interpolation routine is a simple linear interpolation.
+If the input point is outside the convec hull of the interpolation region the nearest point is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal_x</strong> (<em>pandas.Series</em>) – Time series x-value</p></li>
+<li><p><strong>signal_y</strong> (<em>pandas.Series</em>) – Time series y-value</p></li>
+<li><p><strong>interp_x</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – The x-values
+List of coefficients separated by commas. The numbers must be entered separated by commas (e.g., 0, 1).
+The default is <span class="math notranslate nohighlight">\(0.0, 1.0\)</span>, which returns the original time series.
+The number of parameters must match the y- and z-values.</p></li>
+<li><p><strong>interp_y</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – The y-values
+List of coefficients separated by commas. The numbers must be entered separated by commas (e.g., 0, 1).
+The default is <span class="math notranslate nohighlight">\(0.0, 1.0\)</span>, which returns the original time series.
+The number of parameters must match the x- and z-values.</p></li>
+<li><p><strong>interp_z</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – The z-values
+List of coefficients separated by commas. The numbers must be entered separated by commas (e.g., 0, 1).
+The default is <span class="math notranslate nohighlight">\(0.0, 1.0\)</span>, which returns the original time series.
+The number of parameters must match the x- and y-values.</p></li>
+<li><p><strong>align_timesteps</strong> – Auto-align.
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 </section>

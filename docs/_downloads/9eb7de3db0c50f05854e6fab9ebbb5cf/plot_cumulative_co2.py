@@ -31,9 +31,10 @@ emissions_factor = 0.21  # kg CO2/kWh
 
 # Perform emissions calculations
 rate_co2_produced = rate_of_emissions(power, emissions_factor)
-co2_produced = cumulative_co2_production(rate_co2_produced)
-co2_cost = cumulative_co2_cost(power, co2_cost_factor=co2_cost_factor, emissions_factor=emissions_factor)
-
+co2_produced = cumulative_co2_production(rate_co2_produced, start_date=data.index[0])
+co2_cost = cumulative_co2_cost(
+    power, co2_cost_factor=co2_cost_factor, emissions_factor=emissions_factor, start_date=data.index[0]
+)
 
 # Plotting
 plt.subplots(2, 2, figsize=(10, 10))

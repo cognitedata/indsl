@@ -113,7 +113,7 @@ def test_is_na_all():
     assert "Convenience method only supports Series or DataFrame." in str(excinfo.value)
 
     # Arrange
-    na_all_data = {"numbers": [np.NaN, np.NaN]}
+    na_all_data = {"numbers": [np.nan, np.nan]}
     dataframe = pd.DataFrame(na_all_data, columns=["numbers"])
     # Act
     result_dataframe = is_na_all(dataframe)
@@ -121,7 +121,7 @@ def test_is_na_all():
     assert result_dataframe
 
     # Arrange
-    series = pd.Series([np.NaN, np.NaN])
+    series = pd.Series([np.nan, np.nan])
     # Act
     result_series = is_na_all(series)
     # Assert
@@ -250,7 +250,7 @@ def test_time_to_points():
 def test_fill_gates():
     # Arrange
     not_uniform_data = pd.Series(
-        [1, 2, np.NaN],
+        [1, 2, np.nan],
         index=pd.DatetimeIndex(
             [
                 datetime(2020, 7, 13, 1, 0, 1),
@@ -284,7 +284,7 @@ def test_fill_gates():
     assert_series_equal(data, result)
 
     # Arrange
-    data = data.replace(4, np.NaN)
+    data = data.replace(4, np.nan)
 
     # Act
     with pytest.raises(UserValueError) as excinfo:
@@ -306,7 +306,7 @@ def test_fill_gates():
 
     # Act
     result = fill_gaps(data, ffill_resolution=pd.Timedelta("3s"), interpolate_resolution=pd.Timedelta("4s"))
-    expected_result = data.replace(np.NaN, 3)
+    expected_result = data.replace(np.nan, 3)
     # Assert
     assert_series_equal(result, expected_result)
 

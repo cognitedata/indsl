@@ -1,3 +1,14 @@
+## v8.6.0 (2024-09-16)
+
+### Feat
+
+- Exposing Sustainability package  (#313)
+- Dimensionless numbers and pipe friction models (#273)
+
+### Fix
+
+- Bugfix for the mock scatter plot (#315)
+
 ## v8.5.0 (2024-09-09)
 
 ### Feat

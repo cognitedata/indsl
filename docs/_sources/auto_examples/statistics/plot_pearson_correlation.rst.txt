@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_statistics_plot_pearson_correlation.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_statistics_plot_pearson_correlation.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -37,7 +37,7 @@ This example calculates the rolling pearson correlation coefficient between two 
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -85,28 +85,26 @@ This example calculates the rolling pearson correlation coefficient between two 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  28.450 seconds)
+   **Total running time of the script:** (0 minutes 0.350 seconds)
 
 
 .. _sphx_glr_download_auto_examples_statistics_plot_pearson_correlation.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_pearson_correlation.ipynb <plot_pearson_correlation.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_pearson_correlation.py <plot_pearson_correlation.py>`
 
-     :download:`Download Python source code: plot_pearson_correlation.py <plot_pearson_correlation.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_pearson_correlation.ipynb <plot_pearson_correlation.ipynb>`
+      :download:`Download zipped: plot_pearson_correlation.zip <plot_pearson_correlation.zip>`
 
 
 .. only:: html

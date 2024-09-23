@@ -13,10 +13,11 @@ Examples of algorithms used to forecast data
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="For the Holt-Winters example we use forged daily data with a weekly seasonality. We predict two...">
+    <div class="sphx-glr-thumbcontainer" tooltip="For the Holt-Winters example we use forged daily data with a weekly seasonality. We predict two types of data, the first dataset displays an additive trend and an additive seasonality, and the second dataset displays an additive trend and a multiplicative seasonality.">
 
 .. only:: html
 
@@ -30,6 +31,8 @@ Examples of algorithms used to forecast data
       <div class="sphx-glr-thumbnail-title">Holt-Winters Predictor</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

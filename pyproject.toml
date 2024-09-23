@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "indsl"
-version = "8.5.0"
+version = "8.6.0"
 description = "Industrial Data Science Library by Cognite"
 authors = ["Cognite"]
 license = "Apache-2.0"
@@ -13,11 +13,11 @@ classifiers = ["Topic :: Scientific/Engineering"]
 [tool.poetry.dependencies]
 # Core dependencies
 python = ">=3.10,<3.13"
-scipy = "~1.12.0"
+scipy = "~1.14.0"
 pandas = "~2.2.0"
 typeguard = "^4.0.0"
 packaging = "^23.0"
-numpy = "^1.26.0"
+numpy = "^2.0.0"
 typing-extensions = "^4.6.3"
 
 # Optional extras dependencies
@@ -44,7 +44,7 @@ toml = "^0.10.2"
 marshmallow = "^3.17.0"
 docstring-to-markdown = "^0.10"
 coverage = "^7.0.0"
-ruff = "^0.5.0"
+ruff = "^0.6.0"
 pytest = "^8.1.1"
 
 [tool.poetry.group.docs]
@@ -127,7 +127,7 @@ known-third-party = ["pytest"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "8.5.0"
+version = "8.6.0"
 tag_format = "v$version"
 version_files = ["pyproject.toml:version"]
 

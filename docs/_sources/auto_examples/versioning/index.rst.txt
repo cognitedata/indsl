@@ -13,10 +13,11 @@ Example on how to implement versions of a function in InDSL.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="InDSL comes with the :pyindsl.versioning module, which allows to implement multiple versions of...">
+    <div class="sphx-glr-thumbcontainer" tooltip="InDSL comes with the :pyindsl.versioning module, which allows to implement multiple versions of InDSL functions. As a library user, one can then select and execute a specific function version.">
 
 .. only:: html
 
@@ -30,6 +31,8 @@ Example on how to implement versions of a function in InDSL.
       <div class="sphx-glr-thumbnail-title">Function versioning</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

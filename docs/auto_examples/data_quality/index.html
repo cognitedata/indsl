@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data quality &mdash; indsl 8.4.0 documentation</title>
+  <title>Data quality &mdash; indsl 8.6.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -20,8 +20,8 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=ea47c46f"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/documentation_options.js?v=09ed50dd"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -129,28 +129,28 @@
   <section id="data-quality">
 <span id="sphx-glr-auto-examples-data-quality"></span><h1>Data quality<a class="headerlink" href="#data-quality" title="Link to this heading"></a></h1>
 <p>Examples on how to explore the data quality of time series.</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of point outlier removal with polynomial regression and Studentized residuals. We gener..."><img alt="" src="../../_images/sphx_glr_plot_extreme_outlier_thumb.png" />
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of point outlier removal with polynomial regression and Studentized residuals. We generate a toy data set with an underlying polynomial signal that has Gaussian noise and large point outliers added to it."><img alt="" src="../../_images/sphx_glr_plot_extreme_outlier_thumb.png" />
 <p><a class="reference internal" href="plot_extreme_outlier.html#sphx-glr-auto-examples-data-quality-plot-extreme-outlier-py"><span class="std std-ref">Extreme Outliers Removal</span></a></p>
   <div class="sphx-glr-thumbnail-title">Extreme Outliers Removal</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Example of algorithm that indicates decreasing values in time series data. This algorithm is ap..."><img alt="" src="../../_images/sphx_glr_plot_value_decrease_check_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of algorithm that indicates decreasing values in time series data. This algorithm is applied on Running Hours time series. It is a specific type of time series that is counting the number of running hours in a pump. Given that we expect the number of running hours to either stay the same (if the pump is not running) or increase with time (if the pump is running), the decrease in running hours value indicates bad data quality."><img alt="" src="../../_images/sphx_glr_plot_value_decrease_check_thumb.png" />
 <p><a class="reference internal" href="plot_value_decrease_check.html#sphx-glr-auto-examples-data-quality-plot-value-decrease-check-py"><span class="std std-ref">Checking for decreasing values in a timeseries</span></a></p>
   <div class="sphx-glr-thumbnail-title">Checking for decreasing values in a timeseries</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing rolling standard deviation of time delta of time series data to identify..."><img alt="" src="../../_images/sphx_glr_plot_rolling_stddev_timedelta_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing rolling standard deviation of time delta of time series data to identify dispersion in the ingestion of data."><img alt="" src="../../_images/sphx_glr_plot_rolling_stddev_timedelta_thumb.png" />
 <p><a class="reference internal" href="plot_rolling_stddev_timedelta.html#sphx-glr-auto-examples-data-quality-plot-rolling-stddev-timedelta-py"><span class="std std-ref">Rolling standard deviation of data points time delta</span></a></p>
   <div class="sphx-glr-thumbnail-title">Rolling standard deviation of data points time delta</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="It is important to know how complete a time series is. In this example, the function qualifies ..."><img alt="" src="../../_images/sphx_glr_plot_completeness_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="It is important to know how complete a time series is. In this example, the function qualifies a time series on the basis of its completeness score as good, medium, or poor. The completeness score measures how complete measured by how much of the data is missing based on its median sampling frequency."><img alt="" src="../../_images/sphx_glr_plot_completeness_thumb.png" />
 <p><a class="reference internal" href="plot_completeness.html#sphx-glr-auto-examples-data-quality-plot-completeness-py"><span class="std std-ref">Completeness score of time series</span></a></p>
   <div class="sphx-glr-thumbnail-title">Completeness score of time series</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing breach of threshold in hour count in a time series representing running ..."><img alt="" src="../../_images/sphx_glr_plot_datapoint_diff_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Example of visualizing breach of threshold in hour count in a time series representing running hours of a piece of equipment."><img alt="" src="../../_images/sphx_glr_plot_datapoint_diff_thumb.png" />
 <p><a class="reference internal" href="plot_datapoint_diff.html#sphx-glr-auto-examples-data-quality-plot-datapoint-diff-py"><span class="std std-ref">Threshold breach check for difference between two data points over a period of time</span></a></p>
   <div class="sphx-glr-thumbnail-title">Threshold breach check for difference between two data points over a period of time</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Detecting density of data points in a time series is important for finding out if the expected ..."><img alt="" src="../../_images/sphx_glr_plot_low_density_identification_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Detecting density of data points in a time series is important for finding out if the expected number of data points during a certain time window such as per hour or per day have been received."><img alt="" src="../../_images/sphx_glr_plot_low_density_identification_thumb.png" />
 <p><a class="reference internal" href="plot_low_density_identification.html#sphx-glr-auto-examples-data-quality-plot-low-density-identification-py"><span class="std std-ref">Identifying low density periods</span></a></p>
   <div class="sphx-glr-thumbnail-title">Identifying low density periods</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Identifying gaps in data is critical when working with time series. Data gaps can be for instan..."><img alt="" src="../../_images/sphx_glr_plot_gaps_identification_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Identifying gaps in data is critical when working with time series. Data gaps can be for instance, the result of an unreliable or defective sensor, and that part of the data might need to be excluded. The exact definition of what is considered a gap requires domain knowledge and is therefore hard to automate. However, mathematical tools can help us to identify potential gaps that the domain expert can then evaluate."><img alt="" src="../../_images/sphx_glr_plot_gaps_identification_thumb.png" />
 <p><a class="reference internal" href="plot_gaps_identification.html#sphx-glr-auto-examples-data-quality-plot-gaps-identification-py"><span class="std std-ref">Identifying gaps in time series</span></a></p>
   <div class="sphx-glr-thumbnail-title">Identifying gaps in time series</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Introduction ------------ The out_of_range function uses Savitzky-Golay smoothing (SG) - sg to ..."><img alt="" src="../../_images/sphx_glr_plot_out_of_range_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Introduction ------------ The out_of_range function uses Savitzky-Golay smoothing (SG) - sg to estimate the main trend of the data:"><img alt="" src="../../_images/sphx_glr_plot_out_of_range_thumb.png" />
 <p><a class="reference internal" href="plot_out_of_range.html#sphx-glr-auto-examples-data-quality-plot-out-of-range-py"><span class="std std-ref">Detect out of range outliers in sensor data</span></a></p>
   <div class="sphx-glr-thumbnail-title">Detect out of range outliers in sensor data</div>
 </div></div><div class="toctree-wrapper compound">

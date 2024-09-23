@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Function versioning &mdash; indsl 8.4.0 documentation</title>
+  <title>Function versioning &mdash; indsl 8.6.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -20,8 +20,8 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=ea47c46f"></script>
-        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/documentation_options.js?v=09ed50dd"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -132,8 +132,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-versioning-versioned-function-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-versioning-versioned-function-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="function-versioning">
 <span id="sphx-glr-auto-examples-versioning-versioned-function-py"></span><h1>Function versioning<a class="headerlink" href="#function-versioning" title="Link to this heading"></a></h1>
@@ -150,7 +150,7 @@ followed by a more robust version 1.1.</p>
 <section id="implementation-of-v1-0">
 <h3>Implementation of v1.0<a class="headerlink" href="#implementation-of-v1-0" title="Link to this heading"></a></h3>
 <p>We begin with a simple implementation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">indsl</span> <span class="kn">import</span> <span class="n">versioning</span>
 
@@ -166,7 +166,7 @@ We also mark the function as deprecated, since we will soon implement a new vers
 This means that we can retrieve and execute this version, even after newer version of the same functions have been registered.</p>
 <p>Our, initial implementation is not very robust and results easily in <cite>nan</cite> outputs.
 This happens specifically when we apply <cite>abs`diff</cite> to time-series with non-matching indices:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;1h&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;1h&quot;</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">idx</span><span class="p">)</span>
 
 <span class="n">idx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;2h&quot;</span><span class="p">)</span>
@@ -175,7 +175,6 @@ This happens specifically when we apply <cite>abs`diff</cite> to time-series wit
 <span class="n">abs_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2022-01-01 00:00:00    0.0
 2022-01-01 01:00:00    NaN
 2022-01-01 02:00:00    0.0
@@ -189,44 +188,41 @@ dtype: float64
 <section id="implementation-of-v1-1">
 <h3>Implementation of v1.1<a class="headerlink" href="#implementation-of-v1-1" title="Link to this heading"></a></h3>
 <p>Next, we implement the new version of the <cite>abs_diff</cite> and mark it as version 1.1.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indsl.resample</span> <span class="kn">import</span> <span class="n">reindex</span>  <span class="c1"># noqa</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indsl.resample</span> <span class="kn">import</span> <span class="n">reindex_v1</span>  <span class="c1"># noqa</span>
 
 
 <span class="nd">@versioning</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.1&quot;</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 <span class="k">def</span> <span class="nf">abs_diff</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
-    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">reindex</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">reindex_v1</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>We rely on the build-in function <cite>reindex</cite> to align the indices of the time-series (using linear-interpolation) before performing the operations.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2022-01-01 00:00:00    0.0
 2022-01-01 01:00:00    0.0
 2022-01-01 02:00:00    0.0
 2022-01-01 03:00:00    0.0
 2022-01-01 04:00:00    0.0
-Freq: H, dtype: float64
+Freq: h, dtype: float64
 </pre></div>
 </div>
 </section>
 <section id="getting-versioned-functions-and-their-versions">
 <h3>Getting versioned functions and their versions<a class="headerlink" href="#getting-versioned-functions-and-their-versions" title="Link to this heading"></a></h3>
 <p>We can get a list of all versioned functions with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">versioning</span><span class="o">.</span><span class="n">get_registered_functions</span><span class="p">()</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">versioning</span><span class="o">.</span><span class="n">get_registered_functions</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;no_op&#39;, &#39;SG_SMOOTHER&#39;, &#39;ALMA_SMOOTHER&#39;, &#39;ARMA_SMOOTHER&#39;, &#39;BTR_SMOOTHER&#39;, &#39;CHB_SMOOTHER&#39;, &#39;EXP_WMA&#39;, &#39;LINEAR_WMA&#39;, &#39;SIMPLE_MA&#39;, &#39;INTERPOLATE&#39;, &#39;RESAMPLE_EXTENDED&#39;, &#39;RESAMPLE&#39;, &#39;POLY_REGRESSOR&#39;, &#39;SHUTIN_CALC&#39;, &#39;PI_CALC&#39;, &#39;PASSTHROUGH&#39;, &#39;OUTLIER_DETECTOR&#39;, &#39;DRIFT_DETECTOR&#39;, &#39;SS_DETECTOR&#39;, &#39;VARIABLE_MA&#39;, &#39;WAVELET_FILTER&#39;, &#39;STATUS_FLAG_FILTER&#39;, &#39;OUTLIERS_REMOVE&#39;, &#39;ROUND&#39;, &#39;FLOOR&#39;, &#39;CEIL&#39;, &#39;SIGN&#39;, &#39;CLIP&#39;, &#39;MAX&#39;, &#39;MIN&#39;, &#39;BIN_MAP&#39;, &#39;SIN&#39;, &#39;COS&#39;, &#39;TAN&#39;, &#39;ARCSIN&#39;, &#39;ARCCOS&#39;, &#39;ARCTAN&#39;, &#39;ARCTAN2&#39;, &#39;DEG2RAD&#39;, &#39;RAD2DEG&#39;, &#39;SINH&#39;, &#39;COSH&#39;, &#39;TANH&#39;, &#39;ARCSINH&#39;, &#39;ARCCOSH&#39;, &#39;ARCTANH&#39;, &#39;ADD&#39;, &#39;SUB&#39;, &#39;MUL&#39;, &#39;DIV&#39;, &#39;POW&#39;, &#39;INV&#39;, &#39;SQRT&#39;, &#39;NEG&#39;, &#39;ABS&#39;, &#39;MOD&#39;, &#39;INTEGRATE&#39;, &#39;DDX&#39;, &#39;EXP&#39;, &#39;LOG&#39;, &#39;LOG2&#39;, &#39;LOG10&#39;, &#39;LOGN&#39;, &#39;versioning_test_op&#39;, &#39;abs_diff&#39;]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;reindex&#39;, &#39;reindex_many&#39;, &#39;interpolate&#39;, &#39;resample&#39;, &#39;resample_to_granularity&#39;, &#39;trapezoidal_integration&#39;, &#39;differentiate&#39;, &#39;butterworth&#39;, &#39;ewma&#39;, &#39;lwma&#39;, &#39;sma&#39;, &#39;negative_running_hours_check&#39;, &#39;value_decrease_check&#39;, &#39;drift&#39;, &#39;flow_through_valve&#39;, &#39;wavelet_filter&#39;, &#39;arma_predictor&#39;, &#39;holt_winters_predictor&#39;, &#39;no_op&#39;, &#39;detect_outliers&#39;, &#39;remove_outliers&#39;, &#39;SG_SMOOTHER&#39;, &#39;ALMA_SMOOTHER&#39;, &#39;ARMA_SMOOTHER&#39;, &#39;BTR_SMOOTHER&#39;, &#39;CHB_SMOOTHER&#39;, &#39;EXP_WMA&#39;, &#39;LINEAR_WMA&#39;, &#39;SIMPLE_MA&#39;, &#39;INTERPOLATE&#39;, &#39;RESAMPLE_EXTENDED&#39;, &#39;RESAMPLE&#39;, &#39;POLY_REGRESSOR&#39;, &#39;SHUTIN_CALC&#39;, &#39;PI_CALC&#39;, &#39;PASSTHROUGH&#39;, &#39;OUTLIER_DETECTOR&#39;, &#39;DRIFT_DETECTOR&#39;, &#39;SS_DETECTOR&#39;, &#39;VARIABLE_MA&#39;, &#39;WAVELET_FILTER&#39;, &#39;STATUS_FLAG_FILTER&#39;, &#39;OUTLIERS_REMOVE&#39;, &#39;ROUND&#39;, &#39;FLOOR&#39;, &#39;CEIL&#39;, &#39;SIGN&#39;, &#39;CLIP&#39;, &#39;MAX&#39;, &#39;MIN&#39;, &#39;BIN_MAP&#39;, &#39;SIN&#39;, &#39;COS&#39;, &#39;TAN&#39;, &#39;ARCSIN&#39;, &#39;ARCCOS&#39;, &#39;ARCTAN&#39;, &#39;ARCTAN2&#39;, &#39;DEG2RAD&#39;, &#39;RAD2DEG&#39;, &#39;SINH&#39;, &#39;COSH&#39;, &#39;TANH&#39;, &#39;ARCSINH&#39;, &#39;ARCCOSH&#39;, &#39;ARCTANH&#39;, &#39;ADD&#39;, &#39;SUB&#39;, &#39;MUL&#39;, &#39;DIV&#39;, &#39;POW&#39;, &#39;INV&#39;, &#39;SQRT&#39;, &#39;NEG&#39;, &#39;ABS&#39;, &#39;MOD&#39;, &#39;INTEGRATE&#39;, &#39;DDX&#39;, &#39;EXP&#39;, &#39;LOG&#39;, &#39;LOG2&#39;, &#39;LOG10&#39;, &#39;LOGN&#39;, &#39;versioning_test_op&#39;, &#39;abs_diff&#39;]
 </pre></div>
 </div>
 <p>We can retrieve which versions we have of a function with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">versioning</span><span class="o">.</span><span class="n">get_versions</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">versioning</span><span class="o">.</span><span class="n">get_versions</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;1.0&#39;, &#39;1.1&#39;]
 </pre></div>
 </div>
@@ -234,11 +230,10 @@ Freq: H, dtype: float64
 <section id="running-versioned-functions">
 <h3>Running versioned functions<a class="headerlink" href="#running-versioned-functions" title="Link to this heading"></a></h3>
 <p>We can access and run specific function version with the <cite>versioning.get</cite> command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff_v1</span> <span class="o">=</span> <span class="n">versioning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff_v1</span> <span class="o">=</span> <span class="n">versioning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
 <span class="n">abs_diff_v1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2022-01-01 00:00:00    0.0
 2022-01-01 01:00:00    NaN
 2022-01-01 02:00:00    0.0
@@ -248,28 +243,30 @@ dtype: float64
 </pre></div>
 </div>
 <p>Omitting the version argument will automatically select the latest version</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff_v1_1</span> <span class="o">=</span> <span class="n">versioning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">abs_diff_v1_1</span> <span class="o">=</span> <span class="n">versioning</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;abs_diff&quot;</span><span class="p">)</span>
 <span class="n">abs_diff_v1_1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
 <span class="c1"># sphinx_gallery_thumbnail_path = &#39;_static/images/versioning_thumbnail.png&#39;</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>2022-01-01 00:00:00    0.0
 2022-01-01 01:00:00    0.0
 2022-01-01 02:00:00    0.0
 2022-01-01 03:00:00    0.0
 2022-01-01 04:00:00    0.0
-Freq: H, dtype: float64
+Freq: h, dtype: float64
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.270 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-versioning-versioned-function-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.016 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-versioning-versioned-function-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/e19fb1d2b1d72e5e4159efb1c018b470/versioned_function.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">versioned_function.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5de75731f01690b7ed8da2b559f04489/versioned_function.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">versioned_function.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/e19fb1d2b1d72e5e4159efb1c018b470/versioned_function.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">versioned_function.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/13ee6281a0cbeb022fdb9e05d225a245/versioned_function.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">versioned_function.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>

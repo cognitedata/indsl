@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resample &mdash; indsl 8.4.0 documentation</title>
+  <title>Resample &mdash; indsl 8.6.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=61a4c737" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
@@ -20,8 +20,8 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=ea47c46f"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/documentation_options.js?v=09ed50dd"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -80,6 +80,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#reindex">Reindex</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#indsl.resample.reindex"><code class="docutils literal notranslate"><span class="pre">reindex()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reindex-scatterplot">Reindex scatterplot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.resample.reindex_scatter"><code class="docutils literal notranslate"><span class="pre">reindex_scatter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reindex-scatterplot-x-values">Reindex scatterplot x-values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.resample.reindex_scatter_x"><code class="docutils literal notranslate"><span class="pre">reindex_scatter_x()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -419,6 +427,62 @@ Specifies if the output should be bounded to avoid extrapolation. Defaults to Fa
 <li><p><a class="reference internal" href="auto_examples/reindex/plot_pearson_correlation.html#sphx-glr-auto-examples-reindex-plot-pearson-correlation-py"><span class="std std-ref">Re-indexing and compute Pearson correlation coefficient</span></a></p></li>
 </ul>
 </aside>
+</section>
+<section id="reindex-scatterplot">
+<h2>Reindex scatterplot<a class="headerlink" href="#reindex-scatterplot" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.resample.reindex_scatter">
+<span class="sig-prename descclassname"><span class="pre">indsl.resample.</span></span><span class="sig-name descname"><span class="pre">reindex_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_timesteps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.resample.reindex_scatter" title="Link to this definition"></a></dt>
+<dd><p>Reindex scatterplot.</p>
+<p>It returns the values from signal_y with the timestamps as the values from signal_x,
+where the timestamps has been scaled to the range of timestamps from signal_x.
+The timestamps are sorted in ascending order, and the values are sorted with the same sort-index</p>
+<p>This is a way of creating a scatterplot inside a chart</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal_x</strong> – x-value.
+The time series where the values are used as the x-value</p></li>
+<li><p><strong>signal_y</strong> – y-value.
+The time series where the values are used as the y-value</p></li>
+<li><p><strong>align_timesteps</strong> (<em>bool</em>) – Auto-align
+Automatically align time stamp  of input time series. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scatter plot</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="reindex-scatterplot-x-values">
+<h2>Reindex scatterplot x-values<a class="headerlink" href="#reindex-scatterplot-x-values" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.resample.reindex_scatter_x">
+<span class="sig-prename descclassname"><span class="pre">indsl.resample.</span></span><span class="sig-name descname"><span class="pre">reindex_scatter_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.resample.reindex_scatter_x" title="Link to this definition"></a></dt>
+<dd><p>Reindex scatterplot x-values.</p>
+<p>It returns the values from signal_x with the timestamps as the values from signal_x,
+where the timestamps has been scaled to the range of timestamps from signal_x.
+The timestamps are sorted in ascending order, and the values are sorted with the same sort-index
+In effect this is a straight line going from min value to the max value of signal_x over the time range</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>signal_x</strong> – x-value.
+The time series where the values are used as the x-value</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scatter plot</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
