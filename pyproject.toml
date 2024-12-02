@@ -35,7 +35,7 @@ pywavelets = "^1.6.0"
 pre-commit = { version = "^4.0.0", python = "^3.6.1" }
 black = "^24.0.0"
 ipykernel = "^6.9.1"
-pytest-cov = "^5.0.0"
+pytest-cov = "^6.0.0"
 commitizen = "^3.0.0"
 jupyter-contrib-nbextensions = "^0.7.0"
 jupyter_nbextensions_configurator = "^0.6.0"
@@ -53,7 +53,7 @@ optional = true
 [tool.poetry.group.docs.dependencies]
 ipykernel = "^6.9.1"
 matplotlib = "^3.4.0"
-pytest-cov = "^5.0.0"
+pytest-cov = "^6.0.0"
 commitizen = "^3.0.0"
 jupyter-contrib-nbextensions = "^0.7.0"
 jupyter_nbextensions_configurator = "^0.6.0"
