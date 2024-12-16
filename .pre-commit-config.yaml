@@ -8,7 +8,7 @@ repos:
         args: ["--fix"]
 
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.7.3
+    rev: v0.7.4
   - hooks:
       - id: debug-statements
         exclude: ^docs(-source)?/
