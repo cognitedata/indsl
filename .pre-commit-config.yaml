@@ -8,7 +8,7 @@ repos:
         args: ["--fix"]
 
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.9
+    rev: v0.7.4
   - hooks:
       - id: debug-statements
         exclude: ^docs(-source)?/
@@ -35,10 +35,10 @@ repos:
         additional_dependencies: ['types-requests']
         exclude: ^docs(-source)?/
     repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.12.0
+    rev: v1.13.0
   - hooks:
       - id: commitizen
         stages:
           - commit-msg
     repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.29.1
+    rev: v3.31.0
