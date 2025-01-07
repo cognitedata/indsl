@@ -4,6 +4,8 @@ import pandas as pd
 import pytest
 
 from pandas.testing import assert_series_equal
+
+from indsl.exceptions import UserValueError
 from indsl.resample.auto_align import auto_align
 
 from indsl.signals.sequence_interpolation import sequence_interpolation_1d, sequence_interpolation_2d
@@ -118,4 +120,22 @@ def test_sequence_interpolation_2d_outside():
     pytest.approx(interpolation_test_result, interpolation_function_result)
 
 
-# test_sequence_interpolation_2d_outside()
+@pytest.mark.core
+def test_sequence_interpolation_return_user_value_error():
+    """
+    Test that the function raises a UserValueError when the number of parameters is not equal
+    """
+    WHP_series = pd.Series(
+        np.random.uniform(1, 80, size=100),
+        index=pd.date_range("2022-01-01 10:00:00", periods=100, freq="T"),
+        name="value",
+    )
+    x_values = [0, 1, 2]
+    y_values = [0, 1]
+    z_values = [0]
+
+    with pytest.raises(UserValueError):
+        sequence_interpolation_1d(WHP_series, x_values, y_values)
+
+    with pytest.raises(UserValueError):
+        sequence_interpolation_2d(WHP_series, WHP_series, x_values, y_values, z_values)

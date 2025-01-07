@@ -36,7 +36,7 @@ def sequence_interpolation_1d(
     """
     n_x, n_y = len(x_values), len(y_values)
     if not n_x == n_y:
-        raise UserValueError("There is a different number of x and y parameters. len(x)=%d,len(y)=%d" % (n_x, n_y))
+        raise UserValueError(f"There is a different number of x and y parameters. len(x)={n_x},len(y)={n_y}")
     if n_x < 2:
         raise UserValueError("We need at least two values to do the interpolation")
 
@@ -91,7 +91,7 @@ def sequence_interpolation_2d(
     n_x, n_y, n_z = len(interp_x), len(interp_y), len(interp_z)
     if not n_x == n_y and not n_x == n_z:
         raise UserValueError(
-            "There is a different number of x, y and z parameters. len(x)=%d,len(y)=%d,len(z)=%d" % (n_x, n_y, n_z)
+            f"There is a different number of x, y and z parameters. len(x)={n_x},len(y)={n_y},len(z)={n_z}"
         )
     if n_x < 2:
         raise UserValueError("We need at least two values to do the interpolation")

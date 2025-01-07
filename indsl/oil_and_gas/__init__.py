@@ -9,11 +9,11 @@ from .well_prod_status import calculate_well_prod_status
 TOOLBOX_NAME = "Oil and gas"
 
 __all__ = [
-    "productivity_index",
+    "calculate_gas_density",
     "calculate_shutin_interval",
     "calculate_shutin_variable",
     "calculate_well_prod_status",
-    "calculate_gas_density",
+    "productivity_index",
 ]
 
 __cognite__ = [

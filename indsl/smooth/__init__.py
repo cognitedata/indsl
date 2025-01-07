@@ -12,13 +12,13 @@ from .simple_ma import sma
 TOOLBOX_NAME = "Smooth"
 
 __all__ = [
-    "sg",
     "alma",
     "arma",
     "butterworth",
     "chebyshev",
     "ewma",
     "lwma",
+    "sg",
     "sma",
 ]
 
