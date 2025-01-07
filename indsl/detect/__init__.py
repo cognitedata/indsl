@@ -10,14 +10,14 @@ from .unchanged_signal_detector import unchanged_signal_detector
 TOOLBOX_NAME = "Detect"
 
 __all__ = [
-    "drift",
-    "ssid",
-    "vma",
-    "ssd_cpd",
     "cpd_ed_pelt",
-    "unchanged_signal_detector",
     "cusum",
+    "drift",
     "oscillation_detector",
+    "ssd_cpd",
+    "ssid",
+    "unchanged_signal_detector",
+    "vma",
 ]
 
 __cognite__ = [
