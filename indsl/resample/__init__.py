@@ -9,13 +9,13 @@ from .resample import resample, resample_to_granularity
 TOOLBOX_NAME = "Resample"
 
 __all__ = [
-    "interpolate",
-    "resample",
-    "resample_to_granularity",
     "group_by_region",
+    "interpolate",
     "reindex",
     "reindex_scatter",
     "reindex_scatter_x",
+    "resample",
+    "resample_to_granularity",
 ]
 
 __cognite__ = [

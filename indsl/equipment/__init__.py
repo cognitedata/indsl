@@ -19,17 +19,17 @@ from .volume_vessel import (
 TOOLBOX_NAME = "Equipment"
 
 __all__ = [
-    "total_head",
-    "percent_BEP_flowrate",
-    "pump_hydraulic_power",
-    "pump_shaft_power",
-    "recycle_valve_power_loss",
-    "flow_through_valve",
     "filled_volume_ellipsoidal_head_vessel",
     "filled_volume_spherical_head_vessel",
     "filled_volume_torispherical_head_vessel",
-    "pump_discharge_reciprocating_pump",
+    "flow_through_valve",
     "operational_availability",
+    "percent_BEP_flowrate",
+    "pump_discharge_reciprocating_pump",
+    "pump_hydraulic_power",
+    "pump_shaft_power",
+    "recycle_valve_power_loss",
+    "total_head",
 ]
 
 __cognite__ = [
