@@ -146,6 +146,18 @@
       ]
     },
     {
+      "login": "truden-dev",
+      "name": "Torgeir Ruden",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75366038?v=4",
+      "profile": "https://github.com/truden-dev",
+      "contributions": [
+        "code",
+        "doc",
+        "review",
+        "test"
+      ]
+    },
+     {
       "login": "VebjornG",
       "name": "Vebjørn Gilberg",
       "avatar_url": "https://avatars.githubusercontent.com/u/11941626?v=4",
@@ -155,6 +167,30 @@
         "doc",
         "review",
         "test"
+      ]
+    },
+     {
+      "login": "gunnarstaff",
+      "name": "Gunnar Andreas Staff",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42993124?v=4",
+      "profile": "https://github.com/gunnarstaff",
+      "contributions": [
+        "code",
+        "doc",
+        "ideas",
+        "test"
+      ]
+    },
+    {
+      "login": "dbrattli",
+      "name": "Dag Brattli",
+      "avatar_url": "https://avatars.githubusercontent.com/u/849479?v=4",
+      "profile": "https://github.com/dbrattli",
+      "contributions": [
+        "code",
+        "review",
+        "ideas",
+        "maintenance"
       ]
     }
   ],
