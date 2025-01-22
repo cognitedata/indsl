@@ -1,20 +1,16 @@
 # Copyright 2023 Cognite AS
 import numpy as np
 import pandas as pd
+
 from indsl.exceptions import SCIKIT_LEARN_REQUIRED
-
-
-
-
-
 from indsl.type_check import check_types
 from indsl.validations import validate_series_has_time_index, validate_series_is_not_empty
 
 
 @check_types
 def gaps_classification(x: pd.Series, eps=0.5, min_samples=2, std_thresholds=(1, 2, 3)):
-    """
-    Classify gaps in a time series dataset into categories based on duration and statistical properties.
+    """Classify gaps in a time series dataset into categories based on duration and statistical properties.
+
     DBSCAN is first used to determine data to be classified as Extreme.
     Remaining data is classified as Typical, Significant, Abnormal, or Singularities depending on standard deviation thresholds.
 
