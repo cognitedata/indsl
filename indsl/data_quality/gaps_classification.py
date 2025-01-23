@@ -1,4 +1,6 @@
 # Copyright 2023 Cognite AS
+from typing import List
+
 import numpy as np
 import pandas as pd
 
@@ -8,17 +10,18 @@ from indsl.validations import validate_series_has_time_index, validate_series_is
 
 
 @check_types
-def gaps_classification(x: pd.Series, eps=0.5, min_samples=2, std_thresholds=(1, 2, 3)):
-    """Classify gaps in a time series dataset into categories based on duration and statistical properties.
+def gaps_classification(x: pd.Series, eps: float = 0.5, min_samples: int = 2, std_thresholds: List[int] = [1, 2, 3]):
+    """Gaps Classification.
 
-    DBSCAN is first used to determine data to be classified as Extreme.
+    Classify gaps in a time series dataset into categories based on duration and statistical properties.  
+    DBSCAN is first used to determine data to be classified as Extreme.  
     Remaining data is classified as Typical, Significant, Abnormal, or Singularities depending on standard deviation thresholds.
 
     Args:
          x: Time series
          eps: The maximum distance between samples for clustering in DBSCAN. Defaults to 0.5.
          min_samples: The minimum number of samples in a cluster for DBSCAN. Defaults to 2.
-         std_thresholds: Thresholds for classifying gaps based on standard deviations. Defaults to (1, 2, 3).
+         std_thresholds: Thresholds for classifying gaps based on standard deviations. Defaults to [1, 2, 3].
 
     Returns:
          pd.DataFrame: A DataFrame with gap start, gap end, duration, and classification.
