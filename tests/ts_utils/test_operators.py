@@ -2,9 +2,10 @@
 import numpy as np
 import pandas as pd
 import pytest
+import pandas.testing as tm
 
 from indsl.ts_utils import absolute, add, arithmetic_mean, div, inv, mod, mul, neg, power, sqrt, sub
-from indsl.ts_utils.operators import arithmetic_mean_many
+from indsl.ts_utils.operators import arithmetic_mean_many, average
 
 
 @pytest.mark.core
@@ -267,3 +268,29 @@ def test_arithmetic_mean_many():
     s1 = pd.Series(data=[1, 2, 3], index=[0, 1, 2])
     s2 = pd.Series(data=[2, 4, 6], index=[0, 1, 2])
     assert arithmetic_mean_many([s1, s2, 3]).sum() == 9
+
+
+@pytest.mark.core
+def test_average_no_threshold():
+
+    test_data = pd.Series(
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h")
+    )
+
+    expected = pd.Series([5.5]*10, index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h"), name="constant_ts")
+    test_timeseries = average(test_data, use_threshold=False)
+
+    tm.assert_series_equal(test_timeseries, expected)
+
+
+@pytest.mark.core
+def test_average_with_threshold():
+
+    test_data = pd.Series(
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h")
+    )
+
+    expected = pd.Series([7.0]*7, index=pd.date_range("1975-05-09 03:00:00", "1975-05-09 09:00:00", freq="1h"), name="constant_ts")
+    test_timeseries = average(test_data, use_threshold=True, threshold=4.0, condition="above")
+
+    tm.assert_series_equal(test_timeseries, expected)
