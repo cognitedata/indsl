@@ -1,7 +1,7 @@
 # Copyright 2023 Cognite AS
 import operator as op
 
-from typing import List, Union
+from typing import List, Literal, Optional, Union
 
 import numpy as np
 
@@ -11,7 +11,6 @@ import pandas as pd
 from indsl.exceptions import UserValueError
 from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
-from typing import Literal
 
 
 @check_types
@@ -237,13 +236,18 @@ def arithmetic_mean_many(data: List[Union[pd.Series, float]], align_timesteps: b
         timeseries_sum = add(timeseries_sum, new_ts, align_timesteps)
     return op.truediv(timeseries_sum, n)
 
+
 @check_types
-def average(data: pd.Series, use_threshold : bool = False, threshold : float = 0.0, condition : Literal["above", "below"] = "above") -> pd.Series:
-    """Average of a time series
+def average(
+    data: pd.Series,
+    threshold: Optional[float] = None,
+    condition: Literal["Above", "Below", "No threshold"] = "No threshold",
+) -> pd.Series:
+    """Average of a time series.
 
     Plain simple average that computes the sum of the values of the observations in the currently displayed time window in Charts, and divides it by the number of observations within that time window.
     The result is a constant time series with the same length as the input time series, where each value is equal to the average of the input time series.
-    
+
     Args:
         data: Time series.
         use_threshold: Use threshold.
@@ -257,13 +261,13 @@ def average(data: pd.Series, use_threshold : bool = False, threshold : float = 0
 
     Returns:
         pandas.Series: Average of a time series as a constant time series.
+
     """
-    if use_threshold:
-        if condition == "above":
-            data = data[data >= threshold]
-        elif condition == "below":
-            data = data[data <= threshold]
-    
+    if condition == "Above" and threshold is not None:
+        data = data[data >= threshold]
+    elif condition == "Below" and threshold is not None:
+        data = data[data <= threshold]
+
     average_value = data.mean()
     average_ts = pd.Series(data=[average_value] * len(data), index=data.index, name="constant_ts")
     return average_ts

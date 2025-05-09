@@ -277,8 +277,10 @@ def test_average_no_threshold():
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h")
     )
 
-    expected = pd.Series([5.5]*10, index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h"), name="constant_ts")
-    test_timeseries = average(test_data, use_threshold=False)
+    expected = pd.Series(
+        [5.5] * 10, index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h"), name="constant_ts"
+    )
+    test_timeseries = average(test_data)
 
     tm.assert_series_equal(test_timeseries, expected)
 
@@ -290,7 +292,9 @@ def test_average_with_threshold():
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h")
     )
 
-    expected = pd.Series([7.0]*7, index=pd.date_range("1975-05-09 03:00:00", "1975-05-09 09:00:00", freq="1h"), name="constant_ts")
-    test_timeseries = average(test_data, use_threshold=True, threshold=4.0, condition="above")
+    expected = pd.Series(
+        [7.0] * 7, index=pd.date_range("1975-05-09 03:00:00", "1975-05-09 09:00:00", freq="1h"), name="constant_ts"
+    )
+    test_timeseries = average(test_data, threshold=4.0, condition="Above")
 
     tm.assert_series_equal(test_timeseries, expected)
