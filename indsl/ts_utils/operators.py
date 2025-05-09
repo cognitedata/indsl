@@ -250,14 +250,11 @@ def average(
 
     Args:
         data: Time series.
-        use_threshold: Use threshold.
-            If True, the average will be calculated only for values greater or less than the threshold. If False, all values will be used in the average calculation.
         threshold: Threshold.
-            The threshold value to use for filtering the data. If use_threshold is True, only values above/below and equal to this threshold will be considered in the average calculation.
-            Ignored if use_threshold is False.
+            The threshold value to use for filtering the data. Defaults to None unless otherwise specified.
         condition: Condition.
             The condition to use for filtering the data. If "above", only values greater than or equal to the threshold will be considered, and vice versa for "below".
-            Ignored if use_threshold is False.
+            Defaults to "No threshold" unless otherwise specified.
 
     Returns:
         pandas.Series: Average of a time series as a constant time series.
