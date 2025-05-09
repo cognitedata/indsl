@@ -257,7 +257,7 @@ def average(
             Defaults to "No threshold" unless otherwise specified.
 
     Returns:
-        pandas.Series: Average of a time series as a constant time series.
+        pandas.Series: Average of time series.
 
     """
     if condition == "Above" and threshold is not None:
