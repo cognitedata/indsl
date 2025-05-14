@@ -298,3 +298,49 @@ def test_average_with_threshold():
     test_timeseries = average(test_data, threshold=4.0, condition="Above")
 
     tm.assert_series_equal(test_timeseries, expected)
+
+
+@pytest.mark.core
+def test_average_uneven_sampling():
+
+    test_data = pd.Series(
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        index=pd.to_datetime(
+            [
+                "1975-05-09 00:00:00",
+                "1975-05-09 00:30:00",
+                "1975-05-09 02:30:00",
+                "1975-05-09 05:30:00",
+                "1975-05-09 07:30:00",
+                "1975-05-09 08:00:00",
+                "1975-05-09 10:00:00",
+                "1975-05-09 13:00:00",
+                "1975-05-09 16:00:00",
+                "1975-05-09 20:00:00",
+            ]
+        ),
+        name="constant_ts",
+    )
+
+    expected = pd.Series(
+        [5.5] * 10,
+        index=pd.to_datetime(
+            [
+                "1975-05-09 00:00:00",
+                "1975-05-09 00:30:00",
+                "1975-05-09 02:30:00",
+                "1975-05-09 05:30:00",
+                "1975-05-09 07:30:00",
+                "1975-05-09 08:00:00",
+                "1975-05-09 10:00:00",
+                "1975-05-09 13:00:00",
+                "1975-05-09 16:00:00",
+                "1975-05-09 20:00:00",
+            ]
+        ),
+        name="constant_ts",
+    )
+
+    test_timeseries = average(test_data)
+
+    tm.assert_series_equal(test_timeseries, expected)
