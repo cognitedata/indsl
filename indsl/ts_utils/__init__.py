@@ -3,7 +3,7 @@ from .array_operations import time_weighted_mean, time_weighted_std, timeseries_
 from .logarithmic_functions import exp, log, log2, log10, logn
 from .logical_operations import logical_check
 from .numerical_calculus import differentiate, sliding_window_integration, trapezoidal_integration
-from .operators import absolute, add, arithmetic_mean, div, inv, mod, mul, neg, power, sqrt, sub
+from .operators import absolute, add, arithmetic_mean, average, div, inv, mod, mul, neg, power, sqrt, sub
 from .trigonometric_functions import (
     arccos,
     arccosh,
@@ -75,6 +75,7 @@ __all__ = [
     "arctan2",
     "arctanh",
     "arithmetic_mean",
+    "average",
     "bin_map",
     "ceil",
     "check_uniform",
@@ -176,6 +177,7 @@ __cognite__ = [
     "remove",
     "maximum",
     "minimum",
+    "average",
     "union",
     "bin_map",
     "get_timestamps",
