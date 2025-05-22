@@ -238,15 +238,15 @@ def arithmetic_mean_many(data: List[Union[pd.Series, float]], align_timesteps: b
 
 
 @check_types
-def average(
+def sample_average(
     data: pd.Series,
     threshold: Optional[float] = None,
     condition: Literal["Above", "Below", "No threshold"] = "No threshold",
 ) -> pd.Series:
-    """Average of a time series.
+    """Sample average of a time series.
 
-    Plain simple average that computes the sum of the values of the observations in the currently displayed time window in Charts, and divides it by the number of observations within that time window.
-    The result is a constant time series with the same length as the input time series, where each value is equal to the average of the input time series.
+    Sample average computes the sum of datapoint values in the currently displayed time window and divides it by the number of datapoints within that time window, ignoring the time distribution of the datapoints.
+    The result is a constant time series with the same length as the input time series, where each value is equal to the sample average of the input time series.
 
     Args:
         data: Time series.

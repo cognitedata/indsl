@@ -5,7 +5,7 @@ import pytest
 import pandas.testing as tm
 
 from indsl.ts_utils import absolute, add, arithmetic_mean, div, inv, mod, mul, neg, power, sqrt, sub
-from indsl.ts_utils.operators import arithmetic_mean_many, average
+from indsl.ts_utils.operators import arithmetic_mean_many, sample_average
 
 
 @pytest.mark.core
@@ -280,7 +280,7 @@ def test_average_no_threshold():
     expected = pd.Series(
         [5.5] * 10, index=pd.date_range("1975-05-09 00:00:00", "1975-05-09 09:00:00", freq="1h"), name="constant_ts"
     )
-    test_timeseries = average(test_data)
+    test_timeseries = sample_average(test_data)
 
     tm.assert_series_equal(test_timeseries, expected)
 
@@ -295,7 +295,7 @@ def test_average_with_threshold():
     expected = pd.Series(
         [7.0] * 7, index=pd.date_range("1975-05-09 03:00:00", "1975-05-09 09:00:00", freq="1h"), name="constant_ts"
     )
-    test_timeseries = average(test_data, threshold=4.0, condition="Above")
+    test_timeseries = sample_average(test_data, threshold=4.0, condition="Above")
 
     tm.assert_series_equal(test_timeseries, expected)
 
@@ -341,6 +341,6 @@ def test_average_uneven_sampling():
         name="constant_ts",
     )
 
-    test_timeseries = average(test_data)
+    test_timeseries = sample_average(test_data)
 
     tm.assert_series_equal(test_timeseries, expected)
