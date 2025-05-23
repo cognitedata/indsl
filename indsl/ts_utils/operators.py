@@ -243,7 +243,7 @@ def sample_average(
     threshold: Optional[float] = None,
     condition: Literal["Above", "Below", "No threshold"] = "No threshold",
 ) -> pd.Series:
-    """Sample average of a time series.
+    """Sample average.
 
     Sample average computes the sum of datapoint values in the currently displayed time window and divides it by the number of datapoints within that time window, ignoring the time distribution of the datapoints.
     The result is a constant time series with the same timestamps as the input time series, where each value is equal to the sample average of the input time series.
