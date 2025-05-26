@@ -253,7 +253,7 @@ def sample_average(
         threshold: Threshold.
             The threshold value to use for filtering the data. Defaults to None unless otherwise specified.
         condition: Condition.
-            The condition to use for filtering the data. If "above", only values greater than or equal to the threshold will be considered, and vice versa for "below".
+            The condition to use for filtering the data. If "Above", only values greater than or equal to the threshold will be considered, and vice versa for "Below".
             Defaults to "No threshold" unless otherwise specified.
 
     Returns:
