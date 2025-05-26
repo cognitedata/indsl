@@ -1,7 +1,7 @@
 # Copyright 2023 Cognite AS
 import operator as op
 
-from typing import List, Union
+from typing import List, Literal, Optional, Union
 
 import numpy as np
 
@@ -235,3 +235,36 @@ def arithmetic_mean_many(data: List[Union[pd.Series, float]], align_timesteps: b
     for new_ts in data:
         timeseries_sum = add(timeseries_sum, new_ts, align_timesteps)
     return op.truediv(timeseries_sum, n)
+
+
+@check_types
+def sample_average(
+    data: pd.Series,
+    threshold: Optional[float] = None,
+    condition: Literal["Above", "Below", "No threshold"] = "No threshold",
+) -> pd.Series:
+    """Sample average.
+
+    Sample average computes the sum of datapoint values in the currently displayed time window and divides it by the number of datapoints within that time window, ignoring the time distribution of the datapoints.
+    The result is a constant time series with the same timestamps as the input time series, where each value is equal to the sample average of the input time series.
+
+    Args:
+        data: Time series.
+        threshold: Threshold.
+            The threshold value to use for filtering the data. Defaults to None unless otherwise specified.
+        condition: Condition.
+            The condition to use for filtering the data. If "Above", only values greater than or equal to the threshold will be considered, and vice versa for "Below".
+            Defaults to "No threshold" unless otherwise specified.
+
+    Returns:
+        pandas.Series: Average of time series.
+
+    """
+    if condition == "Above" and threshold is not None:
+        data = data[data >= threshold]
+    elif condition == "Below" and threshold is not None:
+        data = data[data <= threshold]
+
+    average_value = data.mean()
+    average_ts = pd.Series(data=[average_value] * len(data), index=data.index, name="constant_ts")
+    return average_ts
