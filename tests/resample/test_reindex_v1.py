@@ -124,7 +124,7 @@ def test_reindex_length_bounded(method, kind):
 
 
 # test distribution of random data when re-indexing should be smaller
-@pytest.mark.parametrize("method", [(Method.LINEAR)])
+@pytest.mark.parametrize("method", [Method.LINEAR])
 @pytest.mark.parametrize("kind", list(Kind))
 def test_reindex_distribution(method, kind):
     periods1 = 200
