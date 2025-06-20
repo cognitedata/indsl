@@ -32,6 +32,23 @@ Examples of how to use the filter functions included in Cognite Charts.
     </div>
 
 
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Example of filtering to remove noise from time series data using the Wavelet filter. We use data from volumetric flow rate (m3/h) sensor with non-uniform sampling frequency measuring measuring flow into a compressor.">
+
+.. only:: html
+
+  .. image:: /auto_examples/filter/images/thumb/sphx_glr_plot_status_flag_filter_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_auto_examples_filter_plot_status_flag_filter.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Noise removal and trending with the Wavelet filter</div>
+    </div>
+
+
 .. thumbnail-parent-div-close
 
 .. raw:: html
@@ -43,4 +60,5 @@ Examples of how to use the filter functions included in Cognite Charts.
    :hidden:
 
    /auto_examples/filter/plot_wavelet_filter
+   /auto_examples/filter/plot_status_flag_filter
 

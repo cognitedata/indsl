@@ -1,12 +1,14 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Completeness score of time series &mdash; indsl 8.6.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+  <title>Completeness score of time series &mdash; indsl 8.7.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -14,15 +16,11 @@
 
   
     <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=09ed50dd"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=78381a84"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -140,11 +138,11 @@ by how much of the data is missing based on its median sampling frequency.</p>
 <p>A time series ranging from 1975/05/09 to 1975/05/20 with sampling frequency of 1 hours are taken and
 10%, 30% and 50% data are removed at random locations to create three new time series.
 The algorithm classifies the time series as good, medium, and poor based on the completeness score.</p>
-<img src="../../_images/sphx_glr_plot_completeness_001.png" srcset="../../_images/sphx_glr_plot_completeness_001.png" alt="Completeness Score of Timeseries" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<img src="../../_images/sphx_glr_plot_completeness_001.png" srcset="../../_images/sphx_glr_plot_completeness_001.png" alt="Completeness Score of Timeseries" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">indsl.data_quality.completeness</span> <span class="kn">import</span> <span class="n">completeness_score</span>
-<span class="kn">from</span> <span class="nn">indsl.signals.generator</span> <span class="kn">import</span> <span class="n">insert_data_gaps</span><span class="p">,</span> <span class="n">line</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">indsl.data_quality.completeness</span><span class="w"> </span><span class="kn">import</span> <span class="n">completeness_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">indsl.signals.generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">insert_data_gaps</span><span class="p">,</span> <span class="n">line</span>
 
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;1975/05/09&quot;</span><span class="p">)</span>

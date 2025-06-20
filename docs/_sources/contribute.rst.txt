@@ -105,7 +105,6 @@ before developing and algorithm are:
         * List of floats: ``List[float]``
         * Optional type: ``Optional[float]``
 
-
 .. note::
 
     We currently support python functions with ``pd.Series`` as the type of data input and outputs. This restriction
@@ -231,18 +230,41 @@ and properly displayed on the user interface and included in the technical docum
    in the InDSL documentation. If you are not sure how to document, refer to any algorithm in the
    ``indsl``/ folder for inspiration.
 
-2. Follow `Google Style  <https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings>`_ unless otherwise is stated in this guide.
+2. Follow `Google Style  <https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings>`_ unless specified otherwise in this guide.
 
-3. **Function name**: after the first `r"""`, write a short (1-5 words) descriptive name for your function with no punctuation at the end.
+3. Provide a detailed explanation of the algorithm or formula:
+
+.. code:: python
+   r"""Total head calculation.
+   ...
+   Steps:
+   1. Subtract the suction pressure from the discharge pressure to find the pressure difference.
+   2. Divide the result by the product of the gravitational constant (9.81 m/s²) and the fluid density.
+   3. The result is the total head (in meters) of the pump.
+   ...
+   """
+
+4. **Function name**: after the first `r"""`, write a short (1-5 words) descriptive name for your function with no punctuation at the end.
    This will be the function name displayed on the Charts user interface.
 
-4. Add an empty space line break after the title.
+5. Add an empty space line break after the title.
 
-5. Write a comprehensive description of your function. Take care to use full words to describe input arguments.
+6. Write a comprehensive description of your function. Take care to use full words to describe input arguments.
    For example, in code you might use ``poly_order`` as an argument but in the description use ``polynomial order``
    instead.
 
-6. **Parameter names and descriptions**: define all the function arguments after ``Args:`` by listing all arguments,
+7. If your function uses an external formula or concept that requires further explanation, 
+      you can link to external documentation for additional context. Here is how to add links:
+
+.. code:: python
+   r"""
+   ...
+   For more information on centrifugal pumps and head pressure, you can visit:
+   `Centrifugal Pump Theory <https://www.pumpfundamentals.com/>`_.
+   ...
+   """
+
+8. **Parameter names and descriptions**: define all the function arguments after ``Args:`` by listing all arguments,
    using tabs to differentiate each one and their respective description. Adhere as close as possible to the following formatting rules for each parameter name and description:
 
     * A parameter name must have 30 characters or less, excluding units defined within square brackets ``[]``
@@ -250,10 +272,41 @@ and properly displayed on the user interface and included in the technical docum
       a parameter name for something different to units might generate an error in the pre-commit tests.
     * Must end with a period punctuation mark ``.`` The punctuation after the parameter name will not be
       shown in the Charts user interface, but must be included in the docstrings.
-    * Use LaTeX language for typing formulas, if any, as follows:
+    * Use LaTeX language for typing formulas. Make sure to clearly describe the mathematical operations involved. 
+      This can be done as follows:
 
         * Use the command ``:math:`LaTeX formula``` for inline formulas
         * Use the command ``.. math::`` for full line equations
+      For example:
+
+      .. code:: python
+               r"""
+               ...
+               Formula for total head :math:`h` [m]:
+               .. math::
+                  h = \frac{P_{discharge} - P_{suction}}{9.81 \cdot \rho_L}\, \mathrm{m}
+               Where:
+               - :math:`P_{discharge}` is the discharge pressure [Pa]
+               - :math:`P_{suction}` is the suction pressure [Pa]
+               - :math:`\rho_L` is the density of the fluid [:math:`kg/m^3`].
+               ...
+               """
+      
+    * Each input parameter should be described in detail, including units, data types, 
+      and possible value ranges. Here's an example of how to describe parameters with clear limits:
+
+      .. code:: python
+         r"""
+         ...
+         Args: 
+
+            ...
+            
+            discharge_pressure: The discharge pressure of the pump in Pascals [Pa].
+            This value can either be a float or a time series (`pd.Series`). It must be positive and greater than the suction pressure.
+
+            ...
+            """
 
     * If a parameter requires specific units, these must be typed as follows:
 
@@ -307,23 +360,23 @@ of how to document a function :
     ...
     """
 
-7. Define the function output after ``Returns:`` as shown above.
+9. Define the function output after ``Returns:`` as shown above.
 
-8. The above are the minimal requirements to expose the documentation on the user interface and technical docs. But
+10. The above are the minimal requirements to expose the documentation on the user interface and technical docs. But
    feel free to add more `supported sections <https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html>`_.
 
-9. Go to the ``docs-source/source/`` folder and find the appropriate toolbox ``rst`` file (e.g. ``smooth.rst``)
+11. Go to the ``docs-source/source/`` folder and find the appropriate toolbox ``rst`` file (e.g. ``smooth.rst``)
 
-10. Add the a new entry with the name of your function as a subtitle, underlined with the symbol ``^``.
+12. Add the a new entry with the name of your function as a subtitle, underlined with the symbol ``^``.
 
-11. Add the sphinx directive ``.. autofunction::`` followed by the path to your new algorithm (see the example below).
+13. Add the sphinx directive ``.. autofunction::`` followed by the path to your new algorithm (see the example below).
     This will autogenerate the documentation from the code docstrings.
 
 .. prompt:: text
 
     .. autofunction:: indsl.smooth.sg
 
-11. If you have coded an example, add the sphinx directive ``.. topic:: Examples:`` and below it the sphinx reference
+14. If you have coded an example, add the sphinx directive ``.. topic:: Examples:`` and below it the sphinx reference
     to find the autogenerated material (see example below). The construct is as follows,
     ``sphx_glr_autoexamples_{toolbox_folder}_{example_code}.py``
 
