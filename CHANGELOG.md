@@ -1,3 +1,9 @@
+## v8.7.0 (2025-06-20)
+
+### Feat
+
+- Function to compute time series average as a constant time series ... (#411)
+
 ## v8.6.0 (2024-09-16)
 
 ### Feat
