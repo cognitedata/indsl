@@ -1,3 +1,19 @@
+## v8.7.0 (2025-06-20)
+
+### Feat
+
+- function to compute time series average as a constant time series ... (#411)
+- updating contributors list in Read me (#387)
+- updating contributors list (#386)
+
+### Fix
+
+- **deps**: update dependency scipy to ~1.15.0 (#400)
+- **deps**: update dependency scikit-image to ^0.25.0 (#390)
+- **deps**: update dependency numpy to v2.1.0 (#335)
+- **deps**: update dependency numpy to v2.1.0 (#329)
+- documentation fix (#323)
+
 ## v8.6.0 (2024-09-16)
 
 ### Feat
