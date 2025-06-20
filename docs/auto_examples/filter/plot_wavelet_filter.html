@@ -1,12 +1,14 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noise removal and trending with the Wavelet filter &mdash; indsl 8.6.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+  <title>Noise removal and trending with the Wavelet filter &mdash; indsl 8.7.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -14,19 +16,15 @@
 
   
     <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=09ed50dd"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=78381a84"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Forecasting Functions" href="../forecast/index.html" />
+    <link rel="next" title="Noise removal and trending with the Wavelet filter" href="plot_status_flag_filter.html" />
     <link rel="prev" title="Filter Functions" href="index.html" /> 
 </head>
 
@@ -75,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Filter Functions</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Noise removal and trending with the Wavelet filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_status_flag_filter.html">Noise removal and trending with the Wavelet filter</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
@@ -137,12 +136,12 @@ one will find that the lower numbered wavelets let more noise through while high
 smoother signal. The same applies to wavelet decomposition level. The lower the number the more similar
 the result will be to the original data. Zero or negative numbers will fail and typically one will not want to choose
 a value higher than 6.</p>
-<img src="../../_images/sphx_glr_plot_wavelet_filter_001.png" srcset="../../_images/sphx_glr_plot_wavelet_filter_001.png" alt="Noise removal effect using different type wavelets and wavelet decomposition levels" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_wavelet_filter_001.png" srcset="../../_images/sphx_glr_plot_wavelet_filter_001.png" alt="Noise removal effect using different type wavelets and wavelet decomposition levels" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">indsl.filter</span> <span class="kn">import</span> <span class="n">wavelet_filter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">indsl.filter</span><span class="w"> </span><span class="kn">import</span> <span class="n">wavelet_filter</span>
 
 
 <span class="n">base_path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span> <span class="k">else</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
@@ -197,7 +196,7 @@ a value higher than 6.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Filter Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../forecast/index.html" class="btn btn-neutral float-right" title="Forecasting Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="plot_status_flag_filter.html" class="btn btn-neutral float-right" title="Noise removal and trending with the Wavelet filter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

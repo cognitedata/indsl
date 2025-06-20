@@ -47,7 +47,7 @@ The input parameters used by the algorithm in this example are:
     *
 
       .. image-sg:: /auto_examples/detect/images/sphx_glr_plot_cusum_001.png
-         :alt: Detected changes in the data (threshold= 4, drift= 1.5): N changes =3, Cumulative sums of increasing and decreasing changes.
+         :alt: Detected changes in the data (threshold= 4, drift= 1.5): N changes =2, Cumulative sums of increasing and decreasing changes.
          :srcset: /auto_examples/detect/images/sphx_glr_plot_cusum_001.png
          :class: sphx-glr-multi-img
 
@@ -98,7 +98,7 @@ The input parameters used by the algorithm in this example are:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.532 seconds)
+   **Total running time of the script:** (0 minutes 0.518 seconds)
 
 
 .. _sphx_glr_download_auto_examples_detect_plot_cusum.py:
