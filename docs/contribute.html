@@ -1,12 +1,14 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contributing &mdash; indsl 8.6.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+  <title>Contributing &mdash; indsl 8.7.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -14,15 +16,11 @@
 
   
     <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=09ed50dd"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=78381a84"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -300,7 +298,7 @@ milestone, use <code class="docutils literal notranslate"><span class="pre">git<
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>add<span class="w"> </span>.</span>
 <span class="prompt1">git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Short but concise commit message with your changes&quot;</span></span>
 </pre></div></div><p>If your function is not valid for certain input values, an error <strong>must</strong> be thrown. For example,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">UserValueError</span><span class="p">(</span><span class="s2">&quot;Length cannot be negative.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">length</span><span class="o">**</span><span class="mi">2</span>
@@ -331,19 +329,29 @@ dependencies in the function itself, and not at the top of the file.</p>
 <h3>Document your algorithm<a class="headerlink" href="#document-your-algorithm" title="Link to this heading"></a></h3>
 <p>Charts compliant algorithms must follow a few simple docstrings formatting requirements for the information to be parsed
 and properly displayed on the user interface and included in the technical documentation.</p>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p>Use <cite>r”””raw triple double quotes”””</cite> docstrings to document your algorithm. This allows using backslashes in the
 documentation, hence LaTeX formulas are properly parsed and rendered. The documentation targets both data science
 developers and Charts users and the <cite>r”””</cite> allows us properly render formulas in the Charts UI and
 in the InDSL documentation. If you are not sure how to document, refer to any algorithm in the
 <code class="docutils literal notranslate"><span class="pre">indsl</span></code>/ folder for inspiration.</p></li>
-<li><p>Follow <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google Style</a> unless otherwise is stated in this guide.</p></li>
+<li><p>Follow <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google Style</a> unless specified otherwise in this guide.</p></li>
+<li><p>Provide a detailed explanation of the algorithm or formula:</p></li>
+</ol>
+<ol class="arabic simple" start="4">
 <li><p><strong>Function name</strong>: after the first <cite>r”””</cite>, write a short (1-5 words) descriptive name for your function with no punctuation at the end.
 This will be the function name displayed on the Charts user interface.</p></li>
 <li><p>Add an empty space line break after the title.</p></li>
 <li><p>Write a comprehensive description of your function. Take care to use full words to describe input arguments.
 For example, in code you might use <code class="docutils literal notranslate"><span class="pre">poly_order</span></code> as an argument but in the description use <code class="docutils literal notranslate"><span class="pre">polynomial</span> <span class="pre">order</span></code>
 instead.</p></li>
+<li><dl class="simple">
+<dt>If your function uses an external formula or concept that requires further explanation,</dt><dd><p>you can link to external documentation for additional context. Here is how to add links:</p>
+</dd>
+</dl>
+</li>
+</ol>
+<ol class="arabic" start="8">
 <li><p><strong>Parameter names and descriptions</strong>: define all the function arguments after <code class="docutils literal notranslate"><span class="pre">Args:</span></code> by listing all arguments,
 using tabs to differentiate each one and their respective description. Adhere as close as possible to the following formatting rules for each parameter name and description:</p>
 <blockquote>
@@ -353,14 +361,18 @@ using tabs to differentiate each one and their respective description. Adhere as
 a parameter name for something different to units might generate an error in the pre-commit tests.</p></li>
 <li><p>Must end with a period punctuation mark <code class="docutils literal notranslate"><span class="pre">.</span></code> The punctuation after the parameter name will not be
 shown in the Charts user interface, but must be included in the docstrings.</p></li>
-<li><p>Use LaTeX language for typing formulas, if any, as follows:</p>
+<li><p>Use LaTeX language for typing formulas. Make sure to clearly describe the mathematical operations involved.
+This can be done as follows:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Use the command <code class="docutils literal notranslate"><span class="pre">:math:`LaTeX</span> <span class="pre">formula`</span></code> for inline formulas</p></li>
 <li><p>Use the command <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">math::</span></code> for full line equations</p></li>
 </ul>
 </div></blockquote>
+<p>For example:</p>
 </li>
+<li><p>Each input parameter should be described in detail, including units, data types,
+and possible value ranges. Here’s an example of how to describe parameters with clear limits:</p></li>
 <li><p>If a parameter requires specific units, these must be typed as follows:</p>
 <blockquote>
 <div><ul class="simple">
@@ -416,10 +428,14 @@ of how to document a function :</p>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
+<ol class="arabic simple" start="9">
 <li><p>Define the function output after <code class="docutils literal notranslate"><span class="pre">Returns:</span></code> as shown above.</p></li>
-<li><p>The above are the minimal requirements to expose the documentation on the user interface and technical docs. But
-feel free to add more <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">supported sections</a>.</p></li>
+<li><p>The above are the minimal requirements to expose the documentation on the user interface and technical docs. But</p></li>
+</ol>
+<blockquote>
+<div><p>feel free to add more <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">supported sections</a>.</p>
+</div></blockquote>
+<ol class="arabic simple" start="11">
 <li><p>Go to the <code class="docutils literal notranslate"><span class="pre">docs-source/source/</span></code> folder and find the appropriate toolbox <code class="docutils literal notranslate"><span class="pre">rst</span></code> file (e.g. <code class="docutils literal notranslate"><span class="pre">smooth.rst</span></code>)</p></li>
 <li><p>Add the a new entry with the name of your function as a subtitle, underlined with the symbol <code class="docutils literal notranslate"><span class="pre">^</span></code>.</p></li>
 <li><p>Add the sphinx directive <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">autofunction::</span></code> followed by the path to your new algorithm (see the example below).
@@ -430,7 +446,7 @@ span.prompt2:before {
   content: " ";
 }
 </style><span class="prompt2">.. autofunction:: indsl.smooth.sg</span>
-</pre></div></div><ol class="arabic simple" start="11">
+</pre></div></div><ol class="arabic simple" start="14">
 <li><p>If you have coded an example, add the sphinx directive <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">topic::</span> <span class="pre">Examples:</span></code> and below it the sphinx reference
 to find the autogenerated material (see example below). The construct is as follows,
 <code class="docutils literal notranslate"><span class="pre">sphx_glr_autoexamples_{toolbox_folder}_{example_code}.py</span></code></p></li>
@@ -489,7 +505,7 @@ the <span class="xref std std-ref">sphx_glr_auto_examples</span> or one of the e
 <span class="prompt2"><span class="n">Description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">example</span> <span class="ow">and</span> <span class="n">what</span> <span class="n">feature</span> <span class="n">of</span> <span class="n">the</span> <span class="n">algorithm</span> <span class="n">I</span><span class="s1">&#39;m showing off.</span></span>
 <span class="prompt2"><span class="s2">&quot;&quot;&quot;</span></span>
 <span class="prompt2"></span>
-<span class="prompt2"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt2"><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span></span>
 <span class="prompt2"><span class="o">...</span></span>
 </pre></div></div><ol class="arabic simple" start="5">
 <li><p>Once you are done developing the example record your changes using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;path_to_file&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&lt;commit_message&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span> <span class="pre">origin</span> <span class="pre">&lt;your_branch_name&gt;</span></code></p></li>
@@ -576,17 +592,17 @@ A new function version is released through the following steps.</p>
 <li><p>If not already present, add the <code class="xref py py-func docutils literal notranslate"><span class="pre">versioning.register()</span></code> decorator to the function. Specifically,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: mymod_v1.py</span>
 <span class="nd">@check_types</span>
-<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
    <span class="c1"># old implementation</span>
 </pre></div>
 </div>
 <p>becomes:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: mymod_v1.py</span>
-<span class="kn">from</span> <span class="nn">indsl</span> <span class="kn">import</span> <span class="n">versioning</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">indsl</span><span class="w"> </span><span class="kn">import</span> <span class="n">versioning</span>
 
 <span class="nd">@versioning</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="n">deprecated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="nd">@check_types</span>
-<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
    <span class="c1"># old implementation</span>
 </pre></div>
 </div>
@@ -596,11 +612,11 @@ one non-deprecated version. For functions already in Charts, deprecating all ver
 </li>
 <li><p>Add the new implementation to <cite>mymod.py</cite> and import <cite>mymod_v1.py</cite>. The modified <cite>mymod.py</cite> file will look like:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: mymod.py</span>
-<span class="kn">from</span> <span class="nn">indsl</span> <span class="kn">import</span> <span class="n">versioning</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">mymod_v1</span>  <span class="c1"># noqa</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">indsl</span><span class="w"> </span><span class="kn">import</span> <span class="n">versioning</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">mymod_v1</span>  <span class="c1"># noqa</span>
 
 <span class="nd">@versioning</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span> <span class="n">changelog</span><span class="o">=</span><span class="s2">&quot;Describe here how the function changed compared to the previous version&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">myfunc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
    <span class="c1"># new implementation</span>
 </pre></div>
 </div>
