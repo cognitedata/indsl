@@ -127,7 +127,7 @@ def test_sequence_interpolation_return_user_value_error():
     """
     WHP_series = pd.Series(
         np.random.uniform(1, 80, size=100),
-        index=pd.date_range("2022-01-01 10:00:00", periods=100, freq="T"),
+        index=pd.date_range("2022-01-01 10:00:00", periods=100, freq="min"),
         name="value",
     )
     x_values = [0, 1, 2]
