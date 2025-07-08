@@ -89,7 +89,7 @@ def sequence_interpolation_2d(
         pd.Series: Output.
     """
     n_x, n_y, n_z = len(interp_x), len(interp_y), len(interp_z)
-    if n_x != n_y or n_x != n_z or n_y != n_z:
+    if n_x != n_y or n_x != n_z:
         raise UserValueError(
             f"There is a different number of x, y and z parameters. len(x)={n_x},len(y)={n_y},len(z)={n_z}"
         )
