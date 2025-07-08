@@ -123,7 +123,7 @@ def test_sequence_interpolation_2d_outside():
 @pytest.mark.core
 def test_sequence_interpolation_return_user_value_error():
     """
-    Test that the function raises a UserValueError when the number of parameters is not equal
+    Test that the function raises a UserValueError when the number of parameters is not equal or less than 2.
     """
     WHP_series = pd.Series(
         np.random.uniform(1, 80, size=100),
@@ -139,3 +139,12 @@ def test_sequence_interpolation_return_user_value_error():
 
     with pytest.raises(UserValueError):
         sequence_interpolation_2d(WHP_series, WHP_series, x_values, y_values, z_values)
+
+    with pytest.raises(UserValueError):
+        sequence_interpolation_2d(WHP_series, WHP_series, x_values, x_values, z_values)
+
+    with pytest.raises(UserValueError):
+        sequence_interpolation_2d(WHP_series, WHP_series, x_values, y_values, y_values)
+
+    with pytest.raises(UserValueError):
+        sequence_interpolation_2d(WHP_series, WHP_series, z_values, z_values, z_values)
