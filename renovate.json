@@ -5,7 +5,7 @@
     ":automergeMinor"
   ],
   "ignorePaths": [],
-  "stabilityDays": 31,
+  "minimumReleaseAge": "31 days",
   "labels": [
     "dependencies",
     "auto-merge"
