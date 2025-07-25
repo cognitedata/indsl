@@ -4015,6 +4015,7 @@ description = "Sphinx directive to add unselectable prompt"
 optional = false
 python-versions = ">=3.10"
 groups = ["docs"]
+markers = "python_version == \"3.10\""
 files = [
     {file = "sphinx_prompt-1.9.0-py3-none-any.whl", hash = "sha256:fd731446c03f043d1ff6df9f22414495b23067c67011cc21658ea8d36b3575fc"},
     {file = "sphinx_prompt-1.9.0.tar.gz", hash = "sha256:471b3c6d466dce780a9b167d9541865fd4e9a80ed46e31b06a52a0529ae995a1"},
@@ -4026,6 +4027,29 @@ docutils = "*"
 idna = "*"
 pygments = "*"
 Sphinx = ">=8.0.0,<9.0.0"
+urllib3 = "*"
+
+[[package]]
+name = "sphinx-prompt"
+version = "1.10.0"
+description = "Sphinx directive to add unselectable prompt"
+optional = false
+python-versions = ">=3.11"
+groups = ["docs"]
+markers = "python_version >= \"3.11\""
+files = [
+    {file = "sphinx_prompt-1.10.0-py3-none-any.whl", hash = "sha256:d62f7a1aa346225d30222a271dc78997031204a5f199ce5006c14ece0d94b217"},
+    {file = "sphinx_prompt-1.10.0.tar.gz", hash = "sha256:23dca4c07ade840c9e87089d79d3499040fa524b3c422941427454e215fdd111"},
+]
+
+[package.dependencies]
+certifi = "*"
+docutils = "*"
+idna = "*"
+jinja2 = "*"
+pygments = "*"
+requests = "2.32.4"
+Sphinx = "*"
 urllib3 = "*"
 
 [[package]]
