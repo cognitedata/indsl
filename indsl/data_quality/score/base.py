@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 
 import numpy as np
 import pandas as pd
@@ -126,7 +126,7 @@ class DataQualityScoreAnalyser(ABC):
         self.series = series
 
     @abstractmethod
-    def compute_score(self, analysis_start: pd.Timestamp, analysis_end: pd.Timestamp) -> Optional[DataQualityScore]:
+    def compute_score(self, analysis_start: pd.Timestamp, analysis_end: pd.Timestamp) -> DataQualityScore | None:
         """Compute data quality result.
 
         Args:
