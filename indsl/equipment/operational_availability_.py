@@ -7,7 +7,7 @@ from indsl.type_check import check_types
 
 
 @check_types
-def operational_availability(availability: pd.Series, output: Literal["Uptime", "Downtime"]) -> pd.Series:
+def operational_availability(availability: pd.Series, output: Literal["Uptime", "Downtime"] = "Uptime") -> pd.Series:
     r"""Operational availability.
 
     Calculate the operational availability of a system based on
