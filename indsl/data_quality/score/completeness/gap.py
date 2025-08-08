@@ -1,7 +1,7 @@
 # Copyright 2023 Cognite AS
 from __future__ import annotations
 
-from typing import List, Literal, Optional, Tuple, Union
+from typing import List, Literal, Tuple
 
 import pandas as pd
 
@@ -79,7 +79,7 @@ class GapDataQualityScoreAnalyser(DataQualityScoreAnalyser):
         analysis_start: pd.Timestamp,
         analysis_end: pd.Timestamp,
         gap_detection_method: Literal["iqr", "z_scores", "modified_z_scores", "threshold"] = "iqr",
-        **gap_detection_options: Optional[Union[pd.Timedelta, int, bool]],
+        **gap_detection_options: pd.Timedelta | int | bool | None,
     ) -> GapEventsList:
         """Calculate gap events.
 
@@ -110,7 +110,7 @@ class GapDataQualityScoreAnalyser(DataQualityScoreAnalyser):
         analysis_start: pd.Timestamp,
         analysis_end: pd.Timestamp,
         gap_detection_method: Literal["iqr", "z_scores", "modified_z_scores", "threshold"] = "iqr",
-        **gap_detection_options: Optional[Union[pd.Timedelta, int, bool]],
+        **gap_detection_options: pd.Timedelta | int | bool | None,
     ) -> DataQualityScore:
         """Compute the gap analysis score.
 

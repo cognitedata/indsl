@@ -1,7 +1,7 @@
 # Copyright 2023 Cognite AS
 from __future__ import annotations
 
-from typing import Literal, Optional, Union
+from typing import Literal
 
 import pandas as pd
 
@@ -45,7 +45,7 @@ class DensityDataQualityScoreAnalyser(DataQualityScoreAnalyser):
         analysis_start: pd.Timestamp,
         analysis_end: pd.Timestamp,
         low_density_detection_method: Literal["iqr", "z_scores", "modified_z_scores", "threshold"] = "iqr",
-        **low_density_detection_options: Optional[Union[pd.Timedelta, int, bool]],
+        **low_density_detection_options: pd.Timedelta | int | bool | None,
     ):
         method = self._low_density_detection_methods[low_density_detection_method]
         low_density_results = method(self.series, **low_density_detection_options)
@@ -63,7 +63,7 @@ class DensityDataQualityScoreAnalyser(DataQualityScoreAnalyser):
         analysis_start: pd.Timestamp,
         analysis_end: pd.Timestamp,
         low_density_detection_method: Literal["iqr", "z_scores", "modified_z_scores", "threshold"] = "iqr",
-        **low_density_detection_options: Optional[Union[pd.Timedelta, int, bool]],
+        **low_density_detection_options: pd.Timedelta | int | bool | None,
     ) -> DataQualityScore:
         """Compute the low density analysis score.
 
