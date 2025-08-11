@@ -1,4 +1,6 @@
 # Tests for the calculate_operational_availability function in the equipment module
+import inspect
+
 import pytest
 import pandas as pd
 from indsl.equipment.operational_availability_ import operational_availability
@@ -49,6 +51,15 @@ from indsl.equipment.operational_availability_ import operational_availability
         ),
     ],
 )
+@pytest.mark.core
 def test_operational_availability(availability, output, expected):
     result = operational_availability(availability=availability, output=output)
     pd.testing.assert_series_equal(result, expected)
+
+
+@pytest.mark.core
+def test_operational_availability_output_default_is_provided():
+    """Test that the default value for 'output' parameter is provided."""
+    sig = inspect.signature(operational_availability)
+    param = sig.parameters["output"]
+    assert param.default is not inspect.Parameter.empty, "Default value for 'output' must be provided"
