@@ -44,7 +44,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx_gallery.gen_gallery",
     "sphinx.ext.todo",
-    "sphinx-prompt",
+    "sphinx_prompt",
     "myst_parser",
 ]
 
