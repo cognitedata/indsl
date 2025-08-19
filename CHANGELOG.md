@@ -1,3 +1,15 @@
+## v8.7.1 (2025-08-19)
+
+### Fix
+
+- **deps**: update dependency scipy to ~1.16.0 (#457)
+- add default value for output parameter in operational_availability (#461)
+- **deps**: update dependency pandas to v2.3.1 (#456)
+- **deps**: update dependency pandas to ~2.3.0 (#443)
+- improvements for sequence interpolation function for input parameter validation (#446)
+- **deps**: update dependency numpy to v2.2.6 (#438)
+- **deps**: update dependency numba to ^0.61.0 (#431)
+
 ## v8.7.0 (2025-06-20)
 
 ### Feat
