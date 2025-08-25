@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.514** total execution time for 1 file **from auto_examples/sustainability**:
+**00:00.520** total execution time for 1 file **from auto_examples/sustainability**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_sustainability_plot_cumulative_co2.py` (``plot_cumulative_co2.py``)
-     - 00:00.514
+     - 00:00.520
      - 0.0

@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.013** total execution time for 1 file **from auto_examples/versioning**:
+**00:00.010** total execution time for 1 file **from auto_examples/versioning**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_versioning_versioned_function.py` (``versioned_function.py``)
-     - 00:00.013
+     - 00:00.010
      - 0.0

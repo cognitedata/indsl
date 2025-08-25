@@ -38,19 +38,8 @@ subsequently processed with a smoother to refine the underlying signal if desire
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /Users/neringaaltanaite/Project/indsl/indsl/equipment/volume_vessel.py:32: IndslUserWarning: Couldn't import fluids.numba_vectorized: No module named 'fluids.vectorized'. Default to import fluids.vectorized.
-      warnings.warn(
 
 
-
-
-
-
-|
 
 .. code-block:: Python
 
@@ -94,7 +83,7 @@ subsequently processed with a smoother to refine the underlying signal if desire
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.671 seconds)
+   **Total running time of the script:** (0 minutes 46.141 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_extreme_outlier.py:
