@@ -1,8 +1,27 @@
+## v8.7.1 (2025-08-19)
+
+### Fix
+
+- **deps**: update dependency scipy to ~1.16.0 (#457)
+- add default value for output parameter in operational_availability (#461)
+- **deps**: update dependency pandas to v2.3.1 (#456)
+- **deps**: update dependency pandas to ~2.3.0 (#443)
+- improvements for sequence interpolation function for input parameter validation (#446)
+- **deps**: update dependency numpy to v2.2.6 (#438)
+- **deps**: update dependency numba to ^0.61.0 (#431)
+
 ## v8.7.0 (2025-06-20)
 
 ### Feat
 
 - Function to compute time series average as a constant time series ... (#411)
+
+### Fix
+
+- **deps**: update dependency scipy to ~1.15.0 (#400)
+- **deps**: update dependency scikit-image to ^0.25.0 (#390)
+- **deps**: update dependency numpy to v2.1.0 (#335)
+- **deps**: update dependency numpy to v2.1.0 (#329)
 
 ## v8.6.0 (2024-09-16)
 
