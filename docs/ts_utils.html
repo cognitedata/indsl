@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Basic time series functions &mdash; indsl 8.7.0 documentation</title>
+  <title>Basic time series functions &mdash; indsl 8.7.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=78381a84"></script>
+      <script src="_static/documentation_options.js?v=dc409e9d"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -614,7 +614,7 @@ Some examples are: ‘1s’, ‘5m’, ‘3h’ or ‘1d’, but combinations al
 
 <dl class="py function">
 <dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.window_index">
-<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">window_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">np_datetime_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">windowlength_in_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.window_index" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">window_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">np_datetime_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">windowlength_in_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.window_index" title="Link to this definition"></a></dt>
 <dd><p>Sliding window indexing.</p>
 <p>Returns a np.ndarray where the index corresponds to the starting point of a window,
 the value at the index corresponds to numerical indexes for the end of the window.
