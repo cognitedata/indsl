@@ -48,6 +48,9 @@ Using a time delta threshold
 
    * :ref:`sphx_glr_auto_examples_data_quality_plot_gaps_identification.py`
 
+Data Gaps Classification
+===================
+.. autofunction:: indsl.data_quality.gaps_classification
 
 Low data density
 ================
