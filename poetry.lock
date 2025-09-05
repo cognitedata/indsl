@@ -863,15 +863,20 @@ files = [
 
 [[package]]
 name = "docstring-parser"
-version = "0.15"
+version = "0.17.0"
 description = "Parse Python docstrings in reST, Google and Numpydoc format"
 optional = false
-python-versions = ">=3.6,<4.0"
+python-versions = ">=3.8"
 groups = ["dev", "docs"]
 files = [
-    {file = "docstring_parser-0.15-py3-none-any.whl", hash = "sha256:d1679b86250d269d06a99670924d6bce45adc00b08069dae8c47d98e89b667a9"},
-    {file = "docstring_parser-0.15.tar.gz", hash = "sha256:48ddc093e8b1865899956fcc03b03e66bb7240c310fac5af81814580c55bf682"},
+    {file = "docstring_parser-0.17.0-py3-none-any.whl", hash = "sha256:cf2569abd23dce8099b300f9b4fa8191e9582dda731fd533daf54c4551658708"},
+    {file = "docstring_parser-0.17.0.tar.gz", hash = "sha256:583de4a309722b3315439bb31d64ba3eebada841f2e2cee23b99df001434c912"},
 ]
+
+[package.extras]
+dev = ["pre-commit (>=2.16.0) ; python_version >= \"3.9\"", "pydoctor (>=25.4.0)", "pytest"]
+docs = ["pydoctor (>=25.4.0)"]
+test = ["pytest"]
 
 [[package]]
 name = "docstring-to-markdown"
@@ -4710,4 +4715,4 @@ stats = ["statsmodels"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.13"
-content-hash = "4d232392397939e66760f60eaeafa0bf0225c158e3383495081aa89d1d44870d"
+content-hash = "48aefd900c269ecb105d16f1007531bf98ff499c7c2bd1a3e7310f57f2b82f74"
