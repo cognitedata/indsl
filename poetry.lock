@@ -751,14 +751,8 @@ files = [
 ]
 
 [package.dependencies]
-numpy = [
-    {version = ">=1.26.2", markers = "python_version >= \"3.12\""},
-    {version = "*", markers = "python_version < \"3.12\""},
-]
-scipy = [
-    {version = ">=1.11.4", markers = "python_version >= \"3.12\""},
-    {version = "*", markers = "python_version < \"3.12\""},
-]
+numpy = {version = ">=1.26.2", markers = "python_version >= \"3.12\""}
+scipy = {version = ">=1.11.4", markers = "python_version >= \"3.12\""}
 typing-extensions = "*"
 
 [[package]]
@@ -1262,7 +1256,6 @@ prompt_toolkit = ">=3.0.41,<3.1.0"
 pygments = ">=2.4.0"
 stack_data = "*"
 traitlets = ">=5.13.0"
-typing_extensions = {version = ">=4.6", markers = "python_version < \"3.12\""}
 
 [package.extras]
 all = ["ipython[doc,matplotlib,test,test-extra]"]
@@ -1628,7 +1621,6 @@ jupyter-events = ">=0.11.0"
 jupyter-server-terminals = ">=0.4.4"
 nbconvert = ">=6.4.4"
 nbformat = ">=5.3.0"
-overrides = {version = ">=5.0", markers = "python_version < \"3.12\""}
 packaging = ">=22.0"
 prometheus-client = ">=0.9"
 pywinpty = {version = ">=2.0.1", markers = "os_name == \"nt\""}
@@ -2635,19 +2627,6 @@ files = [
 ]
 
 [[package]]
-name = "overrides"
-version = "7.7.0"
-description = "A decorator to automatically detect mismatch when overriding a method."
-optional = false
-python-versions = ">=3.6"
-groups = ["dev", "docs"]
-markers = "python_version == \"3.11\""
-files = [
-    {file = "overrides-7.7.0-py3-none-any.whl", hash = "sha256:c7ed9d062f78b8e4c1a7b70bd8796b35ead4d9f510227ef9c5dc7626c60d7e49"},
-    {file = "overrides-7.7.0.tar.gz", hash = "sha256:55158fa3d93b98cc75299b1e67078ad9003ca27945c76162c1c0766d6f91820a"},
-]
-
-[[package]]
 name = "packaging"
 version = "23.2"
 description = "Core utilities for Python packages"
@@ -2712,10 +2691,7 @@ files = [
 ]
 
 [package.dependencies]
-numpy = [
-    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
-    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
-]
+numpy = {version = ">=1.26.0", markers = "python_version >= \"3.12\""}
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
 tzdata = ">=2022.7"
@@ -4670,5 +4646,5 @@ stats = ["statsmodels"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.11,<3.13"
-content-hash = "48aefd900c269ecb105d16f1007531bf98ff499c7c2bd1a3e7310f57f2b82f74"
+python-versions = ">=3.12,<3.14"
+content-hash = "813132f0ab91548c0ff71f5bc722e69b0b42759b785ddf1a691e3c1a6aa8827d"

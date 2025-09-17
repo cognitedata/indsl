@@ -12,7 +12,7 @@ classifiers = ["Topic :: Scientific/Engineering"]
 
 [tool.poetry.dependencies]
 # Core dependencies
-python = ">=3.11,<3.13"
+python = ">=3.12,<3.14"
 scipy = "~1.16.0"
 pandas = "~2.3.0"
 typeguard = "^4.0.0"
@@ -131,7 +131,7 @@ version_files = ["pyproject.toml:version"]
 
 [tool.pyright]
 # Added just so pylance in vscode doesn't complain too much
-pythonVersion = "3.12"
+pythonVersion = "3.13"
 typeCheckingMode = "basic"
 include = ["indsl"]
 ignore = ["tests"]
