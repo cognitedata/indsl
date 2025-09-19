@@ -61,7 +61,7 @@ def test_rolling_stddev_different_time_windows(window_minutes, expected):
     data = pd.Series([1.0, 2.0, 3.0, 4.0, 5.0], index=idx)
 
     window = pd.Timedelta(minutes=window_minutes)
-    result = rolling_stddev(s, time_window=window, min_periods=1)
+    result = rolling_stddev(data, time_window=window, min_periods=1)
 
     np.testing.assert_allclose(
         result.values,
