@@ -45,5 +45,3 @@ _ = plt.setp(ax.get_xticklabels(), rotation=45)
 
 plt.tight_layout()
 plt.show()
-
-

@@ -61,5 +61,3 @@ def test_rolling_stddev_without_time_unit_raises():
 
     with pytest.raises(UserValueError):
         rolling_stddev(s, time_window=pd.Timedelta(15), min_periods=1)
-
-
