@@ -15,7 +15,7 @@ import pandas as pd
 
 from matplotlib.dates import DateFormatter
 
-from indsl.statistics.rolling_standard_deviation import rolling_stddev
+from indsl.ts_utils.rolling_stats import rolling_stddev
 
 
 # Generate a synthetic time series
