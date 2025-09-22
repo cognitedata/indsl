@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from indsl.statistics.rolling_standard_deviation import rolling_stddev
+from indsl.ts_utils.rolling_stats import rolling_stddev
 from indsl.exceptions import UserValueError
 
 
