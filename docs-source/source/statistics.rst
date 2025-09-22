@@ -29,11 +29,3 @@ Pearson correlation
 .. topic:: Examples:
 
    * :ref:`sphx_glr_auto_examples_statistics_plot_pearson_correlation.py`
-
-Rolling standard deviation
-^^^^^^^^^^^^^^^^^^^
-.. autofunction:: indsl.statistics.rolling_stddev
-
-.. topic:: Examples:
-
-   * :ref:`sphx_glr_auto_examples_statistics_plot_rolling_stddev.py`

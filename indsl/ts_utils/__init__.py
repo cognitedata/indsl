@@ -4,6 +4,7 @@ from .logarithmic_functions import exp, log, log2, log10, logn
 from .logical_operations import logical_check
 from .numerical_calculus import differentiate, sliding_window_integration, trapezoidal_integration
 from .operators import absolute, add, arithmetic_mean, div, inv, mod, mul, neg, power, sample_average, sqrt, sub
+from .rolling_stats import rolling_stddev
 from .trigonometric_functions import (
     arccos,
     arccosh,
@@ -113,6 +114,7 @@ __all__ = [
     "rad2deg",
     "remove",
     "replace",
+    "rolling_stddev",
     "round",
     "sample_average",
     "scalar_to_pandas_series",
@@ -197,4 +199,5 @@ __cognite__ = [
     "time_weighted_std",
     "timeseries_max",
     "timeseries_min",
+    "rolling_stddev",
 ]

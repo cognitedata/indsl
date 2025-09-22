@@ -8,12 +8,12 @@ Operators
 
 Array Operators
 ---------------
-.. automodule:: indsl.ts_utils.array_operators
+.. automodule:: indsl.ts_utils.array_operations
         :members:
 
 Logical Operators
 -----------------
-.. automodule:: indsl.ts_utils.logical_operators
+.. automodule:: indsl.ts_utils.logical_operations
         :members:
 
 Numerical calculus
@@ -35,3 +35,11 @@ Utility functions
 -----------------
 .. automodule:: indsl.ts_utils.utility_functions
         :members:
+
+Rolling standard deviation
+-----------------
+.. autofunction:: indsl.ts_utils.rolling_stats
+
+.. topic:: Examples:
+
+   * :ref:`sphx_glr_auto_examples_statistics_plot_rolling_stddev.py`
