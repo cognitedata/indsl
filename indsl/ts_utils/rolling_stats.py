@@ -59,7 +59,7 @@ def rolling_variance(
             Defaults to 1.
 
     Returns:
-        pandas.Series: Rolling variance of the input series.
+        pandas.Series: Time series.
 
     Raises:
         UserTypeError: data is not a time series
