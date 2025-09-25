@@ -38,3 +38,36 @@ def rolling_stddev(
     validate_timedelta_unit(time_window)
 
     return data.rolling(window=time_window, min_periods=min_periods).std().fillna(0)
+
+
+@check_types
+def rolling_variance(
+    data: pd.Series, time_window: pd.Timedelta = pd.Timedelta(minutes=15), min_periods: int = 1
+) -> pd.Series:
+    """Rolling variance.
+
+    Rolling variance computed for the time series values using a time-based window.
+
+    Args:
+        data: Time series.
+        time_window: Time window.
+            Length of the time period to compute the variance for. Defaults to 'minutes=15'.
+            Time unit should be in days, hours, minutes, or seconds. Accepted formats can be found here
+            https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html.
+        min_periods: Minimum samples.
+            Minimum number of observations required in the given time window (otherwise, the result is set to 0).
+            Defaults to 1.
+
+    Returns:
+        pandas.Series: Rolling variance of the input series.
+
+    Raises:
+        UserTypeError: data is not a time series
+        UserValueError: data is empty
+        UserTypeError: time_window is not of type pandas.Timedelta
+    """
+    validate_series_has_time_index(data)
+    validate_series_is_not_empty(data)
+    validate_timedelta_unit(time_window)
+
+    return data.rolling(window=time_window, min_periods=min_periods).var().fillna(0)
