@@ -103,5 +103,3 @@ def test_rolling_variance_different_input_frequencies(freq, expected):
         atol=1e-12,
         err_msg="rolling_variance should produce the expected series for different sampling frequencies",
     )
-
-
