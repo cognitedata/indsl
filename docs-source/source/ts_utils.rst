@@ -42,4 +42,12 @@ Rolling standard deviation
 
 .. topic:: Examples:
 
-   * :ref:`sphx_glr_auto_examples_statistics_plot_rolling_stddev.py`
+   * :ref:`sphx_glr_auto_examples_ts_utils_plot_rolling_stddev.py`
+
+Rolling variance
+----------------
+.. autofunction:: indsl.ts_utils.rolling_stats.rolling_variance
+
+.. topic:: Examples:
+
+   * :ref:`sphx_glr_auto_examples_ts_utils_plot_rolling_variance.py`
