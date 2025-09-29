@@ -1,4 +1,6 @@
 # Copyright 2025 Cognite AS
+from re import match
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -36,7 +38,7 @@ def test_rolling_variance_without_time_unit_raises_error():
     idx = pd.date_range("2022-01-01 00:00:00", periods=5, freq="1min")
     data = pd.Series(np.arange(5, dtype=float), index=idx)
 
-    with pytest.raises(UserValueError):
+    with pytest.raises(UserValueError, match="Unit of timedelta should be in days, hours, minutes or seconds"):
         rolling_variance(data, time_window=pd.Timedelta(15), min_periods=1)
 
 
