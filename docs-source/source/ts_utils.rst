@@ -37,7 +37,7 @@ Utility functions
         :members:
 
 Rolling standard deviation
------------------
+---------------------------
 .. autofunction:: indsl.ts_utils.rolling_stats.rolling_stddev
 
 .. topic:: Examples:

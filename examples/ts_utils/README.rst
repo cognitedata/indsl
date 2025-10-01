@@ -1,5 +1,5 @@
 Rolling standard deviation
-___________________
+___________________________
 
 Examples of rolling standard deviation function.
 

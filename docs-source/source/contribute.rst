@@ -235,6 +235,7 @@ and properly displayed on the user interface and included in the technical docum
 3. Provide a detailed explanation of the algorithm or formula:
 
 .. code:: python
+
    r"""Total head calculation.
    ...
    Steps:
@@ -257,6 +258,7 @@ and properly displayed on the user interface and included in the technical docum
       you can link to external documentation for additional context. Here is how to add links:
 
 .. code:: python
+
    r"""
    ...
    For more information on centrifugal pumps and head pressure, you can visit:
@@ -278,8 +280,8 @@ and properly displayed on the user interface and included in the technical docum
         * Use the command ``:math:`LaTeX formula``` for inline formulas
         * Use the command ``.. math::`` for full line equations
       For example:
-
       .. code:: python
+
                r"""
                ...
                Formula for total head :math:`h` [m]:
@@ -296,6 +298,7 @@ and properly displayed on the user interface and included in the technical docum
       and possible value ranges. Here's an example of how to describe parameters with clear limits:
 
       .. code:: python
+
          r"""
          ...
          Args: 
@@ -363,7 +366,7 @@ of how to document a function :
 9. Define the function output after ``Returns:`` as shown above.
 
 10. The above are the minimal requirements to expose the documentation on the user interface and technical docs. But
-   feel free to add more `supported sections <https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html>`_.
+    feel free to add more `supported sections <https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html>`_.
 
 11. Go to the ``docs-source/source/`` folder and find the appropriate toolbox ``rst`` file (e.g. ``smooth.rst``)
 
@@ -663,8 +666,9 @@ Contributing a free form algorithm
 It is possible to contribute to InDSL without the algorithm being exposed in the Charts application.
 In this case, the algorithm will only be available to users who install the InDSL python package.
 It  **should not** be included in the ``__cognite__`` attribute of the toolbox `__init__.py` file.
-Although the algorithm doesn't need to meet the requirements mentioned in the :ref:`previous <contributing-a-new-charts-compliant-algorithm>` section, it is still important to
- document it properly, add all necessary tests and potentially an example to the documentation.
+Although the algorithm doesn't need to meet the requirements mentioned in the
+:ref:`previous <contributing-a-new-charts-compliant-algorithm>` section, it is still important to document it properly,
+add all necessary tests and potentially an example to the documentation.
 
 Coding Style
 ============
