@@ -1,3 +1,10 @@
+## v8.8.0 (2025-09-30)
+
+### Feat
+
+- Implement rolling variance function (#496)
+- Implement standard deviation (#493)
+
 ## v8.7.1 (2025-08-19)
 
 ### Fix
