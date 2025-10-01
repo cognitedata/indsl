@@ -19,11 +19,9 @@ Validation functions
 
 .. automodule:: indsl.validations
     :members:
-    :no-index:
 
 Type checking
 -------------
 
-.. automodule:: indsl.validations
+.. automodule:: indsl.type_checking
     :members:
-    :no-index:
