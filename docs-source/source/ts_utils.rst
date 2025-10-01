@@ -20,6 +20,7 @@ Numerical calculus
 ------------------
 .. automodule:: indsl.ts_utils.numerical_calculus
         :members:
+        :no-index:
 
 Logarithmic functions
 ---------------------
