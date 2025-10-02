@@ -779,7 +779,7 @@ description = "Cubic spline approximation (smoothing)"
 optional = true
 python-versions = ">=3.10"
 groups = ["main"]
-markers = "extra == \"modeling\" or extra == \"stats\" or extra == \"all\""
+markers = "extra == \"modeling\" or extra == \"all\""
 files = [
     {file = "csaps-1.3.3-py3-none-any.whl", hash = "sha256:844d1d1258b9fc23a7be08d92bd6f5a33b7eac9c13a9df61569b2b033aa6ca44"},
     {file = "csaps-1.3.3.tar.gz", hash = "sha256:ac89c597c4e6b5d53d17acac1283453ea4eab23a7f4e31bf1db8cad0a10dec19"},
@@ -4912,9 +4912,9 @@ modeling = ["csaps", "kneed"]
 numba = ["numba"]
 plot = ["matplotlib"]
 scikit = ["scikit-image", "scikit-learn"]
-stats = ["csaps", "statsmodels"]
+stats = ["statsmodels"]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.14"
-content-hash = "8fb51888d0b890c860880509f4d5bd8b308ab41c0bdf6925b2daa991333a0864"
+content-hash = "559f2193634566695fc8f23b7ce58a860c045d86d32dd963f73da30ac94dca06"
