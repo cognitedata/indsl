@@ -15,6 +15,7 @@ the fluid obtained from lab tests. For this specific feature, the input fluid fi
 """
 import os
 import pickle as pkl
+import pandas as pd
 
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
@@ -23,8 +24,8 @@ from indsl.oil_and_gas.live_fluid_properties import retrieve_fluid_properties
 
 
 base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-df = pkl.load(open(os.path.join(base_path, "../../datasets/data/press_temp_bh&wh.pkl"), "rb"))
-pvt_data = pkl.load(open(os.path.join(base_path, "../../datasets/data/pvt_data.pkl"), "rb"))
+df = pd.read_pickle(open(os.path.join(base_path, "../../datasets/data/press_temp_bh&wh.pkl"), "rb"))
+pvt_data = pd.read_pickle(open(os.path.join(base_path, "../../datasets/data/pvt_data.pkl"), "rb"))
 
 pbh = df.iloc[:, 0] * 100000
 tbh = df.iloc[:, 1]
