@@ -126,7 +126,7 @@ jobs:
     - name: Install dependencies
       run: |
           pipx install poetry # setup-python action requires installing poetry with pipx
-          poetry install --with docs
+          poetry install --with docs --extras stats
     - name: Run Examples
       run: |
           cd docs-source
