@@ -1,4 +1,4 @@
 Synthetic Signal Generation
-___________________________
+_____________________________
 
 Examples of how to generate synthetic signals.

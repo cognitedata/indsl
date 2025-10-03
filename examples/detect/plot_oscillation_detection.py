@@ -1,9 +1,9 @@
 """
-===============================
+=====================================================
 Oscillation detection using linear predictive coding
-===============================
+=====================================================
 
-Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharma et. al. [#]_.
+Identifies if a signal contains one or more oscillatory components, based on a method described by Sharma et al.
 
 """
 

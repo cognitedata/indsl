@@ -376,12 +376,12 @@ def generate_step_series(flag: pd.Series) -> pd.Series:
         pd.Series: Time series
 
     Example:
-        Given 4 datapoints and a flag with values [0, 0, 1, 0]
+        Given 4 datapoints and a flag with values [0, 0, 1, 0]::
 
             data points: x-------x-------x-------x
             flag:        0       0       1       0
 
-        The resulting step series is represented as:
+        The resulting step series is represented as::
 
                                          x-------x
             step series: x---------------x
