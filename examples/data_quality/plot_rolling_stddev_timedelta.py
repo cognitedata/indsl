@@ -29,7 +29,11 @@ time_window = pd.Timedelta(minutes=5)
 stddev = rolling_stddev_timedelta(data, time_window=time_window).values
 
 # Calculate rolling mean of time delta
-mean = sma(data.index.to_series().diff().astype("timedelta64[s]").fillna(0), time_window="5min", min_periods=1)
+mean = sma(
+    data.index.to_series().diff().astype("timedelta64[ms]").dt.total_seconds().fillna(0) * 1000,
+    time_window=time_window,
+    min_periods=1,
+)
 
 # Plot standard deviation and mean
 fig, ax = plt.subplots(figsize=(15, 5))

@@ -1,4 +1,4 @@
 Reindex function
-________________
+__________________
 
 Example on how to reindex two time-series.

@@ -23,5 +23,5 @@ Validation functions
 Type checking
 -------------
 
-.. automodule:: indsl.type_checking
+.. automodule:: indsl.type_check
     :members:
