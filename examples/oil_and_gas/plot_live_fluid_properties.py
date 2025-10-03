@@ -23,9 +23,9 @@ import matplotlib.pyplot as plt
 from indsl.oil_and_gas.live_fluid_properties import retrieve_fluid_properties
 
 
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-df = pd.read_pickle(open(os.path.join(base_path, "../../datasets/data/press_temp_bh&wh.pkl"), "rb"))
-pvt_data = pd.read_pickle(open(os.path.join(base_path, "../../datasets/data/pvt_data.pkl"), "rb"))
+df = pd.read_csv("../../datasets/data/press_temp_bh&wh.csv")
+pvt_data = pd.read_csv("../../datasets/data/pvt_data.csv")
+pvt_data.attrs["file_type"] = "tab"
 
 pbh = df.iloc[:, 0] * 100000
 tbh = df.iloc[:, 1]
