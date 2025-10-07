@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Outlier detection with DBSCAN and spline regression &mdash; indsl 8.7.1 documentation</title>
+  <title>Outlier detection with DBSCAN and spline regression &mdash; indsl 8.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=dc409e9d"></script>
+      <script src="../../_static/documentation_options.js?v=ce2bb500"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
@@ -123,15 +124,15 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-statistics-plot-remove-outliers-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-statistics-plot-remove-outliers-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="outlier-detection-with-dbscan-and-spline-regression">
 <span id="sphx-glr-auto-examples-statistics-plot-remove-outliers-py"></span><h1>Outlier detection with DBSCAN and spline regression<a class="headerlink" href="#outlier-detection-with-dbscan-and-spline-regression" title="Link to this heading"></a></h1>
 <p>Example of outlier detection from time series data using DBSCAN and spline regression.
 We use data from a compressor suction pressure sensor. The data is in barg units and resampled to 1 minute granularity.
 The figure shows the data without outliers considering a time window of 40min.</p>
-<img src="../../_images/sphx_glr_plot_remove_outliers_001.png" srcset="../../_images/sphx_glr_plot_remove_outliers_001.png" alt="Remove outliers based on dbscan and csaps regression" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_remove_outliers_001.png" srcset="../../_images/sphx_glr_plot_remove_outliers_001.png" alt="Remove outliers based on dbscan and csaps regression" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -152,7 +153,7 @@ The figure shows the data without outliers considering a time window of 40min.</
 
 <span class="c1"># Remove the outliers with a time window of 40min and plot the results</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">remove_outliers</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time_window</span><span class="o">=</span><span class="s2">&quot;40min&quot;</span><span class="p">),</span>
+    <span class="n">remove_outliers</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">time_window</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s2">&quot;40min&quot;</span><span class="p">)),</span>
     <span class="s2">&quot;.&quot;</span><span class="p">,</span>
     <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;forestgreen&quot;</span><span class="p">,</span>
@@ -165,13 +166,16 @@ The figure shows the data without outliers considering a time window of 40min.</
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.232 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-statistics-plot-remove-outliers-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.276 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-statistics-plot-remove-outliers-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a60d9ea9b4abeafef8ae5b875251bef8/plot_remove_outliers.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_remove_outliers.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/685c3b23bb162110df6e3f329824ec40/plot_remove_outliers.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_remove_outliers.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/a60d9ea9b4abeafef8ae5b875251bef8/plot_remove_outliers.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_remove_outliers.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/54598d74f656bcad54054c007e438425/plot_remove_outliers.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_remove_outliers.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
