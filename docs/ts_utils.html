@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Basic time series functions &mdash; indsl 8.7.1 documentation</title>
+  <title>Basic time series functions &mdash; indsl 8.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dc409e9d"></script>
+      <script src="_static/documentation_options.js?v=ce2bb500"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -81,16 +81,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.operators.sub"><code class="docutils literal notranslate"><span class="pre">sub()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#array-operators">Array Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#logical-operators">Logical Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.numerical_calculus">Numerical calculus</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.differentiate"><code class="docutils literal notranslate"><span class="pre">differentiate()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.integrate_windows"><code class="docutils literal notranslate"><span class="pre">integrate_windows()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.sliding_window_integration"><code class="docutils literal notranslate"><span class="pre">sliding_window_integration()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.trapezoidal_integration"><code class="docutils literal notranslate"><span class="pre">trapezoidal_integration()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.numerical_calculus.window_index"><code class="docutils literal notranslate"><span class="pre">window_index()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.array_operations">Array Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.array_operations.time_weighted_mean"><code class="docutils literal notranslate"><span class="pre">time_weighted_mean()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.array_operations.time_weighted_std"><code class="docutils literal notranslate"><span class="pre">time_weighted_std()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.array_operations.timeseries_max"><code class="docutils literal notranslate"><span class="pre">timeseries_max()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.array_operations.timeseries_min"><code class="docutils literal notranslate"><span class="pre">timeseries_min()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.logical_operations">Logical Operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.logical_operations.logical_check"><code class="docutils literal notranslate"><span class="pre">logical_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#numerical-calculus">Numerical calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-indsl.ts_utils.logarithmic_functions">Logarithmic functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.logarithmic_functions.exp"><code class="docutils literal notranslate"><span class="pre">exp()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.logarithmic_functions.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
@@ -142,6 +144,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.utility_functions.z_scores_test"><code class="docutils literal notranslate"><span class="pre">z_scores_test()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#rolling-standard-deviation">Rolling standard deviation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.rolling_stats.rolling_stddev"><code class="docutils literal notranslate"><span class="pre">rolling_stddev()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rolling-variance">Rolling variance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.ts_utils.rolling_stats.rolling_variance"><code class="docutils literal notranslate"><span class="pre">rolling_variance()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -151,6 +161,7 @@
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
@@ -481,17 +492,116 @@ Automatically align time stamp  of input time series. Default is False.</p></li>
 </dd></dl>
 
 </section>
-<section id="array-operators">
-<h2>Array Operators<a class="headerlink" href="#array-operators" title="Link to this heading"></a></h2>
-</section>
-<section id="logical-operators">
-<h2>Logical Operators<a class="headerlink" href="#logical-operators" title="Link to this heading"></a></h2>
-</section>
-<section id="module-indsl.ts_utils.numerical_calculus">
-<span id="numerical-calculus"></span><h2>Numerical calculus<a class="headerlink" href="#module-indsl.ts_utils.numerical_calculus" title="Link to this heading"></a></h2>
+<section id="module-indsl.ts_utils.array_operations">
+<span id="array-operators"></span><h2>Array Operators<a class="headerlink" href="#module-indsl.ts_utils.array_operations" title="Link to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.differentiate">
-<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">differentiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.differentiate" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="indsl.ts_utils.array_operations.time_weighted_mean">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.array_operations.</span></span><span class="sig-name descname"><span class="pre">time_weighted_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.array_operations.time_weighted_mean" title="Link to this definition"></a></dt>
+<dd><p>Time weighted mean.</p>
+<p>The time weighted mean for a time series. The returned timeseries has a constant value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – Time series.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time weighted mean.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.array_operations.time_weighted_std">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.array_operations.</span></span><span class="sig-name descname"><span class="pre">time_weighted_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.array_operations.time_weighted_std" title="Link to this definition"></a></dt>
+<dd><p>Time weighted std.</p>
+<p>The time weighted standard deviation for a time series. The returned timeseries has a constant value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – Time series.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time weighted std.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.array_operations.timeseries_max">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.array_operations.</span></span><span class="sig-name descname"><span class="pre">timeseries_max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.array_operations.timeseries_max" title="Link to this definition"></a></dt>
+<dd><p>Max value for the time series.</p>
+<p>The returned timeseries has a constant value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – Time series.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Maxi value timeseries.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.array_operations.timeseries_min">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.array_operations.</span></span><span class="sig-name descname"><span class="pre">timeseries_min</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.array_operations.timeseries_min" title="Link to this definition"></a></dt>
+<dd><p>Min value for the time series.</p>
+<p>The returned timeseries has a constant value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – Time series.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Min value timeseries.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-indsl.ts_utils.logical_operations">
+<span id="logical-operators"></span><h2>Logical Operators<a class="headerlink" href="#module-indsl.ts_utils.logical_operations" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.logical_operations.logical_check">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.logical_operations.</span></span><span class="sig-name descname"><span class="pre">logical_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_false</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Equality'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Inequality'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Greater</span> <span class="pre">than'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Greater</span> <span class="pre">or</span> <span class="pre">equal</span> <span class="pre">than'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Smaller</span> <span class="pre">than'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Smaller</span> <span class="pre">or</span> <span class="pre">equal</span> <span class="pre">than'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Equality'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="headerlink" href="#indsl.ts_utils.logical_operations.logical_check" title="Link to this definition"></a></dt>
+<dd><p>Logical Check.</p>
+<p>Perform a logical check between time series/constants and returns the assigned time series/constants when the
+condition holds <cite>true</cite> or <cite>false</cite>. The logical check is performed following the format: <cite>Value 1</cite> {operator} <cite>Value 2</cite>,
+where the operator can be <em>Equality</em> (<cite>==</cite>), <em>Inequality</em> (<cite>!=</cite>), <em>Greater than</em> (<cite>&gt;</cite>), <em>Greater or equal than</em> (<cite>&gt;=</cite>),
+<em>Smaller than</em> (<cite>&lt;</cite>) or <em>Smaller or equal than</em> (<cite>&lt;=</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value_1</strong> – Value 1 - time series/number.</p></li>
+<li><p><strong>value_2</strong> – Value 2 - time series/number.</p></li>
+<li><p><strong>value_true</strong> – True - time series/number.</p></li>
+<li><p><strong>value_false</strong> – False - time series/number.</p></li>
+<li><p><strong>operation</strong> – Logical operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series/number.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[pd.Series, Number]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="numerical-calculus">
+<h2>Numerical calculus<a class="headerlink" href="#numerical-calculus" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">differentiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span></dt>
 <dd><p>Differentiation.</p>
 <p>Differentiation (finite difference) using a second-order accurate numerical method (central difference).
 Boundary points are computed using a first-order accurate method.</p>
@@ -514,8 +624,8 @@ Accepts integer followed by time unit string (ms|s|m|h|d). For example: ‘1s’
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.integrate_windows">
-<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">integrate_windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_to_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_windows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.integrate_windows" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">integrate_windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_to_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_windows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span></dt>
 <dd><p>Integrate the windows.</p>
 <p>Performs the integration, through the trapezoidal- or midpoint-method.
 Since all the from and to window indexes are available and all inputs are np.ndarrays, this is parallelized and sped up with numba.</p>
@@ -538,8 +648,8 @@ Since all the from and to window indexes are available and all inputs are np.nda
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.sliding_window_integration">
-<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">sliding_window_integration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:05:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrand_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.sliding_window_integration" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">sliding_window_integration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:05:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integrand_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span></dt>
 <dd><p>Sliding window integration.</p>
 <p>Siding window integration using trapezoidal rule.</p>
 <dl class="field-list simple">
@@ -589,8 +699,8 @@ Defaults to ‘1 hour’. Valid time units are:</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.trapezoidal_integration">
-<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">trapezoidal_integration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.trapezoidal_integration" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">trapezoidal_integration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">01:00:00')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span></dt>
 <dd><p>Integration.</p>
 <p>Cumulative integration using trapezoidal rule with an optional user-defined time unit.</p>
 <dl class="field-list simple">
@@ -613,8 +723,8 @@ Some examples are: ‘1s’, ‘5m’, ‘3h’ or ‘1d’, but combinations al
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="indsl.ts_utils.numerical_calculus.window_index">
-<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">window_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">np_datetime_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">windowlength_in_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#indsl.ts_utils.numerical_calculus.window_index" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.numerical_calculus.</span></span><span class="sig-name descname"><span class="pre">window_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">np_datetime_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">windowlength_in_ns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span></dt>
 <dd><p>Sliding window indexing.</p>
 <p>Returns a np.ndarray where the index corresponds to the starting point of a window,
 the value at the index corresponds to numerical indexes for the end of the window.
@@ -1137,21 +1247,17 @@ The length of the flag time series has to be the same as the original data point
 </dd>
 </dl>
 <p class="rubric">Example</p>
-<p>Given 4 datapoints and a flag with values [0, 0, 1, 0]</p>
-<blockquote>
-<div><p>data points: x——-x——-x——-x
-flag:        0       0       1       0</p>
-</div></blockquote>
+<p>Given 4 datapoints and a flag with values [0, 0, 1, 0]:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="n">points</span><span class="p">:</span> <span class="n">x</span><span class="o">-------</span><span class="n">x</span><span class="o">-------</span><span class="n">x</span><span class="o">-------</span><span class="n">x</span>
+<span class="n">flag</span><span class="p">:</span>        <span class="mi">0</span>       <span class="mi">0</span>       <span class="mi">1</span>       <span class="mi">0</span>
+</pre></div>
+</div>
 <p>The resulting step series is represented as:</p>
-<blockquote>
-<div><blockquote>
-<div><p>x——-x</p>
-</div></blockquote>
-<dl class="simple">
-<dt>step series: x—————x</dt><dd><p>0               01      1</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                             <span class="n">x</span><span class="o">-------</span><span class="n">x</span>
+<span class="n">step</span> <span class="n">series</span><span class="p">:</span> <span class="n">x</span><span class="o">---------------</span><span class="n">x</span>
+             <span class="mi">0</span>               <span class="mi">01</span>      <span class="mi">1</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -1606,6 +1712,93 @@ Options:
 </dl>
 </dd></dl>
 
+</section>
+<section id="rolling-standard-deviation">
+<h2>Rolling standard deviation<a class="headerlink" href="#rolling-standard-deviation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.rolling_stats.rolling_stddev">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.rolling_stats.</span></span><span class="sig-name descname"><span class="pre">rolling_stddev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:15:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.rolling_stats.rolling_stddev" title="Link to this definition"></a></dt>
+<dd><p>Rolling standard deviation.</p>
+<p>Rolling standard deviation computed for the time series values. This
+metric aims to measure the amount of variation or dispersion in the time series data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>time_window</strong> – Time window.
+Length of the time period to compute the standard deviation for. Defaults to ‘minutes=15’.
+Time unit should be in days, hours, minutes, or seconds. Accepted formats can be found here
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html">https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html</a>.</p></li>
+<li><p><strong>min_periods</strong> – Minimum samples.
+Minimum number of observations required in the given time window (otherwise, the result is set to 0).
+Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – data is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – data is empty</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – time_window is not of type pandas.Timedelta</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/ts_utils/plot_rolling_stddev.html#sphx-glr-auto-examples-ts-utils-plot-rolling-stddev-py"><span class="std std-ref">Rolling standard deviation</span></a></p></li>
+</ul>
+</aside>
+</section>
+<section id="rolling-variance">
+<h2>Rolling variance<a class="headerlink" href="#rolling-variance" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.ts_utils.rolling_stats.rolling_variance">
+<span class="sig-prename descclassname"><span class="pre">indsl.ts_utils.rolling_stats.</span></span><span class="sig-name descname"><span class="pre">rolling_variance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Timedelta('0</span> <span class="pre">days</span> <span class="pre">00:15:00')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_periods</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.ts_utils.rolling_stats.rolling_variance" title="Link to this definition"></a></dt>
+<dd><p>Rolling variance.</p>
+<p>Rolling variance computed for the time series values using a time-based window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Time series.</p></li>
+<li><p><strong>time_window</strong> – Time window.
+Length of the time period to compute the variance for. Defaults to ‘minutes=15’.
+Time unit should be in days, hours, minutes, or seconds. Accepted formats can be found here
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html">https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html</a>.</p></li>
+<li><p><strong>min_periods</strong> – Minimum samples.
+Minimum number of observations required in the given time window (otherwise, the result is set to 0).
+Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Time series.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – data is not a time series</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserValueError" title="indsl.exceptions.UserValueError"><strong>UserValueError</strong></a> – data is empty</p></li>
+<li><p><a class="reference internal" href="dev_tools.html#indsl.exceptions.UserTypeError" title="indsl.exceptions.UserTypeError"><strong>UserTypeError</strong></a> – time_window is not of type pandas.Timedelta</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<aside class="topic">
+<p class="topic-title">Examples:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="auto_examples/ts_utils/plot_rolling_variance.html#sphx-glr-auto-examples-ts-utils-plot-rolling-variance-py"><span class="std std-ref">Rolling variance</span></a></p></li>
+</ul>
+</aside>
 </section>
 </section>
 
