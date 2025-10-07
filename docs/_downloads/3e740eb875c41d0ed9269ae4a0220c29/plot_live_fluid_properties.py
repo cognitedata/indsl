@@ -13,18 +13,23 @@ the fluid obtained from lab tests. For this specific feature, the input fluid fi
 
 
 """
-import os
-import pickle as pkl
+
+import pandas as pd
 
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
-
+import pickle
 from indsl.oil_and_gas.live_fluid_properties import retrieve_fluid_properties
 
 
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-df = pkl.load(open(os.path.join(base_path, "../../datasets/data/press_temp_bh&wh.pkl"), "rb"))
-pvt_data = pkl.load(open(os.path.join(base_path, "../../datasets/data/pvt_data.pkl"), "rb"))
+df = pd.read_csv("../../datasets/data/press_temp_bh&wh.csv")
+
+# Create DataFrame with that as index
+index = pd.date_range(start="2025-01-01 18:00", periods=240, freq="h")
+df.index = index
+
+pvt_data = pd.read_csv("../../datasets/data/pvt_data.csv")
+pvt_data.attrs["file_type"] = "tab"
 
 pbh = df.iloc[:, 0] * 100000
 tbh = df.iloc[:, 1]
@@ -65,6 +70,6 @@ for idx, i in enumerate(data):
     ax[idx].set_title(i[0][0].name)
     ax[idx].legend()
     ax[idx].xaxis.set_major_locator(mdates.DayLocator(interval=3))
-
+    ax[idx].xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
 plt.tight_layout()
 plt.show()

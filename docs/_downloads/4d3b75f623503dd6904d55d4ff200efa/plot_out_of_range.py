@@ -31,7 +31,7 @@ detection works step by step.
 
    <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution" target="_blank">Student's-t distribution</a>
 
-.. |Numpy's| raw :: html
+.. |Numpy's| raw:: html
 
    <a href="https://numpy.org/doc/stable/index.html" target="_blank">Numpy's</a>
 """
