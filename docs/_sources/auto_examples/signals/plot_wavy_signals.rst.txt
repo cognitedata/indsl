@@ -11,16 +11,16 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_signals_plot_wavy_signals.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_auto_examples_signals_plot_wavy_signals.py:
 
 
-======================
+==========================
 Wavy signal generation
-======================
+==========================
 
 Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to generate a simple wave
 (wave 1 in the top left panel) or complex signals in a few steps. The figure below shows the generation of four
@@ -30,7 +30,7 @@ plus a linearly increasing signal.
 
 .. GENERATED FROM PYTHON SOURCE LINES 13-71
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -116,7 +116,7 @@ with a given signal-to-noise ratio (SNR).
 
 .. GENERATED FROM PYTHON SOURCE LINES 81-87
 
-.. code-block:: default
+.. code-block:: Python
 
 
     fig = plt.figure(tight_layout=True, figsize=[9, 6])
@@ -141,14 +141,14 @@ with a given signal-to-noise ratio (SNR).
 .. _addwavewithbrowniannoise:
 
 Add wave with brownian noise
----------------
+----------------------------
 
 We can use the :meth:`indsl.signals.noise.wave_with_brownian_noise` method.
 It produces a sinusoidal signal with brownian noise.
 
 .. GENERATED FROM PYTHON SOURCE LINES 95-100
 
-.. code-block:: default
+.. code-block:: Python
 
 
     fig = plt.figure(tight_layout=True, figsize=[9, 6])
@@ -170,7 +170,7 @@ It produces a sinusoidal signal with brownian noise.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.237 seconds)
+   **Total running time of the script:** (0 minutes 1.072 seconds)
 
 
 .. _sphx_glr_download_auto_examples_signals_plot_wavy_signals.py:
@@ -179,16 +179,17 @@ It produces a sinusoidal signal with brownian noise.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_wavy_signals.ipynb <plot_wavy_signals.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_wavy_signals.py <plot_wavy_signals.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: plot_wavy_signals.ipynb <plot_wavy_signals.ipynb>`
+      :download:`Download zipped: plot_wavy_signals.zip <plot_wavy_signals.zip>`
 
 
 .. only:: html
