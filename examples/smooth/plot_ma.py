@@ -32,13 +32,19 @@ _, axs = plt.subplots(1, 2, figsize=(15, 7))
 axs[0].plot(data, ".", markersize=2, label="RAW")
 time_window = "20min"
 axs[0].plot(
-    sma(data, time_window=time_window, min_periods=1), color="mediumblue", linewidth=2, label=f"SMA win={time_window}"
+    sma(data, time_window=pd.Timedelta(time_window), min_periods=1),
+    color="mediumblue",
+    linewidth=2,
+    label=f"SMA win={time_window}",
 )
 axs[0].plot(
-    lwma(data, time_window=time_window, min_periods=1), color="darkorange", linewidth=2, label=f"LWMA win={time_window}"
+    lwma(data, time_window=pd.Timedelta(time_window), min_periods=1),
+    color="darkorange",
+    linewidth=2,
+    label=f"LWMA win={time_window}",
 )
 axs[0].plot(
-    ewma(data, time_window=time_window, min_periods=1),
+    ewma(data, time_window=pd.Timedelta(time_window), min_periods=1),
     color="forestgreen",
     linewidth=2,
     label=f"EWMA win={time_window}",
@@ -51,13 +57,19 @@ _ = axs[0].legend(loc=2)
 axs[1].plot(data, ".", markersize=2, label="RAW")
 time_window = "50min"
 axs[1].plot(
-    sma(data, time_window=time_window, min_periods=1), color="mediumblue", linewidth=2, label=f"SMA win={time_window}"
+    sma(data, time_window=pd.Timedelta(time_window), min_periods=1),
+    color="mediumblue",
+    linewidth=2,
+    label=f"SMA win={time_window}",
 )
 axs[1].plot(
-    lwma(data, time_window=time_window, min_periods=1), color="darkorange", linewidth=2, label=f"LWMA win={time_window}"
+    lwma(data, time_window=pd.Timedelta(time_window), min_periods=1),
+    color="darkorange",
+    linewidth=2,
+    label=f"LWMA win={time_window}",
 )
 axs[1].plot(
-    ewma(data, time_window=time_window, min_periods=1),
+    ewma(data, time_window=pd.Timedelta(time_window), min_periods=1),
     color="forestgreen",
     linewidth=2,
     label=f"EWMA win={time_window}",

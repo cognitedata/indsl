@@ -20,8 +20,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from indsl.resample.reindex import reindex
-
+from indsl.resample.reindex import reindex_many
 
 # Load the pressure sensor data
 base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
@@ -40,7 +39,7 @@ raw_sensor2 = data[~msk]
 
 # Computing the correlation at now would result in only NaNs, because of non-matching indices.
 # Therefore, we need to re-index our time-series to a common index.
-re_sensor1, re_sensor2 = reindex(raw_sensor1, raw_sensor2, method="slinear")
+re_sensor1, re_sensor2 = reindex_many([raw_sensor1, raw_sensor2], method="slinear")
 
 # We can now check that both time-series have the same index
 assert (re_sensor1.index == re_sensor2.index).all()
