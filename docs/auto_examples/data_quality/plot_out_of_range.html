@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detect out of range outliers in sensor data &mdash; indsl 8.7.1 documentation</title>
+  <title>Detect out of range outliers in sensor data &mdash; indsl 8.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=dc409e9d"></script>
+      <script src="../../_static/documentation_options.js?v=ce2bb500"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
@@ -143,8 +144,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-out-of-range-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-out-of-range-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="detect-out-of-range-outliers-in-sensor-data">
 <span id="sphx-glr-auto-examples-data-quality-plot-out-of-range-py"></span><h1>Detect out of range outliers in sensor data<a class="headerlink" href="#detect-out-of-range-outliers-in-sensor-data" title="Link to this heading"></a></h1>
@@ -159,7 +160,7 @@ outliers.</p>
 lets start by generating a synthetic signal with those characteristics. We will use some of the signal generator
 functions in InDSL. We also need a few additional InDSL helper functions and algorithms to demonstrate how the outlier
 detection works step by step.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
@@ -186,7 +187,7 @@ time stamps, a fraction (35%) of the data is randomly removed to generate data g
 noise are inserted with a constant seed to have a reproducible behavior of the algorithm. The functions used
 to generate this signal are also part of InDSL: <code class="xref py py-func docutils literal notranslate"><span class="pre">insert_data_gaps()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">line()</span></code>, <code class="xref py py-func docutils literal notranslate"><span class="pre">perturb_timestamp()</span></code>,
 <code class="xref py py-func docutils literal notranslate"><span class="pre">sine_wave()</span></code>, and <code class="xref py py-func docutils literal notranslate"><span class="pre">white_noise()</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seed_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1975</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">89756</span><span class="p">]</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">seed_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1975</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">89756</span><span class="p">]</span>
 <span class="n">seed</span> <span class="o">=</span> <span class="n">seed_array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">non_linear_non_stationary_signal</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
@@ -219,11 +220,11 @@ to generate this signal are also part of InDSL: <code class="xref py py-func doc
 <section id="insert-extreme-outliers">
 <h2>Insert extreme outliers<a class="headerlink" href="#insert-extreme-outliers" title="Link to this heading"></a></h2>
 <p>This algorithm was tested with outliers generated at different locations. Five percent (5%) of the data points at
-random locations were replaced by outliers. To do so we used <a href="#id1"><span class="problematic" id="id2">|Numpy's|</span></a> random generator with different seeds.
+random locations were replaced by outliers. To do so we used <a href="https://numpy.org/doc/stable/index.html" target="_blank">Numpy's</a> random generator with different seeds.
 Feel free to use one of the 5 seeds below. The algorithm will work with 100% precision for these conditions and
 parameters used in the example. Or use another seed to generate a different signal and further test the
 limits of the algorithm.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 <span class="n">outlier_fraction</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># Fraction of the signal that will be replaced by outliers</span>
@@ -236,12 +237,16 @@ limits of the algorithm.</p>
 <span class="n">data_w_outliers</span><span class="p">[</span><span class="n">locations</span><span class="p">]</span> <span class="o">=</span> <span class="n">outliers</span>
 </pre></div>
 </div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/Users/neringaaltanaite/Project/indsl/examples/data_quality/plot_out_of_range.py:114: FutureWarning: Series.__setitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To set a value by position, use `ser.iloc[pos] = value`
+  data_w_outliers[locations] = outliers
+</pre></div>
+</div>
 <section id="initial-conditions-test-data-set">
 <h3>Initial conditions: test data set<a class="headerlink" href="#initial-conditions-test-data-set" title="Link to this heading"></a></h3>
 <p>The figure below shows the original data set and the outliers inserted. We took care to give the outliers random
 values, both far and close to the main trend. But far enough for these to be categorized as an extreme deviation from
 the expected behavior of the data.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original data set&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">outliers</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outliers inserted&quot;</span><span class="p">)</span>
@@ -262,7 +267,7 @@ requires a point-wise window length and a polynomial order. The bigger the windo
 used to estimate the local trend. With the polynomial order we influence how much we want the fit to follow the
 non-linear characteristics of the data (1, linear, &gt;1 increasingly non-linear fit). In this case we will use a window
 of 20 data points and 3rd order polynomial fit.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate the trend using Savitzky-Golay smoother</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate the trend using Savitzky-Golay smoother</span>
 <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.08</span>
 <span class="n">trend_pass01</span> <span class="o">=</span> <span class="n">sg</span><span class="p">(</span><span class="n">data_w_outliers</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">polyorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -280,7 +285,7 @@ Finally, since we aim to identify extreme outliers, a simple t-test does not suf
 Furthermore, we use a relaxation factor for the Bonferroni factor estimated from the data to adjust the sensitivity
 of the correction. Again, the Bonferroni Correction is explicitly calculated here but it is integrated into the
 <code class="xref py py-func docutils literal notranslate"><span class="pre">out_of_range()</span></code> function.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Statistical parameters</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Statistical parameters</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># Significance level or probability of rejecting the null hypothesis when true.</span>
 <span class="n">bc_relaxation</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">4</span>  <span class="c1"># Bonferroni relaxation coefficient.</span>
 
@@ -310,7 +315,7 @@ of the correction. Again, the Bonferroni Correction is explicitly calculated her
 for a few periods in the data where a larger number of outliers are grouped together. This causes strong nonlinear
 behavior in the estimated trend, and as a consequence some data points are miss-identified as outliers. But overall,
 a good enough baseline.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_w_outliers</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data with outliers&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trend_pass01</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Savitzky-Golay trend&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">outliers_pass01</span><span class="p">,</span> <span class="s2">&quot;wo&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">mew</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outliers detected&quot;</span><span class="p">)</span>
@@ -328,7 +333,7 @@ a good enough baseline.</p>
 <section id="last-iteration">
 <h2>Last iteration<a class="headerlink" href="#last-iteration" title="Link to this heading"></a></h2>
 <p>For the last iteration the outliers previously detected are removed and then use the SG method to estimate the main trend.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tolerance_pass02</span> <span class="o">=</span> <span class="mf">0.01</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">tolerance_pass02</span> <span class="o">=</span> <span class="mf">0.01</span>
 <span class="n">trend_pass02</span> <span class="o">=</span> <span class="n">sg</span><span class="p">(</span><span class="n">filtered_ts_pass01</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">polyorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># Filtering parameters</span>
@@ -358,7 +363,7 @@ inserted, and the outliers detected by the full method (<code class="xref py py-
 outliers are detected. This “perfect” performance will not always be the case but this function provides a very
 robust option for detecting and removing out of range or extreme outliers in <em>non-linear,
 non-stationary sensor data</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_number = 3</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sphinx_gallery_thumbnail_number = 3</span>
 <span class="n">fig3</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fig_size</span><span class="p">)</span>
 
 <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_w_outliers</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data with outliers&quot;</span><span class="p">)</span>
@@ -383,13 +388,16 @@ non-stationary sensor data</em>.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_out_of_range_003.png" srcset="../../_images/sphx_glr_plot_out_of_range_003.png" alt="Final Iteration: EMD-HHT trend" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.293 seconds)</p>
+<img src="../../_images/sphx_glr_plot_out_of_range_003.png" srcset="../../_images/sphx_glr_plot_out_of_range_003.png" alt="Final Iteration: EMD-HHT trend" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.758 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-out-of-range-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/28ef7ee38b969d13a1850ed376c1b57a/plot_out_of_range.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_out_of_range.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/4d3b75f623503dd6904d55d4ff200efa/plot_out_of_range.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_out_of_range.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/28ef7ee38b969d13a1850ed376c1b57a/plot_out_of_range.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_out_of_range.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/0da62d31c9a128f1b8479f0eea07c8d5/plot_out_of_range.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_out_of_range.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>

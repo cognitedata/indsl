@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Checking for decreasing values in a timeseries &mdash; indsl 8.7.1 documentation</title>
+  <title>Checking for decreasing values in a timeseries &mdash; indsl 8.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=dc409e9d"></script>
+      <script src="../../_static/documentation_options.js?v=ce2bb500"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -82,6 +82,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
@@ -127,8 +128,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-value-decrease-check-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-value-decrease-check-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="checking-for-decreasing-values-in-a-timeseries">
 <span id="sphx-glr-auto-examples-data-quality-plot-value-decrease-check-py"></span><h1>Checking for decreasing values in a timeseries<a class="headerlink" href="#checking-for-decreasing-values-in-a-timeseries" title="Link to this heading"></a></h1>
@@ -146,7 +147,7 @@ the value it had before the value drop).</p>
 <li><p>Using a threshold of 4.1; indicator will be set to 1 if data drop is higher than 4.1</p></li>
 </ol>
 </div></blockquote>
-<img src="../../_images/sphx_glr_plot_value_decrease_check_001.png" srcset="../../_images/sphx_glr_plot_value_decrease_check_001.png" alt="Indicator for decrease in time series values, Time series values, Indicator with default threshold 0.0, Indicator with threshold 4.1" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_value_decrease_check_001.png" srcset="../../_images/sphx_glr_plot_value_decrease_check_001.png" alt="Indicator for decrease in time series values, Time series values, Indicator with default threshold 0.0, Indicator with threshold 4.1" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -180,13 +181,16 @@ the value it had before the value drop).</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  34.568 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.411 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-value-decrease-check-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7483b2a7daef03bd038b4f00e1ba74cc/plot_value_decrease_check.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_value_decrease_check.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/34657b2730a9debedd8c93b394098c23/plot_value_decrease_check.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_value_decrease_check.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/7483b2a7daef03bd038b4f00e1ba74cc/plot_value_decrease_check.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_value_decrease_check.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/978a7605de69108182a1e83ff1745faf/plot_value_decrease_check.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_value_decrease_check.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
