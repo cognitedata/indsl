@@ -78,6 +78,7 @@ To install all the extra functionality, run:
    auto_examples/forecast/index
    auto_examples/numerical_calculus/index
    auto_examples/oil_and_gas/index
+   auto_examples/reindex/index
    auto_examples/resample/index
    auto_examples/signals/index
    auto_examples/smooth/index
