@@ -83,13 +83,13 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_live_fluid_properties.html">Calculate fluid properties given pressure and temperature</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html#rolling-variance">Rolling variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -127,15 +127,15 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-oil-and-gas-plot-gas-density-calcs-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-oil-and-gas-plot-gas-density-calcs-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="calculation-of-gas-density">
 <span id="sphx-glr-auto-examples-oil-and-gas-plot-gas-density-calcs-py"></span><h1>Calculation of gas density<a class="headerlink" href="#calculation-of-gas-density" title="Link to this heading"></a></h1>
 <p>Gas density is calculated using real gas equations from input pressure, temperature and specific gravity of gas.
 The compressibility factor is calculated explicitly (Beggs and Brill - 1973) for the pressure and temperature combinations.
 The plot shows the variation of the gas density for methane gas (SG = 0.55) with varying temperature and pressure.</p>
-<img src="../../_images/sphx_glr_plot_gas_density_calcs_001.png" srcset="../../_images/sphx_glr_plot_gas_density_calcs_001.png" alt="plot gas density calcs" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_gas_density_calcs_001.png" srcset="../../_images/sphx_glr_plot_gas_density_calcs_001.png" alt="plot gas density calcs" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -181,13 +181,16 @@ The plot shows the variation of the gas density for methane gas (SG = 0.55) with
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.385 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-oil-and-gas-plot-gas-density-calcs-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.178 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-oil-and-gas-plot-gas-density-calcs-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/6f38c94b5096fe6ad6640b730ce91e8f/plot_gas_density_calcs.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_gas_density_calcs.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/bab3c5ba1356f3b3cf62c0f2df44828a/plot_gas_density_calcs.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_gas_density_calcs.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/6f38c94b5096fe6ad6640b730ce91e8f/plot_gas_density_calcs.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_gas_density_calcs.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/7ddea655938594e026e6e27e0225d191/plot_gas_density_calcs.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_gas_density_calcs.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>

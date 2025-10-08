@@ -76,6 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Synthetic Signal Generation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Inserting gaps in a time series</a></li>
@@ -86,8 +87,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html#rolling-variance">Rolling variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -125,8 +125,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-signals-plot-synthetic-gaps-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-signals-plot-synthetic-gaps-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="inserting-gaps-in-a-time-series">
 <span id="sphx-glr-auto-examples-signals-plot-synthetic-gaps-py"></span><h1>Inserting gaps in a time series<a class="headerlink" href="#inserting-gaps-in-a-time-series" title="Link to this heading"></a></h1>
@@ -139,7 +139,7 @@ and remove 35% of the data using three different methods:</p>
 <li><p>Multiple: create a given number of gaps at random locations and of random sizes</p></li>
 </ol>
 </div></blockquote>
-<img src="../../_images/sphx_glr_plot_synthetic_gaps_001.png" srcset="../../_images/sphx_glr_plot_synthetic_gaps_001.png" alt="Random gaps, Single gap, Four non-overlapping gaps with random sizes and locations" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<img src="../../_images/sphx_glr_plot_synthetic_gaps_001.png" srcset="../../_images/sphx_glr_plot_synthetic_gaps_001.png" alt="Random gaps, Single gap, Four non-overlapping gaps with random sizes and locations" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">indsl.signals.generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">insert_data_gaps</span><span class="p">,</span> <span class="n">line</span>
@@ -177,13 +177,16 @@ and remove 35% of the data using three different methods:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.186 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-signals-plot-synthetic-gaps-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.341 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-signals-plot-synthetic-gaps-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/3e3cc749d33965dfc837a988e442ac06/plot_synthetic_gaps.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_synthetic_gaps.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/08e8692aea1e7d4595a91d29e9dd2b16/plot_synthetic_gaps.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_synthetic_gaps.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/3e3cc749d33965dfc837a988e442ac06/plot_synthetic_gaps.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_synthetic_gaps.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a84854ae436ad6d116fec7804d19faad/plot_synthetic_gaps.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_synthetic_gaps.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
