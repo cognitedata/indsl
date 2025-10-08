@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.141** total execution time for 2 files **from auto_examples/smooth**:
+**00:01.607** total execution time for 2 files **from auto_examples/smooth**:
 
 .. container::
 
@@ -33,7 +33,7 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_smooth_plot_ma.py` (``plot_ma.py``)
-     - 00:01.141
+     - 00:01.607
      - 0.0
    * - :ref:`sphx_glr_auto_examples_smooth_plot_sg_smooth.py` (``plot_sg_smooth.py``)
      - 00:00.000

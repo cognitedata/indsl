@@ -108,7 +108,7 @@ the fluid obtained from lab tests. For this specific feature, the input fluid fi
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.796 seconds)
+   **Total running time of the script:** (0 minutes 0.838 seconds)
 
 
 .. _sphx_glr_download_auto_examples_oil_and_gas_plot_live_fluid_properties.py:

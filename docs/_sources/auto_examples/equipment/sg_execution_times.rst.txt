@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.344** total execution time for 3 files **from auto_examples/equipment**:
+**00:00.349** total execution time for 3 files **from auto_examples/equipment**:
 
 .. container::
 
@@ -33,7 +33,7 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_equipment_plot_recycle_valve_power_loss.py` (``plot_recycle_valve_power_loss.py``)
-     - 00:00.344
+     - 00:00.349
      - 0.0
    * - :ref:`sphx_glr_auto_examples_equipment_plot_operational_availability.py` (``plot_operational_availability.py``)
      - 00:00.000

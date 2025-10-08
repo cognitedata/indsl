@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.632** total execution time for 4 files **from auto_examples/statistics**:
+**00:01.704** total execution time for 4 files **from auto_examples/statistics**:
 
 .. container::
 
@@ -33,10 +33,10 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_statistics_plot_remove_outliers.py` (``plot_remove_outliers.py``)
-     - 00:01.276
+     - 00:01.188
      - 0.0
    * - :ref:`sphx_glr_auto_examples_statistics_plot_pearson_correlation.py` (``plot_pearson_correlation.py``)
-     - 00:00.356
+     - 00:00.515
      - 0.0
    * - :ref:`sphx_glr_auto_examples_statistics_plot_detect_outliers_001.py` (``plot_detect_outliers_001.py``)
      - 00:00.000

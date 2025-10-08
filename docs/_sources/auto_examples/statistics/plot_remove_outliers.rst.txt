@@ -78,7 +78,7 @@ The figure shows the data without outliers considering a time window of 40min.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.276 seconds)
+   **Total running time of the script:** (0 minutes 1.188 seconds)
 
 
 .. _sphx_glr_download_auto_examples_statistics_plot_remove_outliers.py:
