@@ -86,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
@@ -129,8 +130,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-completeness-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-completeness-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="completeness-score-of-time-series">
 <span id="sphx-glr-auto-examples-data-quality-plot-completeness-py"></span><h1>Completeness score of time series<a class="headerlink" href="#completeness-score-of-time-series" title="Link to this heading"></a></h1>
@@ -140,7 +141,7 @@ by how much of the data is missing based on its median sampling frequency.</p>
 <p>A time series ranging from 1975/05/09 to 1975/05/20 with sampling frequency of 1 hours are taken and
 10%, 30% and 50% data are removed at random locations to create three new time series.
 The algorithm classifies the time series as good, medium, and poor based on the completeness score.</p>
-<img src="../../_images/sphx_glr_plot_completeness_001.png" srcset="../../_images/sphx_glr_plot_completeness_001.png" alt="Completeness Score of Timeseries" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<img src="../../_images/sphx_glr_plot_completeness_001.png" srcset="../../_images/sphx_glr_plot_completeness_001.png" alt="Completeness Score of Timeseries" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">indsl.data_quality.completeness</span><span class="w"> </span><span class="kn">import</span> <span class="n">completeness_score</span>
@@ -200,13 +201,16 @@ The algorithm classifies the time series as good, medium, and poor based on the 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.113 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-completeness-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.219 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-completeness-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/0eba81538109d1a7e204f2962ff713db/plot_completeness.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_completeness.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a597da56d1b5a491fcf153195af1a985/plot_completeness.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_completeness.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/0eba81538109d1a7e204f2962ff713db/plot_completeness.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_completeness.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/3bb232f06ae8142df21e0388935b70f5/plot_completeness.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_completeness.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>

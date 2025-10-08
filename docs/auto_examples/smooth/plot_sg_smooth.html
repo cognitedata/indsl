@@ -76,6 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Smoothing Functions</a><ul class="current">
@@ -123,8 +124,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-smooth-plot-sg-smooth-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-smooth-plot-sg-smooth-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="data-smoothing-with-the-savitzky-golay-filter">
 <span id="sphx-glr-auto-examples-smooth-plot-sg-smooth-py"></span><h1>Data smoothing with the Savitzky-Golay filter<a class="headerlink" href="#data-smoothing-with-the-savitzky-golay-filter" title="Link to this heading"></a></h1>
@@ -135,7 +136,7 @@ a compressor.</p>
 and some of the noise (data fluctuations). Increasing the window size while keeping a linear fit results in a stronger
 smoothing of the data. However, increasing the order of the fit to 5 (non-linear fit) produced a nice and smooth
 trend while allowing the larger fluctuation through.</p>
-<img src="../../_images/sphx_glr_plot_sg_smooth_001.png" srcset="../../_images/sphx_glr_plot_sg_smooth_001.png" alt="Noise removal effect from window size and polynomial order" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_sg_smooth_001.png" srcset="../../_images/sphx_glr_plot_sg_smooth_001.png" alt="Noise removal effect from window size and polynomial order" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -164,13 +165,16 @@ trend while allowing the larger fluctuation through.</p>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.156 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-smooth-plot-sg-smooth-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.150 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-smooth-plot-sg-smooth-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/2aa410634c7f42a45be70112bd1737de/plot_sg_smooth.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_sg_smooth.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/4529a9cd54dcf9cbb88911d884b68a08/plot_sg_smooth.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_sg_smooth.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/2aa410634c7f42a45be70112bd1737de/plot_sg_smooth.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_sg_smooth.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/f3f5ac0e3295841d1b1c8c926fcac8fd/plot_sg_smooth.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_sg_smooth.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>

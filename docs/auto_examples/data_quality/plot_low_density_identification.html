@@ -86,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
@@ -129,8 +130,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-low-density-identification-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-low-density-identification-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="sphx-glr-auto-examples-data-quality-plot-low-density-identification-py">
 <span id="identifying-low-density-periods"></span><h1>Identifying low density periods<a class="headerlink" href="#sphx-glr-auto-examples-data-quality-plot-low-density-identification-py" title="Link to this heading"></a></h1>
@@ -152,7 +153,7 @@ random locations. The plots show the different characteristics of the low densit
 <p>Low density identification using the modified Z-Score method has been plotted at two different time windows,
 one for 30 minutes and the other for 6 hours. The plot for 30-minute time window is a straight line because modified z-score
 method measures how much an outlier differs from a typical score based on the median.</p>
-<img src="../../_images/sphx_glr_plot_low_density_identification_001.png" srcset="../../_images/sphx_glr_plot_low_density_identification_001.png" alt="Low density identification applied to a time series with five gaps and 35% removal, Z-scores - time window of 30 minutes, Modified Z-Scores - time window of 30 minutes, Modified Z-Scores - time window of 6 hours, IQR - time window of 30min, Density threshold - 30 minutes" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<img src="../../_images/sphx_glr_plot_low_density_identification_001.png" srcset="../../_images/sphx_glr_plot_low_density_identification_001.png" alt="Low density identification applied to a time series with five gaps and 35% removal, Z-scores - time window of 30 minutes, Modified Z-Scores - time window of 30 minutes, Modified Z-Scores - time window of 6 hours, IQR - time window of 30min, Density threshold - 30 minutes" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">indsl.data_quality.low_density_identification</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
@@ -212,13 +213,16 @@ method measures how much an outlier differs from a typical score based on the me
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.119 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-low-density-identification-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.563 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-low-density-identification-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/74d0b463b7aac964006748022b8ba125/plot_low_density_identification.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_low_density_identification.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/bee91f28131c55013f316a3ba0b309bb/plot_low_density_identification.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_low_density_identification.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/74d0b463b7aac964006748022b8ba125/plot_low_density_identification.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_low_density_identification.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/066e3f623b8bc79295706bae53706cc5/plot_low_density_identification.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_low_density_identification.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>

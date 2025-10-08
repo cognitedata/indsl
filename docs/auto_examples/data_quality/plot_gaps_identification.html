@@ -86,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
@@ -129,8 +130,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-gaps-identification-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-data-quality-plot-gaps-identification-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="sphx-glr-auto-examples-data-quality-plot-gaps-identification-py">
 <span id="identifying-gaps-in-time-series"></span><h1>Identifying gaps in time series<a class="headerlink" href="#sphx-glr-auto-examples-data-quality-plot-gaps-identification-py" title="Link to this heading"></a></h1>
@@ -156,7 +157,7 @@ of 1 hour, and this time we randomly remove 50% of the data points.</p>
 <li><img src="../../_images/sphx_glr_plot_gaps_identification_001.png" srcset="../../_images/sphx_glr_plot_gaps_identification_001.png" alt="Gap identification applied to a time series with four gaps and 35% removal, IQR, Z-Scores, Modified Z-Scores, Timedelta threshold" class = "sphx-glr-multi-img"/></li>
 <li><img src="../../_images/sphx_glr_plot_gaps_identification_002.png" srcset="../../_images/sphx_glr_plot_gaps_identification_002.png" alt="Gap identification to a time series with random gaps and 50% removal, IQR, Z-Scores, Modified Z-Scores, Timedelta threshold" class = "sphx-glr-multi-img"/></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">indsl.data_quality.gaps_identification</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
@@ -232,13 +233,16 @@ of 1 hour, and this time we randomly remove 50% of the data points.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.539 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-gaps-identification-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.691 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-gaps-identification-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/a2be258a5a8f8d0f82760e0d8028d702/plot_gaps_identification.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_gaps_identification.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/61d58dc0fe45c57dc9c4601fc193fcb6/plot_gaps_identification.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_gaps_identification.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/a2be258a5a8f8d0f82760e0d8028d702/plot_gaps_identification.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_gaps_identification.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/ad4829d9863f512115917473cdc9214a/plot_gaps_identification.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_gaps_identification.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
