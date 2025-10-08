@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_oil_and_gas_plot_gas_density_calcs.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_oil_and_gas_plot_gas_density_calcs.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -39,7 +39,7 @@ The plot shows the variation of the gas density for methane gas (SG = 0.55) with
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -90,28 +90,26 @@ The plot shows the variation of the gas density for methane gas (SG = 0.55) with
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.385 seconds)
+   **Total running time of the script:** (0 minutes 0.173 seconds)
 
 
 .. _sphx_glr_download_auto_examples_oil_and_gas_plot_gas_density_calcs.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_gas_density_calcs.ipynb <plot_gas_density_calcs.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_gas_density_calcs.py <plot_gas_density_calcs.py>`
 
-     :download:`Download Python source code: plot_gas_density_calcs.py <plot_gas_density_calcs.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_gas_density_calcs.ipynb <plot_gas_density_calcs.ipynb>`
+      :download:`Download zipped: plot_gas_density_calcs.zip <plot_gas_density_calcs.zip>`
 
 
 .. only:: html

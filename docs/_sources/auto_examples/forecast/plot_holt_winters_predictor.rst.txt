@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_forecast_plot_holt_winters_predictor.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_forecast_plot_holt_winters_predictor.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -36,10 +36,23 @@ multiplicative seasonality.
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /Users/neringaaltanaite/Library/Caches/pypoetry/virtualenvs/indsl-DMQRgui7-py3.12/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: No frequency information was provided, so inferred frequency D will be used.
+      self._init_dates(dates, freq)
+    /Users/neringaaltanaite/Library/Caches/pypoetry/virtualenvs/indsl-DMQRgui7-py3.12/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: No frequency information was provided, so inferred frequency D will be used.
+      self._init_dates(dates, freq)
 
 
 
-.. code-block:: default
+
+
+
+|
+
+.. code-block:: Python
 
     import os
     import warnings
@@ -83,28 +96,26 @@ multiplicative seasonality.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.442 seconds)
+   **Total running time of the script:** (0 minutes 0.773 seconds)
 
 
 .. _sphx_glr_download_auto_examples_forecast_plot_holt_winters_predictor.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_holt_winters_predictor.ipynb <plot_holt_winters_predictor.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_holt_winters_predictor.py <plot_holt_winters_predictor.py>`
 
-     :download:`Download Python source code: plot_holt_winters_predictor.py <plot_holt_winters_predictor.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_holt_winters_predictor.ipynb <plot_holt_winters_predictor.ipynb>`
+      :download:`Download zipped: plot_holt_winters_predictor.zip <plot_holt_winters_predictor.zip>`
 
 
 .. only:: html

@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_signals_plot_univariate_polynomial.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_signals_plot_univariate_polynomial.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -38,7 +38,7 @@ polynomials will be 1, 2 and 3, respectively.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import matplotlib.pyplot as plt
@@ -118,28 +118,26 @@ polynomials will be 1, 2 and 3, respectively.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.395 seconds)
+   **Total running time of the script:** (0 minutes 0.444 seconds)
 
 
 .. _sphx_glr_download_auto_examples_signals_plot_univariate_polynomial.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_univariate_polynomial.ipynb <plot_univariate_polynomial.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_univariate_polynomial.py <plot_univariate_polynomial.py>`
 
-     :download:`Download Python source code: plot_univariate_polynomial.py <plot_univariate_polynomial.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_univariate_polynomial.ipynb <plot_univariate_polynomial.ipynb>`
+      :download:`Download zipped: plot_univariate_polynomial.zip <plot_univariate_polynomial.zip>`
 
 
 .. only:: html

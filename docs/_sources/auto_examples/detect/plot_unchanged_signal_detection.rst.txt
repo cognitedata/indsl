@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_detect_plot_unchanged_signal_detection.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_detect_plot_unchanged_signal_detection.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -37,7 +37,7 @@ Example of visualizing unchanged signal during a certain time period in a given 
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
     import random
 
@@ -101,28 +101,26 @@ Example of visualizing unchanged signal during a certain time period in a given 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.640 seconds)
+   **Total running time of the script:** (0 minutes 0.252 seconds)
 
 
 .. _sphx_glr_download_auto_examples_detect_plot_unchanged_signal_detection.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_unchanged_signal_detection.ipynb <plot_unchanged_signal_detection.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_unchanged_signal_detection.py <plot_unchanged_signal_detection.py>`
 
-     :download:`Download Python source code: plot_unchanged_signal_detection.py <plot_unchanged_signal_detection.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_unchanged_signal_detection.ipynb <plot_unchanged_signal_detection.ipynb>`
+      :download:`Download zipped: plot_unchanged_signal_detection.zip <plot_unchanged_signal_detection.zip>`
 
 
 .. only:: html

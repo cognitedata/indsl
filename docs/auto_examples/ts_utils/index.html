@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rolling standard deviation and variance &mdash; indsl 8.8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+
+  
+    <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=ce2bb500"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rolling variance" href="plot_rolling_variance.html" />
+    <link rel="prev" title="Cumulative CO2 Production and Cost" href="../sustainability/plot_cumulative_co2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            indsl
+              <img src="../../_static/cognite_logo_white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Toolboxes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../data_quality.html">Data Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../detect.html">Detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../drilling.html">Drilling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../equipment.html">Equipment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fluid_dynamics.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../forecast.html">Forecast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../numerical_calculus.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../oil_and_gas.html">Oil and Gas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resample.html">Resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../smooth.html">Smooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sustainability.html">Sustainability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ts_utils.html">Basic time series functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../data_quality/index.html">Data quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detect/index.html">Detection Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../equipment/index.html">Equipment Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fluid_dynamics/index.html">Fluid Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Rolling standard deviation and variance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plot_rolling_variance.html">Rolling variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_rolling_stddev.html">Rolling standard deviation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning/index.html">Function versioning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../code_of_conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev_tools.html">Developer utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">indsl</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Rolling standard deviation and variance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/auto_examples/ts_utils/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rolling-standard-deviation-and-variance">
+<span id="sphx-glr-auto-examples-ts-utils"></span><h1>Rolling standard deviation and variance<a class="headerlink" href="#rolling-standard-deviation-and-variance" title="Link to this heading"></a></h1>
+<p>Examples of rolling standard deviation and variance functions</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example computes the rolling variance of a single time series using a time-based window."><img alt="" src="../../_images/sphx_glr_plot_rolling_variance_thumb.png" />
+<p><a class="reference internal" href="plot_rolling_variance.html#sphx-glr-auto-examples-ts-utils-plot-rolling-variance-py"><span class="std std-ref">Rolling variance</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rolling variance</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example computes the rolling standard deviation of a single time series using a time-based window."><img alt="" src="../../_images/sphx_glr_plot_rolling_stddev_thumb.png" />
+<p><a class="reference internal" href="plot_rolling_stddev.html#sphx-glr-auto-examples-ts-utils-plot-rolling-stddev-py"><span class="std std-ref">Rolling standard deviation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rolling standard deviation</div>
+</div></div><div class="toctree-wrapper compound">
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../sustainability/plot_cumulative_co2.html" class="btn btn-neutral float-left" title="Cumulative CO2 Production and Cost" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot_rolling_variance.html" class="btn btn-neutral float-right" title="Rolling variance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Cognite AS &lt;support@cognite.com&gt;.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
