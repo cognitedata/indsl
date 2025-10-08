@@ -79,13 +79,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html#rolling-variance">Rolling variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -123,15 +123,24 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-forecast-plot-holt-winters-predictor-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-forecast-plot-holt-winters-predictor-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="holt-winters-predictor">
 <span id="sphx-glr-auto-examples-forecast-plot-holt-winters-predictor-py"></span><h1>Holt-Winters Predictor<a class="headerlink" href="#holt-winters-predictor" title="Link to this heading"></a></h1>
 <p>For the Holt-Winters example we use forged daily data with a weekly seasonality. We predict two types of data, the first
 dataset displays an additive trend and an additive seasonality, and the second dataset displays an additive trend and a
 multiplicative seasonality.</p>
-<img src="../../_images/sphx_glr_plot_holt_winters_predictor_001.png" srcset="../../_images/sphx_glr_plot_holt_winters_predictor_001.png" alt="Forecast for data with weekly seasonality and additive trend, Forecast for data with weekly seasonality, additive trend, and multiplicative seasonality" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_holt_winters_predictor_001.png" srcset="../../_images/sphx_glr_plot_holt_winters_predictor_001.png" alt="Forecast for data with weekly seasonality and additive trend, Forecast for data with weekly seasonality, additive trend, and multiplicative seasonality" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/Users/neringaaltanaite/Library/Caches/pypoetry/virtualenvs/indsl-DMQRgui7-py3.12/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: No frequency information was provided, so inferred frequency D will be used.
+  self._init_dates(dates, freq)
+/Users/neringaaltanaite/Library/Caches/pypoetry/virtualenvs/indsl-DMQRgui7-py3.12/lib/python3.12/site-packages/statsmodels/tsa/base/tsa_model.py:473: ValueWarning: No frequency information was provided, so inferred frequency D will be used.
+  self._init_dates(dates, freq)
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -171,13 +180,16 @@ multiplicative seasonality.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.442 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-forecast-plot-holt-winters-predictor-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.744 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-forecast-plot-holt-winters-predictor-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c45e1d4d1c00161483a30dfe363317d0/plot_holt_winters_predictor.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_holt_winters_predictor.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/fcde082982073bc35ee75c24020b63c1/plot_holt_winters_predictor.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_holt_winters_predictor.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/c45e1d4d1c00161483a30dfe363317d0/plot_holt_winters_predictor.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_holt_winters_predictor.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/8d60918e027d63409d6aa1954379ba13/plot_holt_winters_predictor.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_holt_winters_predictor.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>

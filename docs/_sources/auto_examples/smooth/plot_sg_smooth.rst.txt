@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_smooth_plot_sg_smooth.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_smooth_plot_sg_smooth.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -44,7 +44,7 @@ trend while allowing the larger fluctuation through.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -78,28 +78,26 @@ trend while allowing the larger fluctuation through.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.156 seconds)
+   **Total running time of the script:** (0 minutes 0.154 seconds)
 
 
 .. _sphx_glr_download_auto_examples_smooth_plot_sg_smooth.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_sg_smooth.ipynb <plot_sg_smooth.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_sg_smooth.py <plot_sg_smooth.py>`
 
-     :download:`Download Python source code: plot_sg_smooth.py <plot_sg_smooth.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_sg_smooth.ipynb <plot_sg_smooth.ipynb>`
+      :download:`Download zipped: plot_sg_smooth.zip <plot_sg_smooth.zip>`
 
 
 .. only:: html

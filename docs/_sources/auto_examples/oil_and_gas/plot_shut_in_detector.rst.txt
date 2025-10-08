@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_oil_and_gas_plot_shut_in_detector.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_oil_and_gas_plot_shut_in_detector.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -38,7 +38,7 @@ detected open/close state for shut-in durations of at least 6 and 24 hours in du
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -85,28 +85,26 @@ detected open/close state for shut-in durations of at least 6 and 24 hours in du
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.300 seconds)
+   **Total running time of the script:** (0 minutes 0.269 seconds)
 
 
 .. _sphx_glr_download_auto_examples_oil_and_gas_plot_shut_in_detector.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_shut_in_detector.ipynb <plot_shut_in_detector.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_shut_in_detector.py <plot_shut_in_detector.py>`
 
-     :download:`Download Python source code: plot_shut_in_detector.py <plot_shut_in_detector.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_shut_in_detector.ipynb <plot_shut_in_detector.ipynb>`
+      :download:`Download zipped: plot_shut_in_detector.zip <plot_shut_in_detector.zip>`
 
 
 .. only:: html

@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_statistics_plot_detect_outliers_001.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_statistics_plot_detect_outliers_001.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -39,7 +39,7 @@ time series.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from datetime import datetime, timedelta
@@ -95,28 +95,26 @@ time series.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  32.321 seconds)
+   **Total running time of the script:** (0 minutes 0.295 seconds)
 
 
 .. _sphx_glr_download_auto_examples_statistics_plot_detect_outliers_001.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_detect_outliers_001.ipynb <plot_detect_outliers_001.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_detect_outliers_001.py <plot_detect_outliers_001.py>`
 
-     :download:`Download Python source code: plot_detect_outliers_001.py <plot_detect_outliers_001.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_detect_outliers_001.ipynb <plot_detect_outliers_001.ipynb>`
+      :download:`Download zipped: plot_detect_outliers_001.zip <plot_detect_outliers_001.zip>`
 
 
 .. only:: html
