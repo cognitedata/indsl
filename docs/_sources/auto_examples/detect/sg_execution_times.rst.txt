@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.535** total execution time for 4 files **from auto_examples/detect**:
+**00:14.122** total execution time for 4 files **from auto_examples/detect**:
 
 .. container::
 
@@ -32,15 +32,15 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_auto_examples_detect_plot_cusum.py` (``plot_cusum.py``)
-     - 00:00.535
+   * - :ref:`sphx_glr_auto_examples_detect_plot_ssd_cpd.py` (``plot_ssd_cpd.py``)
+     - 00:11.609
      - 0.0
    * - :ref:`sphx_glr_auto_examples_detect_plot_oscillation_detection.py` (``plot_oscillation_detection.py``)
-     - 00:00.000
+     - 00:01.748
      - 0.0
-   * - :ref:`sphx_glr_auto_examples_detect_plot_ssd_cpd.py` (``plot_ssd_cpd.py``)
-     - 00:00.000
+   * - :ref:`sphx_glr_auto_examples_detect_plot_cusum.py` (``plot_cusum.py``)
+     - 00:00.512
      - 0.0
    * - :ref:`sphx_glr_auto_examples_detect_plot_unchanged_signal_detection.py` (``plot_unchanged_signal_detection.py``)
-     - 00:00.000
+     - 00:00.252
      - 0.0

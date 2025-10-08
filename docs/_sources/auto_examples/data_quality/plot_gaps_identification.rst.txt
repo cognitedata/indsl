@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_data_quality_plot_gaps_identification.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_data_quality_plot_gaps_identification.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -67,7 +67,7 @@ of 1 hour, and this time we randomly remove 50% of the data points.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import matplotlib.pyplot as plt
@@ -148,28 +148,26 @@ of 1 hour, and this time we randomly remove 50% of the data points.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.539 seconds)
+   **Total running time of the script:** (0 minutes 0.691 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_gaps_identification.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_gaps_identification.ipynb <plot_gaps_identification.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_gaps_identification.py <plot_gaps_identification.py>`
 
-     :download:`Download Python source code: plot_gaps_identification.py <plot_gaps_identification.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_gaps_identification.ipynb <plot_gaps_identification.ipynb>`
+      :download:`Download zipped: plot_gaps_identification.zip <plot_gaps_identification.zip>`
 
 
 .. only:: html
