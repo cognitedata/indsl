@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.114** total execution time for 3 files **from auto_examples/signals**:
+**00:01.747** total execution time for 3 files **from auto_examples/signals**:
 
 .. container::
 
@@ -33,11 +33,11 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_signals_plot_wavy_signals.py` (``plot_wavy_signals.py``)
-     - 00:01.114
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_signals_plot_synthetic_gaps.py` (``plot_synthetic_gaps.py``)
-     - 00:00.000
+     - 00:01.052
      - 0.0
    * - :ref:`sphx_glr_auto_examples_signals_plot_univariate_polynomial.py` (``plot_univariate_polynomial.py``)
-     - 00:00.000
+     - 00:00.444
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_signals_plot_synthetic_gaps.py` (``plot_synthetic_gaps.py``)
+     - 00:00.250
      - 0.0

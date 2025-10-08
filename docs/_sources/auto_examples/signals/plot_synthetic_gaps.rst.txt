@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_signals_plot_synthetic_gaps.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_signals_plot_synthetic_gaps.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -42,7 +42,7 @@ and remove 35% of the data using three different methods:
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import matplotlib.pyplot as plt
@@ -85,28 +85,26 @@ and remove 35% of the data using three different methods:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.186 seconds)
+   **Total running time of the script:** (0 minutes 0.250 seconds)
 
 
 .. _sphx_glr_download_auto_examples_signals_plot_synthetic_gaps.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_synthetic_gaps.ipynb <plot_synthetic_gaps.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_synthetic_gaps.py <plot_synthetic_gaps.py>`
 
-     :download:`Download Python source code: plot_synthetic_gaps.py <plot_synthetic_gaps.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_synthetic_gaps.ipynb <plot_synthetic_gaps.ipynb>`
+      :download:`Download zipped: plot_synthetic_gaps.zip <plot_synthetic_gaps.zip>`
 
 
 .. only:: html
