@@ -83,6 +83,7 @@ To install all the extra functionality, run:
    auto_examples/smooth/index
    auto_examples/statistics/index
    auto_examples/sustainability/index
+   auto_examples/ts_utils/index
    auto_examples/versioning/index
 
 .. toctree::

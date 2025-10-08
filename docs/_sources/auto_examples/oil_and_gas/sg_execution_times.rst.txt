@@ -3,18 +3,47 @@
 
 .. _sphx_glr_auto_examples_oil_and_gas_sg_execution_times:
 
+
 Computation times
 =================
-**00:00.385** total execution time for **auto_examples_oil_and_gas** files:
+**00:00.796** total execution time for 5 files **from auto_examples/oil_and_gas**:
 
-+-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_oil_and_gas_plot_gas_density_calcs.py` (``plot_gas_density_calcs.py``)         | 00:00.385 | 0.0 MB |
-+-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_oil_and_gas_plot_live_fluid_properties.py` (``plot_live_fluid_properties.py``) | 00:00.000 | 0.0 MB |
-+-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_oil_and_gas_plot_shut_in_detector.py` (``plot_shut_in_detector.py``)           | 00:00.000 | 0.0 MB |
-+-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_oil_and_gas_plot_shut_in_variables.py` (``plot_shut_in_variables.py``)         | 00:00.000 | 0.0 MB |
-+-------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_oil_and_gas_plot_well_prod_status.py` (``plot_well_prod_status.py``)           | 00:00.000 | 0.0 MB |
-+-------------------------------------------------------------------------------------------------------------+-----------+--------+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_live_fluid_properties.py` (``plot_live_fluid_properties.py``)
+     - 00:00.796
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_gas_density_calcs.py` (``plot_gas_density_calcs.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_shut_in_detector.py` (``plot_shut_in_detector.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_shut_in_variables.py` (``plot_shut_in_variables.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_well_prod_status.py` (``plot_well_prod_status.py``)
+     - 00:00.000
+     - 0.0

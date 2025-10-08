@@ -10,17 +10,17 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_data_quality_plot_value_decrease_check.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_data_quality_plot_value_decrease_check.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_auto_examples_data_quality_plot_value_decrease_check.py:
 
 
-==============================================
+================================================
 Checking for decreasing values in a timeseries
-==============================================
+================================================
 
 Example of algorithm that indicates decreasing values in time series data. This algorithm is applied on Running Hours time series.
 It is a specific type of time series that is counting the number of running hours in a pump. Given that we expect
@@ -50,7 +50,7 @@ The algorithm is applied on the same data twice:
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -89,7 +89,7 @@ The algorithm is applied on the same data twice:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  34.568 seconds)
+   **Total running time of the script:** (0 minutes 1.411 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_value_decrease_check.py:
@@ -98,14 +98,17 @@ The algorithm is applied on the same data twice:
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download Jupyter notebook: plot_value_decrease_check.ipynb <plot_value_decrease_check.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_value_decrease_check.py <plot_value_decrease_check.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: plot_value_decrease_check.ipynb <plot_value_decrease_check.ipynb>`
+      :download:`Download zipped: plot_value_decrease_check.zip <plot_value_decrease_check.zip>`
 
 
 .. only:: html

@@ -60,12 +60,12 @@ Recycle valve power loss
    * :ref:`sphx_glr_auto_examples_equipment_plot_recycle_valve_power_loss.py`
 
 Discharge Reciprocating Pump
-------------------------
+----------------------------
 .. autofunction:: indsl.equipment.pump_discharge_reciprocating_pump
 
 
 Valves
-=====
+=======
 
 Volumetric flow through valve
 -----------------------------
