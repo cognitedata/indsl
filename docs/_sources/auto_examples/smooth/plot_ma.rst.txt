@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_smooth_plot_ma.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_smooth_plot_ma.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -30,7 +30,7 @@ In the figure below it can be observed that using SMA produces a less noisy time
 are seen with a greater delay than LWMA or EWMA.
 Increasing the window size results in a stronger smoothing of the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-71
+.. GENERATED FROM PYTHON SOURCE LINES 15-83
 
 
 
@@ -43,7 +43,7 @@ Increasing the window size results in a stronger smoothing of the data.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -65,13 +65,19 @@ Increasing the window size results in a stronger smoothing of the data.
     axs[0].plot(data, ".", markersize=2, label="RAW")
     time_window = "20min"
     axs[0].plot(
-        sma(data, time_window=time_window, min_periods=1), color="mediumblue", linewidth=2, label=f"SMA win={time_window}"
+        sma(data, time_window=pd.Timedelta(time_window), min_periods=1),
+        color="mediumblue",
+        linewidth=2,
+        label=f"SMA win={time_window}",
     )
     axs[0].plot(
-        lwma(data, time_window=time_window, min_periods=1), color="darkorange", linewidth=2, label=f"LWMA win={time_window}"
+        lwma(data, time_window=pd.Timedelta(time_window), min_periods=1),
+        color="darkorange",
+        linewidth=2,
+        label=f"LWMA win={time_window}",
     )
     axs[0].plot(
-        ewma(data, time_window=time_window, min_periods=1),
+        ewma(data, time_window=pd.Timedelta(time_window), min_periods=1),
         color="forestgreen",
         linewidth=2,
         label=f"EWMA win={time_window}",
@@ -84,13 +90,19 @@ Increasing the window size results in a stronger smoothing of the data.
     axs[1].plot(data, ".", markersize=2, label="RAW")
     time_window = "50min"
     axs[1].plot(
-        sma(data, time_window=time_window, min_periods=1), color="mediumblue", linewidth=2, label=f"SMA win={time_window}"
+        sma(data, time_window=pd.Timedelta(time_window), min_periods=1),
+        color="mediumblue",
+        linewidth=2,
+        label=f"SMA win={time_window}",
     )
     axs[1].plot(
-        lwma(data, time_window=time_window, min_periods=1), color="darkorange", linewidth=2, label=f"LWMA win={time_window}"
+        lwma(data, time_window=pd.Timedelta(time_window), min_periods=1),
+        color="darkorange",
+        linewidth=2,
+        label=f"LWMA win={time_window}",
     )
     axs[1].plot(
-        ewma(data, time_window=time_window, min_periods=1),
+        ewma(data, time_window=pd.Timedelta(time_window), min_periods=1),
         color="forestgreen",
         linewidth=2,
         label=f"EWMA win={time_window}",
@@ -105,28 +117,26 @@ Increasing the window size results in a stronger smoothing of the data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.561 seconds)
+   **Total running time of the script:** (0 minutes 1.194 seconds)
 
 
 .. _sphx_glr_download_auto_examples_smooth_plot_ma.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_ma.ipynb <plot_ma.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_ma.py <plot_ma.py>`
 
-     :download:`Download Python source code: plot_ma.py <plot_ma.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_ma.ipynb <plot_ma.ipynb>`
+      :download:`Download zipped: plot_ma.zip <plot_ma.zip>`
 
 
 .. only:: html

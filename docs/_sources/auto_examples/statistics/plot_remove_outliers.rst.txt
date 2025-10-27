@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_statistics_plot_remove_outliers.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_statistics_plot_remove_outliers.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -39,7 +39,7 @@ The figure shows the data without outliers considering a time window of 40min.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -63,7 +63,7 @@ The figure shows the data without outliers considering a time window of 40min.
 
     # Remove the outliers with a time window of 40min and plot the results
     plt.plot(
-        remove_outliers(data, time_window="40min"),
+        remove_outliers(data, time_window=pd.Timedelta("40min")),
         ".",
         markersize=2,
         color="forestgreen",
@@ -78,28 +78,26 @@ The figure shows the data without outliers considering a time window of 40min.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.232 seconds)
+   **Total running time of the script:** (0 minutes 1.215 seconds)
 
 
 .. _sphx_glr_download_auto_examples_statistics_plot_remove_outliers.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_remove_outliers.ipynb <plot_remove_outliers.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_remove_outliers.py <plot_remove_outliers.py>`
 
-     :download:`Download Python source code: plot_remove_outliers.py <plot_remove_outliers.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_remove_outliers.ipynb <plot_remove_outliers.ipynb>`
+      :download:`Download zipped: plot_remove_outliers.zip <plot_remove_outliers.zip>`
 
 
 .. only:: html

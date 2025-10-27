@@ -34,7 +34,7 @@ Examples of how to use the detection functions included in Cognite Charts.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharma et. al. [#]_.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components, based on a method described by Sharma et al.">
 
 .. only:: html
 

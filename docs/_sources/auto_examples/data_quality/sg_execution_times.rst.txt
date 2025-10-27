@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:05.579** total execution time for 8 files **from auto_examples/data_quality**:
+**00:10.874** total execution time for 8 files **from auto_examples/data_quality**:
 
 .. container::
 
@@ -33,26 +33,26 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_data_quality_plot_extreme_outlier.py` (``plot_extreme_outlier.py``)
-     - 00:05.579
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_data_quality_plot_completeness.py` (``plot_completeness.py``)
-     - 00:00.000
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_data_quality_plot_datapoint_diff.py` (``plot_datapoint_diff.py``)
-     - 00:00.000
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_data_quality_plot_gaps_identification.py` (``plot_gaps_identification.py``)
-     - 00:00.000
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_data_quality_plot_low_density_identification.py` (``plot_low_density_identification.py``)
-     - 00:00.000
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_data_quality_plot_out_of_range.py` (``plot_out_of_range.py``)
-     - 00:00.000
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_data_quality_plot_rolling_stddev_timedelta.py` (``plot_rolling_stddev_timedelta.py``)
-     - 00:00.000
+     - 00:06.984
      - 0.0
    * - :ref:`sphx_glr_auto_examples_data_quality_plot_value_decrease_check.py` (``plot_value_decrease_check.py``)
-     - 00:00.000
+     - 00:01.292
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_out_of_range.py` (``plot_out_of_range.py``)
+     - 00:00.692
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_gaps_identification.py` (``plot_gaps_identification.py``)
+     - 00:00.687
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_low_density_identification.py` (``plot_low_density_identification.py``)
+     - 00:00.560
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_datapoint_diff.py` (``plot_datapoint_diff.py``)
+     - 00:00.264
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_completeness.py` (``plot_completeness.py``)
+     - 00:00.217
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_rolling_stddev_timedelta.py` (``plot_rolling_stddev_timedelta.py``)
+     - 00:00.177
      - 0.0

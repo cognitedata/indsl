@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer utility functions &mdash; indsl 8.7.1 documentation</title>
+  <title>Developer utility functions &mdash; indsl 8.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dc409e9d"></script>
+      <script src="_static/documentation_options.js?v=ce2bb500"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -72,14 +72,17 @@
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -115,12 +118,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#indsl.validations.validate_timedelta_unit"><code class="docutils literal notranslate"><span class="pre">validate_timedelta_unit()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-0">Type checking</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">validate_series_has_minimum_length()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">validate_series_has_time_index()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">validate_series_is_not_empty()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">validate_timedelta()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">validate_timedelta_unit()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-indsl.type_check">Type checking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.type_check.check_types"><code class="docutils literal notranslate"><span class="pre">check_types()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indsl.type_check.error_handling"><code class="docutils literal notranslate"><span class="pre">error_handling()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -317,36 +317,21 @@ is specified, the name of the function is used.</p></li>
 </dd></dl>
 
 </section>
-<section id="module-0">
-<span id="type-checking"></span><h2>Type checking<a class="headerlink" href="#module-0" title="Link to this heading"></a></h2>
+<section id="module-indsl.type_check">
+<span id="type-checking"></span><h2>Type checking<a class="headerlink" href="#module-indsl.type_check" title="Link to this heading"></a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_has_minimum_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_len</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
-<dd><p>Helper method to validate if provided pandas.Series has the minimum length specified.</p>
+<dt class="sig sig-object py" id="indsl.type_check.check_types">
+<span class="sig-prename descclassname"><span class="pre">indsl.type_check.</span></span><span class="sig-name descname"><span class="pre">check_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.type_check.check_types" title="Link to this definition"></a></dt>
+<dd><p>Decorator to check types of inputs and outputs of a function.</p>
+<p>Decorator uses typeguard library to validate arguments of a
+function, and then wraps a TypeError to UserTypeError which is
+specific for inDSL library</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="id1">
-<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_has_time_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
-<dd><p>Helper method to validate if provided pandas.Series is of type pandas.DatetimeIndex.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="id2">
-<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_series_is_not_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
-<dd><p>Helper method to validate if provided pandas.Series has more than 0 values.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="id3">
-<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_timedelta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timedelta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
-<dd><p>Helper method to validate if the provided pd.Timedelta valid: not NaT and strictly larger than zero.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-prename descclassname"><span class="pre">indsl.validations.</span></span><span class="sig-name descname"><span class="pre">validate_timedelta_unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timedelta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Timedelta</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
-<dd><p>Helper method to validate if the provided pd.Timedelta is larger or equal to 1 second.</p>
+<dt class="sig sig-object py" id="indsl.type_check.error_handling">
+<span class="sig-prename descclassname"><span class="pre">indsl.type_check.</span></span><span class="sig-name descname"><span class="pre">error_handling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#indsl.type_check.error_handling" title="Link to this definition"></a></dt>
+<dd><p>Decorator that catches TypeError and wraps to inDSL specific error.</p>
 </dd></dl>
 
 </section>

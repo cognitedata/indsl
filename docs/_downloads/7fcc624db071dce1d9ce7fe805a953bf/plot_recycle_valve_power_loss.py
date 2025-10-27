@@ -51,7 +51,16 @@ max_Cv = 90
 # The first step step is to calculate the flow through the recycle valve. We assume the pump discharge pressure is equal
 # to the recycle valve inlet pressure.
 Q_valve = flow_through_valve(
-    discharge_pressure, valve_outlet_P, valve_opening, SG, min_opening, max_opening, min_Cv, max_Cv, type, True
+    inlet_P=discharge_pressure,
+    outlet_P=valve_outlet_P,
+    valve_opening=valve_opening,
+    SG=SG,
+    min_opening=min_opening,
+    max_opening=max_opening,
+    min_Cv=min_Cv,
+    max_Cv=max_Cv,
+    type=type,
+    align_timestamps=True,
 )  # m3/h
 
 # %%

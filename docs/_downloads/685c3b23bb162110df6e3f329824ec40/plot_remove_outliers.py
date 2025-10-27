@@ -30,7 +30,7 @@ plt.plot(data, ".", markersize=2, color="red", label="RAW")
 
 # Remove the outliers with a time window of 40min and plot the results
 plt.plot(
-    remove_outliers(data, time_window="40min"),
+    remove_outliers(data, time_window=pd.Timedelta("40min")),
     ".",
     markersize=2,
     color="forestgreen",

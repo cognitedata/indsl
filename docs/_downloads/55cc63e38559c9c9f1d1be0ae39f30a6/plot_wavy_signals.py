@@ -1,8 +1,8 @@
 # Copyright 2021 Cognite AS
 """
-======================
+==========================
 Wavy signal generation
-======================
+==========================
 
 Sinusoidal waves are very useful in signal generation. The sine wave equation can be used to generate a simple wave
 (wave 1 in the top left panel) or complex signals in a few steps. The figure below shows the generation of four
@@ -88,7 +88,7 @@ plt.show()
 # .. _addwavewithbrowniannoise:
 #
 # Add wave with brownian noise
-# ---------------
+# ----------------------------
 #
 # We can use the :meth:`indsl.signals.noise.wave_with_brownian_noise` method.
 # It produces a sinusoidal signal with brownian noise.

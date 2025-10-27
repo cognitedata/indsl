@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_filter_plot_wavelet_filter.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_filter_plot_wavelet_filter.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -47,7 +47,7 @@ a value higher than 6.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -95,28 +95,26 @@ a value higher than 6.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  27.907 seconds)
+   **Total running time of the script:** (0 minutes 0.263 seconds)
 
 
 .. _sphx_glr_download_auto_examples_filter_plot_wavelet_filter.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_wavelet_filter.ipynb <plot_wavelet_filter.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_wavelet_filter.py <plot_wavelet_filter.py>`
 
-     :download:`Download Python source code: plot_wavelet_filter.py <plot_wavelet_filter.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_wavelet_filter.ipynb <plot_wavelet_filter.ipynb>`
+      :download:`Download zipped: plot_wavelet_filter.zip <plot_wavelet_filter.zip>`
 
 
 .. only:: html

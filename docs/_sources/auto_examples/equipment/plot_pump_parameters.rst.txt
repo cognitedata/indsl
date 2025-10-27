@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_equipment_plot_pump_parameters.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_equipment_plot_pump_parameters.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -28,7 +28,7 @@ of a centrifugal pump.
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-23
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -56,7 +56,7 @@ and discharge and suction pressure.
 
 .. GENERATED FROM PYTHON SOURCE LINES 27-36
 
-.. code-block:: default
+.. code-block:: Python
 
 
     den = pd.Series(np.repeat(1100, len(df)))
@@ -80,7 +80,7 @@ The coeffients of the pump efficiency curve can be obtained by fitting a second 
 
 .. GENERATED FROM PYTHON SOURCE LINES 38-45
 
-.. code-block:: default
+.. code-block:: Python
 
     poly = np.polyfit(df_pump_curve.iloc[:, 0], df_pump_curve.iloc[:, 1], deg=2)
     plt.scatter(df_pump_curve.iloc[:, 0], df_pump_curve.iloc[:, 1])
@@ -100,8 +100,6 @@ The coeffients of the pump efficiency curve can be obtained by fitting a second 
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
 
@@ -115,7 +113,7 @@ Plug the above values to the pump parameter functions and display the results.
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-80
 
-.. code-block:: default
+.. code-block:: Python
 
 
     df["total_head"] = total_head(df["discharge"], df["suction"], den, align_timesteps=True)
@@ -165,28 +163,26 @@ Plug the above values to the pump parameter functions and display the results.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.589 seconds)
+   **Total running time of the script:** (0 minutes 0.654 seconds)
 
 
 .. _sphx_glr_download_auto_examples_equipment_plot_pump_parameters.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_pump_parameters.ipynb <plot_pump_parameters.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_pump_parameters.py <plot_pump_parameters.py>`
 
-     :download:`Download Python source code: plot_pump_parameters.py <plot_pump_parameters.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_pump_parameters.ipynb <plot_pump_parameters.ipynb>`
+      :download:`Download zipped: plot_pump_parameters.zip <plot_pump_parameters.zip>`
 
 
 .. only:: html

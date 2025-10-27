@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_data_quality_plot_rolling_stddev_timedelta.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_data_quality_plot_rolling_stddev_timedelta.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -25,7 +25,7 @@ Rolling standard deviation of data points time delta
 Example of visualizing rolling standard deviation of time delta of time series data to identify dispersion in the
 ingestion of data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 10-51
+.. GENERATED FROM PYTHON SOURCE LINES 10-55
 
 
 
@@ -38,7 +38,7 @@ ingestion of data.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     from datetime import datetime, timedelta
@@ -62,7 +62,11 @@ ingestion of data.
     stddev = rolling_stddev_timedelta(data, time_window=time_window).values
 
     # Calculate rolling mean of time delta
-    mean = sma(data.index.to_series().diff().astype("timedelta64[s]").fillna(0), time_window="5min", min_periods=1)
+    mean = sma(
+        data.index.to_series().diff().astype("timedelta64[ms]").dt.total_seconds().fillna(0) * 1000,
+        time_window=time_window,
+        min_periods=1,
+    )
 
     # Plot standard deviation and mean
     fig, ax = plt.subplots(figsize=(15, 5))
@@ -85,28 +89,26 @@ ingestion of data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.000 seconds)
+   **Total running time of the script:** (0 minutes 0.177 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_rolling_stddev_timedelta.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_rolling_stddev_timedelta.ipynb <plot_rolling_stddev_timedelta.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_rolling_stddev_timedelta.py <plot_rolling_stddev_timedelta.py>`
 
-     :download:`Download Python source code: plot_rolling_stddev_timedelta.py <plot_rolling_stddev_timedelta.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_rolling_stddev_timedelta.ipynb <plot_rolling_stddev_timedelta.ipynb>`
+      :download:`Download zipped: plot_rolling_stddev_timedelta.zip <plot_rolling_stddev_timedelta.zip>`
 
 
 .. only:: html
