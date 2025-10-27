@@ -76,6 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
@@ -87,8 +88,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html#rolling-variance">Rolling variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -126,14 +126,14 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-statistics-plot-detect-outliers-002-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-statistics-plot-detect-outliers-002-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="outlier-detection-with-dbscan-and-spline-regression-002">
 <span id="sphx-glr-auto-examples-statistics-plot-detect-outliers-002-py"></span><h1>Outlier detection with DBSCAN and spline regression 002<a class="headerlink" href="#outlier-detection-with-dbscan-and-spline-regression-002" title="Link to this heading"></a></h1>
 <p>Example of outlier detection in a randomly generated time series data using DBSCAN and spline regression.
 The resulting figure shows outliers generated with a time window of 60min marked on the original time series.</p>
-<img src="../../_images/sphx_glr_plot_detect_outliers_002_001.png" srcset="../../_images/sphx_glr_plot_detect_outliers_002_001.png" alt="Outlier identification for a time series for a duration of 60 minutes" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<img src="../../_images/sphx_glr_plot_detect_outliers_002_001.png" srcset="../../_images/sphx_glr_plot_detect_outliers_002_001.png" alt="Outlier identification for a time series for a duration of 60 minutes" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -190,13 +190,16 @@ The resulting figure shows outliers generated with a time window of 60min marked
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.324 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-statistics-plot-detect-outliers-002-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.274 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-statistics-plot-detect-outliers-002-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/dddbcae91703cb977ab76de575a2f91d/plot_detect_outliers_002.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_detect_outliers_002.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ac18f348b4145bfc19e775392e02e581/plot_detect_outliers_002.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_detect_outliers_002.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/dddbcae91703cb977ab76de575a2f91d/plot_detect_outliers_002.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_detect_outliers_002.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/d7facaa2cf5b95d601fd5a0afb50a489/plot_detect_outliers_002.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_detect_outliers_002.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
