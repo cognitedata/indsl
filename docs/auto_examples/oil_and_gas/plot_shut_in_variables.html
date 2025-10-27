@@ -83,13 +83,13 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_live_fluid_properties.html">Calculate fluid properties given pressure and temperature</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sustainability/index.html">Sustainability Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html#rolling-variance">Rolling variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -127,8 +127,8 @@
              
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-oil-and-gas-plot-shut-in-variables-py"><span class="std std-ref">here</span></a>
-to download the full example code</p>
+<p><a class="reference internal" href="#sphx-glr-download-auto-examples-oil-and-gas-plot-shut-in-variables-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code.</p>
 </div>
 <section class="sphx-glr-example-title" id="calculation-of-shut-in-pressure">
 <span id="sphx-glr-auto-examples-oil-and-gas-plot-shut-in-variables-py"></span><h1>Calculation of shut-in pressure<a class="headerlink" href="#calculation-of-shut-in-pressure" title="Link to this heading"></a></h1>
@@ -138,7 +138,7 @@ productivity index. In this example, we use data from the bottom-hole pressure s
 obtained using wing valve data of the corresponding well and using the following settings in the detector function: wing valve
 threshold is calculated, minimum duration of shut-in is 25 hrs and minimum distance between shut-ins is 24 hrs.</p>
 <p>The figure shows the original pressure signal, 6 and 24 hrs shut-in pressure values as well as detected shut-ins.</p>
-<img src="../../_images/sphx_glr_plot_shut_in_variables_001.png" srcset="../../_images/sphx_glr_plot_shut_in_variables_001.png" alt="Calculation of Shut-in Pressure" class = "sphx-glr-single-img"/><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_shut_in_variables_001.png" srcset="../../_images/sphx_glr_plot_shut_in_variables_001.png" alt="Calculation of Shut-in Pressure" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -193,13 +193,16 @@ threshold is calculated, minimum duration of shut-in is 25 hrs and minimum dista
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.908 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-oil-and-gas-plot-shut-in-variables-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 1.047 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-oil-and-gas-plot-shut-in-variables-py">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/06161272ce2f544f2b7ebca5bb993e26/plot_shut_in_variables.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_shut_in_variables.ipynb</span></code></a></p>
+</div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/77096bd6b0a66b31135548228387b6ac/plot_shut_in_variables.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_shut_in_variables.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/06161272ce2f544f2b7ebca5bb993e26/plot_shut_in_variables.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_shut_in_variables.ipynb</span></code></a></p>
+<div class="sphx-glr-download sphx-glr-download-zip docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/716c761dca11eac619f3f8af7f4522a8/plot_shut_in_variables.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">zipped:</span> <span class="pre">plot_shut_in_variables.zip</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
