@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_resample_plot_group_by_region.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -39,21 +39,10 @@ should be placed on (timestamp).
    :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /Users/neringaaltanaite/Project/indsl/indsl/resample/group_by.py:90: FutureWarning: The behavior of array concatenation with empty entries is deprecated. In a future version, this will no longer exclude empty items when determining the result dtype. To retain the old behavior, exclude the empty entries before the concat operation.
-      result = pd.concat([result, pd.Series(data[region_index].agg(options[aggregate]), index=index)])
 
 
 
-
-
-
-|
-
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -115,7 +104,7 @@ should be placed on (timestamp).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 55.864 seconds)
+   **Total running time of the script:** (0 minutes 6.266 seconds)
 
 
 .. _sphx_glr_download_auto_examples_resample_plot_group_by_region.py:
@@ -124,16 +113,17 @@ should be placed on (timestamp).
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_group_by_region.ipynb <plot_group_by_region.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_group_by_region.py <plot_group_by_region.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: plot_group_by_region.ipynb <plot_group_by_region.ipynb>`
+      :download:`Download zipped: plot_group_by_region.zip <plot_group_by_region.zip>`
 
 
 .. only:: html

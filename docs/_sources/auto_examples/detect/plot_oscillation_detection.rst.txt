@@ -11,18 +11,18 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_auto_examples_detect_plot_oscillation_detection.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_auto_examples_detect_plot_oscillation_detection.py:
 
 
-===============================
+=====================================================
 Oscillation detection using linear predictive coding
-===============================
+=====================================================
 
-Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharma et. al. [#]_.
+Identifies if a signal contains one or more oscillatory components, based on a method described by Sharma et al.
 
 .. GENERATED FROM PYTHON SOURCE LINES 9-53
 
@@ -53,21 +53,10 @@ Identifies if a signal contains one or more oscillatory components. Based on the
          :class: sphx-glr-multi-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /Users/neringaaltanaite/Project/indsl/indsl/detect/oscillation_detector.py:580: UserWarning: The figure layout has changed to tight
-      fig.tight_layout()
 
 
 
-
-
-
-|
-
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -117,7 +106,7 @@ Identifies if a signal contains one or more oscillatory components. Based on the
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.937 seconds)
+   **Total running time of the script:** (0 minutes 1.739 seconds)
 
 
 .. _sphx_glr_download_auto_examples_detect_plot_oscillation_detection.py:
@@ -126,16 +115,17 @@ Identifies if a signal contains one or more oscillatory components. Based on the
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: plot_oscillation_detection.ipynb <plot_oscillation_detection.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: plot_oscillation_detection.py <plot_oscillation_detection.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: plot_oscillation_detection.ipynb <plot_oscillation_detection.ipynb>`
+      :download:`Download zipped: plot_oscillation_detection.zip <plot_oscillation_detection.zip>`
 
 
 .. only:: html

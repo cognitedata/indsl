@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery of Charts &mdash; indsl 8.7.1 documentation</title>
+  <title>Gallery of Charts &mdash; indsl 8.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="../_static/cognite_logo_black.png"/>
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=dc409e9d"></script>
+      <script src="../_static/documentation_options.js?v=ce2bb500"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
@@ -70,14 +70,17 @@
 <li class="toctree-l1"><a class="reference internal" href="detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -149,7 +152,7 @@
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of change point detection based on the cusum algorithm. We use synthetic data generated from a standard normal distribution of mean 0 and variance 1 with a shift in some of the datapoints to simulate a change in the mean of the data."><img alt="" src="../_images/sphx_glr_plot_cusum_thumb.png" />
 <p><a class="reference internal" href="detect/plot_cusum.html#sphx-glr-auto-examples-detect-plot-cusum-py"><span class="std std-ref">Change Point Detection with Cusum</span></a></p>
   <div class="sphx-glr-thumbnail-title">Change Point Detection with Cusum</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components. Based on the paper by Sharma et. al. [#]_."><img alt="" src="../_images/sphx_glr_plot_oscillation_detection_thumb.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="Identifies if a signal contains one or more oscillatory components, based on a method described by Sharma et al."><img alt="" src="../_images/sphx_glr_plot_oscillation_detection_thumb.png" />
 <p><a class="reference internal" href="detect/plot_oscillation_detection.html#sphx-glr-auto-examples-detect-plot-oscillation-detection-py"><span class="std std-ref">Oscillation detection using linear predictive coding</span></a></p>
   <div class="sphx-glr-thumbnail-title">Oscillation detection using linear predictive coding</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Example of steady state detection (SSD) based on the ED-PELT change point detection (CPD) algorithm. We use data from a compressor suction pressure sensor (in barg). The dataset contains 4 days of process of process data (sampled using 1m granularity)."><img alt="" src="../_images/sphx_glr_plot_ssd_cpd_thumb.png" />
@@ -221,8 +224,8 @@
 <section id="reindex-function">
 <h2>Reindex function<a class="headerlink" href="#reindex-function" title="Link to this heading"></a></h2>
 <p>Example on how to reindex two time-series.</p>
-<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="When working with multiple time series it is often important that time stamps are aligned. Even simple operations, like addition and subtraction of time series, require time stamp alignment. In this example, we demonstrate how re-indexing can be used to align time stamps."><img alt="" src="../_images/sphx_glr_plot_pearson_correlation_thumb.png" />
-<p><a class="reference internal" href="reindex/plot_pearson_correlation.html#sphx-glr-auto-examples-reindex-plot-pearson-correlation-py"><span class="std std-ref">Re-indexing and compute Pearson correlation coefficient</span></a></p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="When working with multiple time series it is often important that time stamps are aligned. Even simple operations, like addition and subtraction of time series, require time stamp alignment. In this example, we demonstrate how re-indexing can be used to align time stamps."><img alt="" src="../_images/sphx_glr_plot_reindex_and_pearson_correlation_thumb.png" />
+<p><a class="reference internal" href="reindex/plot_reindex_and_pearson_correlation.html#sphx-glr-auto-examples-reindex-plot-reindex-and-pearson-correlation-py"><span class="std std-ref">Re-indexing and compute Pearson correlation coefficient</span></a></p>
   <div class="sphx-glr-thumbnail-title">Re-indexing and compute Pearson correlation coefficient</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="This shows how we can superimpose a scatter plot on an existing chart"><img alt="" src="../_images/sphx_glr_plot_mock_scatter_plot_thumb.png" />
 <p><a class="reference internal" href="reindex/plot_mock_scatter_plot.html#sphx-glr-auto-examples-reindex-plot-mock-scatter-plot-py"><span class="std std-ref">Re-indexing to mock a scatter plot</span></a></p>
@@ -264,7 +267,7 @@
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection from time series data using DBSCAN and spline regression. We use data from a compressor suction pressure sensor. The data is in barg units and resampled to 1 minute granularity. The figure shows the data without outliers considering a time window of 40min."><img alt="" src="../_images/sphx_glr_plot_remove_outliers_thumb.png" />
 <p><a class="reference internal" href="statistics/plot_remove_outliers.html#sphx-glr-auto-examples-statistics-plot-remove-outliers-py"><span class="std std-ref">Outlier detection with DBSCAN and spline regression</span></a></p>
   <div class="sphx-glr-thumbnail-title">Outlier detection with DBSCAN and spline regression</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example calculates the rolling pearson correlation coefficient between two synthetic timeseries."><img alt="" src="../_images/sphx_glr_plot_pearson_correlation_thumb1.png" />
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example calculates the rolling pearson correlation coefficient between two synthetic timeseries."><img alt="" src="../_images/sphx_glr_plot_pearson_correlation_thumb.png" />
 <p><a class="reference internal" href="statistics/plot_pearson_correlation.html#sphx-glr-auto-examples-statistics-plot-pearson-correlation-py"><span class="std std-ref">Pearson correlation</span></a></p>
   <div class="sphx-glr-thumbnail-title">Pearson correlation</div>
 </div><div class="sphx-glr-thumbcontainer" tooltip="Example of outlier detection in a randomly generated time series data using DBSCAN and spline regression. The resulting figure shows outlier indicator time series generated with a time window of 60min plotted on the original time series."><img alt="" src="../_images/sphx_glr_plot_detect_outliers_001_thumb.png" />
@@ -280,6 +283,16 @@
 <div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="Given the power consumption of a process unit and data regarding the emissions and cost factors, we can work out the total amount of CO2 produced and the cost associated with that. Here is an example using the power used by a gas compressor at the Valhall platform."><img alt="" src="../_images/sphx_glr_plot_cumulative_co2_thumb.png" />
 <p><a class="reference internal" href="sustainability/plot_cumulative_co2.html#sphx-glr-auto-examples-sustainability-plot-cumulative-co2-py"><span class="std std-ref">Cumulative CO2 Production and Cost</span></a></p>
   <div class="sphx-glr-thumbnail-title">Cumulative CO2 Production and Cost</div>
+</div></div></section>
+<section id="rolling-standard-deviation-and-variance">
+<h2>Rolling standard deviation and variance<a class="headerlink" href="#rolling-standard-deviation-and-variance" title="Link to this heading"></a></h2>
+<p>Examples of rolling standard deviation and variance functions</p>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example computes the rolling variance of a single time series using a time-based window."><img alt="" src="../_images/sphx_glr_plot_rolling_variance_thumb.png" />
+<p><a class="reference internal" href="ts_utils/plot_rolling_variance.html#sphx-glr-auto-examples-ts-utils-plot-rolling-variance-py"><span class="std std-ref">Rolling variance</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rolling variance</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example computes the rolling standard deviation of a single time series using a time-based window."><img alt="" src="../_images/sphx_glr_plot_rolling_stddev_thumb.png" />
+<p><a class="reference internal" href="ts_utils/plot_rolling_stddev.html#sphx-glr-auto-examples-ts-utils-plot-rolling-stddev-py"><span class="std std-ref">Rolling standard deviation</span></a></p>
+  <div class="sphx-glr-thumbnail-title">Rolling standard deviation</div>
 </div></div></section>
 <section id="function-versioning">
 <h2>Function versioning<a class="headerlink" href="#function-versioning" title="Link to this heading"></a></h2>

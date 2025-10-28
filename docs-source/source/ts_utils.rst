@@ -20,6 +20,7 @@ Numerical calculus
 ------------------
 .. automodule:: indsl.ts_utils.numerical_calculus
         :members:
+        :no-index:
 
 Logarithmic functions
 ---------------------
@@ -37,7 +38,7 @@ Utility functions
         :members:
 
 Rolling standard deviation
------------------
+---------------------------
 .. autofunction:: indsl.ts_utils.rolling_stats.rolling_stddev
 
 .. topic:: Examples:

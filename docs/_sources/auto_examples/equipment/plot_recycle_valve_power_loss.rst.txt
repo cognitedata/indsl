@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_equipment_plot_recycle_valve_power_loss.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_equipment_plot_recycle_valve_power_loss.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -38,7 +38,7 @@ pressure, and that the feed pressure is not constant to get more interesting res
 
 .. GENERATED FROM PYTHON SOURCE LINES 20-40
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import pandas as pd
@@ -74,7 +74,7 @@ flow rates.
 
 .. GENERATED FROM PYTHON SOURCE LINES 43-50
 
-.. code-block:: default
+.. code-block:: Python
 
 
     type = "EQ"
@@ -95,12 +95,21 @@ flow rates.
 The first step step is to calculate the flow through the recycle valve. We assume the pump discharge pressure is equal
 to the recycle valve inlet pressure.
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-57
+.. GENERATED FROM PYTHON SOURCE LINES 53-66
 
-.. code-block:: default
+.. code-block:: Python
 
     Q_valve = flow_through_valve(
-        discharge_pressure, valve_outlet_P, valve_opening, SG, min_opening, max_opening, min_Cv, max_Cv, type, True
+        inlet_P=discharge_pressure,
+        outlet_P=valve_outlet_P,
+        valve_opening=valve_opening,
+        SG=SG,
+        min_opening=min_opening,
+        max_opening=max_opening,
+        min_Cv=min_Cv,
+        max_Cv=max_Cv,
+        type=type,
+        align_timestamps=True,
     )  # m3/h
 
 
@@ -110,13 +119,13 @@ to the recycle valve inlet pressure.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 58-59
+.. GENERATED FROM PYTHON SOURCE LINES 67-68
 
 The second step is to calcualte the total head of the pump.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-65
+.. GENERATED FROM PYTHON SOURCE LINES 68-74
 
-.. code-block:: default
+.. code-block:: Python
 
     den = 1000 * SG  # kg/m3
     den = line(start_date, end_date, intercept=den)  # kg/m3
@@ -131,13 +140,13 @@ The second step is to calcualte the total head of the pump.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 66-67
+.. GENERATED FROM PYTHON SOURCE LINES 75-76
 
 The last step is to calculate the recycle valve power loss.
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-73
+.. GENERATED FROM PYTHON SOURCE LINES 76-82
 
-.. code-block:: default
+.. code-block:: Python
 
     power_loss = recycle_valve_power_loss(Q_valve, head, den, True)  # W
     ax = power_loss.plot()
@@ -157,7 +166,7 @@ The last step is to calculate the recycle valve power loss.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 74-76
+.. GENERATED FROM PYTHON SOURCE LINES 83-85
 
 As a simple sanity check, the increasing power loss with increasing valve opening makes sense, as this means more
 fluid flows through the recirculation line.
@@ -165,28 +174,26 @@ fluid flows through the recirculation line.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  28.393 seconds)
+   **Total running time of the script:** (0 minutes 0.376 seconds)
 
 
 .. _sphx_glr_download_auto_examples_equipment_plot_recycle_valve_power_loss.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_recycle_valve_power_loss.ipynb <plot_recycle_valve_power_loss.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_recycle_valve_power_loss.py <plot_recycle_valve_power_loss.py>`
 
-     :download:`Download Python source code: plot_recycle_valve_power_loss.py <plot_recycle_valve_power_loss.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_recycle_valve_power_loss.ipynb <plot_recycle_valve_power_loss.ipynb>`
+      :download:`Download zipped: plot_recycle_valve_power_loss.zip <plot_recycle_valve_power_loss.zip>`
 
 
 .. only:: html

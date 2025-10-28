@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_detect_plot_ssd_cpd.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_detect_plot_ssd_cpd.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -46,7 +46,7 @@ conditions are evaluated. The input parameters used by the algorithms in this ex
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -104,28 +104,26 @@ conditions are evaluated. The input parameters used by the algorithms in this ex
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.295 seconds)
+   **Total running time of the script:** (0 minutes 13.310 seconds)
 
 
 .. _sphx_glr_download_auto_examples_detect_plot_ssd_cpd.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_ssd_cpd.ipynb <plot_ssd_cpd.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_ssd_cpd.py <plot_ssd_cpd.py>`
 
-     :download:`Download Python source code: plot_ssd_cpd.py <plot_ssd_cpd.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_ssd_cpd.ipynb <plot_ssd_cpd.ipynb>`
+      :download:`Download zipped: plot_ssd_cpd.zip <plot_ssd_cpd.zip>`
 
 
 .. only:: html
