@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_data_quality_plot_completeness.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_data_quality_plot_completeness.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -43,7 +43,7 @@ The algorithm classifies the time series as good, medium, and poor based on the 
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import matplotlib.pyplot as plt
@@ -108,28 +108,26 @@ The algorithm classifies the time series as good, medium, and poor based on the 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.113 seconds)
+   **Total running time of the script:** (0 minutes 0.217 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_completeness.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_completeness.ipynb <plot_completeness.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_completeness.py <plot_completeness.py>`
 
-     :download:`Download Python source code: plot_completeness.py <plot_completeness.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_completeness.ipynb <plot_completeness.ipynb>`
+      :download:`Download zipped: plot_completeness.zip <plot_completeness.zip>`
 
 
 .. only:: html

@@ -10,8 +10,8 @@
     .. note::
         :class: sphx-glr-download-link-note
 
-        Click :ref:`here <sphx_glr_download_auto_examples_oil_and_gas_plot_well_prod_status.py>`
-        to download the full example code
+        :ref:`Go to the end <sphx_glr_download_auto_examples_oil_and_gas_plot_well_prod_status.py>`
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -40,7 +40,7 @@ is ON).
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import os
@@ -78,28 +78,26 @@ is ON).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.397 seconds)
+   **Total running time of the script:** (0 minutes 0.513 seconds)
 
 
 .. _sphx_glr_download_auto_examples_oil_and_gas_plot_well_prod_status.py:
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
+      :download:`Download Jupyter notebook: plot_well_prod_status.ipynb <plot_well_prod_status.ipynb>`
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: plot_well_prod_status.py <plot_well_prod_status.py>`
 
-     :download:`Download Python source code: plot_well_prod_status.py <plot_well_prod_status.py>`
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: plot_well_prod_status.ipynb <plot_well_prod_status.ipynb>`
+      :download:`Download zipped: plot_well_prod_status.zip <plot_well_prod_status.zip>`
 
 
 .. only:: html
