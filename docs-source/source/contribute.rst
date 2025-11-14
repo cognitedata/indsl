@@ -78,6 +78,8 @@ Improvements to our documentation are much appreciated! The documentation source
 our codebase. They are formatted in `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
 and compiled with Sphinx to produce comprehensive documentation.
 
+.. _contributing-a-new-charts-compliant-algorithm:
+
 Contributing a new Cognite Charts compliant algorithm
 =====================================================
 
@@ -235,6 +237,7 @@ and properly displayed on the user interface and included in the technical docum
 3. Provide a detailed explanation of the algorithm or formula:
 
 .. code:: python
+
    r"""Total head calculation.
    ...
    Steps:
@@ -257,6 +260,7 @@ and properly displayed on the user interface and included in the technical docum
       you can link to external documentation for additional context. Here is how to add links:
 
 .. code:: python
+
    r"""
    ...
    For more information on centrifugal pumps and head pressure, you can visit:
@@ -277,25 +281,29 @@ and properly displayed on the user interface and included in the technical docum
 
         * Use the command ``:math:`LaTeX formula``` for inline formulas
         * Use the command ``.. math::`` for full line equations
+
       For example:
 
       .. code:: python
-               r"""
-               ...
-               Formula for total head :math:`h` [m]:
-               .. math::
-                  h = \frac{P_{discharge} - P_{suction}}{9.81 \cdot \rho_L}\, \mathrm{m}
-               Where:
-               - :math:`P_{discharge}` is the discharge pressure [Pa]
-               - :math:`P_{suction}` is the suction pressure [Pa]
-               - :math:`\rho_L` is the density of the fluid [:math:`kg/m^3`].
-               ...
-               """
+
+         r"""
+         ...
+         Formula for total head :math:`h` [m]:
+         .. math::
+            h = \frac{P_{discharge} - P_{suction}}{9.81 \cdot \rho_L}\, \mathrm{m}
+
+         Where:
+         - :math:`P_{discharge}` is the discharge pressure [Pa]
+         - :math:`P_{suction}` is the suction pressure [Pa]
+         - :math:`\rho_L` is the density of the fluid [:math:`kg/m^3`].
+         ...
+         """
       
     * Each input parameter should be described in detail, including units, data types, 
       and possible value ranges. Here's an example of how to describe parameters with clear limits:
 
       .. code:: python
+
          r"""
          ...
          Args: 
@@ -363,7 +371,7 @@ of how to document a function :
 9. Define the function output after ``Returns:`` as shown above.
 
 10. The above are the minimal requirements to expose the documentation on the user interface and technical docs. But
-   feel free to add more `supported sections <https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html>`_.
+    feel free to add more `supported sections <https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html>`_.
 
 11. Go to the ``docs-source/source/`` folder and find the appropriate toolbox ``rst`` file (e.g. ``smooth.rst``)
 
@@ -413,7 +421,7 @@ This would be a good time to push your changes to the remote repository
 Add an example to the Gallery of Charts
 ---------------------------------------
 
-:ref:`sphx_glr_auto_examples` is an auto generated collection of examples of our industrial data science
+Gallery of Charts is an auto generated collection of examples of our industrial data science
 algorithms. Following the steps below, your example will be automatically added to the gallery. We take care of
 auto generating the figures, adding the code to the gallery, and links to downloadable python and notebook versions
 of your code for other data scientists to use or get inspired by (sharing is caring!). We use `Sphinx-Gallery
@@ -430,7 +438,7 @@ to show off all the amazing features and functionalities of your new algorithm a
 3. Create a new python file with the prefix *plot_*. For example ``plot_my_new_algo_feature.py``.
 4. At the top of the file, add a triple quote docstring that start with the title of your example enclose by
    top and bottom equal symbols (as shown below), followed by a description of your example. For inspiration, check
-   the :ref:`sphx_glr_auto_examples` or one of the examples in the repository
+   one of the examples in the repository
    (e.g. ``examples/smooth/plot_sg_smooth.py``).
 
 .. prompt:: python
@@ -663,8 +671,9 @@ Contributing a free form algorithm
 It is possible to contribute to InDSL without the algorithm being exposed in the Charts application.
 In this case, the algorithm will only be available to users who install the InDSL python package.
 It  **should not** be included in the ``__cognite__`` attribute of the toolbox `__init__.py` file.
-Although the algorithm doesn't need to meet the requirements mentioned in the :ref:`previous <contributing-a-new-charts-compliant-algorithm>` section, it is still important to
- document it properly, add all necessary tests and potentially an example to the documentation.
+Although the algorithm doesn't need to meet the requirements mentioned in the
+:ref:`previous <contributing-a-new-charts-compliant-algorithm>` section, it is still important to document it properly,
+add all necessary tests and potentially an example to the documentation.
 
 Coding Style
 ============

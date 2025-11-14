@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; indsl 8.7.1 documentation</title>
+  <title>Index &mdash; indsl 8.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dc409e9d"></script>
+      <script src="_static/documentation_options.js?v=ce2bb500"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -69,14 +69,17 @@
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -202,14 +205,16 @@
 </li>
       <li><a href="smooth.html#indsl.smooth.chebyshev">chebyshev() (in module indsl.smooth)</a>
 </li>
+      <li><a href="dev_tools.html#indsl.type_check.check_types">check_types() (in module indsl.type_check)</a>
+</li>
       <li><a href="drilling.html#indsl.drilling.circulation_detection">circulation_detection() (in module indsl.drilling)</a>
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.clip">clip() (in module indsl.ts_utils.utility_functions)</a>
 </li>
-      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Colebrook">Colebrook() (in module indsl.fluid_dynamics)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.Colebrook">Colebrook() (in module indsl.fluid_dynamics)</a>
+</li>
       <li><a href="data_quality.html#indsl.data_quality.completeness.completeness_score">completeness_score() (in module indsl.data_quality.completeness)</a>
 </li>
       <li><a href="signals.html#indsl.signals.generator.const_value">const_value() (in module indsl.signals.generator)</a>
@@ -244,7 +249,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="statistics.html#indsl.statistics.outliers.detect_outliers">detect_outliers() (in module indsl.statistics.outliers)</a>
 </li>
-      <li><a href="numerical_calculus.html#indsl.ts_utils.numerical_calculus.differentiate">differentiate() (in module indsl.ts_utils.numerical_calculus)</a>, <a href="ts_utils.html#indsl.ts_utils.numerical_calculus.differentiate">[1]</a>
+      <li><a href="numerical_calculus.html#indsl.ts_utils.numerical_calculus.differentiate">differentiate() (in module indsl.ts_utils.numerical_calculus)</a>
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.operators.div">div() (in module indsl.ts_utils.operators)</a>
 </li>
@@ -258,10 +263,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="sustainability.html#indsl.sustainability.co2_emissions_calculations.emissions_factor_combustor">emissions_factor_combustor() (in module indsl.sustainability.co2_emissions_calculations)</a>
 </li>
-      <li><a href="smooth.html#indsl.smooth.ewma">ewma() (in module indsl.smooth)</a>
+      <li><a href="dev_tools.html#indsl.type_check.error_handling">error_handling() (in module indsl.type_check)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="smooth.html#indsl.smooth.ewma">ewma() (in module indsl.smooth)</a>
+</li>
       <li><a href="ts_utils.html#indsl.ts_utils.logarithmic_functions.exp">exp() (in module indsl.ts_utils.logarithmic_functions)</a>
 </li>
       <li><a href="data_quality.html#indsl.data_quality.extreme">extreme() (in module indsl.data_quality)</a>
@@ -354,6 +361,13 @@
 </li>
       </ul></li>
       <li>
+    indsl.ts_utils.array_operations
+
+      <ul>
+        <li><a href="ts_utils.html#module-indsl.ts_utils.array_operations">module</a>
+</li>
+      </ul></li>
+      <li>
     indsl.ts_utils.logarithmic_functions
 
       <ul>
@@ -361,10 +375,10 @@
 </li>
       </ul></li>
       <li>
-    indsl.ts_utils.numerical_calculus
+    indsl.ts_utils.logical_operations
 
       <ul>
-        <li><a href="ts_utils.html#module-indsl.ts_utils.numerical_calculus">module</a>
+        <li><a href="ts_utils.html#module-indsl.ts_utils.logical_operations">module</a>
 </li>
       </ul></li>
       <li>
@@ -391,10 +405,17 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    indsl.type_check
+
+      <ul>
+        <li><a href="dev_tools.html#module-indsl.type_check">module</a>
+</li>
+      </ul></li>
+      <li>
     indsl.validations
 
       <ul>
-        <li><a href="dev_tools.html#module-0">module</a>, <a href="dev_tools.html#module-indsl.validations">[1]</a>
+        <li><a href="dev_tools.html#module-indsl.validations">module</a>
 </li>
       </ul></li>
       <li>
@@ -407,8 +428,6 @@
       <li><a href="drilling.html#indsl.drilling.inhole_detection">inhole_detection() (in module indsl.drilling)</a>
 </li>
       <li><a href="signals.html#indsl.signals.generator.insert_data_gaps">insert_data_gaps() (in module indsl.signals.generator)</a>
-</li>
-      <li><a href="ts_utils.html#indsl.ts_utils.numerical_calculus.integrate_windows">integrate_windows() (in module indsl.ts_utils.numerical_calculus)</a>
 </li>
       <li><a href="resample.html#indsl.resample.interpolate">interpolate() (in module indsl.resample)</a>
 </li>
@@ -434,10 +453,12 @@
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.logarithmic_functions.log2">log2() (in module indsl.ts_utils.logarithmic_functions)</a>
 </li>
-      <li><a href="ts_utils.html#indsl.ts_utils.logarithmic_functions.logn">logn() (in module indsl.ts_utils.logarithmic_functions)</a>
+      <li><a href="ts_utils.html#indsl.ts_utils.logical_operations.logical_check">logical_check() (in module indsl.ts_utils.logical_operations)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ts_utils.html#indsl.ts_utils.logarithmic_functions.logn">logn() (in module indsl.ts_utils.logarithmic_functions)</a>
+</li>
       <li><a href="data_quality.html#indsl.data_quality.low_density_identification_iqr">low_density_identification_iqr() (in module indsl.data_quality)</a>
 </li>
       <li><a href="data_quality.html#indsl.data_quality.low_density_identification_modified_z_scores">low_density_identification_modified_z_scores() (in module indsl.data_quality)</a>
@@ -468,9 +489,11 @@
       <ul>
         <li><a href="dev_tools.html#module-indsl.exceptions">indsl.exceptions</a>
 </li>
+        <li><a href="ts_utils.html#module-indsl.ts_utils.array_operations">indsl.ts_utils.array_operations</a>
+</li>
         <li><a href="ts_utils.html#module-indsl.ts_utils.logarithmic_functions">indsl.ts_utils.logarithmic_functions</a>
 </li>
-        <li><a href="ts_utils.html#module-indsl.ts_utils.numerical_calculus">indsl.ts_utils.numerical_calculus</a>
+        <li><a href="ts_utils.html#module-indsl.ts_utils.logical_operations">indsl.ts_utils.logical_operations</a>
 </li>
         <li><a href="ts_utils.html#module-indsl.ts_utils.operators">indsl.ts_utils.operators</a>
 </li>
@@ -478,7 +501,9 @@
 </li>
         <li><a href="ts_utils.html#module-indsl.ts_utils.utility_functions">indsl.ts_utils.utility_functions</a>
 </li>
-        <li><a href="dev_tools.html#module-0">indsl.validations</a>, <a href="dev_tools.html#module-indsl.validations">[1]</a>
+        <li><a href="dev_tools.html#module-indsl.type_check">indsl.type_check</a>
+</li>
+        <li><a href="dev_tools.html#module-indsl.validations">indsl.validations</a>
 </li>
         <li><a href="dev_tools.html#module-indsl.versioning">indsl.versioning</a>
 </li>
@@ -571,10 +596,10 @@
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.remove">remove() (in module indsl.ts_utils.utility_functions)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="statistics.html#indsl.statistics.outliers.remove_outliers">remove_outliers() (in module indsl.statistics.outliers)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.replace">replace() (in module indsl.ts_utils.utility_functions)</a>
 </li>
       <li><a href="resample.html#indsl.resample.resample">resample() (in module indsl.resample)</a>
@@ -583,7 +608,11 @@
 </li>
       <li><a href="oil_and_gas.html#indsl.oil_and_gas.live_fluid_properties.retrieve_fluid_properties">retrieve_fluid_properties() (in module indsl.oil_and_gas.live_fluid_properties)</a>
 </li>
+      <li><a href="ts_utils.html#indsl.ts_utils.rolling_stats.rolling_stddev">rolling_stddev() (in module indsl.ts_utils.rolling_stats)</a>
+</li>
       <li><a href="data_quality.html#indsl.data_quality.rolling_stddev_timedelta">rolling_stddev_timedelta() (in module indsl.data_quality)</a>
+</li>
+      <li><a href="ts_utils.html#indsl.ts_utils.rolling_stats.rolling_variance">rolling_variance() (in module indsl.ts_utils.rolling_stats)</a>
 </li>
       <li><a href="drilling.html#indsl.drilling.rotation_detection">rotation_detection() (in module indsl.drilling)</a>
 </li>
@@ -619,7 +648,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ts_utils.html#indsl.ts_utils.trigonometric_functions.sinh">sinh() (in module indsl.ts_utils.trigonometric_functions)</a>
 </li>
-      <li><a href="numerical_calculus.html#indsl.ts_utils.numerical_calculus.sliding_window_integration">sliding_window_integration() (in module indsl.ts_utils.numerical_calculus)</a>, <a href="ts_utils.html#indsl.ts_utils.numerical_calculus.sliding_window_integration">[1]</a>
+      <li><a href="numerical_calculus.html#indsl.ts_utils.numerical_calculus.sliding_window_integration">sliding_window_integration() (in module indsl.ts_utils.numerical_calculus)</a>
 </li>
       <li><a href="smooth.html#indsl.smooth.sma">sma() (in module indsl.smooth)</a>
 </li>
@@ -645,15 +674,23 @@
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.threshold">threshold() (in module indsl.ts_utils.utility_functions)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.threshold_test">threshold_test() (in module indsl.ts_utils.utility_functions)</a>
 </li>
       <li><a href="ts_utils.html#indsl.ts_utils.utility_functions.time_shift">time_shift() (in module indsl.ts_utils.utility_functions)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ts_utils.html#indsl.ts_utils.array_operations.time_weighted_mean">time_weighted_mean() (in module indsl.ts_utils.array_operations)</a>
+</li>
+      <li><a href="ts_utils.html#indsl.ts_utils.array_operations.time_weighted_std">time_weighted_std() (in module indsl.ts_utils.array_operations)</a>
+</li>
+      <li><a href="ts_utils.html#indsl.ts_utils.array_operations.timeseries_max">timeseries_max() (in module indsl.ts_utils.array_operations)</a>
+</li>
+      <li><a href="ts_utils.html#indsl.ts_utils.array_operations.timeseries_min">timeseries_min() (in module indsl.ts_utils.array_operations)</a>
+</li>
       <li><a href="equipment.html#indsl.equipment.total_head">total_head() (in module indsl.equipment)</a>
 </li>
-      <li><a href="numerical_calculus.html#indsl.ts_utils.numerical_calculus.trapezoidal_integration">trapezoidal_integration() (in module indsl.ts_utils.numerical_calculus)</a>, <a href="ts_utils.html#indsl.ts_utils.numerical_calculus.trapezoidal_integration">[1]</a>
+      <li><a href="numerical_calculus.html#indsl.ts_utils.numerical_calculus.trapezoidal_integration">trapezoidal_integration() (in module indsl.ts_utils.numerical_calculus)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -683,17 +720,17 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dev_tools.html#id0">validate_series_has_minimum_length() (in module indsl.validations)</a>, <a href="dev_tools.html#indsl.validations.validate_series_has_minimum_length">[1]</a>
+      <li><a href="dev_tools.html#indsl.validations.validate_series_has_minimum_length">validate_series_has_minimum_length() (in module indsl.validations)</a>
 </li>
-      <li><a href="dev_tools.html#id1">validate_series_has_time_index() (in module indsl.validations)</a>, <a href="dev_tools.html#indsl.validations.validate_series_has_time_index">[1]</a>
+      <li><a href="dev_tools.html#indsl.validations.validate_series_has_time_index">validate_series_has_time_index() (in module indsl.validations)</a>
 </li>
-      <li><a href="dev_tools.html#id2">validate_series_is_not_empty() (in module indsl.validations)</a>, <a href="dev_tools.html#indsl.validations.validate_series_is_not_empty">[1]</a>
+      <li><a href="dev_tools.html#indsl.validations.validate_series_is_not_empty">validate_series_is_not_empty() (in module indsl.validations)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dev_tools.html#id3">validate_timedelta() (in module indsl.validations)</a>, <a href="dev_tools.html#indsl.validations.validate_timedelta">[1]</a>
+      <li><a href="dev_tools.html#indsl.validations.validate_timedelta">validate_timedelta() (in module indsl.validations)</a>
 </li>
-      <li><a href="dev_tools.html#id4">validate_timedelta_unit() (in module indsl.validations)</a>, <a href="dev_tools.html#indsl.validations.validate_timedelta_unit">[1]</a>
+      <li><a href="dev_tools.html#indsl.validations.validate_timedelta_unit">validate_timedelta_unit() (in module indsl.validations)</a>
 </li>
       <li><a href="data_quality.html#indsl.data_quality.value_decrease_check">value_decrease_check() (in module indsl.data_quality)</a>
 </li>
@@ -714,8 +751,6 @@
       <li><a href="fluid_dynamics.html#indsl.fluid_dynamics.We">We() (in module indsl.fluid_dynamics)</a>
 </li>
       <li><a href="signals.html#indsl.signals.noise.white_noise">white_noise() (in module indsl.signals.noise)</a>
-</li>
-      <li><a href="ts_utils.html#indsl.ts_utils.numerical_calculus.window_index">window_index() (in module indsl.ts_utils.numerical_calculus)</a>
 </li>
   </ul></td>
 </tr></table>

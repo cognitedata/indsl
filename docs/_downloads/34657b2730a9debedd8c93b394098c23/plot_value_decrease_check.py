@@ -1,8 +1,8 @@
 # Copyright 2022 Cognite AS
 """
-==========================================
+================================================
 Checking for decreasing values in a timeseries
-==========================================
+================================================
 
 Example of algorithm that indicates decreasing values in time series data. This algorithm is applied on Running Hours time series.
 It is a specific type of time series that is counting the number of running hours in a pump. Given that we expect

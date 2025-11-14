@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cognite’s Industrial Data Science Library &mdash; indsl 8.7.1 documentation</title>
+  <title>Cognite’s Industrial Data Science Library &mdash; indsl 8.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=dc409e9d"></script>
+      <script src="_static/documentation_options.js?v=ce2bb500"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -71,14 +71,17 @@
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers</span></p>
@@ -237,12 +240,14 @@ data science algorithms to be used by any data scientist. For more information, 
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ts_utils.html">Basic time series functions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.operators">Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#array-operators">Array Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#logical-operators">Logical Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.numerical_calculus">Numerical calculus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.array_operations">Array Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.logical_operations">Logical Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#numerical-calculus">Numerical calculus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.logarithmic_functions">Logarithmic functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.trigonometric_functions">Trigonometric functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ts_utils.html#module-indsl.ts_utils.utility_functions">Utility functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#rolling-standard-deviation">Rolling standard deviation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ts_utils.html#rolling-variance">Rolling variance</a></li>
 </ul>
 </li>
 </ul>
@@ -254,14 +259,17 @@ data science algorithms to be used by any data scientist. For more information, 
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/detect/index.html">Detection Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/equipment/index.html">Equipment Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/filter/index.html">Filter Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/fluid_dynamics/index.html">Fluid Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/forecast/index.html">Forecasting Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/numerical_calculus/index.html">Numerical Calculus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/oil_and_gas/index.html">Oil and Gas Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/reindex/index.html">Reindex function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/resample/index.html">Resampling Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/signals/index.html">Synthetic Signal Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/smooth/index.html">Smoothing Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/statistics/index.html">Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/sustainability/index.html">Sustainability Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/ts_utils/index.html">Rolling standard deviation and variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/versioning/index.html">Function versioning</a></li>
 </ul>
 </div>
@@ -280,10 +288,11 @@ data science algorithms to be used by any data scientist. For more information, 
 <li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-indsl.versioning">Function versioning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-indsl.exceptions">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-indsl.validations">Validation functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-0">Type checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev_tools.html#module-indsl.type_check">Type checking</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v8-8-0-2025-09-30">v8.8.0 (2025-09-30)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v8-7-1-2025-08-19">v8.7.1 (2025-08-19)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v8-7-0-2025-06-20">v8.7.0 (2025-06-20)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v8-6-0-2024-09-16">v8.6.0 (2024-09-16)</a></li>
@@ -345,10 +354,10 @@ data science algorithms to be used by any data scientist. For more information, 
 <li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-0-8-2021-10-18">v0.0.8 (2021-10-18)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-0-7-2021-10-18">v0.0.7 (2021-10-18)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-0-6-2021-10-18">v0.0.6 (2021-10-18)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id93">0.0.6 (2021-10-18)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id95">0.0.5 (2021-10-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id94">0.0.6 (2021-10-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id96">0.0.5 (2021-10-18)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#v0-0-4-2021-10-13">v0.0.4 (2021-10-13)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id98">0.0.3 (2021-10-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CHANGELOG.html#id99">0.0.3 (2021-10-08)</a></li>
 </ul>
 </li>
 </ul>

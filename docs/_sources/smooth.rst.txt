@@ -21,7 +21,7 @@ Simple moving average
 .. autofunction:: indsl.smooth.sma
 
 Linear weighted moving average
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. autofunction:: indsl.smooth.lwma
 
 .. topic:: Examples:

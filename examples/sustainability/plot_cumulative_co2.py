@@ -1,7 +1,7 @@
 """
-========================
+=========================================
 Cumulative CO2 Production and Cost
-========================
+=========================================
 
 Given the power consumption of a process unit and data regarding the emissions and cost factors, we can work out the total amount of
 CO2 produced and the cost associated with that. Here is an example using the power used by a gas compressor at the Valhall platform.

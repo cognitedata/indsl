@@ -74,15 +74,17 @@ To install all the extra functionality, run:
    auto_examples/detect/index
    auto_examples/equipment/index
    auto_examples/filter/index
-   auto-examples/fluid_dynamics/index
+   auto_examples/fluid_dynamics/index
    auto_examples/forecast/index
    auto_examples/numerical_calculus/index
    auto_examples/oil_and_gas/index
+   auto_examples/reindex/index
    auto_examples/resample/index
    auto_examples/signals/index
    auto_examples/smooth/index
    auto_examples/statistics/index
    auto_examples/sustainability/index
+   auto_examples/ts_utils/index
    auto_examples/versioning/index
 
 .. toctree::

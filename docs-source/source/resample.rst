@@ -27,11 +27,15 @@ Reindex
 
 .. topic:: Examples:
 
-   * :ref:`sphx_glr_auto_examples_reindex_plot_pearson_correlation.py`
+   * :ref:`sphx_glr_auto_examples_reindex_plot_reindex_and_pearson_correlation.py`
 
 Reindex scatterplot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. autofunction:: indsl.resample.reindex_scatter
+
+.. topic:: Examples:
+
+   * :ref:`sphx_glr_auto_examples_reindex_plot_mock_scatter_plot.py`
 
 Reindex scatterplot x-values
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
