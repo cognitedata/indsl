@@ -111,7 +111,8 @@ exclude = ["tests", "examples", "docs-source", "docs"]
 # RUF002: Missing docstring in public function
 # UP006:  Use `list` instead of `List` for type annotations
 # UP007:  Use `X | Y` for type annotations
-ignore = ["E501", "E731", "W605","D100", "D104", "D105", "RUF002", "UP006", "UP007", "UP035"]
+# UP045:  Use `X | Y` instead of Optional
+ignore = ["E501", "E731", "W605","D100", "D104", "D105", "RUF002", "UP006", "UP007", "UP035", "UP045"]
 select = ["D", "E", "W",  "F", "I", "T", "RUF", "TID", "UP"]
 
 [tool.ruff.lint.pydocstyle]
