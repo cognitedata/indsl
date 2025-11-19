@@ -43,7 +43,7 @@ docstring-parser = "^0.17.0"
 toml = "^0.10.2"
 docstring-to-markdown = "^0.10"
 coverage = "^7.0.0"
-ruff = "^0.13.2"
+ruff = "^0.14.0"
 pytest = "^8.1.1"
 
 [tool.poetry.group.docs]
