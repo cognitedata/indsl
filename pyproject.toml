@@ -98,7 +98,7 @@ exclude = '''
 [tool.ruff]
 # Keep in sync with .pre-commit-config.yaml
 line-length = 120
-target-version = "py38"
+target-version = "py311"
 exclude = ["tests", "examples", "docs-source", "docs"]
 
 [tool.ruff.lint]
