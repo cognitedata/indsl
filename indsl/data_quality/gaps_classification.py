@@ -19,7 +19,8 @@ def gaps_classification(x: pd.Series, eps: float = 0.5, min_samples: int = 2, st
 
     Args:
          x: Time series
-         eps: The maximum distance between samples for clustering in DBSCAN. Defaults to 0.5.
+         eps: The maximum distance between samples
+             The maximum distance between samples for clustering in DBSCAN. Defaults to 0.5.
          min_samples: The minimum number of samples in a cluster for DBSCAN. Defaults to 2.
          std_thresholds: Thresholds for classifying gaps based on standard deviations. Defaults to [1, 2, 3].
 
