@@ -228,7 +228,7 @@ def wave_with_brownian_noise(
     timeseries_corr = TimeSeries(sinusoid, noise_generator=red_noise)
 
     # Sampling using the irregular time samples
-    data_points, signals_corr, errors_corr = timeseries_corr.sample(time_vector)
+    data_points, _signals_corr, _errors_corr = timeseries_corr.sample(time_vector)
     data_points = data_points + mean
 
     time_vector = pd.to_datetime(time_vector, unit="s")
