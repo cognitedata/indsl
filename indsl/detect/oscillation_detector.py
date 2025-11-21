@@ -61,10 +61,10 @@ def oscillation_detector_plot(data: pd.Series, order: int = 4, threshold: float 
         data_predicted,
         detected,
         data_freqs,
-        time_interp,
-        amplitude,
-        roots,
-        distances,
+        _time_interp,
+        _amplitude,
+        _roots,
+        _distances,
     ) = _oscillation_detector(data, order, threshold)
 
     # If oscillations detected find amplitude of peak frequencies, and plot if requested.
@@ -124,10 +124,10 @@ def oscillation_detector(data: pd.Series, order: int = 4, threshold: float = 0.2
         data_predicted,
         detected,
         data_freqs,
-        time_interp,
-        amplitude,
-        roots,
-        distances,
+        _time_interp,
+        _amplitude,
+        _roots,
+        _distances,
     ) = _oscillation_detector(data, order, threshold)
 
     # If oscillations detected find amplitude of peak frequencies, and plot if requested.
