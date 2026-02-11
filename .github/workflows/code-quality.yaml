@@ -137,6 +137,9 @@ jobs:
     needs: [test-core, test-extras]
     runs-on: ubuntu-latest
     if: always()
+    permissions:
+      checks: write
+      pull-requests: write
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
