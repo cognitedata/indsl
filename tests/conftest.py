@@ -1,4 +1,9 @@
 import inspect
+import os
+
+# Force matplotlib to use a non-interactive backend so tests don't
+# depend on Tk being installed (fixes Windows CI failures).
+os.environ.setdefault("MPLBACKEND", "Agg")
 
 import numpy as np
 import pytest
