@@ -9,5 +9,12 @@
   "labels": [
     "dependencies",
     "auto-merge"
+  ],
+  "packageRules": [
+    {
+      "groupName": "commitizen",
+      "matchPackageNames": ["commitizen", "commitizen-tools/commitizen"],
+      "matchDatasources": ["pypi", "github-tags"]
+    }
   ]
 }
