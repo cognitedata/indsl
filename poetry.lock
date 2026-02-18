@@ -569,14 +569,14 @@ test = ["pytest"]
 
 [[package]]
 name = "commitizen"
-version = "4.10.0"
+version = "4.13.7"
 description = "Python commitizen client tool"
 optional = false
-python-versions = "<4.0,>=3.9"
+python-versions = "<4.0,>=3.10"
 groups = ["dev", "docs"]
 files = [
-    {file = "commitizen-4.10.0-py3-none-any.whl", hash = "sha256:3fe56c168b30b30b84b8329cba6b132e77b4eb304a5460bbe2186aad0f78c966"},
-    {file = "commitizen-4.10.0.tar.gz", hash = "sha256:cc58067403b9eff21d0423b3d9a29bda05254bd51ad5bdd1fd0594bff31277e1"},
+    {file = "commitizen-4.13.7-py3-none-any.whl", hash = "sha256:7e179fa2a29626d330e38332e3f306caa3f11ac1cc0bc139f61dff167f224434"},
+    {file = "commitizen-4.13.7.tar.gz", hash = "sha256:61b1872a3b5b9da69f1819a4e238249071a636ef422cf6f3735c491eb77e9526"},
 ]
 
 [package.dependencies]
@@ -587,8 +587,8 @@ decli = ">=0.6.0,<1.0"
 deprecated = ">=1.2.13,<2"
 jinja2 = ">=2.10.3"
 packaging = ">=19"
-prompt_toolkit = "!=3.0.52"
-pyyaml = ">=3.08"
+prompt-toolkit = "!=3.0.52"
+pyyaml = ">=3.8"
 questionary = ">=2.0,<3.0"
 termcolor = ">=1.1.0,<4.0.0"
 tomlkit = ">=0.8.0,<1.0.0"
