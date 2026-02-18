@@ -5,6 +5,7 @@
     ":automergeMinor"
   ],
   "ignorePaths": [],
+  "rangeStrategy": "bump",
   "minimumReleaseAge": "31 days",
   "labels": [
     "dependencies",
