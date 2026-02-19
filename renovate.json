@@ -10,5 +10,13 @@
   "labels": [
     "dependencies",
     "auto-merge"
+  ],
+  "packageRules": [
+    {
+      "description": "Bump dev dependency constraints to keep pyproject.toml in sync with poetry.lock",
+      "matchManagers": ["poetry"],
+      "matchDepTypes": ["dev-dependencies"],
+      "rangeStrategy": "bump"
+    }
   ]
 }

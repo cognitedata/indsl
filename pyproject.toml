@@ -43,7 +43,7 @@ docstring-parser = "^0.17.0"
 toml = "^0.10.2"
 docstring-to-markdown = "^0.10"
 coverage = "^7.0.0"
-ruff = "^0.14.5"
+ruff = "^0.14.14"
 pytest = "^8.1.1"
 
 [tool.poetry.group.docs]
@@ -64,7 +64,7 @@ coverage = "^7.0.0"
 Sphinx = "<8.3"
 sphinx-rtd-theme = "^3.0.0"
 nbsphinx = "^0.9.0"
-sphinx-gallery = "^0.19.0"
+sphinx-gallery = "^0.20.0"
 sphinx-prompt = "^1.10.0"
 
 [tool.poetry.extras]
