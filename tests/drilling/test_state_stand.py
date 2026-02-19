@@ -22,13 +22,13 @@ def test_state_stand_basic():
     
     # Create input time series
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([100.0] * 10, index=date_range)  # Normal hookload
+    hkld = pd.Series([100000.0] * 10, index=date_range)  # Normal hookload (100 kN)
     dmd = pd.Series([100.0 + i * 0.1 for i in range(10)], index=date_range)  # Increasing hole depth
     dbit = pd.Series([100.0 + i * 0.1 for i in range(10)], index=date_range)  # Bit depth matches hole depth
     bpos = pd.Series([10.0 + i * 0.05 for i in range(10)], index=date_range)  # Block moving slowly
     rpm = pd.Series([120.0] * 10, index=date_range)  # Rotating
-    tors = pd.Series([5.0] * 10, index=date_range)  # Torque present
-    spp = pd.Series([500.0] * 10, index=date_range)  # Pumping
+    tors = pd.Series([5000.0] * 10, index=date_range)  # Torque present (5 kN.m)
+    spp = pd.Series([500000.0] * 10, index=date_range)  # Pumping (500 kPa)
     flow = pd.Series([200.0] * 10, index=date_range)  # Flow present
     
     result = state_stand(time, hkld, dmd, dbit, bpos, rpm, tors, spp, flow)
@@ -57,7 +57,7 @@ def test_state_stand_slips():
     date_range = pd.date_range(start=start_time, periods=5, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([10.0] * 5, index=date_range)  # Very low hookload (slips)
+    hkld = pd.Series([10000.0] * 5, index=date_range)  # Very low hookload (slips, 10 kN)
     dmd = pd.Series([100.0] * 5, index=date_range)
     dbit = pd.Series([100.0] * 5, index=date_range)
     bpos = pd.Series([10.0] * 5, index=date_range)
@@ -80,13 +80,13 @@ def test_state_stand_drilling():
     date_range = pd.date_range(start=start_time, periods=5, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([200.0] * 5, index=date_range)  # Normal hookload
+    hkld = pd.Series([200000.0] * 5, index=date_range)  # Normal hookload (200 kN)
     dmd = pd.Series([100.0] * 5, index=date_range)
-    dbit = pd.Series([99.8] * 5, index=date_range)  # On-bottom (within 0.5m)
+    dbit = pd.Series([99.9] * 5, index=date_range)  # On-bottom (within 0.2m)
     bpos = pd.Series([10.0] * 5, index=date_range)  # Stationary
     rpm = pd.Series([120.0] * 5, index=date_range)  # Rotating
-    tors = pd.Series([5.0] * 5, index=date_range)  # Torque
-    spp = pd.Series([500.0] * 5, index=date_range)  # Pumping
+    tors = pd.Series([5000.0] * 5, index=date_range)  # Torque (5 kN.m)
+    spp = pd.Series([500000.0] * 5, index=date_range)  # Pumping (500 kPa)
     flow = pd.Series([200.0] * 5, index=date_range)  # Flow
     
     result = state_stand(time, hkld, dmd, dbit, bpos, rpm, tors, spp, flow)
@@ -108,7 +108,7 @@ def test_state_stand_block_velocity():
     bpos = pd.Series([10.0 + i * 0.1 for i in range(10)], index=date_range)
     
     # Other inputs (minimal values)
-    hkld = pd.Series([100.0] * 10, index=date_range)
+    hkld = pd.Series([100000.0] * 10, index=date_range)  # 100 kN
     dmd = pd.Series([100.0] * 10, index=date_range)
     dbit = pd.Series([100.0] * 10, index=date_range)
     rpm = pd.Series([0.0] * 10, index=date_range)
@@ -132,7 +132,7 @@ def test_state_stand_tripping_out():
     date_range = pd.date_range(start=start_time, periods=5, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([200.0] * 5, index=date_range)
+    hkld = pd.Series([200000.0] * 5, index=date_range)  # 200 kN
     dmd = pd.Series([100.0] * 5, index=date_range)
     dbit = pd.Series([50.0] * 5, index=date_range)  # Off-bottom
     bpos = pd.Series([10.0 - i * 0.1 for i in range(5)], index=date_range)  # Moving up
@@ -156,7 +156,7 @@ def test_state_stand_insufficient_data():
     date_range = pd.date_range(start=start_time, periods=1, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([100.0], index=date_range)
+    hkld = pd.Series([100000.0], index=date_range)  # 100 kN
     dmd = pd.Series([100.0], index=date_range)
     dbit = pd.Series([100.0], index=date_range)
     bpos = pd.Series([10.0], index=date_range)
@@ -182,7 +182,7 @@ def test_state_stand_with_nan():
     date_range = pd.date_range(start=start_time, periods=5, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([100.0, np.nan, 100.0, 100.0, 100.0], index=date_range)
+    hkld = pd.Series([100000.0, np.nan, 100000.0, 100000.0, 100000.0], index=date_range)  # 100 kN
     dmd = pd.Series([100.0] * 5, index=date_range)
     dbit = pd.Series([100.0] * 5, index=date_range)
     bpos = pd.Series([10.0] * 5, index=date_range)
@@ -212,13 +212,13 @@ def test_state_stand_circulating():
     date_range = pd.date_range(start=start_time, periods=5, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([200.0] * 5, index=date_range)
+    hkld = pd.Series([200000.0] * 5, index=date_range)  # 200 kN
     dmd = pd.Series([100.0] * 5, index=date_range)
     dbit = pd.Series([50.0] * 5, index=date_range)  # Off-bottom
     bpos = pd.Series([10.0] * 5, index=date_range)  # Stationary
     rpm = pd.Series([0.0] * 5, index=date_range)  # No rotation
     tors = pd.Series([0.0] * 5, index=date_range)
-    spp = pd.Series([500.0] * 5, index=date_range)  # Pumping
+    spp = pd.Series([500000.0] * 5, index=date_range)  # Pumping (500 kPa)
     flow = pd.Series([200.0] * 5, index=date_range)  # Flow
     
     result = state_stand(time, hkld, dmd, dbit, bpos, rpm, tors, spp, flow)
@@ -235,13 +235,13 @@ def test_state_stand_slide_drilling():
     date_range = pd.date_range(start=start_time, periods=5, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([200.0] * 5, index=date_range)
+    hkld = pd.Series([200000.0] * 5, index=date_range)  # 200 kN
     dmd = pd.Series([100.0] * 5, index=date_range)
-    dbit = pd.Series([99.8] * 5, index=date_range)  # On-bottom
+    dbit = pd.Series([99.9] * 5, index=date_range)  # On-bottom (within 0.2m)
     bpos = pd.Series([10.0] * 5, index=date_range)  # Stationary
     rpm = pd.Series([0.0] * 5, index=date_range)  # No rotation
     tors = pd.Series([0.0] * 5, index=date_range)
-    spp = pd.Series([500.0] * 5, index=date_range)  # Pumping
+    spp = pd.Series([500000.0] * 5, index=date_range)  # Pumping (500 kPa)
     flow = pd.Series([200.0] * 5, index=date_range)  # Flow
     
     result = state_stand(time, hkld, dmd, dbit, bpos, rpm, tors, spp, flow)
@@ -259,13 +259,13 @@ def test_state_stand_offbottom():
     date_range = pd.date_range(start=start_time, periods=5, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([200.0] * 5, index=date_range)
+    hkld = pd.Series([200000.0] * 5, index=date_range)  # 200 kN
     dmd = pd.Series([100.0] * 5, index=date_range)
     dbit = pd.Series([50.0] * 5, index=date_range)  # Off-bottom
     bpos = pd.Series([10.0] * 5, index=date_range)  # Stationary
     rpm = pd.Series([120.0] * 5, index=date_range)  # Rotating
-    tors = pd.Series([5.0] * 5, index=date_range)
-    spp = pd.Series([500.0] * 5, index=date_range)  # Pumping
+    tors = pd.Series([5000.0] * 5, index=date_range)  # 5 kN.m
+    spp = pd.Series([500000.0] * 5, index=date_range)  # Pumping (500 kPa)
     flow = pd.Series([200.0] * 5, index=date_range)  # Flow
     
     result = state_stand(time, hkld, dmd, dbit, bpos, rpm, tors, spp, flow)
@@ -283,7 +283,7 @@ def test_state_stand_tripping_in():
     date_range = pd.date_range(start=start_time, periods=5, freq="1s")
     
     time = pd.Series(time_ms, index=range(len(time_ms)))
-    hkld = pd.Series([200.0] * 5, index=date_range)
+    hkld = pd.Series([200000.0] * 5, index=date_range)  # 200 kN
     dmd = pd.Series([100.0] * 5, index=date_range)
     dbit = pd.Series([50.0] * 5, index=date_range)  # Off-bottom
     bpos = pd.Series([10.0 + i * 0.1 for i in range(5)], index=date_range)  # Moving down

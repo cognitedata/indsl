@@ -65,40 +65,17 @@ def state_stand(
     - :math:`t` is time [ms]
     - :math:`\mathrm{bvel}` is the block velocity [:math:`\mathrm{m/s}`]
 
-    The state_stand is an integer code representing drilling operational states at the stand level:
-    - 0: ST_ABSENT - One or more required channels absent
-    - 1: ST_DRILLING - On-bottom drilling
-    - 2: ST_OFFBOT - Offbottom during drilling of a stand
-    - 3: ST_WIPE - Wiper trip
-    - 4: ST_RIH - Run in hole
-    - 5: ST_POOH - Pull out of hole
-    - 6: ST_CONNECTION - Drill string is in slips
-    - 7: ST_WEIGHTSLIP - Drill string up offbottom until pipe in slips
-    - 8: ST_SLIPWEIGHT - Drill string offbottom to resume drilling
+    The state_stand is an integer code (0-8) representing drilling operational states at the stand level.
+    See StateStand enum for the complete list of state codes and descriptions.
 
-    The state_mode is an integer code representing detailed drilling operational modes:
-    - 0: MD_ABSENT - Not enough data
-    - 1: MD_DRILLROTATE - Rotate drilling
-    - 2: MD_DRILLSLIDE - Slide drilling
-    - 3: MD_SLIPS - Slips
-    - 4: MD_REAM - Ream In
-    - 5: MD_TRIPPUMP - Moving in with pumping but no rotation
-    - 6: MD_TRIPROTATE - Moving in with rotation but no pumping
-    - 7: MD_TRIP - Moving in without pumping or rotation
-    - 8: MD_REAMOUT - Back reaming
-    - 9: MD_PUMPOUT - Moving out with pumping but not rotating
-    - 10: MD_ROTATEOUT - Moving out with rotation but no pumping
-    - 11: MD_TRIPOUT - Moving out without pumping or rotation
-    - 12: MD_PUMPROTATE - Static with pumping and rotation
-    - 13: MD_PUMP - Static with pumping but not rotation
-    - 14: MD_ROTATE - Static with rotation but no pumping
-    - 15: MD_STATIC - Static
+    The state_mode is an integer code (0-15) representing detailed drilling operational modes.
+    See StateMode enum for the complete list of mode codes and descriptions.
 
     Args:
         time: Time [ms].
             Time series in milliseconds since 1970-01-01 (Unix epoch). Used for temporal analysis
             and time-based calculations.
-        hkld: HookLoad [kN].
+        hkld: HookLoad [N].
             Time series with hookload values. Used to detect slips (very low HookLoad) and drilling activity.
         dmd: HoleDepth [m].
             Time series with hole depth values. Used to detect drilling progress and connection intervals.
@@ -108,9 +85,9 @@ def state_stand(
             Time series with block position values. Used to detect pipe movement during connections.
         rpm: Rotary Speed [rpm].
             Time series with rotary speed values. Used to classify rotating vs non-rotating states.
-        tors: SurfaceTorque [kN.m].
+        tors: SurfaceTorque [N.m].
             Time series with surface torque values. Used to detect rotation and drilling activity.
-        spp: StandpipePressure [kPa].
+        spp: StandpipePressure [Pa].
             Time series with standpipe pressure values. Used to detect pumping activity.
         flow: FlowIn [:math:`\mathrm{L/min}`].
             Time series with flow-in values. Used to detect pumping activity.
@@ -141,10 +118,10 @@ def state_stand(
     time_series = pd.Series(time_ms, index=time_index)
 
     # Hardcoded thresholds
-    hkld_slip_threshold = 50.0  # kN
+    hkld_slip_threshold = 50000.0  # N (50 kN)
     rpm_rotation_threshold = 10.0  # rpm
-    tors_rotation_threshold = 1.0  # kN.m
-    spp_pumping_threshold = 100.0  # kPa
+    tors_rotation_threshold = 1000.0  # N.m (1 kN.m)
+    spp_pumping_threshold = 100000.0  # Pa (100 kPa)
     flow_pumping_threshold = 50.0  # L/min
 
     # Align all time series (including time series for consistency)
