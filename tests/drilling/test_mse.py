@@ -251,3 +251,89 @@ def test_mse_negative_bit_area():
     # Should return NaN for all values when bit area is negative (negative denominator)
     assert result.isnull().all()
     assert result.name == "mse"
+
+
+@pytest.mark.core
+def test_mse_very_small_rop():
+    """Test MSE handles very small ROP values correctly (should not cause overflow)."""
+    date_range = pd.date_range(start=datetime(2000, 10, 1), end=datetime(2000, 10, 10), periods=4)
+
+    torque = pd.Series([1000.0] * 4, index=date_range)
+    rpm = pd.Series([120.0] * 4, index=date_range)
+    wob = pd.Series([50000.0] * 4, index=date_range)
+    rop = pd.Series([1e-10, 1e-8, 1e-6, 10.0], index=date_range)  # Very small but positive ROP values
+    bit_area = pd.Series([0.01] * 4, index=date_range)
+
+    result = mse(torque, rpm, wob, rop, bit_area)
+    
+    # Very small ROP values should produce very large MSE values, but not inf
+    # The first three should be valid (very large) numbers, not NaN or inf
+    assert not np.isnan(result.iloc[0]) and not np.isinf(result.iloc[0])
+    assert not np.isnan(result.iloc[1]) and not np.isinf(result.iloc[1])
+    assert not np.isnan(result.iloc[2]) and not np.isinf(result.iloc[2])
+    assert not np.isnan(result.iloc[3])  # Normal value should be valid
+    assert result.name == "mse"
+
+
+@pytest.mark.core
+def test_mse_very_small_bit_area():
+    """Test MSE handles very small bit area values correctly (should not cause overflow)."""
+    date_range = pd.date_range(start=datetime(2000, 10, 1), end=datetime(2000, 10, 10), periods=4)
+
+    torque = pd.Series([1000.0] * 4, index=date_range)
+    rpm = pd.Series([120.0] * 4, index=date_range)
+    wob = pd.Series([50000.0] * 4, index=date_range)
+    rop = pd.Series([10.0] * 4, index=date_range)
+    bit_area = pd.Series([1e-10, 1e-8, 1e-6, 0.01], index=date_range)  # Very small but positive bit area values
+
+    result = mse(torque, rpm, wob, rop, bit_area)
+    
+    # Very small bit area values should produce very large MSE values, but not inf
+    # The first three should be valid (very large) numbers, not NaN or inf
+    assert not np.isnan(result.iloc[0]) and not np.isinf(result.iloc[0])
+    assert not np.isnan(result.iloc[1]) and not np.isinf(result.iloc[1])
+    assert not np.isnan(result.iloc[2]) and not np.isinf(result.iloc[2])
+    assert not np.isnan(result.iloc[3])  # Normal value should be valid
+    assert result.name == "mse"
+
+
+@pytest.mark.core
+def test_mse_very_small_denominator():
+    """Test MSE handles very small denominator (bit_area * rop) correctly."""
+    date_range = pd.date_range(start=datetime(2000, 10, 1), end=datetime(2000, 10, 10), periods=4)
+
+    torque = pd.Series([1000.0] * 4, index=date_range)
+    rpm = pd.Series([120.0] * 4, index=date_range)
+    wob = pd.Series([50000.0] * 4, index=date_range)
+    # Create very small denominator: bit_area * rop_m_per_s
+    rop = pd.Series([1e-5, 1e-3, 0.1, 10.0], index=date_range)  # Very small ROP
+    bit_area = pd.Series([1e-5, 1e-3, 0.1, 0.01], index=date_range)  # Very small bit area
+
+    result = mse(torque, rpm, wob, rop, bit_area)
+    
+    # Very small denominators should produce very large MSE values, but not inf
+    # All should be valid numbers, not NaN or inf
+    for i in range(4):
+        assert not np.isnan(result.iloc[i]) and not np.isinf(result.iloc[i])
+    assert result.name == "mse"
+
+
+@pytest.mark.core
+def test_mse_mixed_zero_rop_and_zero_bit_area():
+    """Test MSE handles edge case when both ROP and bit area are zero."""
+    date_range = pd.date_range(start=datetime(2000, 10, 1), end=datetime(2000, 10, 10), periods=4)
+
+    torque = pd.Series([1000.0] * 4, index=date_range)
+    rpm = pd.Series([120.0] * 4, index=date_range)
+    wob = pd.Series([50000.0] * 4, index=date_range)
+    rop = pd.Series([0.0, 10.0, 0.0, 10.0], index=date_range)
+    bit_area = pd.Series([0.0, 0.0, 0.01, 0.01], index=date_range)
+
+    result = mse(torque, rpm, wob, rop, bit_area)
+    
+    # When denominator is zero (ROP=0 or bit_area=0), result should be NaN
+    assert np.isnan(result.iloc[0])  # Both zero -> NaN due to zero denominator
+    assert np.isnan(result.iloc[1])  # Zero bit area -> NaN
+    assert np.isnan(result.iloc[2])  # Zero ROP -> NaN
+    assert not np.isnan(result.iloc[3])  # Both valid -> valid result
+    assert result.name == "mse"

@@ -161,3 +161,41 @@ def test_doc_zero_rop():
     # Result should be all zeros
     expected_series = pd.Series([0.0] * 6, index=date_range, name="doc")
     assert_series_equal(result, expected_series, rtol=1e-6, check_names=False)
+
+
+@pytest.mark.core
+def test_doc_very_small_rpm():
+    """Test DOC handles very small RPM values correctly (should not cause overflow)."""
+    date_range = pd.date_range(start=datetime(2000, 10, 1), end=datetime(2000, 10, 10), periods=4)
+    
+    rop = pd.Series([10.0, 10.0, 10.0, 10.0], index=date_range)
+    rpm = pd.Series([1e-10, 1e-8, 1e-6, 120.0], index=date_range)  # Very small but positive RPM values
+    
+    result = doc(rop, rpm)
+    
+    # Very small RPM values should produce very large DOC values, but not inf
+    # The first three should be valid (very large) numbers, not NaN or inf
+    assert not np.isnan(result.iloc[0]) and not np.isinf(result.iloc[0])
+    assert not np.isnan(result.iloc[1]) and not np.isinf(result.iloc[1])
+    assert not np.isnan(result.iloc[2]) and not np.isinf(result.iloc[2])
+    assert not np.isnan(result.iloc[3])  # Normal value should be valid
+    assert result.name == "doc"
+
+
+@pytest.mark.core
+def test_doc_mixed_zero_rop_and_zero_rpm():
+    """Test DOC handles edge case when both ROP and RPM are zero."""
+    date_range = pd.date_range(start=datetime(2000, 10, 1), end=datetime(2000, 10, 10), periods=4)
+    
+    rop = pd.Series([0.0, 10.0, 0.0, 10.0], index=date_range)
+    rpm = pd.Series([0.0, 0.0, 120.0, 120.0], index=date_range)
+    
+    result = doc(rop, rpm)
+    
+    # When RPM is zero, result should be NaN (division by zero)
+    assert np.isnan(result.iloc[0])  # Both zero -> NaN due to zero RPM
+    assert np.isnan(result.iloc[1])  # Zero RPM -> NaN
+    assert not np.isnan(result.iloc[2])  # Zero ROP with valid RPM -> 0.0
+    assert not np.isnan(result.iloc[3])  # Both valid -> valid result
+    assert result.iloc[2] == 0.0
+    assert result.name == "doc"
