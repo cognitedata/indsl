@@ -4,7 +4,6 @@ from .mse import mse
 from .doc import doc
 from .state_stand import state_stand
 
-
 TOOLBOX_NAME = "drilling"
 
 __all__ = [
@@ -19,11 +18,7 @@ __all__ = [
 
 
 __cognite__ = [
-    "rotation_detection",
-    "onbottom_detection",
-    "inhole_detection",
-    "circulation_detection",
     "mse",
     "doc",
-    "state_stand",
+    "state_stand"
 ]
