@@ -1,4 +1,7 @@
 fail-on-severity: 'low'
+allow-dependencies-licenses:
+  - "pip:numba:BSD-2-Clause"
+  - "pip:llvmlite:BSD-2-Clause"
 deny-licenses:
   - 'GPL-1.0-only'
   - 'GPL-1.0-or-later'
