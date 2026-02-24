@@ -1,4 +1,9 @@
 fail-on-severity: 'low'
+# llvmlite ships a malformed SPDX expression in its metadata (uses LLVM-exception as a standalone
+# license instead of as a WITH-modifier on Apache-2.0). The actual license is permissive
+# (BSD-2-Clause / Apache-2.0 WITH LLVM-exception). Allow it explicitly until upstream fixes this.
+allow-dependencies-licenses:
+  - 'pkg:pypi/llvmlite'
 deny-licenses:
   - 'GPL-1.0-only'
   - 'GPL-1.0-or-later'
