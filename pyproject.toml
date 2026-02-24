@@ -16,7 +16,7 @@ python = ">=3.11,<3.14"
 scipy = "~1.16.0"
 pandas = "~2.3.0"
 typeguard = "^4.0.0"
-packaging = ">=25.0"
+packaging = "^26.0"
 numpy = "^2.0.0"
 typing-extensions = "^4.6.3"
 
