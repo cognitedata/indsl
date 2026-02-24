@@ -13,7 +13,7 @@ classifiers = ["Topic :: Scientific/Engineering"]
 [tool.poetry.dependencies]
 # Core dependencies
 python = ">=3.11,<3.14"
-scipy = "~1.16.0"
+scipy = "~1.17.0"
 pandas = "~2.3.0"
 typeguard = "^4.0.0"
 packaging = "^23.0"
