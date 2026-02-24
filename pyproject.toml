@@ -23,7 +23,7 @@ typing-extensions = "^4.6.3"
 # Optional extras dependencies
 fluids = { version = "^1.0.22", optional = true }
 matplotlib = { version = "^3.4.0", optional = true }
-numba = { version = "^0.62.0", optional = true }
+numba = { version = "^0.63.0", optional = true }
 kneed = { version = "^0.8.0", optional = true }
 csaps = { version = "^1.1.0", optional = true }
 statsmodels = { version = "^0.14.0", optional = true }
