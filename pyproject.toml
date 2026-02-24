@@ -33,7 +33,7 @@ pywavelets = "^1.6.0"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = { version = "^4.0.0", python = "^3.6.1" }
-black = "^25.0.0"
+black = "^26.0.0"
 ipykernel = "^7.0.0"
 pytest-cov = "^6.0.0"
 commitizen = "^4.0.0"
