@@ -1,3 +1,9 @@
+## v8.8.1 (2026-02-23)
+
+### Fix
+
+- **deps**: relax packaging constraint from ^23.0 to >=25.0 to resolve compatibility clash with cognite-toolkit
+
 ## v8.8.0 (2025-09-30)
 
 ### Feat
