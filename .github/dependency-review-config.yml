@@ -1,4 +1,7 @@
 fail-on-severity: 'low'
+allow-dependencies-licenses:
+  - "pkg:pypi/numba"
+  - "pkg:pypi/llvmlite"
 deny-licenses:
   - 'GPL-1.0-only'
   - 'GPL-1.0-or-later'
