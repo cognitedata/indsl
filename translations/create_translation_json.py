@@ -7,7 +7,6 @@ import typing
 from typing import Optional
 
 import docstring_parser
-import requests
 
 from docstring_to_markdown.rst import rst_to_markdown
 
@@ -131,6 +130,8 @@ def create_mapping_for_translations():
 # Compare the data from Locize with the output of create_mapping_for_translations() and push the differences
 def compare_and_push_to_locize():
     """Push differences to locize."""
+    import requests
+
     # Pull the keys and values from Locize
     pull_url = f"https://api.locize.app/{LOCIZE_PROJECT_ID}/latest/en/{NAMESPACE}"
     headers = {"Authorization": f"Bearer {LOCIZE_API_KEY}", "Content-Type": "application/json"}
