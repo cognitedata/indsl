@@ -5015,4 +5015,4 @@ stats = ["statsmodels"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.15"
-content-hash = "19ddeb2f4e5241c77afb2dad6c6c09d475d35aad633cbaba59a91e06ef6f737c"
+content-hash = "2d22c3c8e743e592e7026d35aecfa7d9ca1164a206e1a589a551ef510a2a710e"
