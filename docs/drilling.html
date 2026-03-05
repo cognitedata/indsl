@@ -72,6 +72,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#drilling-performance-metrics">Drilling Performance Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mechanical-specific-energy">Mechanical Specific Energy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.drilling.mse"><code class="docutils literal notranslate"><span class="pre">mse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#depth-of-cut">Depth Of Cut</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.drilling.doc"><code class="docutils literal notranslate"><span class="pre">doc()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#drilling-state-analysis">Drilling State Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#state-stand">State Stand</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indsl.drilling.state_stand"><code class="docutils literal notranslate"><span class="pre">state_stand()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="equipment.html">Equipment</a></li>
@@ -250,6 +268,177 @@ Binary time series indicating if fluid circulation is on or off: Circulation on 
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="drilling-performance-metrics">
+<h2>Drilling Performance Metrics<a class="headerlink" href="#drilling-performance-metrics" title="Link to this heading"></a></h2>
+<section id="mechanical-specific-energy">
+<h3>Mechanical Specific Energy<a class="headerlink" href="#mechanical-specific-energy" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.drilling.mse">
+<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">mse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">torque</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wob</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.mse" title="Link to this definition"></a></dt>
+<dd><p>Mechanical Specific Energy.</p>
+<p>Calculates the Mechanical Specific Energy (MSE) for drilling operations. MSE is a measure of the energy
+required to remove a unit volume of rock and is used to evaluate drilling efficiency.</p>
+<p>The formula for MSE in metric units:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{MSE} = \frac{T \cdot \omega + \mathrm{WOB} \cdot \mathrm{ROP}}{A \cdot \mathrm{ROP}}\]</div>
+<p>Where:
+- <span class="math notranslate nohighlight">\(T\)</span> is the torque [N.m]
+- <span class="math notranslate nohighlight">\(\omega\)</span> is the angular velocity [rad/s] = <span class="math notranslate nohighlight">\(\mathrm{RPM} \cdot \frac{2\pi}{60}\)</span>
+- <span class="math notranslate nohighlight">\(\mathrm{WOB}\)</span> is the weight on bit [N]
+- <span class="math notranslate nohighlight">\(\mathrm{ROP}\)</span> is the rate of penetration [<span class="math notranslate nohighlight">\(\mathrm{m/h}\)</span>]
+- <span class="math notranslate nohighlight">\(A\)</span> is the bit area [<span class="math notranslate nohighlight">\(\mathrm{m^2}\)</span>]</p>
+<p>This can be simplified to:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{MSE} = \frac{T \cdot \mathrm{RPM} \cdot \frac{2\pi}{60} + \mathrm{WOB} \cdot \mathrm{ROP}}{A \cdot \mathrm{ROP}}\]</div>
+<p>For more information on Mechanical Specific Energy derivation, see:
+<a class="reference external" href="https://onepetro.org/SJ/article/30/10/5956/787864/Mechanical-Specific-Energy-Derivation">Mechanical Specific Energy Derivation</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>torque</strong> – Torque [N.m].
+Time series with the torque applied to the drill string.</p></li>
+<li><p><strong>rpm</strong> – Rotational velocity [rpm].
+Time series with the rotational velocity of the drill string in revolutions per minute.</p></li>
+<li><p><strong>wob</strong> – Weight on bit [N].
+Time series with the weight applied to the drill bit in Newtons.</p></li>
+<li><p><strong>rop</strong> – Rate of penetration [<span class="math notranslate nohighlight">\(\mathrm{m/h}\)</span>].
+Time series with the rate of penetration in meters per hour.</p></li>
+<li><p><strong>bs</strong> – Bit size area [<span class="math notranslate nohighlight">\(\mathrm{m^2}\)</span>].
+Time series with the bit size in [m2]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Mechanical Specific Energy [<span class="math notranslate nohighlight">\(\mathrm{J/m^3}\)</span> or <span class="math notranslate nohighlight">\(\mathrm{Pa}\)</span>].</dt><dd><p>Time series with the calculated MSE values. MSE represents the energy required to remove a unit volume of rock.
+Returns NaN values where any input is NaN or where division by zero would occur (e.g., when bit area or ROP is zero or negative).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="depth-of-cut">
+<h3>Depth Of Cut<a class="headerlink" href="#depth-of-cut" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.drilling.doc">
+<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">doc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#indsl.drilling.doc" title="Link to this definition"></a></dt>
+<dd><p>Depth Of Cut.</p>
+<p>Calculates the Depth Of Cut (DOC) for drilling operations. DOC represents the distance the drill bit
+advances per revolution and is a key parameter for evaluating drilling performance and bit efficiency.</p>
+<p>The formula for DOC in metric units:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{DOC} = \frac{\mathrm{ROP}}{\mathrm{RPM}}\]</div>
+<p>Where:
+- <span class="math notranslate nohighlight">\(\mathrm{ROP}\)</span> is the rate of penetration [<span class="math notranslate nohighlight">\(\mathrm{m/h}\)</span>]
+- <span class="math notranslate nohighlight">\(\mathrm{RPM}\)</span> is the rotational velocity [rpm]</p>
+<p>The result is in meters per revolution [<span class="math notranslate nohighlight">\(\mathrm{m/rev}\)</span>].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rop</strong> – Rate of penetration [<span class="math notranslate nohighlight">\(\mathrm{m/h}\)</span>].
+Time series with the Rate Of Penetration in [m/hr]</p></li>
+<li><p><strong>rpm</strong> – Rotation speed [rpm].
+Time series with Rotation speed of the drill string in [rpm]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Depth Of Cut [<span class="math notranslate nohighlight">\(\mathrm{m/rev}\)</span>].</dt><dd><p>Time series with the calculated DOC values. DOC represents the distance the drill bit advances per revolution.
+Returns NaN values where any input is NaN or where division by zero would occur (e.g., when RPM is zero or negative).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="drilling-state-analysis">
+<h2>Drilling State Analysis<a class="headerlink" href="#drilling-state-analysis" title="Link to this heading"></a></h2>
+<section id="state-stand">
+<h3>State Stand<a class="headerlink" href="#state-stand" title="Link to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py" id="indsl.drilling.state_stand">
+<span class="sig-prename descclassname"><span class="pre">indsl.drilling.</span></span><span class="sig-name descname"><span class="pre">state_stand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hkld</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dbit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bpos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#indsl.drilling.state_stand" title="Link to this definition"></a></dt>
+<dd><p>Drilling state stand detection.</p>
+<p>Detects drilling operational states at the stand level and calculates block velocity based on multiple drilling parameters.
+The function classifies drilling activities into different state modes and computes the block velocity
+from block position changes over time.</p>
+<p>Block velocity is calculated as the time derivative of block position:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{bvel} = \frac{d(\mathrm{bpos})}{dt}\]</div>
+<p>Where:
+- <span class="math notranslate nohighlight">\(\mathrm{bpos}\)</span> is the block position [m]
+- <span class="math notranslate nohighlight">\(t\)</span> is time [ms]
+- <span class="math notranslate nohighlight">\(\mathrm{bvel}\)</span> is the block velocity [<span class="math notranslate nohighlight">\(\mathrm{m/s}\)</span>]</p>
+<p>The state_stand is an integer code (0-8) representing drilling operational states at the stand level.
+See StateStand enum for the complete list of state codes and descriptions.</p>
+<p>The state_mode is an integer code (0-15) representing detailed drilling operational modes.
+See StateMode enum for the complete list of mode codes and descriptions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> – Time [ms].
+Time series in milliseconds since 1970-01-01 (Unix epoch). Used for temporal analysis
+and time-based calculations.</p></li>
+<li><p><strong>hkld</strong> – HookLoad [kN].
+Time series with hookload values. Used to detect slips (very low HookLoad) and drilling activity.</p></li>
+<li><p><strong>dmd</strong> – HoleDepth [m].
+Time series with hole depth values. Used to detect drilling progress and connection intervals.</p></li>
+<li><p><strong>dbit</strong> – BitDepth [m].
+Time series with bit depth values. Used to detect when bit is on-bottom vs off-bottom.</p></li>
+<li><p><strong>bpos</strong> – BlockPosition [m].
+Time series with block position values. Used to detect pipe movement during connections.</p></li>
+<li><p><strong>rpm</strong> – Rotary Speed [rpm].
+Time series with rotary speed values. Used to classify rotating vs non-rotating states.</p></li>
+<li><p><strong>tors</strong> – SurfaceTorque [kN.m].
+Time series with surface torque values. Used to detect rotation and drilling activity.</p></li>
+<li><p><strong>spp</strong> – StandpipePressure [kPa].
+Time series with standpipe pressure values. Used to detect pumping activity.</p></li>
+<li><p><strong>flow</strong> – FlowIn [<span class="math notranslate nohighlight">\(\mathrm{L/min}\)</span>].
+Time series with flow-in values. Used to detect pumping activity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl>
+<dt>Drilling state results.</dt><dd><p>DataFrame with three columns:
+- <cite>bvel</cite>: Block velocity [<span class="math notranslate nohighlight">\(\mathrm{m/s}\)</span>] calculated from block position changes over time.</p>
+<blockquote>
+<div><p>Returns NaN if insufficient data points (&lt; 2) are provided.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>state_stand</cite>: Integer code representing the drilling operational state at stand level (0-8).</dt><dd><p>Returns ST_ABSENT (0) if insufficient data points are provided.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>state_mode</cite>: Integer code representing the detailed drilling operational mode (0-15).</dt><dd><p>Returns MD_ABSENT (0) if insufficient data points are provided.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
