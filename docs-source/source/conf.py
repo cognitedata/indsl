@@ -13,17 +13,15 @@
 #
 import os
 import sys
-
-from typing import List
-
-import toml
+import tomllib
 
 
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("../.."))
 
-pyproject_toml = toml.load("../../pyproject.toml")
+with open("../../pyproject.toml", "rb") as f:
+    pyproject_toml = tomllib.load(f)
 
 # -- Project information -----------------------------------------------------
 project = pyproject_toml["tool"]["poetry"]["name"]
@@ -54,7 +52,7 @@ templates_path = ["_templates"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns: List[str] = []
+exclude_patterns: list[str] = []
 
 
 # -- Options for HTML output -------------------------------------------------
