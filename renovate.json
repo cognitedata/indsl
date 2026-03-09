@@ -12,6 +12,11 @@
   ],
   "packageRules": [
     {
+      "groupName": "commitizen",
+      "matchPackageNames": ["commitizen", "commitizen-tools/commitizen"],
+      "matchDatasources": ["pypi", "github-tags"]
+    },
+    {
       "description": "Bump dev dependency constraints to keep pyproject.toml in sync with poetry.lock",
       "matchManagers": ["poetry"],
       "matchDepTypes": ["dev-dependencies"],

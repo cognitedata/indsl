@@ -5026,4 +5026,4 @@ stats = ["statsmodels"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.15"
-content-hash = "f884df3777c33a809b5e0215675e30ae8217a266e8f8478de0d7001b78afcaf6"
+content-hash = "7bcc6c1d6688976e19e11580a0f0e9ab8d427913e4d6269989614d2bd3589d74"
