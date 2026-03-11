@@ -39,7 +39,7 @@ commitizen = "^4.0.0"
 docstring-parser = "^0.17.0"
 docstring-to-markdown = "^0.10"
 coverage = "^7.0.0"
-ruff = "^0.14.14"
+ruff = "^0.15.0"
 pytest = "^8.1.1"
 requests = ">=2.0.0"
 
