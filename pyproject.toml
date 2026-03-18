@@ -45,7 +45,7 @@ dev = [
     "docstring-to-markdown>=0.10,<0.11",
     "coverage>=7.0.0,<8",
     "ruff>=0.15.0,<0.16",
-    "pytest>=8.1.1,<9",
+    "pytest>=9.0.2,<10",
     "requests>=2.0.0",
 ]
 docs = [
