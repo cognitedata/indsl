@@ -30,29 +30,20 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - name: Install poetry
-        run: |
-            pipx install poetry # setup-python action requires installing poetry with pipx
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'poetry'
-          # setup-python uses by default poetry.lock hash as part of the cache key.
-          # Since we run test-core and test-extras we need to make sure they store different caches.
-          # Adding an extra file (e.g. pyproject.toml) to the extra cache-dependency-path will ensure that we
-          # create a different cache key than the one generated for test-extras.
-          # We can then be sure that test-core will run using only core dependencies.
-          cache-dependency-path: |
-            poetry.lock
-            pyproject.toml  # Force a different cache key for extras vs core above
 
       - name: Install Core Dependencies
-        run: |
-            poetry install
+        run: uv sync --frozen
 
       - name: Run Core Tests
-        run: poetry run pytest -m core --cov-report=xml --junitxml=test-results.xml
+        run: uv run pytest -m core --cov-report=xml --junitxml=test-results.xml
 
       - name: Upload Unit Test Results
         if: always()
@@ -77,25 +68,22 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - name: Install poetry
-        run: |
-            pipx install poetry # setup-python action requires installing poetry with pipx
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
             python-version: ${{ matrix.python-version }}
-            cache: 'poetry'
-            cache-dependency-path: |
-                poetry.lock
 
       - name: Install Extras Dependencies
-        run: |
-            poetry install --all-extras
+        run: uv sync --frozen --all-extras
 
       - name: Run Extras Tests
         env:
             NUMBA_DISABLE_JIT: 1
-        run: poetry run pytest --cov-report=xml --junitxml=test-results.xml
+        run: uv run pytest --cov-report=xml --junitxml=test-results.xml
 
       - name: Upload Unit Test Results
         if: always()
@@ -118,19 +106,22 @@ jobs:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       with:
         fetch-depth: 0
-    - name: Setup Python
-      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
       with:
-        # Semantic version range syntax or exact version of a Python version
+        enable-cache: true
+
+    - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+      with:
         python-version: '3.14'
+
     - name: Install dependencies
-      run: |
-          pipx install poetry # setup-python action requires installing poetry with pipx
-          poetry install --with docs --extras all
+      run: uv sync --frozen --group docs --all-extras
+
     - name: Run Examples
       run: |
           cd docs-source
-          poetry run make html
+          uv run make html
 
   publish-test-results:
     name: "Unit Test Results"
