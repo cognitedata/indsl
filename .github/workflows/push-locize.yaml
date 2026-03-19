@@ -18,10 +18,11 @@ jobs:
       with:
         python-version: '3.14'
 
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+
     - name: Install dependencies
-      run: |
-        pip install poetry
-        poetry install
+      run: uv sync --frozen
 
     # Run create_translated_operations.py, -u to show output
     - name: Create translated operations json
@@ -30,4 +31,4 @@ jobs:
         LOCIZE_API_KEY: ${{ secrets.LOCIZE_API_KEY }}
         LOCIZE_PROJECT_ID: ${{ secrets.LOCIZE_PROJECT_ID }}
       run: |
-        poetry run python -u create_translation_json.py
+        uv run python -u create_translation_json.py

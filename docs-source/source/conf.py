@@ -24,12 +24,12 @@ with open("../../pyproject.toml", "rb") as f:
     pyproject_toml = tomllib.load(f)
 
 # -- Project information -----------------------------------------------------
-project = pyproject_toml["tool"]["poetry"]["name"]
+project = pyproject_toml["project"]["name"]
 copyright = "2021, Cognite AS <support@cognite.com>"
 author = "Cognite AS <support@cognite.com>"
 
 # The full version, including alpha/beta/rc tags
-release = pyproject_toml["tool"]["poetry"]["version"]
+release = pyproject_toml["project"]["version"]
 
 
 # -- General configuration ---------------------------------------------------

@@ -1,74 +1,68 @@
-[tool.poetry]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
 name = "indsl"
 version = "8.8.1"
 description = "Industrial Data Science Library by Cognite"
-authors = ["Cognite"]
-license = "Apache-2.0"
+authors = [{ name = "Cognite" }]
+license = { text = "Apache-2.0" }
 readme = "README.md"
-repository = "https://github.com/cognitedata/indsl"
-documentation = "https://indsl.docs.cognite.com"
-homepage = "https://indsl.docs.cognite.com"
+requires-python = ">=3.11,<3.15"
 classifiers = ["Topic :: Scientific/Engineering"]
+dependencies = [
+    "scipy~=1.17.0",
+    "pandas~=2.3.0",
+    "typeguard>=4.0.0,<5",
+    "packaging>=26.0,<27",
+    "numpy>=2.0.0,<3",
+    "pywavelets>=1.6.0,<2",
+]
 
-[tool.poetry.dependencies]
-# Core dependencies
-python = ">=3.11,<3.15"
-scipy = "~1.17.0"
-pandas = "~2.3.0"
-typeguard = "^4.0.0"
-packaging = "^26.0"
-numpy = "^2.0.0"
+[project.urls]
+Homepage = "https://indsl.docs.cognite.com"
+Repository = "https://github.com/cognitedata/indsl"
+Documentation = "https://indsl.docs.cognite.com"
 
-# Optional extras dependencies
-fluids = { version = "^1.0.22", optional = true }
-matplotlib = { version = "^3.4.0", optional = true }
-numba = { version = "^0.64.0", optional = true }
-kneed = { version = "^0.8.0", optional = true }
-csaps = { version = "^1.1.0", optional = true }
-statsmodels = { version = "^0.14.0", optional = true }
-scikit-image = { version = "^0.26.0", optional = true }
-scikit-learn = { version = "^1.3.0", optional = true }
-pywavelets = "^1.6.0"
+[project.optional-dependencies]
+numba = ["numba>=0.64.0,<0.65"]
+plot = ["matplotlib>=3.4.0,<4"]
+modeling = ["csaps>=1.1.0,<2", "kneed>=0.8.0,<0.9"]
+stats = ["statsmodels>=0.14.0,<0.15"]
+scikit = ["scikit-image>=0.26.0,<0.27", "scikit-learn>=1.3.0,<2"]
+fluids = ["fluids>=1.0.22,<2"]
+all = ["indsl[numba,plot,modeling,stats,scikit,fluids]"]
 
-[tool.poetry.group.dev.dependencies]
-pre-commit = { version = "^4.0.0", python = "^3.6.1" }
-black = "^26.0.0"
-ipykernel = "^7.0.0"
-pytest-cov = "^6.0.0"
-commitizen = "^4.0.0"
-docstring-parser = "^0.17.0"
-docstring-to-markdown = "^0.10"
-coverage = "^7.0.0"
-ruff = "^0.15.0"
-pytest = "^8.1.1"
-requests = ">=2.0.0"
-
-[tool.poetry.group.docs]
-optional = true
-
-[tool.poetry.group.docs.dependencies]
-ipykernel = "^7.0.0"
-matplotlib = "^3.4.0"
-pytest-cov = "^6.0.0"
-commitizen = "^4.0.0"
-docstring-parser = "^0.17.0"
-docstring-to-markdown = "^0.10"
-myst-parser = "^5.0.0"
-coverage = "^7.0.0"
-Sphinx = "<9.2"
-sphinx-rtd-theme = "^3.0.0"
-nbsphinx = "^0.9.0"
-sphinx-gallery = "^0.20.0"
-sphinx-prompt = "^1.10.0"
-
-[tool.poetry.extras]
-numba = ["numba"]
-plot = ["matplotlib"]
-modeling = ["csaps", "kneed"]
-stats = ["statsmodels"]
-scikit = ["scikit-image", "scikit-learn"]
-fluids = ["fluids"]
-all = ["fluids", "matplotlib", "numba", "csaps", "kneed", "statsmodels", "scikit-image", "scikit-learn"]
+[dependency-groups]
+dev = [
+    "pre-commit>=4.0.0,<5",
+    "black>=26.0.0,<27",
+    "ipykernel>=7.0.0,<8",
+    "pytest-cov>=6.0.0,<7",
+    "commitizen>=4.0.0,<5",
+    "docstring-parser>=0.17.0,<0.18",
+    "docstring-to-markdown>=0.17,<0.18",
+    "coverage>=7.0.0,<8",
+    "ruff>=0.15.0,<0.16",
+    "pytest>=8.1.1,<9",
+    "requests>=2.0.0",
+]
+docs = [
+    "ipykernel>=7.0.0,<8",
+    "matplotlib>=3.4.0,<4",
+    "pytest-cov>=6.0.0,<7",
+    "commitizen>=4.0.0,<5",
+    "docstring-parser>=0.17.0,<0.18",
+    "docstring-to-markdown>=0.17,<0.18",
+    "myst-parser>=5.0.0,<6",
+    "coverage>=7.0.0,<8",
+    "Sphinx<9.2",
+    "sphinx-rtd-theme>=3.0.0,<4",
+    "nbsphinx>=0.9.0,<0.10",
+    "sphinx-gallery>=0.20.0,<0.21",
+    "sphinx-prompt>=1.10.0,<2",
+]
 
 [tool.black]
 line-length = 120
@@ -122,7 +116,8 @@ known-third-party = ["pytest"]
 name = "cz_conventional_commits"
 version = "8.8.1"
 tag_format = "v$version"
-version_files = ["pyproject.toml:version"]
+version_provider = "pep621"
+version_files = ["pyproject.toml:version", "indsl/_version.py:__version__"]
 
 [tool.pyright]
 # Added just so pylance in vscode doesn't complain too much
@@ -157,7 +152,3 @@ testpaths = "tests/"
 log_level = "INFO"
 log_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
 log_date_format="%Y-%m-%d %H:%M:%S"
-
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
