@@ -17,8 +17,8 @@
       "matchDatasources": ["pypi", "github-tags"]
     },
     {
-      "description": "Bump dev dependency constraints to keep pyproject.toml in sync with poetry.lock",
-      "matchManagers": ["poetry"],
+      "description": "Bump dev dependency constraints to keep pyproject.toml in sync with uv.lock",
+      "matchManagers": ["pep621"],
       "matchDepTypes": ["dev-dependencies"],
       "rangeStrategy": "bump"
     }

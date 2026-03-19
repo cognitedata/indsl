@@ -16,25 +16,26 @@ jobs:
           token: "${{ secrets.GITHUB_TOKEN }}"
           fetch-depth: 0
 
-      - name: Setup Python Env
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: '3.14'
 
       - name: Install dependencies
-        run: |
-          pip install poetry dunamai
-          poetry install --without dev
+        run: uv sync --frozen --no-group dev
 
       - name: Set version
         run: |
-          VERSION=$(dunamai from any --no-metadata --style pep440)
-          poetry version $VERSION
+          VERSION=$(uvx dunamai from any --no-metadata --style pep440)
+          uv version $VERSION
           echo "__version__ = \"$VERSION\"" > indsl/_version.py
 
       - name: Build package
-        run: poetry build
+        run: uv build
 
       - name: Release to PyPI
-        run: |
-          poetry publish -u __token__ -p ${{ secrets.PYPI_API_TOKEN }} || echo 'Version exists'
+        run: uv publish
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
