@@ -2,7 +2,6 @@
 from enum import Enum
 from typing import List
 
-import numpy as np
 import pandas as pd
 import pandas.core.indexes.datetimes
 import scipy

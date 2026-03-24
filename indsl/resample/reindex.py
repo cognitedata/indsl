@@ -1,7 +1,6 @@
 # Copyright 2023 Cognite AS
 from typing import List, Literal
 
-import numpy as np
 import pandas as pd
 import pandas.core.indexes.datetimes
 import scipy
