@@ -27,7 +27,7 @@ def get_densities(data: pd.Series, time_window: pd.Timedelta = pd.Timedelta("5m"
         pd.Series: Time series with the point density for each rolling window.
     """
     # make sure index is in ns
-    index = data.index.astype("datetime64[ns]")
+    index = data.index.as_unit("ns")
     data_ns = pd.Series(data.values, index=index)
     return data_ns.rolling(time_window, min_periods=1).count()
 

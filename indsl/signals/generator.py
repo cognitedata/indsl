@@ -525,7 +525,7 @@ def _time_array(index: pd.DatetimeIndex) -> np.array:
     """
     if index.empty:
         raise UserValueError("The date-time index is empty!")
-    return (index - index[0]).view(np.int64) / 1e9
+    return (index - index[0]).as_unit("ns").asi8 / 1e9
 
 
 @check_types

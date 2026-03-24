@@ -63,7 +63,7 @@ def poly_regression(
             f"Not enough data (got {len(data)} values) to perform operation (min {order + 1} values required!)"
         )
 
-    x = (np.array(data.index, dtype=np.int64) - data.index[0].value) / 1e9
+    x = (data.index - data.index[0]).total_seconds().to_numpy()
     y = data.to_numpy()
 
     # Fit, transform and return result

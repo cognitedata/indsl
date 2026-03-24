@@ -126,6 +126,6 @@ def _train_and_return_forecast(
     y_pred = fit_model.forecast(steps=steps).values
     max_dt = train_data.index[-1]
     # dt_index = pd.date_range(start=max_dt, freq=str(dt_step_sec) + "s", periods=steps + 1)
-    dt_index = max_dt + pd.TimedeltaIndex(np.linspace(1, steps, num=steps) * dt_step_sec, unit="s")
+    dt_index = max_dt + pd.to_timedelta(np.linspace(1, steps, num=steps) * dt_step_sec, unit="s")
 
     return pd.Series(y_pred, index=dt_index)

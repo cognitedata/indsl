@@ -153,13 +153,13 @@ def _reindex(
     bounds_error: bool,
 ) -> pd.Series:
     # Create x values for output time series
-    x_uniform = new_index.view(np.int64)
+    x_uniform = new_index.as_unit("ns").asi8
 
     # extract time series as pd.Series and drop NaNs
     observations = data.dropna()
 
     # x and y datapoints used to construct linear piecewise function
-    x_observed = pd.Series(observations.index.view(np.int64))
+    x_observed = pd.Series(observations.index.as_unit("ns").asi8)
     y_observed = observations.values
 
     # Check for duplicate x values
