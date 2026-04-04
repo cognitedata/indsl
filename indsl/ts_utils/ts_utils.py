@@ -210,7 +210,7 @@ def time_difference(data: pd.Series) -> pd.Series:
         pd.Series: Time difference between two consecutive points.
 
     """
-    timedelta_series = data.index.astype("datetime64[ns]").to_series().diff().dropna()
+    timedelta_series = data.index.as_unit("ns").to_series().diff().dropna()
     return timedelta_series.dt.total_seconds() * 1000  # ms
 
 

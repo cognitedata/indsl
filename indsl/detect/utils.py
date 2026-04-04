@@ -27,7 +27,7 @@ def resample_timeseries(data: pd.Series, is_step: bool = False) -> pd.Series:
     if len(data) < 2:
         raise UserValueError(f"Expected data to be of length >= 2, got length {len(data)}")
     # compute delta time in seconds
-    delta_time: np.ndarray = np.diff(data.index.values, n=1, axis=-1).astype(np.int64) * 1e-9
+    delta_time: np.ndarray = np.diff(data.index.as_unit("ns").asi8) * 1e-9
     # prevent timesteps smaller than 60s
     min_delta_time: float = max(delta_time.min().round(), 60)
     # define frequency

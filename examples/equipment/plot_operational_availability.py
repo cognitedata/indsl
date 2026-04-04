@@ -13,13 +13,13 @@ import matplotlib.pyplot as plt
 from indsl.equipment.operational_availability_ import operational_availability
 
 # Create some dummy data with varying operational hours
-date_range = pd.date_range(start="2023-01-01", periods=100, freq="H")
+date_range = pd.date_range(start="2023-01-01", periods=100, freq="h")
 availability_data = pd.Series(
     [1 if (i // 24) % 4 == 0 else 0 for i in range(100)]  # Day 1: 1 hour up every 4th hour
     + [1 if (i // 12) % 2 == 0 else 0 for i in range(100, 200)]  # Day 2: 1 hour up every 2nd hour
     + [1 for _ in range(200, 300)]  # Day 3: Up for all 24 hours
     + [0 for _ in range(300, 400)],  # Day 4: Down for all 24 hours
-    index=pd.date_range(start="2023-01-01", periods=400, freq="H"),
+    index=pd.date_range(start="2023-01-01", periods=400, freq="h"),
 )
 
 # Calculate the operational availability and downtime

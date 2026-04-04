@@ -170,7 +170,7 @@ def gaps_identification_threshold(data: pd.Series, time_delta: pd.Timedelta = pd
 
     last_index = data.index[-1]
 
-    diff = data.index.astype("datetime64[ns]").to_series().diff().shift(-1).dropna()
+    diff = data.index.as_unit("ns").to_series().diff().shift(-1).dropna()
     is_gap_series = diff > time_delta
     is_gap_series = is_gap_series.astype(int)
 

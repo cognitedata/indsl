@@ -30,9 +30,9 @@ def find_period(x: pd.Series, method_period: str = "median") -> float:
     """
     validate_series_has_time_index(x)
     if method_period == "median":
-        period = np.median(np.diff(x.index.to_numpy(np.int64))).astype(float)
+        period = np.median(np.diff(x.index.as_unit("ns").asi8)).astype(float)
     elif method_period == "min":
-        period = np.min(np.diff(x.index.to_numpy(np.int64))).astype(float)
+        period = np.min(np.diff(x.index.as_unit("ns").asi8)).astype(float)
     else:
         raise UserValueError(f"Period calculation method can only be strings: median or min, not {method_period}")
     return period
