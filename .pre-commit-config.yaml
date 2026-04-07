@@ -8,7 +8,7 @@ repos:
         args: ["--fix"]
 
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.2
+    rev: v0.15.4
   - hooks:
       - id: debug-statements
         exclude: ^docs(-source)?/
@@ -41,4 +41,4 @@ repos:
         stages:
           - commit-msg
     repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.13.8
+    rev: v4.13.9
