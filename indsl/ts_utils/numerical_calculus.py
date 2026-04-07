@@ -39,7 +39,7 @@ def trapezoidal_integration(series: pd.Series, time_unit: pd.Timedelta = pd.Time
     """
     validate_series_is_not_empty(series)
     validate_timedelta(time_unit)
-    arr = cumulative_trapezoid(series, series.index.as_unit("ns").asi8 / time_unit.value, initial=0.0)
+    arr = cumulative_trapezoid(series, series.index.as_unit("ns").asi8 / (time_unit.total_seconds() * 1e9), initial=0.0)
     return pd.Series(arr, index=series.index)
 
 
@@ -61,7 +61,7 @@ def differentiate(series: pd.Series, time_unit: pd.Timedelta = pd.Timedelta("1h"
         pandas.Series: First order derivative.
     """
     validate_series_has_minimum_length(series, 2)
-    arr = np.gradient(series, series.index.as_unit("ns").asi8 / time_unit.value)
+    arr = np.gradient(series, series.index.as_unit("ns").asi8 / (time_unit.total_seconds() * 1e9))
     return pd.Series(arr, index=series.index)
 
 
