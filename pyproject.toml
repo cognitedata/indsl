@@ -26,7 +26,7 @@ Repository = "https://github.com/cognitedata/indsl"
 Documentation = "https://indsl.docs.cognite.com"
 
 [project.optional-dependencies]
-numba = ["numba>=0.64.0,<0.65"]
+numba = ["numba>=0.65,<0.66"]
 plot = ["matplotlib>=3.4.0,<4"]
 modeling = ["csaps>=1.1.0,<2", "kneed>=0.8.0,<0.9"]
 stats = ["statsmodels>=0.14.0,<0.15"]
