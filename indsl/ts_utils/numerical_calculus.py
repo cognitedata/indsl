@@ -39,7 +39,7 @@ def trapezoidal_integration(series: pd.Series, time_unit: pd.Timedelta = pd.Time
     """
     validate_series_is_not_empty(series)
     validate_timedelta(time_unit)
-    arr = cumulative_trapezoid(series, series.index.view(np.int64) / time_unit.value, initial=0.0)
+    arr = cumulative_trapezoid(series, series.index.as_unit("ns").asi8 / time_unit.value, initial=0.0)
     return pd.Series(arr, index=series.index)
 
 
@@ -61,7 +61,7 @@ def differentiate(series: pd.Series, time_unit: pd.Timedelta = pd.Timedelta("1h"
         pandas.Series: First order derivative.
     """
     validate_series_has_minimum_length(series, 2)
-    arr = np.gradient(series, series.index.view(np.int64) / time_unit.value)
+    arr = np.gradient(series, series.index.as_unit("ns").asi8 / time_unit.value)
     return pd.Series(arr, index=series.index)
 
 
@@ -170,9 +170,9 @@ def sliding_window_integration(
     if integrand_rate <= pd.Timedelta("0ms"):
         raise UserValueError("Insert non negative timedelta for integrand rate")
 
-    dt = np.diff(series.index.view(np.int64))  # dt in nanosec
+    dt = np.diff(series.index.as_unit("ns").asi8)  # dt in nanosec
     windowlength_in_ns = int(window_length.total_seconds() * 1e9)
-    np_datetime_ns = series.index.view(np.int64)  # points to underlying np.ndarray with timestamps in nanoseconds
+    np_datetime_ns = series.index.as_unit("ns").asi8  # timestamps in nanoseconds
     from_to_index = window_index(np_datetime_ns, windowlength_in_ns)
 
     if from_to_index[0] == 0:

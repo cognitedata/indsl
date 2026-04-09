@@ -37,7 +37,7 @@ def trapezoidal_integration(series: pd.Series, granularity: str = "1h", time_uni
     if len(series) < 1:
         raise UserValueError(f"Expected series to be of length > 0, got length {len(series)}")
     gran_ns = granularity_to_ns(granularity, time_unit)
-    arr = cumulative_trapezoid(series, series.index.view(np.int64) / gran_ns, initial=0.0)
+    arr = cumulative_trapezoid(series, series.index.as_unit("ns").asi8 / gran_ns, initial=0.0)
     return pd.Series(arr, index=series.index)
 
 
@@ -63,5 +63,5 @@ def differentiate(series: pd.Series, granularity: str = "1h", time_unit: str = "
     if len(series) < 2:
         raise UserValueError(f"Expected series to be of length > 1, got length {len(series)}")
     gran_ns = granularity_to_ns(granularity, time_unit)
-    arr = np.gradient(series, series.index.view(np.int64) / gran_ns)
+    arr = np.gradient(series, series.index.as_unit("ns").asi8 / gran_ns)
     return pd.Series(arr, index=series.index)

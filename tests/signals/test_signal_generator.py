@@ -54,7 +54,7 @@ def test_index_generator(start_date, end_date, sample_rate, expected_mean, expec
     # Test that the generated DatetimeIndex has the correct sampling frequency and duration based on input parameters
     idx = _make_index(start=start_date, end=end_date, freq=sample_rate)
     # Convert to time, where t=0 is idx[0]
-    time = (idx.to_numpy().astype("int64") - idx[0].value) / 1e9
+    time = (idx - idx[0]).total_seconds()
     assert np.diff(time).mean() == expected_mean
     assert idx[-1] - idx[0] == expected_dt
 
@@ -69,7 +69,7 @@ def test_sample_freq_warns(start_date, end_date, sample_rate, expected_mean, exp
         # Test that the generated DatetimeIndex has the correct sampling frequency and duration based on input parameters
         idx = _make_index(start=start_date, end=end_date, freq=sample_rate)
         # Convert to time, where t=0 is idx[0]
-        time = (idx.to_numpy().astype("int64") - idx[0].value) / 1e9
+        time = (idx - idx[0]).total_seconds()
         assert np.diff(time).mean() == expected_mean
         assert idx[-1] - idx[0] == expected_dt
 

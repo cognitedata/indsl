@@ -13,7 +13,7 @@ requires-python = ">=3.11,<3.15"
 classifiers = ["Topic :: Scientific/Engineering"]
 dependencies = [
     "scipy~=1.17.0",
-    "pandas~=2.3.0",
+    "pandas~=3.0.1",
     "typeguard>=4.0.0,<5",
     "packaging>=26.0,<27",
     "numpy>=2.0.0,<3",

@@ -111,7 +111,7 @@ direction = rng.choice([1, -1], size=len(locations))
 outliers = data.iloc[locations] + data.mean() * rng.uniform(0.5, 1, len(locations)) * direction
 
 data_w_outliers = data.copy()
-data_w_outliers[locations] = outliers
+data_w_outliers.iloc[locations] = outliers.values
 
 ##############################################################################
 # Initial conditions: test data set

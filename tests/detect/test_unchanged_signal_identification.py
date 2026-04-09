@@ -81,7 +81,7 @@ def test_unchanged_signal(data, duration, min_nr_data_points, nr_consecutive_dat
     random_signal_value = np.random.uniform(1, 80)
 
     start_position = random.randint(0, int(len(data) - nr_consecutive_data_points))
-    data.values[start_position : start_position + nr_consecutive_data_points] = random_signal_value
+    data.iloc[start_position : start_position + nr_consecutive_data_points] = random_signal_value
 
     # calculate if the signal value has stayed constant for longer than the given duration.
     calculated_ts = unchanged_signal_detector(data, duration, min_nr_data_points)

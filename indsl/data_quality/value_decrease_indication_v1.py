@@ -100,8 +100,8 @@ def negative_running_hours_check(x: pd.Series, threshold: float = 0.0) -> pd.Ser
 
     return pd.Series(
         _prolong_indicator(
-            x.to_numpy(),
-            x_indicator.to_numpy(),
+            x.to_numpy().copy(),
+            x_indicator.to_numpy().copy(),
         ).astype(np.int64),
         index=x.index,
     )
