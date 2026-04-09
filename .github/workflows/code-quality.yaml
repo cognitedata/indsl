@@ -47,13 +47,13 @@ jobs:
 
       - name: Upload Unit Test Results
         if: always()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
         with:
           name: Unit Test Results (Python ${{ matrix.python-version }} - ${{ matrix.platform }})
           path: test-results.xml
 
       - name: Upload Coverage Reports
-        uses: codecov/codecov-action@1af58845a975a7985b0beb0cbe6fbbb71a41dbad # v5
+        uses: codecov/codecov-action@75cd11691c0faa626561e295848008c8a7dddffe # v5
         continue-on-error: true
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -87,13 +87,13 @@ jobs:
 
       - name: Upload Unit Test Results
         if: always()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
         with:
           name: Unit Test Extras Results (Python ${{ matrix.python-version }} - ${{ matrix.platform }})
           path: test-results.xml
 
       - name: Upload Coverage Reports
-        uses: codecov/codecov-action@1af58845a975a7985b0beb0cbe6fbbb71a41dbad # v5
+        uses: codecov/codecov-action@75cd11691c0faa626561e295848008c8a7dddffe # v5
         continue-on-error: true
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
