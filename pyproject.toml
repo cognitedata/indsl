@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "indsl"
-version = "8.8.1"
+version = "8.9.0"
 description = "Industrial Data Science Library by Cognite"
 authors = [{ name = "Cognite" }]
 license = { text = "Apache-2.0" }
@@ -114,7 +114,7 @@ known-third-party = ["pytest"]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "8.8.1"
+version = "8.9.0"
 tag_format = "v$version"
 version_provider = "pep621"
 version_files = ["pyproject.toml:version", "indsl/_version.py:__version__"]
