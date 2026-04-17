@@ -1,2 +1,2 @@
 # Copyright 2023 Cognite AS
-__version__ = "0.0.0"
+__version__ = "8.8.1"
