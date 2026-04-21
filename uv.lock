@@ -820,7 +820,7 @@ wheels = [
 
 [[package]]
 name = "indsl"
-version = "8.8.0"
+version = "8.8.1"
 source = { editable = "." }
 dependencies = [
     { name = "numpy" },

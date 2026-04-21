@@ -1,3 +1,22 @@
+## v8.9.0 (2026-04-17)
+
+### Feat
+
+- Add Python 3.14 support (#523)
+
+### Fix
+
+- **deps**: update dependency pandas to ~3.0.1 (#571)
+- **deps**: update dependency numba to >=0.65,<0.66 (#602)
+- **deps**: update dependency scipy to ~1.17.0 (#560)
+- **deps**: update dependency scikit-image to ^0.26.0 (#559)
+- **deps**: update urllib3 to 2.6.3 (CVE-2026-21441) (#546)
+- **deps**: update dependency numba to ^0.62.0 (#520)
+
+### Chore
+
+- Migrate build system from Poetry to uv (#585)
+
 ## v8.8.0 (2025-09-30)
 
 ### Feat
