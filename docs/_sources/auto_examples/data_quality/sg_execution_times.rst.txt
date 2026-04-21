@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:03.309** total execution time for 8 files **from auto_examples/data_quality**:
+**00:03.429** total execution time for 8 files **from auto_examples/data_quality**:
 
 .. container::
 
@@ -33,21 +33,21 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_data_quality_plot_extreme_outlier.py` (``plot_extreme_outlier.py``)
-     - 00:02.534
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_data_quality_plot_out_of_range.py` (``plot_out_of_range.py``)
-     - 00:00.333
+     - 00:02.147
      - 0.0
    * - :ref:`sphx_glr_auto_examples_data_quality_plot_value_decrease_check.py` (``plot_value_decrease_check.py``)
-     - 00:00.211
+     - 00:00.807
      - 0.0
-   * - :ref:`sphx_glr_auto_examples_data_quality_plot_datapoint_diff.py` (``plot_datapoint_diff.py``)
-     - 00:00.135
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_out_of_range.py` (``plot_out_of_range.py``)
+     - 00:00.385
      - 0.0
    * - :ref:`sphx_glr_auto_examples_data_quality_plot_rolling_stddev_timedelta.py` (``plot_rolling_stddev_timedelta.py``)
-     - 00:00.096
+     - 00:00.090
      - 0.0
    * - :ref:`sphx_glr_auto_examples_data_quality_plot_completeness.py` (``plot_completeness.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_datapoint_diff.py` (``plot_datapoint_diff.py``)
      - 00:00.000
      - 0.0
    * - :ref:`sphx_glr_auto_examples_data_quality_plot_gaps_identification.py` (``plot_gaps_identification.py``)
