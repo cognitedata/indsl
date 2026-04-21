@@ -1,0 +1,154 @@
+
+:orphan:
+
+.. _sphx_glr_sg_execution_times:
+
+
+Computation times
+=================
+**00:04.199** total execution time for 40 files **from all galleries**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_auto_examples_statistics_plot_remove_outliers.py` (``../../examples/statistics/plot_remove_outliers.py``)
+     - 00:04.199
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_completeness.py` (``../../examples/data_quality/plot_completeness.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_datapoint_diff.py` (``../../examples/data_quality/plot_datapoint_diff.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_extreme_outlier.py` (``../../examples/data_quality/plot_extreme_outlier.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_gaps_identification.py` (``../../examples/data_quality/plot_gaps_identification.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_low_density_identification.py` (``../../examples/data_quality/plot_low_density_identification.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_out_of_range.py` (``../../examples/data_quality/plot_out_of_range.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_rolling_stddev_timedelta.py` (``../../examples/data_quality/plot_rolling_stddev_timedelta.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_data_quality_plot_value_decrease_check.py` (``../../examples/data_quality/plot_value_decrease_check.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_detect_plot_cusum.py` (``../../examples/detect/plot_cusum.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_detect_plot_oscillation_detection.py` (``../../examples/detect/plot_oscillation_detection.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_detect_plot_ssd_cpd.py` (``../../examples/detect/plot_ssd_cpd.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_detect_plot_unchanged_signal_detection.py` (``../../examples/detect/plot_unchanged_signal_detection.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_equipment_plot_operational_availability.py` (``../../examples/equipment/plot_operational_availability.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_equipment_plot_pump_parameters.py` (``../../examples/equipment/plot_pump_parameters.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_equipment_plot_recycle_valve_power_loss.py` (``../../examples/equipment/plot_recycle_valve_power_loss.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_filter_plot_wavelet_filter.py` (``../../examples/filter/plot_wavelet_filter.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_fluid_dynamics_plot_darcy_friction_factor.py` (``../../examples/fluid_dynamics/plot_darcy_friction_factor.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_forecast_plot_holt_winters_predictor.py` (``../../examples/forecast/plot_holt_winters_predictor.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_numerical_calculus_plot_sliding_window_integration.py` (``../../examples/numerical_calculus/plot_sliding_window_integration.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_gas_density_calcs.py` (``../../examples/oil_and_gas/plot_gas_density_calcs.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_live_fluid_properties.py` (``../../examples/oil_and_gas/plot_live_fluid_properties.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_shut_in_detector.py` (``../../examples/oil_and_gas/plot_shut_in_detector.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_shut_in_variables.py` (``../../examples/oil_and_gas/plot_shut_in_variables.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_oil_and_gas_plot_well_prod_status.py` (``../../examples/oil_and_gas/plot_well_prod_status.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_reindex_plot_mock_scatter_plot.py` (``../../examples/reindex/plot_mock_scatter_plot.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_reindex_plot_reindex_and_pearson_correlation.py` (``../../examples/reindex/plot_reindex_and_pearson_correlation.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_resample_plot_group_by_region.py` (``../../examples/resample/plot_group_by_region.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_signals_plot_synthetic_gaps.py` (``../../examples/signals/plot_synthetic_gaps.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_signals_plot_univariate_polynomial.py` (``../../examples/signals/plot_univariate_polynomial.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_signals_plot_wavy_signals.py` (``../../examples/signals/plot_wavy_signals.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_smooth_plot_ma.py` (``../../examples/smooth/plot_ma.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_smooth_plot_sg_smooth.py` (``../../examples/smooth/plot_sg_smooth.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_statistics_plot_detect_outliers_001.py` (``../../examples/statistics/plot_detect_outliers_001.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_statistics_plot_detect_outliers_002.py` (``../../examples/statistics/plot_detect_outliers_002.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_statistics_plot_pearson_correlation.py` (``../../examples/statistics/plot_pearson_correlation.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_sustainability_plot_cumulative_co2.py` (``../../examples/sustainability/plot_cumulative_co2.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_ts_utils_plot_rolling_stddev.py` (``../../examples/ts_utils/plot_rolling_stddev.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_ts_utils_plot_rolling_variance.py` (``../../examples/ts_utils/plot_rolling_variance.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_versioning_versioned_function.py` (``../../examples/versioning/versioned_function.py``)
+     - 00:00.000
+     - 0.0

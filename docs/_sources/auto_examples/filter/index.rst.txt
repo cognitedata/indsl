@@ -24,7 +24,7 @@ Examples of how to use the filter functions included in Cognite Charts.
   .. image:: /auto_examples/filter/images/thumb/sphx_glr_plot_wavelet_filter_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_filter_plot_wavelet_filter.py`
+  :doc:`/auto_examples/filter/plot_wavelet_filter`
 
 .. raw:: html
 

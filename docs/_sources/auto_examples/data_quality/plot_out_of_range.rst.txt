@@ -159,18 +159,11 @@ limits of the algorithm.
     outliers = data.iloc[locations] + data.mean() * rng.uniform(0.5, 1, len(locations)) * direction
 
     data_w_outliers = data.copy()
-    data_w_outliers[locations] = outliers
+    data_w_outliers.iloc[locations] = outliers.values
 
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /Users/neringaaltanaite/Project/indsl/examples/data_quality/plot_out_of_range.py:114: FutureWarning: Series.__setitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To set a value by position, use `ser.iloc[pos] = value`
-      data_w_outliers[locations] = outliers
 
 
 
@@ -418,7 +411,7 @@ non-stationary sensor data*.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.692 seconds)
+   **Total running time of the script:** (0 minutes 0.333 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_out_of_range.py:

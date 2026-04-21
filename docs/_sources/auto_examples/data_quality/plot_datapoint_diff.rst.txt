@@ -35,8 +35,19 @@ equipment.
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/ebrattli/Developer/indsl/examples/data_quality/plot_datapoint_diff.py:28: Pandas4Warning: 'd' is deprecated and will be removed in a future version. Please use 'D' instead of 'd'.
+      hour_count_default_threshold = datapoint_diff_over_time_period(data, pd.Timedelta("1d"), 24, pd.Timedelta("1h"))
 
 
+
+
+
+
+|
 
 .. code-block:: Python
 
@@ -101,7 +112,7 @@ equipment.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.264 seconds)
+   **Total running time of the script:** (0 minutes 0.135 seconds)
 
 
 .. _sphx_glr_download_auto_examples_data_quality_plot_datapoint_diff.py:

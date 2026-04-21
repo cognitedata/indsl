@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.359** total execution time for 1 file **from auto_examples/fluid_dynamics**:
+**00:00.573** total execution time for 1 file **from auto_examples/fluid_dynamics**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_fluid_dynamics_plot_darcy_friction_factor.py` (``plot_darcy_friction_factor.py``)
-     - 00:01.359
+     - 00:00.573
      - 0.0

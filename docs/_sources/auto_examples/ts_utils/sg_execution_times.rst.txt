@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:00.426** total execution time for 2 files **from auto_examples/ts_utils**:
+**00:00.191** total execution time for 2 files **from auto_examples/ts_utils**:
 
 .. container::
 
@@ -32,9 +32,9 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_auto_examples_ts_utils_plot_rolling_variance.py` (``plot_rolling_variance.py``)
-     - 00:00.213
-     - 0.0
    * - :ref:`sphx_glr_auto_examples_ts_utils_plot_rolling_stddev.py` (``plot_rolling_stddev.py``)
-     - 00:00.212
+     - 00:00.105
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_ts_utils_plot_rolling_variance.py` (``plot_rolling_variance.py``)
+     - 00:00.086
      - 0.0

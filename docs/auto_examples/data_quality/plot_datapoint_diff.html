@@ -6,9 +6,9 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Threshold breach check for difference between two data points over a period of time &mdash; indsl 8.8.0 documentation</title>
+  <title>Threshold breach check for difference between two data points over a period of time &mdash; indsl 8.9.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -18,9 +18,9 @@
     <link rel="shortcut icon" href="../../_static/cognite_logo_black.png"/>
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=ce2bb500"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/documentation_options.js?v=bffeff59"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -100,7 +100,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../contribute.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../code_of_conduct.html">Code of Conduct</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dev_tools.html">Developer utility functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog\n## v8.9.0 (2026-04-17)</a></li>
 </ul>
 
         </div>
@@ -137,7 +137,14 @@ to download the full example code.</p>
 <span id="sphx-glr-auto-examples-data-quality-plot-datapoint-diff-py"></span><h1>Threshold breach check for difference between two data points over a period of time<a class="headerlink" href="#threshold-breach-check-for-difference-between-two-data-points-over-a-period-of-time" title="Link to this heading"></a></h1>
 <p>Example of visualizing breach of threshold in hour count in a time series representing running hours of a piece of
 equipment.</p>
-<img src="../../_images/sphx_glr_plot_datapoint_diff_001.png" srcset="../../_images/sphx_glr_plot_datapoint_diff_001.png" alt="Check if difference between two datapoints at a distance of 24 hours exceeds the threshold" class = "sphx-glr-single-img"/><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<img src="../../_images/sphx_glr_plot_datapoint_diff_001.png" srcset="../../_images/sphx_glr_plot_datapoint_diff_001.png" alt="Check if difference between two datapoints at a distance of 24 hours exceeds the threshold" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/ebrattli/Developer/indsl/examples/data_quality/plot_datapoint_diff.py:28: Pandas4Warning: &#39;d&#39; is deprecated and will be removed in a future version. Please use &#39;D&#39; instead of &#39;d&#39;.
+  hour_count_default_threshold = datapoint_diff_over_time_period(data, pd.Timedelta(&quot;1d&quot;), 24, pd.Timedelta(&quot;1h&quot;))
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 
@@ -196,7 +203,7 @@ equipment.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.264 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.135 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-data-quality-plot-datapoint-diff-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/7ade8e29428581d09ee2e19053660e19/plot_datapoint_diff.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_datapoint_diff.ipynb</span></code></a></p>

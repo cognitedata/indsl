@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:06.266** total execution time for 1 file **from auto_examples/resample**:
+**00:37.370** total execution time for 1 file **from auto_examples/resample**:
 
 .. container::
 
@@ -33,5 +33,5 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_resample_plot_group_by_region.py` (``plot_group_by_region.py``)
-     - 00:06.266
+     - 00:37.370
      - 0.0

@@ -51,7 +51,7 @@ If they fail and you are unable to fix the issue, please reach out to us.
 
 3. **Make your changes**: Make your changes to the code base. Make sure to follow the coding style and documentation guidelines.
 Pre-commit checks will run automatically when you push your changes.
-You can also run pre-commit checks manually for all staged files by running ``poetry run pre-commit run --all-files``. 
+You can also run pre-commit checks manually for all staged files by running ``uv run pre-commit run --all-files``. 
 We follow the Google Python Style Guide for docstrings.
 
 4. **Write tests**: If you are adding a new feature or fixing a bug, write tests using the `pytest` framework to cover the new code. 
@@ -122,11 +122,11 @@ Preliminaries and setup
         * The `toolboxes <https://github.com/cognitedata/indsl/tree/main/indsl>`_
         * The `PR list <https://github.com/cognitedata/indsl/pulls>`_
 
-This project uses `Poetry <https://python-poetry.org/>`_ for dependency management. Install it before starting
+This project uses `uv <https://docs.astral.sh/uv/>`_ for dependency management. Install it before starting
 
 .. prompt:: bash $
 
-   pip install poetry
+   curl -LsSf https://astral.sh/uv/install.sh | sh
 
 
 1. For open source contributions, fork the `InDSL <https://github.com/cognitedata/indsl>`_ main repository on
@@ -141,7 +141,7 @@ This project uses `Poetry <https://python-poetry.org/>`_ for dependency manageme
 
 .. prompt:: bash $
 
-    poetry install --all-extras
+    uv sync --all-extras
 
 3. Synchronize your local main branch with the remote main branch.
 
@@ -163,19 +163,19 @@ Develop your algorithm
 
    .. prompt:: bash $
 
-      poetry run pre-commit install  # Only needed if not installed
-      poetry run pre-commit run --all-files
+      uv run pre-commit install  # Only needed if not installed
+      uv run pre-commit run --all-files
 
 3. If you need any additional module not in the installed dependencies, install it using the ``add`` command. If you
    need the new module for development, use the ``--dev`` option:
 
    .. prompt:: bash $
 
-      poetry add new_module
+      uv add new_module
 
    .. prompt:: bash $
 
-      poetry add new_module --dev
+      uv add --dev new_module
 
 4. Develop the new algorithm on your local branch. Use the exception classes defined in
    `indsl/exceptions.py <https://github.com/cognitedata/indsl/tree/main/indsl/exceptions.py>`_
@@ -215,7 +215,7 @@ InDSL is divided into two main categories: core and extras. The core algorithms 
 ``numpy``, ``scipy``and ``pandas`` as dependencies. The extras are algorithms that require additional dependencies.
 
 If your algorithm requires additional dependencies, add them to the ``pyproject.toml`` file as optional dependencies and
-also add them under the ``tool.poetry.extras`` section in an appropriate category. The dependencies will also need to be
+also add them under the ``project.optional-dependencies`` section in an appropriate category. The dependencies will also need to be
 lazy loaded to avoid loading them when the core part of the library is imported. To do this you need to import the
 dependencies in the function itself, and not at the top of the file.
 
@@ -482,7 +482,7 @@ Once you taken care of the above, do the following:
 
 .. prompt:: terminal
 
-    poetry install --with docs
+    uv sync --group docs
 
 2. In your terminal, go to the folder ``docs-source/``
 3. Clean the previous build (if any) using
@@ -495,7 +495,7 @@ Once you taken care of the above, do the following:
 
 .. prompt:: terminal
 
-   poetry run make html
+   uv run make html
 
 5. If there were errors during the build, address them and repeat steps 2-3.
 

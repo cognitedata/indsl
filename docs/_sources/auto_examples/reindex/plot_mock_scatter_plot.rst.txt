@@ -120,7 +120,7 @@ This shows how we can superimpose a scatter plot on an existing chart
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.750 seconds)
+   **Total running time of the script:** (0 minutes 0.453 seconds)
 
 
 .. _sphx_glr_download_auto_examples_reindex_plot_mock_scatter_plot.py:

@@ -24,7 +24,7 @@ Examples of algorithms used in the Oil and Gas industry.
   .. image:: /auto_examples/oil_and_gas/images/thumb/sphx_glr_plot_well_prod_status_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_oil_and_gas_plot_well_prod_status.py`
+  :doc:`/auto_examples/oil_and_gas/plot_well_prod_status`
 
 .. raw:: html
 
@@ -41,7 +41,7 @@ Examples of algorithms used in the Oil and Gas industry.
   .. image:: /auto_examples/oil_and_gas/images/thumb/sphx_glr_plot_gas_density_calcs_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_oil_and_gas_plot_gas_density_calcs.py`
+  :doc:`/auto_examples/oil_and_gas/plot_gas_density_calcs`
 
 .. raw:: html
 
@@ -58,7 +58,7 @@ Examples of algorithms used in the Oil and Gas industry.
   .. image:: /auto_examples/oil_and_gas/images/thumb/sphx_glr_plot_shut_in_detector_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_oil_and_gas_plot_shut_in_detector.py`
+  :doc:`/auto_examples/oil_and_gas/plot_shut_in_detector`
 
 .. raw:: html
 
@@ -75,7 +75,7 @@ Examples of algorithms used in the Oil and Gas industry.
   .. image:: /auto_examples/oil_and_gas/images/thumb/sphx_glr_plot_shut_in_variables_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_oil_and_gas_plot_shut_in_variables.py`
+  :doc:`/auto_examples/oil_and_gas/plot_shut_in_variables`
 
 .. raw:: html
 
@@ -92,7 +92,7 @@ Examples of algorithms used in the Oil and Gas industry.
   .. image:: /auto_examples/oil_and_gas/images/thumb/sphx_glr_plot_live_fluid_properties_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_oil_and_gas_plot_live_fluid_properties.py`
+  :doc:`/auto_examples/oil_and_gas/plot_live_fluid_properties`
 
 .. raw:: html
 

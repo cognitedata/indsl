@@ -24,7 +24,7 @@ Example on how to reindex two time-series.
   .. image:: /auto_examples/reindex/images/thumb/sphx_glr_plot_reindex_and_pearson_correlation_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_reindex_plot_reindex_and_pearson_correlation.py`
+  :doc:`/auto_examples/reindex/plot_reindex_and_pearson_correlation`
 
 .. raw:: html
 
@@ -41,7 +41,7 @@ Example on how to reindex two time-series.
   .. image:: /auto_examples/reindex/images/thumb/sphx_glr_plot_mock_scatter_plot_thumb.png
     :alt:
 
-  :ref:`sphx_glr_auto_examples_reindex_plot_mock_scatter_plot.py`
+  :doc:`/auto_examples/reindex/plot_mock_scatter_plot`
 
 .. raw:: html
 

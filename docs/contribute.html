@@ -6,9 +6,9 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contributing &mdash; indsl 8.8.0 documentation</title>
+  <title>Contributing &mdash; indsl 8.9.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
       <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
@@ -18,9 +18,9 @@
     <link rel="shortcut icon" href="_static/cognite_logo_black.png"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=ce2bb500"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/documentation_options.js?v=bffeff59"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -115,7 +115,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="code_of_conduct.html">Code of Conduct</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dev_tools.html">Developer utility functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog\n## v8.9.0 (2026-04-17)</a></li>
 </ul>
 
         </div>
@@ -184,7 +184,7 @@ to your own GitHub account.</p>
 If they fail and you are unable to fix the issue, please reach out to us.</p>
 <p>3. <strong>Make your changes</strong>: Make your changes to the code base. Make sure to follow the coding style and documentation guidelines.
 Pre-commit checks will run automatically when you push your changes.
-You can also run pre-commit checks manually for all staged files by running <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span> <span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code>.
+You can also run pre-commit checks manually for all staged files by running <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code>.
 We follow the Google Python Style Guide for docstrings.</p>
 <p>4. <strong>Write tests</strong>: If you are adding a new feature or fixing a bug, write tests using the <cite>pytest</cite> framework to cover the new code.
 Make sure that they pass.</p>
@@ -255,12 +255,12 @@ is in place to simplify how the Charts infrastructure fetches and displays data.
 </dd>
 </dl>
 </div>
-<p>This project uses <a class="reference external" href="https://python-poetry.org/">Poetry</a> for dependency management. Install it before starting</p>
+<p>This project uses <a class="reference external" href="https://docs.astral.sh/uv/">uv</a> for dependency management. Install it before starting</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: "$ ";
 }
-</style><span class="prompt1">pip<span class="w"> </span>install<span class="w"> </span>poetry</span>
+</style><span class="prompt1">curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh</span>
 </pre></div></div><ol class="arabic simple">
 <li><p>For open source contributions, fork the <a class="reference external" href="https://github.com/cognitedata/indsl">InDSL</a> main repository on
 GitHub to your local environment. If the contribution is internal, you may clone the repository directly.</p></li>
@@ -270,7 +270,7 @@ GitHub to your local environment. If the contribution is internal, you may clone
 </pre></div></div><ol class="arabic simple" start="2">
 <li><p>Install the project dependencies.</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>install<span class="w"> </span>--all-extras</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">uv<span class="w"> </span>sync<span class="w"> </span>--all-extras</span>
 </pre></div></div><ol class="arabic simple" start="3">
 <li><p>Synchronize your local main branch with the remote main branch.</p></li>
 </ol>
@@ -284,13 +284,13 @@ GitHub to your local environment. If the contribution is internal, you may clone
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my_new_algorithm</span>
 </pre></div></div></li>
 <li><p>Install <em>pre-commit</em> to run code style checks before each commit.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install<span class="w">  </span><span class="c1"># Only needed if not installed</span></span>
-<span class="prompt1">poetry<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install<span class="w">  </span><span class="c1"># Only needed if not installed</span></span>
+<span class="prompt1">uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files</span>
 </pre></div></div></li>
 <li><p>If you need any additional module not in the installed dependencies, install it using the <code class="docutils literal notranslate"><span class="pre">add</span></code> command. If you
 need the new module for development, use the <code class="docutils literal notranslate"><span class="pre">--dev</span></code> option:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>add<span class="w"> </span>new_module</span>
-</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">poetry<span class="w"> </span>add<span class="w"> </span>new_module<span class="w"> </span>--dev</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">uv<span class="w"> </span>add<span class="w"> </span>new_module</span>
+</pre></div></div><div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">uv<span class="w"> </span>add<span class="w"> </span>--dev<span class="w"> </span>new_module</span>
 </pre></div></div></li>
 <li><p>Develop the new algorithm on your local branch. Use the exception classes defined in
 <a class="reference external" href="https://github.com/cognitedata/indsl/tree/main/indsl/exceptions.py">indsl/exceptions.py</a>
@@ -324,7 +324,7 @@ them locally to verify they pass.</p></li>
 <p>InDSL is divided into two main categories: core and extras. The core algorithms are the ones that only require
 <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy``and</span> <span class="pre">``pandas</span></code> as dependencies. The extras are algorithms that require additional dependencies.</p>
 <p>If your algorithm requires additional dependencies, add them to the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file as optional dependencies and
-also add them under the <code class="docutils literal notranslate"><span class="pre">tool.poetry.extras</span></code> section in an appropriate category. The dependencies will also need to be
+also add them under the <code class="docutils literal notranslate"><span class="pre">project.optional-dependencies</span></code> section in an appropriate category. The dependencies will also need to be
 lazy loaded to avoid loading them when the core part of the library is imported. To do this you need to import the
 dependencies in the function itself, and not at the top of the file.</p>
 </section>
@@ -579,7 +579,7 @@ from any commit. You can use your IDE git integration to locally exclude files
 <ol class="arabic simple">
 <li><p>Install the dependencies needed to build the documentation:</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">poetry install --with docs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">uv sync --group docs</span>
 </pre></div></div><ol class="arabic simple" start="2">
 <li><p>In your terminal, go to the folder <code class="docutils literal notranslate"><span class="pre">docs-source/</span></code></p></li>
 <li><p>Clean the previous build (if any) using</p></li>
@@ -588,7 +588,7 @@ from any commit. You can use your IDE git integration to locally exclude files
 </pre></div></div><ol class="arabic simple" start="4">
 <li><p>Build the documentation with</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">poetry run make html</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt2">uv run make html</span>
 </pre></div></div><ol class="arabic" start="5">
 <li><p>If there were errors during the build, address them and repeat steps 2-3.</p></li>
 <li><p>If the build was successful, open the html file located in <cite>build/html/index.html</cite> and review it navigating to the

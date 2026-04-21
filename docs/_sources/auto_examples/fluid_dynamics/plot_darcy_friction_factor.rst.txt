@@ -73,7 +73,7 @@ This example generates a Moody diagram using the Darcy friction factor function
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 1.359 seconds)
+   **Total running time of the script:** (0 minutes 0.573 seconds)
 
 
 .. _sphx_glr_download_auto_examples_fluid_dynamics_plot_darcy_friction_factor.py:
