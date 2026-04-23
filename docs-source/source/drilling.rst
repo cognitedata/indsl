@@ -20,3 +20,20 @@ Circulation Detection
 ^^^^^^^^^^^^^^^^^^^^^
 .. autofunction:: indsl.drilling.circulation_detection
 
+Drilling Performance Metrics
+-----------------------------
+
+Mechanical Specific Energy
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. autofunction:: indsl.drilling.mse
+
+Depth Of Cut
+^^^^^^^^^^^^
+.. autofunction:: indsl.drilling.doc
+
+Drilling State Analysis
+-----------------------
+
+State Stand
+^^^^^^^^^^^
+.. autofunction:: indsl.drilling.state_stand
