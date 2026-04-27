@@ -33,7 +33,7 @@ jobs:
           python-version: '3.14'
 
       - name: Install dependencies
-        run: uv sync --group docs --all-extras
+        run: uv sync --group docs --all-extras --frozen
 
       - name: Regenerate docs CHANGELOG
         run: printf '# Changelog\n\n%s\n' "$(cat CHANGELOG.md)" > docs-source/source/CHANGELOG.md
