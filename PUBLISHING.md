@@ -16,11 +16,7 @@ The workflow for publishing the `indsl` library consists of bumping the version 
     6. Create a PR and ask someone in the Cognite `Charts Backend` to approve and merge.
     7. After merge, create a release in github, selecting the new tag. This will trigger the publish [workflow](./publish.yaml). This workflow will build the package and publish it to the PyPI repository
 
-2. Build and update the documentation
-    1. Delete any local branch called **build-docs**:
-        `git branch -d build-docs`
-    2. Run [build-docs.sh](./build_docs.sh). This will automatically create a new local branch called `build-docs`, commit the built documentation and push to github.
-    3. Create a PR and ask someone in the Cognite `Charts Backend` to approve and merge. When merged to main, github pages will redeploy the documentation page.
+2. Documentation is rebuilt and published automatically when a GitHub release is created (step 1.7 above). The [Build and deploy docs](./.github/workflows/docs.yaml) workflow rebuilds the Sphinx site and deploys it to https://indsl.docs.cognite.com/ — no manual action required.
 
 3. After the release is done, you can check the new version in the [PyPI repository](https://pypi.org/project/indsl/)
 
