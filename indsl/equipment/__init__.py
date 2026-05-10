@@ -1,4 +1,5 @@
 # Copyright 2023 Cognite AS
+from .health_index import equipment_health_index
 from .operational_availability_ import operational_availability
 from .pump_parameters import (
     percent_BEP_flowrate,
@@ -19,6 +20,7 @@ from .volume_vessel import (
 TOOLBOX_NAME = "Equipment"
 
 __all__ = [
+    "equipment_health_index",
     "filled_volume_ellipsoidal_head_vessel",
     "filled_volume_spherical_head_vessel",
     "filled_volume_torispherical_head_vessel",

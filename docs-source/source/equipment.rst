@@ -86,3 +86,11 @@ Operational availability
 .. topic:: Examples:
 
    * :ref:`sphx_glr_auto_examples_equipment_plot_operational_availability.py`
+
+
+Condition Monitoring
+====================
+
+Equipment health index
+----------------------
+.. autofunction:: indsl.equipment.health_index.equipment_health_index
