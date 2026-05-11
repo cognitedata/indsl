@@ -276,7 +276,7 @@ def replace(series: pd.Series, to_replace: Optional[List[float]] = None, value: 
     Args:
         series: Time series
         to_replace: Replace
-            List of values to replace. The values must be seperated by semicolons. Infinity and undefined values can be
+            List of values to replace. The values must be separated by semicolons. Infinity and undefined values can be
             replaced by using the keywords inf, -inf and nan. The default is to replace no values.
         value: Value used as replacement.
             Default is 0.0
@@ -313,7 +313,7 @@ def remove(
     Args:
         series: Time series
         to_remove: Values
-            List of values to remove. The values must be seperated by semicolons. Infinity and undefined values can be
+            List of values to remove. The values must be separated by semicolons. Infinity and undefined values can be
             replaced by using the keywords inf, -inf and nan. If empty, which is the default, all values are kept.
         range_from: Range start
             Only values above this parameter will be kept. If empty, which is the default, this range filter is deactivated.

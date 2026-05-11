@@ -84,8 +84,8 @@ class GapDataQualityScoreAnalyser(DataQualityScoreAnalyser):
         """Calculate gap events.
 
         Args:
-            analysis_start: Analyis start time
-            analysis_end: Analyis end time
+            analysis_start: Analysis start time
+            analysis_end: Analysis end time
             gap_detection_method: Gap detection method
                 Must be one of "iqr", "z_scores", "modified_z_scores"
             gap_detection_options: Arguments to gap detection method
@@ -115,8 +115,8 @@ class GapDataQualityScoreAnalyser(DataQualityScoreAnalyser):
         """Compute the gap analysis score.
 
         Args:
-            analysis_start: Analyis start time
-            analysis_end: Analyis end time
+            analysis_start: Analysis start time
+            analysis_end: Analysis end time
             gap_detection_method: Gap detection method
                 Must be one of "iqr", "z_scores", "modified_z_scores"
             gap_detection_options: Arguments to gap detection method
