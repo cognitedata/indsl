@@ -7,6 +7,7 @@ import pytest
 from pandas.testing import assert_series_equal
 
 from indsl.exceptions import UserRuntimeError, UserValueError
+from indsl.warnings import IndslUserWarning
 from indsl.ts_utils.ts_utils import (
     check_uniform,
     datetime_to_ms,
@@ -207,8 +208,9 @@ def test_make_uniform():
 def test_time_parse():
     # Arrange
     time_window = "40"
-    # Act
-    result = time_parse(time_window)
+    # Act — unitless input triggers a warning and defaults to minutes
+    with pytest.warns(IndslUserWarning, match="Missing time unit"):
+        result = time_parse(time_window)
     # Assert
     assert result == pd.Timedelta("40min")
 

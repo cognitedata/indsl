@@ -20,7 +20,7 @@ _unit_in_ms = {**_unit_in_ms_without_week, "w": 604800000}
 
 def datetime_to_ms(dt):
     """Converts datetime to timestamp in milliseconds."""
-    epoch = datetime.utcfromtimestamp(0)
+    epoch = datetime(1970, 1, 1)
     return int((dt - epoch).total_seconds() * 1000.0)
 
 

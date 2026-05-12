@@ -149,6 +149,15 @@ markers = [
 ]
 addopts = "--cov=indsl --cov-report=html --cov-branch"
 testpaths = "tests/"
+filterwarnings = [
+    # Pickle files created with older numpy reference numpy.core internals
+    "ignore:numpy.core.*is deprecated:DeprecationWarning",
+    # statsmodels optimizer convergence is model/data dependent, not a code bug
+    "ignore:Maximum Likelihood optimization failed to converge:statsmodels.tools.sm_exceptions.ConvergenceWarning",
+    # kneed third-party library warnings for edge-case input data
+    "ignore:Polyfit may be poorly conditioned",
+    "ignore:invalid value encountered in divide:RuntimeWarning",
+]
 log_level = "INFO"
 log_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
 log_date_format="%Y-%m-%d %H:%M:%S"

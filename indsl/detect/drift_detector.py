@@ -14,7 +14,7 @@ from . import drift_detector_v1  # noqa
 @check_types
 def drift(
     data: pd.Series,
-    long_interval: pd.Timedelta = pd.Timedelta("3d"),
+    long_interval: pd.Timedelta = pd.Timedelta("3D"),
     short_interval: pd.Timedelta = pd.Timedelta("4h"),
     std_threshold: float = 3,
     detect: Literal["decrease", "increase", "both"] = "both",
