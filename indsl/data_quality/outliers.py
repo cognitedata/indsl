@@ -223,7 +223,7 @@ def out_of_range(
 def _validations(alpha, bc_relaxation, window_length, polyorder):
     if not all(0 <= i < 1 for i in alpha):
         raise UserValueError(
-            "The Significance Level (alpha) must be a number higher than or equal to 0 and lower " "than 1"
+            "The Significance Level (alpha) must be a number higher than or equal to 0 and lower than 1"
         )
     if not all(i > 0 for i in bc_relaxation) > 0:
         raise UserValueError("The Relaxation Factor must be a number higher than 0")

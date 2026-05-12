@@ -160,7 +160,8 @@ def pump_shaft_power(
     """
     # auto-align
     pump_liquid_flowrate, pump_hydraulic_power, eff_parameter_1, eff_parameter_2, eff_intercept = auto_align(
-        [pump_liquid_flowrate, pump_hydraulic_power, eff_parameter_1, eff_parameter_2, eff_intercept], align_timesteps  # type: ignore
+        [pump_liquid_flowrate, pump_hydraulic_power, eff_parameter_1, eff_parameter_2, eff_intercept],
+        align_timesteps,  # type: ignore
     )
 
     p = (eff_parameter_1, eff_parameter_2, eff_intercept)
@@ -227,7 +228,9 @@ def pump_discharge_reciprocating_pump(
         pd.Series: Discharge [bbl/day].
             Discharge of the reciprocating pump.
     """
-    area, length_of_stroke, number_of_revolutions_per_second = auto_align([area, length_of_stroke, number_of_revolutions_per_second], align_timesteps)  # type: ignore
+    area, length_of_stroke, number_of_revolutions_per_second = auto_align(
+        [area, length_of_stroke, number_of_revolutions_per_second], align_timesteps
+    )  # type: ignore
 
     discharge = area * length_of_stroke * number_of_revolutions_per_second * 60  # type: ignore
     return scalar_to_pandas_series(discharge)
