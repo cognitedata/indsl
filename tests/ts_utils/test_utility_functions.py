@@ -13,6 +13,7 @@ from indsl.ts_utils import get_timestamps, set_timestamps, time_shift, union
 from indsl.ts_utils.utility_functions import (
     TimeUnits,
     create_series_from_timesteps,
+    datetime_index_to_ns,
     generate_step_series,
     normality_assumption_test,
 )
@@ -21,6 +22,24 @@ from ..generate_data import create_uniform_data
 
 
 supported_time_units = get_args(TimeUnits)
+
+
+@pytest.mark.core
+def test_datetime_index_to_ns_returns_nanoseconds():
+    """datetime_index_to_ns must return nanoseconds regardless of the index's native resolution."""
+    index = pd.date_range("2024-01-01", periods=3, freq="1s")
+    ns = datetime_index_to_ns(index)
+    diffs = np.diff(ns)
+    assert diffs.dtype == np.int64
+    np.testing.assert_array_equal(diffs, [1_000_000_000, 1_000_000_000])
+
+
+@pytest.mark.core
+def test_datetime_index_to_ns_starts_at_epoch_origin():
+    """The first value must equal the Unix epoch offset in nanoseconds, not a relative zero."""
+    index = pd.DatetimeIndex(["1970-01-01 00:00:01"])
+    ns = datetime_index_to_ns(index)
+    assert ns[0] == 1_000_000_000
 
 
 @pytest.mark.core

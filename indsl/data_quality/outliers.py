@@ -251,8 +251,9 @@ def _split_timeseries_into_time_and_value_arrays(data: pd.Series) -> tuple:
             x -> Datetime index converted to integers starting at 0
             y -> Time series values
     """
-    x = (np.array(data.index, dtype=np.int64) - data.index[0].value) / 1e9
-    y = data.to_numpy()  # Just to please pandas devs
+    index_ns = data.index.as_unit("ns").astype(np.int64).to_numpy()
+    x = (index_ns - index_ns[0]) / 1e9
+    y = data.to_numpy()
     return x, y
 
 
@@ -291,6 +292,5 @@ def _calculate_hat_diagonal(x: np.ndarray) -> np.ndarray:
 
     """
     X_mat = np.vstack((np.ones_like(x), x)).T
-    X_hat = X_mat @ np.linalg.inv(X_mat.T @ X_mat) @ X_mat.T
-
+    X_hat = X_mat @ np.linalg.pinv(X_mat)
     return X_hat.diagonal()

@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 from indsl.ts_utils.utility_functions import (
+    datetime_index_to_ns,
     generate_step_series,
     modified_z_scores_test,
     normality_assumption_test,
@@ -48,7 +49,7 @@ def gaps_identification_z_scores(
     if len(data) < 2:
         return pd.Series([0] * len(data), index=data.index)
 
-    timestamps = data.index.to_numpy(np.int64)
+    timestamps = datetime_index_to_ns(data.index)
     diff = np.diff(timestamps)
 
     if test_normality_assumption:
@@ -89,7 +90,7 @@ def gaps_identification_modified_z_scores(data: pd.Series, cutoff: float = 3.5) 
     if len(data) < 2:
         return pd.Series([0] * len(data), index=data.index)
 
-    timestamps = data.index.to_numpy(np.int64)
+    timestamps = datetime_index_to_ns(data.index)
     diff = np.diff(timestamps)
 
     is_gap = modified_z_scores_test(diff, cutoff=cutoff, direction="greater")
@@ -126,7 +127,7 @@ def gaps_identification_iqr(data: pd.Series) -> pd.Series:
     if len(data) < 2:
         return pd.Series([0] * len(data), index=data.index)
 
-    timestamps = data.index.to_numpy(np.int64)
+    timestamps = datetime_index_to_ns(data.index)
     diff = np.diff(timestamps)
 
     percentile25 = np.quantile(diff, 0.25)
