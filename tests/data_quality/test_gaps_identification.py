@@ -48,7 +48,6 @@ def test_gaps_identification_detects_known_gap_duration(gaps_identification_meth
     assert number_of_events(result) == 1
 
 
-
 def test_gaps_identification_z_scores_errors():
     with pytest.raises(TypeError):
         gaps_identification_z_scores([])
