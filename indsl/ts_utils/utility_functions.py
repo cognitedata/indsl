@@ -242,7 +242,7 @@ def get_timestamps(series: pd.Series, unit: TimeUnits = "ms") -> pd.Series:
     if unit == "ns":
         values = datetime_index_to_ns(series.index)
     else:
-        values = datetime_index_to_ns(series.index) / pd.Timedelta(1, unit=unit).value
+        values = datetime_index_to_ns(series.index) / (pd.Timedelta(1, unit=unit) // pd.Timedelta(1, "ns"))
 
     return pd.Series(values, index=series.index)
 

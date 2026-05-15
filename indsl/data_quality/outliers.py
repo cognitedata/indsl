@@ -292,5 +292,5 @@ def _calculate_hat_diagonal(x: np.ndarray) -> np.ndarray:
 
     """
     X_mat = np.vstack((np.ones_like(x), x)).T
-    X_hat = X_mat @ np.linalg.pinv(X_mat)
-    return X_hat.diagonal()
+    pinv_X = np.linalg.pinv(X_mat)
+    return np.sum(X_mat * pinv_X.T, axis=1)
