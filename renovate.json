@@ -17,6 +17,10 @@
       "matchDatasources": ["pypi", "github-tags"]
     },
     {
+      "groupName": "ruff",
+      "matchPackageNames": ["ruff", "astral-sh/ruff-pre-commit"]
+    },
+    {
       "description": "Bump dev dependency constraints to keep pyproject.toml in sync with uv.lock",
       "matchManagers": ["pep621"],
       "matchDepTypes": ["dev-dependencies"],
