@@ -256,7 +256,7 @@ def _get_sample_frequency(sample_freq: float, unit: TimeUnits):
     elif unit == "s":
         use_unit = "s"
     elif unit == "W":
-        use_unit = "d"
+        use_unit = "D"
         sample_freq = sample_freq * 7
     else:
         use_unit = unit
