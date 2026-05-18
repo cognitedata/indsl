@@ -296,7 +296,7 @@ def replace(series: pd.Series, to_replace: Optional[List[float]] = None, value: 
         return series
     elif not isinstance(to_replace, list):
         raise UserTypeError("to_replace must be a list")
-    if value is not None and not isinstance(value, (float, int)):
+    if value is not None and not isinstance(value, float | int):
         raise UserTypeError("value must be a number")
     return series.replace(to_replace, value)
 
