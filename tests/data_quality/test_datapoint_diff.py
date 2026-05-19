@@ -106,7 +106,7 @@ from indsl.exceptions import UserTypeError, UserValueError
                     ]
                 ),
             ),
-            pd.Timedelta("1d"),
+            pd.Timedelta("1D"),
             24,
             pd.Timedelta("1h"),
             pd.Series(
