@@ -1,7 +1,7 @@
 # Copyright 2023 Cognite AS
 import warnings
 
-from typing import Any, List, Literal, Optional, Union
+from typing import Any, Literal
 
 import numpy as np
 import pandas as pd
@@ -16,8 +16,8 @@ from indsl.warnings import IndslUserWarning
 
 @check_types
 def line(
-    start_date: Optional[pd.Timestamp] = None,
-    end_date: Optional[pd.Timestamp] = None,
+    start_date: pd.Timestamp | None = None,
+    end_date: pd.Timestamp | None = None,
     sample_freq: pd.Timedelta = pd.Timedelta("1 m"),
     slope: float = 0,
     intercept: float = 0,
@@ -101,8 +101,8 @@ def const_value(value: float = 0, timedelta: pd.Timedelta = pd.Timedelta("1 W"))
 
 @check_types
 def sine_wave(
-    start_date: Optional[pd.Timestamp] = None,
-    end_date: Optional[pd.Timestamp] = None,
+    start_date: pd.Timestamp | None = None,
+    end_date: pd.Timestamp | None = None,
     sample_freq: pd.Timedelta = pd.Timedelta("1 s"),
     wave_period: pd.Timedelta = pd.Timedelta("1 h"),
     wave_mean: float = 0,
@@ -184,7 +184,7 @@ def wave_with_brownian_noise(
     amplitude: float = 10,
     mean: float = 200,
     frequency: float = 0.04,
-    noise: List[int] = [1, 1],
+    noise: list[int] = [1, 1],
 ):
     """Wave with brownian noise.
 
@@ -304,7 +304,7 @@ def perturb_timestamp(data: pd.Series, magnitude: float = 1) -> pd.Series:
 def insert_data_gaps(
     data: pd.Series,
     fraction: float = 0.25,
-    num_gaps: Optional[int] = None,
+    num_gaps: int | None = None,
     data_buffer: int = 5,
     method: Literal["Random", "Single", "Multiple"] = "Random",
 ) -> pd.Series:
@@ -530,8 +530,8 @@ def _time_array(index: pd.DatetimeIndex) -> np.array:
 
 @check_types
 def _make_index(
-    start: Union[pd.Timedelta, pd.Timestamp, str, None] = None,
-    end: Union[pd.Timedelta, pd.Timestamp, str, None] = None,
+    start: pd.Timedelta | pd.Timestamp | str | None = None,
+    end: pd.Timedelta | pd.Timestamp | str | None = None,
     freq: Any = pd.Timedelta(1, "m"),
 ) -> pd.DatetimeIndex:
     """Make datetime index.

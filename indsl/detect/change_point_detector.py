@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import List
 
 import numpy as np
 import pandas as pd
@@ -211,7 +210,7 @@ def ed_pelt(data: np.ndarray, min_distance: int = 1) -> np.ndarray:
     # tau values, we use a whitelist of "good" tau values that can be used in the optimal solution. If we are 100%
     # sure that some of the tau values will not help us to form the optimal solution, such values should be
     # removed. See [Killick2012] for details.
-    previous_taus: List[int] = [0, min_distance]
+    previous_taus: list[int] = [0, min_distance]
 
     # following the dynamic programming approach, we enumerate all tau positions. For each `current_tau`, we pretend
     # that it's the end of the last segment and trying to find the end of the previous segment.
@@ -219,7 +218,7 @@ def ed_pelt(data: np.ndarray, min_distance: int = 1) -> np.ndarray:
         # for each previous tau, we should calculate the cost of taking this tau as the end of the previous
         # segment. This cost equals the cost for the `previous_tau` plus cost of the new segment (from `previous_tau`
         # to `current_tau`) plus penalty for the new changepoint.
-        cost_for_previous_tau: List[float] = [
+        cost_for_previous_tau: list[float] = [
             best_cost[previous_tau] + cost(previous_tau, current_tau) + penalty for previous_tau in previous_taus
         ]
 
@@ -241,7 +240,7 @@ def ed_pelt(data: np.ndarray, min_distance: int = 1) -> np.ndarray:
         previous_taus.append(current_tau - (min_distance - 1))
 
     # here we collect the result list of changepoint indexes `change_point_indexes` using `previous_change_point_index`
-    change_point_indexes: List[int] = []
+    change_point_indexes: list[int] = []
     current_index: np.int64 = np.int64(
         previous_change_point_index[n]
     )  # The index of the end of the last segment is `n`

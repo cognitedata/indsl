@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Tuple
 
 import numpy as np
 import pandas as pd
@@ -93,7 +92,7 @@ def calculate_gas_density(
 
 
 @check_types
-def calculate_critical_prop(sg: float) -> Tuple[float, float]:
+def calculate_critical_prop(sg: float) -> tuple[float, float]:
     """Critical properties.
 
     Returns the crtitcal pressure and temperature as a function of specific gravity (Sutton - 1973).
@@ -118,7 +117,7 @@ def calculate_critical_prop(sg: float) -> Tuple[float, float]:
 @check_types
 def calculate_reduced_prop(
     pressure_Kpa: pd.Series, temperature_K: pd.Series, Pc: float, Tc: float
-) -> Tuple[pd.Series, pd.Series]:
+) -> tuple[pd.Series, pd.Series]:
     """Reduced properties.
 
     Returns the reduced pressure and temperature from input pressure, temperature, and critical prperties.

@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -10,7 +9,7 @@ from indsl.type_check import check_types
 
 
 @check_types
-def _pct_to_fraction(pct_value: Union[float, int]):
+def _pct_to_fraction(pct_value: float | int):
     return pct_value / 100.0
 
 
@@ -114,9 +113,9 @@ def merge_valves(valves: list[pd.Series]) -> pd.Series:
 # @check_types
 def calculate_xmt_prod_status(
     choke_valve: pd.Series,  # Can be partially opened. The others are binary (0 or 1)
-    master_valves: Optional[list[pd.Series]] = None,
-    annulus_valves: Optional[list[pd.Series]] = None,
-    xover_valves: Optional[list[pd.Series]] = None,
+    master_valves: list[pd.Series] | None = None,
+    annulus_valves: list[pd.Series] | None = None,
+    xover_valves: list[pd.Series] | None = None,
     threshold_master: float = 1.0,  # Per cent. Range 0-100. Default 1%
     threshold_annulus: float = 1.0,  # Per cent. Range 0-100. Default 1%
     threshold_xover: float = 1.0,  # Per cent. Range 0-100. Default 1%

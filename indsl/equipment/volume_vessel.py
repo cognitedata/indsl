@@ -2,7 +2,7 @@
 import os
 import warnings
 
-from typing import List, Literal, Union
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -36,7 +36,7 @@ else:
             fv = None  # Only core dependencies available. Will raise an error later
 
 
-def __take_array_or_float(input: Union[pd.Series, float]) -> Union[np.ndarray, float]:
+def __take_array_or_float(input: pd.Series | float) -> np.ndarray | float:
     """Checks if the input is a float or a pandas series and returns the numeric value (float or array).
 
     Args:
@@ -48,7 +48,7 @@ def __take_array_or_float(input: Union[pd.Series, float]) -> Union[np.ndarray, f
     return input.values.astype("float64") if isinstance(input, pd.Series) else input
 
 
-def __create_series_with_index_of_inputs(inputs: List[Union[pd.Series, float]]) -> pd.Series:
+def __create_series_with_index_of_inputs(inputs: list[pd.Series | float]) -> pd.Series:
     """Tries to extract the index of one of the input values.
 
     Args:
@@ -65,12 +65,12 @@ def __create_series_with_index_of_inputs(inputs: List[Union[pd.Series, float]]) 
 
 @check_types
 def filled_volume_ellipsoidal_head_vessel(
-    D: Union[pd.Series, float],
-    L: Union[pd.Series, float],
-    a: Union[pd.Series, float],
-    h: Union[pd.Series, float],
+    D: pd.Series | float,
+    L: pd.Series | float,
+    a: pd.Series | float,
+    h: pd.Series | float,
     orientation: Literal["Horizontal", "Vertical"] = "Horizontal",
-) -> Union[pd.Series, float]:
+) -> pd.Series | float:
     r"""Vessel volume (Ellipsoidal).
 
     Calculates partially full volume of a vertical or horizontal vessel with ellipsoidal convex heads. For vertical
@@ -130,12 +130,12 @@ def filled_volume_ellipsoidal_head_vessel(
 
 @check_types
 def filled_volume_spherical_head_vessel(
-    D: Union[pd.Series, float],
-    L: Union[pd.Series, float],
-    a: Union[pd.Series, float],
-    h: Union[pd.Series, float],
+    D: pd.Series | float,
+    L: pd.Series | float,
+    a: pd.Series | float,
+    h: pd.Series | float,
     orientation: Literal["Horizontal", "Vertical"] = "Horizontal",
-) -> Union[pd.Series, float]:
+) -> pd.Series | float:
     r"""Vessel volume (Spherical).
 
     Calculates partially full volume of a vertical or horizontal vessel with spherical convex heads. For vertical
@@ -195,13 +195,13 @@ def filled_volume_spherical_head_vessel(
 
 @check_types
 def filled_volume_torispherical_head_vessel(
-    D: Union[pd.Series, float],
-    L: Union[pd.Series, float],
-    f: Union[pd.Series, float],
-    k: Union[pd.Series, float],
-    h: Union[pd.Series, float],
+    D: pd.Series | float,
+    L: pd.Series | float,
+    f: pd.Series | float,
+    k: pd.Series | float,
+    h: pd.Series | float,
     orientation: Literal["Horizontal", "Vertical"] = "Horizontal",
-) -> Union[pd.Series, float]:
+) -> pd.Series | float:
     r"""Vessel volume (Torispherical).
 
     Calculates partially full volume of a vertical or horizontal vessel with torispherical convex heads. For vertical

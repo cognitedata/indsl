@@ -1,5 +1,5 @@
 # Copyright 2023 Cognite AS
-from typing import Literal, Union
+from typing import Literal
 
 import pandas as pd
 
@@ -9,14 +9,14 @@ from indsl.type_check import check_types
 
 @check_types
 def logical_check(
-    value_1: Union[pd.Series, float],
-    value_2: Union[pd.Series, float],
-    value_true: Union[pd.Series, float],
-    value_false: Union[pd.Series, float],
+    value_1: pd.Series | float,
+    value_2: pd.Series | float,
+    value_true: pd.Series | float,
+    value_false: pd.Series | float,
     operation: Literal[
         "Equality", "Inequality", "Greater than", "Greater or equal than", "Smaller than", "Smaller or equal than"
     ] = "Equality",
-) -> Union[pd.Series, float]:
+) -> pd.Series | float:
     """Logical Check.
 
     Perform a logical check between time series/constants and returns the assigned time series/constants when the
@@ -36,8 +36,8 @@ def logical_check(
     """
 
     def check_function(
-        a: Union[pd.Series, float, int], b: Union[pd.Series, float, int]
-    ) -> Union[pd.Series, bool]:  # Select operation
+        a: pd.Series | float | int, b: pd.Series | float | int
+    ) -> pd.Series | bool:  # Select operation
         if operation == "Equality":
             return a == b
         elif operation == "Inequality":

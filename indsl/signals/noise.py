@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -330,7 +329,7 @@ class RedNoise(BaseNoise):
 def white_noise(
     data: pd.Series,
     snr_db: float = 30,
-    seed: Optional[int] = None,
+    seed: int | None = None,
 ) -> pd.Series:
     """Add white noise.
 

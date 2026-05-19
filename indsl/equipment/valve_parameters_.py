@@ -1,5 +1,5 @@
 # Copyright 2023 Cognite AS
-from typing import Literal, Union
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -14,9 +14,9 @@ from indsl.validations import UserValueError
 @versioning.register(version="2.0", deprecated=True, name="flow_through_valve")
 @check_types
 def flow_through_valve_initial_incompressible(
-    inlet_P: Union[pd.Series, float],
-    outlet_P: Union[pd.Series, float],
-    valve_opening: Union[pd.Series, float],
+    inlet_P: pd.Series | float,
+    outlet_P: pd.Series | float,
+    valve_opening: pd.Series | float,
     SG: float,
     type: str,
     min_opening: float,
@@ -97,9 +97,9 @@ def flow_through_valve_initial_incompressible(
 )
 @check_types
 def flow_through_valve(
-    inlet_P: Union[pd.Series, float],
-    outlet_P: Union[pd.Series, float],
-    valve_opening: Union[pd.Series, float],
+    inlet_P: pd.Series | float,
+    outlet_P: pd.Series | float,
+    valve_opening: pd.Series | float,
     SG: float,
     min_opening: float,
     max_opening: float,

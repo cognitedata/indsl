@@ -1,7 +1,7 @@
 # Copyright 2023 Cognite AS
 
 from datetime import datetime, timedelta
-from typing import List, Literal, Optional, Tuple, Union
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -268,7 +268,7 @@ def time_shift(series: pd.Series, n_units: float = 0, unit: TimeUnits = "ms") ->
 
 
 @check_types
-def replace(series: pd.Series, to_replace: Optional[List[float]] = None, value: Optional[float] = 0.0):
+def replace(series: pd.Series, to_replace: list[float] | None = None, value: float | None = 0.0):
     """Replace.
 
     Replace values in a time series. The values to replace should be
@@ -304,9 +304,9 @@ def replace(series: pd.Series, to_replace: Optional[List[float]] = None, value: 
 @check_types
 def remove(
     series: pd.Series,
-    to_remove: Optional[List[float]] = None,
-    range_from: Optional[float] = None,
-    range_to: Optional[float] = None,
+    to_remove: list[float] | None = None,
+    range_from: float | None = None,
+    range_to: float | None = None,
 ):
     """Remove.
 
@@ -437,7 +437,7 @@ def generate_step_series(flag: pd.Series) -> pd.Series:
     return step_time_series
 
 
-def create_series_from_timesteps(timesteps: List[timedelta]) -> pd.Series:
+def create_series_from_timesteps(timesteps: list[timedelta]) -> pd.Series:
     """Time series from timestamps.
 
     Create a time series which starts on the 2021-1-1 and contains data points
@@ -458,8 +458,8 @@ def create_series_from_timesteps(timesteps: List[timedelta]) -> pd.Series:
 
 
 def normality_assumption_test(
-    series: Union[pd.Series, np.ndarray], max_data_points: int = 5000, min_p_value: float = 0.05, min_W: float = 0.5
-) -> Optional[Tuple[float, float]]:
+    series: pd.Series | np.ndarray, max_data_points: int = 5000, min_p_value: float = 0.05, min_W: float = 0.5
+) -> tuple[float, float] | None:
     """Test for normality assumption.
 
     This function performs a Shapiro-Wilk test to check if the data is normally distributed.

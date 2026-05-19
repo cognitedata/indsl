@@ -1,5 +1,5 @@
 # Copyright 2023 Cognite AS
-from typing import List, Literal
+from typing import Literal
 
 import pandas as pd
 import pandas.core.indexes.datetimes
@@ -73,11 +73,11 @@ def reindex(
 @versioning.register(version="2.0", changelog="update data types")
 @check_types
 def reindex_many(
-    data: List[pd.Series],
+    data: list[pd.Series],
     method: method_options = "slinear",
     kind: kind_options = "pointwise",
     bounded: bool = False,
-) -> List[pd.Series]:
+) -> list[pd.Series]:
     """Re-indexes list.
 
     Args:

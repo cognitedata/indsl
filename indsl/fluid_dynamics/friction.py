@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Union
 
 import numpy as np
 import pandas as pd
@@ -31,8 +30,8 @@ def Haaland(Re: pd.Series, roughness: float) -> pd.Series:
 
 @check_types
 def Colebrook(
-    Re: Union[pd.Series, float],
-    roughness_scaled: Union[pd.Series, float],
+    Re: pd.Series | float,
+    roughness_scaled: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Colebrook approximation.
@@ -78,7 +77,7 @@ def Colebrook(
 
 
 @check_types
-def friction_factor_laminar(Re: Union[pd.Series, float]) -> pd.Series:
+def friction_factor_laminar(Re: pd.Series | float) -> pd.Series:
     r"""Friction factor laminar flow.
 
     friction_factor = :math:`\frac{64}{Re}`
@@ -129,8 +128,8 @@ def __Darcy_friction_factor_point(
 
 @check_types
 def Darcy_friction_factor(
-    Re: Union[pd.Series, float],
-    roughness_scaled: Union[pd.Series, float],
+    Re: pd.Series | float,
+    roughness_scaled: pd.Series | float,
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
     align_timesteps: bool = False,
@@ -187,11 +186,11 @@ def Darcy_friction_factor(
 
 @check_types
 def __Darcy_friction_factor_dimensional(
-    velocity: Union[pd.Series, float],
-    density: Union[pd.Series, float],
-    d_viscosity: Union[pd.Series, float],
-    diameter: Union[pd.Series, float],
-    roughness: Union[pd.Series, float],
+    velocity: pd.Series | float,
+    density: pd.Series | float,
+    d_viscosity: pd.Series | float,
+    diameter: pd.Series | float,
+    roughness: pd.Series | float,
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
 ) -> pd.Series:
@@ -224,11 +223,11 @@ def __Darcy_friction_factor_dimensional(
 
 @check_types
 def pipe_wall_shear_stress(
-    velocity: Union[pd.Series, float],
-    density: Union[pd.Series, float],
-    d_viscosity: Union[pd.Series, float],
-    diameter: Union[pd.Series, float],
-    roughness: Union[pd.Series, float],
+    velocity: pd.Series | float,
+    density: pd.Series | float,
+    d_viscosity: pd.Series | float,
+    diameter: pd.Series | float,
+    roughness: pd.Series | float,
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
     align_timesteps: bool = False,
@@ -282,11 +281,11 @@ def pipe_wall_shear_stress(
 
 @check_types
 def pipe_pressure_gradient(
-    velocity: Union[pd.Series, float],
-    density: Union[pd.Series, float],
-    d_viscosity: Union[pd.Series, float],
-    diameter: Union[pd.Series, float],
-    roughness: Union[pd.Series, float],
+    velocity: pd.Series | float,
+    density: pd.Series | float,
+    d_viscosity: pd.Series | float,
+    diameter: pd.Series | float,
+    roughness: pd.Series | float,
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
     align_timesteps: bool = False,
@@ -340,13 +339,13 @@ def pipe_pressure_gradient(
 
 @check_types
 def pipe_pressure_drop(
-    velocity: Union[pd.Series, float],
-    density: Union[pd.Series, float],
-    d_viscosity: Union[pd.Series, float],
-    diameter: Union[pd.Series, float],
-    roughness: Union[pd.Series, float],
-    pipe_length: Union[pd.Series, float],
-    pipe_height_difference: Union[pd.Series, float],
+    velocity: pd.Series | float,
+    density: pd.Series | float,
+    d_viscosity: pd.Series | float,
+    diameter: pd.Series | float,
+    roughness: pd.Series | float,
+    pipe_length: pd.Series | float,
+    pipe_height_difference: pd.Series | float,
     laminar_limit: float = 2300.0,
     turbulent_limit: float = 4000.0,
     align_timesteps: bool = False,

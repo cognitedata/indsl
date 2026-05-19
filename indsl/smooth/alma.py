@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import List, Union
 
 import numpy as np
 import pandas as pd
@@ -61,7 +60,7 @@ def alma(data: pd.Series, window: int = 10, sigma: float = 6, offset_factor: flo
 
 
 @check_types
-def calculate_alma(values: Union[List, pd.Series], weights: np.ndarray) -> float:
+def calculate_alma(values: list | pd.Series, weights: np.ndarray) -> float:
     """Calculate alma value for a window time.
 
     Args:

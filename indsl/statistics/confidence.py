@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Union
 
 import pandas as pd
 
@@ -7,7 +6,7 @@ from indsl.type_check import check_types
 
 
 @check_types
-def bands(data: pd.Series, period: str = "1h", K: float = 2.0, as_json: bool = True) -> Union[str, pd.DataFrame]:
+def bands(data: pd.Series, period: str = "1h", K: float = 2.0, as_json: bool = True) -> str | pd.DataFrame:
     """Confidence bands.
 
     Confidence bands, also known as Bollinger Bands, are a statistical characterization of a time series fluctuations.

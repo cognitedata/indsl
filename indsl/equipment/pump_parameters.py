@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Union
 
 import numpy as np
 import pandas as pd
@@ -11,9 +10,9 @@ from indsl.type_check import check_types
 
 @check_types
 def total_head(
-    discharge_pressure: Union[pd.Series, float],
-    suction_pressure: Union[pd.Series, float],
-    den: Union[pd.Series, float],
+    discharge_pressure: pd.Series | float,
+    suction_pressure: pd.Series | float,
+    den: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Total head.
@@ -50,7 +49,7 @@ def total_head(
 
 @check_types
 def percent_BEP_flowrate(
-    pump_liquid_flowrate: Union[pd.Series, float], BEP_flowrate: Union[pd.Series, float], align_timesteps: bool = False
+    pump_liquid_flowrate: pd.Series | float, BEP_flowrate: pd.Series | float, align_timesteps: bool = False
 ) -> pd.Series:
     r"""BEP from flowrate [%].
 
@@ -84,9 +83,9 @@ def percent_BEP_flowrate(
 
 @check_types
 def pump_hydraulic_power(
-    pump_liquid_flowrate: Union[pd.Series, float],
-    total_head: Union[pd.Series, float],
-    den: Union[pd.Series, float],
+    pump_liquid_flowrate: pd.Series | float,
+    total_head: pd.Series | float,
+    den: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Pump hydraulic power.
@@ -122,11 +121,11 @@ def pump_hydraulic_power(
 
 @check_types
 def pump_shaft_power(
-    pump_hydraulic_power: Union[pd.Series, float],
-    pump_liquid_flowrate: Union[pd.Series, float],
-    eff_parameter_1: Union[pd.Series, float],
-    eff_parameter_2: Union[pd.Series, float],
-    eff_intercept: Union[pd.Series, float],
+    pump_hydraulic_power: pd.Series | float,
+    pump_liquid_flowrate: pd.Series | float,
+    eff_parameter_1: pd.Series | float,
+    eff_parameter_2: pd.Series | float,
+    eff_intercept: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Pump shaft power.
@@ -174,9 +173,9 @@ def pump_shaft_power(
 
 @check_types
 def recycle_valve_power_loss(
-    Q_valve: Union[pd.Series, float],
-    total_head: Union[pd.Series, float],
-    den: Union[pd.Series, float],
+    Q_valve: pd.Series | float,
+    total_head: pd.Series | float,
+    den: pd.Series | float,
     align_timestamps: bool = False,
 ) -> pd.Series:
     r"""Pump recycle valve power loss.
@@ -204,9 +203,9 @@ def recycle_valve_power_loss(
 
 @check_types
 def pump_discharge_reciprocating_pump(
-    area: Union[pd.Series, float],
-    length_of_stroke: Union[pd.Series, float],
-    number_of_revolutions_per_second: Union[pd.Series, float],
+    area: pd.Series | float,
+    length_of_stroke: pd.Series | float,
+    number_of_revolutions_per_second: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Pump discharge.

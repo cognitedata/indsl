@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -54,7 +53,7 @@ def lwma(
 
 
 @jit(nopython=True)
-def get_lwma_val(data: np.ndarray, win_pts_lst: np.ndarray, i: int, min_periods: int) -> Optional[float]:
+def get_lwma_val(data: np.ndarray, win_pts_lst: np.ndarray, i: int, min_periods: int) -> float | None:
     """Calculates the Linear Weighted Moving Average for the current datapoint.
 
     Args:

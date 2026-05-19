@@ -1,4 +1,3 @@
-from typing import Optional
 
 
 PREFIX = "INDSL"
@@ -8,19 +7,19 @@ TOOLBOX = "TOOLBOX"
 
 
 # Format the string to uppercase and replace spaces with underscores
-def _format_str(s: Optional[str]) -> str:
+def _format_str(s: str | None) -> str:
     return s.upper().replace(" ", "_") if s else ""
 
 
 # Create keys for the JSON file
 def create_key(
-    toolbox: Optional[str] = None,
-    function_name: Optional[str] = None,
-    description: Optional[bool] = False,
-    parameter: Optional[str] = None,
-    output: Optional[bool] = False,
-    version: Optional[str] = None,
-) -> Optional[str]:
+    toolbox: str | None = None,
+    function_name: str | None = None,
+    description: bool | None = False,
+    parameter: str | None = None,
+    output: bool | None = False,
+    version: str | None = None,
+) -> str | None:
     """Create keys for the JSON file."""
     elements = [PREFIX]
 

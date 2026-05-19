@@ -1,5 +1,4 @@
 # Copyright 2024 Cognite AS
-from typing import List
 
 import numpy as np
 import pandas as pd
@@ -11,7 +10,7 @@ from indsl.type_check import check_types
 
 @check_types
 def sequence_interpolation_1d(
-    signal: pd.Series, x_values: List[float] = [0.0, 1.0], y_values: List[float] = [0.0, 1.0]
+    signal: pd.Series, x_values: list[float] = [0.0, 1.0], y_values: list[float] = [0.0, 1.0]
 ) -> pd.Series:
     """1D interpolation of a sequence.
 
@@ -55,9 +54,9 @@ def sequence_interpolation_1d(
 def sequence_interpolation_2d(
     signal_x: pd.Series,
     signal_y: pd.Series,
-    interp_x: List[float] = [0.0, 1.0],
-    interp_y: List[float] = [0.0, 1.0],
-    interp_z: List[float] = [0.0, 1.0],
+    interp_x: list[float] = [0.0, 1.0],
+    interp_y: list[float] = [0.0, 1.0],
+    interp_z: list[float] = [0.0, 1.0],
     align_timesteps: bool = False,
 ) -> pd.Series:
     """2D interpolation of a sequence.
