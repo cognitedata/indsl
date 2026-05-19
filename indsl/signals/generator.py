@@ -161,7 +161,7 @@ def sine_wave(
     """
     if sample_freq.total_seconds() <= 0:
         raise UserValueError(
-            f"The sampling frequency must be a value higher than zero. " f"Value provided was {sample_freq}"
+            f"The sampling frequency must be a value higher than zero. Value provided was {sample_freq}"
         )
     if wave_period.total_seconds() == 0:
         raise UserValueError("The wave period can not be zero")
@@ -256,7 +256,7 @@ def _get_sample_frequency(sample_freq: float, unit: TimeUnits):
     elif unit == "s":
         use_unit = "s"
     elif unit == "W":
-        use_unit = "d"
+        use_unit = "D"
         sample_freq = sample_freq * 7
     else:
         use_unit = unit
@@ -581,8 +581,7 @@ def _make_index(
 
     if freq.total_seconds() <= 0:
         raise UserValueError(
-            f"The sampling frequency must be a value higher than zero. "
-            f"The value provided was {freq.total_seconds()}"
+            f"The sampling frequency must be a value higher than zero. The value provided was {freq.total_seconds()}"
         )
 
     index = pd.date_range(start=start_date, end=end_date, freq=freq)

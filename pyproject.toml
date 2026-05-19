@@ -37,11 +37,10 @@ all = ["indsl[numba,plot,modeling,stats,scikit,fluids]"]
 [dependency-groups]
 dev = [
     "pre-commit>=4.0.0,<5",
-    "black>=26.0.0,<27",
     "ipykernel>=7.0.0,<8",
     "pytest-cov>=7,<8",
     "commitizen>=4.11.6,<5",
-    "docstring-parser>=0.17.0,<0.18",
+    "docstring-parser>=0.18,<0.19",
     "docstring-to-markdown>=0.17,<0.18",
     "coverage>=7.0.0,<8",
     "ruff>=0.15.0,<0.16",
@@ -53,7 +52,7 @@ docs = [
     "matplotlib>=3.4.0,<4",
     "pytest-cov>=7,<8",
     "commitizen>=4.11.6,<5",
-    "docstring-parser>=0.17.0,<0.18",
+    "docstring-parser>=0.18,<0.19",
     "docstring-to-markdown>=0.17,<0.18",
     "myst-parser>=5.0.0,<6",
     "coverage>=7.0.0,<8",
@@ -64,30 +63,14 @@ docs = [
     "sphinx-prompt>=1.10.0,<2",
 ]
 
-[tool.black]
-line-length = 120
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-  | tests/.*/setup.py
-)/
-'''
-
 [tool.ruff]
 # Keep in sync with .pre-commit-config.yaml
 line-length = 120
 target-version = "py311"
 exclude = ["tests", "examples", "docs-source", "docs"]
+
+[tool.ruff.format]
+line-ending = "auto"
 
 [tool.ruff.lint]
 # E501: line too long
@@ -149,6 +132,15 @@ markers = [
 ]
 addopts = "--cov=indsl --cov-report=html --cov-branch"
 testpaths = "tests/"
+filterwarnings = [
+    # Pickle files created with older numpy reference numpy.core internals
+    "ignore:numpy.core.*is deprecated:DeprecationWarning",
+    # statsmodels optimizer convergence is model/data dependent, not a code bug
+    "ignore:Maximum Likelihood optimization failed to converge:statsmodels.tools.sm_exceptions.ConvergenceWarning",
+    # kneed third-party library warnings for edge-case input data
+    "ignore:Polyfit may be poorly conditioned",
+    "ignore:invalid value encountered in divide:RuntimeWarning",
+]
 log_level = "INFO"
 log_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
 log_date_format="%Y-%m-%d %H:%M:%S"

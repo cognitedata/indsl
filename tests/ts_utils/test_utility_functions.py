@@ -37,7 +37,8 @@ def test_get_timestamps(time_unit):
 @pytest.mark.core
 @pytest.mark.parametrize("time_unit", supported_time_units)
 def test_set_timestamps(time_unit):
-    timestamps = np.array([0.0, 1637611275, 3275222550]) * 1e9 / pd.Timedelta(1, unit=time_unit).value
+    pd_unit = "D" if time_unit == "d" else time_unit
+    timestamps = np.array([0.0, 1637611275, 3275222550]) * 1e9 / pd.Timedelta(1, unit=pd_unit).value
     index = pd.to_datetime(timestamps, unit=time_unit)
     data = create_uniform_data(np.ones(3))
 
@@ -55,7 +56,8 @@ def test_time_shift(time_unit):
     data = create_uniform_data(np.ones(3))
     data_shift = time_shift(data, 10, time_unit)
 
-    assert all(data_shift.index - data.index == pd.Timedelta(10, unit=time_unit))
+    pd_unit = "D" if time_unit == "d" else time_unit
+    assert all(data_shift.index - data.index == pd.Timedelta(10, unit=pd_unit))
 
 
 @pytest.mark.core
