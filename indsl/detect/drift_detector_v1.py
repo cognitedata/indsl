@@ -10,7 +10,7 @@ from indsl.type_check import check_types
 @check_types
 def drift(
     data: pd.Series,
-    long_interval: str = "3d",
+    long_interval: str = "3D",
     short_interval: str = "4h",
     std_threshold: float = 3,
     detect: str = "both",

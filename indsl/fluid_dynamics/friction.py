@@ -170,7 +170,6 @@ def Darcy_friction_factor(
 
         darcy_friction_factor = pd.Series(np.zeros(shape), index=index)
         for i in range(shape):
-
             if isinstance(Re, pd.Series):
                 Re_ = Re.iloc[i]
             else:

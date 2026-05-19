@@ -10,6 +10,7 @@ import pytest
 from pandas.testing import assert_series_equal
 
 from indsl.exceptions import UserTypeError, UserValueError
+from indsl.warnings import IndslUserWarning
 from indsl.resample.resample import resample, resample_to_granularity
 
 from ..generate_data import create_uniform_data
@@ -159,8 +160,9 @@ def test_resample_downsample_method():
     expected = "Either num or granularity_next has to be set."
     assert expected in str(excinfo.value)
 
-    # Not uniform data
-    res_data = resample(data=not_uniform_data, granularity_current=None)
+    # Not uniform data — triggers warning about uninferable resolution
+    with pytest.warns(IndslUserWarning, match="Can't infer time series resolution"):
+        res_data = resample(data=not_uniform_data, granularity_current=None)
     assert_series_equal(not_uniform_data, res_data)
 
     # uniform

@@ -585,7 +585,7 @@ def plot_lpc_roots(threshold, time, data, predicted, f, Pxx, roots, distance):
     ax3 = fig.add_subplot(gs[1, 2])
 
     # convert epoch time back to datetime
-    time = [datetime.datetime.utcfromtimestamp(item) for item in time]
+    time = [datetime.datetime.fromtimestamp(item, datetime.UTC).replace(tzinfo=None) for item in time]
 
     ax1.plot(time, data, marker=".", label="Raw")
     ax1.plot(time, predicted, "-", label="LPC prediction")

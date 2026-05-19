@@ -214,7 +214,8 @@ def set_timestamps(timestamp_series: pd.Series, value_series: pd.Series, unit: T
     if not len(timestamp_series) == len(value_series):
         raise UserValueError("Length of input time series must be equal.")
 
-    index = pd.to_datetime(timestamp_series.to_numpy(), unit=unit)
+    pandas_unit = "D" if unit == "d" else unit
+    index = pd.to_datetime(timestamp_series.to_numpy(), unit=pandas_unit)
     return pd.Series(value_series.to_numpy(), index=index)
 
 
@@ -239,10 +240,11 @@ def get_timestamps(series: pd.Series, unit: TimeUnits = "ms") -> pd.Series:
         UserTypeError: series is not a time series
         UserTypeError: unit is not a string
     """
-    if unit == "ns":
+    pandas_unit = "D" if unit == "d" else unit
+    if pandas_unit == "ns":
         values = datetime_index_to_ns(series.index)
     else:
-        values = datetime_index_to_ns(series.index) / (pd.Timedelta(1, unit=unit) // pd.Timedelta(1, "ns"))
+        values = datetime_index_to_ns(series.index) / (pd.Timedelta(1, unit=pandas_unit) // pd.Timedelta(1, "ns"))
 
     return pd.Series(values, index=series.index)
 
@@ -269,7 +271,7 @@ def time_shift(series: pd.Series, n_units: float = 0, unit: TimeUnits = "ms") ->
         UserTypeError: unit is not a string
     """
     out = series.copy()
-    out.index += pd.Timedelta(n_units, unit=unit)
+    out.index += pd.Timedelta(n_units, unit="D" if unit == "d" else unit)
 
     return out
 
@@ -303,7 +305,7 @@ def replace(series: pd.Series, to_replace: Optional[List[float]] = None, value: 
         return series
     elif not isinstance(to_replace, list):
         raise UserTypeError("to_replace must be a list")
-    if value is not None and not isinstance(value, (float, int)):
+    if value is not None and not isinstance(value, float | int):
         raise UserTypeError("value must be a number")
     return series.replace(to_replace, value)
 

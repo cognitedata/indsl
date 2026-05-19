@@ -91,7 +91,7 @@ def flow_through_valve(
     .. [1] ANSI/ISA 75.01.01-2007 (IEC 60534-2-1Mod) Flow Equations for Sizing Control Valves. Research Triangle Park, North Carloina: The International Society of Automation, 2007.
 
     """
-    if isinstance(SG, (int, float)) and SG < 0:
+    if isinstance(SG, int | float) and SG < 0:
         raise UserValueError("Specific gravity cannot be negative.")
     # TODO: Find out how to handle mix between positive and negative values in a series.
     elif isinstance(SG, pd.Series) and (SG < 0).all():

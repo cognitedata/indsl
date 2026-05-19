@@ -204,7 +204,7 @@ def test_if_data_starts_with_nan_values_and_bounded_is_true_then_output_range_is
 @pytest.mark.core
 def test_reindex_duplicate_x_observed():
     data = pd.Series([1, 2, 3], index=[datetime(2023, 7, 1), datetime(2023, 7, 1), datetime(2023, 7, 2)])
-    new_index = pd.date_range(start=datetime(2023, 7, 1), periods=3, freq="d")
+    new_index = pd.date_range(start=datetime(2023, 7, 1), periods=3, freq="D")
     method = "slinear"
     kind = "pointwise"
     with pytest.raises(UserValueError, match="x_observed should not contain duplicates"):

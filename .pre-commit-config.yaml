@@ -1,14 +1,10 @@
 repos:
   - hooks:
-      - id: black
-    repo: https://github.com/psf/black
-    rev: 25.12.0
-  - hooks:
       - id: ruff
         args: ["--fix"]
-
+      - id: ruff-format
     repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.6
+    rev: v0.15.11
   - hooks:
       - id: debug-statements
         exclude: ^docs(-source)?/
@@ -35,7 +31,7 @@ repos:
         additional_dependencies: ['types-requests']
         exclude: ^docs(-source)?/
     repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.20.0
+    rev: v1.20.1
   - hooks:
       - id: commitizen
         stages:
