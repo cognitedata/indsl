@@ -8,7 +8,7 @@ from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
 
 
-def __reindex_scatter_core(signal_x: pd.Series) -> tuple[np.array, np.array]:
+def __reindex_scatter_core(signal_x: pd.Series) -> tuple[np.ndarray, np.ndarray]:
     """Reindex scatterplot core.
 
     It returns a reindexed array of timestamp. The timestamps are creates such that the values from signal_x
