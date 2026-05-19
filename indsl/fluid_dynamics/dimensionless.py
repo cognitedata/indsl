@@ -51,9 +51,7 @@ def Re(
 
 
 @check_types
-def Fr(
-    velocity: pd.Series | float, length_scale: pd.Series | float, align_timesteps: bool = False
-) -> pd.Series:
+def Fr(velocity: pd.Series | float, length_scale: pd.Series | float, align_timesteps: bool = False) -> pd.Series:
     r"""Froude Number.
 
     The Froude number is a ratio of inertial and gravitational forces

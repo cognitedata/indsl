@@ -35,9 +35,7 @@ def logical_check(
         Union[pd.Series, Number]: Time series/number.
     """
 
-    def check_function(
-        a: pd.Series | float | int, b: pd.Series | float | int
-    ) -> pd.Series | bool:  # Select operation
+    def check_function(a: pd.Series | float | int, b: pd.Series | float | int) -> pd.Series | bool:  # Select operation
         if operation == "Equality":
             return a == b
         elif operation == "Inequality":

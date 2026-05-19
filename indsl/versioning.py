@@ -145,9 +145,7 @@ def get(name: str, version: str | None = None) -> Callable[..., Any]:
 
 
 @check_types
-def run(
-    name: str, version: str | None = None, args: Sequence | None = None, kwargs: dict | None = None
-) -> Any:
+def run(name: str, version: str | None = None, args: Sequence | None = None, kwargs: dict | None = None) -> Any:
     """Run a version of a function.
 
     If version is None, the latest version is executed
