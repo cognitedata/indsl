@@ -1,6 +1,7 @@
 # Copyright 2023 Cognite AS
 import warnings
 
+from collections.abc import Sequence
 from typing import Any, Literal
 
 import numpy as np
@@ -184,7 +185,7 @@ def wave_with_brownian_noise(
     amplitude: float = 10,
     mean: float = 200,
     frequency: float = 0.04,
-    noise: list[int] = (1, 1),
+    noise: Sequence[int] = (1, 1),
 ):
     """Wave with brownian noise.
 

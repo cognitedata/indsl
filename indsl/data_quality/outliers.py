@@ -1,4 +1,5 @@
 # Copyright 2023 Cognite AS
+from collections.abc import Sequence
 
 import numpy as np
 import pandas as pd
@@ -80,10 +81,10 @@ def extreme(data: pd.Series, alpha: float = 0.05, bc_relaxation: float = 0.167, 
 @check_types
 def out_of_range(
     data: pd.Series,
-    window_length: list[int] = (20, 20),
-    polyorder: list[int] = (3, 3),
-    alpha: list[float] = (0.05, 0.05),
-    bc_relaxation: list[float] = (0.25, 0.5),
+    window_length: Sequence[int] = (20, 20),
+    polyorder: Sequence[int] = (3, 3),
+    alpha: Sequence[float] = (0.05, 0.05),
+    bc_relaxation: Sequence[float] = (0.25, 0.5),
     return_outliers: bool = True,
 ) -> pd.Series:
     r"""Out of range.
