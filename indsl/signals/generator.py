@@ -184,7 +184,7 @@ def wave_with_brownian_noise(
     amplitude: float = 10,
     mean: float = 200,
     frequency: float = 0.04,
-    noise: tuple[int, int] = (1, 1),
+    noise: list[int] = (1, 1),
 ):
     """Wave with brownian noise.
 
