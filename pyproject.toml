@@ -59,7 +59,7 @@ docs = [
     "Sphinx<9.2",
     "sphinx-rtd-theme>=3.0.0,<4",
     "nbsphinx>=0.9.0,<0.10",
-    "sphinx-gallery>=0.20.0,<0.21",
+    "sphinx-gallery>=0.21,<0.22",
     "sphinx-prompt>=1.10.0,<2",
 ]
 
