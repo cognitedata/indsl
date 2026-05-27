@@ -1,6 +1,7 @@
 # Copyright 2023 Cognite AS
+from collections.abc import Iterable
 from numbers import Number
-from typing import Any, Iterable, List, Union
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -15,7 +16,7 @@ def _is_timeseries(data: Any) -> bool:
 
 
 @check_types
-def auto_reindex(data: List[Union[Iterable, Number, pd.Series]], enabled: bool = True) -> list:
+def auto_reindex(data: list[Iterable | Number | pd.Series], enabled: bool = True) -> list:
     """Automatically re-reindex input time series."""
     if not enabled:
         return data
@@ -33,6 +34,6 @@ def auto_reindex(data: List[Union[Iterable, Number, pd.Series]], enabled: bool =
 
 
 @check_types
-def auto_align(data: List[Union[Iterable, Number, pd.Series]], enabled: bool = True) -> list:
+def auto_align(data: list[Iterable | Number | pd.Series], enabled: bool = True) -> list:
     """Automatically re-reindex input time series."""
     return auto_reindex(data, enabled=enabled)

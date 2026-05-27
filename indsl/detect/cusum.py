@@ -1,5 +1,5 @@
 # Copyright 2023 Cognite AS
-from typing import Literal, Optional
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -39,8 +39,8 @@ class Cusum:
     def __init__(
         self,
         data: pd.Series,
-        threshold: Optional[float] = None,
-        drift: Optional[float] = None,
+        threshold: float | None = None,
+        drift: float | None = None,
         detect: Literal["both", "increase", "decrease"] = "both",
         predict_ending: bool = True,
         alpha: float = 0.05,
@@ -326,8 +326,8 @@ class Cusum:
 @check_types
 def cusum(
     data: pd.Series,
-    threshold: Optional[float] = None,
-    drift: Optional[float] = None,
+    threshold: float | None = None,
+    drift: float | None = None,
     detect: Literal["both", "increase", "decrease"] = "both",
     predict_ending: bool = True,
     alpha: float = 0.05,

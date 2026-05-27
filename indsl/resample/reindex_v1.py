@@ -1,6 +1,5 @@
 # Copyright 2023 Cognite AS
 from enum import Enum
-from typing import List
 
 import pandas as pd
 import pandas.core.indexes.datetimes
@@ -50,7 +49,7 @@ def reindex(
     method: Method = Method.LINEAR,
     kind: Kind = Kind.POINTWISE,
     bounded: bool = False,
-) -> List[pd.Series]:
+) -> list[pd.Series]:
     """Reindex.
 
     This method offers data reindexing onto a common index and fills missing data points.
@@ -104,11 +103,11 @@ def reindex(
 # @check_types # typeguard expects str, not class Methor or Kind as a data tyepe
 # it is commented out to avoid changing the signature of this deprecated function, so that it is compatible with Charts
 def reindex_many(
-    data: List[pd.Series],
+    data: list[pd.Series],
     method: Method = Method.LINEAR,
     kind: Kind = Kind.POINTWISE,
     bounded: bool = False,
-) -> List[pd.Series]:
+) -> list[pd.Series]:
     """Re-indexes list.
 
     Args:

@@ -1,5 +1,3 @@
-from typing import Tuple
-
 import numpy as np
 import pandas as pd
 
@@ -13,12 +11,12 @@ def non_linear_non_stationary_signal(
     start_timestamp: pd.Timestamp = pd.Timestamp.now() - pd.Timedelta("4.5 days"),
     duration: pd.Timedelta = pd.Timedelta("4.5 days"),
     sample_freq: pd.Timedelta = pd.Timedelta("1m"),
-    wave_period: Tuple[str, str, str] = ("6h", "1h", "3h"),
-    wave_mean: Tuple[float, float, float] = (0.0, 0.0, 5.0),
-    wave_amplitude: Tuple[float, float, float] = (6.8, 100.0, 35.0),
-    wave_phase: Tuple[float, float, float] = (0.0, 0.0, np.pi),
-    slope: Tuple[float, float, float] = (0.00005, -0.000028, 0.00005),
-    intercept: Tuple[float, float, float] = (1.0, 5.0, 0.0),
+    wave_period: tuple[str, str, str] = ("6h", "1h", "3h"),
+    wave_mean: tuple[float, float, float] = (0.0, 0.0, 5.0),
+    wave_amplitude: tuple[float, float, float] = (6.8, 100.0, 35.0),
+    wave_phase: tuple[float, float, float] = (0.0, 0.0, np.pi),
+    slope: tuple[float, float, float] = (0.00005, -0.000028, 0.00005),
+    intercept: tuple[float, float, float] = (1.0, 5.0, 0.0),
 ) -> pd.Series:
     """Non-linear, non-stationary signal.
 

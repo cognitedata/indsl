@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Union
 
 import pandas as pd
 
@@ -12,7 +11,7 @@ def validate_series_has_time_index(data: pd.Series) -> None:
         raise UserTypeError(f"Expected a time series, got index type {data.index.dtype}")
 
 
-def validate_series_is_not_empty(series: Union[pd.Series, pd.DataFrame]) -> None:
+def validate_series_is_not_empty(series: pd.Series | pd.DataFrame) -> None:
     """Helper method to validate if provided pandas.Series has more than 0 values."""
     if len(series) == 0:
         raise UserValueError("Time series is empty.")

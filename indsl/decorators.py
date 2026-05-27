@@ -1,5 +1,6 @@
 # Copyright 2023 Cognite AS
-from typing import Any, Callable, Optional
+from collections.abc import Callable
+from typing import Any
 
 
 try:
@@ -7,7 +8,7 @@ try:
 except ImportError:
     ...  # Workaround for typeguard
 
-    def jit(fn: Optional[Callable[..., Any]] = None, **kwargs) -> Callable[..., Any]:  # noqa: D103
+    def jit(fn: Callable[..., Any] | None = None, **kwargs) -> Callable[..., Any]:  # noqa: D103
         # Check if this is a decorator with arguments or not
         if fn is None:
             # Decorator has arguments, ignore arguments and return a
@@ -23,7 +24,7 @@ try:
 except ImportError:
     ...  # Workaround for typeguard
 
-    def njit(fn: Optional[Callable[..., Any]] = None, **kwargs) -> Callable[..., Any]:  # noqa: D103
+    def njit(fn: Callable[..., Any] | None = None, **kwargs) -> Callable[..., Any]:  # noqa: D103
         # Check if this is a decorator with arguments or not
         if fn is None:
             # Decorator has arguments, ignore arguments and return a

@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Optional
 
 import pandas as pd
 
@@ -12,7 +11,7 @@ from indsl.type_check import check_types
 
 
 @check_types
-def sg(data: pd.Series, window_length: Optional[int] = None, polyorder: int = 1) -> pd.Series:
+def sg(data: pd.Series, window_length: int | None = None, polyorder: int = 1) -> pd.Series:
     """Saviztky-Golay.
 
     Use this filter for smoothing data without distorting the data tendency. The method is independent of

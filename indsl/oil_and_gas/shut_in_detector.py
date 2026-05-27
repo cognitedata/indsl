@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -14,7 +13,7 @@ def calculate_shutin_interval(
     min_shutin_len: float = 6,
     min_time_btw_shutins: float = 1,
     shutin_state_below_threshold: bool = True,
-    shutin_threshold: Optional[float] = None,
+    shutin_threshold: float | None = None,
 ) -> pd.Series:
     """Shut-in interval.
 

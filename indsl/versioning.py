@@ -1,21 +1,22 @@
 # Copyright 2023 Cognite AS
 from collections import defaultdict
-from typing import Any, Callable, DefaultDict, Dict, List, Optional, Sequence
+from collections.abc import Callable, Sequence
+from typing import Any
 
 from packaging.version import Version
 
 from .type_check import check_types
 
 
-_registered_funcs: DefaultDict[str, Dict[str, Any]] = defaultdict(dict)
+_registered_funcs: defaultdict[str, dict[str, Any]] = defaultdict(dict)
 
 
 @check_types
 def register(
     version: str,
-    name: Optional[str] = None,
-    deprecated: Optional[bool] = False,
-    changelog: Optional[str] = None,
+    name: str | None = None,
+    deprecated: bool | None = False,
+    changelog: str | None = None,
 ) -> Callable[..., Any]:
     """Decorator to register a new versioned function.
 
@@ -70,13 +71,13 @@ def register(
     return register_decorator
 
 
-def get_registered_functions() -> List[str]:
+def get_registered_functions() -> list[str]:
     """Return the list of registered function names."""
     return list(_registered_funcs.keys())
 
 
 @check_types
-def get_versions(name: str) -> List[str]:
+def get_versions(name: str) -> list[str]:
     """Return the list of available versions of a function name.
 
     Sorted from low to highest version
@@ -95,7 +96,7 @@ def get_name(func: Callable[..., Any]) -> str:
 
 
 @check_types
-def get_version(func: Callable[..., Any]) -> Optional[str]:
+def get_version(func: Callable[..., Any]) -> str | None:
     """Return the version of a function.
 
     If the function is not registered, None is returned
@@ -110,7 +111,7 @@ def is_versioned(func: Callable[..., Any]) -> bool:
 
 
 @check_types
-def is_deprecated(func: Callable[..., Any]) -> Optional[bool]:
+def is_deprecated(func: Callable[..., Any]) -> bool | None:
     """Return true if the version is deprecated.
 
     If the function is not registered, None is returned
@@ -119,7 +120,7 @@ def is_deprecated(func: Callable[..., Any]) -> Optional[bool]:
 
 
 @check_types
-def get_changelog(func: Callable[..., Any]) -> Optional[str]:
+def get_changelog(func: Callable[..., Any]) -> str | None:
     """Return changelog of this version.
 
     If the function is not registered, None is returned
@@ -128,7 +129,7 @@ def get_changelog(func: Callable[..., Any]) -> Optional[str]:
 
 
 @check_types
-def get(name: str, version: Optional[str] = None) -> Callable[..., Any]:
+def get(name: str, version: str | None = None) -> Callable[..., Any]:
     """Return one of the versions of a function.
 
     If version is None, the latest version is returned
@@ -144,9 +145,7 @@ def get(name: str, version: Optional[str] = None) -> Callable[..., Any]:
 
 
 @check_types
-def run(
-    name: str, version: Optional[str] = None, args: Optional[Sequence] = None, kwargs: Optional[dict] = None
-) -> Any:
+def run(name: str, version: str | None = None, args: Sequence | None = None, kwargs: dict | None = None) -> Any:
     """Run a version of a function.
 
     If version is None, the latest version is executed

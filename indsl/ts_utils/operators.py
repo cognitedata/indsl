@@ -1,7 +1,7 @@
 # Copyright 2023 Cognite AS
 import operator as op
 
-from typing import List, Literal, Optional, Union
+from typing import Literal
 
 import numpy as np
 
@@ -215,7 +215,7 @@ def arithmetic_mean(a, b, align_timesteps: bool = False):
 
 
 @check_types
-def arithmetic_mean_many(data: List[Union[pd.Series, float]], align_timesteps: bool = False) -> Union[pd.Series, float]:
+def arithmetic_mean_many(data: list[pd.Series | float], align_timesteps: bool = False) -> pd.Series | float:
     """Arithmetic mean many.
 
     The mean of multiple time series.
@@ -240,7 +240,7 @@ def arithmetic_mean_many(data: List[Union[pd.Series, float]], align_timesteps: b
 @check_types
 def sample_average(
     data: pd.Series,
-    threshold: Optional[float] = None,
+    threshold: float | None = None,
     condition: Literal["Above", "Below", "No threshold"] = "No threshold",
 ) -> pd.Series:
     """Sample average.

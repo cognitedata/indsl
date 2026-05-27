@@ -2,7 +2,7 @@
 import warnings
 
 from contextlib import suppress
-from typing import Literal, Optional, Union
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -22,8 +22,8 @@ def interpolate(
     kind: Literal["pointwise", "average"] = "pointwise",
     granularity: str = "1s",
     bounded: int = 1,
-    outside_fill: Optional[str] = None,
-) -> Union[pd.DataFrame, pd.Series]:
+    outside_fill: str | None = None,
+) -> pd.DataFrame | pd.Series:
     """Interpolation.
 
     Interpolates and resamples data with a uniform sampling frequency.
@@ -127,7 +127,7 @@ def interpolate(
 
 
 @check_types
-def _validate(date_text: Union[str, pd.Timestamp]) -> pd.Timestamp:
+def _validate(date_text: str | pd.Timestamp) -> pd.Timestamp:
     """Validates data format.
 
     Args:

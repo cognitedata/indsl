@@ -1,6 +1,5 @@
 # Copyright 2023 Cognite AS
 # Determine rate of emissions from combustor
-from typing import Optional
 
 import pandas as pd
 
@@ -11,9 +10,9 @@ from indsl.type_check import check_types
 
 @check_types
 def emissions_factor_combustor(
-    emissions_factor: Optional[float] = None,
-    heating_value: Optional[float] = None,
-    carbon_content: Optional[float] = None,
+    emissions_factor: float | None = None,
+    heating_value: float | None = None,
+    carbon_content: float | None = None,
 ) -> float:
     r"""Combustor emissions factor.
 
@@ -83,7 +82,7 @@ def rate_of_emissions(data: pd.Series, emissions_factor: float) -> pd.Series:
 
 
 @check_types
-def cumulative_co2_production(rate_of_emissions: pd.Series, start_date: Optional[pd.Timestamp] = None) -> pd.Series:
+def cumulative_co2_production(rate_of_emissions: pd.Series, start_date: pd.Timestamp | None = None) -> pd.Series:
     r"""Cumulative CO2 production.
 
     This function calculates the total CO2 production according to the rate of emissions. The total is calculated by performing trapezoidal integration
@@ -111,7 +110,7 @@ def cumulative_co2_production(rate_of_emissions: pd.Series, start_date: Optional
 
 @check_types
 def cumulative_co2_cost(
-    data: pd.Series, co2_cost_factor: float, emissions_factor: float, start_date: Optional[pd.Timestamp] = None
+    data: pd.Series, co2_cost_factor: float, emissions_factor: float, start_date: pd.Timestamp | None = None
 ) -> pd.Series:
     r"""Cumulative CO2 cost.
 

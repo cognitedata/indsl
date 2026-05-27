@@ -1,8 +1,6 @@
 # Copyright 2023 Cognite AS
 import functools
 
-from typing import List
-
 from indsl import versioning
 from indsl.data_quality import extreme
 from indsl.detect import drift, ssid, vma
@@ -147,4 +145,4 @@ for old_op_code, f in old_to_new.items():
     vars()[old_op_code] = f_cpy
 
 # Expose only old style functions as module members
-__all__: List[str] = list(old_to_new.keys())
+__all__: list[str] = list(old_to_new.keys())
