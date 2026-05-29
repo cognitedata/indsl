@@ -9,6 +9,7 @@ from scipy.stats import t as student_dist
 
 from indsl.exceptions import UserValueError
 from indsl.resample.reindex import reindex
+from indsl.ts_utils.utility_functions import datetime_index_to_ns
 from indsl.smooth import sg
 from indsl.type_check import check_types
 from indsl.validations import validate_series_has_minimum_length
@@ -251,7 +252,7 @@ def _split_timeseries_into_time_and_value_arrays(data: pd.Series) -> tuple:
             x -> Datetime index converted to integers starting at 0
             y -> Time series values
     """
-    index_ns = data.index.as_unit("ns").astype(np.int64).to_numpy()
+    index_ns = datetime_index_to_ns(data.index)
     x = (index_ns - index_ns[0]) / 1e9
     y = data.to_numpy()
     return x, y
