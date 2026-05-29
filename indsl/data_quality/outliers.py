@@ -9,8 +9,8 @@ from scipy.stats import t as student_dist
 
 from indsl.exceptions import UserValueError
 from indsl.resample.reindex import reindex
-from indsl.ts_utils.utility_functions import datetime_index_to_ns
 from indsl.smooth import sg
+from indsl.ts_utils.utility_functions import datetime_index_to_ns
 from indsl.type_check import check_types
 from indsl.validations import validate_series_has_minimum_length
 
