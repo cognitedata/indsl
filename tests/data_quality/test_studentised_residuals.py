@@ -42,14 +42,8 @@ def test_extreme_does_not_raise_linalg_error_for_duplicated_timestamps():
     dup_index = index.repeat(2)
     dup_sig = np.repeat(sig, 2)
     data = pd.Series(dup_sig, index=dup_index)
-    # Should not raise LinAlgError; any UserValueError from validation is acceptable
-    try:
-        result = extreme(data)
-        assert isinstance(result, pd.Series)
-    except Exception as exc:
-        from indsl.exceptions import UserValueError
-
-        assert isinstance(exc, UserValueError), f"Expected UserValueError, got {type(exc)}: {exc}"
+    result = extreme(data)
+    assert isinstance(result, pd.Series)
 
 
 @pytest.mark.core
