@@ -28,7 +28,7 @@ repos:
     rev: v6.0.0
   - hooks:
       - id: mypy
-        additional_dependencies: ['types-requests', 'pandas']
+        additional_dependencies: ['types-requests', 'pandas~=3.0.1']
         exclude: ^docs(-source)?/
     repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.20.2
