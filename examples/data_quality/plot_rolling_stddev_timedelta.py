@@ -1,4 +1,4 @@
-# Copyright 2022 Cognite AS
+# Copyright 2022-2026 Cognite AS
 """
 ====================================================
 Rolling standard deviation of data points time delta
@@ -8,10 +8,7 @@ Example of visualizing rolling standard deviation of time delta of time series d
 ingestion of data.
 """
 
-from datetime import datetime, timedelta
-
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 
 from indsl.data_quality.rolling_stddev import rolling_stddev_timedelta
@@ -41,7 +38,7 @@ ax.title.set_text("Standard deviation of time delta")
 ax.plot(data.index, stddev, label="Standard deviation", marker=".")
 ax.plot(data.index, mean, label="Mean", marker=".")
 
-values = np.arange(data.index[0], data.index[-1], timedelta(minutes=4)).astype(datetime)  # type: ignore[call-overload]
+values = pd.date_range(data.index[0], data.index[-1], freq="4min")
 
 ax.set_xticks(values)
 ax.set_xticklabels([ts.strftime("%d-%m-%Y \n %H:%M:%S") for ts in values], fontsize=8)
