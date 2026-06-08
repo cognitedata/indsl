@@ -33,7 +33,7 @@ random_signal_value = np.random.uniform(1, 80)
 nr_consecutive_data_points = 12
 
 start_position = random.randint(0, int(len(data) - nr_consecutive_data_points))
-data.values[start_position : start_position + nr_consecutive_data_points] = random_signal_value
+data.iloc[start_position : start_position + nr_consecutive_data_points] = random_signal_value
 
 unchanged_signal_step_series = unchanged_signal_detector(data, duration=duration, min_nr_data_points=3)
 

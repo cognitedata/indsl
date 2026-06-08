@@ -45,8 +45,7 @@ ax1.set_xticklabels([ts.strftime("%d-%m-%Y \n %H:%M:%S") for ts in ts_values], f
 # Plot outliers indicator time series
 ax2 = ax1.twinx()
 ax2.plot(
-    data[np.where(detect_outliers(data) == 1)[0]].index,
-    data[np.where(detect_outliers(data) == 1)[0]].values,
+    data[detect_outliers(data) == 1],
     "o",
     color="red",
     label="Outliers",
