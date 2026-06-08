@@ -45,7 +45,7 @@ unchanged_signal_forward_filled = resampled_step_series.ffill()
 fig, ax1 = plt.subplots(figsize=(15, 5))
 ax1.plot(data.index, data, label="Time series", marker=".", color="blue")
 
-values = np.arange(data.index[0], data.index[-1], timedelta(minutes=10)).astype(datetime)
+values = np.arange(data.index[0], data.index[-1], timedelta(minutes=10)).astype(datetime)  # type: ignore[call-overload]
 
 ax1.set_xticks(values)
 ax1.set_xticklabels([ts.strftime("%d-%m-%Y \n %H:%M:%S") for ts in values], fontsize=8)

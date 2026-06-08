@@ -130,7 +130,7 @@ def num_vals_in_boxes(series: pd.Series, num_boxes: int):
     return {"data": boxes}
 
 
-def functional_mean(function: Callable, x_vals: list) -> np.ndarray:
+def functional_mean(function: Callable, x_vals: list | np.ndarray) -> np.ndarray:
     """Convenience method to calculate the mean of a function between each x value.
 
     The last point is the function called at the last x value. This is required for the
@@ -177,7 +177,7 @@ def is_na_all(data: pd.DataFrame | pd.Series) -> bool:
         raise UserValueError("Convenience method only supports Series or DataFrame.")
 
 
-def gaps_detector(timestamps: np.ndarray, threshold: int = 86400) -> np.ndarray:
+def gaps_detector(timestamps: np.ndarray, threshold: int = 86400) -> np.ndarray | None:
     """Detect gaps bigger than a threshold in time series.
 
     Taken from:
@@ -232,7 +232,7 @@ def mad(
     return (data - data.median()).abs().median()
 
 
-def check_uniform(data: pd.DataFrame, unit: str = "ns") -> bool:
+def check_uniform(data: pd.DataFrame, unit: str = "ns") -> np.bool:
     """Convenience method to verify input time series is uniform.
 
     Args:

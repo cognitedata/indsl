@@ -240,7 +240,7 @@ def ed_pelt(data: np.ndarray, min_distance: int = 1) -> np.ndarray:
         previous_taus.append(current_tau - (min_distance - 1))
 
     # here we collect the result list of changepoint indexes `change_point_indexes` using `previous_change_point_index`
-    change_point_indexes: list[int] = []
+    change_point_indexes: list[np.int64] = []
     current_index: np.int64 = np.int64(
         previous_change_point_index[n]
     )  # The index of the end of the last segment is `n`

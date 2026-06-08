@@ -41,7 +41,7 @@ ax.title.set_text("Standard deviation of time delta")
 ax.plot(data.index, stddev, label="Standard deviation", marker=".")
 ax.plot(data.index, mean, label="Mean", marker=".")
 
-values = np.arange(data.index[0], data.index[-1], timedelta(minutes=4)).astype(datetime)
+values = np.arange(data.index[0], data.index[-1], timedelta(minutes=4)).astype(datetime)  # type: ignore[call-overload]
 
 ax.set_xticks(values)
 ax.set_xticklabels([ts.strftime("%d-%m-%Y \n %H:%M:%S") for ts in values], fontsize=8)

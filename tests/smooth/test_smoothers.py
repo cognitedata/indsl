@@ -31,7 +31,7 @@ def generate_wave_with_uniform_sampling(
     amplitude = max_amplitude * rg.random(waves)
     phase = np.pi * rg.random(waves)
     freq = max_frequency * rg.random(waves)
-    time_array = datetime.now() - timedelta(seconds=dt[-1]) + dt * timedelta(seconds=1)
+    time_array = datetime.now() - timedelta(seconds=dt[-1]) + dt * timedelta(seconds=1)  # type: ignore[operator]
 
     wave = 0
     for ind in range(waves):

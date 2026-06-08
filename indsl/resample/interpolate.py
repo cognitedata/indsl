@@ -74,7 +74,7 @@ def interpolate(
 
     # Get outside fill value
     if bounded:
-        fill_value = np.nan
+        fill_value: float | str = np.nan
     else:
         fill_value = "extrapolate"
 

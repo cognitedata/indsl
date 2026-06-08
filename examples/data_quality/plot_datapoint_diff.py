@@ -35,7 +35,7 @@ default_threshold_forward_filled = resampled_step_series_default_threshold.ffill
 fig, ax1 = plt.subplots(figsize=(15, 5))
 ax1.plot(data.index, data, label="Time series", marker=".", color="blue")
 
-values = np.arange(data.index[0], data.index[-1], timedelta(minutes=120)).astype(datetime)
+values = np.arange(data.index[0], data.index[-1], timedelta(minutes=120)).astype(datetime)  # type: ignore[call-overload]
 
 ax1.set_xticks(values)
 ax1.set_xticklabels([ts.strftime("%d-%m \n %H:%M") for ts in values], fontsize=8)

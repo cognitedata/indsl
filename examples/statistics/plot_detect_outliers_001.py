@@ -38,7 +38,7 @@ fig, ax1 = plt.subplots(figsize=(15, 5))
 # Plot actual time series data
 ax1.plot(data.index, data, label="Time series", marker=".", color="blue")
 
-ts_values = np.arange(data.index[0], data.index[-1], timedelta(days=1)).astype(datetime)
+ts_values = np.arange(data.index[0], data.index[-1], timedelta(days=1)).astype(datetime)  # type: ignore[call-overload]
 
 ax1.set_xticks(ts_values)
 ax1.set_xticklabels([ts.strftime("%d-%m-%Y \n %H:%M:%S") for ts in ts_values], fontsize=8)
