@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 =========================================
 Check for the production status of a well
@@ -11,7 +11,7 @@ is ON).
 
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -19,8 +19,8 @@ import pandas as pd
 from indsl.oil_and_gas.well_prod_status import calculate_well_prod_status
 
 
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_pickle(os.path.join(base_path, "../../datasets/data/valve_data.pkl"))
+base_path = Path(__file__).parents[2].resolve()
+data = pd.read_pickle(base_path / "datasets" / "data" / "valve_data.pkl")
 
 master = data.iloc[:, 0]
 wing = data.iloc[:, 1]

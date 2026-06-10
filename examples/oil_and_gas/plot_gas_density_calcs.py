@@ -1,3 +1,4 @@
+# Copyright 2026 Cognite AS
 """
 ===============================
 Calculation of gas density
@@ -9,7 +10,7 @@ The plot shows the variation of the gas density for methane gas (SG = 0.55) with
 
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -18,8 +19,8 @@ from indsl.oil_and_gas.gas_density_calcs import calculate_gas_density as cd
 
 
 # pressure and temperature series define
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/density_pr_tmp.csv"), index_col=0)
+base_path = Path(__file__).parents[2].resolve()
+data = pd.read_csv(base_path / "datasets" / "data" / "density_pr_tmp.csv", index_col=0)
 sg = pd.Series([0.5534])
 fig, ax = plt.subplots(1, 2, figsize=[10, 5])
 

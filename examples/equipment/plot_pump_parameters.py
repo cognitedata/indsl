@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 ==========================================
 Calculate parameters of a centrifugal pump
@@ -9,6 +9,8 @@ Best Efficiency Point (BEP) to current operating flowrate and power output
 of a centrifugal pump.
 
 """
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -16,9 +18,9 @@ import pandas as pd
 from indsl.equipment.pump_parameters import percent_BEP_flowrate, pump_hydraulic_power, pump_shaft_power, total_head
 
 
-# base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-df = pd.read_pickle("../../datasets/data/pump_data.pkl")
-df_pump_curve = pd.read_csv("../../datasets/data/pump_curve.csv")
+base_path = Path(__file__).parents[2].resolve()
+df = pd.read_pickle(base_path / "datasets" / "data" / "pump_data.pkl")
+df_pump_curve = pd.read_csv(base_path / "datasets" / "data" / "pump_curve.csv")
 
 # %%
 # First we need to define a few pump and fluid parameters: density of the fluid, Best Efficiency Point (BEP),

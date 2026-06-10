@@ -9,7 +9,7 @@ We use data from a compressor suction pressure sensor. The data is in barg units
 The figure shows the data without outliers considering a time window of 40min.
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -20,8 +20,8 @@ from indsl.statistics import remove_outliers
 # TODO: USe a better data set to show how the outlier removal. Suggestion, use a synthetic data set.
 
 
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/suct_pressure_barg.csv"), index_col=0)
+base_path = Path(__file__).parents[2].resolve()
+data = pd.read_csv(base_path / "datasets" / "data" / "suct_pressure_barg.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)
 

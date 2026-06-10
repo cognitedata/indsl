@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 ================================
 Detection of valve shut-in state
@@ -9,16 +9,15 @@ detected open/close state for shut-in durations of at least 6 and 24 hours in du
 
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
 from indsl.oil_and_gas.shut_in_detector import calculate_shutin_interval as shi
 
-
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/shut_down_valve.csv"), index_col=0)
+base_path = Path(__file__).parents[2].resolve()
+data = pd.read_csv(base_path / "datasets" / "data" / "shut_down_valve.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)
 # TODO: Create load_shutin_valve_data method from above

@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 ================================
 Holt-Winters Predictor
@@ -9,7 +9,7 @@ dataset displays an additive trend and an additive seasonality, and the second d
 multiplicative seasonality.
 
 """
-import os
+from pathlib import Path
 import warnings
 
 import matplotlib.pyplot as plt
@@ -21,8 +21,8 @@ from indsl.forecast.holt_winters_predictor import holt_winters_predictor as hwp
 # suppress "No frequency information was given" warning - Frequency information is derived from datetime index
 warnings.filterwarnings("ignore")
 
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/seasonal_with_trend_data.csv"), sep=";", index_col=0)
+base_path = Path(__file__).parents[2].resolve()
+data = pd.read_csv(base_path / "datasets" / "data" / "seasonal_with_trend_data.csv", sep=";", index_col=0)
 data.index = pd.to_datetime(data.index)
 
 # calculate the forecast for both data types

@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 =======================================================
 Re-indexing and compute Pearson correlation coefficient
@@ -14,7 +14,7 @@ and hence the time stamps do not align. Therefore, the data is first re-indexed 
 The figure shows data from a pressure sensor randomly split into two time series to simulate two pressure sensors (Sensor 1 and Sensor 2).
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -23,8 +23,8 @@ import pandas as pd
 from indsl.resample.reindex import reindex_many
 
 # Load the pressure sensor data
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/suct_pressure_barg.csv"), index_col=0)
+base_path = Path(__file__).parents[2].resolve()
+data = pd.read_csv(base_path / "datasets" / "data" / "suct_pressure_barg.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)
 
