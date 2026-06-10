@@ -158,7 +158,7 @@ class DataQualityScoreAnalyser(ABC):
             )
         return None
 
-    def _convert_series_to_events(self, series) -> list[tuple[pd.Timestamp, pd.Timestamp]]:
+    def _convert_series_to_events(self, series: pd.Series) -> list[tuple[pd.Timestamp, pd.Timestamp]]:
         # Each gap in the input series is represented as a consecutive (1, 1) pair.
         # Hence filtering the 1 values and re-arranging the associated index as pairs
         # yields a list of the (start, end) gap events.
@@ -168,7 +168,7 @@ class DataQualityScoreAnalyser(ABC):
         # to split the gaps again we need to loop though the events and add the original timestamps:
         # todo: remove this code if generate_step_series handles consecutive gaps without merging
         timestamps = np.array(self.series.index)
-        events_array_unmerged = []
+        events_array_unmerged: list[list[pd.Timestamp] | np.ndarray] = []
 
         for start, end in events_array:
             merged_timestamps = timestamps[(timestamps > start) & (timestamps < end)]

@@ -198,7 +198,7 @@ def calculate_xmt_prod_status(
     is_choke_valve_open = choke_valve >= threshold_choke
 
     is_wellhead_open = pd.Series(
-        np.logical_or.reduce(array=is_wellhead_super_valves_open).astype(int),
+        np.logical_or.reduce(array=is_wellhead_super_valves_open).astype(int),  # type: ignore[call-overload]
         index=choke_valve.index,
     )
 

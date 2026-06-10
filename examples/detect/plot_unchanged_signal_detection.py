@@ -1,4 +1,4 @@
-# Copyright 2022 Cognite AS
+# Copyright 2022-2026 Cognite AS
 """
 ====================================================
 Unchanged signal identification of time series data
@@ -7,8 +7,6 @@ Unchanged signal identification of time series data
 Example of visualizing unchanged signal during a certain time period in a given time series.
 """
 import random
-
-from datetime import datetime, timedelta
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -33,7 +31,7 @@ random_signal_value = np.random.uniform(1, 80)
 nr_consecutive_data_points = 12
 
 start_position = random.randint(0, int(len(data) - nr_consecutive_data_points))
-data.values[start_position : start_position + nr_consecutive_data_points] = random_signal_value
+data.iloc[start_position : start_position + nr_consecutive_data_points] = random_signal_value
 
 unchanged_signal_step_series = unchanged_signal_detector(data, duration=duration, min_nr_data_points=3)
 
@@ -45,7 +43,7 @@ unchanged_signal_forward_filled = resampled_step_series.ffill()
 fig, ax1 = plt.subplots(figsize=(15, 5))
 ax1.plot(data.index, data, label="Time series", marker=".", color="blue")
 
-values = np.arange(data.index[0], data.index[-1], timedelta(minutes=10)).astype(datetime)
+values = pd.date_range(data.index[0], data.index[-1], freq="10min")
 
 ax1.set_xticks(values)
 ax1.set_xticklabels([ts.strftime("%d-%m-%Y \n %H:%M:%S") for ts in values], fontsize=8)
