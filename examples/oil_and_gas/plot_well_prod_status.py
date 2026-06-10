@@ -19,7 +19,7 @@ import pandas as pd
 from indsl.oil_and_gas.well_prod_status import calculate_well_prod_status
 
 
-base_path = Path(__file__).parents[2].resolve()
+base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
 data = pd.read_pickle(base_path / "datasets" / "data" / "valve_data.pkl")
 
 master = data.iloc[:, 0]

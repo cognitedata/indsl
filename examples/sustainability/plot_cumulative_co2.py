@@ -21,7 +21,7 @@ from indsl.sustainability.co2_emissions_calculations import (
 
 
 # Load and pre-process data
-base_path = Path(__file__).parents[2].resolve()
+base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
 data = pd.read_csv(base_path / "datasets" / "data" / "compressor_power_output.csv", index_col=0)
 data.index = pd.to_datetime(data.index)
 power = data[data.columns[0]].resample("1h").mean().ffill()  # Unit is in kW

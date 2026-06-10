@@ -22,7 +22,7 @@ import pandas as pd
 from indsl.smooth import sg
 
 
-base_path = Path(__file__).parents[2].resolve()
+base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
 data = pd.read_csv(base_path / "datasets" / "data" / "vol_flow_rate_m3h.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)
@@ -41,3 +41,5 @@ plt.plot(sg(data, window_length=155, polyorder=5), color="forestgreen", linewidt
 plt.ylabel("Vol. Flow (m3/h)")
 plt.title("Noise removal effect from window size and polynomial order")
 _ = plt.legend(loc=2)
+
+plt.show()

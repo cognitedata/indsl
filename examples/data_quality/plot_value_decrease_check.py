@@ -29,7 +29,7 @@ from indsl.data_quality.value_decrease_indication import value_decrease_check
 
 
 # import generated data
-base_path = Path(__file__).parents[2].resolve()
+base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
 data = pd.read_csv(base_path / "datasets" / "data" / "ts_value_reduction_data.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)

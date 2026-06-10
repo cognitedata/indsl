@@ -23,7 +23,7 @@ import pandas as pd
 from indsl.resample.reindex import reindex_many
 
 # Load the pressure sensor data
-base_path = Path(__file__).parents[2].resolve()
+base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
 data = pd.read_csv(base_path / "datasets" / "data" / "suct_pressure_barg.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)

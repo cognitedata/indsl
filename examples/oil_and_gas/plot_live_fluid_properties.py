@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 =========================================================
 Calculate fluid properties given pressure and temperature
@@ -14,21 +14,23 @@ the fluid obtained from lab tests. For this specific feature, the input fluid fi
 
 """
 
+from pathlib import Path
+
 import pandas as pd
 
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
-import pickle
 from indsl.oil_and_gas.live_fluid_properties import retrieve_fluid_properties
 
 
-df = pd.read_csv("../../datasets/data/press_temp_bh&wh.csv")
+base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
+df = pd.read_csv(base_path / "datasets" / "data" / "press_temp_bh&wh.csv")
 
 # Create DataFrame with that as index
 index = pd.date_range(start="2025-01-01 18:00", periods=240, freq="h")
 df.index = index
 
-pvt_data = pd.read_csv("../../datasets/data/pvt_data.csv")
+pvt_data = pd.read_csv(base_path / "datasets" / "data" / "pvt_data.csv")
 pvt_data.attrs["file_type"] = "tab"
 
 pbh = df.iloc[:, 0] * 100000

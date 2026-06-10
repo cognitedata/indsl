@@ -18,7 +18,7 @@ import pandas as pd
 from indsl.equipment.pump_parameters import percent_BEP_flowrate, pump_hydraulic_power, pump_shaft_power, total_head
 
 
-base_path = Path(__file__).parents[2].resolve()
+base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
 df = pd.read_pickle(base_path / "datasets" / "data" / "pump_data.pkl")
 df_pump_curve = pd.read_csv(base_path / "datasets" / "data" / "pump_curve.csv")
 

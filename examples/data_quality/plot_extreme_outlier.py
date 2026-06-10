@@ -1,3 +1,4 @@
+# Copyright 2026 Cognite AS
 """
 ========================
 Extreme Outliers Removal
@@ -46,3 +47,5 @@ raw_data.plot()
 res.plot()
 
 _ = plt.legend(["Raw Data", "Filtered with Anomaly Detector"])
+
+plt.show()
