@@ -9,10 +9,7 @@ equipment.
 """
 from pathlib import Path
 
-from datetime import datetime, timedelta
-
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 
 from indsl.data_quality.datapoint_diff import datapoint_diff_over_time_period
@@ -25,7 +22,7 @@ data = data.squeeze()
 data.index = pd.to_datetime(data.index)
 
 # apply function to calculate difference between datapoint over a period of 1 day
-hour_count_default_threshold = datapoint_diff_over_time_period(data, pd.Timedelta("1d"), 24, pd.Timedelta("1h"))
+hour_count_default_threshold = datapoint_diff_over_time_period(data, pd.Timedelta("1D"), 24, pd.Timedelta("1h"))
 
 # Resample and forward fill generated step series
 resampled_step_series_default_threshold = hour_count_default_threshold.resample("60min")
@@ -35,7 +32,7 @@ default_threshold_forward_filled = resampled_step_series_default_threshold.ffill
 fig, ax1 = plt.subplots(figsize=(15, 5))
 ax1.plot(data.index, data, label="Time series", marker=".", color="blue")
 
-values = np.arange(data.index[0], data.index[-1], timedelta(minutes=120)).astype(datetime)
+values = pd.date_range(data.index[0], data.index[-1], freq="120min")
 
 ax1.set_xticks(values)
 ax1.set_xticklabels([ts.strftime("%d-%m \n %H:%M") for ts in values], fontsize=8)

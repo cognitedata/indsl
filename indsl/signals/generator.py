@@ -364,8 +364,10 @@ def insert_data_gaps(
         )
     buffer2 = original_length - buffer1
     if method == "Random":
-        gap_loc = rng.choice(np.arange(1, original_length - 1), size=points_to_remove, replace=False, shuffle=False)
-        return data.loc[data.index.difference(data.index[gap_loc])]
+        gap_loc_random = rng.choice(
+            np.arange(1, original_length - 1), size=points_to_remove, replace=False, shuffle=False
+        )
+        return data.loc[data.index.difference(data.index[gap_loc_random])]
     elif method == "Single":
         gap_loc = rng.integers(low=buffer1, high=buffer2, size=1)[0]
         # Move the start of the gap location away from the end of the time series so that the data gap ends right
@@ -512,7 +514,7 @@ def _handle_overlapping_gaps(gap_ranges: np.ndarray, data_length: int, buffer: i
 
 
 @check_types
-def _time_array(index: pd.DatetimeIndex) -> np.array:
+def _time_array(index: pd.DatetimeIndex) -> np.ndarray:
     """Get time array.
 
     Convert a pandas DatetimeIndex to a time array in seconds, where t=0 is the start date of the index.
