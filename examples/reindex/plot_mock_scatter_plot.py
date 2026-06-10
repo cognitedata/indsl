@@ -17,7 +17,7 @@ from datetime import datetime
 from indsl.resample.mock_scatter_plot import reindex_scatter, reindex_scatter_x
 
 # Load the pressure sensor data
-base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
 
 # Read in data for a production choke opening
 filename = base_path / "datasets" / "data" / "pd_series_HCV.pkl"

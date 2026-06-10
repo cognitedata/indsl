@@ -19,7 +19,7 @@ from indsl.oil_and_gas.gas_density_calcs import calculate_gas_density as cd
 
 
 # pressure and temperature series define
-base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
 data = pd.read_csv(base_path / "datasets" / "data" / "density_pr_tmp.csv", index_col=0)
 sg = pd.Series([0.5534])
 fig, ax = plt.subplots(1, 2, figsize=[10, 5])

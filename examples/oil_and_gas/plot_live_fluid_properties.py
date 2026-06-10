@@ -23,7 +23,7 @@ import matplotlib.pyplot as plt
 from indsl.oil_and_gas.live_fluid_properties import retrieve_fluid_properties
 
 
-base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
 df = pd.read_csv(base_path / "datasets" / "data" / "press_temp_bh&wh.csv")
 
 # Create DataFrame with that as index

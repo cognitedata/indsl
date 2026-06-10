@@ -21,7 +21,7 @@ from indsl.forecast.holt_winters_predictor import holt_winters_predictor as hwp
 # suppress "No frequency information was given" warning - Frequency information is derived from datetime index
 warnings.filterwarnings("ignore")
 
-base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
 data = pd.read_csv(base_path / "datasets" / "data" / "seasonal_with_trend_data.csv", sep=";", index_col=0)
 data.index = pd.to_datetime(data.index)
 

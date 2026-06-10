@@ -18,7 +18,7 @@ from indsl.detect.oscillation_detector import helper_oscillation_detector, oscil
 
 
 # brownian noise wave signal
-base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
 data = pd.read_csv(base_path / "datasets" / "data" / "brownian_noise_wave.csv", index_col=0).squeeze(
     "columns"
 )

@@ -16,7 +16,7 @@ import pandas as pd
 
 from indsl.oil_and_gas.shut_in_detector import calculate_shutin_interval as shi
 
-base_path = (Path(__file__).parent if "__file__" in globals() else Path.cwd()).resolve().parents[1]
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
 data = pd.read_csv(base_path / "datasets" / "data" / "shut_down_valve.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)
