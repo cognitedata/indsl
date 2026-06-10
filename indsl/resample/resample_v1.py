@@ -3,7 +3,7 @@ import operator as op
 import warnings
 
 from enum import Enum
-from typing import Literal, Optional
+from typing import Literal
 
 import pandas as pd
 
@@ -22,12 +22,12 @@ from indsl.warnings import IndslUserWarning
 def resample(
     data: pd.Series,
     method: Literal["fourier", "polyphase", "interpolate", "min", "max", "sum", "count", "mean"] = "fourier",
-    granularity_current: Optional[str] = None,
+    granularity_current: str | None = None,
     granularity_next: str = "1s",
-    num: Optional[int] = None,
-    downsampling_factor: Optional[int] = None,
-    interpolate_resolution: Optional[str] = None,
-    ffill_resolution: Optional[str] = None,
+    num: int | None = None,
+    downsampling_factor: int | None = None,
+    interpolate_resolution: str | None = None,
+    ffill_resolution: str | None = None,
 ) -> pd.Series:
     """Resample.
 

@@ -27,7 +27,7 @@ def _validate_threshold(threshold: float) -> None:
 
 
 @njit
-def _prolong_indicator(x_value: np.array, x_indicator: np.array) -> np.array:
+def _prolong_indicator(x_value: np.ndarray, x_indicator: np.ndarray) -> np.ndarray:
     """Indicator adjustment.
 
     Function that prolongs the indicator value for bad data quality - indicator will be set to 1 for as long as data doesn't go back to "normal" (ie., back to the value it had before the value decreased).

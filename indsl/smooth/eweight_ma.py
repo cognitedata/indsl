@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -100,7 +99,7 @@ def ewma_pt_adjust(data: np.ndarray, value: float, i: int, a: np.ndarray, max_pt
 
 def ewma_pt_not_adjust(
     data: np.ndarray, value: float, min_periods: int, ewma_vals: np.ndarray, i: int, a: np.ndarray
-) -> Optional[float]:
+) -> float | None:
     """Calculates the ewma recursively using yt=(1−α)yt−1+αxt.
 
     Args:

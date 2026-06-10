@@ -4,8 +4,6 @@ import os
 import re
 import typing
 
-from typing import Optional
-
 import docstring_parser
 
 from docstring_to_markdown.rst import rst_to_markdown
@@ -44,7 +42,7 @@ def _convert_to_rendering_format(docstring: str) -> str:
 
 
 # Generate parameters
-def _generate_key_for_parameters(name: str, output_dict: dict, parameters, version: Optional[str] = None):
+def _generate_key_for_parameters(name: str, output_dict: dict, parameters, version: str | None = None):
     for parameter in parameters:
         param_name, description = _parse_docstring_element_text(parameter.description)
         if param_name:
@@ -58,7 +56,7 @@ def _generate_key_for_parameters(name: str, output_dict: dict, parameters, versi
 
 
 # Generation of the keys and values
-def _generate_key_for_function(function: typing.Callable, name: str, output_dict: dict, version: Optional[str] = None):
+def _generate_key_for_function(function: typing.Callable, name: str, output_dict: dict, version: str | None = None):
     docstring = str(function.__doc__) if function.__doc__ else ""
     parsed_docstring = docstring_parser.parse(docstring, docstring_parser.DocstringStyle.GOOGLE)
 

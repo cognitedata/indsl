@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import List, Tuple
 
 import numpy as np
 import pandas as pd
@@ -27,7 +26,7 @@ class DataQualityScore:
         self,
         analysis_start: pd.Timestamp,
         analysis_end: pd.Timestamp,
-        events: List[Tuple[pd.Timestamp, pd.Timestamp]],
+        events: list[tuple[pd.Timestamp, pd.Timestamp]],
     ):
         """Data quality score init function.
 
@@ -93,6 +92,7 @@ class DataQualityScore:
         return DataQualityScore(self.analysis_start, other.analysis_end, self_events + other_events)
 
     def __eq__(self, other: object) -> bool:
+        """Check equality between two DataQualityScore instances."""
         if isinstance(other, DataQualityScore):
             return (
                 self.analysis_start == other.analysis_start
@@ -158,7 +158,7 @@ class DataQualityScoreAnalyser(ABC):
             )
         return None
 
-    def _convert_series_to_events(self, series) -> List[Tuple[pd.Timestamp, pd.Timestamp]]:
+    def _convert_series_to_events(self, series: pd.Series) -> list[tuple[pd.Timestamp, pd.Timestamp]]:
         # Each gap in the input series is represented as a consecutive (1, 1) pair.
         # Hence filtering the 1 values and re-arranging the associated index as pairs
         # yields a list of the (start, end) gap events.
@@ -168,7 +168,7 @@ class DataQualityScoreAnalyser(ABC):
         # to split the gaps again we need to loop though the events and add the original timestamps:
         # todo: remove this code if generate_step_series handles consecutive gaps without merging
         timestamps = np.array(self.series.index)
-        events_array_unmerged = []
+        events_array_unmerged: list[list[pd.Timestamp] | np.ndarray] = []
 
         for start, end in events_array:
             merged_timestamps = timestamps[(timestamps > start) & (timestamps < end)]
@@ -185,14 +185,14 @@ class DataQualityScoreAnalyser(ABC):
 
     @staticmethod
     def _filter_events_outside_analysis_period(
-        events: List[Tuple[pd.Timestamp, pd.Timestamp]], analysis_start: pd.Timestamp, analysis_end: pd.Timestamp
-    ) -> List[Tuple[pd.Timestamp, pd.Timestamp]]:
+        events: list[tuple[pd.Timestamp, pd.Timestamp]], analysis_start: pd.Timestamp, analysis_end: pd.Timestamp
+    ) -> list[tuple[pd.Timestamp, pd.Timestamp]]:
         return [(start, end) for start, end in events if end > analysis_start and start < analysis_end]
 
     @staticmethod
     def _limit_first_and_last_events_to_analysis_period(
-        gaps: List[Tuple[pd.Timestamp, pd.Timestamp]], analysis_start: pd.Timestamp, analysis_end: pd.Timestamp
-    ) -> List[Tuple[pd.Timestamp, pd.Timestamp]]:
+        gaps: list[tuple[pd.Timestamp, pd.Timestamp]], analysis_start: pd.Timestamp, analysis_end: pd.Timestamp
+    ) -> list[tuple[pd.Timestamp, pd.Timestamp]]:
         if len(gaps) == 0:
             return gaps
 

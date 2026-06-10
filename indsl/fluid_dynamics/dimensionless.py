@@ -1,5 +1,4 @@
 # Copyright 2024 Cognite AS
-from typing import Tuple, Union
 
 import numpy as np
 import pandas as pd
@@ -10,10 +9,10 @@ from indsl.type_check import check_types
 
 @check_types
 def Re(
-    velocity: Union[pd.Series, float],
-    density: Union[pd.Series, float],
-    d_viscosity: Union[pd.Series, float],
-    length_scale: Union[pd.Series, float],
+    velocity: pd.Series | float,
+    density: pd.Series | float,
+    d_viscosity: pd.Series | float,
+    length_scale: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     """Reynolds Number.
@@ -52,9 +51,7 @@ def Re(
 
 
 @check_types
-def Fr(
-    velocity: Union[pd.Series, float], length_scale: Union[pd.Series, float], align_timesteps: bool = False
-) -> pd.Series:
+def Fr(velocity: pd.Series | float, length_scale: pd.Series | float, align_timesteps: bool = False) -> pd.Series:
     r"""Froude Number.
 
     The Froude number is a ratio of inertial and gravitational forces
@@ -94,10 +91,10 @@ def Fr(
 
 @check_types
 def Fr_density_scaled(
-    velocity: Union[pd.Series, float],
-    density_1: Union[pd.Series, float],
-    density_2: Union[pd.Series, float],
-    length_scale: Union[pd.Series, float],
+    velocity: pd.Series | float,
+    density_1: pd.Series | float,
+    density_2: pd.Series | float,
+    length_scale: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Density scaled Froude Number.
@@ -145,17 +142,17 @@ def Fr_density_scaled(
 
 @check_types
 def __Fr_2phase_base(
-    liquid_fraction: Union[pd.Series, float],
-    superficial_velocity_gas: Union[pd.Series, float],
-    superficial_velocity_liquid: Union[pd.Series, float],
-    inclination: Union[pd.Series, float],
-    diameter: Union[pd.Series, float],
-) -> Tuple[
-    Union[pd.Series, float],
-    Union[pd.Series, float],
-    Union[pd.Series, float],
-    Union[pd.Series, float],
-    Union[pd.Series, float],
+    liquid_fraction: pd.Series | float,
+    superficial_velocity_gas: pd.Series | float,
+    superficial_velocity_liquid: pd.Series | float,
+    inclination: pd.Series | float,
+    diameter: pd.Series | float,
+) -> tuple[
+    pd.Series | float,
+    pd.Series | float,
+    pd.Series | float,
+    pd.Series | float,
+    pd.Series | float,
 ]:
     """Geometry calculations used to calculate various 2phase Froude numbers.
 
@@ -190,13 +187,13 @@ def __Fr_2phase_base(
 
 @check_types
 def Fr_2phase(
-    liquid_fraction: Union[pd.Series, float],
-    superficial_velocity_gas: Union[pd.Series, float],
-    superficial_velocity_liquid: Union[pd.Series, float],
-    density_gas: Union[pd.Series, float],
-    density_liquid: Union[pd.Series, float],
-    inclination: Union[pd.Series, float],
-    diameter: Union[pd.Series, float],
+    liquid_fraction: pd.Series | float,
+    superficial_velocity_gas: pd.Series | float,
+    superficial_velocity_liquid: pd.Series | float,
+    density_gas: pd.Series | float,
+    density_liquid: pd.Series | float,
+    inclination: pd.Series | float,
+    diameter: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""2 phase Froude Number.
@@ -266,13 +263,13 @@ def Fr_2phase(
 
 @check_types
 def Fr_inviscid_kelvin_helmholtz(
-    liquid_fraction: Union[pd.Series, float],
-    superficial_velocity_gas: Union[pd.Series, float],
-    superficial_velocity_liquid: Union[pd.Series, float],
-    density_gas: Union[pd.Series, float],
-    density_liquid: Union[pd.Series, float],
-    inclination: Union[pd.Series, float],
-    diameter: Union[pd.Series, float],
+    liquid_fraction: pd.Series | float,
+    superficial_velocity_gas: pd.Series | float,
+    superficial_velocity_liquid: pd.Series | float,
+    density_gas: pd.Series | float,
+    density_liquid: pd.Series | float,
+    inclination: pd.Series | float,
+    diameter: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""IKH Froude Number.
@@ -473,10 +470,10 @@ def fdeltas_v(alpha: pd.Series) -> pd.Series:
 
 @check_types
 def We(
-    velocity: Union[pd.Series, float],
-    density: Union[pd.Series, float],
-    surface_tension: Union[pd.Series, float],
-    length_scale: Union[pd.Series, float],
+    velocity: pd.Series | float,
+    density: pd.Series | float,
+    surface_tension: pd.Series | float,
+    length_scale: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Weber Number.
@@ -524,10 +521,10 @@ def We(
 
 @check_types
 def Pressure_scaled(
-    pressure_gradient: Union[pd.Series, float],
-    velocity: Union[pd.Series, float],
-    density: Union[pd.Series, float],
-    length_scale: Union[pd.Series, float],
+    pressure_gradient: pd.Series | float,
+    velocity: pd.Series | float,
+    density: pd.Series | float,
+    length_scale: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     r"""Scaled pressure gradient.
@@ -571,8 +568,8 @@ def Pressure_scaled(
 
 @check_types
 def Roughness_scaled(
-    roughness: Union[pd.Series, float],
-    diameter: Union[pd.Series, float],
+    roughness: pd.Series | float,
+    diameter: pd.Series | float,
     align_timesteps: bool = False,
 ) -> pd.Series:
     """Scaled pipe roughness.

@@ -2,7 +2,7 @@
 import warnings
 
 from contextlib import suppress
-from typing import Literal, Union
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -25,7 +25,7 @@ def interpolate(
     kind: Literal["pointwise", "average"] = "pointwise",
     granularity: pd.Timedelta = pd.Timedelta("1s"),
     bounded: bool = True,
-) -> Union[pd.DataFrame, pd.Series]:
+) -> pd.DataFrame | pd.Series:
     """Interpolation.
 
     This function interpolates and resamples data with a uniform sampling frequency.
@@ -74,7 +74,7 @@ def interpolate(
 
     # Get outside fill value
     if bounded:
-        fill_value = np.nan
+        fill_value: float | str = np.nan
     else:
         fill_value = "extrapolate"
 
@@ -117,7 +117,7 @@ def interpolate(
 
 
 @check_types
-def _validate(date_text: Union[str, pd.Timestamp]) -> pd.Timestamp:
+def _validate(date_text: str | pd.Timestamp) -> pd.Timestamp:
     """Validates data format.
 
     Args:

@@ -1,8 +1,6 @@
 # Copyright 2023 Cognite AS
 import warnings
 
-from typing import Optional
-
 import numpy as np
 import pandas as pd
 
@@ -20,7 +18,7 @@ def detect_outliers(
     data: pd.Series,
     reg_smooth: float = 0.9,
     min_samples: int = 4,
-    eps: Optional[float] = None,
+    eps: float | None = None,
     time_window: str = "60min",
     del_zero_val: bool = False,
 ) -> pd.Series:
@@ -100,7 +98,7 @@ def remove_outliers(
     data: pd.Series,
     reg_smooth: float = 0.9,
     min_samples: int = 4,
-    eps: Optional[float] = None,
+    eps: float | None = None,
     time_window: str = "60min",
     del_zero_val: bool = False,
 ) -> pd.Series:
@@ -165,7 +163,7 @@ def remove_outliers(
 def _get_outlier_indices(
     data: pd.Series,
     min_samples: int = 4,
-    eps: Optional[float] = None,
+    eps: float | None = None,
     time_window: str = "60min",
     del_zero_val: bool = False,
     reg_smooth: float = 0.9,

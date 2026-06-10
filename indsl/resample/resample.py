@@ -2,7 +2,7 @@
 import operator as op
 import warnings
 
-from typing import Literal, Optional
+from typing import Literal
 
 import pandas as pd
 
@@ -23,12 +23,12 @@ from . import resample_v1  # noqa
 def resample(
     data: pd.Series,
     method: Literal["fourier", "polyphase", "interpolate", "min", "max", "sum", "count", "mean"] = "fourier",
-    granularity_current: Optional[pd.Timedelta] = None,
-    granularity_next: Optional[pd.Timedelta] = pd.Timedelta("1s"),
-    num: Optional[int] = None,
-    downsampling_factor: Optional[int] = None,
-    interpolate_resolution: Optional[pd.Timedelta] = None,
-    ffill_resolution: Optional[pd.Timedelta] = None,
+    granularity_current: pd.Timedelta | None = None,
+    granularity_next: pd.Timedelta | None = pd.Timedelta("1s"),
+    num: int | None = None,
+    downsampling_factor: int | None = None,
+    interpolate_resolution: pd.Timedelta | None = None,
+    ffill_resolution: pd.Timedelta | None = None,
 ) -> pd.Series:
     """Resample.
 

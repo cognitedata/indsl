@@ -1,5 +1,4 @@
 # Copyright 2023 Cognite AS
-from typing import List
 
 import pandas as pd
 
@@ -7,7 +6,7 @@ from indsl.type_check import check_types
 
 
 @check_types
-def univariate_polynomial(signal: pd.Series, coefficients: List[float] = [0.0, 1.0]) -> pd.Series:
+def univariate_polynomial(signal: pd.Series, coefficients: list[float] = [0.0, 1.0]) -> pd.Series:
     """Univariate polynomial.
 
     Creates a univariate polynomial :math:`y`, of degree :math:`n`, from the time series :math:`x`, and a list of

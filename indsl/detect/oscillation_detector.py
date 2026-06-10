@@ -1,8 +1,6 @@
 # Copyright 2023 Cognite AS
 import datetime
 
-from typing import Dict, Tuple
-
 import numpy as np
 import pandas as pd
 
@@ -206,7 +204,7 @@ def _oscillation_detector(data, order, threshold):
 @check_types
 def helper_oscillation_detector(
     data: pd.Series, order: int = 4, threshold: float = 0.2, visualize: bool = True
-) -> Dict:  # This is a helper function using the dict output for visualizing the results
+) -> dict:  # This is a helper function using the dict output for visualizing the results
     """Helper function for the oscillation detector.
 
     Args:
@@ -523,7 +521,7 @@ def _lpc(y: np.ndarray, order: int) -> np.ndarray:
 
 
 @check_types
-def cross_corr(x: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+def cross_corr(x: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     """Cross Correlation.
 
     Computes between signal x and y correlation for different lags and returns corresponding lag and correlation

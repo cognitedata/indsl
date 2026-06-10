@@ -1,7 +1,7 @@
 # Copyright 2023 Cognite AS
 from __future__ import annotations
 
-from typing import List, Literal, Tuple
+from typing import Literal
 
 import pandas as pd
 
@@ -22,7 +22,7 @@ class GapEventsList(list):
         events: List of gap events.
     """
 
-    def __init__(self, events: List[Tuple[pd.Timestamp, pd.Timestamp]]):
+    def __init__(self, events: list[tuple[pd.Timestamp, pd.Timestamp]]):
         """Initialize list of gap events."""
         super().__init__(events)
 

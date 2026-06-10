@@ -2,8 +2,9 @@
 import re
 import warnings
 
+from collections.abc import Callable
 from datetime import datetime
-from typing import Callable, List, Literal, Optional, Union
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -58,9 +59,9 @@ def time_ago_to_ms(time_ago_string: str) -> int:
 
 
 def get_fixed_freq(
-    start_time: Union[datetime, str, int, float],
-    end_time: Union[datetime, str, int, float],
-    granularity: Union[str, pd.Timedelta],
+    start_time: datetime | str | int | float,
+    end_time: datetime | str | int | float,
+    granularity: str | pd.Timedelta,
 ):
     """Creates a time series index with a fixed frequency.
 
@@ -129,7 +130,7 @@ def num_vals_in_boxes(series: pd.Series, num_boxes: int):
     return {"data": boxes}
 
 
-def functional_mean(function: Callable, x_vals: List) -> np.ndarray:
+def functional_mean(function: Callable, x_vals: list | np.ndarray) -> np.ndarray:
     """Convenience method to calculate the mean of a function between each x value.
 
     The last point is the function called at the last x value. This is required for the
@@ -156,7 +157,7 @@ def functional_mean(function: Callable, x_vals: List) -> np.ndarray:
     return y_vals
 
 
-def is_na_all(data: Union[pd.DataFrame, pd.Series]) -> bool:
+def is_na_all(data: pd.DataFrame | pd.Series) -> bool:
     """Convenience method to test if all values in dataframe/series are Nan.
 
     Args:
@@ -176,7 +177,7 @@ def is_na_all(data: Union[pd.DataFrame, pd.Series]) -> bool:
         raise UserValueError("Convenience method only supports Series or DataFrame.")
 
 
-def gaps_detector(timestamps: np.ndarray, threshold: int = 86400) -> np.ndarray:
+def gaps_detector(timestamps: np.ndarray, threshold: int = 86400) -> np.ndarray | None:
     """Detect gaps bigger than a threshold in time series.
 
     Taken from:
@@ -217,7 +218,7 @@ def time_difference(data: pd.Series) -> pd.Series:
 @check_types
 def mad(
     data: pd.Series,
-) -> Union[float, int, pd.Timedelta]:
+) -> float | int | pd.Timedelta:
     """Median absolute deviation (MAD).
 
     Median absolute deviation computed for a time series.
@@ -231,7 +232,7 @@ def mad(
     return (data - data.median()).abs().median()
 
 
-def check_uniform(data: pd.DataFrame, unit: str = "ns") -> bool:
+def check_uniform(data: pd.DataFrame, unit: str = "ns") -> np.bool:
     """Convenience method to verify input time series is uniform.
 
     Args:
@@ -249,7 +250,7 @@ def check_uniform(data: pd.DataFrame, unit: str = "ns") -> bool:
     return np.all(floored[0] == floored[1:])
 
 
-def make_uniform(data: pd.DataFrame, resolution: str = "1s", interpolation: Optional[str] = None) -> pd.DataFrame:
+def make_uniform(data: pd.DataFrame, resolution: str = "1s", interpolation: str | None = None) -> pd.DataFrame:
     """Make time series uniform.
 
     Convenience method to make an input time series dataframe uniform per specified temporal resolution.
@@ -320,9 +321,9 @@ def time_to_points(data: pd.Series, time_window="60min") -> int:
 
 def fill_gaps(
     data: pd.Series,
-    granularity: Optional[pd.Timedelta] = None,
-    ffill_resolution: Optional[pd.Timedelta] = None,
-    interpolate_resolution: Optional[pd.Timedelta] = None,
+    granularity: pd.Timedelta | None = None,
+    ffill_resolution: pd.Timedelta | None = None,
+    interpolate_resolution: pd.Timedelta | None = None,
     method: Literal["ffill", "backfill", "bfill", "pad"] = "ffill",
 ) -> pd.Series:
     """Mask nan/fill gaps based on the time size of missing data.
@@ -404,7 +405,7 @@ def number_of_events(out: pd.Series):
 
 
 @check_types
-def scalar_to_pandas_series(data: Union[float, pd.Series]) -> pd.Series:
+def scalar_to_pandas_series(data: float | pd.Series) -> pd.Series:
     """Convert data to series if it is not already.
 
     Args:

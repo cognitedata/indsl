@@ -180,7 +180,7 @@ def sliding_window_integration(
 
     # This code finds the number of windows to integrate
     if np.all(from_to_index != 0):
-        n_windows = len(from_to_index) - 1
+        n_windows: int | np.intp = len(from_to_index) - 1
     else:
         n_windows = np.min(np.where(from_to_index == 0))
 
