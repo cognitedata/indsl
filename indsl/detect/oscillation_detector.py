@@ -9,6 +9,7 @@ from scipy.signal import argrelextrema, lfilter
 
 from indsl.decorators import njit
 from indsl.exceptions import MATPLOTLIB_REQUIRED, UserTypeError, UserValueError
+from indsl.ts_utils.utility_functions import datetime_index_to_ns
 from indsl.type_check import check_types
 
 
@@ -149,7 +150,7 @@ def _oscillation_region(data_freqs: np.ndarray, peaks: tuple) -> pd.Series:
 
 def _oscillation_detector(data, order, threshold):
     # This is a helper function to avoid repeated code which is being used by two functions
-    time = np.array([item.value / 1e9 for item in data.index])
+    time = datetime_index_to_ns(data.index) / 1e9
     data_ = data.to_numpy()
 
     # Verify if first time stamp is negative
