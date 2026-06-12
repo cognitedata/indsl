@@ -18,6 +18,36 @@ from indsl.ts_utils.utility_functions import create_series_from_timesteps
 second = timedelta(seconds=1)
 
 
+@pytest.mark.core
+@pytest.mark.parametrize(
+    "gaps_identification_method, kwargs",
+    [
+        (gaps_identification_z_scores, {"cutoff": 2}),
+        (gaps_identification_modified_z_scores, {}),
+        (gaps_identification_iqr, {}),
+        (gaps_identification_threshold, {"time_delta": pd.Timedelta("30min")}),
+    ],
+)
+def test_gaps_identification_detects_known_gap_duration(gaps_identification_method, kwargs):
+    """Gap detection must correctly identify an absolute 1-hour gap in a ~1-second series.
+
+    This test guards against the pandas 3 unit regression where DatetimeIndex.to_numpy(np.int64)
+    returned microseconds instead of nanoseconds. A 1000x unit change would shrink every diff
+    proportionally, preserving scale-invariant scores — but this test uses a threshold method that
+    compares against an explicit Timedelta, catching the absolute-magnitude bug directly. The
+    parametrized z-score/IQR cases also verify that the gap is detectable at its true duration.
+
+    Normal steps are varied slightly so modified_z_scores has a non-zero MAD.
+    """
+    normal_steps = np.array([1.03, 0.96, 1.11, 0.76, 1.02, 0.98, 0.89, 1.01, 1.00, 0.95]) * second
+    gap_step = timedelta(hours=1)
+    timesteps = list(normal_steps) + [gap_step] + list(normal_steps)
+    data = create_series_from_timesteps(timesteps)
+
+    result = gaps_identification_method(data, **kwargs)
+    assert number_of_events(result) == 1
+
+
 def test_gaps_identification_z_scores_errors():
     with pytest.raises(TypeError):
         gaps_identification_z_scores([])

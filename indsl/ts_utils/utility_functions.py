@@ -16,6 +16,15 @@ from indsl.type_check import check_types
 TimeUnits = Literal["ns", "us", "ms", "s", "m", "h", "d", "W"]
 
 
+def datetime_index_to_ns(index: pd.DatetimeIndex) -> np.ndarray:
+    """Convert a DatetimeIndex to nanoseconds since epoch as int64.
+
+    Use this instead of .to_numpy(np.int64) or .astype(np.int64), which produce
+    the index's native resolution in pandas 3 (often microseconds, not nanoseconds).
+    """
+    return index.as_unit("ns").asi8
+
+
 # Rounding and utility functions
 @check_types
 def round(x, decimals: int):
@@ -233,9 +242,9 @@ def get_timestamps(series: pd.Series, unit: TimeUnits = "ms") -> pd.Series:
     """
     pandas_unit = "D" if unit == "d" else unit
     if pandas_unit == "ns":
-        values = series.index.to_numpy("datetime64[ns]").view(np.int64)
+        values = datetime_index_to_ns(series.index)
     else:
-        values = series.index.as_unit("ns").asi8 / pd.Timedelta(1, unit=pandas_unit).value
+        values = datetime_index_to_ns(series.index) / (pd.Timedelta(1, unit=pandas_unit) // pd.Timedelta(1, "ns"))
 
     return pd.Series(values, index=series.index)
 
