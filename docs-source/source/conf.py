@@ -25,7 +25,7 @@ with open("../../pyproject.toml", "rb") as f:
 
 # -- Project information -----------------------------------------------------
 project = pyproject_toml["project"]["name"]
-copyright = "2021, Cognite AS <support@cognite.com>"
+copyright = "2021 - %Y, Cognite AS <support@cognite.com>"
 author = "Cognite AS <support@cognite.com>"
 
 # The full version, including alpha/beta/rc tags
@@ -71,7 +71,7 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
 html_favicon = "_static/images/cognite_logo_black.png"
-html_logo = "_static/images/cognite_logo_white.png"
+html_logo = "_static/images/cognite_logo_white.svg"
 
 # -- Sphinx Gallery Configuration -------------------------------------------
 

@@ -21,6 +21,26 @@ from indsl.exceptions import UserTypeError, UserValueError
 
 
 @pytest.mark.core
+def test_oscillation_detection_frequency_correct_with_modern_timestamps():
+    """Oscillation detector must return correct frequencies for a 2024 DatetimeIndex.
+
+    This guards against the Timestamp.value / datetime_index_to_ns regression: if the time
+    axis were in microseconds instead of seconds (1000x smaller), detected frequencies would
+    be 1000x larger and the assertion would fail.
+    """
+    low_freq = 0.02
+    high_freq = 0.1
+    t = np.linspace(0, 1000, 1000)
+    sig = np.sin(2 * np.pi * low_freq * t) + 0.5 * np.sin(2 * np.pi * high_freq * t)
+    index = pd.date_range(start="2024-01-01", periods=len(sig), freq="1s")
+    data = pd.Series(sig, index=index)
+
+    results = oscillation_detector(data)
+    detected = results.index[np.where(results.values == 1)]
+    np.testing.assert_almost_equal(detected, np.array([low_freq, high_freq]), decimal=2)
+
+
+@pytest.mark.core
 def test_oscillation_detection(multi_freq_signal, start_date):
     """Oscillation detection.
 

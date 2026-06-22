@@ -6,6 +6,7 @@ import pandas as pd
 
 from indsl import versioning
 from indsl.exceptions import CSAPS_REQUIRED, KNEED_REQUIRED, SCIKIT_LEARN_REQUIRED, UserValueError
+from indsl.ts_utils.utility_functions import datetime_index_to_ns
 from indsl.type_check import check_types
 from indsl.validations import validate_series_has_time_index, validate_series_is_not_empty
 from indsl.warnings import IndslUserWarning
@@ -265,7 +266,7 @@ def _get_outlier_indices(
 
     # Apply regression on the remaining data points
     df_reg = df.loc[df_without_dbscan_outliers.index, :]
-    date_int = df_reg.index.to_series().astype(np.int64)
+    date_int = pd.Series(datetime_index_to_ns(df_reg.index), index=df_reg.index)
     date_int_stand = (date_int - date_int.mean()) / date_int.std()
     csaps_data = csaps(date_int_stand, df_reg["val"], date_int_stand, smooth=reg_smooth)
 
