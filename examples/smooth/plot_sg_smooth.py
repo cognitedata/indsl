@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 =============================================
 Data smoothing with the Savitzky-Golay filter
@@ -14,7 +14,7 @@ smoothing of the data. However, increasing the order of the fit to 5 (non-linear
 trend while allowing the larger fluctuation through.
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -22,8 +22,8 @@ import pandas as pd
 from indsl.smooth import sg
 
 
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/vol_flow_rate_m3h.csv"), index_col=0)
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
+data = pd.read_csv(base_path / "datasets" / "data" / "vol_flow_rate_m3h.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)
 # TODO: Create load_flowrate_data method from above
@@ -41,3 +41,5 @@ plt.plot(sg(data, window_length=155, polyorder=5), color="forestgreen", linewidt
 plt.ylabel("Vol. Flow (m3/h)")
 plt.title("Noise removal effect from window size and polynomial order")
 _ = plt.legend(loc=2)
+
+plt.show()
