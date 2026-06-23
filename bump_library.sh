@@ -15,6 +15,8 @@ uv run cz bump "${CZ_ARGS[@]}"
 TAG=$(git describe --tags --exact-match HEAD 2>/dev/null || true)
 if [ -n "$TAG" ]; then
     git tag -d "$TAG" >/dev/null
+else
+    echo "Warning: no tag found at HEAD after cz bump — nothing to delete." >&2
 fi
 
 echo ""
