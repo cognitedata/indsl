@@ -33,11 +33,11 @@ if [ "$LOCAL_MAIN" != "$REMOTE_MAIN" ]; then
     exit 1
 fi
 
-VERSION=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+VERSION=$(uv run python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
 TAG="v$VERSION"
 TITLE="InDSL $VERSION"
 
-PACKAGE_VERSION=$(python -c 'from pathlib import Path; ns = {}; exec(Path("indsl/_version.py").read_text(), ns); print(ns["__version__"])')
+PACKAGE_VERSION=$(uv run python -c 'from pathlib import Path; ns = {}; exec(Path("indsl/_version.py").read_text(), ns); print(ns["__version__"])')
 if [ "$PACKAGE_VERSION" != "$VERSION" ]; then
     echo "Error: pyproject.toml version ($VERSION) does not match indsl/_version.py ($PACKAGE_VERSION)."
     exit 1
@@ -64,6 +64,7 @@ cleanup() {
 trap cleanup EXIT
 
 awk -v tag="$TAG" '
+    { sub(/\r$/, "") }
     function is_target_header(line) {
         return line == "## " tag || index(line, "## " tag " ") == 1 || index(line, "## [" tag "]") == 1
     }

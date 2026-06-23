@@ -12,8 +12,10 @@ git checkout -b bump-version
 # the only publishable tag is created later from the merged main commit.
 uv run cz bump "${CZ_ARGS[@]}"
 
-TAG=$(git describe --tags --exact-match HEAD 2>/dev/null)
-git tag -d "$TAG" >/dev/null
+TAG=$(git describe --tags --exact-match HEAD 2>/dev/null || true)
+if [ -n "$TAG" ]; then
+    git tag -d "$TAG" >/dev/null
+fi
 
 echo ""
 echo "Prepared release $TAG on branch bump-version."
