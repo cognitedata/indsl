@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if ! git diff --quiet || ! git diff --cached --quiet; then
+    echo "Error: tracked files have uncommitted changes. Stash or commit before bumping." >&2
+    exit 1
+fi
+
+git fetch origin main
+git checkout main
+git pull --ff-only
+
 CZ_ARGS=(--yes --changelog)
 if [ -n "${INPUT_PRERELEASE:-}" ]; then
     CZ_ARGS+=(--prerelease "$INPUT_PRERELEASE")
