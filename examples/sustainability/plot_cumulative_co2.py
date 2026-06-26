@@ -1,3 +1,4 @@
+# Copyright 2026 Cognite AS
 """
 =========================================
 Cumulative CO2 Production and Cost
@@ -7,7 +8,7 @@ Given the power consumption of a process unit and data regarding the emissions a
 CO2 produced and the cost associated with that. Here is an example using the power used by a gas compressor at the Valhall platform.
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -20,8 +21,8 @@ from indsl.sustainability.co2_emissions_calculations import (
 
 
 # Load and pre-process data
-base_path = os.path.dirname("")
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/compressor_power_output.csv"), index_col=0)
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
+data = pd.read_csv(base_path / "datasets" / "data" / "compressor_power_output.csv", index_col=0)
 data.index = pd.to_datetime(data.index)
 power = data[data.columns[0]].resample("1h").mean().ffill()  # Unit is in kW
 

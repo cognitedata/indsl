@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Copyright 2026 Cognite AS
 """
 Pump recycle valve power loss
 =============================
@@ -19,6 +20,7 @@ outlet pressure and :math:`Cv` curve are not required.
 # pressure, and that the feed pressure is not constant to get more interesting results.
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from indsl.equipment.pump_parameters import recycle_valve_power_loss, total_head
 from indsl.equipment.valve_parameters import flow_through_valve
@@ -82,3 +84,5 @@ _ = ax.set_ylabel("Power (W)")
 # %%
 # As a simple sanity check, the increasing power loss with increasing valve opening makes sense, as this means more
 # fluid flows through the recirculation line.
+
+plt.show()

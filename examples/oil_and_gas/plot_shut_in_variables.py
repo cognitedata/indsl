@@ -1,3 +1,4 @@
+# Copyright 2026 Cognite AS
 """
 ===============================
 Calculation of shut-in pressure
@@ -13,7 +14,7 @@ The figure shows the original pressure signal, 6 and 24 hrs shut-in pressure val
 
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -22,9 +23,9 @@ from indsl.oil_and_gas.shut_in_variables import calculate_shutin_variable as shv
 
 
 # Dataset contains the following columns: ["Bottom_Hole_Pressure", "Shut_in_detected_25hrs"]
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
 data = pd.read_csv(
-    os.path.join(base_path, "../../datasets/data/shut_in_pressure_data.gz"),
+    base_path / "datasets" / "data" / "shut_in_pressure_data.gz",
     compression="gzip",
     index_col=0,
     parse_dates=True,
