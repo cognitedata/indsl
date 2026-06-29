@@ -1,3 +1,10 @@
+## v8.9.1 (2026-06-23)
+
+### Fix
+
+- resolve pandas 3 DatetimeIndex-to-int64 unit regression (#639)
+- resolve deprecation and third-party warnings across test suite (#636)
+
 ## v8.9.0 (2026-04-17)
 
 ### Feat

@@ -1,3 +1,4 @@
+# Copyright 2026 Cognite AS
 """
 =====================================================
 Oscillation detection using linear predictive coding
@@ -7,7 +8,7 @@ Identifies if a signal contains one or more oscillatory components, based on a m
 
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -17,8 +18,8 @@ from indsl.detect.oscillation_detector import helper_oscillation_detector, oscil
 
 
 # brownian noise wave signal
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/brownian_noise_wave.csv"), index_col=0).squeeze(
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
+data = pd.read_csv(base_path / "datasets" / "data" / "brownian_noise_wave.csv", index_col=0).squeeze(
     "columns"
 )
 

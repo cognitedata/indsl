@@ -1,4 +1,4 @@
-# Copyright 2024 Cognite AS
+# Copyright 2024-2026 Cognite AS
 """
 =======================================================
 Re-indexing to mock a scatter plot
@@ -7,7 +7,7 @@ Re-indexing to mock a scatter plot
 This shows how we can superimpose a scatter plot on an existing chart
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -17,10 +17,10 @@ from datetime import datetime
 from indsl.resample.mock_scatter_plot import reindex_scatter, reindex_scatter_x
 
 # Load the pressure sensor data
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
 
 # Read in data for a production choke opening
-filename = os.path.join(base_path, "../../datasets/data/pd_series_HCV.pkl")
+filename = base_path / "datasets" / "data" / "pd_series_HCV.pkl"
 HCV_series = pd.read_pickle(filename)
 
 

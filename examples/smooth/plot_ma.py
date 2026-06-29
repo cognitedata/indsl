@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 =============================================
 Data smoothing with Moving Averages
@@ -13,7 +13,7 @@ are seen with a greater delay than LWMA or EWMA.
 Increasing the window size results in a stronger smoothing of the data.
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -21,8 +21,8 @@ import pandas as pd
 from indsl.smooth import ewma, lwma, sma
 
 
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/vol_flow_rate_m3h.csv"), index_col=0)
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
+data = pd.read_csv(base_path / "datasets" / "data" /"vol_flow_rate_m3h.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)
 

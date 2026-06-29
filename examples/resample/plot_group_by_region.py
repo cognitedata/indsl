@@ -1,4 +1,4 @@
-# Copyright 2021 Cognite AS
+# Copyright 2021-2026 Cognite AS
 """
 ===============
 Group by Region
@@ -12,7 +12,7 @@ group_by_region calculation, specifying the state we are interested on, the type
 should be placed on (timestamp).
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -22,8 +22,8 @@ from indsl.resample import group_by_region
 
 
 # Import a dataset with process data
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/suct_pressure_barg.csv"), index_col=0)
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
+data = pd.read_csv(base_path / "datasets" / "data" / "suct_pressure_barg.csv", index_col=0)
 data = data.squeeze()
 data.index = pd.to_datetime(data.index)
 

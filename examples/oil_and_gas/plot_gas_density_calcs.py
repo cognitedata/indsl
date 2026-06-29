@@ -1,3 +1,4 @@
+# Copyright 2026 Cognite AS
 """
 ===============================
 Calculation of gas density
@@ -9,7 +10,7 @@ The plot shows the variation of the gas density for methane gas (SG = 0.55) with
 
 """
 
-import os
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -18,8 +19,8 @@ from indsl.oil_and_gas.gas_density_calcs import calculate_gas_density as cd
 
 
 # pressure and temperature series define
-base_path = "" if __name__ == "__main__" else os.path.dirname(__file__)
-data = pd.read_csv(os.path.join(base_path, "../../datasets/data/density_pr_tmp.csv"), index_col=0)
+base_path = Path(__file__).parents[2] if "__file__" in globals() else next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "datasets").exists())
+data = pd.read_csv(base_path / "datasets" / "data" / "density_pr_tmp.csv", index_col=0)
 sg = pd.Series([0.5534])
 fig, ax = plt.subplots(1, 2, figsize=[10, 5])
 
@@ -31,7 +32,7 @@ ax[0].plot(
     linewidth=1,
     markersize=10,
     marker=".",
-    label="Gas density at " + str(data["P_con (psi)"][0]) + " psi",
+    label="Gas density at " + str(data.at[data.index[0], "P_con (psi)"]) + " psi",
 )
 
 ax[0].set_xlabel("Temperature (deg F)")
@@ -47,7 +48,7 @@ ax[1].plot(
     linewidth=1,
     markersize=10,
     marker=".",
-    label="Gas density at " + str(data["T_con (F)"][0]) + " deg F",
+    label="Gas density at " + str(data.at[data.index[0], "T_con (F)"]) + " deg F",
 )
 ax[1].set_xlabel("Pressure (psi)")
 ax[1].legend()
