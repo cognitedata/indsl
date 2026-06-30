@@ -4,16 +4,23 @@ on:
   release:
     types: [created]
 
+concurrency:
+  group: publish-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     environment: CD
+    permissions:
+      contents: read
     name: "Publish library"
     steps:
       - name: Check out
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          ref: ${{ github.event.release.tag_name }}
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Install uv
@@ -23,14 +30,16 @@ jobs:
         with:
           python-version: '3.14'
 
-      - name: Install dependencies
-        run: uv sync --frozen --no-group dev
-
-      - name: Set version
+      - name: Validate release version
         run: |
-          VERSION=$(uvx dunamai from any --no-metadata --style pep440)
-          uv version $VERSION
-          echo "__version__ = \"$VERSION\"" > indsl/_version.py
+          TAG="${{ github.event.release.tag_name }}"
+          VERSION="${TAG#v}"
+          PYPROJECT_VERSION=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+          PACKAGE_VERSION=$(python -c 'from pathlib import Path; ns = {}; exec(Path("indsl/_version.py").read_text(), ns); print(ns["__version__"])')
+          git fetch origin main
+          [ "$TAG" = "v$PYPROJECT_VERSION" ] || { echo "::error::release tag $TAG does not match pyproject.toml version v$PYPROJECT_VERSION"; exit 1; }
+          [ "$PACKAGE_VERSION" = "$PYPROJECT_VERSION" ] || { echo "::error::indsl/_version.py version $PACKAGE_VERSION does not match pyproject.toml version $PYPROJECT_VERSION"; exit 1; }
+          git merge-base --is-ancestor HEAD origin/main || { echo "::error::release tag commit is not an ancestor of origin/main"; exit 1; }
 
       - name: Build package
         run: uv build

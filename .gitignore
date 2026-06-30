@@ -145,9 +145,6 @@ test-results.xml
 localdev-*
 /localdev/
 
-# Version bump changelog
-/body.md
-
 # OS generated
 .DS_Store
 .DS_Store?
