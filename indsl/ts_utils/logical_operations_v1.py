@@ -8,40 +8,33 @@ from indsl.resample.auto_align import auto_align
 from indsl.type_check import check_types
 
 
-@versioning.register(
-    "2.0",
-    changelog="Correct spelling of 'Greater or equal than' and 'Smaller or equal than'. Added support for None as true/false values.",
-)
+@versioning.register("1.0", deprecated=True)
 @check_types
 def logical_check(
     value_1: pd.Series | float,
     value_2: pd.Series | float,
-    value_true: pd.Series | float | None = 1,
-    value_false: pd.Series | float | None = 0,
+    value_true: pd.Series | float,
+    value_false: pd.Series | float,
     operation: Literal[
-        "Equality", "Inequality", "Greater than", "Greater than or equal to", "Smaller than", "Smaller than or equal to"
+        "Equality", "Inequality", "Greater than", "Greater or equal than", "Smaller than", "Smaller or equal than"
     ] = "Equality",
-) -> pd.Series | float | None:
+) -> pd.Series | float:
     """Logical Check.
 
     Perform a logical check between time series/constants and returns the assigned time series/constants when the
     condition holds `true` or `false`. The logical check is performed following the format: `Value 1` {operator} `Value 2`,
-    where the operator can be *Equality* (`==`), *Inequality* (`!=`), *Greater than* (`>`), *Greater than or equal to* (`>=`),
-    *Smaller than* (`<`) or *Smaller than or equal to* (`<=`).
+    where the operator can be *Equality* (`==`), *Inequality* (`!=`), *Greater than* (`>`), *Greater or equal than* (`>=`),
+    *Smaller than* (`<`) or *Smaller or equal than* (`<=`).
 
     Args:
         value_1: Value 1 - time series/number.
         value_2: Value 2 - time series/number.
-        value_true: What to return when true.
-            If value_1 or value_2 are time series, and value_true is a constant, the constant will be returned at the indexes where the condition holds true.
-            If both value_1 and value_2 are constants, and value_true is a time series, the time series will be returned if the condition holds true.
-        value_false: What to return when false.
-            If value_1 or value_2 are time series, and value_false is a constant, the constant will be returned at the indexes where the condition holds false.
-            If both value_1 and value_2 are constants, and value_false is a time series, the time series will be returned if the condition holds false.
+        value_true: True - time series/number.
+        value_false: False - time series/number.
         operation: Logical operation.
 
     Returns:
-        Time series, number or None.
+        Union[pd.Series, Number]: Time series/number.
     """
 
     def check_function(a: pd.Series | float | int, b: pd.Series | float | int) -> pd.Series | bool:  # Select operation
@@ -51,12 +44,14 @@ def logical_check(
             return a != b
         elif operation == "Greater than":
             return a > b
-        elif operation == "Greater than or equal to":
+        elif operation == "Greater or equal than":
             return a >= b
         elif operation == "Smaller than":
             return a < b
-        elif operation == "Smaller than or equal to":
+        elif operation == "Smaller or equal than":
             return a <= b
+        else:
+            return None
 
     # Case 1: both inputs are constants, we execute the logical check and return the associated value
     if isinstance(value_1, float) and isinstance(value_2, float):
