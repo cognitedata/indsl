@@ -5,7 +5,7 @@ Cognite's Industrial Data Science Library
 
 This is Cognite's collection of data science algorithms and models. Its objective is twofold. First, empower domain
 experts to conduct exploratory work, root cause analysis, and analyze data without the requirement to code by driving
-the industrial data science and analytics engine behind |charts_link|. Second, curate a collection industrial relevant
+the industrial data science and analytics engine behind |charts_link|. Second, curate a collection of industrially relevant
 data science algorithms to be used by any data scientist. For more information, check |charts_docs|.
 
 .. |charts_link| raw:: html
@@ -19,13 +19,13 @@ data science algorithms to be used by any data scientist. For more information, 
 Installation
 ------------
 
-To install the core part of the library, where dependencies are `numpy`, `scipy`` and `pandas`, run:
+To install the core part of the library, where dependencies are `numpy`, `scipy` and `pandas`, run:
 
 .. code-block:: bash
 
    pip install indsl
 
-InDSL also includes extra functionality that that requires additonal dependencies. The extra functionality includes:
+InDSL also includes extra functionality that requires additional dependencies. The extra functionality includes:
 
 - Numba, for pre-compiled functions and faster execution
 - Plot, for plotting functionality that depends on `matplotlib`

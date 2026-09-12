@@ -6,7 +6,7 @@ This project is a community effort and contributions are welcomed. InDSL is publ
 `here <https://github.com/cognitedata/indsl>`_. Engage on our community site, `Cognite Hub <https://hub.cognite.com/>`_, 
 for discussion, suggestions and questions about InDSL.
 
-The main objective of the InDLS is to **provide industrial domain experts and data scientist with a rich library of
+The main objective of InDSL is to **provide industrial domain experts and data scientists with a rich library of
 algorithms to speed up their work**. Therefore, we highly encourage data scientists with industrial domain knowledge
 to contribute algorithms and models within their area of expertise. *We are industry and scientific domain
 agnostic*. We accept any type of algorithm that improves the industrial data science experience and development.
@@ -25,11 +25,11 @@ There are multiple ways to contribute, the most common ones are:
 
 We encourage contribution of algorithms that are compliant with the |charts_link| calculations engine. Therefore, this
 guide focuses on the requirements to comply with it. Nevertheless, we accept any other algorithms (not exposed through
-|charts_link|) to be used by installing the python package in your preferred development environment.
+|charts_link|) to be used by installing the Python package in your preferred development environment.
 
 *Although the core of this project are the industrial algorithms, improving our documentation is very
 important and making our library more robust over time is of paramount importance. Please don't hesitate to submit a
-Github pull request for something as small as a typo.*
+GitHub pull request for something as small as a typo.*
 
 Open source contributions
 =========================
@@ -86,10 +86,10 @@ Contributing a new Cognite Charts compliant algorithm
 For an algorithm to play well with the Charts front-end (user interface) and the
 calculations back-end it has to adhere to some function input and output requirements, documentation (docstrings) format and a few
 other requirements to expose the algorithm to the front and back-end. The first few basic requirements to keep in mind
-before developing and algorithm are:
+before developing an algorithm are:
 
     1. It must belong to a particular toolbox. All the toolboxes are listed under the ``indsl/`` folder.
-    2. It must be a python function: ``def():``
+    2. It must be a Python function: ``def():``
     3. Input data is passed to each algorithm as one or more ``pd.Series`` (one for each time series) with a ``datetime`` index.
     4. The output must be a ``pd.Series`` with a ``datetime`` index for it to be displayed on the UI.
     5. Function parameters types allowed are:
@@ -212,7 +212,7 @@ Core or Extras
 --------------
 
 InDSL is divided into two main categories: core and extras. The core algorithms are the ones that only require
-``numpy``, ``scipy``and ``pandas`` as dependencies. The extras are algorithms that require additional dependencies.
+``numpy``, ``scipy`` and ``pandas`` as dependencies. The extras are algorithms that require additional dependencies.
 
 If your algorithm requires additional dependencies, add them to the ``pyproject.toml`` file as optional dependencies and
 also add them under the ``project.optional-dependencies`` section in an appropriate category. The dependencies will also need to be
@@ -584,7 +584,7 @@ A new function version is released through the following steps.
    Make sure to increment the version number (a single positive integer) of the new implementation. Optionally, non-breaking changes can be versioned.
    In that case follow the `semantic versioning guidelines <https://semver.org/>`_.
 
-4) Make sure the all versions of the function `myfunc` are tested. If the tests of the most recent version are in `test_mymod.py`, tests for the deprecated
+4) Make sure all versions of the function `myfunc` are tested. If the tests of the most recent version are in `test_mymod.py`, tests for the deprecated
    function can be placed in `test_mymod_v1.py`.
 
 
@@ -669,7 +669,7 @@ a ``New pull request`` and let the review process begin.
 Contributing a free form algorithm
 =============================================
 It is possible to contribute to InDSL without the algorithm being exposed in the Charts application.
-In this case, the algorithm will only be available to users who install the InDSL python package.
+In this case, the algorithm will only be available to users who install the InDSL Python package.
 It  **should not** be included in the ``__cognite__`` attribute of the toolbox `__init__.py` file.
 Although the algorithm doesn't need to meet the requirements mentioned in the
 :ref:`previous <contributing-a-new-charts-compliant-algorithm>` section, it is still important to document it properly,
