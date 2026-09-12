@@ -130,8 +130,8 @@ class DataQualityScoreAnalyser(ABC):
         """Compute data quality result.
 
         Args:
-            analysis_start: analyis start time
-            analysis_end: analyis end time
+            analysis_start: analysis start time
+            analysis_end: analysis end time
 
         Returns:
             DataQualityScore: A DataQualityScore object
