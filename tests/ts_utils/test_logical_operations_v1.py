@@ -1,10 +1,10 @@
-# Copyright 2022 - 2026 Cognite AS
+# Copyright 2022 Cognite AS
 import pandas as pd
 import pytest
 
 from pandas import testing as tm
 
-from indsl.ts_utils import logical_check
+from indsl.ts_utils.logical_operations_v1 import logical_check
 
 
 # Some examples of input types
@@ -14,12 +14,10 @@ B = pd.Series(index=time_index, data=[8.8, 7.7, 6.6, 5.5, 4.4, 3.3, 2.2, 1.1])
 
 
 @pytest.mark.core
-@pytest.mark.parametrize("value_false", [0.0, None])
-@pytest.mark.parametrize("value_true", [1.0, None])
-def test_logical_check_eq(value_false: float | None, value_true: float | None):
+def test_logical_check_eq():
     # A == B
-    res = logical_check(value_1=A, value_2=B, value_true=value_true, value_false=value_false, operation="Equality")
-    expected = pd.Series(index=time_index, data=4*[value_false] + [value_true] + 3*[value_false], name="result", dtype="float64")
+    res = logical_check(value_1=A, value_2=B, value_true=1, value_false=0, operation="Equality")
+    expected = pd.Series(index=time_index, data=[0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0], name="result")
     tm.assert_series_equal(res, expected)
 
 
@@ -42,7 +40,7 @@ def test_logical_check_gt():
 @pytest.mark.core
 def test_logical_check_ge():
     # A >= B
-    res = logical_check(value_1=A, value_2=B, value_true=1, value_false=0, operation="Greater than or equal to")
+    res = logical_check(value_1=A, value_2=B, value_true=1, value_false=0, operation="Greater or equal than")
     expected = pd.Series(index=time_index, data=[0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0], name="result")
     tm.assert_series_equal(res, expected)
 
@@ -58,21 +56,18 @@ def test_logical_check_lt():
 @pytest.mark.core
 def test_logical_check_le():
     # A >= B
-    res = logical_check(value_1=A, value_2=B, value_true=1, value_false=0, operation="Smaller than or equal to")
+    res = logical_check(value_1=A, value_2=B, value_true=1, value_false=0, operation="Smaller or equal than")
     expected = pd.Series(index=time_index, data=[1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0], name="result")
     tm.assert_series_equal(res, expected)
 
 
 @pytest.mark.core
-@pytest.mark.parametrize("value_false", [4.0, None])
-def test_logical_check_constant_inputs_constant_output(value_false: float | None):
+def test_logical_check_constants():
     res = logical_check(
-        value_1=5.0, value_2=3.0, value_true=pd.Series([1, 2, 3]), value_false=value_false, operation="Equality"
+        value_1=5.0, value_2=3.0, value_true=pd.Series([1, 2, 3]), value_false=4.0, operation="Equality"
     )
-    assert res == value_false
+    assert res == 4.0
 
-@pytest.mark.core
-def test_logical_check_constant_inputs_series_output():
     res = logical_check(
         value_1=5.0, value_2=3.0, value_true=pd.Series([1, 2, 3]), value_false=4.0, operation="Greater than"
     )
