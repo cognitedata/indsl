@@ -12,7 +12,8 @@ readme = "README.md"
 requires-python = ">=3.11,<3.15"
 classifiers = ["Topic :: Scientific/Engineering"]
 dependencies = [
-    "scipy~=1.17.0",
+    "scipy~=1.17.0; python_version < '3.12'",
+    "scipy~=1.18.1; python_version >= '3.12'",
     "pandas~=3.0.1",
     "typeguard>=4.0.0,<5",
     "packaging>=26.0,<27",
