@@ -1,3 +1,10 @@
+## v8.9.2 (2026-10-22)
+
+### Fix
+
+- **deps**: drop the scipy 1.17 upper bound so scipy 1.18+ is allowed, APF-1209 (#672)
+- harden release workflow to prevent tag protection bypass (#660)
+
 ## v8.9.1 (2026-06-23)
 
 ### Fix
