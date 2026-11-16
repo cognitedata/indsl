@@ -17,7 +17,7 @@ The workflow for publishing the `indsl` library consists of merging a reviewed v
 
     3. Review and adjust `CHANGELOG.md`, `pyproject.toml`, and `indsl/_version.py` if needed, then commit any edits.
     4. Push the branch to GitHub: `git push origin bump-version`
-    5. Create a PR and ask someone in the Cognite `Charts Backend` to approve and merge.
+    5. Create a PR and ask someone in the Cognite `Horizontal Apps` to approve and merge.
     6. After merge, run [publish_library.sh](./publish_library.sh):
 
         ```
