@@ -68,8 +68,8 @@ class DensityDataQualityScoreAnalyser(DataQualityScoreAnalyser):
         """Compute the low density analysis score.
 
         Args:
-            analysis_start: Analyis start time
-            analysis_end: Analyis end time
+            analysis_start: Analysis start time
+            analysis_end: Analysis end time
             low_density_detection_method: Low density detection method
                 Must be one of "iqr", "z_scores", "modified_z_scores", "threshold". Default to "iqr".
             low_density_detection_options: Arguments to low density detection method
