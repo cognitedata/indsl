@@ -1,27 +1,100 @@
 name: Publish Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 concurrency:
-  group: publish-${{ github.event.release.tag_name }}
+  group: publish
   cancel-in-progress: false
 
+permissions: {}
+
 jobs:
-  publish:
+  check:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: CD
+    name: Check for unpublished version
     permissions:
       contents: read
-    name: "Publish library"
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+      publish: ${{ steps.version.outputs.publish }}
+      create_release: ${{ steps.version.outputs.create_release }}
+      notes: ${{ steps.version.outputs.notes }}
     steps:
       - name: Check out
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          ref: ${{ github.event.release.tag_name }}
           persist-credentials: false
-          fetch-depth: 0
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+        with:
+          python-version: '3.14'
+
+      - name: Compare version with PyPI and release tags
+        id: version
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+          PACKAGE_VERSION=$(python -c 'from pathlib import Path; ns = {}; exec(Path("indsl/_version.py").read_text(), ns); print(ns["__version__"])')
+          [ "$PACKAGE_VERSION" = "$VERSION" ] || { echo "::error::indsl/_version.py version $PACKAGE_VERSION does not match pyproject.toml version $VERSION"; exit 1; }
+          TAG="v$VERSION"
+
+          STATUS=$(curl -sS -o /dev/null -w '%{http_code}' "https://pypi.org/pypi/indsl/$VERSION/json")
+          case "$STATUS" in
+            200) PUBLISH=false ;;
+            404) PUBLISH=true ;;
+            *) echo "::error::unexpected PyPI response $STATUS for indsl $VERSION"; exit 1 ;;
+          esac
+
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" --silent 2>/dev/null; then
+            CREATE_RELEASE=false
+          else
+            CREATE_RELEASE=true
+          fi
+
+          NOTES=""
+          if [ "$CREATE_RELEASE" = true ]; then
+            NOTES=$(awk -v tag="$TAG" '
+              { sub(/\r$/, "") }
+              function is_target_header(line) {
+                return line == "## " tag || index(line, "## " tag " ") == 1 || index(line, "## [" tag "]") == 1
+              }
+              /^## / && in_section && !is_target_header($0) { exit }
+              is_target_header($0) { in_section = 1 }
+              in_section { print }
+            ' CHANGELOG.md)
+            [ -n "$NOTES" ] || { echo "::error::could not find release notes for $TAG in CHANGELOG.md"; exit 1; }
+          fi
+
+          {
+            echo "version=$VERSION"
+            echo "tag=$TAG"
+            echo "publish=$PUBLISH"
+            echo "create_release=$CREATE_RELEASE"
+            echo "notes<<RELEASE_NOTES_EOF"
+            echo "$NOTES"
+            echo "RELEASE_NOTES_EOF"
+          } >> "$GITHUB_OUTPUT"
+          echo "indsl $VERSION: publish=$PUBLISH, create_release=$CREATE_RELEASE"
+
+  build:
+    needs: check
+    if: needs.check.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    name: Build package
+    permissions:
+      contents: read
+    steps:
+      - name: Check out
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
@@ -30,21 +103,67 @@ jobs:
         with:
           python-version: '3.14'
 
-      - name: Validate release version
-        run: |
-          TAG="${{ github.event.release.tag_name }}"
-          VERSION="${TAG#v}"
-          PYPROJECT_VERSION=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
-          PACKAGE_VERSION=$(python -c 'from pathlib import Path; ns = {}; exec(Path("indsl/_version.py").read_text(), ns); print(ns["__version__"])')
-          git fetch origin main
-          [ "$TAG" = "v$PYPROJECT_VERSION" ] || { echo "::error::release tag $TAG does not match pyproject.toml version v$PYPROJECT_VERSION"; exit 1; }
-          [ "$PACKAGE_VERSION" = "$PYPROJECT_VERSION" ] || { echo "::error::indsl/_version.py version $PACKAGE_VERSION does not match pyproject.toml version $PYPROJECT_VERSION"; exit 1; }
-          git merge-base --is-ancestor HEAD origin/main || { echo "::error::release tag commit is not an ancestor of origin/main"; exit 1; }
-
       - name: Build package
         run: uv build
 
+      - name: Upload package
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: CD
+    name: Publish to PyPI
+    permissions: {}
+    steps:
+      - name: Download package
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: dist
+          path: dist/
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
       - name: Release to PyPI
-        run: uv publish
+        run: uv publish --check-url https://pypi.org/simple/
         env:
           UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+
+  release:
+    needs: [check, publish]
+    if: >-
+      always()
+      && needs.check.result == 'success'
+      && needs.check.outputs.create_release == 'true'
+      && (needs.publish.result == 'success' || needs.check.outputs.publish == 'false')
+    runs-on: ubuntu-latest
+    name: Create tag and GitHub release
+    permissions:
+      contents: write
+    steps:
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.check.outputs.tag }}
+          VERSION: ${{ needs.check.outputs.version }}
+          NOTES: ${{ needs.check.outputs.notes }}
+        run: |
+          printf '%s\n' "$NOTES" > notes.md
+          ARGS=(--repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "InDSL $VERSION" --notes-file notes.md)
+          if [[ "$VERSION" =~ (a|b|rc)[0-9]+ ]]; then
+            ARGS+=(--prerelease)
+          fi
+          gh release create "$TAG" "${ARGS[@]}"
+
+  docs:
+    needs: publish
+    name: Deploy docs
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/docs.yaml
