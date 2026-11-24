@@ -29,6 +29,7 @@ jobs:
       - name: Check out
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
+          fetch-depth: 2
           persist-credentials: false
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
@@ -52,10 +53,16 @@ jobs:
             *) echo "::error::unexpected PyPI response $STATUS for indsl $VERSION"; exit 1 ;;
           esac
 
+          # Only tag the commit that was published: either this run publishes it, or this
+          # commit is the one that changed the version (a re-run of the original publish run).
+          PREVIOUS_VERSION=$(git show HEAD^:pyproject.toml 2>/dev/null | python -c 'import sys, tomllib; print(tomllib.loads(sys.stdin.read())["project"]["version"])' 2>/dev/null || true)
           if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" --silent 2>/dev/null; then
             CREATE_RELEASE=false
-          else
+          elif [ "$PUBLISH" = true ] || [ "$PREVIOUS_VERSION" != "$VERSION" ]; then
             CREATE_RELEASE=true
+          else
+            CREATE_RELEASE=false
+            echo "::warning::indsl $VERSION is on PyPI but $TAG does not exist. Re-run the publish run of the commit that published $VERSION to create the tag and GitHub release."
           fi
 
           NOTES=""
