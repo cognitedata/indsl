@@ -4,4 +4,4 @@ Please read about how to contribute on <https://indsl.docs.cognite.com/contribut
 
 ## Publishing a release
 
-See [PUBLISHING.md](./PUBLISHING.md) for the step-by-step release workflow, including how to bump the version, push the tag, and trigger the PyPI publish.
+See [PUBLISHING.md](./PUBLISHING.md) for the step-by-step release workflow, including how to bump the version and publish to PyPI.
