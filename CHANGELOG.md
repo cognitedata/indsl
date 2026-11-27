@@ -1,5 +1,9 @@
 ## v8.9.3 (2026-11-27)
 
+### Chore
+
+- Release process: publish from `main` instead of release tags
+
 ## v8.9.2 (2026-10-22)
 
 ### Fix
